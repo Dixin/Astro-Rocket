@@ -7,6 +7,7 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
 import LighthouseScores from '@/components/landing/LighthouseScores.astro';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { getCollection } from 'astro:content';
 import siteConfig from '@/config/site.config';
 
@@ -327,8 +328,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
  <!-- CTA -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background">
-    <div class="mx-auto max-w-2xl px-6 text-center" data-reveal>
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <!-- Mobile: flat section, no card -->
+    <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
+      <Badge variant="brand" pill class="mb-6">Let's talk</Badge>
       <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
         Have a project in mind?
       </h2>
@@ -336,15 +339,36 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         Whether it's a new build or something that needs a fresh perspective — I'd love to hear about it.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href="/contact">
+        <Button size="lg" href="/contact" class="cta-btn-brand">
           Start a project
           <Icon name="arrow-right" size="sm" />
         </Button>
         <Button size="lg" variant="outline" href="/about">
           More about me
+          <Icon name="arrow-right" size="sm" />
         </Button>
       </div>
     </div>
+
+    <!-- Desktop: contained LetterGlitch band with glass card -->
+    <LetterGlitchBand>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
+        Have a project in mind?
+      </h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">
+        Whether it's a new build or something that needs a fresh perspective — I'd love to hear about it.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" href="/contact" class="hero-btn-brand">
+          Start a project
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+        <Button size="lg" variant="outline" href="/about">
+          More about me
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+    </LetterGlitchBand>
   </section>
 
 <script>

@@ -17,6 +17,9 @@
 /* Dark mode variant */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* LetterGlitch variant — desktop with fine pointer only */
+@custom-variant glitch (@media (min-width: 1024px) and (pointer: fine));
+
 /* -------------------------------------------------------------------------
    Tailwind Theme Configuration
    ------------------------------------------------------------------------- */
@@ -1106,6 +1109,25 @@
   background-color: var(--color-brand-700) !important;
   background-image: none !important;
   opacity: 0.85;
+}
+
+/* CTA primary button on mobile / coarse-pointer CTA sections —
+   brand-600 fill, matches the homepage hero primary button. */
+.cta-btn-brand {
+  background-color: var(--color-brand-600) !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+.cta-btn-brand:hover {
+  background-color: var(--color-brand-700) !important;
+  background-image: none !important;
+}
+:root:not(.dark) .cta-btn-brand {
+  background-color: var(--color-brand-500) !important;
+}
+:root:not(.dark) .cta-btn-brand:hover {
+  background-color: var(--color-brand-600) !important;
 }
 
 /* Header CTA — brand colour in light mode */

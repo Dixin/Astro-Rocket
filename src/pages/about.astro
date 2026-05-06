@@ -11,6 +11,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import TypingEffect from '@/components/ui/TypingEffect.astro';
 import TechStack from '@/components/landing/TechStack.astro';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 ---
 <PageLayout
   title="About Astro Rocket — Web Designer & Developer | Veghel"
@@ -296,19 +297,35 @@ import TechStack from '@/components/landing/TechStack.astro';
   </section>
 
   <!-- CTA -->
-  <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
-    <div class="mx-auto max-w-2xl px-6 text-center" data-reveal>
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
+    <!-- Mobile: flat section, no card -->
+    <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
+      <Badge variant="brand" pill class="mb-6">Let's talk</Badge>
       <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
         Sound like a good fit?
       </h2>
       <p class="text-lg text-foreground-muted mb-8 text-balance">
         If my background and approach match what you're looking for, I'm open to new projects. Let's have a conversation.
       </p>
-      <Button size="lg" href="/contact">
+      <Button size="lg" href="/contact" class="cta-btn-brand">
         Start a Project
         <Icon name="arrow-right" size="sm" />
       </Button>
     </div>
+
+    <!-- Desktop: contained LetterGlitch band with glass card -->
+    <LetterGlitchBand>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
+        Sound like a good fit?
+      </h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">
+        If my background and approach match what you're looking for, I'm open to new projects. Let's have a conversation.
+      </p>
+      <Button size="lg" href="/contact" class="hero-btn-brand">
+        Start a Project
+        <Icon name="arrow-right" size="sm" />
+      </Button>
+    </LetterGlitchBand>
   </section>
 </PageLayout>
 
