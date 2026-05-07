@@ -12,6 +12,8 @@ services: ["Design System", "Component Library", "Open Source"]
 image: "../../assets/projects/astro-rocket-dark.jpeg"
 ---
 
+import LighthouseScoresGrid from '@/components/landing/LighthouseScoresGrid.astro';
+
 ## About the project
 
 Astro Rocket is a production-ready Astro 6 starter that ships as a **complete, styled website** — not a blank slate. Clone it, update the text, go live. Everything else is already done.
@@ -122,6 +124,10 @@ The closing call-to-action on the homepage, projects index, and about page uses 
 ## Lighthouse: 100 Across the Board
 
 Astro Rocket scores **100 on every Lighthouse category — on both mobile and desktop** — Performance, Accessibility, Best Practices, and SEO — on the live demo at [astrorocket.dev](https://astrorocket.dev). That's not a tuned benchmark page; it's the full site with animations, a theme switcher, typed headlines, a contact form, the cursor trail, and the LetterGlitch CTA.
+
+<LighthouseScoresGrid staggered={false} />
+
+Lighthouse runs in a sandboxed Chromium environment with throttled CPU and network, so individual scores can vary a point or two from run to run depending on the host machine, network conditions, and which extensions or processes are competing for resources. The numbers above reflect the typical result on the live demo on both mobile and desktop, not a guaranteed ceiling.
 
 The result ships back into the theme as a reusable `LighthouseScores` component — four authentic Lighthouse-style circular gauges that animate from zero to 100 as the section enters the viewport, ready to drop into any landing page.
 
