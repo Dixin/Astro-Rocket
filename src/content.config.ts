@@ -19,6 +19,10 @@ const blog = defineCollection({
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),
       locale: z.enum(['en', 'es', 'fr']).default('en'),
+      /** Per-post override: hide table of contents on this post */
+      toc: z.boolean().optional(),
+      /** Per-post override: hide comments on this post */
+      comments: z.boolean().optional(),
     }),
 });
 

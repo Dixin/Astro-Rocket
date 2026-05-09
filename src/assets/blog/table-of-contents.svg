@@ -1,0 +1,45 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg  { fill: var(--brand-500); }
+    .ico { stroke: var(--brand-100); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .txt { fill: var(--brand-50); font-family: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif; font-weight: 800; }
+    .ln  { stroke: var(--brand-300); stroke-width: 1; stroke-opacity: 0.35; }
+    .pil { fill: var(--brand-400); fill-opacity: 0.25; stroke: var(--brand-200); stroke-opacity: 0.4; stroke-width: 1; }
+    .ptx { fill: var(--brand-100); font-family: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif; }
+    .cor { stroke: var(--brand-300); stroke-width: 1.5; fill: none; stroke-opacity: 0.45; }
+    .frame { fill: none; stroke: var(--brand-200); stroke-opacity: 0.55; stroke-width: 1.5; }
+    .rail  { stroke: var(--brand-200); stroke-opacity: 0.55; stroke-width: 2; }
+    .bar   { fill: var(--brand-100); fill-opacity: 0.85; }
+    .bar-d { fill: var(--brand-300); fill-opacity: 0.45; }
+    .dot   { fill: var(--brand-50); }
+  </style>
+  <rect width="1200" height="630" class="bg"/>
+
+  <!-- TOC card -->
+  <g transform="translate(420, 130)">
+    <rect x="0" y="0" width="360" height="220" rx="14" class="frame"/>
+    <!-- Title -->
+    <rect x="24" y="22" width="120" height="8" rx="4" class="bar"/>
+    <line x1="24" y1="48" x2="336" y2="48" class="ln"/>
+    <!-- Vertical rail -->
+    <line x1="36" y1="68" x2="36" y2="200" class="rail"/>
+    <!-- Items -->
+    <rect x="48" y="70" width="160" height="6" rx="3" class="bar"/>
+    <circle cx="36" cy="73" r="3" class="dot"/>
+    <rect x="60" y="92" width="120" height="6" rx="3" class="bar-d"/>
+    <rect x="60" y="110" width="140" height="6" rx="3" class="bar-d"/>
+    <rect x="48" y="132" width="180" height="6" rx="3" class="bar"/>
+    <rect x="60" y="154" width="100" height="6" rx="3" class="bar-d"/>
+    <rect x="48" y="176" width="150" height="6" rx="3" class="bar"/>
+    <rect x="60" y="198" width="120" height="6" rx="3" class="bar-d"/>
+  </g>
+
+  <text x="600" y="430" font-size="80" text-anchor="middle" letter-spacing="-2" class="txt">on this page</text>
+  <line x1="360" y1="456" x2="840" y2="456" class="ln"/>
+  <rect x="450" y="484" width="300" height="38" rx="19" class="pil"/>
+  <text x="600" y="507" font-size="16" text-anchor="middle" class="ptx">hansmartens.dev</text>
+  <path d="M 36 60 L 36 36 L 60 36" class="cor"/>
+  <path d="M 1140 36 L 1164 36 L 1164 60" class="cor"/>
+  <path d="M 36 570 L 36 594 L 60 594" class="cor"/>
+  <path d="M 1140 594 L 1164 594 L 1164 570" class="cor"/>
+</svg>

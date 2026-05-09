@@ -18,7 +18,11 @@
  */
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
-import { getNavItems, type NavItem as NavConfigItem } from '@/config/nav.config';
+import {
+  getFooterNavItems,
+  getLegalLinks,
+  type NavItem as NavConfigItem,
+} from '@/config/nav.config';
 import { footerVariants, footerColumnGridVariants } from './footer.variants';
 import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
@@ -83,22 +87,25 @@ const {
   showSocial = true,
   showCopyright = true,
   copyright = '© {year} {siteName}. Designed by <a href="https://hansmartens.dev" class="underline hover:text-foreground transition-colors" target="_blank" rel="noopener noreferrer">Hans Martens</a>.',
-  legalLinks = [],
+  legalLinks,
   hideLogo = false,
   tagline,
   class: className,
   ...attrs
 } = Astro.props;
 
-// Get navigation items
-const defaultNav: NavItem[] = getNavItems().map((item: NavConfigItem) => ({
+// Get navigation items — footer nav is configured independently from the
+// header in `nav.config.ts` (see `footerNavItems`).
+const defaultNav: NavItem[] = getFooterNavItems().map((item: NavConfigItem) => ({
   label: item.label,
   href: item.href,
+  external: item.external,
 }));
 const navItems: NavItem[] = nav || defaultNav;
+const allNavItems: NavItem[] = navItems;
 
-// Default external links if none provided via nav
-const allNavItems: NavItem[] = nav ? navItems : navItems;
+// Resolved legal links: prop wins, otherwise fall back to nav.config.ts
+const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks();
 
 // Process copyright text
 const currentYear = new Date().getFullYear();
@@ -141,8 +148,8 @@ function getSocialIcon(platform: string): string {
               <slot name="logo" />
             ) : (
               <a href="/" class="flex items-center gap-2">
-                <Logo size="md" class="bg-brand-700" />
-                <span class="font-display text-base font-bold text-brand-700 dark:text-foreground">
+                <Logo size="md" class="bg-brand-600" />
+                <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
                   {siteConfig.name}
                 </span>
               </a>
@@ -208,8 +215,8 @@ function getSocialIcon(platform: string): string {
                 <slot name="logo" />
               ) : (
                 <a href="/" class="flex items-center gap-2">
-                  <Logo size="md" class="bg-brand-700" />
-                  <span class="font-display text-base font-bold text-brand-700 dark:text-foreground">
+                  <Logo size="md" class="bg-brand-600" />
+                  <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
                     {siteConfig.name}
                   </span>
                 </a>
@@ -267,7 +274,7 @@ function getSocialIcon(platform: string): string {
         </div>
 
         {/* Bottom section */}
-        {(showCopyright || legalLinks.length > 0) && (
+        {(showCopyright || resolvedLegalLinks.length > 0) && (
           <div class="mt-[var(--space-section-header)] pt-[var(--space-stack-lg)] border-t border-border flex flex-col md:flex-row justify-between items-center gap-[var(--space-stack-md)]">
             {hasBottomSlot ? (
               <slot name="bottom" />
@@ -276,9 +283,9 @@ function getSocialIcon(platform: string): string {
                 {showCopyright && (
                   <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
                 )}
-                {legalLinks.length > 0 && (
+                {resolvedLegalLinks.length > 0 && (
                   <div class="flex items-center gap-[var(--space-inline-lg)]">
-                    {legalLinks.map((link) => (
+                    {resolvedLegalLinks.map((link) => (
                       <a
                         href={link.href}
                         class="text-sm transition-colors text-foreground-muted hover:text-foreground"
@@ -311,8 +318,8 @@ function getSocialIcon(platform: string): string {
             <slot name="logo" />
           ) : (
             <a href="/" class="flex items-center gap-2">
-              <Logo size="md" class="bg-brand-700" />
-              <span class="font-display text-xl font-bold text-brand-700 dark:text-foreground">
+              <Logo size="md" class="bg-brand-600" />
+              <span class="font-display text-xl font-bold text-brand-600 dark:text-foreground">
                 {siteConfig.name}
               </span>
             </a>
@@ -358,14 +365,14 @@ function getSocialIcon(platform: string): string {
         )}
 
         {/* Copyright & Legal */}
-        {(showCopyright || legalLinks.length > 0) && (
+        {(showCopyright || resolvedLegalLinks.length > 0) && (
           <div class="pt-[var(--space-stack-lg)] border-t border-border w-full flex flex-col items-center gap-[var(--space-stack-md)]">
             {showCopyright && (
               <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
             )}
-            {legalLinks.length > 0 && (
+            {resolvedLegalLinks.length > 0 && (
               <div class="flex items-center gap-[var(--space-inline-lg)]">
-                {legalLinks.map((link) => (
+                {resolvedLegalLinks.map((link) => (
                   <a
                     href={link.href}
                     class="text-sm transition-colors text-foreground-muted hover:text-foreground"

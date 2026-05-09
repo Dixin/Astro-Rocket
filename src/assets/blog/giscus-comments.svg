@@ -1,0 +1,50 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg  { fill: var(--brand-500); }
+    .ico { stroke: var(--brand-100); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .txt { fill: var(--brand-50); font-family: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif; font-weight: 800; }
+    .ln  { stroke: var(--brand-300); stroke-width: 1; stroke-opacity: 0.35; }
+    .pil { fill: var(--brand-400); fill-opacity: 0.25; stroke: var(--brand-200); stroke-opacity: 0.4; stroke-width: 1; }
+    .ptx { fill: var(--brand-100); font-family: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif; }
+    .cor { stroke: var(--brand-300); stroke-width: 1.5; fill: none; stroke-opacity: 0.45; }
+    .bub-a { fill: var(--brand-100); fill-opacity: 0.85; }
+    .bub-b { fill: var(--brand-300); fill-opacity: 0.40; stroke: var(--brand-200); stroke-opacity: 0.55; stroke-width: 1.5; }
+    .bub-line { stroke: var(--brand-500); stroke-width: 0.8; stroke-opacity: 0.5; }
+    .avatar { fill: var(--brand-50); fill-opacity: 0.85; }
+  </style>
+  <rect width="1200" height="630" class="bg"/>
+
+  <!-- Comment bubbles -->
+  <g transform="translate(380, 130)">
+    <!-- Bubble 1 (left) -->
+    <circle cx="22" cy="34" r="16" class="avatar"/>
+    <path d="M 50 12 H 360 a 12 12 0 0 1 12 12 v 36 a 12 12 0 0 1 -12 12 H 78 l -18 14 v -14 H 50 a 12 12 0 0 1 -12 -12 V 24 a 12 12 0 0 1 12 -12 z" class="bub-a"/>
+    <line x1="64" y1="32" x2="220" y2="32" class="bub-line"/>
+    <line x1="64" y1="46" x2="270" y2="46" class="bub-line"/>
+
+    <!-- Bubble 2 (right, reply) -->
+    <g transform="translate(40, 100)">
+      <path d="M 12 12 H 320 a 12 12 0 0 1 12 12 v 36 a 12 12 0 0 1 -12 12 H 60 l -18 14 v -14 H 12 a 12 12 0 0 1 -12 -12 V 24 a 12 12 0 0 1 12 -12 z" class="bub-b"/>
+      <line x1="28" y1="34" x2="200" y2="34" class="bub-line"/>
+      <line x1="28" y1="50" x2="240" y2="50" class="bub-line"/>
+      <circle cx="350" cy="36" r="14" class="avatar"/>
+    </g>
+
+    <!-- Bubble 3 -->
+    <g transform="translate(0, 200)">
+      <circle cx="22" cy="34" r="16" class="avatar"/>
+      <path d="M 50 12 H 380 a 12 12 0 0 1 12 12 v 36 a 12 12 0 0 1 -12 12 H 78 l -18 14 v -14 H 50 a 12 12 0 0 1 -12 -12 V 24 a 12 12 0 0 1 12 -12 z" class="bub-a"/>
+      <line x1="64" y1="32" x2="260" y2="32" class="bub-line"/>
+      <line x1="64" y1="46" x2="300" y2="46" class="bub-line"/>
+    </g>
+  </g>
+
+  <text x="600" y="450" font-size="86" text-anchor="middle" letter-spacing="-2" class="txt">comments</text>
+  <line x1="380" y1="476" x2="820" y2="476" class="ln"/>
+  <rect x="450" y="504" width="300" height="38" rx="19" class="pil"/>
+  <text x="600" y="527" font-size="16" text-anchor="middle" class="ptx">hansmartens.dev</text>
+  <path d="M 36 60 L 36 36 L 60 36" class="cor"/>
+  <path d="M 1140 36 L 1164 36 L 1164 60" class="cor"/>
+  <path d="M 36 570 L 36 594 L 60 594" class="cor"/>
+  <path d="M 1140 594 L 1164 594 L 1164 570" class="cor"/>
+</svg>

@@ -6,7 +6,6 @@ import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
-import TechStack from '@/components/landing/TechStack.astro';
 import LighthouseScores from '@/components/landing/LighthouseScores.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { getCollection } from 'astro:content';
@@ -37,8 +36,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">Available for new projects</Badge>
 
     <h1 slot="title">
-      <span class="text-brand-700 dark:text-foreground [-webkit-text-fill-color:currentColor]">Astro Rocket —</span><br />
-      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Web Designer</span><span class="text-foreground [-webkit-text-fill-color:currentColor]"> &amp; Developer</span>
+      <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">Astro Rocket —</span><br />
+      <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]">Web Designer</span><span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor]"> &amp; Developer</span>
     </h1>
 
     <p slot="description">
@@ -163,6 +162,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           </Card>
         ))}
       </div>
+
+      <div class="flex justify-center">
+        <Button variant="outline" href="/projects">
+          View all projects
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
     </div>
   </section>
 
@@ -235,19 +241,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
-  <!-- My Stack -->
-  <TechStack
-    badge="Tools & Tech"
-    title="My Stack"
-    description="The tools I rely on every day to build fast, modern websites — chosen for performance, great developer experience, and reliability."
-    background="primary"
-  />
-
   <!-- Lighthouse scores -->
   <LighthouseScores />
 
   <!-- About Teaser -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
       <div class="grid gap-12 lg:grid-cols-2">
         <div class="flex flex-col justify-center" data-reveal="right">
@@ -266,6 +264,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           </p>
            <Button variant="outline" href="/about" class="self-start">
             More about me
+            <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
         <Card variant="elevated" padding="lg" class="h-full flex flex-col" data-reveal="left" data-reveal-delay="1">
@@ -297,19 +296,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
   <!-- Blog -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex items-end justify-between" data-reveal>
-        <div class="flex flex-col gap-6">
-          <Badge variant="brand" pill class="self-start">From the blog</Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Featured
-          </h2>
-        </div>
-        <a href="/blog" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 hover:text-brand-600 transition-colors shrink-0">
-          View all posts
-          <Icon name="arrow-right" size="sm" />
-        </a>
+      <div class="flex flex-col items-center gap-6 text-center" data-reveal>
+        <Badge variant="brand" pill>From the blog</Badge>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+          Featured
+        </h2>
       </div>
 
       <div class="grid gap-6 md:grid-cols-3">
@@ -327,7 +320,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         ))}
       </div>
 
-      <div class="text-center sm:hidden">
+      <div class="flex justify-center">
         <Button variant="outline" href="/blog">
           View all posts
           <Icon name="arrow-right" size="sm" />
@@ -337,7 +330,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   </section>
 
  <!-- CTA -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
       <Badge variant="brand" pill class="mb-6">Let's talk</Badge>

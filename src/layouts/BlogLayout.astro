@@ -1,5 +1,5 @@
 ---
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata, MarkdownHeading } from 'astro';
 import siteConfig from '@/config/site.config';
 import BaseLayout from './BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
@@ -8,6 +8,8 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs.astro';
 import ArticleHero from '@/components/blog/ArticleHero.astro';
 import ShareButtons from '@/components/blog/ShareButtons.astro';
 import RelatedPosts from '@/components/blog/RelatedPosts.astro';
+import TableOfContents from '@/components/blog/TableOfContents.astro';
+import Comments from '@/components/blog/Comments.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import { resolveSocialLinks } from '@/lib/utils';
@@ -26,6 +28,12 @@ interface Props {
   svgSlug?: string;
   tags?: string[];
   slug?: string;
+  /** MDX headings — used by the optional table of contents */
+  headings?: MarkdownHeading[];
+  /** Per-post override: hide table of contents on this post */
+  toc?: boolean;
+  /** Per-post override: hide comments on this post */
+  comments?: boolean;
 }
 
 const {
@@ -39,7 +47,18 @@ const {
   svgSlug,
   tags = [],
   slug = '',
+  headings = [],
+  toc: tocOverride,
+  comments: commentsOverride,
 } = Astro.props;
+
+// Resolve opt-in features (site config + per-post overrides).
+// Per-post override only fires when explicitly set to `false`, so authors
+// can hide the TOC/comments on a single post without changing site config.
+const tocConfig = siteConfig.articleFeatures?.toc;
+const commentsConfig = siteConfig.articleFeatures?.comments;
+const showToc = !!tocConfig?.enabled && tocOverride !== false;
+const showComments = !!commentsConfig?.enabled && commentsOverride !== false;
 
 const ogImage = image?.src || siteConfig.ogImage;
 
@@ -105,6 +124,16 @@ const blogPostingSchema = createBlogPostSchema({
       <!-- Breadcrumbs -->
       <Breadcrumbs items={breadcrumbs} class="mb-8" />
 
+      {showToc && (
+        <div class="mb-10 rounded-xl border border-border bg-background-secondary p-5">
+          <TableOfContents
+            headings={headings}
+            maxDepth={tocConfig?.maxDepth ?? 3}
+            minHeadings={tocConfig?.minHeadings ?? 3}
+          />
+        </div>
+      )}
+
       <!-- Article Content -->
       <div
         class="prose prose-lg max-w-none"
@@ -141,6 +170,10 @@ const blogPostingSchema = createBlogPostSchema({
       </footer>
     </div>
   </article>
+
+  {showComments && (
+    <Comments />
+  )}
 
   <!-- Related Posts -->
   {tags.length > 0 && (

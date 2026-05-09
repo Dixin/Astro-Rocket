@@ -32,6 +32,43 @@ export interface SiteConfig {
    */
   blogImageOverlay?: boolean;
   /**
+   * Article features — opt-in modules for blog posts.
+   * Each is OFF by default so the theme stays as light as it is today
+   * for users who don't enable them.
+   */
+  articleFeatures?: {
+    /** Table of contents shown on blog posts (auto-generated from headings) */
+    toc?: {
+      /** Master switch — set to true to enable site-wide */
+      enabled: boolean;
+      /** Minimum headings before the TOC renders (avoid TOCs on short posts) */
+      minHeadings?: number;
+      /** Deepest heading level to include (2 = H2 only, 3 = H2+H3, etc.) */
+      maxDepth?: 2 | 3 | 4;
+    };
+    /** Comments at the bottom of blog posts (powered by Giscus) */
+    comments?: {
+      /** Master switch — set to true to enable site-wide */
+      enabled: boolean;
+      /** Comments provider. Currently only 'giscus' is supported. */
+      provider?: 'giscus';
+      /** Giscus configuration. Get values from https://giscus.app */
+      giscus?: {
+        repo: `${string}/${string}`;
+        repoId: string;
+        category: string;
+        categoryId: string;
+        mapping?: 'pathname' | 'url' | 'title' | 'og:title' | 'specific' | 'number';
+        strict?: boolean;
+        reactionsEnabled?: boolean;
+        emitMetadata?: boolean;
+        inputPosition?: 'top' | 'bottom';
+        theme?: string;
+        lang?: string;
+      };
+    };
+  };
+  /**
    * Branding configuration
    * Logo files: Replace SVGs in src/assets/branding/
    * Favicon: Replace in public/favicon.svg
@@ -88,6 +125,30 @@ const siteConfig: SiteConfig = {
   },
   authorImage: '/avatar.svg',
   blogImageOverlay: true,
+  articleFeatures: {
+    toc: {
+      enabled: false,
+      minHeadings: 3,
+      maxDepth: 3,
+    },
+    comments: {
+      enabled: false,
+      provider: 'giscus',
+      giscus: {
+        repo: 'owner/repo',
+        repoId: '',
+        category: 'General',
+        categoryId: '',
+        mapping: 'pathname',
+        strict: false,
+        reactionsEnabled: true,
+        emitMetadata: false,
+        inputPosition: 'bottom',
+        theme: 'preferred_color_scheme',
+        lang: 'en',
+      },
+    },
+  },
   branding: {
     logo: {
       alt: 'Astro Rocket',

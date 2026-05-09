@@ -1,0 +1,82 @@
+---
+title: "Table of Contents — Reading Anchors for Long Posts"
+description: "Astro Rocket can now render an automatic table of contents on blog posts. It's opt-in, has zero runtime cost when disabled, and uses scroll-spy to highlight where the reader is in the article."
+publishedAt: 2026-05-09
+author: "Hans Martens"
+tags: ["astro-rocket", "features", "blog", "navigation"]
+featured: false
+locale: en
+image: "../../../assets/blog/table-of-contents.svg"
+svgSlug: "table-of-contents"
+imageAlt: "An 'on this page' card showing a vertical list of section links with a coloured rail, on a brand-coloured background"
+---
+
+Long-form articles benefit from a table of contents. It tells readers what's coming, lets them jump straight to the part they want, and acts as a quiet progress indicator when scroll-spy highlights the active section.
+
+Astro Rocket now ships with a built-in TOC component for blog posts. It's **off by default** — when disabled, no extra HTML, no extra JS, no impact on performance. When enabled, it renders directly above the article body and includes a tiny scroll-spy script that highlights the section currently in view.
+
+## Turn it on
+
+Open `src/config/site.config.ts` and find the `articleFeatures.toc` block:
+
+```ts
+articleFeatures: {
+  toc: {
+    enabled: true,        // ← flip this to true
+    minHeadings: 3,       // hide TOC on posts with fewer than 3 headings
+    maxDepth: 3,          // include H2 + H3 (set to 2 for H2 only)
+  },
+},
+```
+
+That's it. Every blog post with three or more headings now shows a TOC card at the top of the article.
+
+## How it works
+
+The TOC is generated from the headings Astro extracts from your MDX file. There's no extra plugin or library — it uses the `headings` array that Astro already returns from `render(post)`.
+
+Each heading already has an `id` (Astro's MDX integration auto-generates them via slugified text), so the TOC just turns those into anchor links. No external dependencies.
+
+## Per-post override
+
+If a post is short or you simply don't want a TOC on it, add this to the frontmatter:
+
+```yaml
+---
+title: My short post
+toc: false
+---
+```
+
+This overrides the site-wide setting for just that post. The TOC always renders if you also want to force it on for an otherwise-short post — but the more useful direction is opt-out for the rare case.
+
+## Scroll-spy
+
+When you scroll through the article, the TOC highlights the section you're currently reading. The link gets a brand-coloured left border and a slightly stronger text colour — subtle enough not to distract, clear enough to orient.
+
+The scroll-spy uses `IntersectionObserver` with a tuned `rootMargin` (`-80px 0px -70% 0px`) so a heading becomes "active" when it scrolls into the upper portion of the viewport, not when it's already past the bottom. The script is around twenty lines of vanilla JavaScript — no dependencies.
+
+## What it costs (almost nothing)
+
+| Scenario | Cost |
+|---|---|
+| TOC disabled (default) | 0 KB, 0 JS — same as before |
+| TOC enabled, post has < `minHeadings` | 0 KB — component renders nothing |
+| TOC enabled, post qualifies | ~1 KB HTML + ~1 KB inline JS for scroll-spy |
+
+There's no third-party script, no external request, and no layout shift. The component is pure server-rendered HTML with one small inline script.
+
+## Customising the look
+
+The TOC uses the standard theme tokens — `--color-foreground`, `--color-foreground-muted`, `--color-brand-500`, `--color-border`. Switch your colour theme and the TOC changes with it. No hard-coded colours.
+
+If you want a different title above the list, the component accepts a `title` prop. The default is **"On this page"**, but you can override it inside `BlogLayout.astro` if your audience speaks something other than English.
+
+## Where it lives
+
+- Component: `src/components/blog/TableOfContents.astro`
+- Wiring: `src/layouts/BlogLayout.astro`
+- Config: `src/config/site.config.ts` → `articleFeatures.toc`
+- Per-post override: `toc: false` in MDX frontmatter
+
+That's the whole feature. One config flag, optional per-post override, and a scroll-spy that just works.

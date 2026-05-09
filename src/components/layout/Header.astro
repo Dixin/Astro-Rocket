@@ -166,11 +166,11 @@ const buttonId = `${menuId}-button`;
           <slot name="logo" />
         ) : (
           <a href="/" class="flex items-center gap-2">
-            <Logo size={size === 'sm' ? 'md' : 'lg'} forceDark={isInvert} class="bg-brand-700" />
+            <Logo size={size === 'sm' ? 'md' : 'lg'} forceDark={isInvert} class="bg-brand-600" />
             <span
               class={cn(
                 'font-display text-xl font-bold tracking-tight',
-                isFloating ? 'hdr-logo-text' : (isInvert ? 'text-brand-700 dark:text-foreground md:text-on-invert' : 'text-brand-700 dark:text-foreground')
+                isFloating ? 'hdr-logo-text' : (isInvert ? 'text-brand-600 dark:text-foreground md:text-on-invert' : 'text-brand-600 dark:text-foreground')
               )}
             >
               {logoText || siteConfig.name}
@@ -197,7 +197,7 @@ const buttonId = `${menuId}-button`;
                   isFloating
                     ? (isActive(href)
                         ? 'hdr-nav-active font-semibold'
-                        : 'font-medium opacity-80 hover:opacity-100')
+                        : 'font-medium')
                     : (isActive(href)
                         ? 'nav-link-active font-semibold text-foreground bg-secondary'
                         : 'nav-link-inactive font-medium text-foreground-muted hover:text-foreground hover:bg-secondary/70')
@@ -754,11 +754,11 @@ const buttonId = `${menuId}-button`;
     transition: color 300ms;
   }
   [data-header-shape="floating"][data-header-color-scheme="invert"][data-scrolled] .hdr-logo-text {
-    color: var(--color-brand-700);
+    color: var(--color-brand-600);
   }
 
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-logo-text {
-    color: var(--color-brand-700);
+    color: var(--color-brand-600);
   }
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-invert-text {
     color: var(--color-foreground-muted);
@@ -848,13 +848,13 @@ const buttonId = `${menuId}-button`;
   }
 
   [data-header-shape="floating"][data-header-color-scheme="invert"][data-scrolled] .hdr-logo-text {
-    color: var(--color-brand-700);
+    color: var(--color-brand-600);
   }
   .dark [data-header-shape="floating"][data-header-color-scheme="invert"][data-scrolled] .hdr-logo-text {
     color: var(--color-foreground);
   }
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-logo-text {
-    color: var(--color-brand-700);
+    color: var(--color-brand-600);
   }
   .dark [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-logo-text {
     color: var(--color-foreground);
