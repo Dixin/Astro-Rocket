@@ -51,6 +51,11 @@ export interface SiteConfig {
        *               and tablet readers still get the navigation
        */
       layout?: 'inline' | 'sidebar' | 'auto';
+      /**
+       * Which side the sidebar TOC sits on (only applies when `layout` is
+       * 'sidebar' or 'auto'). Defaults to 'right'.
+       */
+      sidebarPosition?: 'left' | 'right';
       /** Minimum headings before the TOC renders (avoid TOCs on short posts) */
       minHeadings?: number;
       /** Deepest heading level to include (2 = H2 only, 3 = H2+H3, etc.) */
@@ -139,6 +144,7 @@ const siteConfig: SiteConfig = {
     toc: {
       enabled: true,
       layout: 'auto',
+      sidebarPosition: 'left',
       minHeadings: 3,
       maxDepth: 3,
     },

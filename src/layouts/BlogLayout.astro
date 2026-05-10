@@ -66,6 +66,7 @@ const showComments = !!commentsConfig?.enabled && commentsOverride !== false;
 const tocLayout = tocConfig?.layout ?? 'inline';
 const sidebarActive = showToc && (tocLayout === 'sidebar' || tocLayout === 'auto');
 const inlineActive = showToc && (tocLayout === 'inline' || tocLayout === 'auto');
+const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 
 const ogImage = image?.src || siteConfig.ogImage;
 
@@ -129,8 +130,22 @@ const blogPostingSchema = createBlogPostSchema({
   <article class="pt-8 pb-[var(--space-section-md)]">
     <div class:list={[
       'mx-auto px-6',
-      sidebarActive ? 'max-w-7xl xl:grid xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-10' : 'max-w-4xl',
+      sidebarActive && (sidebarOnLeft
+        ? 'max-w-7xl xl:grid xl:grid-cols-[15rem_minmax(0,1fr)] xl:gap-10'
+        : 'max-w-7xl xl:grid xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-10'),
+      !sidebarActive && 'max-w-4xl',
     ]}>
+      {sidebarActive && sidebarOnLeft && (
+        <aside class="hidden xl:block" aria-label="Table of contents">
+          <TableOfContents
+            headings={headings}
+            maxDepth={tocConfig?.maxDepth ?? 3}
+            minHeadings={tocConfig?.minHeadings ?? 3}
+            sticky
+          />
+        </aside>
+      )}
+
       <div class:list={[sidebarActive && 'min-w-0 max-w-4xl w-full mx-auto xl:mx-0']}>
       <!-- Breadcrumbs -->
       <Breadcrumbs items={breadcrumbs} class="mb-8" />
@@ -184,7 +199,7 @@ const blogPostingSchema = createBlogPostSchema({
       </footer>
       </div>
 
-      {sidebarActive && (
+      {sidebarActive && !sidebarOnLeft && (
         <aside class="hidden xl:block" aria-label="Table of contents">
           <TableOfContents
             headings={headings}
