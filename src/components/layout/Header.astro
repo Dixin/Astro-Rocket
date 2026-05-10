@@ -551,41 +551,29 @@ const buttonId = `${menuId}-button`;
 
 <script>
   // Header scroll behaviour + scroll-progress bar driven by a single rAF.
-  // All layout reads are taken before any DOM writes, and `docMaxScrollY`
-  // is cached via ResizeObserver so the scroll path never reads
-  // `scrollHeight` — which would force a synchronous layout recompute
-  // after attribute writes earlier in the same frame.
+  // All layout reads are taken before any DOM writes. `docMaxScrollY` is
+  // cached and refreshed only on resize + load — we deliberately avoid
+  // a ResizeObserver here because it fires repeatedly during the page
+  // load period (image loads, reveal animations, font swap), and reading
+  // scrollHeight in those callbacks reintroduces forced reflow even when
+  // wrapped in rAF, because other scripts queue layout writes between
+  // the observer firing and the rAF. Tiny drift while the page settles
+  // is invisible for scroll-progress UIs.
   const SCROLL_THRESHOLD = 60;
   const AUTO_HIDE_THRESHOLD = 150;
   const BAR_SCROLLED_CLASSES = ['bg-background/80', 'backdrop-blur-lg', 'border-b', 'border-border/50'];
 
   let docMaxScrollY = 0;
-  let docMaxRafTicking = false;
   let docMetricsInited = false;
-  function readDocMaxScrollY() {
-    docMaxRafTicking = false;
+  function updateDocMaxScrollY() {
     docMaxScrollY = document.documentElement.scrollHeight - window.innerHeight;
-  }
-  function scheduleDocMaxUpdate() {
-    if (docMaxRafTicking) return;
-    docMaxRafTicking = true;
-    requestAnimationFrame(readDocMaxScrollY);
   }
   function initDocMetrics() {
     if (docMetricsInited) return;
     docMetricsInited = true;
-    // Initial read is synchronous so the value is ready before the
-    // first scroll event fires.
-    readDocMaxScrollY();
-    // Subsequent updates are deferred to rAF and coalesced — the
-    // ResizeObserver in particular fires repeatedly during reveal
-    // animations and would otherwise force a synchronous layout
-    // recompute on every firing.
-    window.addEventListener('resize', scheduleDocMaxUpdate, { passive: true });
-    window.addEventListener('load', scheduleDocMaxUpdate);
-    if (typeof ResizeObserver !== 'undefined') {
-      new ResizeObserver(scheduleDocMaxUpdate).observe(document.documentElement);
-    }
+    updateDocMaxScrollY();
+    window.addEventListener('resize', updateDocMaxScrollY, { passive: true });
+    window.addEventListener('load', updateDocMaxScrollY);
   }
 
   function initScrollDriven() {
