@@ -37,6 +37,11 @@ const LetterGlitch = ({
     }[]
   >([]);
   const grid = useRef({ columns: 0, rows: 0 });
+  // Cached canvas dimensions — updated only in resizeCanvas (called on init
+  // and on window resize). Reading getBoundingClientRect() per frame from
+  // drawLetters() forced a synchronous layout recompute on every animation
+  // tick (~215ms total reflow time on the homepage per Lighthouse Insights).
+  const dimensions = useRef({ width: 0, height: 0 });
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const lastGlitchTime = useRef(Date.now());
   const activeColors = useRef<string[]>(glitchColors);
@@ -123,7 +128,7 @@ const LetterGlitch = ({
   const drawLetters = () => {
     if (!context.current || letters.current.length === 0) return;
     const ctx = context.current;
-    const { width, height } = canvasRef.current!.getBoundingClientRect();
+    const { width, height } = dimensions.current;
     ctx.clearRect(0, 0, width, height);
     ctx.font = `${fontSize}px monospace`;
     ctx.textBaseline = 'top';
@@ -150,6 +155,10 @@ const LetterGlitch = ({
 
     canvas.style.width = `${rect.width}px`;
     canvas.style.height = `${rect.height}px`;
+
+    // Cache so drawLetters can use these on every frame without forcing
+    // a fresh layout read.
+    dimensions.current = { width: rect.width, height: rect.height };
 
     if (context.current) {
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
