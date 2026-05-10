@@ -267,21 +267,31 @@ schemas.push(...extraSchemas);
         const CIRCUMFERENCE = 131.95;
 
         // Cache `scrollHeight - innerHeight` so the per-frame scroll handler
-        // never reads layout-dependent properties. Reading `scrollHeight`
-        // inside the scroll callback would force a synchronous reflow when
-        // earlier scroll handlers (header scroll-watcher) had already
-        // written attributes — Lighthouse flagged this as a residual
-        // forced-reflow source. Refreshed via resize / load / ResizeObserver
-        // outside the scroll path.
+        // never reads layout-dependent properties. The ResizeObserver fires
+        // whenever element heights change (reveal animations cascading in,
+        // images loading, etc.), so we coalesce multiple firings within
+        // a single frame and defer the layout read to a rAF callback —
+        // the read then uses cached layout from the prior frame instead
+        // of forcing a synchronous recompute. Lighthouse flagged the
+        // un-deferred version as a 112ms forced-reflow source.
         let docMaxScrollY = 0;
-        function updateDocMaxScrollY() {
+        let docMaxRafTicking = false;
+        function readDocMaxScrollY() {
+          docMaxRafTicking = false;
           docMaxScrollY = document.documentElement.scrollHeight - window.innerHeight;
         }
-        updateDocMaxScrollY();
-        window.addEventListener('resize', updateDocMaxScrollY, { passive: true });
-        window.addEventListener('load', updateDocMaxScrollY);
+        function scheduleDocMaxUpdate() {
+          if (docMaxRafTicking) return;
+          docMaxRafTicking = true;
+          requestAnimationFrame(readDocMaxScrollY);
+        }
+        // Initial read is synchronous so the value is ready before the
+        // first scroll event fires.
+        readDocMaxScrollY();
+        window.addEventListener('resize', scheduleDocMaxUpdate, { passive: true });
+        window.addEventListener('load', scheduleDocMaxUpdate);
         if (typeof ResizeObserver !== 'undefined') {
-          new ResizeObserver(updateDocMaxScrollY).observe(document.documentElement);
+          new ResizeObserver(scheduleDocMaxUpdate).observe(document.documentElement);
         }
 
         function initBackToTop() {

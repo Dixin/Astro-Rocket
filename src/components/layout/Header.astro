@@ -560,18 +560,31 @@ const buttonId = `${menuId}-button`;
   const BAR_SCROLLED_CLASSES = ['bg-background/80', 'backdrop-blur-lg', 'border-b', 'border-border/50'];
 
   let docMaxScrollY = 0;
+  let docMaxRafTicking = false;
   let docMetricsInited = false;
-  function updateDocMaxScrollY() {
+  function readDocMaxScrollY() {
+    docMaxRafTicking = false;
     docMaxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+  }
+  function scheduleDocMaxUpdate() {
+    if (docMaxRafTicking) return;
+    docMaxRafTicking = true;
+    requestAnimationFrame(readDocMaxScrollY);
   }
   function initDocMetrics() {
     if (docMetricsInited) return;
     docMetricsInited = true;
-    updateDocMaxScrollY();
-    window.addEventListener('resize', updateDocMaxScrollY, { passive: true });
-    window.addEventListener('load', updateDocMaxScrollY);
+    // Initial read is synchronous so the value is ready before the
+    // first scroll event fires.
+    readDocMaxScrollY();
+    // Subsequent updates are deferred to rAF and coalesced — the
+    // ResizeObserver in particular fires repeatedly during reveal
+    // animations and would otherwise force a synchronous layout
+    // recompute on every firing.
+    window.addEventListener('resize', scheduleDocMaxUpdate, { passive: true });
+    window.addEventListener('load', scheduleDocMaxUpdate);
     if (typeof ResizeObserver !== 'undefined') {
-      new ResizeObserver(updateDocMaxScrollY).observe(document.documentElement);
+      new ResizeObserver(scheduleDocMaxUpdate).observe(document.documentElement);
     }
   }
 
