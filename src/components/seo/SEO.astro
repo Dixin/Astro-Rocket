@@ -1,5 +1,11 @@
 ---
 import siteConfig from '@/config/site.config';
+import {
+  isEnabled as i18nIsEnabled,
+  getLocales,
+  defaultLocale,
+  swapLocaleInPath,
+} from '@/i18n';
 
 interface Props {
   title?: string;
@@ -61,6 +67,19 @@ function getImageType(url: string): string | undefined {
   return ext ? extToMime[ext] : undefined;
 }
 const ogImageType = getImageType(ogImage);
+
+// hreflang alternates — only emitted when i18n is enabled with >1 locale.
+// `x-default` points at the default-locale URL per Google's recommendation.
+const i18nOn = i18nIsEnabled();
+const hreflangAlternates = i18nOn
+  ? getLocales().map((loc) => ({
+      hreflang: loc,
+      href: new URL(swapLocaleInPath(Astro.url.pathname, loc), Astro.site).toString(),
+    }))
+  : [];
+const xDefaultHref = i18nOn
+  ? new URL(swapLocaleInPath(Astro.url.pathname, defaultLocale), Astro.site).toString()
+  : null;
 ---
 
 <!-- Primary Meta Tags -->
@@ -68,6 +87,10 @@ const ogImageType = getImageType(ogImage);
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL.toString()} />
 <meta name="robots" content={robotsContent} />
+
+<!-- hreflang alternates (only when i18n is enabled with multiple locales) -->
+{hreflangAlternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+{xDefaultHref && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
 
 <!-- Open Graph -->
 <meta property="og:title" content={pageTitle} />
