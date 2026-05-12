@@ -336,13 +336,13 @@
     background: linear-gradient(to bottom, var(--color-brand-600) 0%, #000 100%);
   }
   html:not(.dark) .hero-dark-gradient {
-    --color-foreground: var(--on-invert);
-    --color-foreground-secondary: var(--on-invert-secondary);
-    --color-foreground-muted: var(--on-invert-muted);
-    --color-background: var(--surface-invert);
-    --color-secondary: var(--surface-invert-secondary);
-    --color-secondary-hover: var(--surface-invert-tertiary);
-    --color-ring: var(--on-invert);
+    --color-foreground:           oklch(91% 0.008 250);
+    --color-foreground-secondary: oklch(82% 0.012 250);
+    --color-foreground-muted:     oklch(68% 0.01 250);
+    --color-background:           var(--surface-invert);
+    --color-secondary:            var(--surface-invert-secondary);
+    --color-secondary-hover:      var(--surface-invert-tertiary);
+    --color-ring:                 oklch(91% 0.008 250);
   }
 
   /* H1 spans: first span uses remapped foreground (near-white), remaining
@@ -373,12 +373,11 @@
     background-color: color-mix(in oklch, var(--color-foreground) 90%, transparent);
   }
 
-  /* Outline CTA border — bump from 25% to 60% (80% hover). */
   html:not(.dark) .hero-dark-gradient .border-foreground\/25 {
-    border-color: color-mix(in oklch, var(--color-foreground) 60%, transparent);
+    border-color: color-mix(in oklch, var(--color-foreground) 25%, transparent);
   }
   html:not(.dark) .hero-dark-gradient .border-foreground\/25:hover {
-    border-color: color-mix(in oklch, var(--color-foreground) 80%, transparent);
+    border-color: color-mix(in oklch, var(--color-foreground) 40%, transparent);
   }
 
   /* Scroll-indicator chevrons. */
