@@ -330,23 +330,19 @@
     background: linear-gradient(to bottom, var(--color-brand-600) 0%, #000 100%);
   }
 
-  /* Hero gradient — light mode: black → brand-500.
-     Inside the hero, foreground/background/secondary tokens get remapped to
-     their on-invert / surface-invert equivalents so child components read as
-     if on a dark surface (focus rings, buttons, borders, etc). */
   .hero-dark-gradient {
     position: relative;
     isolation: isolate;
+    background: linear-gradient(to bottom, var(--color-brand-600) 0%, #000 100%);
   }
   html:not(.dark) .hero-dark-gradient {
-    background: linear-gradient(to bottom, #000 0%, var(--color-brand-500) 100%);
-    --color-foreground: var(--on-invert);
-    --color-foreground-secondary: var(--on-invert-secondary);
-    --color-foreground-muted: var(--on-invert-muted);
-    --color-background: var(--surface-invert);
-    --color-secondary: var(--surface-invert-secondary);
-    --color-secondary-hover: var(--surface-invert-tertiary);
-    --color-ring: var(--on-invert);
+    --color-foreground:           oklch(91% 0.008 250);
+    --color-foreground-secondary: oklch(82% 0.012 250);
+    --color-foreground-muted:     oklch(68% 0.01 250);
+    --color-background:           var(--surface-invert);
+    --color-secondary:            var(--surface-invert-secondary);
+    --color-secondary-hover:      var(--surface-invert-tertiary);
+    --color-ring:                 oklch(91% 0.008 250);
   }
 
   /* H1 spans: first span uses remapped foreground (near-white), remaining
@@ -377,26 +373,22 @@
     background-color: color-mix(in oklch, var(--color-foreground) 90%, transparent);
   }
 
-  /* Outline CTA border — bump from 25% to 60% (80% hover). */
   html:not(.dark) .hero-dark-gradient .border-foreground\/25 {
-    border-color: color-mix(in oklch, var(--color-foreground) 60%, transparent);
+    border-color: color-mix(in oklch, var(--color-foreground) 25%, transparent);
   }
   html:not(.dark) .hero-dark-gradient .border-foreground\/25:hover {
-    border-color: color-mix(in oklch, var(--color-foreground) 80%, transparent);
+    border-color: color-mix(in oklch, var(--color-foreground) 40%, transparent);
   }
-
-  /* Scroll-indicator chevrons. */
-  html:not(.dark) .hero-dark-gradient .scroll-indicator-chevron   { color: rgb(255 255 255 / 0.7); }
-  html:not(.dark) .hero-dark-gradient .scroll-indicator-chevron-2 { color: rgb(255 255 255 / 0.35); }
 
   /* Brand badge in the hero — applied in BOTH light and dark mode.
      Glass pill with a brand-400 pulse core and brand-300 soft halo. */
   .hero-dark-gradient .bg-brand-500\/10 {
-    background-color: rgb(255 255 255 / 0.10);
-    border-color: rgb(255 255 255 / 0.35);
-    color: #fff;
-    backdrop-filter: blur(8px);
+    background-color: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
+    border-color:     color-mix(in oklch, var(--color-brand-400) 55%, transparent);
+    color:            var(--color-brand-100);
+    backdrop-filter:         blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 24px -4px color-mix(in oklch, var(--color-brand-500) 35%, transparent);
   }
   .hero-dark-gradient .bg-brand-500\/10 .bg-brand-500 {
     background-color: var(--color-brand-400);
