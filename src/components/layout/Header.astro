@@ -867,49 +867,40 @@ const buttonId = `${menuId}-button`;
     box-shadow: none;
   }
   html:not(.dark) [data-header-shape="floating"][data-scrolled] {
-    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.35), 0 2px 8px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.14), 0 2px 8px -2px rgba(0, 0, 0, 0.08);
   }
 
-  /* Logo + nav links at rest in light mode (default colour scheme).
-     Once scrolled, the existing default-scheme rules take over and the
-     logo/nav fall back to their light-mode brand/foreground coloring. */
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-logo-text {
-    color: var(--color-on-invert);
+    color: oklch(91% 0.008 250);
   }
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-invert-text {
-    color: var(--color-on-invert-muted);
+    color: oklch(68% 0.01 250);
   }
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-invert-text:hover {
-    color: var(--color-on-invert);
+    color: oklch(91% 0.008 250);
   }
 
-  /* Theme-toggle pill (.ttg-wrapper > .ttg-trigger) and theme-selector pill
-     (.theme-dropdown-wrapper > button). Default light-mode utilities resolve
-     to dark-on-dark against the inverted surface — override at rest only. */
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper > .ttg-trigger,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper > button {
-    border-color: color-mix(in oklch, var(--color-on-invert) 30%, transparent);
-    color: var(--color-on-invert-muted);
+    border-color: oklch(58% 0.008 250 / 0.6);
+    color: oklch(68% 0.01 250);
     box-shadow: none;
   }
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper > .ttg-trigger:hover,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper > button:hover {
-    border-color: color-mix(in oklch, var(--color-on-invert) 45%, transparent);
-    background-color: rgb(255 255 255 / 0.10);
-    color: var(--color-on-invert);
+    border-color: oklch(58% 0.008 250 / 0.85);
+    background-color: rgb(255 255 255 / 0.06);
+    color: oklch(91% 0.008 250);
   }
 
-  /* Hamburger button (.hdr-hamburger). The button has `text-brand-600`
-     baked in via a Tailwind utility — target both the button and its inner
-     svg so the override wins regardless of how Icon resolves currentColor. */
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger,
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger svg {
-    color: var(--color-on-invert);
+    color: oklch(68% 0.01 250);
   }
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger:hover,
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger:hover svg {
-    background-color: rgb(255 255 255 / 0.10);
-    color: var(--color-on-invert);
+    background-color: rgb(255 255 255 / 0.06);
+    color: oklch(91% 0.008 250);
   }
 
   .dark [data-header-shape="floating"] .theme-dropdown-wrapper button,
