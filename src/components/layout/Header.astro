@@ -154,8 +154,25 @@ function getSocialIconData(url: string): { icon: string; label: string } {
   if (url.includes('x.com') || url.includes('twitter.com')) return { icon: 'x-twitter', label: 'X' };
   if (url.includes('linkedin.com'))  return { icon: 'linkedin',  label: 'LinkedIn' };
   if (url.includes('bsky.app'))      return { icon: 'bluesky',   label: 'Bluesky' };
+  if (url.includes('youtube.com'))   return { icon: 'youtube',   label: 'YouTube' };
   return { icon: 'link', label: 'Social' };
 }
+
+function getNavIcon(href: string): string {
+  if (href === '/' || href === '') return 'home';
+  if (href.startsWith('/blog'))     return 'pen-line';
+  if (href.startsWith('/projects')) return 'layers';
+  if (href.startsWith('/about'))    return 'user';
+  if (href.startsWith('/contact'))  return 'mail';
+  if (href.startsWith('#'))         return 'hash';
+  if (href.startsWith('http'))      return 'arrow-up-right';
+  return 'chevron-right';
+}
+
+const mobileSocialOrder = ['x.com', 'instagram.com', 'bsky.app', 'github.com', 'linkedin.com', 'youtube.com'];
+const mobileSocialLinks = mobileSocialOrder
+  .map((host) => siteConfig.socialLinks.find((u) => u.includes(host)))
+  .filter((u): u is string => Boolean(u));
 
 const menuId = `mobile-menu-${Math.random().toString(36).slice(2, 9)}`;
 const buttonId = `${menuId}-button`;
@@ -384,59 +401,113 @@ const buttonId = `${menuId}-button`;
           aria-label="Mobile navigation"
         >
           <div class={cn(
-            'space-y-1 py-4',
-            isFloating ? 'px-4' : cn('mx-auto px-6', maxWidthClass)
+            'mobile-menu-body py-3',
+            isFloating ? 'px-3' : cn('mx-auto px-4', maxWidthClass)
           )}>
-            {navItems.map(({ label, href }) => (
-              <a
-                href={href.startsWith('#') && !isLandingPage ? `/${href}` : href}
-                class={cn(
-                  'mobile-nav-link block rounded-md px-3 py-2 text-sm',
-                  'transition-all duration-(--transition-fast)',
-                  isActive(href)
-                    ? 'mobile-nav-link-active bg-secondary text-foreground font-semibold'
-                    : 'mobile-nav-link-inactive text-foreground-muted hover:bg-secondary/70 hover:text-foreground font-medium'
-                )}
-                aria-current={isActive(href) ? 'page' : undefined}
-              >
-                {label}
-              </a>
-            ))}
+            <section class="mobile-menu-section">
+              <p class="mobile-menu-label">Navigate</p>
+              <ul class="space-y-0.5">
+                {navItems.map(({ label, href }, idx) => {
+                  const active = isActive(href);
+                  const resolvedHref = href.startsWith('#') && !isLandingPage ? `/${href}` : href;
+                  return (
+                    <li>
+                      <a
+                        href={resolvedHref}
+                        class={cn(
+                          'mobile-menu-row mobile-menu-stagger group flex items-center gap-3 rounded-xl px-3 py-3 text-base transition-colors',
+                          active
+                            ? 'mobile-menu-row-active'
+                            : 'mobile-menu-row-inactive'
+                        )}
+                        style={`--stagger-index: ${idx}`}
+                        aria-current={active ? 'page' : undefined}
+                      >
+                        <span class="mobile-menu-tile">
+                          <Icon name={getNavIcon(href)} size="sm" />
+                        </span>
+                        <span class="flex-1">{label}</span>
+                        <Icon name="chevron-right" size="sm" class="mobile-menu-chevron" />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+
+            {showThemeToggle && (
+              <section class="mobile-menu-section">
+                <p class="mobile-menu-label">Appearance</p>
+                <div
+                  class="mobile-menu-stagger flex items-center justify-between rounded-xl px-3 py-2.5"
+                  style={`--stagger-index: ${navItems.length}`}
+                >
+                  <span class="text-sm text-foreground-muted">Theme mode</span>
+                  <ThemeModeDropdown />
+                </div>
+              </section>
+            )}
+
+            {showThemeSelector && (
+              <section class="mobile-menu-section">
+                <p class="mobile-menu-label">Theme</p>
+                <div
+                  class="mobile-menu-stagger flex items-center justify-between rounded-xl px-3 py-2.5"
+                  style={`--stagger-index: ${navItems.length + (showThemeToggle ? 1 : 0)}`}
+                >
+                  <span class="text-sm text-foreground-muted">Colour theme</span>
+                  <ThemeSelector />
+                </div>
+              </section>
+            )}
+
+            {showLanguageSwitcher && (
+              <section class="mobile-menu-section">
+                <p class="mobile-menu-label">Language</p>
+                <div
+                  class="mobile-menu-stagger flex items-center justify-between rounded-xl px-3 py-2.5"
+                  style={`--stagger-index: ${navItems.length + (showThemeToggle ? 1 : 0) + (showThemeSelector ? 1 : 0)}`}
+                >
+                  <span class="text-sm text-foreground-muted">Language</span>
+                  <LanguageSwitcher />
+                </div>
+              </section>
+            )}
+
+            {mobileSocialLinks.length > 0 && (
+              <section class="mobile-menu-section">
+                <p class="mobile-menu-label">Connect</p>
+                <div class="flex flex-wrap items-center gap-2 px-2 pt-1 pb-2">
+                  {mobileSocialLinks.map((url, sIdx) => {
+                    const { icon, label } = getSocialIconData(url);
+                    return (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        title={label}
+                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-strong text-foreground-muted transition-colors"
+                        style={`--stagger-index: ${navItems.length + (showThemeToggle ? 1 : 0) + (showThemeSelector ? 1 : 0) + (showLanguageSwitcher ? 1 : 0) + sIdx}`}
+                      >
+                        <Icon name={icon} size="md" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {showCta && (
-              <div class="border-border mt-3 border-t pt-3">
+              <div
+                class="mobile-menu-stagger mobile-menu-cta-wrap pt-2"
+                style={`--stagger-index: ${navItems.length + (showThemeToggle ? 1 : 0) + (showThemeSelector ? 1 : 0) + (showLanguageSwitcher ? 1 : 0) + mobileSocialLinks.length}`}
+              >
                 <Button fullWidth href={ctaHref} target={ctaHref?.startsWith('http') ? '_blank' : undefined}>
                   {cta.icon && <Icon name={cta.icon} size="sm" />}
                   {cta.label}
                   {cta.trailingIcon && <Icon name={cta.trailingIcon} size="sm" />}
                 </Button>
-              </div>
-            )}
-
-            {showThemeToggle && (
-              <div class="border-border mt-3 border-t pt-3">
-                <div class="flex items-center justify-between px-1">
-                  <span class="text-sm text-foreground-muted">Theme mode</span>
-                  <ThemeModeDropdown />
-                </div>
-              </div>
-            )}
-
-            {showThemeSelector && (
-              <div class="border-border mt-3 border-t pt-3">
-                <div class="flex items-center justify-between px-1">
-                  <span class="text-sm text-foreground-muted">Colour theme</span>
-                  <ThemeSelector />
-                </div>
-              </div>
-            )}
-
-            {showLanguageSwitcher && (
-              <div class="border-border mt-3 border-t pt-3">
-                <div class="flex items-center justify-between px-1">
-                  <span class="text-sm text-foreground-muted">Language</span>
-                  <LanguageSwitcher />
-                </div>
               </div>
             )}
           </div>
@@ -998,5 +1069,131 @@ const buttonId = `${menuId}-button`;
   html:not(.dark) [data-header-shape="floating"][data-header-returned][data-header-invert-on-return="true"] .theme-dropdown-wrapper > button:hover {
     background-color: rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 1);
+  }
+
+  /* ============================================================
+     Mobile dropdown menu — sectioned layout with icons + socials
+     ============================================================ */
+
+  .mobile-menu-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .mobile-menu-section + .mobile-menu-section {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid color-mix(in oklch, var(--color-border) 60%, transparent);
+  }
+
+  .mobile-menu-label {
+    padding: 0.625rem 0.75rem 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-foreground-subtle);
+  }
+
+  .mobile-menu-row {
+    color: var(--color-foreground-muted);
+  }
+  .mobile-menu-row-inactive:hover {
+    background-color: color-mix(in oklch, var(--color-secondary) 60%, transparent);
+    color: var(--color-foreground);
+  }
+
+  .mobile-menu-row-active {
+    background-color: color-mix(in oklch, var(--color-brand-500) 10%, transparent);
+    color: var(--color-brand-700);
+    font-weight: 600;
+  }
+  html.dark .mobile-menu-row-active {
+    background-color: color-mix(in oklch, var(--color-brand-400) 14%, transparent);
+    color: var(--color-brand-300);
+  }
+
+  .mobile-menu-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background-color: color-mix(in oklch, var(--color-secondary) 70%, transparent);
+    color: var(--color-foreground-muted);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  .mobile-menu-row-inactive:hover .mobile-menu-tile {
+    background-color: var(--color-secondary);
+    color: var(--color-foreground);
+  }
+  .mobile-menu-row-active .mobile-menu-tile {
+    background-color: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
+    color: var(--color-brand-700);
+  }
+  html.dark .mobile-menu-row-active .mobile-menu-tile {
+    background-color: color-mix(in oklch, var(--color-brand-400) 22%, transparent);
+    color: var(--color-brand-300);
+  }
+
+  .mobile-menu-chevron {
+    opacity: 0.4;
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+  .mobile-menu-row:hover .mobile-menu-chevron {
+    opacity: 0.8;
+    transform: translateX(2px);
+  }
+  .mobile-menu-row-active .mobile-menu-chevron {
+    opacity: 0.9;
+  }
+
+  .mobile-menu-cta-wrap {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid color-mix(in oklch, var(--color-border) 60%, transparent);
+  }
+
+  .mobile-menu-social {
+    border-color: var(--color-border-strong);
+  }
+  html:not(.dark) .mobile-menu-social {
+    border-color: color-mix(in oklch, var(--color-brand-500) 30%, transparent);
+  }
+  .mobile-menu-social:hover {
+    color: var(--color-brand-600);
+    border-color: var(--color-brand-500);
+    background-color: color-mix(in oklch, var(--color-brand-500) 8%, transparent);
+  }
+  html.dark .mobile-menu-social:hover {
+    color: var(--color-brand-300);
+    border-color: var(--color-brand-400);
+    background-color: color-mix(in oklch, var(--color-brand-400) 12%, transparent);
+  }
+  .mobile-menu-social:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-menu-down .mobile-menu-stagger {
+      opacity: 0;
+      animation: mobileMenuItemIn 340ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      animation-delay: calc(var(--stagger-index, 0) * 38ms + 90ms);
+    }
+  }
+
+  @keyframes mobileMenuItemIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
