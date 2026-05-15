@@ -1200,4 +1200,13 @@ const buttonId = `${menuId}-button`;
       transform: none;
     }
   }
+
+  /* While the theme-mode dropdown is open, promote its row to a positioned
+     stacking context above sibling rows. The row sits in a non-flex
+     <section>, so a bare `z-index` is inert — `position: relative` is what
+     lets the panel paint above the colour-theme swatches below it. */
+  .mobile-menu-stagger:has(.ttg-panel:not(.hidden)) {
+    position: relative;
+    z-index: 60;
+  }
 </style>
