@@ -11,10 +11,13 @@ import siteConfig from '@/config/site.config';
 import { resolveSocialLinks } from '@/lib/utils';
 import {
   BLOG_POSTS_PER_PAGE,
-  collectTags,
+  collectTopTags,
   getPostUrl,
   getPublishedPosts,
 } from '@/lib/blog';
+
+/** How many of the most-used tags to surface in the cloud. */
+const TAG_CLOUD_LIMIT = 10;
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts('en');
@@ -39,7 +42,7 @@ const regularPostsAll = nonFeatured.length > 0 ? nonFeatured : posts;
 const start = (page - 1) * BLOG_POSTS_PER_PAGE;
 const pagePosts = regularPostsAll.slice(start, start + BLOG_POSTS_PER_PAGE);
 
-const allTags = collectTags(posts);
+const topTags = collectTopTags(posts, TAG_CLOUD_LIMIT);
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 ---
@@ -63,17 +66,17 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
   <section class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex flex-wrap items-start justify-between gap-4" data-reveal>
+      <div class="flex flex-col items-center gap-4" data-reveal>
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 text-sm font-medium text-foreground-muted hover:text-brand-500 transition-colors"
+          class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-transparent px-4 py-2 text-sm font-medium text-foreground-muted hover:border-brand-500 hover:text-brand-500 transition-colors"
         >
           <Icon name="arrow-left" size="sm" />
           Newest posts
         </a>
 
-        {allTags.length > 0 && (
-          <TagList tags={allTags} class="ml-auto" />
+        {topTags.length > 0 && (
+          <TagList tags={topTags} class="justify-center" />
         )}
       </div>
 

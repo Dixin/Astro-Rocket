@@ -6,15 +6,19 @@ import TagList from '@/components/blog/TagList.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { Hero } from '@/components/hero';
 import siteConfig from '@/config/site.config';
 import { resolveSocialLinks } from '@/lib/utils';
 import {
   BLOG_POSTS_PER_PAGE,
-  collectTags,
+  collectTopTags,
   getPostUrl,
   getPublishedPosts,
 } from '@/lib/blog';
+
+/** How many of the most-used tags to surface in the cloud. */
+const TAG_CLOUD_LIMIT = 10;
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
@@ -30,7 +34,7 @@ const regularPostsAll = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;
 const totalPages = Math.max(1, Math.ceil(regularPostsAll.length / BLOG_POSTS_PER_PAGE));
 const regularPosts = regularPostsAll.slice(0, BLOG_POSTS_PER_PAGE);
 
-const allTags = collectTags(posts);
+const topTags = collectTopTags(posts, TAG_CLOUD_LIMIT);
 ---
 
 <PageLayout title="Blog — Astro Rocket" description="Articles on web design, development, and the web by Astro Rocket." showScrollProgress eagerReveal>
@@ -50,7 +54,7 @@ const allTags = collectTags(posts);
     featuredPosts.length > 0 && (
       <section id="featured-section" class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
         <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-          <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold" data-reveal>
+          <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold text-center" data-reveal>
             Featured
           </h2>
 
@@ -76,15 +80,15 @@ const allTags = collectTags(posts);
   <!-- All Posts Section -->
   <section class:list={[featuredPosts.length > 0 ? 'bg-background' : 'bg-background-secondary', 'py-[var(--space-section-md)] border-t border-border']}>
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex flex-wrap items-start justify-between gap-4" data-reveal>
+      <div class="flex flex-col items-center gap-4" data-reveal>
         {
           featuredPosts.length > 0 && nonFeaturedPosts.length > 0 && (
-            <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold">All posts</h2>
+            <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold text-center">All posts</h2>
           )
         }
 
-        {allTags.length > 0 && (
-          <TagList tags={allTags} class="ml-auto" />
+        {topTags.length > 0 && (
+          <TagList tags={topTags} class="justify-center" />
         )}
       </div>
 
@@ -123,7 +127,8 @@ const allTags = collectTags(posts);
   </section>
 
   <!-- Follow CTA Section -->
-  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class:list={[featuredPosts.length > 0 && '!bg-background-secondary']}>
+  <!-- Mobile: standard CTA, no LetterGlitch -->
+  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class:list={['glitch:hidden', featuredPosts.length > 0 && '!bg-background-secondary']}>
     <h2 slot="heading" class="!text-4xl">Follow along</h2>
     <p slot="description" class="!text-lg text-balance">Stay in the loop — new articles, thoughts, and updates.</p>
 
@@ -155,4 +160,40 @@ const allTags = collectTags(posts);
       </a>
     </div>
   </CTA>
+
+  <!-- Desktop: contained LetterGlitch band with glass card -->
+  <section class:list={['hidden glitch:block relative z-10 py-[var(--space-section-md)]', featuredPosts.length > 0 ? 'bg-background-secondary' : 'bg-background']}>
+    <LetterGlitchBand>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">Follow along</h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">Stay in the loop — new articles, thoughts, and updates.</p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/rss.xml"
+          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+        >
+          <Icon name="rss" size="sm" />
+          RSS Feed
+        </a>
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+          >
+            <Icon name={link.icon} size="sm" />
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+        >
+          <Icon name="mail" size="sm" />
+          Email
+        </a>
+      </div>
+    </LetterGlitchBand>
+  </section>
 </PageLayout>

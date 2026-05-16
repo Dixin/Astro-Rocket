@@ -8,31 +8,42 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import {
   collectTags,
+  collectTopTags,
   getPostUrl,
   getPublishedPosts,
   tagToSlug,
 } from '@/lib/blog';
 
 export async function getStaticPaths() {
+  // Inlined because Astro's getStaticPaths runs in its own isolated
+  // scope and can't see frontmatter-level consts.
+  const TAG_CLOUD_LIMIT = 10;
+
   const posts = await getPublishedPosts('en');
   const tags = collectTags(posts);
+  const topTags = collectTopTags(posts, TAG_CLOUD_LIMIT);
 
   return tags.map((tag) => {
     const postsForTag = posts.filter((p) => p.data.tags.includes(tag));
+    // Make sure the active tag is always present in the cloud, even if
+    // it's not popular enough to make the top N; otherwise the user
+    // lands on a tag page that doesn't visually acknowledge the tag.
+    const visibleTags = topTags.includes(tag)
+      ? topTags
+      : [tag, ...topTags.slice(0, TAG_CLOUD_LIMIT - 1)];
     return {
       params: { tag: tagToSlug(tag) },
-      props: { tag, posts: postsForTag, allTags: tags },
+      props: { tag, posts: postsForTag, visibleTags },
     };
   });
 }
 
-const { tag, posts, allTags } = Astro.props;
+const { tag, posts, visibleTags } = Astro.props;
 ---
 
 <PageLayout
   title={`#${tag} — Blog`}
-  description={`Posts tagged "${tag}" on the Astro Rocket blog.`}
-  image={`/og/blog/tag/${tagToSlug(tag)}.svg`}
+  description={`Posts tagged "${tag}".`}
   eagerReveal
 >
   <Hero layout="centered" size="sm">
@@ -53,17 +64,17 @@ const { tag, posts, allTags } = Astro.props;
 
   <section class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex flex-wrap items-center justify-between gap-4" data-reveal>
+      <div class="flex flex-col items-center gap-4" data-reveal>
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 text-sm font-medium text-foreground-muted hover:text-brand-500 transition-colors"
+          class="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-transparent px-4 py-2 text-sm font-medium text-foreground-muted hover:border-brand-500 hover:text-brand-500 transition-colors"
         >
           <Icon name="arrow-left" size="sm" />
           All posts
         </a>
 
-        {allTags.length > 1 && (
-          <TagList tags={allTags} active={tag} />
+        {visibleTags.length > 0 && (
+          <TagList tags={visibleTags} active={tag} class="justify-center" />
         )}
       </div>
 

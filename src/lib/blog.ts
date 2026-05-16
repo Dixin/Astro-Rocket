@@ -61,3 +61,28 @@ export async function getPublishedPosts(
 export function collectTags(posts: CollectionEntry<'blog'>[]): string[] {
   return [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 }
+
+/** Tag occurrence counts across the given posts, sorted by count desc then alpha. */
+export function collectTagsWithCounts(
+  posts: CollectionEntry<'blog'>[]
+): { tag: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const p of posts) {
+    for (const t of p.data.tags) {
+      counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+}
+
+/** The most-used tags across the given posts, capped at `limit`. */
+export function collectTopTags(
+  posts: CollectionEntry<'blog'>[],
+  limit: number
+): string[] {
+  return collectTagsWithCounts(posts)
+    .slice(0, limit)
+    .map((t) => t.tag);
+}

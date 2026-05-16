@@ -21,15 +21,13 @@ const svgContent = svgs[`/src/assets/blog/${slug}.svg`] ?? '';
     display: block;
   }
 
-  @media (min-width: 640px) {
-    .svg-host :global(svg) {
-      transform: scale(1.35);
-      transform-origin: center center;
-    }
+  .svg-host :global(svg) {
+    transform: scale(1.35);
+    transform-origin: center center;
   }
 
   /* ── Light mode ─────────────────────────────────────────────────────────
-     Brand-500 background — the saturated mid-tone brand colour. Light
+     Brand-600 background — the saturated mid-tone brand colour. Light
      icons and text sit on top for vivid, colourful images in both modes.
   ── */
   .svg-host :global(.bg)  { fill: var(--brand-600); }

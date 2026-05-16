@@ -114,11 +114,31 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
     const setActive = (slug: string) => {
       if (slug === active) return;
       active = slug;
+      let activeLink: HTMLAnchorElement | null = null;
       for (const a of links) {
-        a.setAttribute(
-          'data-active',
-          a.getAttribute('data-toc-link') === slug ? 'true' : 'false',
-        );
+        const isActive = a.getAttribute('data-toc-link') === slug;
+        a.setAttribute('data-active', isActive ? 'true' : 'false');
+        if (isActive) activeLink = a;
+      }
+
+      // Auto-scroll the TOC container so the active link stays visible.
+      // Only does work when the TOC is itself scrollable (the sticky
+      // sidebar variant has max-height + overflow-y: auto); on the
+      // inline TOC scrollHeight === clientHeight, so the branch is a
+      // no-op.
+      if (activeLink && toc.scrollHeight > toc.clientHeight) {
+        const linkRect = activeLink.getBoundingClientRect();
+        const tocRect = toc.getBoundingClientRect();
+        const padding = 12;
+        let delta = 0;
+        if (linkRect.top < tocRect.top + padding) {
+          delta = linkRect.top - tocRect.top - padding;
+        } else if (linkRect.bottom > tocRect.bottom - padding) {
+          delta = linkRect.bottom - tocRect.bottom + padding;
+        }
+        if (delta !== 0) {
+          toc.scrollBy({ top: delta, behavior: 'smooth' });
+        }
       }
     };
 
