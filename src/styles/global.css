@@ -1074,6 +1074,21 @@
 .animate-hero-stagger > *:nth-child(5)   { animation-delay: 360ms; }
 .animate-hero-stagger > *:nth-child(n+6) { animation-delay: 450ms; }
 
+/* The hero title slot is the LCP candidate. Animating its opacity (even
+   from 0.01) delays Chrome's LCP "render" timestamp by the full animation
+   duration — Lighthouse reported 2,250ms of element render delay caused
+   by exactly this. Override the title's animation to slide-only so the
+   text paints at full opacity from frame 0 and LCP fires immediately
+   after first paint. The 90ms stagger delay still applies. */
+.animate-hero-stagger > .hero-title-slot {
+  animation-name: hero-slide-up-no-fade;
+}
+
+@keyframes hero-slide-up-no-fade {
+  from { transform: translateY(40px); }
+  to   { transform: translateY(0); }
+}
+
 /* Floating header drop-in: lands from above as the hero rises from below.
    The translate values mirror the auto-hide hidden state so the entrance
    plays cleanly with the existing transition system. */
