@@ -199,19 +199,17 @@ const breadcrumbs = [
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
                       <Icon name="layers" size="sm" />
                     </div>
-                    {!project.data.placeholder && (
-                      <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
-                    )}
+                    <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
                   </div>
                   <div class="mb-2 flex items-baseline gap-2">
-                    <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
+                    <h3 class="font-display text-lg font-bold text-foreground line-clamp-1">{project.data.title}</h3>
                     {project.data.year && (
-                      <span class="text-xs text-foreground-muted">{project.data.year}</span>
+                      <span class="text-xs text-foreground-muted shrink-0">{project.data.year}</span>
                     )}
                   </div>
-                  <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1">{project.data.description}</p>
+                  <p class="text-sm text-foreground-muted leading-relaxed mb-4 line-clamp-3">{project.data.description}</p>
                   {project.data.tags && project.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5">
+                    <div class="mt-auto flex flex-wrap gap-1.5">
                       {project.data.tags.map((tag) => (
                         <Badge variant="brand">{tag}</Badge>
                       ))}
