@@ -11,10 +11,11 @@ import RelatedPosts from '@/components/blog/RelatedPosts.astro';
 import TableOfContents from '@/components/blog/TableOfContents.astro';
 import Comments from '@/components/blog/Comments.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { resolveSocialLinks } from '@/lib/utils';
-import { createBlogPostSchema } from '@/lib/schema';
+import { createBlogPostSchema, createFAQSchema } from '@/lib/schema';
 import { getBlogOgPath } from '@/lib/og';
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
@@ -30,6 +31,8 @@ interface Props {
   svgSlug?: string;
   tags?: string[];
   slug?: string;
+  /** Optional FAQs — when provided, an FAQ JSON-LD schema is emitted alongside the BlogPosting schema. */
+  faqs?: Array<{ question: string; answer: string }>;
   /** MDX headings — used by the optional table of contents */
   headings?: MarkdownHeading[];
   /** Per-post override: hide table of contents on this post */
@@ -49,6 +52,7 @@ const {
   svgSlug,
   tags = [],
   slug = '',
+  faqs,
   headings = [],
   toc: tocOverride,
   comments: commentsOverride,
@@ -93,6 +97,9 @@ const blogPostingSchema = createBlogPostSchema({
   dateModified: updatedAt,
   author: { name: author, url: siteConfig.url },
 });
+
+const faqSchema = faqs && faqs.length > 0 ? createFAQSchema(faqs) : null;
+const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema];
 ---
 
 <BaseLayout
@@ -106,7 +113,7 @@ const blogPostingSchema = createBlogPostSchema({
     authors: [author],
     tags,
   }}
-  extraSchemas={[blogPostingSchema]}
+  extraSchemas={schemas}
 >
   <Header
     slot="header"
@@ -180,23 +187,10 @@ const blogPostingSchema = createBlogPostSchema({
       <footer class="border-border mt-12 border-t pt-8" data-reveal>
         <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <!-- Back link -->
-          <a
-            href="/blog"
-            class="text-brand-600 hover:text-brand-500 dark:text-brand-400 dark:hover:text-brand-300 inline-flex items-center gap-2 text-sm font-medium transition-colors"
-          >
-            <svg
-              class="h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              ></path>
-            </svg>
+          <Button href="/blog" variant="secondary" size="sm">
+            <Icon name="arrow-left" size="sm" />
             Back to Blog
-          </a>
+          </Button>
 
           <!-- Share buttons -->
           <ShareButtons title={title} url={fullUrl} />

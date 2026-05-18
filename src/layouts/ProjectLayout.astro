@@ -155,15 +155,10 @@ const breadcrumbs = [
           </div>
 
           <footer class="border-border mt-12 border-t pt-8" data-reveal>
-            <a
-              href="/projects"
-              class="text-brand-600 hover:text-brand-500 dark:text-brand-400 dark:hover:text-brand-300 inline-flex items-center gap-2 text-sm font-medium transition-colors"
-            >
-              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
+            <Button href="/projects" variant="secondary" size="sm">
+              <Icon name="arrow-left" size="sm" />
               Back to Projects
-            </a>
+            </Button>
           </footer>
         </div>
 
@@ -201,16 +196,19 @@ const breadcrumbs = [
                     <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
                   </div>
                   <div class="mb-2 flex items-baseline gap-2">
-                    <h3 class="font-display text-lg font-bold text-foreground line-clamp-1">{project.data.title}</h3>
+                    <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
                     {project.data.year && (
-                      <span class="text-xs text-foreground-muted shrink-0">{project.data.year}</span>
+                      <span class="text-xs text-foreground-muted">{project.data.year}</span>
                     )}
                   </div>
-                  <p class="text-sm text-foreground-muted leading-relaxed mb-4 line-clamp-3">{project.data.description}</p>
+                  <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1 line-clamp-3">{project.data.description}</p>
                   {project.data.tags && project.data.tags.length > 0 && (
-                    <div class="mt-auto flex flex-wrap gap-1.5">
-                      {project.data.tags.map((tag) => (
-                        <Badge variant="brand">{tag}</Badge>
+                    <div class="flex flex-wrap gap-1.5">
+                      {project.data.tags.map((tag, i) => (
+                        <>
+                          {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
+                          <Badge variant="brand">{tag}</Badge>
+                        </>
                       ))}
                     </div>
                   )}
