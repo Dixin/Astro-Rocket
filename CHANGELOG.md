@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [Unreleased]
+## [1.4.1] — 2026-05-20
 
 ### Fixed
 
@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - **i18n README note** — clarified that `defaultLocale` is a routing label and that the content folder name under `src/content/blog/` must match for the root URL to serve a different default language.
+- **i18n blog post update** — added a matching caveat to the 1.3.0 i18n launch post (`src/content/blog/en/i18n-in-astro-rocket.mdx`) so the `defaultLocale` vs content-folder distinction is documented in two places.
 - **i18n tests** — added unit-test coverage for `getLocaleFromPath`, `stripLocaleFromPath`, and `swapLocaleInPath` to prevent regressions on locale resolution.
 
 ---
