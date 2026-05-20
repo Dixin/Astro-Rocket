@@ -17,6 +17,9 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { resolveSocialLinks } from '@/lib/utils';
 import { createBlogPostSchema, createFAQSchema } from '@/lib/schema';
 import { getBlogOgPath } from '@/lib/og';
+import { getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
@@ -218,7 +221,7 @@ const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema]
   <!-- Related Posts -->
   {tags.length > 0 && (
     <div class="mx-auto max-w-7xl px-6" data-reveal>
-      <RelatedPosts currentSlug={slug} tags={tags} locale="en" maxPosts={3} />
+      <RelatedPosts currentSlug={slug} tags={tags} locale={locale} maxPosts={3} />
     </div>
   )}
 

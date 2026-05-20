@@ -1,5 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { t, localizedPath, resolveLocale, isValidLocale, getLocaleName } from '../i18n';
+import {
+  t,
+  localizedPath,
+  resolveLocale,
+  isValidLocale,
+  getLocaleName,
+  getLocaleFromPath,
+  stripLocaleFromPath,
+  swapLocaleInPath,
+} from '../i18n';
 
 describe('i18n t() helper', () => {
   it('returns a translation for a valid dotted key', () => {
@@ -55,5 +64,48 @@ describe('i18n locale helpers', () => {
     // 'nl' is in localeNames even though it's not in the active locales list
     expect(getLocaleName('nl')).toBe('Nederlands');
     expect(getLocaleName('xx')).toBe('xx');
+  });
+});
+
+describe('i18n getLocaleFromPath()', () => {
+  it('returns the default locale for the root path', () => {
+    expect(getLocaleFromPath('/')).toBe('en');
+  });
+
+  it('returns the default locale when no recognized prefix is present', () => {
+    expect(getLocaleFromPath('/about')).toBe('en');
+    expect(getLocaleFromPath('/blog/hello-world')).toBe('en');
+  });
+
+  it('returns the default locale when the first segment is not a configured locale', () => {
+    // Default config only has 'en' active — 'nl' is not recognized
+    expect(getLocaleFromPath('/nl/about')).toBe('en');
+    expect(getLocaleFromPath('/zh-cn/blog')).toBe('en');
+  });
+
+  it('normalizes paths without a leading slash', () => {
+    expect(getLocaleFromPath('about')).toBe('en');
+  });
+});
+
+describe('i18n stripLocaleFromPath()', () => {
+  it('leaves a path unchanged when the first segment is not a configured locale', () => {
+    expect(stripLocaleFromPath('/about')).toBe('/about');
+    expect(stripLocaleFromPath('/nl/about')).toBe('/nl/about');
+  });
+
+  it('returns "/" for the root path', () => {
+    expect(stripLocaleFromPath('/')).toBe('/');
+  });
+});
+
+describe('i18n swapLocaleInPath()', () => {
+  it('returns the path unchanged when targeting the default locale (no prefix added)', () => {
+    expect(swapLocaleInPath('/about', 'en')).toBe('/about');
+  });
+
+  it('returns the same path when i18n is disabled, regardless of target', () => {
+    // With default config (single locale), localizedPath is a no-op
+    expect(swapLocaleInPath('/about', 'nl')).toBe('/about');
   });
 });

@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+- **i18n: `<html lang>` and related-posts locale no longer hardcoded to `en`** — `src/layouts/BaseLayout.astro` and `src/layouts/BlogLayout.astro` now resolve the active locale from the URL via `getLocaleFromPath(Astro.url.pathname)`, so sites with i18n enabled emit the correct `lang` attribute and pull related posts from the matching content folder. Thanks @vespeng for the report (#323).
+
+### Added
+
+- **i18n README note** — clarified that `defaultLocale` is a routing label and that the content folder name under `src/content/blog/` must match for the root URL to serve a different default language.
+- **i18n tests** — added unit-test coverage for `getLocaleFromPath`, `stripLocaleFromPath`, and `swapLocaleInPath` to prevent regressions on locale resolution.
+
+---
+
 ## [1.4.0] — 2026-05-19
 
 ### Added
