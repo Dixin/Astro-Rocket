@@ -186,18 +186,17 @@ const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema]
         <slot />
       </div>
 
-      <!-- Article Footer -->
-      <footer class="border-border mt-12 border-t pt-8" data-reveal>
-        <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <!-- Back link -->
-          <Button href="/blog" variant="secondary" size="sm">
-            <Icon name="arrow-left" size="sm" />
-            Back to Blog
-          </Button>
+      <!-- Share buttons (centered, above the divider) -->
+      <div class="mt-12 flex justify-center" data-reveal>
+        <ShareButtons title={title} url={fullUrl} />
+      </div>
 
-          <!-- Share buttons -->
-          <ShareButtons title={title} url={fullUrl} />
-        </div>
+      <!-- Article Footer -->
+      <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
+        <Button href="/blog" variant="secondary" size="sm">
+          <Icon name="arrow-left" size="sm" />
+          Back to Blog
+        </Button>
       </footer>
       </div>
 

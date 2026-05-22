@@ -154,7 +154,7 @@ const breadcrumbs = [
             <slot />
           </div>
 
-          <footer class="border-border mt-12 border-t pt-8" data-reveal>
+          <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
             <Button href="/projects" variant="secondary" size="sm">
               <Icon name="arrow-left" size="sm" />
               Back to Projects
@@ -178,7 +178,7 @@ const breadcrumbs = [
     {related.length > 0 && (
       <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border" data-reveal>
         <div class="mx-auto max-w-7xl px-6">
-          <h2 class="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">More projects</h2>
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">More projects</h2>
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((project) => (
               <Card
