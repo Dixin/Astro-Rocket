@@ -1112,6 +1112,15 @@
 [data-reveal="right"] { transform: translateX(-56px) scale(0.94); }
 [data-reveal="scale"] { transform: scale(0.88); }
 
+/* Below lg the two-column split sections stack vertically, so horizontal
+   left/right reveals slide sideways against the page's vertical flow — and
+   collide with the hero's slide-up on load. Redirect them to slide up too,
+   so all motion shares one direction on mobile. */
+@media (max-width: 1023.98px) {
+  [data-reveal="left"],
+  [data-reveal="right"] { transform: translateY(56px) scale(0.94); }
+}
+
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
