@@ -20,6 +20,8 @@ interface Props extends HTMLAttributes<'section'> {
   bottomFade?: boolean;
   /** Show an animated scroll indicator at the bottom (desktop only, hides on scroll) */
   showScrollIndicator?: boolean;
+  /** Fill the full viewport height (min-h-100dvh) and vertically center the content. Opt-in. */
+  fullHeight?: boolean;
 }
 
 const {
@@ -31,6 +33,7 @@ const {
   showGlow = false,
   bottomFade = false,
   showScrollIndicator = false,
+  fullHeight = false,
   class: className,
   ...attrs
 } = Astro.props;
@@ -46,7 +49,16 @@ const hasAsideSlot = Astro.slots.has('aside');
 const alignment = layout === 'centered' ? 'text-center items-center' : 'text-left items-start';
 
 // Compute classes
-const sectionClasses = cn(heroSectionVariants({ size }), className);
+// When fullHeight is set, the section becomes a vertical flex container that
+// fills the visible viewport (100dvh adapts to mobile address bars) and centers
+// its content. Symmetric py using the page-top token keeps the content clear of
+// the fixed header on short screens while staying optically centered on tall ones.
+// twMerge lets py-[...] override the variant's asymmetric pt-/pb- padding.
+const sectionClasses = cn(
+  heroSectionVariants({ size }),
+  fullHeight && 'flex min-h-[100dvh] flex-col justify-center py-[var(--space-page-top)]',
+  className
+);
 
 const contentClasses = cn(
   'z-10 flex flex-col',
@@ -54,7 +66,9 @@ const contentClasses = cn(
 );
 
 const gridClasses = cn(
-  'mx-auto grid max-w-6xl grid-cols-1 items-center gap-[var(--space-section-gap)] px-6',
+  // w-full keeps the wrapper full-width (up to max-w) once the section is a flex
+  // container, where mx-auto alone would otherwise shrink it to content width.
+  'mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-[var(--space-section-gap)] px-6',
   layout === 'split' && 'lg:grid-cols-2 lg:gap-[var(--space-section-gap)]'
 );
 ---
