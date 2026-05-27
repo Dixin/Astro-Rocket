@@ -57,71 +57,73 @@ import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
         </div>
         <!-- Right: personal facts card -->
         <div class="flex flex-col h-full" data-reveal="left" data-reveal-delay="1" data-reveal-ease="smooth">
-          <Card variant="elevated" class="flex-1 flex flex-col justify-center gap-6">
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                <Icon name="map-pin" size="md" />
+          <Card variant="elevated" padding="lg" class="flex-1 flex flex-col justify-center">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-x-6 gap-y-8">
+              <div class="flex flex-col items-center text-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <Icon name="map-pin" size="md" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground">Based in Amsterdam</h3>
+                  <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                    Working worldwide, in Dutch & English.
+                  </p>
+                </div>
               </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-base font-semibold text-foreground">Based in Amsterdam</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  Working with clients worldwide, in Dutch or English.
-                </p>
+              <div class="flex flex-col items-center text-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <Icon name="award" size="md" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground">16 years in the craft</h3>
+                  <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                    Designing and building since 2010.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                <Icon name="code-2" size="md" />
+              <div class="flex flex-col items-center text-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <Icon name="code-2" size="md" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground">Astro enthusiast</h3>
+                  <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                    My framework of choice.
+                  </p>
+                </div>
               </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-base font-semibold text-foreground">Built on Astro</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  Every site runs on Astro: fast by default, easy to maintain.
-                </p>
+              <div class="flex flex-col items-center text-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <Icon name="sparkles" size="md" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground">AI enthusiast</h3>
+                  <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                    Claude is my daily thinking partner.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                <Icon name="search" size="md" />
+              <div class="flex flex-col items-center text-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <Icon name="layout" size="md" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground">UI/UX enthusiast</h3>
+                  <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                    Clean, usable design.
+                  </p>
+                </div>
               </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-base font-semibold text-foreground">Built to be found</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  Clean, semantic markup with SEO baked in from the first line.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                <Icon name="laptop" size="md" />
-              </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-base font-semibold text-foreground">Looks right everywhere</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  Responsive by design, from phone to widescreen.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                <Icon name="sparkles" size="md" />
-              </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-base font-semibold text-foreground">A thinking partner</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  I work alongside Claude to review code — a second perspective that challenges my decisions before they ship.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                <Icon name="message-circle" size="md" />
-              </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-base font-semibold text-foreground">Direct contact</h3>
-                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                  You talk to the person doing the work.
-                </p>
+              <div class="flex flex-col items-center text-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <Icon name="coffee" size="md" />
+                </div>
+                <div>
+                  <h3 class="text-base font-semibold text-foreground">Coffee lover</h3>
+                  <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                    Fuelled by the best coffee.
+                  </p>
+                </div>
               </div>
             </div>
           </Card>
