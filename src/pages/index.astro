@@ -355,8 +355,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
- <!-- Tech stack marquee — its own band: the tertiary background sets it apart as a standalone section, so the primary/secondary zebra of the sections above (Blog) and below (CTA) stays intact. Hidden on phones (portrait + landscape) via .stack-marquee-section; on phones the band drops out and the Blog→CTA zebra still alternates. -->
-  <section class="stack-marquee-section relative z-10 py-[var(--space-section-md)] bg-background-tertiary border-t border-border">
+ <!-- Tech stack marquee — its own section in the 2-tone zebra. It follows the secondary Blog section, so it flips to `background` like the next stripe. Hidden on phones (portrait + landscape) via .stack-marquee-section; when it drops out, Blog (secondary) → CTA (background) still alternate, so the zebra holds on mobile too. -->
+  <section class="stack-marquee-section relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <div class="mx-auto max-w-6xl px-6" data-reveal>
       <StackMarquee />
     </div>
