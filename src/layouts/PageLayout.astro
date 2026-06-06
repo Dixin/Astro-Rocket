@@ -17,9 +17,16 @@ interface Props {
   nofollow?: boolean;
   showScrollProgress?: boolean;
   eagerReveal?: boolean;
+  /**
+   * Footer background. Set this to the opposite of the page's last section so
+   * the zebra pattern (bg-background ↔ bg-background-secondary) stays intact:
+   * - last section `bg-background`           → footer `secondary`
+   * - last section `bg-background-secondary` → footer `default`
+   */
+  footerBackground?: 'default' | 'secondary' | 'invert';
 }
 
-const { title, description, image, imageAlt, noindex, nofollow, showScrollProgress = false, eagerReveal = false } = Astro.props;
+const { title, description, image, imageAlt, noindex, nofollow, showScrollProgress = false, eagerReveal = false, footerBackground = 'default' } = Astro.props;
 
 ---
 
@@ -47,5 +54,5 @@ const { title, description, image, imageAlt, noindex, nofollow, showScrollProgre
     <slot />
   </main>
 
-  <Footer slot="footer" layout="simple" />
+  <Footer slot="footer" layout="simple" background={footerBackground} />
 </BaseLayout>

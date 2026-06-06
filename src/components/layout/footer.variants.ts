@@ -4,7 +4,7 @@ export const footerVariants = cva('py-[var(--space-stack-lg)]', {
   variants: {
     background: {
       default: 'bg-background border-t border-border',
-      secondary: 'bg-surface-secondary border-t border-border',
+      secondary: 'bg-background-secondary border-t border-border',
       invert: 'invert-section bg-background border-t border-border',
     },
   },
