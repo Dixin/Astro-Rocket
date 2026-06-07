@@ -8,14 +8,18 @@
     .ptx { fill: var(--brand-100); font-family: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif; }
     .cor { stroke: var(--brand-300); stroke-width: 1.5; fill: none; stroke-opacity: 0.45; }
     .num { fill: var(--brand-50); font-family: 'Outfit Variable', Outfit, system-ui, -apple-system, sans-serif; font-weight: 800; fill-opacity: 0.18; }
+    /* Stack cards — light frosted panels so the marquee reads clearly on the brand background (light + dark) */
+    .mq-card { fill: var(--brand-100); fill-opacity: 0.42; stroke: var(--brand-50); stroke-opacity: 0.9; stroke-width: 1.5; }
+    .mq-ico  { fill: var(--brand-600); fill-opacity: 0.9; }
+    .mq-bar  { fill: var(--brand-500); fill-opacity: 0.8; }
   </style>
   <defs>
     <!-- One stack card: rounded outline + icon badge + two label bars -->
     <g id="mq-card">
-      <rect width="200" height="84" rx="16" class="cor"/>
-      <circle cx="40" cy="42" r="17" class="pil"/>
-      <rect x="70" y="33" width="96" height="9" rx="4.5" class="pil"/>
-      <rect x="70" y="51" width="62" height="9" rx="4.5" class="pil"/>
+      <rect width="200" height="84" rx="16" class="mq-card"/>
+      <circle cx="40" cy="42" r="17" class="mq-ico"/>
+      <rect x="70" y="33" width="96" height="9" rx="4.5" class="mq-bar"/>
+      <rect x="70" y="51" width="62" height="9" rx="4.5" class="mq-bar"/>
     </g>
     <!-- Edge fade masks (the marquee's signature soft edges) -->
     <linearGradient id="mq-fade-l" x1="0" y1="0" x2="1" y2="0">
