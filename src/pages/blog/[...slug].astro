@@ -1,8 +1,12 @@
 ---
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { assertNoSlugCollisions } from '@/lib/content-validation';
 
 export async function getStaticPaths() {
+  // Fail the build early if any two entries resolve to the same URL in a locale.
+  await assertNoSlugCollisions();
+
   const posts = await getCollection('blog', ({ data }) => {
     return data.locale === 'en' && (import.meta.env.PROD ? data.draft !== true : true);
   });
