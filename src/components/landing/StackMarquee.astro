@@ -99,14 +99,32 @@ const opposite = (d: 'left' | 'right'): 'left' | 'right' => (d === 'left' ? 'rig
 const rowCount = Math.max(1, rows);
 const MIN_DURATION = 12;
 
+// Seamless looping duplicates each row once and scrolls it by -50%, which only
+// hides the join when a single copy is at least as wide as the container. With
+// a small collection (e.g. 4 tools) one copy is narrower than a wide desktop,
+// so the loop would flash a gap at the seam. Repeat the source list to a
+// minimum card count first; the -50% math is unchanged because the track is
+// still exactly two copies of the (now longer) list.
+const MIN_CARDS = 8;
+const fill = (list: StackItem[]): StackItem[] => {
+  if (list.length === 0) return list;
+  const out = [...list];
+  while (out.length < MIN_CARDS) out.push(...list);
+  return out;
+};
+
 // Per-row config: alternate direction, nudge the speed so lanes don't march in
 // lockstep, and reverse the order so the same logos don't line up vertically.
-const rowConfigs = Array.from({ length: rowCount }, (_, r) => ({
-  items: r % 2 === 0 ? data : [...data].reverse(),
-  direction: r % 2 === 0 ? direction : opposite(direction),
-  duration: Math.max(MIN_DURATION, duration - r * 4),
-  decorative: r > 0, // only the first row is exposed to assistive tech
-}));
+const rowConfigs = Array.from({ length: rowCount }, (_, r) => {
+  const base = r % 2 === 0 ? data : [...data].reverse();
+  return {
+    items: fill(base),
+    uniqueCount: base.length, // expose only one set of each tool to assistive tech
+    direction: r % 2 === 0 ? direction : opposite(direction),
+    duration: Math.max(MIN_DURATION, duration - r * 4),
+    decorative: r > 0, // only the first row is exposed to assistive tech
+  };
+});
 ---
 
 <div
@@ -126,7 +144,7 @@ const rowConfigs = Array.from({ length: rowCount }, (_, r) => ({
       >
         <div class="stack-marquee-track">
           {[...row.items, ...row.items].map((item, idx) => {
-            const hidden = idx >= row.items.length || row.decorative;
+            const hidden = idx >= row.uniqueCount || row.decorative;
             return (
               <div
                 class="stack-marquee-item"
