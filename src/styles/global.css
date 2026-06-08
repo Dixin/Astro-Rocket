@@ -1049,7 +1049,7 @@
 @keyframes hero-slide-up {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(80px);
   }
   to {
     opacity: 1;
@@ -1063,7 +1063,7 @@
    of the hero but stays fully opaque from the first painted frame. */
 @keyframes hero-slide-up-solid {
   from {
-    transform: translateY(40px);
+    transform: translateY(80px);
   }
   to {
     transform: translateY(0);
