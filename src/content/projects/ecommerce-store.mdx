@@ -12,7 +12,14 @@ services: ["Web Design", "Web Development", "E-Commerce"]
 # `image` for a swipeable carousel. The first slide is the lead image.
 # (Galleries render on the project detail page, so this demo project is
 # routable — placeholder projects only appear as cards.)
+#
+# A slide can also be a self-hosted video: drop the file in `public/`
+# and give it a poster image (required — the slide costs zero bytes
+# until the visitor presses play). Uncomment the example below to try.
 gallery:
+#  - video: "/videos/demo.mp4"
+#    poster: "../../assets/projects/ecommerce-store-catalog.svg"
+#    alt: "Product demo video"
   - src: "../../assets/projects/ecommerce-store-catalog.svg"
     alt: "Product catalogue grid with eight product cards"
   - src: "../../assets/projects/ecommerce-store-product.svg"

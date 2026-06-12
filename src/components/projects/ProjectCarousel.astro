@@ -1,22 +1,20 @@
 ---
 /**
- * ProjectCarousel — swipeable image carousel for project heroes.
+ * ProjectCarousel — swipeable media carousel for project heroes.
  *
  * - Native scroll-snap for touch swipe (zero JS for the swipe gesture itself)
  * - Tiny vanilla script wires up prev/next buttons + active dot indicator
  * - Keyboard: arrow keys move slides when any nav control has focus
  * - First slide loads eagerly, the rest lazy — Lighthouse-friendly on mobile
+ * - Video slides render a poster frame with `preload="none"`, so no video
+ *   bytes are downloaded until the visitor presses play; swiping away from a
+ *   playing video pauses it
  */
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-
-interface Slide {
-  src: ImageMetadata;
-  alt: string;
-}
+import { Image, getImage } from 'astro:assets';
+import { isVideoSlide, type GallerySlide } from '@/lib/gallery';
 
 interface Props {
-  slides: Slide[];
+  slides: GallerySlide[];
   /** Optional aria-label for the carousel region. */
   label?: string;
 }
@@ -24,6 +22,15 @@ interface Props {
 const { slides, label = 'Project screenshots' } = Astro.props;
 const carouselId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
 const hasMultiple = slides.length > 1;
+
+// Optimise video posters up front — the poster is the slide's visual (and the
+// LCP candidate when a video is the first slide), so it gets the same image
+// pipeline treatment as a regular slide.
+const posters = await Promise.all(
+  slides.map((slide) =>
+    isVideoSlide(slide) ? getImage({ src: slide.poster, width: 1280 }) : null
+  )
+);
 ---
 
 <div
@@ -50,14 +57,26 @@ const hasMultiple = slides.length > 1;
           data-carousel-slide
           data-index={i}
         >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            widths={[640, 960, 1280]}
-            sizes="(max-width: 1024px) 100vw, 640px"
-            class="aspect-video w-full object-cover"
-            loading={i === 0 ? 'eager' : 'lazy'}
-          />
+          {isVideoSlide(slide) ? (
+            <video
+              class="aspect-video w-full object-cover"
+              src={slide.video}
+              poster={posters[i]?.src}
+              controls
+              playsinline
+              preload="none"
+              aria-label={slide.alt}
+            />
+          ) : (
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              widths={[640, 960, 1280]}
+              sizes="(max-width: 1024px) 100vw, 640px"
+              class="aspect-video w-full object-cover"
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          )}
         </div>
       ))}
     </div>
@@ -197,6 +216,15 @@ const hasMultiple = slides.length > 1;
         }
       });
 
+      // Pause any video that is no longer the active slide, so audio doesn't
+      // keep playing off-screen after a swipe.
+      const pauseInactiveVideos = (activeIndex: number) => {
+        slides.forEach((slide, j) => {
+          const video = slide.querySelector('video');
+          if (video && j !== activeIndex && !video.paused) video.pause();
+        });
+      };
+
       // Track active slide on scroll to update dots + counter
       let scrollTimeout: number | undefined;
       track.addEventListener('scroll', () => {
@@ -209,6 +237,7 @@ const hasMultiple = slides.length > 1;
             dot.setAttribute('aria-selected', active ? 'true' : 'false');
           });
           if (counter) counter.textContent = String(i + 1);
+          pauseInactiveVideos(i);
         }, 80);
       }, { passive: true });
     });

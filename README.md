@@ -639,6 +639,19 @@ import shot2 from '@/assets/projects/shot-2.jpg';
 />
 ```
 
+**3. Video slides.** Both carousels also accept self-hosted video slides — drop an `.mp4` (or `.webm`) in `public/`, reference it by root-relative path, and give it a **required poster image**:
+
+```yaml
+gallery:
+  - video: "/videos/demo.mp4"
+    poster: "../../assets/projects/demo-poster.jpg"
+    alt: "30-second product demo"
+  - src: "../../assets/projects/shot-1.jpg"
+    alt: "Dashboard view"
+```
+
+The same shape works in `<ProjectGallery>` (`{ video, poster, alt, caption? }`). Video slides render the poster with `preload="none"`, so **zero video bytes are downloaded until the visitor presses play** — the poster goes through the regular image pipeline and the Lighthouse scores stay intact. Swiping away from a playing video pauses it. YouTube/Vimeo embeds are deliberately not supported: third-party iframes drag in scripts, cookies, and consent requirements that this theme avoids.
+
 Both carousels are dependency-free (native scroll-snap plus a small vanilla script) and lazy-load every slide after the first, so they don't cost you the Lighthouse score. `src/content/projects/ecommerce-store.mdx` demonstrates both in one file.
 
 ### Querying Content

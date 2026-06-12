@@ -5,11 +5,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import ProjectCarousel from '@/components/projects/ProjectCarousel.astro';
 import HeroGrid from '@/components/effects/HeroGrid.astro';
 import HeroBeam from '@/components/effects/HeroBeam.astro';
-
-interface GallerySlide {
-  src: ImageMetadata;
-  alt: string;
-}
+import type { GallerySlide } from '@/lib/gallery';
 
 interface Props {
   title: string;

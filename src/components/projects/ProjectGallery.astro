@@ -1,19 +1,30 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
+import { Image, getImage } from 'astro:assets';
+import { isVideoSlide, type GallerySlide } from '@/lib/gallery';
 
-interface GalleryImage {
-  src: ImageMetadata;
-  alt: string;
-  caption?: string;
-}
+type GalleryItem = GallerySlide & { caption?: string };
 
 interface Props {
-  images: GalleryImage[];
+  images: GalleryItem[];
 }
 
 const { images } = Astro.props;
 const id = Math.random().toString(36).slice(2, 8);
+
+// Optimise video posters through the image pipeline, like regular slides.
+const posters = await Promise.all(
+  images.map((item) =>
+    isVideoSlide(item) ? getImage({ src: item.poster, width: 1280 }) : null
+  )
+);
+
+// Lightweight slide data for the lightbox script. Video slides play inline in
+// the track (no zoom), but the lightbox can still navigate across them.
+const slideData = images.map((item, i) =>
+  isVideoSlide(item)
+    ? { type: 'video', src: item.video, poster: posters[i]?.src ?? '', alt: item.alt, caption: item.caption ?? '' }
+    : { type: 'image', src: item.src.src, alt: item.alt, caption: item.caption ?? '' }
+);
 ---
 
 <div class="not-prose my-12" id={`gallery-${id}`}>
@@ -24,18 +35,31 @@ const id = Math.random().toString(36).slice(2, 8);
       class="flex overflow-x-auto snap-x snap-mandatory rounded-xl border border-border shadow-xl"
       style="scrollbar-width: none;"
     >
-      {images.map((img, i) => (
+      {images.map((item, i) => (
         <div
-          class="shrink-0 w-full snap-start cursor-zoom-in"
+          class:list={['shrink-0 w-full snap-start', !isVideoSlide(item) && 'cursor-zoom-in']}
           data-index={i}
           data-gallery-slide={`gallery-${id}`}
+          data-slide-type={isVideoSlide(item) ? 'video' : 'image'}
         >
-          <Image
-            src={img.src}
-            alt={img.alt}
-            class="aspect-video w-full object-cover"
-            loading="lazy"
-          />
+          {isVideoSlide(item) ? (
+            <video
+              class="aspect-video w-full object-cover"
+              src={item.video}
+              poster={posters[i]?.src}
+              controls
+              playsinline
+              preload="none"
+              aria-label={item.alt}
+            />
+          ) : (
+            <Image
+              src={item.src}
+              alt={item.alt}
+              class="aspect-video w-full object-cover"
+              loading="lazy"
+            />
+          )}
         </div>
       ))}
     </div>
@@ -89,7 +113,7 @@ const id = Math.random().toString(36).slice(2, 8);
   class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90"
   role="dialog"
   aria-modal="true"
-  aria-label="Image lightbox"
+  aria-label="Media lightbox"
 >
   <button
     id={`lb-close-${id}`}
@@ -113,6 +137,13 @@ const id = Math.random().toString(36).slice(2, 8);
 
   <div class="mx-16 flex flex-col items-center gap-3 max-w-5xl w-full px-4">
     <img id={`lb-img-${id}`} src="" alt="" class="max-h-[80vh] w-auto rounded-lg object-contain" />
+    <video
+      id={`lb-video-${id}`}
+      class="hidden max-h-[80vh] w-auto rounded-lg object-contain"
+      controls
+      playsinline
+      preload="none"
+    ></video>
     <p id={`lb-caption-${id}`} class="text-sm text-white/70 text-center"></p>
   </div>
 
@@ -127,7 +158,7 @@ const id = Math.random().toString(36).slice(2, 8);
   </button>
 </div>
 
-<script define:vars={{ id, imageData: images.map(img => ({ src: img.src.src, alt: img.alt, caption: img.caption ?? '' })) }}>
+<script define:vars={{ id, imageData: slideData }}>
 (function () {
   const galleryId = id;
   const track = document.getElementById('track-' + galleryId);
@@ -137,6 +168,7 @@ const id = Math.random().toString(36).slice(2, 8);
   const dotsContainer = document.getElementById('dots-' + galleryId);
   const lightbox = document.getElementById('lightbox-' + galleryId);
   const lbImg = document.getElementById('lb-img-' + galleryId);
+  const lbVideo = document.getElementById('lb-video-' + galleryId);
   const lbCaption = document.getElementById('lb-caption-' + galleryId);
   const lbClose = document.getElementById('lb-close-' + galleryId);
   const lbPrev = document.getElementById('lb-prev-' + galleryId);
@@ -156,11 +188,20 @@ const id = Math.random().toString(36).slice(2, 8);
     sync(current);
   }
 
+  // Pause any inline video that is no longer the active slide
+  function pauseInactiveVideos(activeIndex) {
+    slides.forEach(function (slide, i) {
+      const video = slide.querySelector('video');
+      if (video && i !== activeIndex && !video.paused) video.pause();
+    });
+  }
+
   function sync(index) {
     current = index;
     counter.textContent = (index + 1) + ' / ' + total;
     prevBtn.disabled = index === 0;
     nextBtn.disabled = index === total - 1;
+    pauseInactiveVideos(index);
     dots.forEach((dot, i) => {
       if (i === index) {
         dot.className = 'h-1.5 rounded-full transition-all duration-300 w-5 bg-brand-500';
@@ -195,8 +236,10 @@ const id = Math.random().toString(36).slice(2, 8);
     if (e.key === 'ArrowRight') scrollTo(current + 1);
   });
 
-  // Click to open lightbox
+  // Click to open lightbox — image slides only; video slides play inline
+  // (their native controls own the click).
   slides.forEach(function (slide, i) {
+    if (slide.dataset.slideType === 'video') return;
     slide.addEventListener('click', function () { openLightbox(i); });
   });
 
@@ -212,14 +255,28 @@ const id = Math.random().toString(36).slice(2, 8);
     lightbox.classList.add('hidden');
     lightbox.classList.remove('flex');
     document.body.style.overflow = '';
+    if (lbVideo && !lbVideo.paused) lbVideo.pause();
   }
 
   function lbSync(index) {
     lbCurrent = index;
-    const img = imageData[index];
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lbCaption.textContent = img.caption || '';
+    const item = imageData[index];
+    if (lbVideo && !lbVideo.paused) lbVideo.pause();
+    if (item.type === 'video' && lbVideo) {
+      lbImg.classList.add('hidden');
+      lbVideo.classList.remove('hidden');
+      if (lbVideo.getAttribute('src') !== item.src) {
+        lbVideo.setAttribute('src', item.src);
+        lbVideo.setAttribute('poster', item.poster || '');
+      }
+      lbVideo.setAttribute('aria-label', item.alt);
+    } else {
+      if (lbVideo) lbVideo.classList.add('hidden');
+      lbImg.classList.remove('hidden');
+      lbImg.src = item.src;
+      lbImg.alt = item.alt;
+    }
+    lbCaption.textContent = item.caption || '';
     lbPrev.disabled = index === 0;
     lbNext.disabled = index === total - 1;
   }
