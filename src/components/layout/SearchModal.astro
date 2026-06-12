@@ -24,13 +24,14 @@ const modalId = `search-modal-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 <div class={cn('search-wrapper', className)} data-search-modal-id={modalId}>
-  <!-- Trigger pill — same structure and classes as the ThemeModeDropdown
-       trigger, so the header's floating/returned state CSS treats both pills
-       identically (those rules target the wrapper > trigger pair). -->
+  <!-- Trigger — a round icon button. Equal padding around the square icon
+       makes it a true circle at the same 30px height as the pills beside it;
+       the header's floating/returned state CSS targets the wrapper > trigger
+       pair, so it recolours with the other pills in every mode. -->
   <button
     type="button"
     class={cn(
-      'search-trigger inline-flex items-center rounded-full border border-border-strong px-2.5 py-1.5',
+      'search-trigger inline-flex items-center justify-center rounded-full border border-border-strong p-1.5',
       'text-foreground-muted hover:text-foreground hover:bg-secondary',
       'transition-colors duration-(--transition-fast)',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
