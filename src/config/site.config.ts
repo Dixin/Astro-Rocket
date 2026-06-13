@@ -128,29 +128,29 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Astro Rocket',
+  name: 'Beyond.ms',
   description:
-    'Astro Rocket — A production-ready Astro 6 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on.',
-  url: SITE_URL || 'https://astrorocket.dev',
+    'Beyond.ms — A production-ready Astro 6 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on.',
+  url: SITE_URL || 'https://beyond.ms',
   ogImage: '/og-default.svg',
-  author: 'Hans Martens',
-  email: 'hello@hansmartens.dev',
+  author: 'Beyond.ms',
+  email: 'dixin@outlook.com',
   address: {
     street: '',
-    city: 'Amsterdam',
-    state: '',
+    city: 'Seattle',
+    state: 'WA',
     zip: '',
-    country: 'the Netherlands',
+    country: 'United States',
   },
   socialLinks: [
-    'https://github.com/hansmartensdev',
-    'https://x.com/hansmartens_dev',
-    'https://www.linkedin.com',
-    'https://bsky.app/profile/hansmartensdev.bsky.social',
+    'https://github.com/Dixin',
+    'https://x.com/dixinyan',
+    'https://www.linkedin.com/in/dixin',
+    'https://CodingOnWheels.com',
   ],
   twitter: {
-    site: 'https://x.com/hansmartens_dev',
-    creator: '@hansmartens_dev',
+    site: 'https://x.com/dixinyan',
+    creator: '@dixinyan',
   },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
@@ -187,7 +187,7 @@ const siteConfig: SiteConfig = {
   i18n: i18nConfig,
   branding: {
     logo: {
-      alt: 'Astro Rocket',
+      alt: 'Beyond.ms',
       // image: '/logo.svg', // Optional: set to a file in public/ to use a custom logo image instead of the letter monogram.
       imageUrl: '/favicon.svg',
     },
