@@ -12,7 +12,7 @@ Thank you for your interest in contributing. Astro Rocket is a free, open-source
 
 ## Before you start
 
-- Check the [open issues](https://github.com/hansmartensdev/Astro-Rocket/issues) to avoid duplicating work
+- Check the [open issues](https://github.com/Dixin/Astro-Rocket/issues) to avoid duplicating work
 - For significant changes, open an issue first to discuss the approach before writing code
 - All contributions are released under the [MIT License](../LICENSE)
 
@@ -90,4 +90,4 @@ changes
 
 ## Questions
 
-Open a [GitHub Discussion](https://github.com/hansmartensdev/Astro-Rocket/discussions) or reach out on X at [@hansmartens_dev](https://x.com/hansmartens_dev).
+Open a [GitHub Discussion](https://github.com/Dixin/Astro-Rocket/discussions) or reach out on X at [@dixinyan](https://x.com/dixinyan).
