@@ -3,6 +3,7 @@ import type { ImageMetadata } from 'astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import ProjectCarousel from '@/components/projects/ProjectCarousel.astro';
+import ProjectTagList from '@/components/projects/ProjectTagList.astro';
 import HeroGrid from '@/components/effects/HeroGrid.astro';
 import HeroBeam from '@/components/effects/HeroBeam.astro';
 import type { GallerySlide } from '@/lib/gallery';
@@ -16,6 +17,7 @@ interface Props {
   image?: ImageMetadata;
   imageAlt?: string;
   gallery?: GallerySlide[];
+  tags?: string[];
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   image,
   imageAlt,
   gallery = [],
+  tags = [],
 } = Astro.props;
 
 // Prefer gallery when provided; fall back to the single hero image; build a
@@ -72,6 +75,10 @@ const hasMedia = slides.length > 0;
               </>
             ))}
           </p>
+        )}
+
+        {tags.length > 0 && (
+          <ProjectTagList tags={tags} class="mb-[var(--space-stack-lg)]" />
         )}
 
         {(url || repo) && (

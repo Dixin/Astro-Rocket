@@ -25,6 +25,7 @@ interface Props {
   image?: ImageMetadata;
   imageAlt?: string;
   gallery?: GallerySlide[];
+  tags?: string[];
   /** Project slug, used to resolve the per-project dynamic OG image. */
   slug?: string;
   related?: CollectionEntry<'projects'>[];
@@ -42,6 +43,7 @@ const {
   image,
   imageAlt,
   gallery = [],
+  tags = [],
   slug,
   related = [],
   headings = [],
@@ -98,6 +100,7 @@ const breadcrumbs = [
       image={image}
       imageAlt={imageAlt}
       gallery={gallery}
+      tags={tags}
     />
 
     <article class="pt-8 pb-[var(--space-section-md)]">
@@ -188,7 +191,7 @@ const breadcrumbs = [
                       {project.data.tags.map((tag, i) => (
                         <>
                           {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
-                          <Badge variant="brand">{tag}</Badge>
+                          <Badge variant="brand">#{tag}</Badge>
                         </>
                       ))}
                     </div>

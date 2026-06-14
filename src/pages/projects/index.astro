@@ -10,10 +10,13 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+import ProjectTagList from '@/components/projects/ProjectTagList.astro';
 import { getCollection } from 'astro:content';
+import { collectTopProjectTags, PROJECT_TAG_CLOUD_LIMIT } from '@/lib/projects';
 
 const items = await getCollection('projects', ({ data }) => !data.draft);
 const projects = items.sort((a, b) => a.data.order - b.data.order);
+const topTags = collectTopProjectTags(projects, PROJECT_TAG_CLOUD_LIMIT);
 ---
 
 <PageLayout
@@ -39,6 +42,12 @@ const projects = items.sort((a, b) => a.data.order - b.data.order);
   {projects.length > 0 && (
     <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
       <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+
+        {topTags.length > 0 && (
+          <div class="flex flex-col items-center gap-4" data-reveal>
+            <ProjectTagList tags={topTags} class="justify-center" />
+          </div>
+        )}
 
         <div class="grid gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
@@ -68,7 +77,7 @@ const projects = items.sort((a, b) => a.data.order - b.data.order);
                 {project.data.tags && project.data.tags.length > 0 && (
                   <div class="flex flex-wrap gap-1.5">
                     {project.data.tags.map((tag) => (
-                      <Badge variant="brand">{tag}</Badge>
+                      <Badge variant="brand">#{tag}</Badge>
                     ))}
                   </div>
                 )}

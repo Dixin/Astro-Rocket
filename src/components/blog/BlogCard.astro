@@ -112,7 +112,7 @@ const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
       <div class="mt-4 flex flex-wrap gap-2">
         {tags.map((tag) => (
           <span class="inline-flex items-center rounded-full bg-background-secondary px-2.5 py-0.5 text-xs font-medium text-foreground-muted ring-1 ring-inset ring-border transition-colors group-hover:bg-brand-50 group-hover:text-brand-700 group-hover:ring-brand-200 dark:group-hover:bg-brand-900/20 dark:group-hover:text-brand-400 dark:group-hover:ring-brand-800">
-            {tag}
+            #{tag}
           </span>
         ))}
       </div>

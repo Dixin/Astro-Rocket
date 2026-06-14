@@ -177,7 +177,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
               {project.data.tags && project.data.tags.length > 0 && (
                 <div class="flex flex-wrap gap-1.5">
                   {project.data.tags.map((tag) => (
-                    <Badge variant="brand">{tag}</Badge>
+                    <Badge variant="brand">#{tag}</Badge>
                   ))}
                 </div>
               )}
