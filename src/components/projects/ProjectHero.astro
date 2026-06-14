@@ -1,5 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import ProjectCarousel from '@/components/projects/ProjectCarousel.astro';
@@ -16,6 +17,7 @@ interface Props {
   image?: ImageMetadata;
   imageAlt?: string;
   gallery?: GallerySlide[];
+  tags?: string[];
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   image,
   imageAlt,
   gallery = [],
+  tags = [],
 } = Astro.props;
 
 // Prefer gallery when provided; fall back to the single hero image; build a
@@ -53,6 +56,13 @@ const hasMedia = slides.length > 0;
     >
       <!-- Text column -->
       <div class="animate-hero-stagger min-w-0">
+        {tags.length > 0 && (
+          <div class="mb-[var(--space-heading-gap)] flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <Badge variant="brand">#{tag}</Badge>
+            ))}
+          </div>
+        )}
         <h1 class="font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl mb-[var(--space-heading-gap)] text-balance">
           {title}
         </h1>

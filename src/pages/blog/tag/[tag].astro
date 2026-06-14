@@ -43,7 +43,7 @@ const { tag, posts, visibleTags } = Astro.props;
 
 <PageLayout
   title={`#${tag} — Blog`}
-  description={`Posts tagged "${tag}".`}
+  description={`Posts tagged "#${tag}".`}
   eagerReveal
 >
   <Hero layout="centered" size="sm">
@@ -58,7 +58,7 @@ const { tag, posts, visibleTags } = Astro.props;
     >#{tag}</h1>
 
     <p slot="description">
-      {posts.length} post{posts.length === 1 ? '' : 's'} tagged "{tag}".
+      {posts.length} post{posts.length === 1 ? '' : 's'} tagged "#{tag}".
     </p>
   </Hero>
 

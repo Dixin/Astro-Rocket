@@ -6,6 +6,7 @@ import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
 import HeroGrid from '@/components/effects/HeroGrid.astro';
 import HeroBeam from '@/components/effects/HeroBeam.astro';
+import TagList from './TagList.astro';
 
 interface Props {
   title: string;
@@ -45,11 +46,7 @@ const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
     <!-- Tags -->
     {tags.length > 0 && (
       <div class="mb-[var(--space-heading-gap)] flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <span class="inline-flex items-center rounded-full bg-brand-100 dark:bg-brand-900/30 px-3 py-1 text-xs font-semibold text-brand-700 dark:text-brand-300 ring-1 ring-inset ring-brand-200 dark:ring-brand-800">
-            {tag}
-          </span>
-        ))}
+        <TagList tags={tags} class="justify-center" />
       </div>
     )}
 

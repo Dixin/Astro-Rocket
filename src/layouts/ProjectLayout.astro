@@ -31,6 +31,7 @@ interface Props {
   headings?: MarkdownHeading[];
   /** Per-project override: hide table of contents on this project */
   toc?: boolean;
+  tags?: string[];
 }
 
 const {
@@ -46,6 +47,7 @@ const {
   related = [],
   headings = [],
   toc: tocOverride,
+  tags = [],
 } = Astro.props;
 
 // Prefer the project's own image; otherwise serve the per-project dynamic OG
@@ -98,6 +100,7 @@ const breadcrumbs = [
       image={image}
       imageAlt={imageAlt}
       gallery={gallery}
+      tags={tags}
     />
 
     <article class="pt-8 pb-[var(--space-section-md)]">
@@ -188,7 +191,7 @@ const breadcrumbs = [
                       {project.data.tags.map((tag, i) => (
                         <>
                           {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
-                          <Badge variant="brand">{tag}</Badge>
+                          <Badge variant="brand">#{tag}</Badge>
                         </>
                       ))}
                     </div>
