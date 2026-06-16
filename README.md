@@ -145,7 +145,7 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 <a href="/blog">{t('common.readMore', locale)}</a>
 ```
 
-To add another language, drop a new `src/i18n/<code>.json` mirroring the structure of `en.json` and import it in `src/i18n/index.ts`. Missing keys fall back to the default locale's value, then to the key itself — so partial translations are safe.
+To add another language, drop a new `src/i18n/<code>.json` mirroring the structure of `en.json` — it's loaded automatically, with no edits to `src/i18n/index.ts`. Just add the locale code to `locales` in `src/config/i18n.config.ts` so it gets served. Missing keys fall back to the default locale's value, then to the key itself — so partial translations are safe.
 
 #### Content collections
 

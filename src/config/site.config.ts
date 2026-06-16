@@ -36,6 +36,20 @@ export interface SiteConfig {
    */
   blogImageOverlay?: boolean;
   /**
+   * Global, decorative visual effects (purely additive — the site works
+   * fully without them).
+   */
+  effects?: {
+    /**
+     * Cursor trail on desktop (pointer dot + lagging ring + comet particles).
+     * `true` by default; set to `false` to turn it off site-wide as a
+     * visual-comfort / accessibility preference. The trail is already skipped
+     * automatically under `prefers-reduced-motion` and on coarse/touch
+     * pointers, regardless of this flag.
+     */
+    cursorTrail?: boolean;
+  };
+  /**
    * Article features — opt-in modules for blog posts.
    * Each is OFF by default so the theme stays as light as it is today
    * for users who don't enable them.
@@ -158,6 +172,9 @@ const siteConfig: SiteConfig = {
   },
   authorImage: '/avatar.svg',
   blogImageOverlay: true,
+  effects: {
+    cursorTrail: true,
+  },
   articleFeatures: {
     toc: {
       enabled: true,
