@@ -149,7 +149,7 @@ To add another language, drop a new `src/i18n/<code>.json` mirroring the structu
 
 #### Content collections
 
-Blog posts and pages already carry a `locale` field on their schema (`src/content.config.ts`). Organize translated content by locale folder:
+Blog posts and pages already carry a `locale` field on their schema (`src/content.config.ts`), validated against the `locales` you list in `src/config/i18n.config.ts` — register a locale there and the content schema accepts it automatically, with no enum to edit. Organize translated content by locale folder:
 
 ```
 src/content/blog/en/hello-world.mdx
@@ -157,6 +157,8 @@ src/content/blog/nl/hallo-wereld.mdx
 ```
 
 > **Switching the default locale.** Changing `defaultLocale` in `i18n.config.ts` is a routing label — it controls which locale serves at the site root, not which content folder gets read. To make a different language the default, also rename the matching content folder (e.g. `src/content/blog/en/` → `src/content/blog/zh-CN/`) so the root URL resolves to the right posts. The locale code in `i18n.config.ts` and the folder name under `src/content/blog/` must match.
+
+> **One blog locale at the root, for now.** The blog collection is routed at the site root in your `defaultLocale`, so a single non-English site works out of the box. Serving *additional* locales' posts at their own prefixed URLs (e.g. `/nl/blog`) alongside the default isn't wired up yet — translated posts can already live in their locale folders ready for it, but only the `defaultLocale` folder is routed today. (Static pages like `/nl/about` are different — you create those yourself, as shown above.)
 
 #### Performance
 
