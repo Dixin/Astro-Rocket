@@ -208,7 +208,7 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 
     <ConsentBanner />
 
-    <CursorTrail />
+    {siteConfig.effects?.cursorTrail !== false && <CursorTrail />}
 
     <!-- Back to top button -->
     <button
