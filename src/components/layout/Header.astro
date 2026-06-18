@@ -103,7 +103,7 @@ const {
   showThemeToggle = true,
   showThemeSelector = true,
   showMobileMenu = true,
-  showSocialLinks = false,
+  showSocialLinks = siteConfig.header?.showSocialLinks ?? false,
   showLanguageSwitcher = i18nIsEnabled(),
   languageAlternates,
   showActiveState = true,

@@ -20,6 +20,15 @@ export interface SiteConfig {
     country: string;
   };
   socialLinks: string[];
+  /**
+   * Header options. Set `showSocialLinks: true` to render an icon link in the
+   * top-right for each entry in `socialLinks` (GitHub, X, etc. — the icon is
+   * inferred from the URL). Off by default; an explicit `<Header
+   * showSocialLinks>` prop still overrides this per-usage.
+   */
+  header?: {
+    showSocialLinks?: boolean;
+  };
   twitter?: {
     site: string;
     creator: string;
@@ -192,6 +201,10 @@ const siteConfig: SiteConfig = {
     'https://www.linkedin.com',
     'https://bsky.app/profile/hansmartensdev.bsky.social',
   ],
+  header: {
+    // Flip to `true` to show the social icons (incl. GitHub) in the header.
+    showSocialLinks: false,
+  },
   twitter: {
     site: 'https://x.com/hansmartens_dev',
     creator: '@hansmartens_dev',

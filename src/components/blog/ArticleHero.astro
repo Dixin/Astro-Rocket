@@ -43,11 +43,6 @@ const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
   <HeroBeam />
 
   <div class="relative z-[1] mx-auto max-w-4xl px-6 animate-hero-stagger">
-    <!-- Tags -->
-    {tags.length > 0 && (
-      <TagList tags={tags} class="mb-[var(--space-heading-gap)]" />
-    )}
-
     <!-- Title -->
     <h1 class="font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl mb-[var(--space-heading-gap)]">
       {title}
@@ -102,6 +97,11 @@ const readingTime = Math.max(1, Math.ceil(estimatedWords / wordsPerMinute));
         <span>{readingTime} min read</span>
       </div>
     </div>
+
+    <!-- Tags (placed below the meta to match the project page) -->
+    {tags.length > 0 && (
+      <TagList tags={tags} class="mt-[var(--space-stack-lg)]" />
+    )}
   </div>
 
   {(svgSlug || image) && (
