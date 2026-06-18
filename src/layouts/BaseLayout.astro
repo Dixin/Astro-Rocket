@@ -30,6 +30,8 @@ interface Props {
   includeProfessionalServiceSchema?: boolean;
   extraSchemas?: WithContext<Thing>[];
   eagerReveal?: boolean;
+  /** Verified locale alternates for this page, forwarded to SEO for hreflang. */
+  localeAlternates?: { locale: string; url: string }[];
 }
 
 const {
@@ -45,6 +47,7 @@ const {
   includeProfessionalServiceSchema = false,
   extraSchemas = [],
   eagerReveal = false,
+  localeAlternates,
 } = Astro.props;
 
 // Build JSON-LD schemas
@@ -97,6 +100,7 @@ const locale = getLocaleFromPath(Astro.url.pathname);
       article={article}
       noindex={noindex}
       nofollow={nofollow}
+      localeAlternates={localeAlternates}
     />
 
     <!-- RSS Feed -->

@@ -17,8 +17,9 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import { resolveSocialLinks } from '@/lib/utils';
 import { createBlogPostSchema, createFAQSchema } from '@/lib/schema';
 import { getBlogOgPath } from '@/lib/og';
-import { getLocaleFromPath, localizedPath } from '@/i18n';
+import { getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
 import { getPostSlug, getBlogBaseUrl } from '@/lib/blog';
+import { getPostTranslations } from '@/lib/post-links';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 
@@ -35,6 +36,8 @@ interface Props {
   svgSlug?: string;
   tags?: string[];
   slug?: string;
+  /** Canonical id of the post, used to resolve its translations across locales. */
+  uid?: string;
   /** Optional FAQs — when provided, an FAQ JSON-LD schema is emitted alongside the BlogPosting schema. */
   faqs?: Array<{ question: string; answer: string }>;
   /** MDX headings — used by the optional table of contents */
@@ -56,6 +59,7 @@ const {
   svgSlug,
   tags = [],
   slug = '',
+  uid,
   faqs,
   headings = [],
   toc: tocOverride,
@@ -108,6 +112,18 @@ const blogPostingSchema = createBlogPostSchema({
 
 const faqSchema = faqs && faqs.length > 0 ? createFAQSchema(faqs) : null;
 const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema];
+
+// Resolve this post's real per-locale URLs so the hreflang tags and the
+// LanguageSwitcher point at the correct translation — which may live at a
+// different slug — instead of blindly swapping the locale segment of the URL.
+// hreflang lists only verified translations; the switcher shows every locale,
+// falling back to a locale's blog index when this post has no translation
+// there, so switching language never lands on a 404.
+const postTranslations = await getPostTranslations(slug, locale, uid);
+const translationByLocale = new Map(postTranslations.map((tr) => [tr.locale, tr.url]));
+const languageAlternates = Object.fromEntries(
+  getLocales().map((loc) => [loc, translationByLocale.get(loc) ?? getBlogBaseUrl(loc)])
+);
 ---
 
 <BaseLayout
@@ -122,6 +138,7 @@ const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema]
     tags,
   }}
   extraSchemas={schemas}
+  localeAlternates={postTranslations}
 >
   <Header
     slot="header"
@@ -132,6 +149,7 @@ const schemas = faqSchema ? [blogPostingSchema, faqSchema] : [blogPostingSchema]
     showCta={false}
     showScrollProgress
     maxWidth="7xl"
+    languageAlternates={languageAlternates}
   />
 
   <div class="min-h-screen pt-16">

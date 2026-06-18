@@ -12,7 +12,7 @@
  * `resolvePostUrl` / `assertValidPostUids` load the blog collection (cached)
  * and build locale-aware URLs.
  */
-import { localizedPath, defaultLocale } from '@/i18n';
+import { localizedPath, defaultLocale, getLocales } from '@/i18n';
 import { localeStrippedSlug } from './content-validation';
 
 /** A post resolved from its canonical id, within one locale. */
@@ -62,17 +62,75 @@ export function normalizeUid(ref: string): string {
   return ref.startsWith('post:') ? ref.slice('post:'.length) : ref;
 }
 
+let cachedPosts: UidEntryLike[] | null = null;
+
+/** Load and cache the published (non-draft) blog entries for build-time resolution. */
+async function loadPublishedPosts(): Promise<UidEntryLike[]> {
+  if (cachedPosts) return cachedPosts;
+  const { getCollection } = await import('astro:content');
+  cachedPosts = (await getCollection('blog')).filter((post) => post.data.draft !== true);
+  return cachedPosts;
+}
+
 let cachedIndex: Map<string, Map<string, ResolvedPost>> | null = null;
 
 /** Load and cache the uid index from the blog collection (drafts excluded). */
 async function getUidIndex(): Promise<Map<string, Map<string, ResolvedPost>>> {
   if (cachedIndex) return cachedIndex;
-  const { getCollection } = await import('astro:content');
-  const posts = (await getCollection('blog')).filter(
-    (post) => post.data.draft !== true
-  );
-  cachedIndex = buildUidIndex(posts);
+  cachedIndex = buildUidIndex(await loadPublishedPosts());
   return cachedIndex;
+}
+
+/** A locale a post is available in, with its locale-aware URL. */
+export interface PostTranslation {
+  locale: string;
+  url: string;
+}
+
+/**
+ * Every locale a post is published in, as verified `{ locale, url }` pairs
+ * (always including the post's own locale). A translation is matched by
+ * canonical `uid` when the post declares one — which correctly handles a
+ * translation that lives at a *different* slug — otherwise by an identical
+ * slug in the target locale. A locale is only included when a published post
+ * actually exists for it, so the result never points at a 404. With i18n off
+ * (a single locale) this is just the post itself.
+ *
+ * Used to build accurate `hreflang` alternates and "same post, other language"
+ * links in the `LanguageSwitcher`, instead of blindly swapping the locale
+ * segment of the current URL (which 404s when a translation is slugged
+ * differently).
+ */
+export async function getPostTranslations(
+  id: string,
+  locale: string,
+  uid?: string
+): Promise<PostTranslation[]> {
+  const slug = localeStrippedSlug(id, locale);
+  const posts = await loadPublishedPosts();
+
+  // Set of "<locale>/<slug>" for existence checks when matching by slug.
+  const existing = new Set(
+    posts.map((p) => `${p.data.locale}/${localeStrippedSlug(p.id, p.data.locale)}`)
+  );
+  const byUid = uid ? (await getUidIndex()).get(uid) : undefined;
+
+  const translations: PostTranslation[] = [];
+  for (const loc of getLocales()) {
+    if (loc === locale) {
+      translations.push({ locale: loc, url: localizedPath(`/blog/${slug}`, loc) });
+      continue;
+    }
+    // Prefer a uid match (may resolve to a different slug); otherwise accept an
+    // identically-slugged post in that locale. Skip locales with neither.
+    const uidSlug = byUid?.get(loc)?.slug;
+    if (uidSlug) {
+      translations.push({ locale: loc, url: localizedPath(`/blog/${uidSlug}`, loc) });
+    } else if (existing.has(`${loc}/${slug}`)) {
+      translations.push({ locale: loc, url: localizedPath(`/blog/${slug}`, loc) });
+    }
+  }
+  return translations;
 }
 
 /**

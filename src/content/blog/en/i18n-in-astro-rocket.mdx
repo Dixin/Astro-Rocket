@@ -160,12 +160,12 @@ With the default `prefixDefaultLocale: false` setting:
 - The default locale lives at the root: `/`, `/about`, `/blog/hello-world`.
 - Every other locale lives under its prefix: `/nl/`, `/nl/about`, `/nl/blog/hallo-wereld`.
 
-The `LanguageSwitcher` builds those URLs automatically. If a visitor is reading `/blog/hello-world` in English and clicks "Nederlands," they go to `/nl/blog/hello-world` — same slug, locale-prefixed. If the translated post lives at a different slug (`/nl/blog/hallo-wereld`), you have two options:
+The `LanguageSwitcher` and the `hreflang` tags link to each translation's **real** URL — so a visitor reading `/blog/hello-world` who clicks "Nederlands" lands on the actual Dutch post, and the theme works out which URL that is:
 
-1. **Keep the slug identical across locales** — easiest for routing, the `LanguageSwitcher` "just works." Translate only the title and body; keep the URL slug in English.
-2. **Use locale-specific slugs** — more natural for SEO. You'll need to add a small redirect or content mapping so the switcher can resolve `/blog/hello-world` → `/nl/blog/hallo-wereld`. That's outside the base theme; a future Astro Rocket release may build it in if there's demand.
+1. **Keep the slug identical across locales** — `/blog/hello-world` ↔ `/nl/blog/hello-world`, paired automatically with zero config.
+2. **Use locale-specific slugs** — more natural for SEO (`/nl/blog/hallo-wereld`). Give both posts the same canonical `uid` in frontmatter (the same id `<PostLink>` uses) and the theme links them correctly across locales and advertises the right URL in `hreflang`.
 
-For a first multilingual launch, option 1 is the pragmatic choice.
+Either way, a locale with no translation of the current post is dropped from `hreflang`, and the switcher sends the visitor to that locale's blog index instead of a dead URL — so switching language never 404s.
 
 ## SEO checklist
 

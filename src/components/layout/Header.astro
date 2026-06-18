@@ -69,6 +69,12 @@ interface Props extends HTMLAttributes<'header'> {
   logoText?: string;
   hideLogo?: boolean;
   showLanguageSwitcher?: boolean;
+  /**
+   * Optional `locale -> URL` map forwarded to the LanguageSwitcher so it can
+   * link to the same content in each locale (e.g. a blog post's real
+   * per-locale URLs) instead of swapping the current path's locale segment.
+   */
+  languageAlternates?: Record<string, string>;
   showSocialLinks?: boolean;
   showScrollProgress?: boolean;
   scrollProgressPosition?: 'top' | 'bottom';
@@ -99,6 +105,7 @@ const {
   showMobileMenu = true,
   showSocialLinks = false,
   showLanguageSwitcher = i18nIsEnabled(),
+  languageAlternates,
   showActiveState = true,
   showScrollProgress = false,
   scrollProgressPosition = 'bottom',
@@ -287,7 +294,7 @@ const buttonId = `${menuId}-button`;
 
             {showLanguageSwitcher && (
               <div class="hidden lg:flex">
-                <LanguageSwitcher class={isFloating ? 'hdr-invert-text' : undefined} />
+                <LanguageSwitcher class={isFloating ? 'hdr-invert-text' : undefined} alternates={languageAlternates} />
               </div>
             )}
 
@@ -482,7 +489,7 @@ const buttonId = `${menuId}-button`;
                   style={`--stagger-index: ${navItems.length + (showThemeSelector ? 1 : 0)}`}
                 >
                   <span class="text-sm text-foreground-muted">Language</span>
-                  <LanguageSwitcher />
+                  <LanguageSwitcher alternates={languageAlternates} />
                 </div>
               </section>
             )}

@@ -20,6 +20,14 @@ interface Props {
   };
   noindex?: boolean;
   nofollow?: boolean;
+  /**
+   * Verified locale alternates for this page (`{ locale, url }`). When given,
+   * they drive the `hreflang` tags instead of blindly swapping the locale
+   * segment of the current path — so a translation that lives at a different
+   * slug points at its real URL, and locales without a translation are
+   * omitted. Falls back to same-path swapping when not provided.
+   */
+  localeAlternates?: { locale: string; url: string }[];
 }
 
 const {
@@ -30,6 +38,7 @@ const {
   article,
   noindex = false,
   nofollow = false,
+  localeAlternates,
 } = Astro.props;
 
 const pageTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.name;
@@ -70,16 +79,25 @@ const ogImageType = getImageType(ogImage);
 
 // hreflang alternates — only emitted when i18n is enabled with >1 locale.
 // `x-default` points at the default-locale URL per Google's recommendation.
+// Prefer caller-provided, verified alternates (e.g. a blog post's real
+// per-locale URLs); otherwise fall back to swapping the locale segment of the
+// current path, which is correct for pages that share a slug across locales.
 const i18nOn = i18nIsEnabled();
+const resolvedAlternates =
+  localeAlternates && localeAlternates.length > 0
+    ? localeAlternates
+    : getLocales().map((loc) => ({ locale: loc, url: swapLocaleInPath(Astro.url.pathname, loc) }));
 const hreflangAlternates = i18nOn
-  ? getLocales().map((loc) => ({
-      hreflang: loc,
-      href: new URL(swapLocaleInPath(Astro.url.pathname, loc), Astro.site).toString(),
+  ? resolvedAlternates.map((alt) => ({
+      hreflang: alt.locale,
+      href: new URL(alt.url, Astro.site).toString(),
     }))
   : [];
-const xDefaultHref = i18nOn
-  ? new URL(swapLocaleInPath(Astro.url.pathname, defaultLocale), Astro.site).toString()
-  : null;
+const xDefaultUrl =
+  resolvedAlternates.find((alt) => alt.locale === defaultLocale)?.url ??
+  resolvedAlternates[0]?.url ??
+  swapLocaleInPath(Astro.url.pathname, defaultLocale);
+const xDefaultHref = i18nOn ? new URL(xDefaultUrl, Astro.site).toString() : null;
 ---
 
 <!-- Primary Meta Tags -->

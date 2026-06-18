@@ -26,9 +26,17 @@ interface Props {
   class?: string;
   /** Render compact (icon-only trigger). Defaults to false. */
   compact?: boolean;
+  /**
+   * Optional map of `locale -> URL` for "same content, other language" links.
+   * When provided (e.g. by a blog post that knows its real per-locale URLs),
+   * it overrides the default behaviour of swapping the locale segment of the
+   * current path — which is wrong when a translation lives at a different slug.
+   * Locales missing from the map fall back to the path swap.
+   */
+  alternates?: Record<string, string>;
 }
 
-const { class: className, compact = false } = Astro.props;
+const { class: className, compact = false, alternates } = Astro.props;
 
 const enabled = i18nIsEnabled();
 const currentPath = Astro.url.pathname;
@@ -94,7 +102,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
         aria-label={triggerLabel}
       >
         {locales.map((locale) => {
-          const href = swapLocaleInPath(currentPath, locale);
+          const href = alternates?.[locale] ?? swapLocaleInPath(currentPath, locale);
           const isActive = locale === currentLocale;
           return (
             <a
