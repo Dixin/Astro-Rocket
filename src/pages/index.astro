@@ -25,6 +25,22 @@ const posts = (await getCollection('blog', ({ data }) => data.locale === default
     return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
   })
   .slice(0, 4);
+
+// Hero marquee — a focused subset of the tech stack, in this order, pulled from
+// the same `stack` collection so icons and links stay single-sourced. Six logos
+// are wide enough to fill the constrained hero width and loop seamlessly on their
+// own; the Tech-stack section further down still shows the full stack.
+const heroStackOrder = ['Astro', 'Tailwind CSS', 'TypeScript', 'React', 'GitHub', 'Vercel'];
+const heroStackItems = (await getCollection('stack'))
+  .filter((e) => heroStackOrder.includes(e.data.name))
+  .sort((a, b) => heroStackOrder.indexOf(a.data.name) - heroStackOrder.indexOf(b.data.name))
+  .map((e) => ({
+    name: e.data.name,
+    icon: e.data.icon,
+    url: e.data.url,
+    version: e.data.version,
+    colorOklch: e.data.colorOklch,
+  }));
 ---
 
 <LandingLayout
@@ -35,7 +51,7 @@ const posts = (await getCollection('blog', ({ data }) => data.locale === default
   includeProfessionalServiceSchema={true}
 >
   <!-- Hero -->
-  <Hero layout="centered" size="xl" class="hero-dark-gradient" showScrollIndicator fullHeight>
+  <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight>
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">Available for new projects</Badge>
 
     <h1 slot="title" class="!text-[clamp(2rem,11.2vw,3rem)] sm:!text-5xl md:!text-6xl lg:!text-7xl">
@@ -58,6 +74,31 @@ const posts = (await getCollection('blog', ({ data }) => data.locale === default
         <Icon name="arrow-right" size="sm" />
       </Button>
     </Fragment>
+
+    <!-- Tech-stack marquee floored into the hero in place of the scroll indicator:
+         the content stays at the top and the marquee sits low near the bottom, with
+         a roomy gap above it (a guaranteed minimum gap, so it never crowds the
+         CTAs). Constrained to the content width; one decorative row; hidden on
+         phones. cardWidth="auto" lets each card hug its logo + name so the logos sit
+         close together; StackMarquee repeats the set to fill the row so the loop
+         stays seamless. -->
+    <div slot="bottom" class="mx-auto w-full max-w-6xl px-6">
+      <!-- Tablet & up: the animated tech-stack marquee. -->
+      <div class="hp-hero-marquee" aria-hidden="true">
+        <StackMarquee items={heroStackItems} rows={1} duration={55} pauseOnHover={false} linked={false} cardWidth="auto" gap="1rem" />
+      </div>
+      <!-- Portrait phone: a static, non-animated row of the four core-stack logos.
+           No marquee machinery — no duplicated track and no infinite animation — so
+           there's zero ongoing compositor/battery cost on mobile. Logos only,
+           non-interactive, with a one-time fade-in to match the marquee's entrance. -->
+      <div class="hp-hero-logos" aria-hidden="true">
+        {heroStackItems.slice(0, 4).map((item) => (
+          <span class="hp-hero-logo">
+            <Icon name={item.icon} size="lg" />
+          </span>
+        ))}
+      </div>
+    </div>
   </Hero>
 
   <!-- Services Section -->
@@ -487,6 +528,96 @@ const posts = (await getCollection('blog', ({ data }) => data.locale === default
     .stack-marquee-section { display: none; }
     section.cta-section { background-color: var(--color-background); }
     footer.home-footer { background-color: var(--color-background-secondary); }
+  }
+
+  /* ── Homepage hero tech-stack marquee ──────────────────────────────────────
+     A decorative tech-stack strip floored into the hero in place of the scroll
+     indicator. It must stay secondary to the H1 / description / CTAs, so we strip
+     the card "box" (brand border, glow ring, panel surface) and let the
+     brand-coloured logos float on the hero gradient as light accents. The logos
+     keep their brand colour and soft chip; only the surrounding chrome is removed. */
+  .hp-hero-marquee .stack-marquee-item > * {
+    background: transparent;   /* drop the card panel */
+    border-color: transparent; /* drop the brand border */
+    box-shadow: none;          /* drop the brand glow ring */
+    padding-left: var(--space-3);  /* tighter now there's no box, so logos sit closer */
+    padding-right: var(--space-3);
+  }
+  /* Lighter, calmer tool names so the colourful logos lead the eye. */
+  .hp-hero-marquee .stack-marquee-item .font-display {
+    font-weight: 500;
+    color: var(--color-foreground-muted);
+  }
+
+  /* Floored into the hero: the marquee is the section's last flex child, pushed to
+     the floor (mt-auto, in Hero.astro). The CONTENT stays at the top and the
+     leftover hero height opens up BETWEEN the CTAs and the marquee — the roomy
+     "Chrome look". The section's column `gap` (--hero-floor-gap) is a GUARANTEED
+     MINIMUM gap, so on shorter windows the marquee can never crowd the buttons;
+     taller windows simply get more room. padding-bottom is the breathing room
+     beneath it. */
+  section.hero-dark-gradient {
+    --hero-floor-gap: var(--space-16); /* 4rem — minimum gap above the marquee */
+    padding-bottom: var(--space-16); /* 4rem — breathing room below it */
+  }
+  .hp-hero-marquee {
+    pointer-events: none; /* decorative; never intercepts taps */
+  }
+
+  /* Entrance: the marquee sits outside the content stagger container, so it fades
+     in on its own once the hero has settled (a vertical slide would fight the
+     logos' horizontal scroll). */
+  @media (prefers-reduced-motion: no-preference) {
+    .hp-hero-marquee {
+      animation: hp-hero-marquee-fade 0.6s ease-out 1.2s backwards;
+    }
+  }
+  @keyframes hp-hero-marquee-fade {
+    from { opacity: 0.01; }
+    to   { opacity: 1; }
+  }
+
+  /* Hidden on phones — portrait (width) and landscape (short + coarse pointer),
+     matching the tech-stack section's behaviour. Shown from tablet up. */
+  @media (max-width: 767px) {
+    .hp-hero-marquee { display: none; }
+  }
+  @media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+    .hp-hero-marquee { display: none; }
+  }
+
+  /* Portrait-phone static stack logos — the lightweight counterpart to the
+     marquee. Hidden by default and shown only on portrait phones, exactly where
+     the marquee is hidden. A centered, non-interactive row: no links and no
+     animation loop, so it costs nothing after paint. */
+  .hp-hero-logos {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    pointer-events: none;
+  }
+  @media (max-width: 767px) and (orientation: portrait) {
+    .hp-hero-logos { display: flex; }
+  }
+
+  .hp-hero-logo {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    color: var(--color-brand-500);
+    background: color-mix(in oklch, var(--color-brand-500) 12%, transparent);
+  }
+
+  /* One-time fade-in only (reuses the marquee's keyframe); nothing loops. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hp-hero-logos {
+      animation: hp-hero-marquee-fade 0.6s ease-out 1.2s backwards;
+    }
   }
 </style>
 

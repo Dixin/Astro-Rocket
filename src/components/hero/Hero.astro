@@ -49,12 +49,31 @@ const hasTitleSlot = Astro.slots.has('title');
 const hasDescriptionSlot = Astro.slots.has('description');
 const hasActionsSlot = Astro.slots.has('actions');
 const hasAsideSlot = Astro.slots.has('aside');
+const hasBottomSlot = Astro.slots.has('bottom');
 
 // Compute alignment based on layout
 const alignment = layout === 'centered' ? 'text-center items-center' : 'text-left items-start';
 
+// When a bottom slot is used in a full-height hero, lay the section out as a flex
+// column so the slot can be pushed to the floor (mt-auto) while the CONTENT stays
+// at the top — leftover height then opens up BETWEEN them (the roomy "Chrome
+// look"). The column `gap` is a GUARANTEED minimum gap, so the slot never crowds
+// the content on short windows. Tunable per hero via --hero-floor-gap (default 4rem).
+const isFlooredBottom = fullHeight && hasBottomSlot;
+
 // Compute classes
-const sectionClasses = cn(heroSectionVariants({ size }), fullHeight && 'min-h-[100dvh]', className);
+const sectionClasses = cn(
+  heroSectionVariants({ size }),
+  // Full-viewport hero: stretch to at least the viewport height. Uses svh (stable
+  // small viewport) rather than dvh so the hero does NOT resize as the mobile
+  // browser's address bar shows/hides on scroll; capped so it never grows too tall
+  // on large monitors.
+  fullHeight && 'min-h-[min(100svh,60rem)]',
+  // Floored bottom slot (e.g. the homepage tech-stack marquee): flex column so the
+  // slot floats to the floor with a guaranteed minimum gap above it.
+  isFlooredBottom && 'flex flex-col gap-[var(--hero-floor-gap,4rem)]',
+  className
+);
 
 const contentClasses = cn(
   'z-10 flex flex-col',
@@ -172,6 +191,20 @@ const gridClasses = cn(
       </div>
     )}
   </div>
+
+  {/* Bottom slot — e.g. the homepage tech-stack marquee, in place of the scroll
+      indicator. In a full-height hero it's the last flex child, pushed to the
+      floor with mt-auto so the content stays at the top and leftover height opens
+      up between them; the section's column `gap` guarantees a minimum gap so it
+      never crowds on short windows. Outside full-height it falls back to absolute. */}
+  {hasBottomSlot && (
+    <div class={cn(
+      'hero-bottom-slot z-10 w-full',
+      isFlooredBottom ? 'relative mt-auto' : 'absolute inset-x-0 bottom-0'
+    )}>
+      <slot name="bottom" />
+    </div>
+  )}
 </section>
 
 <style>
