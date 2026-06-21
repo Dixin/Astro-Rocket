@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.8.0] — 2026-06-21
+
 ### Added
 
 - **Blog comments are now pluggable — added a [Cusdis](https://cusdis.com) provider alongside Giscus** — `articleFeatures.comments` gained a `provider` switch (`'giscus' | 'cusdis'`) and a `cusdis` config block (`appId`, optional `host` for self-hosting, `theme`, `lang`). Cusdis is a lightweight, privacy-friendly, optionally self-hosted comment system; it's wired with the same care as the existing Giscus integration — server-rendered placeholder with reserved height (no CLS), **lazy-loaded** on scroll so readers who don't reach the comments pay zero network cost, and theme/locale that follow the site by default. The `Comments` component is now a thin dispatcher that renders one of `CommentsGiscus`/`CommentsCusdis`, so only the selected provider's client script ships, and `BaseLayout`'s `preconnect` points at the active provider's host. Existing sites are unaffected: `provider` defaults to `'giscus'`. Note: Cusdis has no live theme API (unlike Giscus's `postMessage`), so in adaptive mode a light/dark toggle re-renders the thread (a brief reload) — set `theme` to `'auto'`/`'light'`/`'dark'` to opt out. Requested in #423. (#423)
