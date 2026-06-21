@@ -21,7 +21,7 @@ import { cn } from '@/lib/cn';
 import {
   getFooterNavItems,
   getLegalLinks,
-  type NavItem as NavConfigItem,
+  getLogoHref,
 } from '@/config/nav.config';
 import { footerVariants, footerColumnGridVariants } from './footer.variants';
 import Logo from '@/components/ui/marketing/Logo/Logo.astro';
@@ -110,9 +110,14 @@ const maxWidthClass = {
   full: 'max-w-full',
 }[maxWidth];
 
+const locale = getLocaleFromPath(Astro.url.pathname);
+const logoHref = getLogoHref(locale);
+
 // Get navigation items — footer nav is configured independently from the
-// header in `nav.config.ts` (see `footerNavItems`).
-const defaultNav: NavItem[] = getFooterNavItems().map((item: NavConfigItem) => ({
+// header in `nav.config.ts` (see `footerNavItems`). Localized for the active
+// locale (hrefs prefixed, labels translated); an explicit `nav` prop is used
+// as-is so callers keep full control.
+const defaultNav: NavItem[] = getFooterNavItems(locale).map((item) => ({
   label: item.label,
   href: item.href,
   external: item.external,
@@ -121,7 +126,7 @@ const navItems: NavItem[] = nav || defaultNav;
 const allNavItems: NavItem[] = navItems;
 
 // Resolved legal links: prop wins, otherwise fall back to nav.config.ts
-const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks();
+const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks(locale);
 
 // Copyright resolution:
 // - An explicit `copyright` prop always wins.
@@ -130,7 +135,6 @@ const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks();
 //   omits the credit). Both support {year} and {siteName} placeholders.
 const defaultCopyright =
   '© {year} {siteName}. Designed by <a href="https://hansmartens.dev" class="underline hover:text-foreground transition-colors" target="_blank" rel="noopener noreferrer">Hans Martens</a>.';
-const locale = getLocaleFromPath(Astro.url.pathname);
 const copyrightTemplate =
   copyright ?? (locale === defaultLocale ? defaultCopyright : t('footer.copyright', locale));
 
@@ -174,7 +178,7 @@ function getSocialIcon(platform: string): string {
             {hasLogoSlot ? (
               <slot name="logo" />
             ) : (
-              <a href="/" class="flex items-center gap-2">
+              <a href={logoHref} class="flex items-center gap-2">
                 <Logo size="md" class="bg-brand-600" />
                 <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
                   {siteConfig.name}
@@ -241,7 +245,7 @@ function getSocialIcon(platform: string): string {
               {hasLogoSlot ? (
                 <slot name="logo" />
               ) : (
-                <a href="/" class="flex items-center gap-2">
+                <a href={logoHref} class="flex items-center gap-2">
                   <Logo size="md" class="bg-brand-600" />
                   <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
                     {siteConfig.name}
@@ -344,7 +348,7 @@ function getSocialIcon(platform: string): string {
           hasLogoSlot ? (
             <slot name="logo" />
           ) : (
-            <a href="/" class="flex items-center gap-2">
+            <a href={logoHref} class="flex items-center gap-2">
               <Logo size="md" class="bg-brand-600" />
               <span class="font-display text-xl font-bold text-brand-600 dark:text-foreground">
                 {siteConfig.name}

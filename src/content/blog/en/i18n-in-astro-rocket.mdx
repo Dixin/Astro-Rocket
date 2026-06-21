@@ -153,6 +153,8 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 
 Missing keys fall back to the default locale's value, then to the key itself — so partial translations are visible but never break the page. The `{minutes}` syntax is interpolated via the `vars` argument: `t('blog.readingTime', locale, { minutes: 5 })` → `"5 min leestijd"`.
 
+The header and footer navigation use this same machinery for you. You write each link once in `nav.config.ts`; on every locale the Header and Footer prefix its path (`/blog` → `/nl/blog`, leaving external and `#anchor` links alone), point the logo at the locale's home, and translate its label when the item has a `labelKey` (the bundled items use `nav.items.*`). A locale needing a different slug or label can set a per-locale `locales` override on the item — but for most sites, translating the `nav.items.*` strings is all it takes.
+
 To add a third language — say, German — create `src/i18n/de.json` mirroring the structure of `en.json`, import it in `src/i18n/index.ts`, and add `'de'` to the `locales` array in `i18n.config.ts`. That's the whole onboarding.
 
 ## How URLs work
