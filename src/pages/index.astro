@@ -401,29 +401,8 @@ const heroStackItems = (await getCollection('stack'))
     </div>
   </section>
 
- <!-- Tech stack marquee — its own section in the 2-tone zebra. It follows the secondary Blog section, so it flips to `background` like the next stripe. Hidden on phones (portrait + landscape) via .stack-marquee-section; when it drops out, Blog (secondary) → CTA (background) still alternate, so the zebra holds on mobile too. -->
-  <section class="stack-marquee-section relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
-    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
-        <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>Tech stack</Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Building with the best
-          </h2>
-        </div>
-        <p class="text-lg text-foreground-muted max-w-2xl mx-auto">
-          Modern, proven tools — only the best.
-        </p>
-      </div>
-
-      <div data-reveal data-reveal-delay="1">
-        <StackMarquee duration={70} />
-      </div>
-    </div>
-  </section>
-
- <!-- CTA — secondary by default so it alternates with the Marquee (background) above and the Footer (background) below while the marquee is shown; on phones (marquee hidden) .cta-section reverts it to background so Blog → CTA → Footer still alternates -->
-  <section class="cta-section relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+ <!-- CTA — `background` so it alternates with the secondary Blog section above and the secondary Footer below. -->
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
       <Badge variant="brand" pill class="mb-6">Let's talk</Badge>
@@ -508,27 +487,6 @@ const heroStackItems = (await getCollection('stack'))
     .hero-dark-gradient .hero-title-slot + div {
       max-width: 48rem;
     }
-  }
-
-  /* Mobile-phone zebra swap. On phones — portrait (caught by width) and
-     landscape (wider than the md breakpoint, so caught by short height + a
-     coarse/touch pointer, which excludes tablets and laptops) — the marquee
-     band is hidden and the CTA + footer revert to their no-marquee colours.
-     The default (tablet/desktop, marquee shown) order is:
-       Blog(secondary) → Marquee(background) → CTA(secondary) → Footer(background)
-     and on phones it collapses to:
-       Blog(secondary) → CTA(background) → Footer(secondary)
-     so every adjacent section alternates in both states. The element+class
-     selectors outrank the Tailwind bg utilities, so no !important is needed. */
-  @media (max-width: 767px) {
-    .stack-marquee-section { display: none; }
-    section.cta-section { background-color: var(--color-background); }
-    footer.home-footer { background-color: var(--color-background-secondary); }
-  }
-  @media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
-    .stack-marquee-section { display: none; }
-    section.cta-section { background-color: var(--color-background); }
-    footer.home-footer { background-color: var(--color-background-secondary); }
   }
 
   /* ── Homepage hero tech-stack marquee ──────────────────────────────────────
