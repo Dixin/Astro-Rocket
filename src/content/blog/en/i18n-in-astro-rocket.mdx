@@ -107,7 +107,7 @@ That's enough to make `/nl/` a real page. From there, mirror whichever sections 
 
 ### Blog posts and content collections
 
-Astro Rocket's blog and pages collections already carry a `locale` field on their schema (`src/content.config.ts`). Translated content lives in a parallel folder structure:
+Astro Rocket's blog, projects, and pages collections already carry a `locale` field on their schema (`src/content.config.ts`). Translated content lives in a parallel folder structure:
 
 ```
 src/content/blog/en/hello-world.mdx
@@ -117,6 +117,8 @@ src/content/blog/nl/hallo-wereld.mdx
 In the Dutch post's frontmatter, set `locale: nl`. The collection schema validates the `locale` field against the `locales` list in `src/config/i18n.config.ts`, so any locale you register there is accepted automatically — there's no separate enum to edit. The base theme is ready for this — the field, folder convention, per-post type-safety, **and the routing** are all in place: drop posts in `src/content/blog/nl/` and the localized blog is generated for you — the index (`/nl/blog`), each post (`/nl/blog/<slug>`), pagination (`/nl/blog/page/N`), and tag archives (`/nl/blog/tag/<tag>`), with every in-locale link staying inside that locale. There are no per-locale blog page files to create.
 
 The folder name has to match the locale code you're using in `i18n.config.ts`. If you set `defaultLocale: 'zh-CN'`, the root posts have to live in `src/content/blog/zh-CN/`, not `src/content/blog/en/` — the folder name is what the route resolves to, not the config value alone.
+
+**Projects work exactly the same way.** Drop translations in `src/content/projects/<locale>/` (the bundled projects live in `src/content/projects/en/`) and the localized projects section is generated for you — the index (`/nl/projects`), each project (`/nl/projects/<slug>`), pagination (`/nl/projects/page/N`), and tag archives (`/nl/projects/tag/<tag>`), with every in-locale link staying inside that locale. Projects share one slug across locales — keep the same filename in each locale folder (e.g. `en/studio-portfolio.mdx` ↔ `nl/studio-portfolio.mdx`) and the theme pairs them automatically for `hreflang` and the `LanguageSwitcher`. (Blog posts can instead use locale-specific slugs paired by a canonical `uid`; projects keep it simple with matching filenames.)
 
 ## Step 3 — translate the built-in UI strings
 
@@ -150,6 +152,8 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 ```
 
 Missing keys fall back to the default locale's value, then to the key itself — so partial translations are visible but never break the page. The `{minutes}` syntax is interpolated via the `vars` argument: `t('blog.readingTime', locale, { minutes: 5 })` → `"5 min leestijd"`.
+
+The header and footer navigation use this same machinery for you. You write each link once in `nav.config.ts`; on every locale the Header and Footer prefix its path (`/blog` → `/nl/blog`, leaving external and `#anchor` links alone), point the logo at the locale's home, and translate its label when the item has a `labelKey` (the bundled items use `nav.items.*`). A locale needing a different slug or label can set a per-locale `locales` override on the item — but for most sites, translating the `nav.items.*` strings is all it takes.
 
 To add a third language — say, German — create `src/i18n/de.json` mirroring the structure of `en.json`, import it in `src/i18n/index.ts`, and add `'de'` to the `locales` array in `i18n.config.ts`. That's the whole onboarding.
 

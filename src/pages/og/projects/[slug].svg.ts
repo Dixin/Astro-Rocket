@@ -1,13 +1,15 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import { renderOgSvg } from '@/lib/og';
+import { getProjectSlug } from '@/lib/projects';
+import { defaultLocale } from '@/i18n';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const projects = await getCollection('projects', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
+    return data.locale === defaultLocale && (import.meta.env.PROD ? data.draft !== true : true);
   });
   return projects.map((project) => ({
-    params: { slug: project.id.replace(/\.mdx?$/, '') },
+    params: { slug: getProjectSlug(project.id, project.data.locale) },
     props: {
       title: project.data.title,
       description: project.data.description,

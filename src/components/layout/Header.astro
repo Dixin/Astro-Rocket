@@ -23,7 +23,7 @@
  */
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
-import { getNavItems, type NavItem as NavConfigItem } from '@/config/nav.config';
+import { getNavItems, getLogoHref } from '@/config/nav.config';
 import { headerVariants, headerInnerVariants } from './header.variants';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
@@ -34,7 +34,7 @@ import ThemeSelector from '@/components/layout/ThemeSelector.astro';
 import ThemeSelectorDropdown from '@/components/layout/ThemeSelectorDropdown.astro';
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher.astro';
 import siteConfig from '@/config/site.config';
-import { isEnabled as i18nIsEnabled } from '@/i18n';
+import { isEnabled as i18nIsEnabled, getLocaleFromPath } from '@/i18n';
 
 export interface NavItem {
   label: string;
@@ -129,14 +129,19 @@ const maxWidthClass = {
 const effectiveShowScrollProgress = showScrollProgress || (isFloating && !autoHide);
 const isInvert = colorScheme === 'invert';
 
-const defaultNav = getNavItems().map((item: NavConfigItem) => ({
+const currentPath = Astro.url.pathname;
+const locale = getLocaleFromPath(currentPath);
+const isLandingPage = currentPath === '/';
+
+// Localized for the active locale: hrefs are locale-prefixed and labels
+// translated (see nav.config.ts). Explicit `nav`/`extraNav` props are used
+// as-is so callers keep full control.
+const defaultNav = getNavItems(locale).map((item) => ({
   label: item.label,
   href: item.href,
 }));
 const navItems: NavItem[] = nav || [...extraNav, ...defaultNav];
-
-const currentPath = Astro.url.pathname;
-const isLandingPage = currentPath === '/';
+const logoHref = getLogoHref(locale);
 const ctaHref = cta.href?.startsWith('#') && !isLandingPage ? `/${cta.href}` : cta.href;
 
 const hasLogoSlot = Astro.slots.has('logo');
@@ -222,7 +227,7 @@ const buttonId = `${menuId}-button`;
         (hasLogoSlot ? (
           <slot name="logo" />
         ) : (
-          <a href="/" class="flex items-center gap-2">
+          <a href={logoHref} class="flex items-center gap-2">
             <Logo size={size === 'sm' ? 'md' : 'lg'} forceDark={isInvert} class="bg-brand-600" />
             <span
               class={cn(

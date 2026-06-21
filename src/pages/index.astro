@@ -11,9 +11,10 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 import { getCollection } from 'astro:content';
 import siteConfig from '@/config/site.config';
 import { getPostUrl } from '@/lib/blog';
+import { getProjectUrl } from '@/lib/projects';
 import { defaultLocale } from '@/i18n';
 
-const projectItems = await getCollection('projects');
+const projectItems = await getCollection('projects', ({ data }) => data.locale === defaultLocale);
 const featuredProjects = projectItems
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
@@ -198,7 +199,7 @@ const heroStackItems = (await getCollection('stack'))
             variant="elevated"
             hover
             padding="none"
-            href={project.data.placeholder ? undefined : `/projects/${project.id.replace(/\.mdx?$/, '')}`}
+            href={project.data.placeholder ? undefined : getProjectUrl(project.id)}
             class="group flex flex-col"
             data-reveal
             data-reveal-delay={i || undefined}

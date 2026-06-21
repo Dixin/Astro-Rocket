@@ -15,6 +15,13 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import siteConfig from '@/config/site.config';
 import { getProjectOgPath } from '@/lib/og';
+import { getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
+import {
+  getProjectSlug,
+  getProjectUrl,
+  getProjectsBaseUrl,
+  getProjectTranslations,
+} from '@/lib/projects';
 
 interface Props {
   title: string;
@@ -44,15 +51,18 @@ const {
   imageAlt,
   gallery = [],
   tags = [],
-  slug,
+  slug = '',
   related = [],
   headings = [],
   toc: tocOverride,
 } = Astro.props;
 
+const locale = getLocaleFromPath(Astro.url.pathname);
+
 // Prefer the project's own image; otherwise serve the per-project dynamic OG
-// image (see src/pages/og/projects/[slug].svg.ts).
-const ogImage = image?.src || (slug ? getProjectOgPath(slug) : siteConfig.ogImage);
+// image (see src/pages/og/projects/[slug].svg.ts). `slug` is the full
+// (locale-prefixed) project id, so strip the locale to match the OG route.
+const ogImage = image?.src || (slug ? getProjectOgPath(getProjectSlug(slug, locale)) : siteConfig.ogImage);
 
 // Mirror the blog TOC wiring — projects use the same site-wide config.
 const tocConfig = siteConfig.articleFeatures?.toc;
@@ -67,10 +77,22 @@ const inlineActive = showToc && tocLayout === 'inline';
 const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 
 const breadcrumbs = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Home', href: localizedPath('/', locale) },
+  { label: 'Projects', href: getProjectsBaseUrl(locale) },
   { label: title },
 ];
+
+// Resolve this project's real per-locale URLs so the hreflang tags and the
+// LanguageSwitcher point at the matching translation. Projects share one slug
+// across locales, so unlike the blog (which uses canonical uids) matching the
+// locale-stripped slug is enough. hreflang lists only verified translations;
+// the switcher shows every locale, falling back to a locale's projects index
+// when this project has no translation there, so switching never 404s.
+const projectTranslations = await getProjectTranslations(getProjectSlug(slug, locale), locale);
+const translationByLocale = new Map(projectTranslations.map((tr) => [tr.locale, tr.url]));
+const languageAlternates = Object.fromEntries(
+  getLocales().map((loc) => [loc, translationByLocale.get(loc) ?? getProjectsBaseUrl(loc)])
+);
 ---
 
 <BaseLayout
@@ -78,6 +100,7 @@ const breadcrumbs = [
   description={description}
   image={ogImage}
   imageAlt={imageAlt || title}
+  localeAlternates={projectTranslations}
 >
   <Header
     slot="header"
@@ -88,6 +111,7 @@ const breadcrumbs = [
     showCta={false}
     showScrollProgress
     maxWidth="7xl"
+    languageAlternates={languageAlternates}
   />
 
   <div class="min-h-screen pt-16">
@@ -169,7 +193,7 @@ const breadcrumbs = [
                 variant="elevated"
                 hover
                 padding="none"
-                href={project.data.placeholder ? undefined : `/projects/${project.id.replace(/\.mdx?$/, '')}`}
+                href={project.data.placeholder ? undefined : getProjectUrl(project.id, locale)}
                 class="group flex flex-col"
               >
                 <div class="flex flex-1 flex-col p-6">

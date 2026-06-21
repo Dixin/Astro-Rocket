@@ -4,7 +4,14 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "selectLanguage": "Select language",
-    "currentLanguage": "Current language"
+    "currentLanguage": "Current language",
+    "items": {
+      "services": "Services",
+      "projects": "Projects",
+      "blog": "Blog",
+      "about": "About",
+      "contact": "Contact"
+    }
   },
   "common": {
     "readMore": "Read more",

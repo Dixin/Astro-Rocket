@@ -4,17 +4,23 @@
  * (`/projects/tag/<slug>`). Pure HTML — no JS. Mirrors the blog `TagList`
  * so blog and project tags look and behave identically.
  */
-import { tagToSlug } from '@/lib/projects';
+import { defaultLocale } from '@/i18n';
+import { getProjectTagUrl } from '@/lib/projects';
 
 interface Props {
   tags: string[];
   /** Highlight this tag (used on the tag archive page). */
   active?: string;
+  /**
+   * Locale the links belong to. Default-locale links stay at
+   * `/projects/tag/...`; other locales are prefixed (`/<locale>/projects/tag/...`).
+   */
+  locale?: string;
   /** Optional class extension. */
   class?: string;
 }
 
-const { tags, active, class: extraClass } = Astro.props;
+const { tags, active, locale = defaultLocale, class: extraClass } = Astro.props;
 ---
 
 {tags.length > 0 && (
@@ -24,7 +30,7 @@ const { tags, active, class: extraClass } = Astro.props;
       return (
         <li>
           <a
-            href={`/projects/tag/${tagToSlug(tag)}`}
+            href={getProjectTagUrl(tag, locale)}
             class:list={[
               'inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-colors',
               isActive

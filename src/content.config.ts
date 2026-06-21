@@ -151,6 +151,7 @@ const projects = defineCollection({
       placeholder: z.boolean().default(false),
       /** Per-project override: hide table of contents on this project */
       toc: z.boolean().optional(),
+      locale: localeSchema,
     }),
 });
 

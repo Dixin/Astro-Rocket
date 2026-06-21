@@ -10,15 +10,21 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getProjectSlug } from '@/lib/projects';
+import { defaultLocale } from '@/i18n';
+import { getProjectUrl } from '@/lib/projects';
 
 interface Props {
   project: CollectionEntry<'projects'>;
   /** Stagger index for the scroll-reveal cascade. */
   index?: number;
+  /**
+   * Locale the card's link belongs to. Default-locale links stay at
+   * `/projects/...`; other locales are prefixed (`/<locale>/projects/...`).
+   */
+  locale?: string;
 }
 
-const { project, index = 0 } = Astro.props;
+const { project, index = 0, locale = defaultLocale } = Astro.props;
 const { data } = project;
 ---
 
@@ -26,7 +32,7 @@ const { data } = project;
   variant="elevated"
   hover
   padding="none"
-  href={data.placeholder ? undefined : `/projects/${getProjectSlug(project.id)}`}
+  href={data.placeholder ? undefined : getProjectUrl(project.id, locale)}
   class="group flex flex-col"
   data-reveal
   data-reveal-delay={index % 2 || undefined}
