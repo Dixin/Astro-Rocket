@@ -1,11 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import {
   t,
+  tData,
   localizedPath,
   resolveLocale,
   isValidLocale,
   getLocaleName,
   getLocaleFromPath,
+  getSecondaryLocales,
   stripLocaleFromPath,
   swapLocaleInPath,
 } from '../i18n';
@@ -35,6 +37,39 @@ describe('i18n t() helper', () => {
 
   it('leaves unknown placeholders untouched', () => {
     expect(t('blog.readingTime', 'en', {})).toBe('{minutes} min read');
+  });
+});
+
+describe('i18n tData() helper', () => {
+  it('returns a structured (array) value by dotted key', () => {
+    const facts = tData<{ icon: string; title: string }[]>('pages.about.intro.facts', 'en');
+    expect(Array.isArray(facts)).toBe(true);
+    expect(facts?.length).toBe(6);
+    expect(facts?.[0]?.title).toBe('Astro 7');
+  });
+
+  it('returns the Dutch structured value when locale is nl', () => {
+    const hero = tData<{ badge: string }>('pages.about.hero', 'nl');
+    expect(hero?.badge).toBe('Over');
+  });
+
+  it('falls back to the default-locale value when the locale has no entry', () => {
+    // 'de' has no dictionary loaded yet — should fall back to the English data
+    const cards = tData<unknown[]>('pages.about.faq.cards', 'de');
+    expect(Array.isArray(cards)).toBe(true);
+    expect(cards?.length).toBe(2);
+  });
+
+  it('returns undefined when the key is absent in every dictionary', () => {
+    expect(tData('pages.does.not.exist', 'en')).toBeUndefined();
+  });
+});
+
+describe('i18n getSecondaryLocales()', () => {
+  it('returns an empty list when i18n is disabled (single locale)', () => {
+    // Default config: enabled is false and locales is ['en'], so there are no
+    // extra locales to generate prefixed routes for.
+    expect(getSecondaryLocales()).toEqual([]);
   });
 });
 

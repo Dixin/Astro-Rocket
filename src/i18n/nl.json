@@ -106,5 +106,265 @@
     "copyright": "© {year} {siteName}. Alle rechten voorbehouden.",
     "builtWith": "Gebouwd met Astro Rocket",
     "followOn": "Volg ons op {platform}"
+  },
+  "pages": {
+    "about": {
+      "meta": {
+        "title": "Over Astro Rocket — Astro 7 starterthema",
+        "description": "Astro Rocket is een productieklaar Astro 7 starterthema met 12 thema's, 57+ componenten, ingebouwde i18n, donkere modus en alles wat je nodig hebt om snel te lanceren."
+      },
+      "hero": {
+        "badge": "Over",
+        "titleLead": "Astro Rocket —",
+        "typingWords": ["Astro 7 Starter", "Productieklaar", "12 Thema's", "57+ Componenten", "Donkere modus", "Ingebouwde i18n", "Zero-config SEO"],
+        "description": "Een gratis, productieklaar Astro 7 starterthema met alles wat je nodig hebt om snelle, moderne websites te bouwen — zonder vanaf nul te beginnen."
+      },
+      "intro": {
+        "badge": "Gratis & open source",
+        "heading": "Een stevige basis voor elk project",
+        "paragraphs": [
+          "Astro Rocket is een productieklaar starterthema gebouwd op Astro 7. Het wordt geleverd met een volledige componentbibliotheek, 12 met de hand gemaakte thema's, donkere modus, ingebouwde i18n en een blog — zodat jij je kunt richten op je project in plaats van op de boilerplate.",
+          "Het is gratis, MIT-gelicentieerd en vermeld in de officiële Astro-themamap. Kloon het, pas het aan en lanceer iets waar je trots op bent."
+        ],
+        "facts": [
+          { "icon": "rocket", "title": "Astro 7", "description": "Gebouwd op de nieuwste Astro-release." },
+          { "icon": "layout", "title": "12 thema's", "description": "Wissel van thema met één regel." },
+          { "icon": "code-2", "title": "57+ componenten", "description": "Samen te stellen, productieklaar." },
+          { "icon": "sparkles", "title": "Donkere modus", "description": "Ingebouwd, geen extra configuratie nodig." },
+          { "icon": "award", "title": "Ingebouwde i18n", "description": "Meertalige ondersteuning standaard." },
+          { "icon": "zap", "title": "Zero-config SEO", "description": "Gestructureerde data & metatags inbegrepen." }
+        ]
+      },
+      "principles": {
+        "badge": "Ontwerpprincipes",
+        "heading": "Met intentie gebouwd",
+        "lead": "Elke keuze in Astro Rocket — van componentstructuur tot standaardconfiguratie — komt voort uit dezelfde drie principes.",
+        "items": [
+          { "icon": "zap", "title": "Prestaties eerst", "description": "Standaard nul JavaScript. Elk component is geoptimaliseerd voor snelheid, Core Web Vitals en compacte output." },
+          { "icon": "award", "title": "Ontwikkelaarservaring", "description": "Overal TypeScript, verstandige standaardinstellingen en een componentbibliotheek die je zo in elke pagina laat vallen." },
+          { "icon": "rocket", "title": "Modern vanaf de basis", "description": "Astro 7, Tailwind CSS 4 en een schone architectuur die eenvoudig uit te breiden en te onderhouden is." }
+        ]
+      },
+      "stack": {
+        "badge": "Tools & techniek",
+        "title": "De stack",
+        "description": "De technologieën achter Astro Rocket — gekozen voor prestaties, een uitstekende ontwikkelaarservaring en betrouwbaarheid op de lange termijn."
+      },
+      "faq": {
+        "badge": "Goed om te weten",
+        "heading": "Veelgestelde vragen",
+        "lead": "Alles wat je moet weten voordat je begint.",
+        "cards": [
+          {
+            "icon": "rocket",
+            "title": "Over Astro",
+            "items": [
+              { "question": "Wat is Astro?", "answer": "Astro is een modern webframework gebouwd voor content-gedreven sites. Het levert standaard nul JavaScript — er wordt alleen verstuurd wat de pagina echt nodig heeft. Het resultaat: snelle laadtijden, uitstekende Core Web Vitals-scores en compacte, onderhoudbare code." },
+              { "question": "Waarom bouwen met Astro?", "answer": "Astro is de juiste keuze voor content-rijke sites: minimale JavaScript, schone HTML, standaard goede SEO en een ontwikkelaarservaring die je niet in de weg zit. Het is compact, doelgericht en gebouwd om lang mee te gaan." },
+              { "question": "Wat kan ik bouwen met Astro Rocket?", "answer": "Portfolio's, zakelijke sites, marketingpagina's, blogs, documentatiesites — elk content-gedreven project. Astro Rocket geeft je de structuur, componenten en standaardinstellingen om direct van start te gaan." },
+              { "question": "Staat Astro Rocket in de officiële Astro-themamap?", "answer": "Ja. <a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> staat in de officiële Astro-themamap als een gratis, productieklaar thema." },
+              { "question": "Blijft Astro Rocket nieuwe Astro-releases volgen?", "answer": "Ja. Astro Rocket wordt actief onderhouden en bijgewerkt om nieuwe Astro-releases te volgen. Volg de blog of houd de GitHub-repository in de gaten voor updates." }
+            ]
+          },
+          {
+            "icon": "code-2",
+            "title": "Het thema gebruiken",
+            "items": [
+              { "question": "Is het gratis te gebruiken?", "answer": "Ja, volledig gratis. Astro Rocket is MIT-gelicentieerd — gebruik het voor persoonlijke en commerciële projecten, geen naamsvermelding vereist." },
+              { "question": "Hoe wissel ik van thema?", "answer": "Wijzig één regel in je configuratie. Astro Rocket wordt geleverd met 12 met de hand gemaakte kleurthema's — wissel er direct tussen zonder ook maar één regel CSS aan te raken." },
+              { "question": "Ondersteunt het TypeScript?", "answer": "Ja, TypeScript wordt overal gebruikt. Alle componenten, configuraties en hulpprogramma's zijn volledig getypeerd." },
+              { "question": "Hoe voeg ik mijn eigen taal toe voor i18n?", "answer": "De i18n van Astro Rocket is config-gedreven. Voeg je locale toe aan het i18n-configuratiebestand, maak een bijbehorend vertaalbestand aan en de routering en interface passen zich automatisch aan." },
+              { "question": "Waar meld ik bugs of stel ik functies voor?", "answer": "Open een issue of start een discussie op de <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub-repository</a>. Bijdragen en feedback zijn altijd welkom." }
+            ]
+          }
+        ]
+      },
+      "openSource": {
+        "badge": "Open source",
+        "heading": "In de openbaarheid gebouwd",
+        "description": "Astro Rocket is gratis, open source en MIT-gelicentieerd. Bekijk de broncode, open issues, dien PR's in, of kloon het gewoon en bouw iets moois.",
+        "button": "Bekijk op GitHub",
+        "cards": [
+          { "title": "Gemaakt door Hans Martens", "text": "Astro Rocket is ontworpen en gebouwd door <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens</a> — een webdesigner en -ontwikkelaar die het als basis voor klantprojecten gebruikt." },
+          { "title": "MIT-licentie", "text": "Gratis te gebruiken in persoonlijke en commerciële projecten. Geen naamsvermelding vereist, al wordt een ster op GitHub altijd gewaardeerd." },
+          { "title": "Actief onderhouden", "text": "Het thema wordt up-to-date gehouden met nieuwe Astro-releases en regelmatig verbeterd op basis van feedback uit de community." }
+        ]
+      },
+      "cta": {
+        "badge": "Aan de slag",
+        "heading": "Klaar om te bouwen?",
+        "description": "Kloon Astro Rocket, kies een thema en lanceer je volgende project in enkele minuten.",
+        "button": "Aan de slag"
+      }
+    },
+    "services": {
+      "meta": {
+        "title": "Diensten — Webdesign, ontwikkeling & prestaties",
+        "description": "Drie kerndiensten voor moderne websites: doordacht ontwerp, schone Astro-ontwikkeling en meetbare prestaties & SEO."
+      },
+      "includedLabel": "Wat is inbegrepen",
+      "hero": {
+        "badge": "Diensten",
+        "titleLead": "Wat ik bied —",
+        "titleHighlight": "ontworpen, gebouwd en afgesteld.",
+        "description": "Drie kerndiensten, één consistente standaard. Van de eerste wireframe tot de uiteindelijke Lighthouse-score krijgt elk project dezelfde aandacht voor detail.",
+        "jumpLabels": ["Webdesign", "Ontwikkeling", "Prestaties"]
+      },
+      "design": {
+        "badge": "Webdesign",
+        "heading": "Ontwerpen met intentie",
+        "paragraphs": [
+          "Goed ontwerp begint bij de mensen die het gaan gebruiken. Ik ontwerp lay-outs rond jouw content en jouw publiek, niet rond trends die slecht verouderen. Typografie, witruimte en kleur kies ik voor helderheid — niet voor nieuwigheid.",
+          "Elk scherm telt mee: desktop, tablet en de telefoon die iemand bij de bushalte vasthoudt. Het merk blijft consistent over de hele ervaring, en de kleine details horen bij het ontwerp, niet bij de afwerking."
+        ],
+        "included": [
+          { "lead": "Maatwerk lay-outs", "text": "gebouwd voor jouw content, niet uit een sjabloon. Elke sectie verdient zijn plek door het doel van de pagina te dienen." },
+          { "lead": "Responsief op elk breekpunt", "text": "telefoon, tablet, desktop, ultrawide. Lay-outs vloeien met intentie, ze krimpen niet zomaar mee." },
+          { "lead": "Typografische systemen", "text": "leesbaar, schaalbaar, on-brand. Een heldere hiërarchie van paginatitel tot bijschrift, afgestemd op lang lezen." },
+          { "lead": "Lichte & donkere thema's", "text": "één ontwerp, twee stemmingen, keuze van de gebruiker. Beide modi worden bij elke stap gecontroleerd, niet achteraf toegevoegd." },
+          { "lead": "Doordachte beweging", "text": "interacties die leiden, nooit afleiden. Voorkeuren voor verminderde beweging worden zonder uitzondering gerespecteerd." },
+          { "lead": "Toegankelijkheid ingebakken", "text": "contrast, focus, semantische structuur. Toetsenbordpaden en schermlezeruitvoer worden vóór livegang geverifieerd." }
+        ],
+        "ctaLabel": "Bespreek een ontwerpproject"
+      },
+      "development": {
+        "badge": "Webontwikkeling",
+        "heading": "Code die zijn plek verdient",
+        "paragraphs": [
+          "Ik bouw met Astro omdat het levert wat nodig is en niets meer. Het resultaat: sites die goed scoren in audits, snel aanvoelen en na verloop van tijd niet broos worden.",
+          "Architectuur telt net zo zwaar als output: getypeerde content, voorspelbare componentgrenzen en een buildpijplijn die een toekomstige ontwikkelaar (of de toekomstige jij) zonder rondleiding kan oppakken."
+        ],
+        "included": [
+          { "lead": "Astro + Tailwind", "text": "moderne stack, minimale JavaScript, schone HTML. De browser rendert de pagina vrijwel direct, zonder hydratiekosten." },
+          { "lead": "Getypeerde content collections", "text": "gestructureerde blog, projecten en data. Schemavalidatie draait tijdens de build, zodat kapotte content nooit live gaat." },
+          { "lead": "Formulieren & integraties", "text": "beveiligd, AVG-bewust, gekoppeld aan jouw tools. Inzendingen bereiken je inbox of CRM zonder client-side te lekken." },
+          { "lead": "Hosting & deploy", "text": "Netlify, Vercel, Cloudflare of je eigen infrastructuur. Preview-deploys voor elke branch, zodat wijzigingen vóór livegang te beoordelen zijn." },
+          { "lead": "Versiebeheer & CI", "text": "git-gebaseerde workflow, herhaalbare deploys. Geautomatiseerde controles bewaken elke pull request vóór de merge." },
+          { "lead": "Overdrachtsdocumentatie", "text": "code, sleutels en een README die je echt kunt lezen. Geschreven zodat een toekomstige ontwikkelaar (of de toekomstige jij) het project zonder rondleiding kan oppakken." }
+        ],
+        "ctaLabel": "Bekijk recente projecten"
+      },
+      "performance": {
+        "badge": "Prestaties",
+        "heading": "Snelle pagina's, vindbare pagina's",
+        "paragraphs": [
+          "Snelheid en vindbaarheid zijn geen functies om op het eind toe te voegen — het zijn randvoorwaarden om vanaf de eerste commit te respecteren. Elke seconde laadtijd kost aandacht, ranking en vertrouwen.",
+          "Ik werk naar meetbare doelen, niet op gevoel. Core Web Vitals, technische SEO en toegankelijkheid worden gevolgd, afgesteld en vóór livegang geverifieerd — en de dashboards blijven van jou na de overdracht."
+        ],
+        "included": [
+          { "lead": "Core Web Vitals", "text": "LCP, INP en CLS binnen de drempels van Google. Gemeten op echte apparaten, niet alleen synthetische tests." },
+          { "lead": "Beeldpijplijn", "text": "moderne formaten, responsieve maten, lazy loading. Hero-afbeeldingen art-directed zodat ze op elk scherm goed staan." },
+          { "lead": "Technische SEO", "text": "metadata, sitemaps, gestructureerde data, OG-afbeeldingen. Allemaal aangesloten en gevalideerd vóór de eerste crawl." },
+          { "lead": "Toegankelijkheid", "text": "WCAG-bewuste markup en geverifieerde focusvolgorde. Getest met een schermlezer en alleen het toetsenbord, niet enkel een contrastchecker." },
+          { "lead": "Lighthouse-audits", "text": "meetbare scores geleverd met de site. Herhaalbaar in CI zodat ze na livegang niet stilletjes wegzakken." },
+          { "lead": "Privacyvriendelijke analytics", "text": "nuttige data, geen cookiebanner. Zelf gehost of geanonimiseerd door de leverancier, nooit doorverkocht." }
+        ],
+        "ctaLabel": "Start een project"
+      },
+      "process": {
+        "badge": "Hoe het werkt",
+        "heading": "Een helder, eerlijk proces",
+        "lead": "Vier fasen, één aanspreekpunt, geen verrassingen.",
+        "steps": [
+          { "title": "Kennismaking", "description": "Een gesprek over je doelen, je publiek en hoe succes eruitziet. Vrijblijvend." },
+          { "title": "Voorstel", "description": "Een heldere scope, planning en kosten. Eén pagina, gewone taal, vaste prijs." },
+          { "title": "Ontwerp & bouw", "description": "Korte cycli met regelmatige afstemming. Je ziet de site groeien terwijl hij wordt gebouwd." },
+          { "title": "Lancering & ondersteuning", "description": "Deployen, overdragen, beschikbaar blijven. Itereren na livegang is eenvoudig." }
+        ]
+      },
+      "cta": {
+        "badge": "Laten we praten",
+        "heading": "Heb je een project in gedachten?",
+        "description": "Stuur een kort bericht over wat je bouwt en wat je nodig hebt. Ik lees elk bericht en reageer binnen een werkdag.",
+        "primary": "Start een project",
+        "secondary": "Meer over mij"
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact — Astro Rocket",
+        "description": "Iets nieuws van plan? Ik ontwerp en bouw nieuwe websites vanaf nul — vertel me over je project en ik reageer binnen 1 werkdag."
+      },
+      "hero": {
+        "badge": "Start een project",
+        "titleLead": "Vertel me over je",
+        "titleHighlight": "nieuwe project",
+        "description": "Ik ontwerp en bouw nieuwe websites vanaf nul — elk project, van begin tot eind, door mij. Deel hieronder een paar details en ik reageer binnen 1 werkdag."
+      },
+      "formTitle": "Projectdetails",
+      "channelsTitle": "Andere kanalen",
+      "channelsSubtitle": "Liever een direct kanaal? Kies wat het beste werkt.",
+      "emailLabel": "E-mail",
+      "emailNote": "Stuur een bericht",
+      "socialNote": "Volg mee",
+      "basedIn": "Gevestigd in {country}"
+    },
+    "home": {
+      "meta": {
+        "title": "Astro Rocket — Astro 7 starterthema",
+        "description": "Een productieklaar Astro 7 starterthema met 12 prachtige thema's, 57+ componenten, ingebouwde i18n, donkere modus en een snelle, moderne basis om alles op te bouwen."
+      },
+      "hero": {
+        "badge": "Beschikbaar voor nieuwe projecten",
+        "titleLine1": "Astro Rocket —",
+        "titleLine2": "Webdesigner",
+        "titleLine3": "& Ontwikkelaar",
+        "description": "Astro 7 starter met 12 prachtige thema's, 57+ componenten, donkere modus en een snelle, moderne basis om alles op te bouwen.",
+        "github": "Bekijk op GitHub",
+        "getStarted": "Aan de slag"
+      },
+      "services": {
+        "badge": "Diensten",
+        "heading": "Wat ik doe",
+        "lead": "Van concept tot lancering.",
+        "learnMore": "Meer weten",
+        "cards": [
+          { "icon": "layout", "title": "Webdesign", "description": "Doordachte lay-outs die jouw content vooropstellen. Ontworpen voor helderheid, balans en de manier waarop mensen echt lezen op het web." },
+          { "icon": "code", "title": "Webontwikkeling", "description": "Moderne sites gebouwd met Astro en Tailwind. Compact, toegankelijk en klaar om mee te groeien met je bedrijf — geen template-lock-in." },
+          { "icon": "zap", "title": "SEO & prestaties", "description": "Pagina's die direct laden en vanaf de lancering goed scoren. Core Web Vitals, metadata en gestructureerde data, goed gedaan." }
+        ]
+      },
+      "portfolio": {
+        "badge": "Geselecteerd werk",
+        "heading": "Projecten die ik heb gebouwd",
+        "lead": "Een selectie van recent werk.",
+        "viewAll": "Bekijk alle projecten"
+      },
+      "testimonials": {
+        "badge": "Aanbevelingen",
+        "heading": "Wat klanten zeggen",
+        "lead": "Vervang deze door je eigen klantcitaten.",
+        "items": [
+          { "quote": "De nieuwe site werd op tijd gelanceerd en haalde elk doel dat we stelden. De prestaties verbeterden enorm — laadtijden daalden en de reacties van onze klanten zijn overweldigend positief.", "name": "Alex Morgan", "role": "Oprichter, Bright Studio" },
+          { "quote": "Helder van het eerste gesprek tot de uiteindelijke oplevering. De juiste vragen werden gesteld, we werden overal bij betrokken en het eindresultaat overtrof wat we ons hadden voorgesteld. Een aanrader zonder twijfel.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }
+        ]
+      },
+      "aboutTeaser": {
+        "badge": "Over mij",
+        "headingLine1": "Designer, ontwikkelaar,",
+        "headingLine2": "en blogger.",
+        "para1WithLocation": "Zestien jaar praktijkervaring, gevestigd in {location} en beschikbaar voor klanten wereldwijd. Ik bouw met Astro omdat het aansluit bij hoe ik over het web denk: compact, doelgericht en gebouwd om lang mee te gaan.",
+        "para1NoLocation": "Zestien jaar praktijkervaring en beschikbaar voor klanten wereldwijd. Ik bouw met Astro omdat het aansluit bij hoe ik over het web denk: compact, doelgericht en gebouwd om lang mee te gaan.",
+        "para2": "Op de blog deel ik de ideeën en keuzes die mijn werk vormgeven.",
+        "moreAboutMe": "Meer over mij",
+        "statsIntro": "Een paar dingen over mij.",
+        "stat1": "16 jaar ervaring",
+        "stat2": "Bouwen met Astro",
+        "stat3": "Wereldwijd werkzaam",
+        "basedIn": "Gevestigd in"
+      },
+      "blog": {
+        "badge": "Van de blog",
+        "heading": "Uitgelicht",
+        "viewAll": "Bekijk alle berichten"
+      },
+      "cta": {
+        "badge": "Laten we praten",
+        "heading": "Iets nieuws beginnen?",
+        "description": "Ik ontwerp en bouw nieuwe websites vanaf nul — elk project, van begin tot eind, door mij. Vertel me wat je in gedachten hebt.",
+        "primary": "Start een project",
+        "secondary": "Meer over mij"
+      }
+    }
   }
 }

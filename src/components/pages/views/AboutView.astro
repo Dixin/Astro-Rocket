@@ -1,0 +1,291 @@
+---
+/**
+ * AboutView — the About page body.
+ *
+ * Shared by the default-locale route (`/about`) and the locale-prefixed route
+ * (`/<locale>/about`). All copy is read from the `pages.about.*` keys in the
+ * locale dictionaries (`src/i18n/<locale>.json`) via `t()` / `tData()`, so
+ * translating the page is a matter of editing JSON — no markup changes — and
+ * any untranslated key falls back to the default locale automatically.
+ *
+ * Rendering with the default locale produces the same markup the page had
+ * before this was extracted.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import { Hero } from '@/components/hero';
+import TypingEffect from '@/components/ui/TypingEffect.astro';
+import TechStack from '@/components/landing/TechStack.astro';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+import { t, tData, defaultLocale } from '@/i18n';
+
+interface Props {
+  /** Locale whose copy this page renders. Defaults to the site default. */
+  locale?: string;
+}
+
+interface IconText {
+  icon: string;
+  title: string;
+  description: string;
+}
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+interface FaqCard {
+  icon: string;
+  title: string;
+  items: FaqItem[];
+}
+interface TitleText {
+  title: string;
+  text: string;
+}
+
+const { locale = defaultLocale } = Astro.props;
+
+const GITHUB_URL = 'https://github.com/hansmartensdev/astro-rocket';
+
+const hero = tData<{ badge: string; titleLead: string; typingWords: string[]; description: string }>(
+  'pages.about.hero',
+  locale
+)!;
+const intro = tData<{ badge: string; heading: string; paragraphs: string[]; facts: IconText[] }>(
+  'pages.about.intro',
+  locale
+)!;
+const principles = tData<{ badge: string; heading: string; lead: string; items: IconText[] }>(
+  'pages.about.principles',
+  locale
+)!;
+const stack = tData<{ badge: string; title: string; description: string }>('pages.about.stack', locale)!;
+const faq = tData<{ badge: string; heading: string; lead: string; cards: FaqCard[] }>('pages.about.faq', locale)!;
+const openSource = tData<{ badge: string; heading: string; description: string; button: string; cards: TitleText[] }>(
+  'pages.about.openSource',
+  locale
+)!;
+const cta = tData<{ badge: string; heading: string; description: string; button: string }>('pages.about.cta', locale)!;
+---
+<PageLayout
+  title={t('pages.about.meta.title', locale)}
+  description={t('pages.about.meta.description', locale)}
+  footerBackground="secondary"
+>
+  <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
+    <Badge slot="badge" variant="brand" pill>
+      <Icon name="rocket" size="sm" />
+      {hero.badge}
+    </Badge>
+    <h1 slot="title">
+      <span class="text-foreground [-webkit-text-fill-color:currentColor]">{hero.titleLead}</span><br />
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)]">
+        <TypingEffect words={hero.typingWords} />
+      </span>
+    </h1>
+
+    <p slot="description">
+      {hero.description}
+    </p>
+  </Hero>
+
+  <!-- About the theme -->
+  <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12">
+        <!-- Left: text -->
+        <div class="flex flex-col justify-center gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal data-reveal-eager data-reveal-ease="smooth">
+          <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
+            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">{intro.badge}</Badge>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground text-balance">
+              {intro.heading}
+            </h2>
+          </div>
+          {intro.paragraphs.map((paragraph) => (
+            <p class="text-lg text-foreground-muted leading-relaxed sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <!-- Right: theme facts card -->
+        <div class="flex flex-col h-full" data-reveal data-reveal-eager data-reveal-ease="smooth">
+          <Card variant="elevated" padding="lg" class="flex-1 flex flex-col justify-center">
+            <div class="grid grid-cols-2 sm:grid-cols-3 glitch:grid-cols-2 gap-x-6 gap-y-8">
+              {intro.facts.map((fact) => (
+                <div class="flex flex-col items-center text-center gap-3">
+                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                    <Icon name={fact.icon} size="md" />
+                  </div>
+                  <div>
+                    <h3 class="text-base font-semibold text-foreground">{fact.title}</h3>
+                    <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                      {fact.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="py-[var(--space-section-md)] bg-background border-t border-border">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mb-8 text-center flex flex-col items-center gap-4" data-reveal>
+        <div class="flex flex-col items-center gap-6">
+          <Badge variant="brand" pill>{principles.badge}</Badge>
+          <h2 class="font-display text-4xl font-bold text-foreground">
+            {principles.heading}
+          </h2>
+        </div>
+        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
+          {principles.lead}
+        </p>
+      </div>
+      <div class="grid gap-6 sm:gap-8 sm:grid-cols-3">
+        {principles.items.map((item, i) => (
+          <Card hover data-reveal data-reveal-delay={i || undefined}>
+            <div class="flex items-start gap-4 sm:flex-col sm:items-center sm:gap-3 sm:text-center lg:flex-row lg:items-start lg:gap-4 lg:text-left">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                <Icon name={item.icon} size="md" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-base font-semibold text-foreground">{item.title}</h3>
+                <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <TechStack
+    badge={stack.badge}
+    title={stack.title}
+    description={stack.description}
+    background="secondary"
+  />
+
+  <!-- FAQ -->
+  <section class="py-[var(--space-section-md)] bg-background border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
+        <div class="flex flex-col items-center gap-6">
+          <Badge variant="brand" pill>{faq.badge}</Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            {faq.heading}
+          </h2>
+        </div>
+        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
+          {faq.lead}
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {faq.cards.map((card, cardIndex) => (
+          <Card variant="elevated" padding="lg" data-reveal data-reveal-delay={cardIndex + 1}>
+            <div class="flex items-center gap-3 pb-4 border-b border-border">
+              <div class="w-11 h-11 rounded-lg bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                <Icon name={card.icon} size="md" />
+              </div>
+              <h3 class="font-display text-base font-semibold text-foreground">{card.title}</h3>
+            </div>
+            <div class="w-full">
+              {card.items.map((item) => (
+                <details class="border-b border-border last:border-0" name={`faq-${cardIndex}`}>
+                  <summary class="flex w-full items-center justify-between text-sm py-4 text-left font-medium text-foreground transition-colors hover:text-foreground-secondary cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                    <Icon name="chevron-down" size="sm" class="faq-icon shrink-0 text-foreground-muted transition-transform duration-200" />
+                  </summary>
+                  <div class="pb-4 text-sm text-foreground-muted leading-relaxed" set:html={item.answer} />
+                </details>
+              ))}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source -->
+  <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid gap-8 sm:gap-10 glitch:grid-cols-2 glitch:items-center">
+        <!-- Text -->
+        <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:justify-center glitch:text-left" data-reveal data-reveal-ease="smooth">
+          <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">{openSource.badge}</Badge>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
+            {openSource.heading}
+          </h2>
+          <p class="text-lg text-foreground-muted leading-relaxed sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
+            {openSource.description}
+          </p>
+          <Button variant="outline" size="lg" href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="self-start sm:self-center glitch:self-start mt-2">
+            {openSource.button}
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </div>
+
+        <!-- Info card -->
+        <div class="flex flex-col h-full" data-reveal data-reveal-delay="1" data-reveal-ease="smooth">
+          <Card variant="elevated" padding="lg" class="flex-1 flex flex-col justify-center gap-6">
+            {openSource.cards.map((card) => (
+              <div class="flex flex-col gap-2">
+                <h3 class="text-base font-semibold text-foreground">{card.title}</h3>
+                <p class="text-sm text-foreground-muted leading-relaxed" set:html={card.text} />
+              </div>
+            ))}
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
+    <!-- Mobile: flat section, no card -->
+    <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
+      <Badge variant="brand" pill class="mb-6">{cta.badge}</Badge>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
+        {cta.heading}
+      </h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">
+        {cta.description}
+      </p>
+      <Button size="lg" href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-brand">
+        {cta.button}
+        <Icon name="arrow-right" size="sm" />
+      </Button>
+    </div>
+
+    <!-- Desktop: contained LetterGlitch band with glass card -->
+    <LetterGlitchBand>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
+        {cta.heading}
+      </h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">
+        {cta.description}
+      </p>
+      <Button size="lg" href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="hero-btn-brand">
+        {cta.button}
+        <Icon name="arrow-right" size="sm" />
+      </Button>
+    </LetterGlitchBand>
+  </section>
+</PageLayout>
+
+<style>
+  details[open] > summary .faq-icon {
+    transform: rotate(180deg);
+  }
+</style>

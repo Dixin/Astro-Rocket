@@ -33,6 +33,19 @@ export function getLocales(): Locale[] {
   return i18nConfig.locales;
 }
 
+/**
+ * The non-default locales that should get their own prefixed routes
+ * (`/<locale>/about`, `/<locale>` …). Empty when i18n is off or only one
+ * locale is configured, so locale-prefixed `getStaticPaths` emit nothing and
+ * single-locale builds stay byte-for-byte unchanged. Mirrors the per-section
+ * helpers in `lib/blog` and `lib/projects` so every content type derives its
+ * extra locales the same way.
+ */
+export function getSecondaryLocales(): Locale[] {
+  if (!isEnabled()) return [];
+  return getLocales().filter((locale) => locale !== defaultLocale);
+}
+
 export function getLocaleName(locale: Locale): string {
   return i18nConfig.localeNames?.[locale] ?? locale;
 }
@@ -46,7 +59,7 @@ export function resolveLocale(locale: string | undefined): Locale {
   return isValidLocale(locale) ? locale : defaultLocale;
 }
 
-function getNested(dict: Dictionary, key: string): string | undefined {
+function getNestedValue(dict: Dictionary, key: string): unknown {
   const parts = key.split('.');
   let value: unknown = dict;
   for (const part of parts) {
@@ -56,6 +69,10 @@ function getNested(dict: Dictionary, key: string): string | undefined {
       return undefined;
     }
   }
+  return value;
+}
+
+function asString(value: unknown): string | undefined {
   return typeof value === 'string' ? value : undefined;
 }
 
@@ -75,8 +92,24 @@ function interpolate(template: string, vars?: Record<string, string | number>): 
 export function t(key: string, locale: Locale = defaultLocale, vars?: Record<string, string | number>): string {
   const dict = dictionaries[locale] ?? dictionaries[defaultLocale];
   const fallback = dictionaries[defaultLocale];
-  const value = (dict && getNested(dict, key)) ?? (fallback && getNested(fallback, key)) ?? key;
+  const value = asString(getNestedValue(dict, key)) ?? asString(getNestedValue(fallback, key)) ?? key;
   return interpolate(value, vars);
+}
+
+/**
+ * Look up a structured (array or object) translation value by dotted key, with
+ * the same default-locale fallback as `t()`. Use this for localized lists and
+ * page sections — an array of FAQ items, a list of feature cards — that `t()`,
+ * which only returns strings, can't express. Returns the default-locale value
+ * when the active locale hasn't translated the key, and `undefined` only when
+ * neither locale defines it (so a missing translation degrades to the default
+ * language instead of breaking the page).
+ */
+export function tData<T = unknown>(key: string, locale: Locale = defaultLocale): T | undefined {
+  const dict = dictionaries[locale] ?? dictionaries[defaultLocale];
+  const fallback = dictionaries[defaultLocale];
+  const value = getNestedValue(dict, key) ?? getNestedValue(fallback, key);
+  return value as T | undefined;
 }
 
 /**

@@ -106,5 +106,265 @@
     "copyright": "© {year} {siteName}. All rights reserved.",
     "builtWith": "Built with Astro Rocket",
     "followOn": "Follow us on {platform}"
+  },
+  "pages": {
+    "about": {
+      "meta": {
+        "title": "About Astro Rocket — Astro 7 Starter Theme",
+        "description": "Astro Rocket is a production-ready Astro 7 starter theme with 12 themes, 57+ components, built-in i18n, dark mode, and everything you need to launch fast."
+      },
+      "hero": {
+        "badge": "About",
+        "titleLead": "Astro Rocket —",
+        "typingWords": ["Astro 7 Starter", "Production-Ready", "12 Themes", "57+ Components", "Dark Mode", "Built-in i18n", "Zero Config SEO"],
+        "description": "A free, production-ready Astro 7 starter theme with everything you need to build fast, modern websites — without starting from scratch."
+      },
+      "intro": {
+        "badge": "Free & Open Source",
+        "heading": "A solid foundation for any project",
+        "paragraphs": [
+          "Astro Rocket is a production-ready starter theme built on Astro 7. It ships with a full component library, 12 hand-crafted themes, dark mode, built-in i18n, and a blog — so you can focus on building your project, not the boilerplate.",
+          "It's free, MIT licensed, and listed on the official Astro themes directory. Clone it, customise it, and ship something you're proud of."
+        ],
+        "facts": [
+          { "icon": "rocket", "title": "Astro 7", "description": "Built on the latest Astro release." },
+          { "icon": "layout", "title": "12 themes", "description": "Switch themes with one line." },
+          { "icon": "code-2", "title": "57+ components", "description": "Composable, production-ready." },
+          { "icon": "sparkles", "title": "Dark mode", "description": "Built in, no extra setup needed." },
+          { "icon": "award", "title": "Built-in i18n", "description": "Multi-language support out of the box." },
+          { "icon": "zap", "title": "Zero config SEO", "description": "Structured data & meta tags included." }
+        ]
+      },
+      "principles": {
+        "badge": "Design Principles",
+        "heading": "Built with intention",
+        "lead": "Every decision in Astro Rocket — from component structure to default config — is driven by the same three principles.",
+        "items": [
+          { "icon": "zap", "title": "Performance First", "description": "Zero JavaScript by default. Every component is optimised for speed, Core Web Vitals, and lean output." },
+          { "icon": "award", "title": "Developer Experience", "description": "TypeScript throughout, sensible defaults, and a component library you can drop straight into any page." },
+          { "icon": "rocket", "title": "Modern from the Ground Up", "description": "Astro 7, Tailwind CSS 4, and a clean architecture that's easy to extend and maintain." }
+        ]
+      },
+      "stack": {
+        "badge": "Tools & Tech",
+        "title": "The Stack",
+        "description": "The technologies powering Astro Rocket — chosen for performance, great developer experience, and long-term reliability."
+      },
+      "faq": {
+        "badge": "Good to know",
+        "heading": "Frequently asked questions",
+        "lead": "Everything you need to know before getting started.",
+        "cards": [
+          {
+            "icon": "rocket",
+            "title": "About Astro",
+            "items": [
+              { "question": "What is Astro?", "answer": "Astro is a modern web framework built for content-driven sites. It ships zero JavaScript by default — only sending what the page actually needs. The result is fast load times, excellent Core Web Vitals scores, and lean, maintainable code." },
+              { "question": "Why build with Astro?", "answer": "Astro is the right tool for content-heavy sites: minimal JavaScript, clean HTML, great SEO out of the box, and a developer experience that stays out of your way. It's lean, purposeful, and built to last." },
+              { "question": "What can I build with Astro Rocket?", "answer": "Portfolios, business sites, marketing pages, blogs, documentation sites — any content-driven project. Astro Rocket gives you the structure, components, and defaults to hit the ground running." },
+              { "question": "Is Astro Rocket listed on the official Astro themes directory?", "answer": "Yes. <a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> is listed on the official Astro themes directory as a free, production-ready theme." },
+              { "question": "Will Astro Rocket keep up with new Astro releases?", "answer": "Yes. Astro Rocket is actively maintained and updated to track new Astro releases. Follow along on the blog or watch the GitHub repository for updates." }
+            ]
+          },
+          {
+            "icon": "code-2",
+            "title": "Using the theme",
+            "items": [
+              { "question": "Is it free to use?", "answer": "Yes, completely free. Astro Rocket is MIT licensed — use it for personal and commercial projects, no attribution required." },
+              { "question": "How do I switch themes?", "answer": "Change a single line in your config. Astro Rocket ships with 12 hand-crafted colour themes — swap between them instantly without touching a line of CSS." },
+              { "question": "Does it support TypeScript?", "answer": "Yes, TypeScript is used throughout. All components, configs, and utilities are fully typed." },
+              { "question": "How do I add my own language for i18n?", "answer": "Astro Rocket's i18n is config-driven. Add your locale to the i18n config file, create a matching translation file, and the routing and UI adapt automatically." },
+              { "question": "Where do I report bugs or suggest features?", "answer": "Open an issue or start a discussion on the <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub repository</a>. Contributions and feedback are always welcome." }
+            ]
+          }
+        ]
+      },
+      "openSource": {
+        "badge": "Open Source",
+        "heading": "Built in the open",
+        "description": "Astro Rocket is free, open source, and MIT licensed. Browse the source, open issues, submit PRs, or just clone it and build something great.",
+        "button": "View on GitHub",
+        "cards": [
+          { "title": "Made by Hans Martens", "text": "Astro Rocket was designed and built by <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens</a> — a web designer and developer who uses it as the foundation for client projects." },
+          { "title": "MIT License", "text": "Free to use in personal and commercial projects. No attribution required, though a star on GitHub is always appreciated." },
+          { "title": "Actively maintained", "text": "The theme is kept up to date with new Astro releases and regularly improved based on community feedback." }
+        ]
+      },
+      "cta": {
+        "badge": "Get started",
+        "heading": "Ready to build?",
+        "description": "Clone Astro Rocket, pick a theme, and launch your next project in minutes.",
+        "button": "Get Started"
+      }
+    },
+    "services": {
+      "meta": {
+        "title": "Services — Web Design, Development & Performance",
+        "description": "Three core services for modern websites: thoughtful design, clean Astro development, and measurable performance & SEO."
+      },
+      "includedLabel": "What's included",
+      "hero": {
+        "badge": "Services",
+        "titleLead": "What I offer —",
+        "titleHighlight": "designed, built, and tuned.",
+        "description": "Three core services, one consistent standard. From the first wireframe to the final Lighthouse score, every project gets the same attention to detail.",
+        "jumpLabels": ["Web Design", "Development", "Performance"]
+      },
+      "design": {
+        "badge": "Web Design",
+        "heading": "Design with intention",
+        "paragraphs": [
+          "Great design starts with the people who'll use it. I design layouts shaped around your content and your audience, not around trends that age badly. Typography, spacing, and colour are chosen for clarity — not novelty.",
+          "Every screen is considered: desktop, tablet, and the phone someone holds at the bus stop. The brand stays consistent across the whole experience, and the small details are treated as part of the design, not the polish."
+        ],
+        "included": [
+          { "lead": "Bespoke layouts", "text": "built for your content, not from a template. Every section earns its place by serving the page's goal." },
+          { "lead": "Responsive across breakpoints", "text": "phone, tablet, desktop, ultrawide. Layouts reflow with intent, not just shrink to fit." },
+          { "lead": "Typography systems", "text": "readable, scaleable, on-brand. A clear hierarchy from page title down to caption, tuned for long-form reading." },
+          { "lead": "Light & dark themes", "text": "one design, two moods, user's choice. Both modes are checked at every step, not retrofitted at the end." },
+          { "lead": "Considered motion", "text": "interactions that guide, never distract. Reduced-motion preferences are respected without exception." },
+          { "lead": "Accessibility baked in", "text": "contrast, focus, semantic structure. Keyboard paths and screen-reader output are verified before launch." }
+        ],
+        "ctaLabel": "Discuss a design project"
+      },
+      "development": {
+        "badge": "Web Development",
+        "heading": "Code that earns its place",
+        "paragraphs": [
+          "I build with Astro because it ships what's needed and nothing else. The result is sites that score well in audits, feel fast in the hand, and don't grow brittle over time.",
+          "Architecture matters as much as output: typed content, predictable component boundaries, and a build pipeline a future developer (or future you) can pick up without a guided tour."
+        ],
+        "included": [
+          { "lead": "Astro + Tailwind", "text": "modern stack, minimal JavaScript, clean HTML. The browser renders the page almost instantly, with no hydration tax." },
+          { "lead": "Typed content collections", "text": "structured blog, projects, and data. Schema validation runs at build time, so broken content never ships." },
+          { "lead": "Forms & integrations", "text": "protected, GDPR-aware, hooked into your tools. Submissions reach your inbox or CRM without leaking client-side." },
+          { "lead": "Hosting & deploy", "text": "Netlify, Vercel, Cloudflare, or your own infra. Preview deploys for every branch, so changes can be reviewed before they go live." },
+          { "lead": "Version control & CI", "text": "git-based workflow, repeatable deploys. Automated checks gate every pull request before merge." },
+          { "lead": "Handover documentation", "text": "code, keys, and a README you can actually read. Written so a future developer (or future you) can pick the project up without a tour." }
+        ],
+        "ctaLabel": "See recent projects"
+      },
+      "performance": {
+        "badge": "Performance",
+        "heading": "Fast pages, found pages",
+        "paragraphs": [
+          "Speed and search visibility aren't features to add at the end — they're constraints to honour from the first commit. Every second a page loads costs attention, ranking, and trust.",
+          "I work to measurable targets, not vibes. Core Web Vitals, technical SEO, and accessibility are tracked, tuned, and verified before launch — and the dashboards stay yours after handover."
+        ],
+        "included": [
+          { "lead": "Core Web Vitals", "text": "LCP, INP, and CLS held to Google's thresholds. Measured on real devices, not just synthetic tests." },
+          { "lead": "Image pipeline", "text": "modern formats, responsive sizes, lazy loading. Hero images art-directed so they look right on every screen." },
+          { "lead": "Technical SEO", "text": "metadata, sitemaps, structured data, OG images. All wired up and validated before the first crawl." },
+          { "lead": "Accessibility", "text": "WCAG-aware markup and verified focus order. Tested with a screen reader and the keyboard alone, not just a contrast checker." },
+          { "lead": "Lighthouse audits", "text": "measurable scores delivered with the site. Repeatable in CI so they don't quietly drift after launch." },
+          { "lead": "Privacy-friendly analytics", "text": "useful data, no cookie banner. Self-hosted or vendor-anonymised, never sold on." }
+        ],
+        "ctaLabel": "Start a project"
+      },
+      "process": {
+        "badge": "How it works",
+        "heading": "A clear, honest process",
+        "lead": "Four stages, one point of contact, no surprises.",
+        "steps": [
+          { "title": "Discovery", "description": "A conversation about your goals, your audience, and what success looks like. No obligation." },
+          { "title": "Proposal", "description": "A clear scope, timeline, and cost. One page, plain language, fixed price." },
+          { "title": "Design & Build", "description": "Short cycles with regular check-ins. You see the site evolve as it's built." },
+          { "title": "Launch & Support", "description": "Deploy, hand over, stay available. Iteration after launch is straightforward." }
+        ]
+      },
+      "cta": {
+        "badge": "Let's talk",
+        "heading": "Have a project in mind?",
+        "description": "Send a short note about what you're building and what you need. I read every message and reply within a working day.",
+        "primary": "Start a project",
+        "secondary": "More about me"
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact — Astro Rocket",
+        "description": "Starting something new? I design and build new websites from scratch — tell me about your project and I'll get back to you within 1 business day."
+      },
+      "hero": {
+        "badge": "Start a project",
+        "titleLead": "Tell me about your",
+        "titleHighlight": "new project",
+        "description": "I design and build new websites from scratch — every project, start to finish, by me. Share a few details below and I'll get back to you within 1 business day."
+      },
+      "formTitle": "Project details",
+      "channelsTitle": "Other channels",
+      "channelsSubtitle": "Prefer a direct channel? Pick whichever works best.",
+      "emailLabel": "Email",
+      "emailNote": "Drop us a line",
+      "socialNote": "Follow along",
+      "basedIn": "Based in {country}"
+    },
+    "home": {
+      "meta": {
+        "title": "Astro Rocket — Astro 7 starter theme",
+        "description": "A production-ready Astro 7 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on."
+      },
+      "hero": {
+        "badge": "Available for new projects",
+        "titleLine1": "Astro Rocket —",
+        "titleLine2": "Web Designer",
+        "titleLine3": "& Developer",
+        "description": "Astro 7 starter with 12 beautiful themes, 57+ components, dark mode and a fast, modern foundation to build anything on.",
+        "github": "Get it on GitHub",
+        "getStarted": "Get started"
+      },
+      "services": {
+        "badge": "Services",
+        "heading": "What I do",
+        "lead": "From concept to launch.",
+        "learnMore": "Learn more",
+        "cards": [
+          { "icon": "layout", "title": "Web Design", "description": "Thoughtful layouts that put your content first. Designed for clarity, balance, and the way people actually read on the web." },
+          { "icon": "code", "title": "Web Development", "description": "Modern sites built with Astro and Tailwind. Lean, accessible, and ready to scale with your business — no template lock-in." },
+          { "icon": "zap", "title": "SEO & Performance", "description": "Pages that load instantly and rank well from launch. Core Web Vitals, metadata, and structured data, done properly." }
+        ]
+      },
+      "portfolio": {
+        "badge": "Selected work",
+        "heading": "Projects I've built",
+        "lead": "A selection of recent work.",
+        "viewAll": "View all projects"
+      },
+      "testimonials": {
+        "badge": "Testimonials",
+        "heading": "What clients say",
+        "lead": "Replace these with your own client quotes.",
+        "items": [
+          { "quote": "The new site launched on time and hit every goal we set. Performance improved dramatically — load times dropped and the feedback from our customers has been overwhelmingly positive.", "name": "Alex Morgan", "role": "Founder, Bright Studio" },
+          { "quote": "Straightforward from first conversation to final handover. The right questions were asked, we were kept in the loop throughout, and the end result exceeded what we imagined. Would recommend without hesitation.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }
+        ]
+      },
+      "aboutTeaser": {
+        "badge": "About me",
+        "headingLine1": "Designer, developer,",
+        "headingLine2": "and blogger.",
+        "para1WithLocation": "Sixteen years of hands-on experience, based in {location} and available for clients worldwide. I build with Astro because it aligns with how I think about the web: lean, purposeful, and built to last.",
+        "para1NoLocation": "Sixteen years of hands-on experience and available for clients worldwide. I build with Astro because it aligns with how I think about the web: lean, purposeful, and built to last.",
+        "para2": "On the blog, I share the ideas and decisions that shape my work.",
+        "moreAboutMe": "More about me",
+        "statsIntro": "A few things about me.",
+        "stat1": "16 Years Experience",
+        "stat2": "Building with Astro",
+        "stat3": "Working worldwide",
+        "basedIn": "Based in"
+      },
+      "blog": {
+        "badge": "From the blog",
+        "heading": "Featured",
+        "viewAll": "View all posts"
+      },
+      "cta": {
+        "badge": "Let's talk",
+        "heading": "Starting something new?",
+        "description": "I design and build new websites from scratch — every project, start to finish, by me. Tell me what you have in mind.",
+        "primary": "Start a project",
+        "secondary": "More about me"
+      }
+    }
   }
 }

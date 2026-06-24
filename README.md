@@ -110,27 +110,47 @@ const i18nConfig: I18nConfig = {
 
 Astro's native i18n is wired up automatically when `enabled: true` AND `locales.length > 1`. With `prefixDefaultLocale: false`, the default locale stays at the site root and additional locales live under `/<locale>/`.
 
-#### Adding a page in another language
+#### Pages in another language
 
-Astro is filesystem-routed, so a Dutch "About" page is just a new file:
+The bundled pages — the **home page, About, Services and Contact** — are already locale-aware, exactly like the blog and projects. Enable a second locale and `/<locale>`, `/<locale>/about`, `/<locale>/services` and `/<locale>/contact` are generated automatically, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/about.astro` files for these — remove any you added previously, as they would collide with the generated routes.
 
-```
-src/pages/about.astro          →  /about      (English, default)
-src/pages/nl/about.astro       →  /nl/about   (Dutch — you create this)
-```
+Their text lives in the locale dictionaries under the `pages.*` keys (`pages.home`, `pages.about`, `pages.services`, `pages.contact`). **To translate a page, copy those keys from `src/i18n/en.json` into your locale file (e.g. `src/i18n/nl.json`) and translate the values — there is no markup to touch.** Anything you haven't translated yet falls back to the default locale, so a localized page is never blank. The design lives in one shared view per page under `src/components/pages/views/`, rendered by both the default route and the `/<locale>/…` route.
 
-The simplest approach is to import a shared template component and pass the locale as a prop:
+Adding your **own** new page follows the same three-file pattern — a view holding the design, a default-locale route, and a locale-prefixed route:
 
 ```astro
 ---
-// src/pages/nl/about.astro
-import AboutPage from '@/components/pages/AboutPage.astro';
+// src/components/pages/views/PricingView.astro — the design; copy comes from the dictionary
+import { t, defaultLocale } from '@/i18n';
+interface Props { locale?: string }
+const { locale = defaultLocale } = Astro.props;
 ---
-
-<AboutPage locale="nl" />
+<h1>{t('pages.pricing.heading', locale)}</h1>
 ```
 
-…or just write a Dutch version of the page directly. The `LanguageSwitcher` automatically builds links to `/nl/<current-path>` for every configured locale, so as soon as the file exists, visitors can switch to it.
+```astro
+---
+// src/pages/pricing.astro          →  /pricing            (default locale)
+import PricingView from '@/components/pages/views/PricingView.astro';
+import { defaultLocale } from '@/i18n';
+---
+<PricingView locale={defaultLocale} />
+```
+
+```astro
+---
+// src/pages/[locale]/pricing.astro →  /<locale>/pricing   (every other locale)
+import PricingView from '@/components/pages/views/PricingView.astro';
+import { getSecondaryLocales } from '@/i18n';
+export function getStaticPaths() {
+  return getSecondaryLocales().map((locale) => ({ params: { locale } }));
+}
+const { locale } = Astro.params;
+---
+<PricingView locale={locale} />
+```
+
+For lists and structured sections (an array of FAQ items, feature cards, …) use `tData('pages.pricing.faqs', locale)`, which returns arrays/objects from the dictionary with the same default-locale fallback as `t()`. Or, for a quick one-off, just write a standalone `src/pages/nl/pricing.astro` directly. Either way, the `LanguageSwitcher` automatically builds links to `/<locale>/<current-path>` for every configured locale.
 
 #### Translating UI strings
 
@@ -176,7 +196,7 @@ src/content/projects/nl/studio-portfolio.mdx
 
 > **Switching the default locale.** Changing `defaultLocale` in `i18n.config.ts` is a routing label — it controls which locale serves at the site root, not which content folder gets read. To make a different language the default, also rename the matching content folder (e.g. `src/content/blog/en/` → `src/content/blog/zh-CN/`) so the root URL resolves to the right posts. The locale code in `i18n.config.ts` and the folder name under `src/content/blog/` must match.
 
-> **Localized blog routing is automatic.** Enable a locale in `i18n.config.ts`, drop posts under its folder (e.g. `src/content/blog/nl/`), and the whole blog is served at that locale's prefix with no extra wiring: the index (`/nl/blog`), individual posts (`/nl/blog/<slug>`), pagination (`/nl/blog/page/N`) and tag archives (`/nl/blog/tag/<tag>`) are all generated, and every in-locale link — cards, tag chips, pagination, breadcrumbs, related posts — stays inside that locale. The `defaultLocale` keeps its prefix-free URLs (`/blog`). A locale with no posts yet still gets a `/<locale>/blog` index that shows the empty state, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/blog*` files yourself — remove any you added previously, as they would collide with the generated routes. (Static pages like `/nl/about` are still yours to create, as shown above.)
+> **Localized blog routing is automatic.** Enable a locale in `i18n.config.ts`, drop posts under its folder (e.g. `src/content/blog/nl/`), and the whole blog is served at that locale's prefix with no extra wiring: the index (`/nl/blog`), individual posts (`/nl/blog/<slug>`), pagination (`/nl/blog/page/N`) and tag archives (`/nl/blog/tag/<tag>`) are all generated, and every in-locale link — cards, tag chips, pagination, breadcrumbs, related posts — stays inside that locale. The `defaultLocale` keeps its prefix-free URLs (`/blog`). A locale with no posts yet still gets a `/<locale>/blog` index that shows the empty state, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/blog*` files yourself — remove any you added previously, as they would collide with the generated routes. (The bundled static pages — home, About, Services and Contact — are generated for every locale the same way; you translate their text in `src/i18n/<locale>.json`, as shown in *Pages in another language* above.)
 >
 > On blog posts, the `LanguageSwitcher` and the `hreflang` tags link to each translation's **real** URL — paired by canonical `uid` when the posts declare one (so a translation can live at a different slug, `/blog/hello` ↔ `/nl/blog/hallo`), otherwise by an identical slug. A locale with no translation of the current post is dropped from `hreflang`, and the switcher falls back to that locale's blog index instead of a dead URL. (Other page types resolve alternates by swapping the locale segment, which is correct when slugs match across locales.)
 >
