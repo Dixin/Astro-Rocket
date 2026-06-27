@@ -11,8 +11,8 @@
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://img.shields.io/github/stars/hansmartensdev/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=hansmartensdev.astro-rocket" alt="Visitors" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://img.shields.io/github/stars/Dixin/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=Dixin.astro-rocket" alt="Visitors" /></a>
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@ Astro Rocket is a **free, lightning-fast Astro 7 starter theme to build anything
 
 Built on Astro 7 and Tailwind CSS v4.
 
-**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
+**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Beyond.ms](https://Beyond.ms)**
 
 > **Origins & credits.** Astro Rocket was originally forked from [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Velocity provided the solid base — a well-engineered Astro boilerplate with a thoughtful design system and component library — and full credit for that foundation goes to the Southwell Media team. Since then, Astro Rocket has evolved into a theme in its own right, with far more to offer than the original: live colour-theme switching, built-in i18n, static search, project galleries with video, blog comments, durable internal links, and much more — see [What Astro Rocket has to offer](#what-astro-rocket-has-to-offer) below.
 
@@ -200,7 +200,7 @@ The whole system is build-time. No client-side routing, no framework hydration f
 
 ```bash
 # Clone the repository
-git clone https://github.com/hansmartensdev/astro-rocket.git my-project
+git clone https://github.com/Dixin/Astro-Rocket.git my-project
 cd my-project
 
 # Install dependencies

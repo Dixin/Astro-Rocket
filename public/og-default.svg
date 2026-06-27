@@ -25,7 +25,7 @@
         fill="#60a5fa" fill-opacity="0.25" stroke="#93c5fd" stroke-opacity="0.4" stroke-width="1"/>
   <text x="600" y="488" font-size="13" text-anchor="middle" letter-spacing="1.5"
         fill="#dbeafe"
-        font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">hansmartens.dev</text>
+        font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Beyond.ms</text>
 
   <!-- Corner marks -->
   <path d="M 36 60 L 36 36 L 60 36"     stroke="#93c5fd" stroke-width="1.5" fill="none" stroke-opacity="0.45"/>

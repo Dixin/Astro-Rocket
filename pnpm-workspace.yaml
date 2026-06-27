@@ -1,0 +1,4 @@
+allowBuilds:
+  workerd: true
+packages:
+  - 'packages/*'
