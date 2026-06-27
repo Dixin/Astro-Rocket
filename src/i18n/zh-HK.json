@@ -301,7 +301,7 @@
         "description": "Astro Rocket 是免費、開源，且採用 MIT 許可證。瀏覽源代碼、打開問題、提交 PR，或者直接克隆並構建一些很棒的東西。",
         "button": "在 GitHub 上查看",
         "cards": [
-          { "title": "由 Hans Martens 製作", "text": "Astro Rocket 由 <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 text-brand-500 hover:text-brand-300 transition-colors\">Hans Martens</a> 設計和構建 — 網頁設計師和開發者，將其作為客戶項目的基礎。" },
+          { "title": "由 Beyond.ms 製作", "text": "Astro Rocket 由 <a href=\"https://Beyond.ms\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 text-brand-500 hover:text-brand-300 transition-colors\">Beyond.ms</a> 設計和構建 — 網頁設計師和開發者，將其作為客戶項目的基礎。" },
           { "title": "MIT 許可證", "text": "可免費用於個人和商業項目。無需署名，但在 GitHub 上點贊總是受歡迎的。" },
           { "title": "積極維護", "text": "該主題隨著新的 Astro 版本保持更新，並根據社區反饋定期改進。" }
         ]
