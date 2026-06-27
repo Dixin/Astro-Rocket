@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Astro Rocket — A production-ready Astro 7 theme built on Tailwind CSS v4",
   "type": "module",
-  "author": "Hans Martens",
+  "author": "Beyond.ms",
   "license": "MIT",
   "keywords": [
     "astro",
@@ -19,11 +19,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hansmartensdev/astro-rocket"
+    "url": "https://github.com/Dixin/astro-rocket"
   },
-  "homepage": "https://github.com/hansmartensdev/astro-rocket#readme",
+  "homepage": "https://github.com/Dixin/astro-rocket#readme",
   "bugs": {
-    "url": "https://github.com/hansmartensdev/astro-rocket/issues"
+    "url": "https://github.com/Dixin/astro-rocket/issues"
   },
   "scripts": {
     "dev": "astro dev",
