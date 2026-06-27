@@ -25,7 +25,7 @@ interface ScriptLine {
 // Astro Rocket setup flow: clone → install → dev
 const script: ScriptLine[] = [
   // Step 1: clone
-  { text: '$ git clone https://github.com/hansmartensdev/Astro-Rocket.git', delay: 1200, type: 'command' },
+  { text: '$ git clone https://github.com/Dixin/Astro-Rocket.git', delay: 1200, type: 'command' },
   { text: '', delay: 200, type: 'command' },
   { text: 'Cloning into \'Astro-Rocket\'...', delay: 300, type: 'prompt-hint' },
   { text: '✔  Repository cloned', delay: 600, type: 'success' },

@@ -22,7 +22,7 @@ This code of conduct applies to all project spaces — GitHub issues, pull reque
 
 ## Enforcement
 
-Instances of unacceptable behaviour may be reported to [hello@hansmartens.dev](mailto:hello@hansmartens.dev). All reports will be reviewed and handled with discretion. Maintainers reserve the right to remove, edit, or reject contributions that do not align with this code of conduct, and to temporarily or permanently exclude anyone whose behaviour is deemed harmful to the project.
+Instances of unacceptable behaviour may be reported. All reports will be reviewed and handled with discretion. Maintainers reserve the right to remove, edit, or reject contributions that do not align with this code of conduct, and to temporarily or permanently exclude anyone whose behaviour is deemed harmful to the project.
 
 ## Attribution
 
