@@ -11,8 +11,8 @@
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://img.shields.io/github/stars/hansmartensdev/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=hansmartensdev.astro-rocket" alt="Visitors" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://img.shields.io/github/stars/Dixin/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=Dixin.astro-rocket" alt="Visitors" /></a>
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@ Astro Rocket is a **launch-ready starter theme** for web designers, developers, 
 
 It ships with a full blog, a complete component library, a built-in SEO layer, dark mode, a contact form, and 12 colour themes you can switch with one click. It's built on Astro 7 and Tailwind CSS v4.
 
-**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
+**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Beyond.ms](https://Beyond.ms)**
 
 > **Astro Rocket is a fork of [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com).** Velocity is the foundation — a powerful Astro boilerplate with a comprehensive design system and component library. Full credit to the Southwell Media team for that work. Astro Rocket builds on it with a different goal: a complete, ready-to-launch website where you only change the text to make it your own.
 
@@ -54,7 +54,7 @@ The following changes were made to the free Velocity theme to create Astro Rocke
 | **Colour mode** | Binary `localStorage` toggle | 3-state picker — System / Light / Dark in `localStorage`, with `prefers-color-scheme` live tracking under 'System' (see [Colour Mode](#colour-mode)) |
 | **Target audience** | Developers & agencies | Web designers, developers, bloggers, and portfolio sites |
 | **Ready to launch** | Boilerplate starting point | Fully styled pages — replace the text and your site is live |
-| **Maintained by** | Southwell Media | Hans Martens |
+| **Maintained by** | Southwell Media | Beyond.ms |
 
 ---
 
@@ -223,7 +223,7 @@ The whole system is build-time. No client-side routing, no framework hydration f
 
 ```bash
 # Clone the repository
-git clone https://github.com/hansmartensdev/astro-rocket.git my-project
+git clone https://github.com/Dixin/Astro-Rocket.git my-project
 cd my-project
 
 # Install dependencies
@@ -945,12 +945,12 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Links
 
-- [Astro Rocket on GitHub](https://github.com/hansmartensdev/astro-rocket)
+- [Astro Rocket on GitHub](https://github.com/Dixin/Astro-Rocket)
 - [Velocity — the original theme](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com)
 - [Astro Documentation](https://docs.astro.build)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
 
 ---
 
-**Astro Rocket** is designed and maintained by [Hans Martens](https://hansmartens.dev).
+**Astro Rocket** is designed and maintained by [Beyond.ms](https://Beyond.ms).
 Built on [Velocity](https://github.com/southwellmedia/velocity) — the original theme by [Southwell Media](https://southwellmedia.com).
