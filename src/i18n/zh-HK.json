@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "skipToContent": "跳至內容",
+    "openMenu": "打開菜單",
+    "closeMenu": "關閉菜單",
+    "selectLanguage": "選擇語言",
+    "currentLanguage": "當前語言",
+    "items": {
+      "services": "服務",
+      "projects": "項目",
+      "blog": "博客",
+      "about": "關於",
+      "contact": "聯繫"
+    }
+  },
+  "common": {
+    "readMore": "閱讀更多",
+    "loading": "加載中…",
+    "backToTop": "返回頂部",
+    "search": "搜索",
+    "submit": "提交",
+    "cancel": "取消",
+    "next": "下一頁",
+    "previous": "上一頁"
+  },
+  "blog": {
+    "title": "博客",
+    "description": "最新文章和更新",
+    "readingTime": "{minutes} 分鐘閱讀",
+    "publishedOn": "發布於 {date}",
+    "updatedOn": "更新於 {date}",
+    "writtenBy": "作者 {author}",
+    "tagsLabel": "標籤",
+    "featured": "精選",
+    "draft": "草稿",
+    "noPostsFound": "未找到文章。",
+    "tableOfContents": "目錄",
+    "shareThisPost": "分享此文章",
+    "relatedPosts": "相關文章",
+    "share": "分享：",
+    "shareOn": "分享到 {platform}",
+    "copyLink": "複製連結"
+  },
+  "comments": {
+    "title": "評論"
+  },
+  "projects": {
+    "title": "項目",
+    "description": "我構建的項目",
+    "viewProject": "查看項目",
+    "viewSource": "查看源碼",
+    "noProjectsFound": "未找到項目。"
+  },
+  "pagination": {
+    "page": "第 {current} 頁，共 {total} 頁",
+    "label": "分頁",
+    "previousPage": "上一頁",
+    "nextPage": "下一頁"
+  },
+  "errors": {
+    "pageNotFound": "頁面未找到",
+    "pageNotFoundMessage": "您正在尋找的頁面不存在或已移動。",
+    "goHome": "返回首頁",
+    "badge": "404 — 頁面未找到",
+    "titleLead": "頁面未",
+    "titleHighlight": "找到。",
+    "description": "此頁面已移動、被刪除，或從未存在過。讓我們幫你回到正軌。",
+    "backHome": "返回首頁",
+    "browseBlog": "瀏覽博客",
+    "tryInstead": "試試這些選項",
+    "projectsDesc": "精選作品和案例研究。",
+    "blogDesc": "關於設計、代碼和工藝的筆記。",
+    "contactTitle": "聯繫",
+    "contactDesc": "開始關於你的項目的對話。"
+  },
+  "newsletter": {
+    "heading": "訂閱電子報",
+    "description": "在你的收件箱中獲取最新文章。",
+    "emailPlaceholder": "輸入你的電子郵件",
+    "subscribe": "訂閱",
+    "subscribing": "訂閱中…",
+    "success": "感謝你的訂閱！",
+    "genericError": "出現錯誤",
+    "error": "訂閱失敗。請再試一次。"
+  },
+  "contact": {
+    "heading": "聯繫",
+    "name": "姓名",
+    "email": "電子郵件",
+    "subject": "主題",
+    "message": "訊息",
+    "send": "發送訊息",
+    "sending": "發送中…",
+    "success": "訊息發送成功！",
+    "genericError": "出現錯誤",
+    "error": "發送訊息失敗。請再試一次。"
+  },
+  "theme": {
+    "selectTheme": "選擇主題",
+    "lightMode": "淺色模式",
+    "darkMode": "深色模式",
+    "systemMode": "系統",
+    "toggleTheme": "切換主題"
+  },
+  "footer": {
+    "copyright": "© {year} {siteName}. 保留所有權利。",
+    "builtWith": "使用 Astro Rocket 構建",
+    "followOn": "在 {platform} 上關注我們"
+  },
+  "pages": {
+    "about": {
+      "meta": {
+        "title": "關於 Astro Rocket — Astro 7 啟動模板",
+        "description": "Astro Rocket 是一個生產就緒的 Astro 7 啟動模板，包含 12 個主題、57+ 組件、內建國際化、深色模式，以及快速啟動所需的一切。"
+      },
+      "hero": {
+        "badge": "關於",
+        "titleLead": "Astro Rocket —",
+        "typingWords": ["Astro 7 啟動模板", "生產就緒", "12 個主題", "57+ 組件", "深色模式", "內建國際化", "零配置 SEO"],
+        "description": "一個免費的、生產就緒的 Astro 7 啟動模板，包含構建快速、現代網站所需的一切——無需從零開始。"
+      },
+      "intro": {
+        "badge": "免費且開源",
+        "heading": "任何項目的堅實基礎",
+        "paragraphs": [
+          "Astro Rocket 是一個基於 Astro 7 的生產就緒啟動模板。它提供完整的組件庫、12 個精心設計的主題、深色模式、內建國際化以及博客功能——讓你可以專注於構建項目，而不是樣板代碼。",
+          "它是免費的，採用 MIT 許可，並列在官方 Astro 主題目錄中。克隆它，自定義它，並發布你引以為傲的作品。"
+        ],
+        "facts": [
+          { "icon": "rocket", "title": "Astro 7", "description": "基於最新的 Astro 發行版構建。" },
+          { "icon": "layout", "title": "12 個主題", "description": "只需一行即可切換主題。" },
+          { "icon": "code-2", "title": "57+ 組件", "description": "可組合的，生產就緒。" },
+          { "icon": "sparkles", "title": "深色模式", "description": "內建，無需額外設置。" },
+          { "icon": "award", "title": "內建國際化", "description": "開箱即用的多語言支持。" },
+          { "icon": "zap", "title": "零配置 SEO", "description": "包含結構化數據和元標籤。" }
+        ]
+      },
+      "principles": {
+        "badge": "設計原則",
+        "heading": "有意圖地構建",
+        "lead": "Astro Rocket 中的每一個決策——從組件結構到默認配置——都遵循相同的三個原則。",
+        "items": [
+          { "icon": "zap", "title": "性能優先", "description": "默認情況下無 JavaScript。每個組件都針對速度、核心網頁指標和精簡輸出進行優化。" },
+          { "icon": "award", "title": "開發者體驗", "description": "全程使用 TypeScript，提供合理的默認值，以及可以直接放入任何頁面的組件庫。" },
+          { "icon": "rocket", "title": "從零開始的現代化", "description": "Astro 7、Tailwind CSS 4，以及易於擴展和維護的乾淨架構。" }
+        ]
+      },
+      "stack": {
+        "badge": "工具與技術",
+        "title": "技術棧",
+        "description": "驅動 Astro Rocket 的技術——為性能、優秀的開發者體驗和長期可靠性而選擇。"
+      },
+      "faq": {
+        "badge": "值得了解",
+        "heading": "常見問題",
+        "lead": "開始之前你需要了解的一切。",
+        "cards": [
+          {
+            "icon": "rocket",
+            "title": "關於 Astro",
+            "items": [
+              { "question": "什麼是 Astro？", "answer": "Astro 是一個為內容驅動網站構建的現代化網頁框架。默認情況下不發送任何 JavaScript —— 只發送頁面實際需要的內容。結果是快速的加載時間、優秀的核心網頁指標分數，以及精簡且可維護的代碼。" },
+              { "question": "為什麼要使用 Astro？", "answer": "Astro 是內容密集型網站的理想工具：最少的 JavaScript、乾淨的 HTML、開箱即用的優秀 SEO，以及不干擾開發者的開發體驗。它精簡、有目的，並且構建持久。" },
+              { "question": "我可以用 Astro Rocket 構建什麼？", "answer": "作品集、商業網站、營銷頁面、博客、文檔網站 —— 任何內容驅動的項目。Astro Rocket 為你提供結構、組件和默認設置，讓你快速上手。" },
+              { "question": "Astro Rocket 是否列在官方 Astro 主題目錄中？", "answer": "是的。<a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> 列在官方 Astro 主題目錄中，作為免費的、可投入生產的主題。" },
+              { "question": "Astro Rocket 會跟上新的 Astro 版本嗎？", "answer": "是的。Astro Rocket 正在積極維護和更新，以跟踪新的 Astro 版本。請關注博客或查看 GitHub 倉庫以獲取更新。" }
+            ]
+          },
+          {
+            "icon": "code-2",
+            "title": "使用主題",
+            "items": [
+              { "question": "是否免費使用？", "answer": "是的，完全免費。Astro Rocket 採用 MIT 許可證 —— 可用於個人和商業項目，無需署名。" },
+              { "question": "如何切換主題？", "answer": "只需更改配置中的一行。Astro Rocket 提供 12 種精心設計的顏色主題 —— 無需修改任何 CSS，即可立即切換。" },
+              { "question": "是否支持 TypeScript？", "answer": "是的，TypeScript 在整個項目中使用。所有組件、配置和工具都是完全類型化的。" },
+              { "question": "如何為 i18n 添加自己的語言？", "answer": "Astro Rocket 的 i18n 是基於配置的。將你的語言添加到 i18n 配置文件中，創建對應的翻譯文件，路由和 UI 將自動適應。" },
+              { "question": "我應該在哪裡報告錯誤或建議功能？", "answer": "在 <a href=\"https://github.com/Dixin/Astro-Rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub 倉庫</a> 上打開問題或開始討論。歡迎貢獻和反饋。" }
+            ]
+          }
+        ]
+      },
+      "openSource": {
+        "badge": "開源",
+        "heading": "在開放中構建",
+        "description": "Astro Rocket 是免費的、開源的，並且採用 MIT 許可證。瀏覽源代碼、打開問題、提交 PR，或者只是克隆它並構建一些很棒的東西。",
+        "button": "在 GitHub 上查看",
+        "cards": [
+          { "title": "由 Beyond.ms 製作", "text": "Astro Rocket 由 <a href=\"https://Beyond.ms\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Beyond.ms</a> 設計和構建 — 他是一名網頁設計師和開發者，並將其作為客戶項目的基礎。" },
+          { "title": "MIT 許可證", "text": "可免費用於個人和商業項目。無需署名，但在 GitHub 上點贊總是受歡迎的。" },
+          { "title": "積極維護", "text": "該主題會隨著新的 Astro 版本保持更新，並根據社區反饋定期改進。" }
+        ]
+      },
+      "cta": {
+        "badge": "開始使用",
+        "heading": "準備好構建了嗎？",
+        "description": "克隆 Astro Rocket，選擇一個主題，並在幾分鐘內啟動你的下一個項目。",
+        "button": "開始使用"
+      }
+    },
+    "services": {
+      "meta": {
+        "title": "服務 — 網頁設計、開發與性能",
+        "description": "現代網站的三大核心服務：周到的設計、乾淨的 Astro 開發，以及可衡量的性能與 SEO。"
+      },
+      "includedLabel": "包含的內容",
+      "hero": {
+        "badge": "服務",
+        "titleLead": "我提供的服務 —",
+        "titleHighlight": "設計、開發與優化。",
+        "description": "三大核心服務，一致的標準。從第一個線框圖到最終的 Lighthouse 分數，每個項目都得到同樣的關注細節。",
+        "jumpLabels": ["網頁設計", "開發", "性能"]
+      },
+      "design": {
+        "badge": "網頁設計",
+        "heading": "有意圖的設計",
+        "paragraphs": [
+          "優秀的設計始於使用者。我設計的佈局圍繞您的內容和受眾，而不是隨著時間老化的趨勢。排版、間距和顏色的選擇以清晰為主，而非新奇。",
+          "每個螢幕都被考慮：桌面、平板，以及有人在公車站持有的手機。品牌在整個體驗中保持一致，小細節被視為設計的一部分，而不是裝飾。"
+        ],
+        "included": [
+          { "lead": "量身定制的佈局", "text": "為您的內容而設計，而非模板。每個部分都通過服務頁面目標來獲得其位置。" },
+          { "lead": "跨斷點響應式", "text": "手機、平板、桌面、超寬螢幕。佈局以意圖重新流動，而不僅僅是縮小以適應。" },
+          { "lead": "排版系統", "text": "可讀、可縮放、符合品牌。從頁面標題到說明文字的清晰層次，適合長篇閱讀。" },
+          { "lead": "明暗主題", "text": "一個設計，兩種氛圍，用戶選擇。每個步驟都檢查兩種模式，而不是事後補充。" },
+          { "lead": "考慮到的動態效果", "text": "引導而非分散注意力的互動。尊重減少動態效果的偏好，無一例外。" },
+          { "lead": "無障礙設計", "text": "對比度、焦點、語義結構。鍵盤路徑和螢幕閱讀器輸出在上線前均已驗證。" }
+        ],
+        "ctaLabel": "討論設計專案"
+      },
+      "development": {
+        "badge": "網頁開發",
+        "heading": "值得信賴的程式碼",
+        "paragraphs": [
+          "我使用 Astro 進行開發，因為它只提供所需的功能，沒有多餘的負擔。結果是網站在審核中得分高，操作流暢，且不會隨時間變得脆弱。",
+          "架構與輸出同樣重要：類型化內容、可預測的組件邊界，以及未來開發者（或未來的你）可以在沒有導覽的情況下接手的構建管線。"
+        ],
+        "included": [
+          { "lead": "Astro + Tailwind", "text": "現代化技術棧，最小化的 JavaScript，乾淨的 HTML。瀏覽器幾乎立即渲染頁面，沒有水合成本。" },
+          { "lead": "類型化內容集合", "text": "結構化的博客、項目和數據。模式驗證在構建時運行，因此損壞的內容永遠不會發布。" },
+          { "lead": "表單與整合", "text": "受保護的，符合 GDPR 的，與您的工具集成。提交內容直接到達您的收件箱或 CRM，不會洩漏到客戶端。" },
+          { "lead": "託管與部署", "text": "Netlify、Vercel、Cloudflare 或您自己的基礎設施。每個分支都有預覽部署，因此更改可以在上線前審核。" },
+          { "lead": "版本控制與 CI", "text": "基於 git 的工作流程，可重複的部署。自動檢查在每次合併前對每個拉取請求進行門控。" },
+          { "lead": "交接文檔", "text": "代碼、密鑰，以及您實際可以閱讀的 README。編寫方式使未來的開發者（或未來的你）可以在沒有導覽的情況下接手項目。" }
+        ],
+        "ctaLabel": "查看近期項目"
+      },
+      "performance": {
+        "badge": "效能",
+        "heading": "快速頁面，易於搜尋",
+        "paragraphs": [
+          "速度和搜尋可見性不是後期添加的功能——它們是從第一個提交開始就需要遵守的約束。每一秒的頁面加載都會影響注意力、排名和信任。",
+          "我以可衡量的目標工作，而不是憑感覺。核心網頁指標、技術 SEO 和無障礙設計在上線前都會被追蹤、調整和驗證——並且儀表板在交接後仍屬於您。"
+        ],
+        "included": [
+          { "lead": "核心網頁指標", "text": "LCP、INP 和 CLS 遵循 Google 的閾值。在真實設備上測量，而不僅僅是合成測試。" },
+          { "lead": "影像處理流程", "text": "現代格式、響應式尺寸、延遲加載。主圖像經過藝術指導，以確保在每個螢幕上都顯示正確。" },
+          { "lead": "技術 SEO", "text": "元資料、網站地圖、結構化數據、OG 圖像。所有內容在首次抓取前均已連接並驗證。" },
+          { "lead": "無障礙設計", "text": "符合 WCAG 的標記和驗證的焦點順序。僅使用螢幕閱讀器和鍵盤進行測試，而不僅僅是對比檢查器。" },
+          { "lead": "Lighthouse 審核", "text": "隨網站提供可衡量的分數。在 CI 中可重複執行，以防上線後悄悄偏移。" },
+          { "lead": "隱私友好的分析", "text": "有用的數據，無需 Cookie 橫幅。自託管或供應商匿名化，絕不出售。" }
+        ],
+        "ctaLabel": "開始專案"
+      },
+      "process": {
+        "badge": "流程",
+        "heading": "清晰、誠實的流程",
+        "lead": "四個階段，一個聯絡人，沒有驚喜。",
+        "steps": [
+          { "title": "探索", "description": "討論您的目標、受眾以及成功的標準。無需承諾。" },
+          { "title": "提案", "description": "明確的範圍、時間表和成本。一頁，簡單明瞭，固定價格。" },
+          { "title": "設計與建設", "description": "短週期，定期檢查。您可以看到網站在建設過程中的演變。" },
+          { "title": "上線與支援", "description": "部署、交接、保持可用。上線後的迭代非常簡單。" }
+        ]
+      },
+      "cta": {
+        "badge": "讓我們聊聊",
+        "heading": "開始新的項目？",
+        "description": "我從零開始設計和構建新網站——每個項目，從開始到完成，都是由我完成的。告訴我你的想法。",
+        "primary": "開始一個項目",
+        "secondary": "更多關於我"
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "联系 — 網頁設計、開發與性能",
+        "description": "開始新的項目？我從零開始設計和構建新網站——告訴我您的項目，我會在1個工作日內回覆您。"
+      },
+      "hero": {
+        "badge": "開始專案",
+        "titleLead": "告訴我您的",
+        "titleHighlight": "新項目",
+        "description": "我從零開始設計和構建新網站——每個項目，從開始到完成，都是由我完成的。請在下方分享一些細節，我會在1個工作日內回覆您。"
+      },
+      "formTitle": "項目詳情",
+      "channelsTitle": "其他渠道",
+      "channelsSubtitle": "更喜歡直接聯繫？選擇最適合您的方式。",
+      "emailLabel": "電子郵件",
+      "emailNote": "給我們留言",
+      "socialNote": "關注我們",
+      "basedIn": "位於 {country}"
+    },
+    "home": {
+      "meta": {
+        "title": "Astro Rocket — Astro 7 啟動模板",
+        "description": "Astro Rocket 是一個生產就緒的 Astro 7 啟動模板，包含 12 個主題、57+ 組件、內建國際化、深色模式，以及快速啟動所需的一切。"
+      },
+      "hero": {
+        "badge": "可用於新項目",
+        "titleLine1": "Astro Rocket —",
+        "titleLine2": "網頁設計師",
+        "titleLine3": "& 開發者",
+        "description": "Astro 7 啟動模板，包含 12 個精美主題、57+ 組件、深色模式，以及快速、現代的基礎，讓您可以構建任何項目。",
+        "github": "在 GitHub 上獲取",
+        "getStarted": "開始使用"
+      },
+      "services": {
+        "badge": "服務",
+        "heading": "我的服務",
+        "lead": "從概念到上線。",
+        "learnMore": "了解更多",
+        "cards": [
+          { "icon": "layout", "title": "網頁設計", "description": "精心設計的佈局，將您的內容放在首位。設計注重清晰、平衡，以及人們在網頁上的閱讀方式。" },
+          { "icon": "code", "title": "網頁開發", "description": "使用 Astro 和 Tailwind 構建現代網站。精簡、可訪問，並準備隨您的業務擴展——無模板鎖定。" },
+          { "icon": "zap", "title": "SEO 與性能", "description": "頁面即時加載，從啟動起就有良好的排名。核心網頁指標、元數據和結構化數據，正確完成。" }
+        ]
+      },
+      "portfolio": {
+        "badge": "精選作品",
+        "heading": "我建造的項目",
+        "lead": "最近作品的選擇。",
+        "viewAll": "查看所有項目"
+      },
+      "testimonials": {
+        "badge": "客戶評價",
+        "heading": "客戶怎麼說",
+        "lead": "用您自己的客戶評語替換這些。",
+        "items": [
+          { "quote": "新網站按時上線，達成了我們設定的每一個目標。性能顯著提升——加載時間下降，客戶反饋非常積極。", "name": "Alex Morgan", "role": "創始人，Bright Studio" },
+          { "quote": "從第一次對話到最終交付都很順利。提出了正確的問題，我們在整個過程中都保持了信息通暢，最終結果超出了我們的想像。毫不猶豫地推薦。", "name": "Sarah Chen", "role": "首席執行官，Luma Agency" }
+        ]
+      },
+      "aboutTeaser": {
+        "badge": "關於我",
+        "headingLine1": "設計師，開發者，",
+        "headingLine2": "以及博客作者。",
+        "para1WithLocation": "擁有十六年的實戰經驗，位於 {location}，並為全球客戶提供服務。我使用 Astro 進行構建，因為它與我對網頁的思考方式一致：精簡、有目的且持久。",
+        "para1NoLocation": "擁有十六年的實戰經驗，並為全球客戶提供服務。我使用 Astro 進行構建，因為它與我對網頁的思考方式一致：精簡、有目的且持久。",
+        "para2": "在博客中，我分享塑造我工作的想法和決策。",
+        "moreAboutMe": "更多關於我",
+        "statsIntro": "關於我的一些事情。",
+        "stat1": "16 年經驗",
+        "stat2": "使用 Astro 構建",
+        "stat3": "全球工作",
+        "basedIn": "位於"
+      },
+      "blog": {
+        "badge": "來自博客",
+        "heading": "精選",
+        "viewAll": "查看所有文章"
+      },
+      "cta": {
+        "badge": "讓我們聊聊",
+        "heading": "開始新的項目？",
+        "description": "我從零開始設計和構建新網站——每個項目，從開始到完成，都是由我完成的。告訴我你的想法。",
+        "primary": "開始一個項目",
+        "secondary": "更多關於我"
+      }
+    }
+  }
+}
