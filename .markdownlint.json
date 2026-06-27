@@ -16,5 +16,13 @@
     },
     "MD024": {
         "siblings_only": true
-    }
+    },
+    "MD033": {
+        "table_allowed_elements": [
+            "br"
+        ]
+    },
+    "MD041": {
+        "level": 2
+    },
 }
