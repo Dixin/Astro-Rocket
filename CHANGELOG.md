@@ -116,17 +116,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **Blog pagination, tag archives, and dynamic OG images** — new routes `blog/page/[page].astro` and `blog/tag/[tag].astro`, plus dynamic OG image endpoints `og/blog/[slug].svg.ts`, `og/blog/tag/[tag].svg.ts`, and `og/projects/[slug].svg.ts`. New `Pagination.astro`, `TagList.astro`, and `ShareButtons.astro` components, with shared helpers in `src/lib/blog.ts` and `src/lib/og.ts`.
 - **`Callout.astro` pattern** — new pattern component for pull-quotes and inline callouts; the existing pull-quote icon now lives inside the Callout card.
 - **Global arrow-slide hover pattern** — `arrow-right` / `arrow-left` icons now slide on hover everywhere via a standardised CSS pattern in `src/styles/global.css`.
-- **New project + blog content** — `src/content/projects/hans-martens.mdx`, expanded `astro-rocket.mdx` with a multi-image gallery, and a new post `src/content/blog/en/i18n-in-astro-rocket.mdx`.
+- **New project + blog content** — `src/content/projects/beyond-ms.mdx`, expanded `astro-rocket.mdx` with a multi-image gallery, and a new post `src/content/blog/en/i18n-in-astro-rocket.mdx`.
 
 ### Changed
 
 - **Header rework** (`src/components/layout/Header.astro`) — desktop breakpoint raised from `md` to `lg` to prevent tablet squeeze; theme-mode (light/dark) toggle promoted from the mobile menu to the header itself at every breakpoint; brand-coloured chrome neutralised in light mode so the header reads as neutral while keeping brand accents on hover/active states.
-- **Project hero redesign** (`ProjectHero.astro`, `ProjectLayout.astro`) — synced from the live `hansmartens.dev` site: cleaner meta line, brand placeholder fallback, back-nav button, optional FAQ schema, and dropped brand glow.
+- **Project hero redesign** (`ProjectHero.astro`, `ProjectLayout.astro`) — synced from the live `Beyond.ms` site: cleaner meta line, brand placeholder fallback, back-nav button, optional FAQ schema, and dropped brand glow.
 - **Project cards aligned with homepage selected-work layout** — image-less grid restored as the default, `arrow-up-right` icon now shows on every card (not just hover-active), and related-project cards on `projects/[slug]` are equalised in height with three cards instead of two.
-- **Blog index + post pages synced from `hansmartens.dev`** — refreshed `ArticleHero`, `BlogCard`, `BlogImageSVG`, `TableOfContents`, and the new "Follow along" section now matches between the blog index and individual posts.
+- **Blog index + post pages synced from `Beyond.ms`** — refreshed `ArticleHero`, `BlogCard`, `BlogImageSVG`, `TableOfContents`, and the new "Follow along" section now matches between the blog index and individual posts.
 - **Layout max-width** — single project pages, blog post pages, and the projects index now share the same `max-w-7xl` section width as the rest of the site.
 - **Contact copy** — homepage CTA + contact hero clarified to scope work to new builds only; contact form heading "Send a message" → "Project details".
-- **Homepage projects section** — replaced placeholder projects with Astro Rocket + Hans Martens Dev; redesigned section to mirror the projects-index layout 1:1.
+- **Homepage projects section** — replaced placeholder projects with Astro Rocket; redesigned section to mirror the projects-index layout 1:1.
 - **`global.css` + all 12 theme tokens** (`amber`, `blue`, `cyan`, `emerald`, `green`, `indigo`, `lime`, `magenta`, `orange`, `purple`, `sky`, `teal`, `violet`) received small token tweaks for header neutrality and the new arrow-slide pattern.
 - **404 page rewritten** with the same hero pattern as the rest of the marketing pages.
 
@@ -157,7 +157,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- **Native opt-in i18n** — internationalization is now built into the theme itself, no upstream CLI required. Locale-prefixed routes, a `LanguageSwitcher` dropdown in the header and mobile menu, `hreflang` alternates emitted from the SEO component, and a `t()` translation helper backed by JSON dictionaries (`src/i18n/<locale>.json`). English and Dutch ship out of the box; add more locales by editing `src/config/i18n.config.ts` and creating `src/i18n/<code>.json`. Resolves [#207](https://github.com/hansmartensdev/Astro-Rocket/issues/207).
+- **Native opt-in i18n** — internationalization is now built into the theme itself, no upstream CLI required. Locale-prefixed routes, a `LanguageSwitcher` dropdown in the header and mobile menu, `hreflang` alternates emitted from the SEO component, and a `t()` translation helper backed by JSON dictionaries (`src/i18n/<locale>.json`). English and Dutch ship out of the box; add more locales by editing `src/config/i18n.config.ts` and creating `src/i18n/<code>.json`. Resolves [#207](https://github.com/Dixin/Astro-Rocket/issues/207).
 - **`src/i18n/` module** with `t()`, `localizedPath()`, `swapLocaleInPath()`, `stripLocaleFromPath()`, `getLocaleFromPath()`, `isEnabled()`, and locale helpers. `t()` supports `{name}` placeholder interpolation and falls back to the default locale, then to the key itself, so partial translations are visible but non-fatal.
 - **`src/config/i18n.config.ts`** — new config file with master switch (`enabled`), `defaultLocale`, `locales[]`, `localeNames`, and `detectBrowserLocale`. Lives separately from `site.config.ts` so the i18n module can be unit-tested without pulling in `astro:env/server`.
 - **`LanguageSwitcher.astro`** — accessible pill dropdown with a globe icon, BCP 47 locale code, and full locale names. Pure HTML `<a hreflang lang>` links built via `swapLocaleInPath()` — no framework hydration, ~1 KB of inline JS for open/close. Renders nothing when i18n is disabled.

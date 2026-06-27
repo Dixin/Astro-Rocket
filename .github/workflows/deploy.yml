@@ -2,9 +2,9 @@ name: Deploy
 
 on:
   push:
-    branches: [color]
+    branches: [dev]
   pull_request:
-    branches: [color]
+    branches: [dev]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
