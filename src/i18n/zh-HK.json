@@ -21,7 +21,8 @@
     "submit": "提交",
     "cancel": "取消",
     "next": "下一頁",
-    "previous": "上一頁"
+    "previous": "上一頁",
+    "home": "首頁"
   },
   "blog": {
     "title": "博客",
@@ -39,7 +40,31 @@
     "relatedPosts": "相關文章",
     "share": "分享：",
     "shareOn": "分享到 {platform}",
-    "copyLink": "複製連結"
+    "copyLink": "複製連結",
+    "metaTitle": "博客 — Astro Rocket",
+    "metaDescription": "關於網頁設計、開發和網絡的文章，由 Astro Rocket 提供。",
+    "heroBadge": "所有文章",
+    "heroDescription": "關於 Astro、網頁性能、設計系統以及使用 Astro Rocket 構建的文章。",
+    "allPosts": "所有文章",
+    "noPosts": "未找到文章",
+    "pageMetaTitle": "博客 — 第 {page} 頁",
+    "pageMetaDescription": "第 {page} 頁，共 {total} 頁 — 關於 Astro、網頁性能、設計和網絡的文章。",
+    "pageBadge": "第 {page} 頁，共 {total} 頁",
+    "newestPosts": "最新文章",
+    "tagMetaTitle": "#{tag} — 博客",
+    "tagMetaDescription": "標籤為 \"{tag}\" 的文章。",
+    "tagBadge": "標籤",
+    "tagCountOne": "標籤為 \"{tag}\" 的文章 {count} 篇。",
+    "tagCountOther": "標籤為 \"{tag}\" 的文章 {count} 篇。",
+    "tagEmpty": "未找到該標籤的文章。",
+    "tagBackToAll": "返回所有文章",
+    "onThisPage": "在此頁面",
+    "backToBlog": "返回博客",
+    "updated": "更新於",
+    "followAlong": "關注我們",
+    "followAlongLead": "保持關注 — 獲取最新文章、想法和更新。",
+    "rssFeed": "RSS 訂閱",
+    "emailLabel": "電子郵件"
   },
   "comments": {
     "title": "評論"
