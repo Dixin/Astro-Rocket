@@ -41,7 +41,7 @@
     "share": "分享：",
     "shareOn": "分享到 {platform}",
     "copyLink": "複製連結",
-    "metaTitle": "博客 — Astro Rocket",
+    "metaTitle": "博客",
     "metaDescription": "關於網頁設計、開發和網絡的文章，由 Astro Rocket 提供。",
     "heroBadge": "所有文章",
     "heroDescription": "關於 Astro、網頁性能、設計系統以及使用 Astro Rocket 構建的文章。",
@@ -75,7 +75,7 @@
     "viewProject": "查看項目",
     "viewSource": "查看源碼",
     "noProjectsFound": "未找到項目。",
-    "metaTitle": "項目 — Astro Rocket",
+    "metaTitle": "項目",
     "metaDescription": "精選作品 — 由 Astro Rocket 構建的網站、工具和開源項目。",
     "heroBadge": "精選作品",
     "heroDescription": "我最引以為傲的作品。",
@@ -159,7 +159,7 @@
   "pages": {
     "about": {
       "meta": {
-        "title": "關於 Astro Rocket — Astro 7 啟動模板",
+        "title": "關於",
         "description": "Astro Rocket 是一個生產就緒的 Astro 7 啟動模板，包含 12 個主題、57+ 組件、內建國際化、深色模式，以及快速啟動所需的一切。"
       },
       "hero": {
@@ -350,7 +350,7 @@
     },
     "home": {
       "meta": {
-        "title": "Astro Rocket — Astro 7 啟動模板",
+        "title": "Astro 7 啟動模板",
         "description": "Astro Rocket 是一個生產就緒的 Astro 7 啟動模板，包含 12 個主題、57+ 組件、內建國際化、深色模式，以及快速啟動所需的一切。"
       },
       "hero": {
