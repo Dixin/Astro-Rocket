@@ -27,7 +27,7 @@ import { footerVariants, footerColumnGridVariants } from './footer.variants';
 import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import siteConfig from '@/config/site.config';
-import { t, getLocaleFromPath, defaultLocale } from '@/i18n';
+import { t, getLocaleFromPath } from '@/i18n';
 
 export interface NavItem {
   label: string;
@@ -70,8 +70,7 @@ interface Props extends HTMLAttributes<'footer'> {
   showCopyright?: boolean;
   /**
    * Custom copyright text (supports {year} and {siteName} placeholders).
-   * When omitted, the default locale shows the designer credit and other
-   * locales fall back to the localized `footer.copyright` string.
+   * When omitted, every locale uses the localized `footer.copyright` string.
    */
   copyright?: string;
   /** Legal links (Privacy, Terms, etc.) */
@@ -128,15 +127,11 @@ const allNavItems: NavItem[] = navItems;
 // Resolved legal links: prop wins, otherwise fall back to nav.config.ts
 const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks(locale);
 
-// Copyright resolution:
-// - An explicit `copyright` prop always wins.
-// - Otherwise the default locale keeps the full designer credit, while
-//   translated locales use the localized `footer.copyright` string (which
-//   omits the credit). Both support {year} and {siteName} placeholders.
-const defaultCopyright =
-  '© {year} {siteName}. Designed by <a href="https://hansmartens.dev" class="underline hover:text-foreground transition-colors" target="_blank" rel="noopener noreferrer">Hans Martens</a>.';
-const copyrightTemplate =
-  copyright ?? (locale === defaultLocale ? defaultCopyright : t('footer.copyright', locale));
+// Copyright resolution: an explicit `copyright` prop wins; otherwise every
+// locale uses the localized `footer.copyright` string (supports {year} and
+// {siteName} placeholders). Edit `footer.copyright` in `src/i18n/<locale>.json`
+// to change it — for example to add your own designer credit.
+const copyrightTemplate = copyright ?? t('footer.copyright', locale);
 
 // Process copyright text
 const currentYear = new Date().getFullYear();

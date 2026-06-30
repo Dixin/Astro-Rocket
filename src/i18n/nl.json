@@ -110,6 +110,8 @@
     "pageNotFound": "Pagina niet gevonden",
     "pageNotFoundMessage": "De pagina die je zoekt bestaat niet of is verplaatst.",
     "goHome": "Naar de homepagina",
+    "metaTitle": "Pagina niet gevonden — Astro Rocket",
+    "metaDescription": "Deze pagina is verplaatst, verwijderd of heeft nooit bestaan.",
     "badge": "404 — pagina niet gevonden",
     "titleLead": "Pagina niet",
     "titleHighlight": "gevonden.",

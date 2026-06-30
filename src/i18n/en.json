@@ -110,6 +110,8 @@
     "pageNotFound": "Page not found",
     "pageNotFoundMessage": "The page you're looking for doesn't exist or has moved.",
     "goHome": "Go to homepage",
+    "metaTitle": "Page not found — Astro Rocket",
+    "metaDescription": "This page has moved, been removed, or never existed in the first place.",
     "badge": "404 — page not found",
     "titleLead": "Page not",
     "titleHighlight": "found.",
