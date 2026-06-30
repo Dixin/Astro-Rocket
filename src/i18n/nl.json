@@ -41,7 +41,7 @@
     "share": "Delen:",
     "shareOn": "Deel op {platform}",
     "copyLink": "Link kopiëren",
-    "metaTitle": "Blog — Astro Rocket",
+    "metaTitle": "Blog",
     "metaDescription": "Artikelen over webdesign, ontwikkeling en het web door Astro Rocket.",
     "heroBadge": "Alle berichten",
     "heroDescription": "Artikelen over Astro, webprestaties, designsystemen en bouwen met Astro Rocket.",
@@ -75,7 +75,7 @@
     "viewProject": "Bekijk project",
     "viewSource": "Bekijk broncode",
     "noProjectsFound": "Geen projecten gevonden.",
-    "metaTitle": "Projecten — Astro Rocket",
+    "metaTitle": "Projecten",
     "metaDescription": "Geselecteerd werk — websites, tools en open-source projecten gebouwd door Astro Rocket.",
     "heroBadge": "Geselecteerd werk",
     "heroDescription": "Werk waar ik het meest trots op ben.",
@@ -110,7 +110,7 @@
     "pageNotFound": "Pagina niet gevonden",
     "pageNotFoundMessage": "De pagina die je zoekt bestaat niet of is verplaatst.",
     "goHome": "Naar de homepagina",
-    "metaTitle": "Pagina niet gevonden — Astro Rocket",
+    "metaTitle": "Pagina niet gevonden",
     "metaDescription": "Deze pagina is verplaatst, verwijderd of heeft nooit bestaan.",
     "badge": "404 — pagina niet gevonden",
     "titleLead": "Pagina niet",
@@ -161,7 +161,7 @@
   "pages": {
     "about": {
       "meta": {
-        "title": "Over Astro Rocket — Astro 7 starterthema",
+        "title": "Over",
         "description": "Astro Rocket is een productieklaar Astro 7 starterthema met 12 thema's, 57+ componenten, ingebouwde i18n, donkere modus en alles wat je nodig hebt om snel te lanceren."
       },
       "hero": {
@@ -333,7 +333,7 @@
     },
     "contact": {
       "meta": {
-        "title": "Contact — Astro Rocket",
+        "title": "Contact",
         "description": "Iets nieuws van plan? Ik ontwerp en bouw nieuwe websites vanaf nul — vertel me over je project en ik reageer binnen 1 werkdag."
       },
       "hero": {
@@ -352,7 +352,7 @@
     },
     "home": {
       "meta": {
-        "title": "Astro Rocket — Astro 7 starterthema",
+        "title": "Astro 7 starterthema",
         "description": "Een productieklaar Astro 7 starterthema met 12 prachtige thema's, 57+ componenten, ingebouwde i18n, donkere modus en een snelle, moderne basis om alles op te bouwen."
       },
       "hero": {

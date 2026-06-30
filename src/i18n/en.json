@@ -41,7 +41,7 @@
     "share": "Share:",
     "shareOn": "Share on {platform}",
     "copyLink": "Copy link",
-    "metaTitle": "Blog — Astro Rocket",
+    "metaTitle": "Blog",
     "metaDescription": "Articles on web design, development, and the web by Astro Rocket.",
     "heroBadge": "All posts",
     "heroDescription": "Articles on Astro, web performance, design systems, and building with Astro Rocket.",
@@ -75,7 +75,7 @@
     "viewProject": "View project",
     "viewSource": "View source",
     "noProjectsFound": "No projects found.",
-    "metaTitle": "Projects — Astro Rocket",
+    "metaTitle": "Projects",
     "metaDescription": "Selected work — websites, tools, and open-source projects built by Astro Rocket.",
     "heroBadge": "Selected work",
     "heroDescription": "Work I'm most proud of.",
@@ -110,7 +110,7 @@
     "pageNotFound": "Page not found",
     "pageNotFoundMessage": "The page you're looking for doesn't exist or has moved.",
     "goHome": "Go to homepage",
-    "metaTitle": "Page not found — Astro Rocket",
+    "metaTitle": "Page not found",
     "metaDescription": "This page has moved, been removed, or never existed in the first place.",
     "badge": "404 — page not found",
     "titleLead": "Page not",
@@ -161,7 +161,7 @@
   "pages": {
     "about": {
       "meta": {
-        "title": "About Astro Rocket — Astro 7 Starter Theme",
+        "title": "About",
         "description": "Astro Rocket is a production-ready Astro 7 starter theme with 12 themes, 57+ components, built-in i18n, dark mode, and everything you need to launch fast."
       },
       "hero": {
@@ -333,7 +333,7 @@
     },
     "contact": {
       "meta": {
-        "title": "Contact — Astro Rocket",
+        "title": "Contact",
         "description": "Starting something new? I design and build new websites from scratch — tell me about your project and I'll get back to you within 1 business day."
       },
       "hero": {
@@ -352,7 +352,7 @@
     },
     "home": {
       "meta": {
-        "title": "Astro Rocket — Astro 7 starter theme",
+        "title": "Astro 7 starter theme",
         "description": "A production-ready Astro 7 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on."
       },
       "hero": {

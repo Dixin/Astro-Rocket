@@ -144,3 +144,36 @@ describe('i18n swapLocaleInPath()', () => {
     expect(swapLocaleInPath('/about', 'nl')).toBe('/about');
   });
 });
+
+describe('i18n meta titles never embed the site name', () => {
+  // SEO.astro renders the document <title> as `${title} — ${siteConfig.name}`,
+  // so any meta-title dictionary value that already contains the site name
+  // would render it twice (e.g. "Blog — Astro Rocket — Astro Rocket"). Every
+  // key below feeds that `title` prop and must therefore stay brand-free.
+  //
+  // The shipped brand is checked as a literal on purpose: importing
+  // site.config.ts here would pull in `astro:env/server` (see i18n.config.ts),
+  // and this guards the theme's own default dictionaries against a regression.
+  const SITE_NAME = 'Astro Rocket';
+  const METATITLE_KEYS = [
+    'blog.metaTitle',
+    'blog.pageMetaTitle',
+    'blog.tagMetaTitle',
+    'projects.metaTitle',
+    'projects.pageMetaTitle',
+    'projects.tagMetaTitle',
+    'errors.metaTitle',
+    'pages.home.meta.title',
+    'pages.about.meta.title',
+    'pages.services.meta.title',
+    'pages.contact.meta.title',
+  ];
+
+  const cases = ['en', 'nl'].flatMap((locale) =>
+    METATITLE_KEYS.map((key) => [locale, key] as [string, string])
+  );
+
+  it.each(cases)('%s "%s" does not include the site name', (locale, key) => {
+    expect(t(key, locale)).not.toContain(SITE_NAME);
+  });
+});
