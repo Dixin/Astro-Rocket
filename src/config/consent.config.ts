@@ -52,6 +52,8 @@ const consentConfig: ConsentConfig = {
     settingsHeading: 'Privacy Settings',
     alwaysOnLabel: 'Always on',
     privacyPolicyLabel: 'Privacy Policy',
+    bannerAriaLabel: 'Cookie consent',
+    reopenerAriaLabel: 'Open cookie settings',
   },
 
   /** Milliseconds before banner slides in */
