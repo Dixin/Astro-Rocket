@@ -34,6 +34,8 @@ const privacyPolicyUrl = PUBLIC_PRIVACY_POLICY_URL;
 const ui = { ...consentConfig.ui, ...uiOverrides };
 const alwaysOnLabel = alwaysOnLabelProp ?? ui.alwaysOnLabel ?? 'Always on';
 const privacyPolicyLabel = ui.privacyPolicyLabel ?? 'Privacy Policy';
+const bannerAriaLabel = ui.bannerAriaLabel ?? 'Cookie consent';
+const reopenerAriaLabel = ui.reopenerAriaLabel ?? 'Open cookie settings';
 
 const isTop = position === 'top';
 
@@ -60,7 +62,7 @@ const configJson = JSON.stringify(consentConfig);
       ]}
       role="dialog"
       aria-modal="false"
-      aria-label="Cookie consent"
+      aria-label={bannerAriaLabel}
     >
       <div class="consent-banner-inner">
         <div class="consent-banner-content">
@@ -131,7 +133,7 @@ const configJson = JSON.stringify(consentConfig);
         'consent-reopener',
         isTop ? 'consent-reopener--top' : 'consent-reopener--bottom',
       ]}
-      aria-label="Open cookie settings"
+      aria-label={reopenerAriaLabel}
     >
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>

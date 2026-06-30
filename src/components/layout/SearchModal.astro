@@ -208,7 +208,9 @@ const modalId = `search-modal-${Math.random().toString(36).slice(2, 9)}`;
 
         if (search.results.length === 0) {
           const tmpl = results.dataset.i18nEmpty ?? 'No results for “{query}”';
-          renderMessage(tmpl.replace('{query}', escapeHtml(query)));
+          // Pass a function so the escaped query is inserted literally — a string
+          // replacement would interpret $&, $`, $', $$ in the query specially.
+          renderMessage(tmpl.replace('{query}', () => escapeHtml(query)));
           return;
         }
 
