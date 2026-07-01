@@ -74,7 +74,9 @@
     "emailLabel": "Email"
   },
   "comments": {
-    "title": "Comments"
+    "title": "Comments",
+    "loadError": "Comments failed to load. Please refresh and try again.",
+    "requiresJs": "Comments require JavaScript to load."
   },
   "projects": {
     "title": "Projects",
