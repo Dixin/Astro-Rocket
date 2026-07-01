@@ -130,7 +130,7 @@ const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks(locale);
 // Copyright resolution: an explicit `copyright` prop wins; otherwise every
 // locale uses the localized `footer.copyright` string (supports {year} and
 // {siteName} placeholders). Edit `footer.copyright` in `src/i18n/<locale>.json`
-// to change it — for example to add your own designer credit.
+// to change it — for example, to add your own designer credit.
 const copyrightTemplate = copyright ?? t('footer.copyright', locale);
 
 // Process copyright text
