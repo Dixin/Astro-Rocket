@@ -5,6 +5,13 @@
     "closeMenu": "关闭菜单",
     "selectLanguage": "选择语言",
     "currentLanguage": "当前语言",
+    "mainNav": "主导航",
+    "mobileNav": "移动导航",
+    "toggleMenu": "切换菜单",
+    "sectionNavigate": "导航",
+    "sectionTheme": "主题",
+    "sectionLanguage": "语言",
+    "sectionConnect": "连接",
     "items": {
       "services": "服务",
       "projects": "项目",
@@ -110,6 +117,8 @@
     "pageNotFound": "页面未找到",
     "pageNotFoundMessage": "您正在寻找的页面不存在或已移动。",
     "goHome": "返回首页",
+    "metaTitle": "页面未找到",
+    "metaDescription": "此页面已移动、被删除，或从未存在过。",
     "badge": "404 — 页面未找到",
     "titleLead": "页面未",
     "titleHighlight": "找到。",
@@ -145,11 +154,24 @@
     "error": "消息发送失败。请重试。"
   },
   "theme": {
-    "selectTheme": "选择主题",
-    "lightMode": "浅色模式",
-    "darkMode": "深色模式",
-    "systemMode": "系统",
-    "toggleTheme": "切换主题"
+    "selectColourTheme": "选择颜色主题",
+    "colourTheme": "颜色主题",
+    "colourMode": "颜色模式",
+    "modeTrigger": "主题：{mode}。点击以更改。",
+    "system": "系统",
+    "light": "浅色",
+    "dark": "深色",
+    "currentlyLight": "当前为浅色",
+    "currentlyDark": "当前为深色",
+    "swatchLabel": "{name} 主题"
+  },
+  "search": {
+    "placeholder": "搜索文章、项目和页面…",
+    "inputLabel": "搜索查询",
+    "resultsLabel": "搜索结果",
+    "hint": "开始输入以搜索网站。",
+    "noResults": "未找到与 “{query}” 相关的结果",
+    "unavailable": "搜索索引在构建时生成，在 <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">astro dev</code> 中不可用。<br />运行 <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">pnpm build &amp;&amp; pnpm preview</code> 以在本地尝试。"
   },
   "footer": {
     "copyright": "© {year} {siteName}. 保留所有权利。",
