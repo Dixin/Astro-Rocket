@@ -311,14 +311,15 @@ const siteConfig: SiteConfig = {
         theme: '',
         lang: '',
       },
-      // Used when provider is 'artalk'. Point `server` at your Artalk service
-      // and set `site` to the Artalk site name you configured there.
+      // Used when provider is 'artalk'. Point `server` at your own Artalk
+      // service — use an https:// address in production (a plain http:// URL
+      // is blocked as mixed content on an https site and is open to
+      // tampering). Comments render only once both `server` and `site` are set.
       artalk: {
-        server: 'http://localhost:23366',
-        // The current local Artalk instance was initialised with the default
-        // site name. Keep this aligned unless you create a dedicated site in
-        // the Artalk dashboard.
-        site: 'Default Site',
+        server: '',
+        // The Artalk "site" name you configured in the Artalk dashboard
+        // (used for multi-site isolation).
+        site: '',
         // Optional: override the client asset URLs when needed.
         // jsUrl: 'https://cdn.example.com/artalk/Artalk.js',
         // cssUrl: 'https://cdn.example.com/artalk/Artalk.css',

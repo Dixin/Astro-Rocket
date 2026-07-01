@@ -56,8 +56,9 @@ const artalkLocale = artalk?.locale?.trim() ? artalk.locale.trim() : locale;
         data-artalk-locale={artalkLocale}
         data-artalk-dark-mode={adaptiveDarkMode ? '' : String(artalk!.darkMode)}
         data-artalk-adaptive={String(adaptiveDarkMode)}
+        data-i18n-error={t('comments.loadError', locale)}
       >
-        <noscript>Comments require JavaScript to load.</noscript>
+        <noscript>{t('comments.requiresJs', locale)}</noscript>
       </div>
     </section>
   )
@@ -234,7 +235,7 @@ const artalkLocale = artalk?.locale?.trim() ? artalk.locale.trim() : locale;
         }
       } catch (error) {
         delete mount.dataset.loaded;
-        renderError('Comments failed to load. Please refresh and try again.');
+        renderError(mount.dataset.i18nError ?? 'Comments failed to load. Please refresh and try again.');
         console.error(error);
       }
     };

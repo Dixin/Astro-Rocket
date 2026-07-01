@@ -74,7 +74,9 @@
     "emailLabel": "E-mail"
   },
   "comments": {
-    "title": "Reacties"
+    "title": "Reacties",
+    "loadError": "Reacties konden niet worden geladen. Vernieuw de pagina en probeer het opnieuw.",
+    "requiresJs": "Reacties vereisen JavaScript om te laden."
   },
   "projects": {
     "title": "Projecten",
