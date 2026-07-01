@@ -5,6 +5,13 @@
     "closeMenu": "關閉菜單",
     "selectLanguage": "選擇語言",
     "currentLanguage": "當前語言",
+    "mainNav": "主導航",
+    "mobileNav": "移動導航",
+    "toggleMenu": "切換菜單",
+    "sectionNavigate": "導航",
+    "sectionTheme": "主題",
+    "sectionLanguage": "語言",
+    "sectionConnect": "連接",
     "items": {
       "services": "服務",
       "projects": "項目",
@@ -110,6 +117,8 @@
     "pageNotFound": "頁面未找到",
     "pageNotFoundMessage": "您正在尋找的頁面不存在或已移動。",
     "goHome": "返回首頁",
+    "metaTitle": "頁面未找到",
+    "metaDescription": "此頁面已移動、被刪除，或從未存在過。",
     "badge": "404 — 頁面未找到",
     "titleLead": "頁面未",
     "titleHighlight": "找到。",
@@ -145,11 +154,24 @@
     "error": "發送訊息失敗。請再試一次。"
   },
   "theme": {
-    "selectTheme": "選擇主題",
-    "lightMode": "淺色模式",
-    "darkMode": "深色模式",
-    "systemMode": "系統",
-    "toggleTheme": "切換主題"
+    "selectColourTheme": "選擇顏色主題",
+    "colourTheme": "顏色主題",
+    "colourMode": "顏色模式",
+    "modeTrigger": "主題：{mode}。點擊以更改。",
+    "system": "系統",
+    "light": "淺色",
+    "dark": "深色",
+    "currentlyLight": "當前為淺色",
+    "currentlyDark": "當前為深色",
+    "swatchLabel": "{name} 主題"
+  },
+  "search": {
+    "placeholder": "搜索文章、項目和頁面…",
+    "inputLabel": "搜索查詢",
+    "resultsLabel": "搜索結果",
+    "hint": "開始輸入以搜索網站。",
+    "noResults": "未找到與 “{query}” 相關的結果",
+    "unavailable": "搜索索引在構建時生成，在 <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">astro dev</code> 中不可用。<br />運行 <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">pnpm build &amp;&amp; pnpm preview</code> 以在本地嘗試。"
   },
   "footer": {
     "copyright": "© {year} {siteName}. 保留所有權利。",
