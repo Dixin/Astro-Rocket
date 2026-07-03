@@ -12,6 +12,9 @@ imageAlt: "Feature overview graphic for Astro Rocket on a dark background"
 uid: "markdown-test"
 ---
 
+
+Astro Rocket inherits a complete UI component library from [Velocity](https://github.com/southwellmedia/velocity) by Southwell Media. That means 57 production-ready components are available the moment you install the theme — no npm packages to install, no extra setup. Every component is already styled with the design system's color tokens, so they adapt automatically when you switch themes or toggle dark mode.
+
 ## A second-level heading
 
 ### A third-level heading
@@ -53,7 +56,7 @@ test
 Task
 
 -   [x] #739
--   [ ] <https://github.com/octo-org/octo-repo/issues/740>
+-   [ ] https://github.com/octo-org/octo-repo/issues/740
 -   [ ] Add delight to the experience when all tasks are complete :tada:
 -   [ ] (Optional) Open a followup issue
 
@@ -71,6 +74,25 @@ Task
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
+
+test
+
+---
+import Alert from '@/components/ui/feedback/Alert/Alert.astro';
+
+<Alert variant="info" title="Tip">
+  Use keyboard shortcuts to navigate faster. Press <kbd class="px-1.5 py-0.5 text-xs font-mono bg-background-secondary rounded border border-border">⌘K</kbd> to open the command palette.
+</Alert>
+<Alert variant="success" title="Deployment successful">
+  Your changes are now live at <span class="underline underline-offset-2">your-app.vercel.app</span>
+</Alert>
+<Alert variant="warning" title="Approaching limit">
+  You've used 80% of your monthly API quota. Consider upgrading your plan.
+</Alert>
+<Alert variant="error" title="Build failed" dismissible>
+  Error in <code class="text-xs font-mono">src/components/Button.tsx</code> — missing required prop "variant"
+</Alert>
+---
 
 ```astro
 ---
