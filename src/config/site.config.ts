@@ -302,8 +302,8 @@ const siteConfig: SiteConfig = {
       enabled: true,
       layout: 'auto',
       sidebarPosition: 'right',
-      minHeadings: 3,
-      maxDepth: 3,
+      minHeadings: 4,
+      maxDepth: 4,
     },
     comments: {
       enabled: false,
