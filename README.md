@@ -38,6 +38,18 @@ It ships with a full blog, a complete component library, a built-in SEO layer, d
 
 ---
 
+## Showcase
+
+Real sites built and shipped with Astro Rocket — see the **[live showcase](https://astrorocket.dev/showcase)** for the full gallery.
+
+| Site | Author | Notes |
+|------|--------|-------|
+| [LinkPress](https://linkpress.app/) | Mithun A. Sridharan | Deployed on Cloudflare |
+
+Built something with Astro Rocket? [Submit your site](https://github.com/hansmartensdev/Astro-Rocket/issues/new?template=showcase_submission.yml) — a live URL and a line about the project is all it takes.
+
+---
+
 ## What Astro Rocket has to offer
 
 | Feature | Description |
@@ -185,18 +197,6 @@ src/content/projects/nl/studio-portfolio.mdx
 #### Performance
 
 The whole system is build-time. No client-side routing, no framework hydration for the `LanguageSwitcher` — just static HTML and a tiny vanilla-JS open/close handler for the dropdown panel. Verified zero output-size delta on the disabled path between 1.2.1 and 1.3.0.
-
----
-
-## Showcase
-
-Real sites built and shipped with Astro Rocket — see the **[live showcase](https://astrorocket.dev/showcase)** for the full gallery.
-
-| Site | Author | Notes |
-|------|--------|-------|
-| [LinkPress](https://linkpress.app/) | Mithun A. Sridharan | Deployed on Cloudflare |
-
-Built something with Astro Rocket? [Submit your site](https://github.com/hansmartensdev/Astro-Rocket/issues/new?template=showcase_submission.yml) — a live URL and a line about the project is all it takes.
 
 ---
 
