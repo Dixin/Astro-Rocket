@@ -42,6 +42,6 @@ export const showcaseEntries: ShowcaseEntry[] = [
     url: 'https://linkpress.app/',
     author: 'Mithun A. Sridharan',
     description:
-      'The first site in the showcase — a new venture built with Astro Rocket and deployed on Cloudflare.',
+      'Publish once, get discovered everywhere — a content-syndication service for businesses, startups, marketers, and non-profits, reaching Google, AI assistants, and LLMs. Built with Astro Rocket, deployed on Cloudflare.',
   },
 ];
