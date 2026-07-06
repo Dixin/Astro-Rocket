@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - **Community showcase in the README** — a new **Showcase** section listing real sites built and shipped with Astro Rocket, opening with [LinkPress](https://linkpress.app/) by Mithun A. Sridharan. Submissions come in through a new structured issue form (`.github/ISSUE_TEMPLATE/showcase_submission.yml` — live URL, project description, credit line, and opt-in checkboxes for screenshot/testimonial use). The showcase deliberately lives in the README only: no `/showcase` page ships in the theme, so user sites are completely unaffected.
+- **About page → showcase button** — the "Built in the open" section gained an optional second button ("See what others built") next to "View on GitHub", pointing at the README's Showcase anchor on GitHub. Driven by a new `pages.about.openSource.showcaseButton` key in `en.json`/`nl.json`; the button only renders when the key exists, so removing the key hides it with no template edit.
 
 ## [2.0.0] — 2026-06-22
 
