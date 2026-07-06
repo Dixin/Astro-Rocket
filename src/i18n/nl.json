@@ -257,6 +257,7 @@
         "heading": "In de openbaarheid gebouwd",
         "description": "Astro Rocket is gratis, open source en MIT-gelicentieerd. Bekijk de broncode, open issues, dien PR's in, of kloon het gewoon en bouw iets moois.",
         "button": "Bekijk op GitHub",
+        "showcaseButton": "Bekijk wat anderen bouwden",
         "cards": [
           { "title": "Gemaakt door Hans Martens", "text": "Astro Rocket is ontworpen en gebouwd door <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens</a> — een webdesigner en -ontwikkelaar die het als basis voor klantprojecten gebruikt." },
           { "title": "MIT-licentie", "text": "Gratis te gebruiken in persoonlijke en commerciële projecten. Geen naamsvermelding vereist, al wordt een ster op GitHub altijd gewaardeerd." },

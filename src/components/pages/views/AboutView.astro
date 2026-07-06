@@ -20,7 +20,7 @@ import { Hero } from '@/components/hero';
 import TypingEffect from '@/components/ui/TypingEffect.astro';
 import TechStack from '@/components/landing/TechStack.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
-import { t, tData, defaultLocale } from '@/i18n';
+import { t, tData, defaultLocale, localizedPath } from '@/i18n';
 
 interface Props {
   /** Locale whose copy this page renders. Defaults to the site default. */
@@ -64,10 +64,18 @@ const principles = tData<{ badge: string; heading: string; lead: string; items: 
 )!;
 const stack = tData<{ badge: string; title: string; description: string }>('pages.about.stack', locale)!;
 const faq = tData<{ badge: string; heading: string; lead: string; cards: FaqCard[] }>('pages.about.faq', locale)!;
-const openSource = tData<{ badge: string; heading: string; description: string; button: string; cards: TitleText[] }>(
-  'pages.about.openSource',
-  locale
-)!;
+const openSource = tData<{
+  badge: string;
+  heading: string;
+  description: string;
+  button: string;
+  /** Optional second button linking to the community showcase. Omit the
+   *  dictionary key (e.g. if you removed the /showcase page) to hide it. */
+  showcaseButton?: string;
+  cards: TitleText[];
+}>('pages.about.openSource', locale)!;
+
+const showcaseUrl = localizedPath('/showcase', locale);
 const cta = tData<{ badge: string; heading: string; description: string; button: string }>('pages.about.cta', locale)!;
 ---
 <PageLayout
@@ -230,10 +238,18 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
           <p class="text-lg text-foreground-muted leading-relaxed sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0">
             {openSource.description}
           </p>
-          <Button variant="outline" size="lg" href={GITHUB_URL} target="_blank" rel="noopener noreferrer" class="self-start sm:self-center glitch:self-start mt-2">
-            {openSource.button}
-            <Icon name="arrow-right" size="sm" />
-          </Button>
+          <div class="flex flex-wrap gap-4 self-start sm:self-center sm:justify-center glitch:self-start mt-2">
+            <Button variant="outline" size="lg" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+              {openSource.button}
+              <Icon name="arrow-right" size="sm" />
+            </Button>
+            {openSource.showcaseButton && (
+              <Button variant="outline" size="lg" href={showcaseUrl}>
+                {openSource.showcaseButton}
+                <Icon name="arrow-right" size="sm" />
+              </Button>
+            )}
+          </div>
         </div>
 
         <!-- Info card -->
