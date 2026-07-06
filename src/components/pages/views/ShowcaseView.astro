@@ -15,6 +15,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
+import { buttonVariants } from '@/components/ui/form/Button/button.variants';
+import { cn } from '@/lib/cn';
 import { Hero } from '@/components/hero';
 import { t, tData, defaultLocale } from '@/i18n';
 import { showcaseEntries, showcaseSubmitUrl, showcaseRepoUrl } from '@/config/showcase.config';
@@ -61,52 +63,52 @@ const screenshotPending = t('pages.showcase.screenshotPending', locale);
   <!-- Entries -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
-      <!-- Each card is fully clickable: the "Visit site" button is the card's
-           single anchor, stretched over the card via an ::after overlay — no
-           nested or duplicate links. The author credit sits above the overlay
-           (z-10) so it stays independently clickable. -->
+      <!-- Whole-card links, same pattern as ProjectCard/BlogCard: the Card
+           itself is the anchor (href → <a>), with a group-hover arrow and
+           image zoom as the link affordance. No nested links or buttons. -->
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {showcaseEntries.map((entry, i) => (
-          <Card hover padding="none" class="relative overflow-hidden flex flex-col" data-reveal data-reveal-delay={i % 3 || undefined}>
-            {entry.image ? (
-              <Image
-                src={entry.image}
-                alt={entry.imageAlt ?? `Screenshot of ${entry.name}`}
-                class="w-full aspect-[16/10] border-b border-border object-cover object-top"
-                widths={[400, 800]}
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              />
-            ) : (
-              <div class="aspect-[16/10] border-b border-border bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex flex-col items-center justify-center gap-3">
-                <Icon name="globe" size="xl" class="text-brand-500" />
-                <span class="text-xs text-foreground-muted">{screenshotPending}</span>
-              </div>
-            )}
-            <div class="flex flex-col gap-2 p-6 grow">
-              <h2 class="font-display text-lg font-semibold text-foreground">{entry.name}</h2>
+          <Card
+            variant="elevated"
+            hover
+            padding="none"
+            href={entry.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group overflow-hidden flex flex-col"
+            data-reveal
+            data-reveal-delay={i % 3 || undefined}
+          >
+            <div class="overflow-hidden border-b border-border">
+              {entry.image ? (
+                <Image
+                  src={entry.image}
+                  alt={entry.imageAlt ?? `Screenshot of ${entry.name}`}
+                  class="w-full aspect-[16/10] object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                  widths={[400, 800]}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="aspect-[16/10] bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex flex-col items-center justify-center gap-3">
+                  <Icon name="globe" size="xl" class="text-brand-500" />
+                  <span class="text-xs text-foreground-muted">{screenshotPending}</span>
+                </div>
+              )}
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-6">
+              <h3 class="font-display text-lg font-bold text-foreground">{entry.name}</h3>
               <p class="text-sm text-foreground-muted">
-                {byLabel}{' '}
-                {entry.authorUrl ? (
-                  <a href={entry.authorUrl} target="_blank" rel="noopener noreferrer" class="relative z-10 font-medium text-foreground hover:text-brand-500 transition-colors">
-                    {entry.author}
-                  </a>
-                ) : (
-                  <span class="font-medium text-foreground">{entry.author}</span>
-                )}
+                {byLabel} <span class="font-medium text-foreground">{entry.author}</span>
               </p>
-              <p class="text-sm text-foreground-muted leading-relaxed grow">{entry.description}</p>
-              <Button
-                variant="outline"
-                size="sm"
-                href={entry.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${visitLabel} — ${entry.name}`}
-                class="self-start mt-3 after:absolute after:inset-0"
-              >
+              <p class="text-sm text-foreground-muted leading-relaxed flex-1">{entry.description}</p>
+              {/* Visual button only — the Card itself is the anchor, so the
+                  whole card (this "button" included) opens the site. A real
+                  <a>/<button> can't be nested inside the card's link. */}
+              <span class={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'self-start mt-3')}>
                 {visitLabel}
                 <Icon name="external-link" size="sm" />
-              </Button>
+              </span>
             </div>
           </Card>
         ))}

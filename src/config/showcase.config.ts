@@ -17,10 +17,8 @@ export interface ShowcaseEntry {
   name: string;
   /** Live production URL. */
   url: string;
-  /** Who built it. */
+  /** Who built it. Shown as plain text — the whole card links to the site. */
   author: string;
-  /** Optional link for the author credit (personal site, LinkedIn, …). */
-  authorUrl?: string;
   /** One or two lines about the project, shown on the card. */
   description: string;
   /** Optional screenshot — import from `src/assets/showcase/`. */
