@@ -889,6 +889,24 @@
     padding-left: 1.5em;
   }
 
+  /* Restore list markers. Tailwind's preflight sets `list-style: none`, which
+     left blog prose with no bullets, no ordered numbers, and no footnote
+     numbers — you couldn't tell a list was a list. */
+  .prose ul { list-style: disc; }
+  .prose ul ul { list-style: circle; }
+  .prose ul ul ul { list-style: square; }
+  .prose ol { list-style: decimal; }
+
+  /* GFM task lists stay checkbox-only — no bullet in front of the checkbox. */
+  .prose ul.contains-task-list,
+  .prose li.task-list-item {
+    list-style: none;
+  }
+
+  .prose ul.contains-task-list {
+    padding-left: 0;
+  }
+
   .prose li {
     margin: 0.5em 0;
   }
