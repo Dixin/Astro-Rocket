@@ -61,19 +61,21 @@ const screenshotPending = t('pages.showcase.screenshotPending', locale);
   <!-- Entries -->
   <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6">
+      <!-- Each card is fully clickable: the "Visit site" button is the card's
+           single anchor, stretched over the card via an ::after overlay — no
+           nested or duplicate links. The author credit sits above the overlay
+           (z-10) so it stays independently clickable. -->
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {showcaseEntries.map((entry, i) => (
-          <Card hover padding="none" class="overflow-hidden flex flex-col" data-reveal data-reveal-delay={i % 3 || undefined}>
+          <Card hover padding="none" class="relative overflow-hidden flex flex-col" data-reveal data-reveal-delay={i % 3 || undefined}>
             {entry.image ? (
-              <a href={entry.url} target="_blank" rel="noopener noreferrer" class="block border-b border-border" aria-label={entry.name}>
-                <Image
-                  src={entry.image}
-                  alt={entry.imageAlt ?? `Screenshot of ${entry.name}`}
-                  class="w-full aspect-[16/10] object-cover object-top"
-                  widths={[400, 800]}
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                />
-              </a>
+              <Image
+                src={entry.image}
+                alt={entry.imageAlt ?? `Screenshot of ${entry.name}`}
+                class="w-full aspect-[16/10] border-b border-border object-cover object-top"
+                widths={[400, 800]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              />
             ) : (
               <div class="aspect-[16/10] border-b border-border bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex flex-col items-center justify-center gap-3">
                 <Icon name="globe" size="xl" class="text-brand-500" />
@@ -85,7 +87,7 @@ const screenshotPending = t('pages.showcase.screenshotPending', locale);
               <p class="text-sm text-foreground-muted">
                 {byLabel}{' '}
                 {entry.authorUrl ? (
-                  <a href={entry.authorUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-foreground hover:text-brand-500 transition-colors">
+                  <a href={entry.authorUrl} target="_blank" rel="noopener noreferrer" class="relative z-10 font-medium text-foreground hover:text-brand-500 transition-colors">
                     {entry.author}
                   </a>
                 ) : (
@@ -99,7 +101,8 @@ const screenshotPending = t('pages.showcase.screenshotPending', locale);
                 href={entry.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="self-start mt-3"
+                aria-label={`${visitLabel} — ${entry.name}`}
+                class="self-start mt-3 after:absolute after:inset-0"
               >
                 {visitLabel}
                 <Icon name="external-link" size="sm" />
