@@ -450,6 +450,7 @@
         "titleHighlight": "Astro Rocket.",
         "description": "Echte websites, live in productie. Elke site hieronder is gebouwd met het Astro Rocket-thema en gelanceerd door iemand uit de community."
       },
+      "visitLabel": "Bekijk site",
       "byLabel": "door",
       "screenshotPending": "Screenshot volgt binnenkort",
       "submit": {

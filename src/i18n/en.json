@@ -450,6 +450,7 @@
         "titleHighlight": "Astro Rocket.",
         "description": "Real sites, live in production. Every entry below was built with the Astro Rocket theme and shipped by someone in the community."
       },
+      "visitLabel": "Visit site",
       "byLabel": "by",
       "screenshotPending": "Screenshot coming soon",
       "submit": {
