@@ -42,6 +42,7 @@ import SearchInput from '@/components/patterns/SearchInput.astro';
 import PasswordInput from '@/components/patterns/PasswordInput.astro';
 import StatCard from '@/components/patterns/StatCard.astro';
 import EmptyState from '@/components/patterns/EmptyState.astro';
+import YouTube from '@/components/patterns/YouTube.astro';
 // Landing Components
 import StackMarquee from '@/components/landing/StackMarquee.astro';
 ---
@@ -1929,7 +1930,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
         </div>
         <div>
           <h2 class="font-display text-2xl font-bold text-foreground">Patterns</h2>
-          <p class="text-foreground-muted mt-1">Pre-composed component patterns for common UI needs — search, passwords, stats, and empty states.</p>
+          <p class="text-foreground-muted mt-1">Pre-composed component patterns for common UI needs — search, passwords, stats, empty states, and video embeds.</p>
         </div>
       </div>
 
@@ -2009,6 +2010,25 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
                 title="No results found"
                 description="Try adjusting your search or filters to find what you're looking for."
               />
+            </div>
+          </div>
+        </div>
+
+        <!-- YouTube -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">YouTube Embed</span>
+            <span class="showcase-hint">Click-to-play facade — zero YouTube bytes until the reader presses play</span>
+          </div>
+          <div class="showcase-content">
+            <div class="mx-auto max-w-2xl">
+              <YouTube id="dQw4w9WgXcQ" title="Rick Astley — Never Gonna Give You Up (embed demo)" />
+              <p class="mt-4 text-sm text-foreground-muted">
+                Drop a video into any MDX post or page with
+                <code class="rounded bg-secondary px-1.5 py-0.5 text-xs">&lt;YouTube id="dQw4w9WgXcQ" title="…" /&gt;</code>
+                — the page ships only a thumbnail, and the player loads from privacy-friendly
+                <code class="rounded bg-secondary px-1.5 py-0.5 text-xs">youtube-nocookie.com</code> on click.
+              </p>
             </div>
           </div>
         </div>

@@ -175,6 +175,10 @@
     "noResults": "Geen resultaten voor “{query}”",
     "unavailable": "De zoekindex wordt tijdens de build gegenereerd en is niet beschikbaar in <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">astro dev</code>.<br />Voer <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">pnpm build &amp;&amp; pnpm preview</code> uit om het lokaal te proberen."
   },
+  "video": {
+    "playLabel": "Video afspelen: {title}",
+    "watchOn": "Bekijk op YouTube"
+  },
   "footer": {
     "copyright": "© {year} {siteName}. Alle rechten voorbehouden.",
     "builtWith": "Gebouwd met Astro Rocket",

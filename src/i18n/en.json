@@ -175,6 +175,10 @@
     "noResults": "No results for “{query}”",
     "unavailable": "The search index is generated at build time and isn’t available in <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">astro dev</code>.<br />Run <code class=\"rounded bg-secondary px-1.5 py-0.5 text-xs\">pnpm build &amp;&amp; pnpm preview</code> to try it locally."
   },
+  "video": {
+    "playLabel": "Play video: {title}",
+    "watchOn": "Watch on YouTube"
+  },
   "footer": {
     "copyright": "© {year} {siteName}. All rights reserved.",
     "builtWith": "Built with Astro Rocket",
