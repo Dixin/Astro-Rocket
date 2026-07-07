@@ -13,6 +13,8 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
   <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://img.shields.io/github/stars/Dixin/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
   <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=Dixin.astro-rocket" alt="Visitors" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://img.shields.io/github/stars/Dixin/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=Dixin.astro-rocket" alt="Visitors" /></a>
 </p>
 
 <p align="center">
@@ -32,6 +34,7 @@ Astro Rocket is a **launch-ready starter theme** for web designers, developers, 
 
 It ships with a full blog, a complete component library, a built-in SEO layer, dark mode, a contact form, and 12 colour themes you can switch with one click. It's built on Astro 7 and Tailwind CSS v4.
 
+**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Beyond.ms](https://Beyond.ms)**
 **[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Beyond.ms](https://Beyond.ms)**
 
 > **Origins & credits.** Astro Rocket was originally forked from [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Velocity provided the solid base — a well-engineered Astro boilerplate with a thoughtful design system and component library — and full credit for that foundation goes to the Southwell Media team. Since then, Astro Rocket has evolved into a theme in its own right, with far more to offer than the original: live colour-theme switching, built-in i18n, static search, project galleries with video, blog comments, durable internal links, and much more — see [What Astro Rocket has to offer](#what-astro-rocket-has-to-offer) below.
@@ -200,6 +203,7 @@ The whole system is build-time. No client-side routing, no framework hydration f
 
 ```bash
 # Clone the repository
+git clone https://github.com/Dixin/Astro-Rocket.git my-project
 git clone https://github.com/Dixin/Astro-Rocket.git my-project
 cd my-project
 
