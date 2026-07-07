@@ -69,13 +69,8 @@ const openSource = tData<{
   heading: string;
   description: string;
   button: string;
-  /** Optional second button linking to the README's community showcase.
-   *  Remove the dictionary key to hide it — no template edit needed. */
-  showcaseButton?: string;
   cards: TitleText[];
 }>('pages.about.openSource', locale)!;
-
-const SHOWCASE_URL = `${GITHUB_URL}#showcase`;
 const cta = tData<{ badge: string; heading: string; description: string; button: string }>('pages.about.cta', locale)!;
 ---
 <PageLayout
@@ -243,12 +238,6 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
               {openSource.button}
               <Icon name="arrow-right" size="sm" />
             </Button>
-            {openSource.showcaseButton && (
-              <Button variant="outline" size="lg" href={SHOWCASE_URL} target="_blank" rel="noopener noreferrer">
-                {openSource.showcaseButton}
-                <Icon name="arrow-right" size="sm" />
-              </Button>
-            )}
           </div>
         </div>
 
