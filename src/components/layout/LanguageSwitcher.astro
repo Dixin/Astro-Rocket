@@ -216,6 +216,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
 
       const trigger = wrapper.querySelector<HTMLButtonElement>('.lang-trigger');
       const panel = wrapper.querySelector<HTMLElement>('.lang-panel');
+      const rows = wrapper.querySelectorAll<HTMLAnchorElement>('.lang-row');
       if (!trigger || !panel) return;
 
       trigger.addEventListener('click', (e) => {
@@ -226,7 +227,25 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
           panel.classList.remove('hidden');
           trigger.setAttribute('aria-expanded', 'true');
           trigger.querySelector('.lang-chevron')?.classList.add('rotate-180');
+          // WAI-ARIA menu pattern: focus the first item when the menu opens.
+          rows[0]?.focus();
         }
+      });
+
+      // role="menu" commits to the ARIA menu keyboard pattern: ArrowUp/
+      // ArrowDown move through the items (wrapping), Home/End jump to the
+      // first/last item.
+      panel.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Home' && e.key !== 'End') return;
+        const items = Array.from(rows);
+        if (!items.length) return;
+        e.preventDefault();
+        if (e.key === 'Home') { items[0].focus(); return; }
+        if (e.key === 'End') { items[items.length - 1].focus(); return; }
+        const index = items.indexOf(document.activeElement as HTMLAnchorElement);
+        const delta = e.key === 'ArrowDown' ? 1 : -1;
+        const next = index === -1 ? 0 : (index + delta + items.length) % items.length;
+        items[next].focus();
       });
     });
 
@@ -241,7 +260,14 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
       });
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeAllLangPanels();
+        if (e.key !== 'Escape') return;
+        // Return focus to the trigger of the panel that was open, so Escape
+        // doesn't strand keyboard focus inside a hidden menu.
+        const openPanel = document.querySelector<HTMLElement>('.lang-panel:not(.hidden)');
+        closeAllLangPanels();
+        if (openPanel) {
+          openPanel.closest('.lang-wrapper')?.querySelector<HTMLButtonElement>('.lang-trigger')?.focus();
+        }
       });
     }
   }
