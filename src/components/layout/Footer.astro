@@ -145,10 +145,11 @@ const processedCopyright = copyrightTemplate
 const footerTagline = tagline ?? siteConfig.tagline;
 const footerNote = siteConfig.footerNote;
 
-// Optional designer credit under the copyright line. Lives entirely in the
-// locale dictionaries (footer.credit) rather than in this component, so it
-// is per-locale content: reword it, or delete the key to remove the line.
+// Optional designer credit, appended to the copyright line. Lives entirely
+// in the locale dictionaries (footer.credit) rather than in this component,
+// so it is per-locale content: reword it, or delete the key to remove it.
 const footerCredit = tData<string>('footer.credit', locale);
+const legalLine = footerCredit ? `${processedCopyright} · ${footerCredit}` : processedCopyright;
 
 // Check slots
 const hasLogoSlot = Astro.slots.has('logo');
@@ -216,13 +217,13 @@ function getSocialIcon(platform: string): string {
           </nav>
         </div>
 
+        <!-- max-sm:pb-12 keeps the last centered line clear of the floating
+             back-to-top button, which covers the bottom-right corner on
+             narrow viewports where the line runs nearly full-width. -->
         {(showCopyright || resolvedLegalLinks.length > 0) && (
-          <div class="mt-[var(--space-stack-lg)] pt-[var(--space-stack-lg)] border-t border-border flex flex-col items-center text-center gap-2">
+          <div class="mt-[var(--space-stack-lg)] pt-[var(--space-stack-lg)] max-sm:pb-12 border-t border-border flex flex-col items-center text-center gap-2">
             {showCopyright && (
-              <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
-            )}
-            {footerCredit && (
-              <p class="text-xs text-foreground-muted" set:html={footerCredit} />
+              <p class="text-sm text-foreground-muted text-balance" set:html={legalLine} />
             )}
             {resolvedLegalLinks.length > 0 && (
               <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-2 text-xs text-foreground-muted">

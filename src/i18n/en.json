@@ -181,7 +181,7 @@
     "watchOn": "Watch on YouTube"
   },
   "footer": {
-    "copyright": "© {year} {siteName}. All rights reserved.",
+    "copyright": "© {year} {siteName}",
     "credit": "Theme by <a href=\"https://hansmartens.dev\" class=\"transition-colors hover:text-foreground\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens</a>",
     "builtWith": "Built with Astro Rocket",
     "followOn": "Follow us on {platform}"
