@@ -252,7 +252,7 @@
       "principles": {
         "badge": "Ontwerpprincipes",
         "heading": "Met intentie gebouwd",
-        "lead": "Elke keuze in Astro Rocket — van componentstructuur tot standaardconfiguratie — komt voort uit dezelfde drie principes.",
+        "lead": "Elke keuze in Astro Rocket, van componentstructuur tot standaardconfiguratie, komt voort uit dezelfde drie principes.",
         "items": [
           { "icon": "zap", "title": "Prestaties eerst", "description": "Standaard nul JavaScript. Elk component is geoptimaliseerd voor snelheid, Core Web Vitals en compacte output." },
           { "icon": "award", "title": "Ontwikkelaarservaring", "description": "Overal TypeScript, verstandige standaardinstellingen en een componentbibliotheek die je zo in elke pagina laat vallen." },
@@ -262,7 +262,7 @@
       "stack": {
         "badge": "Tools & techniek",
         "title": "De stack",
-        "description": "De technologieën achter Astro Rocket — gekozen voor prestaties, een uitstekende ontwikkelaarservaring en betrouwbaarheid op de lange termijn."
+        "description": "De technologieën achter Astro Rocket, gekozen voor prestaties, een uitstekende ontwikkelaarservaring en betrouwbaarheid op de lange termijn."
       },
       "faq": {
         "badge": "Goed om te weten",

@@ -252,7 +252,7 @@
       "principles": {
         "badge": "Design Principles",
         "heading": "Built with intention",
-        "lead": "Every decision in Astro Rocket — from component structure to default config — is driven by the same three principles.",
+        "lead": "Every decision in Astro Rocket, from component structure to default config, is driven by the same three principles.",
         "items": [
           { "icon": "zap", "title": "Performance First", "description": "Zero JavaScript by default. Every component is optimised for speed, Core Web Vitals, and lean output." },
           { "icon": "award", "title": "Developer Experience", "description": "TypeScript throughout, sensible defaults, and a component library you can drop straight into any page." },
@@ -262,7 +262,7 @@
       "stack": {
         "badge": "Tools & Tech",
         "title": "The Stack",
-        "description": "The technologies powering Astro Rocket — chosen for performance, great developer experience, and long-term reliability."
+        "description": "The technologies powering Astro Rocket, chosen for performance, great developer experience, and long-term reliability."
       },
       "faq": {
         "badge": "Good to know",
