@@ -195,8 +195,8 @@
       "hero": {
         "badge": "Over",
         "titleLead": "Astro Rocket —",
-        "typingWords": ["Astro 7 Thema", "12 Thema's", "57+ Componenten", "Donkere modus", "Ingebouwde i18n", "Zero-config SEO"],
-        "description": "Een gratis, open-source Astro 7 starter-thema om alles op te bouwen, met een complete componentbibliotheek zodat je nooit vanaf nul begint."
+        "typingWords": ["Razendsnel", "57+ Componenten", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
+        "description": "Een gratis, open-source Astro 7 starter-thema om alles op te bouwen."
       },
       "whatYouGet": {
         "badge": "Wat je krijgt",
