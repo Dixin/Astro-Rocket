@@ -25,10 +25,14 @@ interface Props {
 
 const { locale = defaultLocale } = Astro.props;
 
-const hero = tData<{ badge: string; titleLead: string; titleHighlight: string; description: string }>(
-  'pages.contact.hero',
-  locale
-)!;
+const hero = tData<{
+  badge: string;
+  titleLead: string;
+  titleHighlight: string;
+  description: string;
+  /** Shorter variant shown below the `sm` breakpoint so the hero stays compact on phones. */
+  descriptionMobile: string;
+}>('pages.contact.hero', locale)!;
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 
@@ -67,8 +71,9 @@ const channels = [
       {hero.titleLead} <span class="text-brand-500">{hero.titleHighlight}</span>
     </h1>
 
-    <p slot="description">
-      {hero.description}
+    <p slot="description" class="!text-balance">
+      <span class="sm:hidden">{hero.descriptionMobile}</span>
+      <span class="hidden sm:inline">{hero.description}</span>
     </p>
   </Hero>
 
