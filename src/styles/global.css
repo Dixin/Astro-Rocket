@@ -1374,3 +1374,11 @@
     transform: none;
   }
 }
+
+/* Light mode: tile cards use the tertiary surface, which sits very close to
+   the secondary section background behind them. Cards on secondary sections
+   switch to the page-white surface instead; dark mode keeps the tertiary
+   surface everywhere. */
+html:not(.dark) .bg-background-secondary .bg-background-tertiary {
+  background-color: var(--color-background);
+}
