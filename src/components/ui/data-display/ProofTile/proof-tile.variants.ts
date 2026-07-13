@@ -3,9 +3,9 @@ import { cva, type VariantProps } from 'class-variance-authority';
 export const proofTileVariants = cva(
   [
     'bg-background-tertiary rounded-xl flex flex-col items-center text-center',
-    'border border-brand-500/40 shadow-lg',
+    'border ring-1 ring-brand-500/15 shadow-lg',
     'transition-all duration-200',
-    'hover:-translate-y-1 hover:shadow-xl hover:border-brand-500/80',
+    'hover:-translate-y-1 hover:shadow-xl hover:ring-brand-500/30',
     'h-full',
   ],
   {

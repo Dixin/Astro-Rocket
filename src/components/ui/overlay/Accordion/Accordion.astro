@@ -39,14 +39,14 @@ const groupName = exclusive ? `accordion-${Math.random().toString(36).slice(2, 9
       <summary
         class={cn(
           accordionTriggerVariants({ size }),
-          'cursor-pointer list-none [&::-webkit-details-marker]:hidden',
+          'cursor-pointer list-none [&::-webkit-details-marker]:hidden text-brand-500 hover:text-brand-300',
         )}
       >
         {item.title}
         <Icon
           name="chevron-down"
           size="sm"
-          class="accordion-icon shrink-0 text-foreground-muted transition-transform duration-200"
+          class="accordion-icon shrink-0 transition-transform duration-200"
         />
       </summary>
       <div class="pb-4 text-sm text-foreground-muted leading-relaxed">

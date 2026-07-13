@@ -39,9 +39,9 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
   <button
     type="button"
     class={cn(
-      'ttg-trigger inline-flex items-center justify-center rounded-full border border-border-strong p-1.5',
-      'text-foreground-muted hover:text-foreground hover:bg-secondary',
-      'aria-expanded:bg-secondary aria-expanded:text-foreground',
+      'ttg-trigger inline-flex items-center justify-center rounded-full border border-brand-500 p-1.5',
+      'text-brand-500 hover:text-brand-300 hover:bg-secondary cursor-pointer',
+      'aria-expanded:bg-secondary aria-expanded:text-brand-300',
       'transition-colors duration-(--transition-fast)',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
     )}
@@ -71,7 +71,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
   <!-- Dropdown panel -->
   <div
     class={cn(
-      'ttg-panel absolute right-0 top-full mt-2 z-50',
+      'ttg-panel absolute right-0 top-full mt-2 z-50 space-y-1.5',
       'w-56 rounded-xl border border-border bg-background shadow-lg',
       'p-1.5 hidden'
     )}
@@ -152,7 +152,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
     text-align: left;
     padding: 0.5rem 0.625rem;
     border-radius: 0.5rem;
-    color: var(--color-foreground-muted);
+    color: var(--color-brand-500);
     cursor: pointer;
     transition:
       background-color var(--transition-fast),
@@ -161,7 +161,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
 
   .ttg-row:hover {
     background-color: var(--color-secondary);
-    color: var(--color-foreground);
+    color: var(--color-brand-300);
   }
 
   .ttg-row:focus-visible {
@@ -170,7 +170,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
   }
 
   .ttg-row[aria-checked='true'] {
-    background-color: var(--color-secondary);
+    background-color: var(--color-brand-500);
     color: var(--color-foreground);
   }
 
@@ -194,7 +194,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
 
   .ttg-system-sub {
     font-size: 0.6875rem;
-    color: var(--color-foreground-subtle);
+    color: var(--color-foreground);
     margin-top: 2px;
   }
 
@@ -204,7 +204,7 @@ const triggerLabel = t('theme.modeTrigger', locale, { mode: modeNames.system.toL
   /* Checkmark only visible on the active row */
   .ttg-check {
     display: none;
-    color: var(--color-brand-500);
+    color: var(--color-foreground);
   }
   .ttg-row[aria-checked='true'] .ttg-check { display: block; }
 </style>

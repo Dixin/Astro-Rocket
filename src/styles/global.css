@@ -400,23 +400,6 @@
     border-color: color-mix(in oklch, var(--color-foreground) 40%, transparent);
   }
 
-  /* Brand badge in the hero — applied in BOTH light and dark mode.
-     Glass pill with a brand-400 pulse core and brand-300 soft halo. */
-  .hero-dark-gradient .bg-brand-500\/10 {
-    background-color: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
-    border-color:     color-mix(in oklch, var(--color-brand-400) 55%, transparent);
-    color:            var(--color-brand-100);
-    backdrop-filter:         blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 0 24px -4px color-mix(in oklch, var(--color-brand-500) 35%, transparent);
-  }
-  .hero-dark-gradient .bg-brand-500\/10 .bg-brand-500 {
-    background-color: var(--color-brand-400);
-  }
-  .hero-dark-gradient .bg-brand-500\/10 .bg-brand-500:not(.animate-ping) {
-    box-shadow: 0 0 14px 0 color-mix(in oklch, var(--color-brand-300) 40%, transparent);
-  }
-
   /* Gradient border */
   .border-gradient {
     position: relative;
@@ -859,7 +842,7 @@
   }
 
   .prose a {
-    color: var(--color-foreground);
+    color: var(--color-brand-500);
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -868,7 +851,8 @@
   }
 
   .prose a:hover {
-    text-decoration-color: var(--color-foreground);
+    color: var(--color-brand-300);
+    text-decoration-color: var(--color-brand-300);
   }
 
   .prose strong {

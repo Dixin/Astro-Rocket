@@ -54,21 +54,21 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
   >
     <p
       id={headingId}
-      class="text-xs font-semibold uppercase tracking-wider text-foreground-muted mb-3"
+      class="text-xs font-semibold tracking-wider text-foreground mb-3"
     >
       {tocTitle}
     </p>
-    <ul class="space-y-1.5 text-sm border-l border-border">
+    <ul class="space-y-1.5 text-sm border-l border-brand-500">
       {items.map((h) => (
         <li
           class="toc-item"
           data-depth={h.depth}
-          style={`padding-left: ${(h.depth - 2) * 0.875}rem`}
         >
           <a
             href={`#${h.slug}`}
             data-toc-link={h.slug}
-            class="toc-link block py-1 pl-3 -ml-px border-l border-transparent text-foreground-muted hover:text-foreground hover:border-brand-500 transition-colors"
+            class="toc-link block py-1 pl-3 -ml-px text-brand-500 hover:text-brand-300 hover:bg-secondary/70 rounded-r-xl transition-colors hover:border-brand-300 border-l border-brand-500"
+            style={`padding-left: ${(h.depth - 1) * 0.875}rem`}
           >
             {h.text}
           </a>
@@ -91,8 +91,17 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
 
   .toc-link[data-active='true'] {
     color: var(--color-foreground);
-    border-left-color: var(--color-brand-500);
+    border-left-color: var(--color-foreground);
     font-weight: 500;
+    border-left-width: 1px;
+    background-color: var(--color-brand-500);
+  }
+
+  .toc-link[data-active='true']:hover {
+    color: var(--color-brand-300);
+    border-left-color: var(--color-brand-300);
+    font-weight: 500;
+    background-color: var(--color-secondary);
   }
 </style>
 

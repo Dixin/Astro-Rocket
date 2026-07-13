@@ -25,6 +25,7 @@ import siteConfig from '@/config/site.config';
 import { getPostUrl, getPublishedPosts } from '@/lib/blog';
 import { getProjectUrl, getVisibleProjects } from '@/lib/projects';
 import { t, tData, defaultLocale, localizedPath } from '@/i18n';
+import { cn } from '@/lib/cn';
 
 interface Props {
   /** Locale whose copy and content this page renders. Defaults to the site default. */
@@ -149,7 +150,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
 >
   <!-- Hero -->
   <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight>
-    <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">{hero.badge}</Badge>
+    <Badge slot="badge" variant="default" pill pulse>{hero.badge}</Badge>
 
     <h1 slot="title" class="!text-[clamp(2rem,11.2vw,3rem)] sm:!text-5xl md:!text-6xl lg:!text-7xl">
       <span class="text-brand-600 dark:text-foreground [-webkit-text-fill-color:currentColor] whitespace-nowrap">{hero.titleLine1}</span><br />
@@ -166,7 +167,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
         {hero.github}
         <Icon name="arrow-right" size="sm" />
       </Button>
-      <Button size="lg" variant="outline" href={getStartedUrl}>
+      <Button size="lg" href={getStartedUrl}>
         <Icon name="rocket" size="sm" />
         {hero.getStarted}
         <Icon name="arrow-right" size="sm" />
@@ -204,7 +205,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>
+          <Badge variant="default" pill>
             <Icon name="sparkles" size="sm" />
             {servicesSection.badge}
           </Badge>
@@ -238,7 +239,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>
+          <Badge variant="default" pill>
             <Icon name="layers" size="sm" />
             {portfolio.badge}
           </Badge>
@@ -252,46 +253,47 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
       </div>
 
       <div class="grid gap-6 md:grid-cols-2">
-        {featuredProjects.map((project, i) => (
-          <Card
-            variant="elevated"
-            hover
-            padding="none"
-            href={project.data.placeholder ? undefined : getProjectUrl(project.id, project.data.locale)}
-            class="group flex flex-col"
-            data-reveal
-            data-reveal-delay={i || undefined}
-          >
-            <div class="flex flex-1 flex-col p-6">
-              <div class="mb-3 flex items-start justify-between gap-4">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                  <Icon name="layers" size="sm" />
+        {featuredProjects.map((project, i) => {
+          const href = project.data.placeholder ? undefined : getProjectUrl(project.id, project.data.locale);
+          return (
+            <Card
+              variant="elevated"
+              hover
+              padding="none"
+              href={href}
+              class="group flex flex-col"
+              data-reveal
+              data-reveal-delay={i || undefined}
+            >
+              <div class="flex flex-1 flex-col p-6">
+                <div class="mb-3 flex items-start justify-between gap-4">
+                  <div class={cn('w-10 h-10 rounded-xl flex items-center justify-center text-brand-500 shrink-0', href ? 'bg-gradient-to-br from-brand-500/20 to-brand-500/5' : 'bg-gradient-to-br from-foreground/20 to-foreground/5')}>
+                    <Icon name="layers" size="sm" class={href ? 'text-brand-500' : 'text-foreground'} />
+                  </div>
+                  <Icon name="arrow-up-right" size="sm" class={cn('transition-colors shrink-0 ml-auto', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground-muted')} />
                 </div>
-                <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
-              </div>
-              <div class="mb-2 flex items-baseline gap-2">
-                <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
-                {project.data.year && (
-                  <span class="text-xs text-foreground-muted">{project.data.year}</span>
+                <div class="mb-2 flex items-baseline gap-2">
+                  <h3 class={cn('font-display text-lg font-bold', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground')}>{project.data.title}</h3>
+                  {project.data.year && (
+                    <span class="text-xs text-foreground-muted">{project.data.year}</span>
+                  )}
+                </div>
+                <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1">{project.data.description}</p>
+                {project.data.tags && project.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5">
+                    {project.data.tags.map((tag) => (
+                      <Badge variant="default">#{tag}</Badge>
+                    ))}
+                  </div>
                 )}
               </div>
-              <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1">{project.data.description}</p>
-              {project.data.tags && project.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-1.5">
-                  {project.data.tags.map((tag) => (
-                    <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </Card>
-        ))}
+            </Card>
+          );
+        })}
       </div>
 
       <div class="text-center mt-4">
-        <Button variant="brand-outline" href={projectsUrl}>
+        <Button href={projectsUrl}>
           {portfolio.viewAll}
           <Icon name="arrow-right" size="sm" />
         </Button>
@@ -304,7 +306,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>
+          <Badge variant="default" pill>
             <Icon name="quote" size="sm" />
             {testimonials.badge}
           </Badge>
@@ -321,7 +323,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
         {testimonials.items.map((item, i) => (
           <Card variant="elevated" padding="lg" hover data-reveal data-reveal-delay={i || undefined}>
             <div class="flex flex-col h-full gap-4">
-              <div class="flex gap-1 text-brand-500" role="img" aria-label="5 out of 5 stars">
+              <div class="flex gap-1 text-foreground" role="img" aria-label="5 out of 5 stars">
                 {[...Array(5)].map(() => (
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -332,7 +334,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
                 {item.quote}
               </blockquote>
               <div class="flex items-center gap-3 pt-4 border-t border-border">
-                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand-500/30 to-brand-500/10 flex items-center justify-center text-brand-500 font-bold text-sm shrink-0">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-foreground/30 to-foreground/10 flex items-center justify-center text-foreground font-bold text-sm shrink-0">
                   {item.name.charAt(0)}
                 </div>
                 <div>
@@ -353,13 +355,13 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
       <div class="grid gap-10 glitch:grid-cols-2 glitch:gap-12">
         <div class="flex flex-col justify-center sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal data-reveal-ease="smooth">
           <div class="flex flex-col gap-6 mb-6 sm:items-center glitch:items-start">
-            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+            <Badge variant="default" pill class="self-start sm:self-center glitch:self-start">
               <Icon name="user" size="sm" />
               {aboutTeaser.badge}
             </Badge>
             <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-              {aboutTeaser.headingLine1}<br />
-              <span class="text-brand-500">{aboutTeaser.headingLine2}</span>
+              <span class="text-foreground-muted">{aboutTeaser.headingLine1}</span><br />
+              <span class="text-foreground">{aboutTeaser.headingLine2}</span>
             </h2>
           </div>
           <p class="text-lg text-foreground-muted leading-relaxed mb-4 sm:mb-0 sm:max-w-xl glitch:mb-4 glitch:max-w-none">
@@ -368,37 +370,37 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
           <p class="text-lg text-foreground-muted leading-relaxed mb-8 sm:max-w-xl glitch:max-w-none sm:hidden glitch:block">
            {aboutTeaser.para2}
           </p>
-           <Button variant="brand-outline" href={aboutUrl} class="self-start sm:self-center glitch:self-start sm:hidden glitch:inline-flex">
+           <Button href={aboutUrl} class="self-start sm:self-center glitch:self-start sm:hidden glitch:inline-flex">
             {aboutTeaser.moreAboutMe}
             <Icon name="arrow-right" size="sm" />
           </Button>
         </div>
         <Card variant="elevated" padding="lg" class="h-full flex flex-col" data-reveal data-reveal-delay="1" data-reveal-ease="smooth">
-          <p class="text-sm font-bold text-brand-500 mb-5 text-center sm:hidden glitch:block">{aboutTeaser.statsIntro}</p>
+          <p class="text-sm font-bold text-foreground mb-5 text-center sm:hidden glitch:block">{aboutTeaser.statsIntro}</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 glitch:grid-cols-2 gap-3 flex-1 auto-rows-fr">
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="history" class="w-10 h-10 text-brand-500" />
+            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-foreground/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-foreground cursor-default h-full">
+              <Icon name="history" class="w-10 h-10 text-foreground" />
               <p class="text-sm font-semibold text-foreground">{aboutTeaser.stat1}</p>
             </div>
-            <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 h-full">
-              <svg class="w-10 h-10 text-brand-500" viewBox="0 0 1280 1280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 h-full text-brand-500 hover:text-brand-300">
+              <svg class="w-10 h-10" viewBox="0 0 1280 1280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M815.039 94.6439C824.758 106.709 829.714 122.99 839.626 155.553L1056.17 866.901C976.107 825.368 889.072 795.413 797.281 779.252L656.29 302.798C653.983 295.002 646.822 289.654 638.693 289.654C630.542 289.654 623.368 295.03 621.08 302.853L481.795 779.011C389.579 795.1 302.146 825.109 221.741 866.793L439.347 155.388L439.348 155.388C449.291 122.882 454.262 106.629 463.982 94.5853C472.562 83.9531 483.723 75.6958 496.4 70.6002C510.76 64.8284 527.756 64.8284 561.749 64.8284H717.174C751.212 64.8284 768.23 64.8284 782.603 70.6123C795.292 75.7184 806.459 83.9923 815.039 94.6439Z" fill="currentColor"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M840.951 900.754C805.253 931.279 734.002 952.097 651.929 952.097C551.197 952.097 466.767 920.737 444.363 878.561C436.354 902.732 434.558 930.396 434.558 948.068C434.558 948.068 429.281 1034.84 489.636 1095.2C489.636 1063.86 515.042 1038.46 546.381 1038.46C600.097 1038.46 600.036 1085.32 599.987 1123.34C599.986 1124.48 599.984 1125.61 599.984 1126.73C599.984 1184.44 635.255 1233.91 685.416 1254.77C677.924 1239.36 673.721 1222.05 673.721 1203.77C673.721 1148.73 706.034 1128.23 743.588 1104.41L743.588 1104.41C773.469 1085.46 806.668 1064.41 829.548 1022.17C841.486 1000.13 848.265 974.893 848.265 948.068C848.265 931.573 845.702 915.676 840.951 900.754Z" fill="currentColor"/>
               </svg>
-              <p class="text-sm font-semibold text-foreground">{aboutTeaser.stat2}</p>
+              <p class="text-sm font-semibold">{aboutTeaser.stat2}</p>
             </a>
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="globe" class="w-10 h-10 text-brand-500" />
+            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-foreground/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-foreground cursor-default h-full">
+              <Icon name="globe" class="w-10 h-10 text-foreground" />
               <p class="text-sm font-semibold text-foreground">{aboutTeaser.stat3}</p>
             </div>
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="map-pin" class="w-10 h-10 text-brand-500" />
+            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-foreground/40 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-foreground cursor-default h-full">
+              <Icon name="map-pin" class="w-10 h-10 text-foreground" />
               <p class="text-sm font-semibold text-foreground">{aboutTeaser.basedIn} <br class="sm:hidden" />{basedInDisplay}</p>
             </div>
           </div>
         </Card>
         <div class="hidden sm:flex justify-center glitch:hidden" data-reveal data-reveal-delay="2">
-          <Button variant="brand-outline" href={aboutUrl}>
+          <Button href={aboutUrl}>
             {aboutTeaser.moreAboutMe}
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -411,7 +413,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
   <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-6 text-center" data-reveal>
-        <Badge variant="brand" pill>
+        <Badge variant="default" pill>
           <Icon name="book" size="sm" />
           {blogSection.badge}
         </Badge>
@@ -439,7 +441,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
       </div>
 
       <div class="flex justify-center">
-        <Button variant="brand-outline" href={blogUrl}>
+        <Button href={blogUrl}>
           {blogSection.viewAll}
           <Icon name="arrow-right" size="sm" />
         </Button>
@@ -451,7 +453,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
   <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <Badge variant="brand" pill class="mb-6">
+      <Badge variant="default" pill class="mb-6">
         <Icon name="message-circle" size="sm" />
         {cta.badge}
       </Badge>
@@ -462,11 +464,11 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
         {cta.description}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href={contactUrl} class="cta-btn-brand">
+        <Button size="lg" href={contactUrl}>
           {cta.primary}
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="brand-outline" href={aboutUrl}>
+        <Button size="lg" href={aboutUrl}>
           {cta.secondary}
           <Icon name="arrow-right" size="sm" />
         </Button>
@@ -482,11 +484,11 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
         {cta.description}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href={contactUrl} class="hero-btn-brand">
+        <Button size="lg" href={contactUrl}>
           {cta.primary}
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href={aboutUrl}>
+        <Button size="lg" href={aboutUrl}>
           {cta.secondary}
           <Icon name="arrow-right" size="sm" />
         </Button>

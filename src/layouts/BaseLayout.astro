@@ -235,7 +235,7 @@ if (commentsConfig?.enabled) {
     <button
       id="back-to-top"
       aria-label={t('common.backToTop', locale)}
-      class="fixed bottom-6 right-6 z-50 h-12 w-12"
+      class="fixed bottom-6 right-6 z-50 h-12 w-12 cursor-pointer group"
       style="opacity:0;translate:0 2rem;pointer-events:none"
     >
       <!-- Scroll-progress ring (rotated so arc starts at 12 o'clock) -->
@@ -243,10 +243,10 @@ if (commentsConfig?.enabled) {
         <!-- Faint grey track -->
         <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" class="text-border" stroke-width="2" opacity="0.5" />
         <!-- Brand progress arc -->
-        <circle id="back-to-top-ring" cx="24" cy="24" r="21" fill="none" stroke="currentColor" class="text-brand-500" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="131.95" stroke-dashoffset="131.95" />
+        <circle id="back-to-top-ring" cx="24" cy="24" r="21" fill="none" stroke="currentColor" class="text-brand-500 group-hover:text-brand-300" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="131.95" stroke-dashoffset="131.95" />
       </svg>
       <!-- Inner face -->
-      <span class="absolute inset-[5px] flex items-center justify-center rounded-full bg-background border border-border-strong text-foreground-muted shadow-md" aria-hidden="true">
+      <span class="absolute inset-[5px] flex items-center justify-center rounded-full bg-background border border-border-strong text-brand-500 group-hover:text-brand-300 shadow-md" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
       </span>
     </button>

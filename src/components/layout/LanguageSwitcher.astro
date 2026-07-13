@@ -53,8 +53,8 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
       <button
         type="button"
         class={cn(
-          'lang-trigger inline-flex items-center gap-1.5 rounded-full border border-border-strong px-2.5 py-1.5',
-          'text-foreground-muted hover:text-foreground hover:bg-secondary',
+          'lang-trigger inline-flex items-center gap-1.5 rounded-full border border-brand-500 px-2.5 py-1.5 cursor-pointer',
+          'text-brand-500 hover:text-brand-300 hover:bg-secondary',
           'transition-colors duration-(--transition-fast)',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
         )}
@@ -75,7 +75,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
           <path stroke-linecap="round" d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
         </svg>
         {!compact && (
-          <span class="text-xs font-semibold uppercase tracking-wide">{currentLocale}</span>
+          <span class="text-xs font-semibold tracking-wide">{currentLocale}</span>
         )}
         <svg
           class="lang-chevron h-3 w-3 flex-shrink-0 transition-transform duration-200"
@@ -94,7 +94,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
 
       <div
         class={cn(
-          'lang-panel absolute right-0 top-full mt-2 z-50',
+          'lang-panel absolute right-0 top-full mt-2 z-50 space-y-1.5',
           'w-48 rounded-xl border border-border bg-background shadow-lg',
           'p-1.5 hidden'
         )}
@@ -114,7 +114,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
               aria-checked={isActive ? 'true' : 'false'}
               data-locale={locale}
             >
-              <span class="lang-row-code">{locale.toUpperCase()}</span>
+              <span class="lang-row-code">{locale}</span>
               <span class="lang-row-name">{getLocaleName(locale)}</span>
               <svg
                 class="lang-check h-4 w-4"
@@ -147,7 +147,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
     text-align: left;
     padding: 0.5rem 0.625rem;
     border-radius: 0.5rem;
-    color: var(--color-foreground-muted);
+    color: var(--color-brand-500);
     cursor: pointer;
     text-decoration: none;
     transition:
@@ -157,7 +157,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
 
   .lang-row:hover {
     background-color: var(--color-secondary);
-    color: var(--color-foreground);
+    color: var(--color-brand-300);
   }
 
   .lang-row:focus-visible {
@@ -166,7 +166,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
   }
 
   .lang-row[aria-checked='true'] {
-    background-color: var(--color-secondary);
+    background-color: var(--color-brand-500);
     color: var(--color-foreground);
   }
 
@@ -174,12 +174,11 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.05em;
-    color: var(--color-foreground-subtle);
     min-width: 1.75rem;
   }
 
   .lang-row[aria-checked='true'] .lang-row-code {
-    color: var(--color-brand-500);
+    color: var(--color-foreground);
   }
 
   .lang-row-name {
@@ -189,7 +188,7 @@ const currentLanguageLabel = t('nav.currentLanguage', currentLocale);
 
   .lang-check {
     display: none;
-    color: var(--color-brand-500);
+    color: var(--color-foreground);
   }
 
   .lang-row[aria-checked='true'] .lang-check {

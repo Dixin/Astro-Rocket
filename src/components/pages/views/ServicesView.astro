@@ -66,13 +66,13 @@ const aboutUrl = localizedPath('/about', locale);
   description={t('pages.services.meta.description', locale)}
 >
   <Hero layout="centered" size="sm" class="isolate services-hero" showHeroHalo>
-    <Badge slot="badge" variant="brand" pill>
+    <Badge slot="badge" variant="default" pill>
       <Icon name="sparkles" size="sm" />
       {hero.badge}
     </Badge>
     <h1 slot="title">
-      <span class="text-foreground">{hero.titleLead}</span><br />
-      <span class="text-brand-500">{hero.titleHighlight}</span>
+      <span class="text-foreground-muted">{hero.titleLead}</span><br />
+      <span class="text-foreground">{hero.titleHighlight}</span>
     </h1>
 
     <p slot="description">
@@ -80,15 +80,15 @@ const aboutUrl = localizedPath('/about', locale);
     </p>
 
     <Fragment slot="actions">
-      <Button size="lg" href="#design" variant="outline">
+      <Button size="lg" href="#design">
         {hero.jumpLabels[0]}
         <Icon name="arrow-down" size="sm" class="hero-jump-arrow" />
       </Button>
-      <Button size="lg" href="#development" variant="outline">
+      <Button size="lg" href="#development">
         {hero.jumpLabels[1]}
         <Icon name="arrow-down" size="sm" class="hero-jump-arrow" />
       </Button>
-      <Button size="lg" href="#performance" variant="outline">
+      <Button size="lg" href="#performance">
         {hero.jumpLabels[2]}
         <Icon name="arrow-down" size="sm" class="hero-jump-arrow" />
       </Button>
@@ -102,7 +102,7 @@ const aboutUrl = localizedPath('/about', locale);
         <!-- Text -->
         <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal data-reveal-eager data-reveal-ease="smooth">
           <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
-            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+            <Badge variant="default" pill class="self-start sm:self-center glitch:self-start">
               <Icon name="layout" size="sm" />
               {design.badge}
             </Badge>
@@ -120,7 +120,7 @@ const aboutUrl = localizedPath('/about', locale);
         <div class="sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0" data-reveal data-reveal-eager data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="h-full flex flex-col justify-center">
             <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border sm:justify-center glitch:justify-start">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
                 <Icon name="layout" size="md" />
               </div>
               <h3 class="font-display text-base font-semibold text-foreground">{includedLabel}</h3>
@@ -128,7 +128,7 @@ const aboutUrl = localizedPath('/about', locale);
             <ul class="flex flex-col gap-3">
               {design.included.map((item) => (
                 <li class="flex items-start gap-3">
-                  <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                  <Icon name="check" size="sm" class="text-foreground shrink-0 mt-1" />
                   <p class="text-sm text-foreground-muted leading-relaxed">
                     <span class="font-semibold text-foreground">{item.lead}</span> — {item.text}
                   </p>
@@ -148,7 +148,7 @@ const aboutUrl = localizedPath('/about', locale);
         <!-- Text -->
         <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:order-2 glitch:items-start glitch:text-left" data-reveal data-reveal-delay="1" data-reveal-ease="smooth">
           <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
-            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+            <Badge variant="default" pill class="self-start sm:self-center glitch:self-start">
               <Icon name="code" size="sm" />
               {development.badge}
             </Badge>
@@ -166,7 +166,7 @@ const aboutUrl = localizedPath('/about', locale);
         <div class="sm:max-w-xl sm:mx-auto glitch:order-1 glitch:max-w-none glitch:mx-0" data-reveal data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="h-full flex flex-col justify-center">
             <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border sm:justify-center glitch:justify-start">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
                 <Icon name="code" size="md" />
               </div>
               <h3 class="font-display text-base font-semibold text-foreground">{includedLabel}</h3>
@@ -174,7 +174,7 @@ const aboutUrl = localizedPath('/about', locale);
             <ul class="flex flex-col gap-3">
               {development.included.map((item) => (
                 <li class="flex items-start gap-3">
-                  <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                  <Icon name="check" size="sm" class="text-foreground shrink-0 mt-1" />
                   <p class="text-sm text-foreground-muted leading-relaxed">
                     <span class="font-semibold text-foreground">{item.lead}</span> — {item.text}
                   </p>
@@ -194,7 +194,7 @@ const aboutUrl = localizedPath('/about', locale);
         <!-- Text -->
         <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:text-left" data-reveal data-reveal-ease="smooth">
           <div class="flex flex-col gap-6 sm:items-center glitch:items-start">
-            <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+            <Badge variant="default" pill class="self-start sm:self-center glitch:self-start">
               <Icon name="zap" size="sm" />
               {performance.badge}
             </Badge>
@@ -212,7 +212,7 @@ const aboutUrl = localizedPath('/about', locale);
         <div class="sm:max-w-xl sm:mx-auto glitch:max-w-none glitch:mx-0" data-reveal data-reveal-delay="1" data-reveal-ease="smooth">
           <Card variant="elevated" padding="lg" class="h-full flex flex-col justify-center">
             <div class="flex items-center gap-3 pb-4 mb-4 border-b border-border sm:justify-center glitch:justify-start">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
                 <Icon name="zap" size="md" />
               </div>
               <h3 class="font-display text-base font-semibold text-foreground">{includedLabel}</h3>
@@ -220,7 +220,7 @@ const aboutUrl = localizedPath('/about', locale);
             <ul class="flex flex-col gap-3">
               {performance.included.map((item) => (
                 <li class="flex items-start gap-3">
-                  <Icon name="check" size="sm" class="text-brand-500 shrink-0 mt-1" />
+                  <Icon name="check" size="sm" class="text-foreground shrink-0 mt-1" />
                   <p class="text-sm text-foreground-muted leading-relaxed">
                     <span class="font-semibold text-foreground">{item.lead}</span> — {item.text}
                   </p>
@@ -238,7 +238,7 @@ const aboutUrl = localizedPath('/about', locale);
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>
+          <Badge variant="default" pill>
             <Icon name="list-checks" size="sm" />
             {processSection.badge}
           </Badge>
@@ -265,7 +265,7 @@ const aboutUrl = localizedPath('/about', locale);
   <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <Badge variant="brand" pill class="mb-6">
+      <Badge variant="default" pill class="mb-6">
         <Icon name="message-circle" size="sm" />
         {cta.badge}
       </Badge>
@@ -276,11 +276,11 @@ const aboutUrl = localizedPath('/about', locale);
         {cta.description}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href={contactUrl} class="cta-btn-brand">
+        <Button size="lg" href={contactUrl}>
           {cta.primary}
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="brand-outline" href={aboutUrl}>
+        <Button size="lg" href={aboutUrl}>
           {cta.secondary}
           <Icon name="arrow-right" size="sm" />
         </Button>
@@ -296,11 +296,11 @@ const aboutUrl = localizedPath('/about', locale);
         {cta.description}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href={contactUrl} class="hero-btn-brand">
+        <Button size="lg" href={contactUrl}>
           {cta.primary}
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href={aboutUrl}>
+        <Button size="lg" href={aboutUrl}>
           {cta.secondary}
           <Icon name="arrow-right" size="sm" />
         </Button>

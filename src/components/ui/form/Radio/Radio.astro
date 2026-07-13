@@ -22,11 +22,12 @@ const isCard = variant === 'card';
       for={radioId}
       class={cn(
         'relative flex items-start gap-4 p-4 cursor-pointer',
-        'rounded-xl border-2 border-border',
+        'rounded-xl border-1',
+        disabled ? 'border-border' : 'border-brand-500/30',
         'bg-background',
         'transition-all duration-150 ease-out',
-        'hover:border-foreground-subtle hover:bg-secondary/30',
-        'has-[:checked]:border-foreground has-[:checked]:bg-secondary/50',
+        disabled ? '' : 'hover:border-brand-300/30 hover:bg-secondary/30',
+        'has-[:checked]:border-foreground has-[:checked]:bg-brand-500/10 has-[:checked]:cursor-default',
         'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2',
         disabled && 'cursor-not-allowed opacity-50',
         error && 'border-destructive'
@@ -46,12 +47,12 @@ const isCard = variant === 'card';
         <!-- Outer circle -->
         <div
           class={cn(
-            'h-5 w-5 rounded-full',
-            'border-2 border-border',
+            'h-5 w-5 rounded-full border-2',
+            disabled ? 'border-border' : 'border-brand-500/30',
             'bg-background',
             'transition-all duration-150 ease-out',
-            'peer-checked:border-foreground peer-checked:bg-foreground',
-            'group-hover:border-foreground-muted'
+            'peer-checked:border-foreground peer-checked:bg-brand-500',
+            disabled ? '' : 'group-hover:border-brand-300/30'
           )}
         />
         <!-- Checkmark inside circle -->
@@ -121,13 +122,13 @@ const isCard = variant === 'card';
         <!-- Radio circle -->
         <div
           class={cn(
-            'h-[18px] w-[18px] rounded-full',
-            'border-2 border-border',
+            'h-[18px] w-[18px] rounded-full border-2',
+            disabled ? 'border-border' : 'border-brand-500/30',
             'bg-background',
             'transition-all duration-150 ease-out',
             'peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background',
-            'peer-checked:border-foreground',
-            'group-hover:border-foreground-muted',
+            'peer-checked:border-brand-500 peer-checked:bg-brand-500',
+            disabled ? '' : 'group-hover:border-brand-300/30',
             error && 'border-destructive peer-focus-visible:ring-destructive'
           )}
         />
