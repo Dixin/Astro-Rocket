@@ -190,12 +190,13 @@
     "about": {
       "meta": {
         "title": "關於 — 免費開源 Astro 7 主題",
-        "description": "Astro Rocket 是什麼以及如何打造：一款免費、極速的 Astro 7 入門主題，包含 57 個精心設計的組件、12 種配色主題、內建 i18n 與深色模式。"
+        "description": "Astro Rocket 是什麼以及如何打造：一款免費、極速的 Astro 7 入門主題，包含 57 個精心設計的組件、12 種配色主題、內建国际化與深色模式。"
       },
       "hero": {
         "badge": "關於",
         "titleLead": "Astro Rocket —",
-        "typingWords": ["Astro 7 主題", "12 種主題", "57+ 個組件", "深色模式", "內建 i18n", "零設定 SEO"],
+        "typingWords": ["極速載入", "入門主題", "57 個組件", "12 種主題", "深色模式", "內建国际化"],
+        "typingWordsMobile": ["極速載入", "入門主題", "12 種主題", "深色模式", "內建国际化"],
         "description": "一個免費、開源的 Astro 7 主題——完整的組件庫，讓你無需從零開始也能打造美觀網站。"
       },
       "whatYouGet": {
@@ -404,7 +405,7 @@
         "badge": "開始項目",
         "titleLead": "告訴我您的",
         "titleHighlight": "新項目",
-        "description": "我從零開始設計和構建新網站 — 每個項目，從開始到完成，都是由我完成的。請在下方分享一些細節，我會在1個工作日內回覆您。"
+        "description": "我很想聽到您的消息。請使用下面的表單發送信息，或通過其他渠道聯繫我。"
       },
       "formTitle": "項目詳情",
       "channelsTitle": "其他渠道",
@@ -417,7 +418,7 @@
     "home": {
       "meta": {
         "title": "免費開源的 Astro 7 主題",
-        "description": "免費開源的 Astro 7 主題：完整的元件庫，助您打造精美網站 — 12 種配色主題、57+ 個元件、內建 i18n，以及深色模式。"
+        "description": "免費開源的 Astro 7 主題：完整的元件庫，助您打造精美網站 — 12 種配色主題、57+ 個元件、內建国际化，以及深色模式。"
       },
       "hero": {
         "badge": "可用於新項目",

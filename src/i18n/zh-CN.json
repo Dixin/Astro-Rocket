@@ -190,12 +190,13 @@
     "about": {
       "meta": {
         "title": "关于 — 免费开源的 Astro 7 主题",
-        "description": "Astro Rocket 是什么以及它是如何构建的：一个免费、极速的 Astro 7 启动主题，包含 57 个精心设计的组件、12 套配色主题、内置 i18n 和深色模式。"
+        "description": "Astro Rocket 是什么以及它是如何构建的：一个免费、极速的 Astro 7 启动主题，包含 57 个精心设计的组件、12 套配色主题、内置国际化和深色模式。"
       },
       "hero": {
         "badge": "关于",
         "titleLead": "Astro Rocket —",
-        "typingWords": ["闪电般快速", "57+ 个组件", "12 套主题", "深色模式", "内置 i18n"],
+        "typingWords": ["闪电般快速", "启动主题", "57 个组件", "12 套主题", "深色模式", "内置国际化"],
+        "typingWordsMobile": ["闪电般快速", "启动主题", "12 套主题", "深色模式", "内置国际化"],
         "description": "一个免费、开源的 Astro 7 启动主题，可用于构建任何网站。"
       },
       "whatYouGet": {
@@ -288,7 +289,7 @@
               { "question": "是否免费使用？", "answer": "是的，完全免费。Astro Rocket 采用 MIT 许可证 — 可用于个人和商业项目，无需署名。" },
               { "question": "如何切换主题？", "answer": "只需在配置中更改一行。Astro Rocket 提供 12 种精心设计的配色主题 — 可立即切换，无需修改任何 CSS。" },
               { "question": "是否支持 TypeScript？", "answer": "是的，TypeScript 在整个项目中使用。所有组件、配置和工具都是完全类型化的。" },
-              { "question": "如何为 i18n 添加自己的语言？", "answer": "Astro Rocket 的 i18n 是基于配置的。将你的语言添加到 i18n 配置文件中，创建一个匹配的翻译文件，路由和 UI 会自动适应。" },
+              { "question": "如何为国际化添加自己的语言？", "answer": "Astro Rocket 的国际化是基于配置的。将你的语言添加到国际化配置文件中，创建一个匹配的翻译文件，路由和 UI 会自动适应。" },
               { "question": "我应该在哪里报告错误或提出功能建议？", "answer": "在 <a href=\"https://github.com/Dixin/Astro-Rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub 仓库</a> 上打开问题或开始讨论。欢迎贡献和反馈。" }
             ]
           }
@@ -404,7 +405,7 @@
         "badge": "开始一个项目",
         "titleLead": "告诉我你的项目",
         "titleHighlight": "新的项目",
-        "description": "我从零开始设计和构建新网站 — 每个项目，从开始到结束，都是由我完成的。在下面分享一些细节，我将在一个工作日内回复你。"
+        "description": "我很想听到你的消息。请使用下面的表单发送信息，或通过其他渠道联系我。"
       },
       "formTitle": "项目详情",
       "channelsTitle": "其他渠道",
