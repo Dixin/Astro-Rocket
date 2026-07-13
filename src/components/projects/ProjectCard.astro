@@ -54,7 +54,7 @@ const { data } = project;
     {data.tags && data.tags.length > 0 && (
       <div class="flex flex-wrap gap-1.5">
         {data.tags.map((tag) => (
-          <Badge variant="brand">#{tag}</Badge>
+          <Badge variant="brand" pill>#{tag}</Badge>
         ))}
       </div>
     )}
