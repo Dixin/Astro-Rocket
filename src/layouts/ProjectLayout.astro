@@ -22,6 +22,7 @@ import {
   getProjectsBaseUrl,
   getProjectTranslations,
 } from '@/lib/projects';
+import { cn } from '@/lib/cn';
 
 interface Props {
   title: string;
@@ -166,7 +167,7 @@ const languageAlternates = Object.fromEntries(
           </div>
 
           <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
-            <Button href={projectsHref} variant="secondary" size="sm">
+            <Button href={projectsHref} size="sm">
               <Icon name="arrow-left" size="sm" />
               {t('projects.backToProjects', locale)}
             </Button>
@@ -191,41 +192,44 @@ const languageAlternates = Object.fromEntries(
         <div class="mx-auto max-w-7xl px-6">
           <h2 class="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">{t('projects.moreProjects', locale)}</h2>
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((project) => (
-              <Card
-                variant="elevated"
-                hover
-                padding="none"
-                href={project.data.placeholder ? undefined : getProjectUrl(project.id, locale)}
-                class="group flex flex-col"
-              >
-                <div class="flex flex-1 flex-col p-6">
-                  <div class="mb-3 flex items-start justify-between gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                      <Icon name="layers" size="sm" />
+            {related.map((project) => {
+              const href = project.data.placeholder ? undefined : getProjectUrl(project.id, locale);
+              return (
+                <Card
+                  variant="elevated"
+                  hover
+                  padding="none"
+                  href={href}
+                  class="group flex flex-col"
+                >
+                  <div class="flex flex-1 flex-col p-6">
+                    <div class="mb-3 flex items-start justify-between gap-4">
+                      <div class={cn('w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center shrink-0', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground')}>
+                        <Icon name="layers" size="sm" />
+                      </div>
+                      <Icon name="arrow-up-right" size="sm" class={cn('transition-colors shrink-0 ml-auto', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground-muted')} />
                     </div>
-                    <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
-                  </div>
-                  <div class="mb-2 flex items-baseline gap-2">
-                    <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
-                    {project.data.year && (
-                      <span class="text-xs text-foreground-muted">{project.data.year}</span>
+                    <div class="mb-2 flex items-baseline gap-2">
+                      <h3 class={cn('font-display text-lg font-bold', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground')}>{project.data.title}</h3>
+                      {project.data.year && (
+                        <span class="text-xs text-foreground-muted">{project.data.year}</span>
+                      )}
+                    </div>
+                    <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1 line-clamp-3">{project.data.description}</p>
+                    {project.data.tags && project.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1.5">
+                        {project.data.tags.map((tag, i) => (
+                          <>
+                            {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
+                            <Badge variant="default">#{tag}</Badge>
+                          </>
+                        ))}
+                      </div>
                     )}
                   </div>
-                  <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1 line-clamp-3">{project.data.description}</p>
-                  {project.data.tags && project.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5">
-                      {project.data.tags.map((tag, i) => (
-                        <>
-                          {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
-                          <Badge variant="brand">#{tag}</Badge>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -235,7 +239,7 @@ const languageAlternates = Object.fromEntries(
     <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
       <!-- Mobile: flat section, no glitch band -->
       <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-        <Badge variant="brand" pill class="mb-6">{t('projects.ctaBadge', locale)}</Badge>
+        <Badge variant="default" pill class="mb-6">{t('projects.ctaBadge', locale)}</Badge>
         <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
           {t('projects.closingHeading', locale)}
         </h2>
@@ -243,11 +247,11 @@ const languageAlternates = Object.fromEntries(
           {t('projects.closingLead', locale)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" href={contactUrl} class="cta-btn-brand">
+          <Button size="lg" href={contactUrl}>
             {t('projects.ctaPrimary', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button size="lg" variant="outline" href={projectsHref}>
+          <Button size="lg" href={projectsHref}>
             {t('projects.allProjects', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -263,11 +267,11 @@ const languageAlternates = Object.fromEntries(
           {t('projects.closingLead', locale)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" href={contactUrl} class="hero-btn-brand">
+          <Button size="lg" href={contactUrl}>
             {t('projects.ctaPrimary', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button size="lg" variant="outline" href={projectsHref}>
+          <Button size="lg" href={projectsHref}>
             {t('projects.allProjects', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>

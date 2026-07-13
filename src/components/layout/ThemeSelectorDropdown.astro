@@ -40,7 +40,7 @@ const themes = [
     aria-expanded="false"
     aria-label={t('theme.selectColourTheme', locale)}
     class={cn(
-      'inline-flex items-center justify-center rounded-full border border-border-strong p-1.5',
+      'inline-flex items-center justify-center rounded-full border border-brand-500 p-1.5 cursor-pointer',
       'text-foreground-muted hover:text-foreground hover:bg-secondary',
       'aria-expanded:bg-secondary aria-expanded:text-foreground',
       'transition-colors duration-(--transition-fast)',
@@ -50,7 +50,7 @@ const themes = [
     <!-- Active theme dot — the live colour swatch IS the icon -->
     <span
       class="h-4 w-4 rounded-full block flex-shrink-0"
-      style="background-color: var(--color-brand-500)"
+      style="background: conic-gradient(oklch(62.5% 0.22  38), oklch(68%   0.19  75), oklch(64%   0.27 130), oklch(62.5% 0.22 160), oklch(62.5% 0.22 190), oklch(65%   0.22 200), oklch(67%   0.21 222), oklch(62.5% 0.22 255), oklch(60%   0.24 264), oklch(62.5% 0.26 277), oklch(62.5% 0.25 303), oklch(58%   0.28 330), oklch(62.5% 0.22  38));"
       aria-hidden="true"
     />
   </button>
@@ -91,12 +91,12 @@ const themes = [
 
 <style>
   .theme-swatch-dd[data-active] {
-    background-color: var(--color-secondary);
+    background-color: var(--color-brand-500);
   }
 
   .theme-swatch-dd[data-active] span:first-child {
-    outline: 2px solid var(--color-brand-500);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-background);
+    outline-offset: -1px;
   }
 
   .theme-swatch-dd[data-active] span:last-child {

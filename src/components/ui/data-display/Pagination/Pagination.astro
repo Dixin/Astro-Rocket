@@ -98,7 +98,7 @@ const nextUrl = currentPage < totalPages ? `${baseUrl}${currentPage + 1}` : unde
   {/* Page Numbers */}
   {pages.map((page) =>
     page === '...' ? (
-      <span class={cn(paginationItemVariants({ variant: 'default', size }), 'cursor-default hover:bg-transparent')} role="separator" aria-label="More pages">
+      <span class={cn(paginationItemVariants({ variant: 'default', size }), 'cursor-default hover:bg-transparent text-foreground, hover:text-foreground')} role="separator" aria-label="More pages">
         <span aria-hidden="true">...</span>
       </span>
     ) : page === currentPage ? (

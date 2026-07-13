@@ -24,6 +24,8 @@ export const buttonVariants = cva(
         link: 'text-foreground-secondary hover:text-foreground underline-offset-4 hover:underline',
         destructive:
           'btn-destructive bg-destructive text-destructive-foreground hover:bg-destructive/90 active:scale-[0.98]',
+        brand:
+          'btn-brand border border-brand-500 bg-brand-700/10 text-brand-500 hover:bg-secondary/70 hover:border-brand-300 hover:text-brand-300 active:scale-[0.98] py-1',
       },
       size: {
         sm: 'h-8 px-3 text-xs [&_svg]:h-4 [&_svg]:w-4',

@@ -172,16 +172,16 @@ const headerClasses = cn(
 
 const innerClasses = cn(headerInnerVariants({ size, shape }), !isFloating && maxWidthClass);
 
-function isActive(href: string): boolean {
-  if (!showActiveState) return false;
+export function isActive(href: string, showState: boolean | undefined, path: string): boolean {
+  if (!showState) return false;
   if (href.startsWith('#')) return false;
   // The home item — site root `/` or a locale root like `/nl` — must match
   // exactly: the startsWith check below would light it up on every page of
   // its locale.
   if (stripLocaleFromPath(href) === '/') {
-    return currentPath === href || currentPath === `${href}/`;
+    return path === href || path === `${href}/`;
   }
-  return currentPath === href || currentPath.startsWith(href + '/');
+  return path === href || path.startsWith(href + '/');
 }
 
 function getSocialIconData(url: string): { icon: string; label: string } {
@@ -259,18 +259,18 @@ const buttonId = `${menuId}-button`;
               <a
                 href={href.startsWith('#') && !isLandingPage ? `/${href}` : href}
                 class={cn(
-                  'nav-link relative rounded-md px-3 py-2 text-sm',
+                  'nav-link relative rounded-md px-3 py-2 text-sm hover:text-brand-300',
                   'transition-all duration-(--transition-fast)',
                   isFloating && 'hdr-invert-text',
                   isFloating
-                    ? (isActive(href)
-                        ? 'hdr-nav-active font-semibold'
-                        : 'font-medium')
-                    : (isActive(href)
-                        ? 'nav-link-active font-semibold text-foreground bg-secondary'
-                        : 'nav-link-inactive font-medium text-foreground-muted hover:text-foreground hover:bg-secondary/70')
+                    ? (isActive(href, showActiveState, currentPath)
+                        ? 'hdr-nav-active font-semibold text-foreground hover:text-brand-300 bg-brand-500 hover:bg-secondary/70'
+                        : 'font-medium text-brand-500 hover:text-brand-300 hover:bg-secondary/70')
+                    : (isActive(href, showActiveState, currentPath)
+                        ? 'nav-link-active font-semibold text-foreground bg-brand-500 hover:bg-secondary'
+                        : 'nav-link-inactive font-medium text-foreground-muted hover:bg-secondary/70 text-brand-500')
                 )}
-                aria-current={isActive(href) ? 'page' : undefined}
+                aria-current={isActive(href, showActiveState, currentPath) ? 'page' : undefined}
               >
                 {label}
               </a>
@@ -342,7 +342,7 @@ const buttonId = `${menuId}-button`;
                 href={action.href}
                 target={action.target}
                 aria-label={action.label}
-                class={isFloating ? 'hdr-invert-text' : undefined}
+                class={cn(isFloating ? 'hdr-invert-text' : undefined, 'rounded-full border border-brand-500 hover:border-brand-300 text-brand-500 hover:text-brand-300')}
               >
                 <Icon name={action.icon} size="sm" />
                 {!action.iconOnly && action.label}
@@ -452,7 +452,7 @@ const buttonId = `${menuId}-button`;
               <p class="mobile-menu-label">{t('nav.sectionNavigate', locale)}</p>
               <ul class="space-y-0.5">
                 {navItems.map(({ label, href }, idx) => {
-                  const active = isActive(href);
+                  const active = isActive(href, showActiveState, currentPath);
                   const resolvedHref = href.startsWith('#') && !isLandingPage ? `/${href}` : href;
                   return (
                     <li>
@@ -518,7 +518,7 @@ const buttonId = `${menuId}-button`;
                         rel="noopener noreferrer"
                         aria-label={label}
                         title={label}
-                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-strong text-foreground-muted transition-colors"
+                        class="mobile-menu-social mobile-menu-stagger inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-500 text-brand-500 transition-colors"
                         style={`--stagger-index: ${navItems.length + (showThemeSelector ? 1 : 0) + (showLanguageSwitcher ? 1 : 0) + sIdx}`}
                       >
                         <Icon name={icon} size="md" />
@@ -900,11 +900,10 @@ const buttonId = `${menuId}-button`;
     color: var(--color-brand-600);
   }
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-invert-text {
-    color: var(--color-foreground-muted);
     transition: color 300ms;
   }
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-invert-text:hover {
-    color: var(--color-foreground);
+    color: var(--color-brand-300);
   }
 
   /* Nav pills — the same treatment the fixed bar uses (bg-secondary pill on
@@ -916,13 +915,19 @@ const buttonId = `${menuId}-button`;
     background: color-mix(in srgb, currentColor 12%, transparent);
   }
   [data-header-shape="floating"] .nav-link.hdr-nav-active {
-    background: color-mix(in srgb, currentColor 16%, transparent);
+    background: var(--color-brand-500);
+  }
+  [data-header-shape="floating"] .nav-link.hdr-nav-active:hover {
+    background: color-mix(in srgb, var(--color-secondary) 70%, transparent);
   }
   [data-header-shape="floating"][data-scrolled] .nav-link:hover {
     background: color-mix(in srgb, var(--color-secondary) 70%, transparent);
   }
   [data-header-shape="floating"][data-scrolled] .nav-link.hdr-nav-active {
-    background: var(--color-secondary);
+    background: var(--color-brand-500);
+  }
+  [data-header-shape="floating"][data-scrolled] .nav-link.hdr-nav-active:hover {
+    background: color-mix(in srgb, var(--color-secondary) 70%, transparent);
   }
 
   [data-header-shape="floating"][data-header-color-scheme="invert"] .hdr-invert-cta {
@@ -984,25 +989,18 @@ const buttonId = `${menuId}-button`;
     color: oklch(91% 0.008 250);
   }
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-invert-text {
-    color: oklch(68% 0.01 250);
   }
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-invert-text:hover {
-    color: oklch(91% 0.008 250);
   }
 
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper > .ttg-trigger,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper > button,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .search-wrapper > .search-trigger {
-    border-color: oklch(58% 0.008 250 / 0.6);
-    color: oklch(68% 0.01 250);
     box-shadow: none;
   }
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .ttg-wrapper > .ttg-trigger:hover,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .theme-dropdown-wrapper > button:hover,
   html:not(.dark) [data-header-shape="floating"]:not([data-scrolled]) .search-wrapper > .search-trigger:hover {
-    border-color: oklch(58% 0.008 250 / 0.85);
-    background-color: rgb(255 255 255 / 0.06);
-    color: oklch(91% 0.008 250);
   }
 
   html:not(.dark) [data-header-shape="floating"][data-header-color-scheme="default"]:not([data-scrolled]) .hdr-hamburger,
@@ -1018,7 +1016,6 @@ const buttonId = `${menuId}-button`;
   .dark [data-header-shape="floating"] .theme-dropdown-wrapper button,
   .dark [data-header-shape="floating"] .ttg-wrapper .ttg-trigger,
   .dark [data-header-shape="floating"] .search-wrapper .search-trigger {
-    border-color: var(--color-foreground-subtle);
   }
 
   [data-header-shape="floating"][data-header-color-scheme="invert"][data-scrolled] .hdr-logo-text {
@@ -1035,14 +1032,11 @@ const buttonId = `${menuId}-button`;
   }
 
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-invert-text {
-    color: var(--color-foreground-muted);
     transition: color 300ms;
   }
   .dark [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-invert-text {
-    color: var(--color-foreground-muted);
   }
   [data-header-shape="floating"][data-header-color-scheme="default"] .hdr-invert-text:hover {
-    color: var(--color-foreground);
   }
 
   @media (max-width: 1023px) {
@@ -1143,19 +1137,18 @@ const buttonId = `${menuId}-button`;
   .mobile-menu-row {
     color: var(--color-foreground-muted);
   }
-  .mobile-menu-row-inactive:hover {
-    background-color: color-mix(in oklch, var(--color-secondary) 60%, transparent);
-    color: var(--color-foreground);
+  .mobile-menu-row-inactive {
+    color: var(--color-brand-500);
+  }
+  .mobile-menu-row-inactive:hover, .mobile-menu-row-active:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-brand-300);
   }
 
   .mobile-menu-row-active {
-    background-color: color-mix(in oklch, var(--color-brand-500) 10%, transparent);
-    color: var(--color-brand-700);
+    background-color: var(--color-brand-500);
+    color: var(--color-foreground);
     font-weight: 600;
-  }
-  html.dark .mobile-menu-row-active {
-    background-color: color-mix(in oklch, var(--color-brand-400) 14%, transparent);
-    color: var(--color-brand-300);
   }
 
   .mobile-menu-tile {
@@ -1170,18 +1163,18 @@ const buttonId = `${menuId}-button`;
     color: var(--color-foreground-muted);
     transition: background-color 200ms ease, color 200ms ease;
   }
+  .mobile-menu-row-inactive .mobile-menu-tile {
+    color: var(--color-brand-500);
+  }
   .mobile-menu-row-inactive:hover .mobile-menu-tile {
-    background-color: var(--color-secondary);
-    color: var(--color-foreground);
+    background-color: var(--color-background);
+    color: var(--color-bramd-300);
   }
   .mobile-menu-row-active .mobile-menu-tile {
-    background-color: color-mix(in oklch, var(--color-brand-500) 18%, transparent);
-    color: var(--color-brand-700);
+    background-color: var(--color-background);
+    color: var(--color-brand-500);
   }
-  html.dark .mobile-menu-row-active .mobile-menu-tile {
-    background-color: color-mix(in oklch, var(--color-brand-400) 22%, transparent);
-    color: var(--color-brand-300);
-  }
+
 
   .mobile-menu-chevron {
     opacity: 0.4;
@@ -1202,17 +1195,17 @@ const buttonId = `${menuId}-button`;
   }
 
   .mobile-menu-social {
-    border-color: var(--color-border-strong);
+    border-color: var(--color-brand-500);
   }
   html:not(.dark) .mobile-menu-social:hover {
-    color: var(--color-foreground);
-    border-color: var(--color-border-strong);
-    background-color: color-mix(in oklch, var(--color-secondary) 60%, transparent);
+    color: var(--color-brand-300);
+    border-color: var(--color-brand-300);
+    background-color: var(--color-secondary);
   }
   html.dark .mobile-menu-social:hover {
     color: var(--color-brand-300);
-    border-color: var(--color-brand-400);
-    background-color: color-mix(in oklch, var(--color-brand-400) 12%, transparent);
+    border-color: var(--color-brand-300);
+    background-color: var(--color-secondary);
   }
   .mobile-menu-social:focus-visible {
     outline: 2px solid var(--color-ring);
@@ -1249,5 +1242,9 @@ const buttonId = `${menuId}-button`;
   .mobile-menu-stagger:has(.ttg-panel:not(.hidden)) {
     position: relative;
     z-index: 60;
+  }
+  
+  .menu-icon, .close-icon {
+    color: var(--color-brand-500);
   }
 </style>

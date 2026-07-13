@@ -23,7 +23,7 @@ const Element = href ? 'a' : 'div';
 
 const cardStyles = cn(
   cardVariants({ variant, padding, hover }),
-  href && 'block cursor-pointer',
+  href ? cn('block cursor-pointer', variant === 'default' || variant === 'outline' || variant === 'elevated' ? 'border-brand-500 hover:border-brand-300' : '') : (variant === 'default' || variant === 'outline' || variant === 'elevated' ? 'border-foreground-muted hover:border-foreground' : ''),
   className
 );
 ---

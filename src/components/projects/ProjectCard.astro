@@ -12,6 +12,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 import { defaultLocale } from '@/i18n';
 import { getProjectUrl } from '@/lib/projects';
+import {  cn } from '@/lib/cn';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -26,26 +27,27 @@ interface Props {
 
 const { project, index = 0, locale = defaultLocale } = Astro.props;
 const { data } = project;
+const href = data.placeholder ? undefined : getProjectUrl(project.id, locale);
 ---
 
 <Card
   variant="elevated"
   hover
   padding="none"
-  href={data.placeholder ? undefined : getProjectUrl(project.id, locale)}
-  class="group flex flex-col"
+  href={href}
+  class={cn('group flex flex-col', href ? '' : 'border-foreground-muted')}
   data-reveal
   data-reveal-delay={index % 2 || undefined}
 >
   <div class="flex flex-1 flex-col p-6">
     <div class="mb-3 flex items-start justify-between gap-4">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+      <div class={cn('w-10 h-10 rounded-xl flex items-center justify-center  shrink-0', href ? 'bg-gradient-to-br from-brand-500/20 to-brand-500/5 text-brand-500 group-hover:text-brand-300' : 'bg-gradient-to-br from-foreground/20 to-foreground/5 text-foreground')}>
         <Icon name="layers" size="sm" />
       </div>
-      <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
+      <Icon name="arrow-up-right" size="sm" class={cn('transition-colors shrink-0 ml-auto', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground-muted')} />
     </div>
     <div class="mb-2 flex items-baseline gap-2">
-      <h3 class="font-display text-lg font-bold text-foreground">{data.title}</h3>
+      <h3 class={cn('font-display text-lg font-bold', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground')}>{data.title}</h3>
       {data.year && (
         <span class="text-xs text-foreground-muted">{data.year}</span>
       )}
@@ -54,7 +56,7 @@ const { data } = project;
     {data.tags && data.tags.length > 0 && (
       <div class="flex flex-wrap gap-1.5">
         {data.tags.map((tag) => (
-          <Badge variant="brand">#{tag}</Badge>
+          <Badge variant="default">#{tag}</Badge>
         ))}
       </div>
     )}

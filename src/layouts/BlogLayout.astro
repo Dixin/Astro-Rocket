@@ -217,7 +217,7 @@ const languageAlternates = Object.fromEntries(
 
       <!-- Article Footer -->
       <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
-        <Button href={getBlogBaseUrl(locale)} variant="secondary" size="sm">
+        <Button href={getBlogBaseUrl(locale)} size="sm">
           <Icon name="arrow-left" size="sm" />
           {t('blog.backToBlog', locale)}
         </Button>
@@ -292,7 +292,7 @@ const languageAlternates = Object.fromEntries(
       <div class="flex flex-wrap items-center justify-center gap-3">
         <a
           href="/rss.xml"
-          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-brand-500/20 hover:text-brand-300"
         >
           <Icon name="rss" size="sm" />
           {t('blog.rssFeed', locale)}
@@ -302,7 +302,7 @@ const languageAlternates = Object.fromEntries(
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+            class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-brand-500/20 hover:text-brand-300"
           >
             <Icon name={link.icon} size="sm" />
             {link.label}
@@ -310,7 +310,7 @@ const languageAlternates = Object.fromEntries(
         ))}
         <a
           href={`mailto:${siteConfig.email}`}
-          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-brand-500/20 hover:text-brand-300"
         >
           <Icon name="mail" size="sm" />
           {t('blog.emailLabel', locale)}

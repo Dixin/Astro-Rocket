@@ -57,10 +57,10 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 
   <!-- Hero Section -->
   <Hero layout="split" size="lg">
-    <Badge slot="badge" variant="brand" pill>50+ production components</Badge>
+    <Badge slot="badge" variant="default" pill>50+ production components</Badge>
 
     <h1 slot="title">
-      Component <span class="text-brand-500">Library</span>
+      <span class="text-foreground-muted">Component</span> <span class="text-foreground">Library</span>
     </h1>
 
     <p slot="description">
@@ -69,11 +69,11 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     </p>
 
     <Fragment slot="actions">
-      <Button href="#hero" class="hero-btn-brand">
+      <Button href="#hero">
         Browse Components
         <Icon name="arrow-right" size="sm" />
       </Button>
-      <Button href="https://github.com/hansmartensdev/Astro-Rocket" target="_blank" class="hero-btn-learn">
+      <Button href="https://github.com/hansmartensdev/Astro-Rocket" target="_blank">
         <Icon name="github" size="sm" />
         View Source
       </Button>
@@ -88,7 +88,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Hero Section -->
     <section id="hero" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="star" size="lg" />
         </div>
         <div>
@@ -106,10 +106,10 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
           </div>
           <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
             <Hero layout="split" size="md" class="!pt-12 !pb-12">
-              <Badge slot="badge" variant="brand" pill>New release</Badge>
+              <Badge slot="badge" variant="default" pill>New release</Badge>
 
               <h2 slot="title">
-                Build faster with <span class="text-brand-500">Astro Rocket</span>
+                <span class="text-foreground-muted">Build faster with</span> <span class="text-foreground">Astro Rocket</span>
               </h2>
 
               <p slot="description">
@@ -118,11 +118,11 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 
               <Fragment slot="actions">
                 <Button size="sm">Get Started</Button>
-                <Button size="sm" variant="outline">Learn More</Button>
+                <Button size="sm">Learn More</Button>
               </Fragment>
 
               <div slot="aside" class="bg-background-secondary border border-border rounded-lg p-6 text-center">
-                <Icon name="code" size="lg" class="text-brand-500 mx-auto mb-2" />
+                <Icon name="code" size="lg" class="text-foreground mx-auto mb-2" />
                 <p class="text-sm text-foreground-muted">Aside content slot</p>
               </div>
 
@@ -147,10 +147,10 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
           </div>
           <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
             <Hero layout="centered" size="md" class="!pt-12 !pb-12">
-              <Badge slot="badge" variant="brand" pill>About us</Badge>
+              <Badge slot="badge" variant="default" pill>About us</Badge>
 
               <h2 slot="title">
-                We're on a <span class="text-brand-500">mission</span>
+                <span class="text-foreground-muted">We're on a</span> <span class="text-foreground">mission</span>
               </h2>
 
               <p slot="description">
@@ -159,7 +159,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 
               <Fragment slot="actions">
                 <Button size="sm">Meet the Team</Button>
-                <Button size="sm" variant="ghost">Our Story</Button>
+                <Button size="sm">Our Story</Button>
               </Fragment>
             </Hero>
           </div>
@@ -216,7 +216,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
           <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
             <Hero layout="centered" size="sm" class="invert-section !pt-10 !pb-10 bg-background">
               <h2 slot="title">
-                <span class="text-foreground">Dark mode </span><span class="text-brand-400">always</span>
+                <span class="text-foreground-muted">Dark mode </span><span class="text-foreground">always</span>
               </h2>
 
               <p slot="description" class="text-foreground-secondary">
@@ -225,7 +225,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 
               <Fragment slot="actions">
                 <Button size="sm">Primary Action</Button>
-                <Button size="sm" variant="outline">
+                <Button size="sm">
                   Secondary
                 </Button>
               </Fragment>
@@ -308,7 +308,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Layout Section (Header & Footer) -->
     <section id="layout" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="layout" size="lg" />
         </div>
         <div>
@@ -688,14 +688,14 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
           <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
             <CTA variant="default" size="md" maxWidth="lg">
               <h2 slot="heading">
-                Stop configuring. <span class="text-brand-500">Start building.</span>
+                <span class="text-foreground-muted">Stop configuring.</span> <span class="text-foreground">Start building.</span>
               </h2>
               <p slot="description">
                 Join the developers building faster, better websites with Astro Rocket.
               </p>
               <Fragment slot="actions">
                 <Button size="lg">Get Started</Button>
-                <Button variant="outline" size="lg">Learn More</Button>
+                <Button size="lg">Learn More</Button>
               </Fragment>
             </CTA>
           </div>
@@ -718,7 +718,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
                   <Icon name="github" size="sm" />
                   Clone Repository
                 </Button>
-                <Button variant="outline">Read Documentation</Button>
+                <Button>Read Documentation</Button>
               </Fragment>
             </CTA>
           </div>
@@ -748,7 +748,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Buttons Section -->
     <section id="buttons" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="box" size="lg" />
         </div>
         <div>
@@ -772,6 +772,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
               <Button variant="ghost">Ghost</Button>
               <Button variant="link">Link</Button>
               <Button variant="destructive">Destructive</Button>
+              <Button variant="brand">Brand</Button>
             </div>
           </div>
         </div>
@@ -826,7 +827,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Form Inputs Section -->
     <section id="inputs" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="terminal" size="lg" />
         </div>
         <div>
@@ -903,6 +904,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
               <Checkbox label="Send me product updates" checked />
               <Checkbox label="Enable notifications" description="Receive alerts for important updates" />
               <Checkbox label="Disabled checkbox" disabled />
+              <Checkbox label="Disabled checkbox" checked disabled />
             </div>
           </div>
 
@@ -916,6 +918,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
               <Radio name="notify-default" value="all" label="All notifications" checked />
               <Radio name="notify-default" value="important" label="Important only" description="Only critical updates" />
               <Radio name="notify-default" value="none" label="None" />
+              <Radio name="notify-default" value="none" label="Disabled" disabled />
             </div>
           </div>
         </div>
@@ -931,6 +934,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
               <Radio variant="card" name="plan-cards" value="free" label="Free" description="Basic features for personal projects" checked />
               <Radio variant="card" name="plan-cards" value="pro" label="Pro" description="Advanced tools for professionals" />
               <Radio variant="card" name="plan-cards" value="team" label="Team" description="Collaboration features for teams" />
+              <Radio variant="card" name="plan-cards" value="enterprise" label="Enterprise" description="Advanced features for large organizations" disabled />
             </div>
           </div>
         </div>
@@ -969,7 +973,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Feedback Section -->
     <section id="feedback" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="alert-circle" size="lg" />
         </div>
         <div>
@@ -999,6 +1003,10 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
               <Badge variant="info">
                 <Icon name="info" size="xs" />
                 Info
+              </Badge>
+              <Badge variant="brand">
+                <Icon name="star" size="xs" />
+                Brand
               </Badge>
             </div>
           </div>
@@ -1042,7 +1050,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Overlays Section -->
     <section id="overlays" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="layers" size="lg" />
         </div>
         <div>
@@ -1096,7 +1104,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
                 { label: 'Delete', href: '#', disabled: true, icon: 'trash' },
               ]}
             >
-              <Button variant="outline" slot="trigger">
+              <Button variant="outline" slot="trigger" class="border-brand-500 text-brand-500 hover:text-brand-300 hover:border-brand-300">
                 Actions
                 <Icon name="chevron-down" size="sm" />
               </Button>
@@ -1160,7 +1168,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Navigation Section -->
     <section id="navigation" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="menu" size="lg" />
         </div>
         <div>
@@ -1359,7 +1367,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Data Display Section -->
     <section id="data" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="layout" size="lg" />
         </div>
         <div>
@@ -1411,7 +1419,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <Card hover>
                 <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
                     <Icon name="zap" size="md" />
                   </div>
                   <div class="flex-1 min-w-0">
@@ -1426,7 +1434,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 
               <Card hover>
                 <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
                     <Icon name="shield" size="md" />
                   </div>
                   <div class="flex-1 min-w-0">
@@ -1441,7 +1449,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
 
               <Card hover>
                 <div class="flex items-start gap-4">
-                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
+                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
                     <Icon name="globe" size="md" />
                   </div>
                   <div class="flex-1 min-w-0">
@@ -1786,7 +1794,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Loading Section -->
     <section id="loading" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="loader" size="lg" />
         </div>
         <div>
@@ -1908,7 +1916,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Toggles Section -->
     <section id="toggles" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="toggle-left" size="lg" />
         </div>
         <div>
@@ -1978,7 +1986,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
     <!-- Patterns Section -->
     <section id="patterns" class="scroll-mt-32 flex flex-col gap-10">
       <div class="flex items-start gap-5">
-        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 shrink-0">
+        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-background-secondary text-foreground shrink-0">
           <Icon name="layers" size="lg" />
         </div>
         <div>
@@ -2097,11 +2105,11 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
       These components are just the beginning. Clone Astro Rocket and start shipping faster.
     </p>
     <Fragment slot="actions">
-      <Button href="https://github.com/hansmartensdev/Astro-Rocket" target="_blank" class="hero-btn-brand">
+      <Button href="https://github.com/hansmartensdev/Astro-Rocket" target="_blank">
         <Icon name="github" size="sm" />
         Clone Repository
       </Button>
-      <Button variant="outline" href="/blog">
+      <Button href="/blog">
         Read Documentation
       </Button>
     </Fragment>

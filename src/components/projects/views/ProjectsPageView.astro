@@ -55,7 +55,7 @@ const aboutUrl = localizedPath('/about', locale);
   footerBackground="secondary"
 >
   <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
-    <Badge slot="badge" variant="brand" pill>
+    <Badge slot="badge" variant="default" pill>
       <Icon name="layers" size="sm" />
       {t('projects.pageBadge', locale, { page, total: totalPages })}
     </Badge>
@@ -65,19 +65,16 @@ const aboutUrl = localizedPath('/about', locale);
     <p slot="description">
       {t('projects.heroDescription', locale)}
     </p>
+    
+    <Button href={projectsHref}>
+      <Icon name="arrow-left" size="sm" />
+      {t('projects.allProjects', locale)}
+    </Button>
   </Hero>
 
   <section class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4" data-reveal>
-        <a
-          href={projectsHref}
-          class="group inline-flex items-center gap-2 rounded-lg border border-border-strong bg-transparent px-4 py-2 text-sm font-medium text-foreground-muted hover:border-brand-500 hover:text-brand-500 transition-colors"
-        >
-          <Icon name="arrow-left" size="sm" />
-          {t('projects.allProjects', locale)}
-        </a>
-
         {topTags.length > 0 && (
           <ProjectTagList tags={topTags} locale={locale} class="justify-center" />
         )}
@@ -101,7 +98,7 @@ const aboutUrl = localizedPath('/about', locale);
   <section class="relative z-10 py-[var(--space-section-md)] bg-background">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <Badge variant="brand" pill class="mb-6">{t('projects.ctaBadge', locale)}</Badge>
+      <Badge variant="default" pill class="mb-6">{t('projects.ctaBadge', locale)}</Badge>
       <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
         {t('projects.ctaHeading', locale)}
       </h2>
@@ -109,11 +106,11 @@ const aboutUrl = localizedPath('/about', locale);
         {t('projects.ctaLead', locale)}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href={contactUrl} class="cta-btn-brand">
+        <Button size="lg" href={contactUrl}>
           {t('projects.ctaPrimary', locale)}
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href={aboutUrl}>
+        <Button size="lg" href={aboutUrl}>
           {t('projects.ctaSecondary', locale)}
           <Icon name="arrow-right" size="sm" />
         </Button>
@@ -129,11 +126,11 @@ const aboutUrl = localizedPath('/about', locale);
         {t('projects.ctaLead', locale)}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href={contactUrl} class="hero-btn-brand">
+        <Button size="lg" href={contactUrl}>
           {t('projects.ctaPrimary', locale)}
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href={aboutUrl}>
+        <Button size="lg" href={aboutUrl}>
           {t('projects.ctaSecondary', locale)}
           <Icon name="arrow-right" size="sm" />
         </Button>

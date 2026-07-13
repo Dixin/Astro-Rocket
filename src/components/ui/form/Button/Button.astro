@@ -6,7 +6,7 @@ import { buttonVariants } from './button.variants';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
 interface Props extends HTMLAttributes<'button'> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive' | 'brand';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   fullWidth?: boolean;
@@ -17,7 +17,7 @@ interface Props extends HTMLAttributes<'button'> {
 }
 
 const {
-  variant = 'primary',
+  variant = 'brand',
   size = 'md',
   loading = false,
   fullWidth = false,
@@ -90,5 +90,13 @@ const classes = cn(
 
   .dark .btn-primary:hover {
     background-image: none;
+  }
+
+  .btn-brand {
+    box-shadow: inset 0 0px 10px 0px color-mix(in oklch, var(--color-brand-500) 50%, transparent);
+  }
+
+  .btn-brand:hover {
+    box-shadow: inset 0 0px 10px 0px color-mix(in oklch, var(--color-brand-300) 50%, transparent);
   }
 </style>

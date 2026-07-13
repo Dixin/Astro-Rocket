@@ -50,18 +50,18 @@ const hasBody = Astro.slots.has('default');
 ---
 
 <Element
-  class={cn(proofTileVariants({ size }), !href && 'cursor-default', className)}
+  class={cn(proofTileVariants({ size }), !href && 'cursor-default', className, 'group', href ? 'border-brand-500 hover:border-brand-300' : 'border-foreground-muted hover:border-foreground')}
   href={href}
   {...attrs}
 >
-  {icon && <Icon name={icon} class="w-10 h-10 text-brand-500" />}
+  {icon && <Icon name={icon} class={cn('w-10 h-10', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground')} />}
   {number !== undefined && (
-    <span class="font-display text-3xl font-bold text-brand-500 leading-none">{number}</span>
+    <span class={cn('font-display text-3xl font-bold leading-none', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground')}>{number}</span>
   )}
   {(title || hasBody) && (
     <div>
       {title && (
-        <TitleTag class={cn('font-semibold text-foreground', size === 'sm' ? 'text-sm' : 'text-base')}>
+        <TitleTag class={cn('font-semibold', href ? 'text-brand-500 group-hover:text-brand-300' : 'text-foreground', size === 'sm' ? 'text-sm' : 'text-base')}>
           {title}
         </TitleTag>
       )}
