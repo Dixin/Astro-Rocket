@@ -19,6 +19,13 @@ export const buttonVariants = cva(
           'bg-secondary text-secondary-foreground border border-border hover:bg-secondary-hover hover:border-border-strong active:scale-[0.98]',
         outline:
           'border border-foreground/25 bg-transparent text-foreground hover:bg-secondary hover:border-foreground/40 active:scale-[0.98]',
+        // The outline button in brand colour: transparent fill, brand border
+        // and text, soft brand wash on hover. Text shades chosen for WCAG AA /
+        // Lighthouse contrast (verified on the default blue theme: 6.2:1+
+        // light, 6.1:1+ dark at rest, above 4.5:1 on the hover wash —
+        // brand-600 would dip under on tinted fills).
+        'brand-outline':
+          'bg-transparent text-brand-700 border border-brand-500/40 hover:bg-brand-500/10 hover:border-brand-500/80 active:scale-[0.98] dark:text-brand-400',
         ghost:
           'text-foreground-secondary hover:text-foreground hover:bg-secondary active:scale-[0.98]',
         link: 'text-foreground-secondary hover:text-foreground underline-offset-4 hover:underline',
