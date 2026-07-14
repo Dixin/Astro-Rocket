@@ -101,7 +101,10 @@ const aboutUrl = localizedPath('/about', locale);
   <section class="relative z-10 py-[var(--space-section-md)] bg-background">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <Badge variant="brand" pill class="mb-6">{t('projects.ctaBadge', locale)}</Badge>
+      <Badge variant="brand" pill class="mb-6">
+        <Icon name="message-circle" size="sm" />
+        {t('projects.ctaBadge', locale)}
+      </Badge>
       <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
         {t('projects.ctaHeading', locale)}
       </h2>

@@ -136,7 +136,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     <div class="mx-auto max-w-6xl px-6">
       <div class="mb-8 text-center flex flex-col items-center gap-4" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>{principles.badge}</Badge>
+          <Badge variant="brand" pill>
+            <Icon name="pen-tool" size="sm" />
+            {principles.badge}
+          </Badge>
           <h2 class="font-display text-4xl font-bold text-foreground">
             {principles.heading}
           </h2>
@@ -158,6 +161,7 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
   <!-- Tech Stack -->
   <TechStack
     badge={stack.badge}
+    badgeIcon="wrench"
     title={stack.title}
     description={stack.description}
     background="secondary"
@@ -168,7 +172,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>{faq.badge}</Badge>
+          <Badge variant="brand" pill>
+            <Icon name="info" size="sm" />
+            {faq.badge}
+          </Badge>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
             {faq.heading}
           </h2>
@@ -210,7 +217,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
       <div class="grid gap-8 sm:gap-10 glitch:grid-cols-2 glitch:items-center">
         <!-- Text -->
         <div class="flex flex-col gap-4 sm:items-center sm:text-center glitch:items-start glitch:justify-center glitch:text-left" data-reveal data-reveal-ease="smooth">
-          <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">{openSource.badge}</Badge>
+          <Badge variant="brand" pill class="self-start sm:self-center glitch:self-start">
+            <Icon name="github" size="sm" />
+            {openSource.badge}
+          </Badge>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
             {openSource.heading}
           </h2>
@@ -244,7 +254,10 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
   <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <!-- Mobile: flat section, no card -->
     <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <Badge variant="brand" pill class="mb-6">{cta.badge}</Badge>
+      <Badge variant="brand" pill class="mb-6">
+        <Icon name="rocket" size="sm" />
+        {cta.badge}
+      </Badge>
       <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
         {cta.heading}
       </h2>

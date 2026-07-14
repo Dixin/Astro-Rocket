@@ -6,6 +6,7 @@
  * be embedded on its own elsewhere (e.g. project pages).
  */
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import LighthouseScoresGrid from '@/components/landing/LighthouseScoresGrid.astro';
 ---
 
@@ -13,7 +14,10 @@ import LighthouseScoresGrid from '@/components/landing/LighthouseScoresGrid.astr
   <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
     <div class="flex flex-col items-center gap-4 text-center" data-reveal>
       <div class="flex flex-col items-center gap-6">
-        <Badge variant="brand" pill>Site quality</Badge>
+        <Badge variant="brand" pill>
+          <Icon name="gauge" size="sm" />
+          Site quality
+        </Badge>
         <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
           Lighthouse report
         </h2>
