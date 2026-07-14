@@ -151,7 +151,7 @@ const rowConfigs = Array.from({ length: rowCount }, (_, r) => {
                 style={logoColor === 'tool' && item.colorOklch ? `--tech-color: oklch(${item.colorOklch});` : undefined}
               >
                 <Card
-                  variant="default"
+                  variant="elevated"
                   padding="md"
                   href={linked ? item.url : undefined}
                   target={linked && item.url ? '_blank' : undefined}
