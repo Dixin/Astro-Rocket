@@ -74,7 +74,7 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
       <div class="flex flex-col items-center gap-4" data-reveal>
         <a
           href={getBlogBaseUrl(locale)}
-          class="group inline-flex items-center gap-2 rounded-lg border border-border-strong bg-transparent px-4 py-2 text-sm font-medium text-foreground-muted hover:border-brand-500 hover:text-brand-500 transition-colors"
+          class="group inline-flex items-center gap-2 rounded-lg border border-brand-500/40 bg-transparent px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 hover:border-brand-500/80 hover:bg-brand-500/10 transition-colors"
         >
           <Icon name="arrow-left" size="sm" />
           {t('blog.newestPosts', locale)}
@@ -118,7 +118,7 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
     <div class="flex flex-wrap items-center justify-center gap-3">
       <a
         href="/rss.xml"
-        class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
       >
         <Icon name="rss" size="sm" />
         {t('blog.rssFeed', locale)}
@@ -128,7 +128,7 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
         >
           <Icon name={link.icon} size="sm" />
           {link.label}
@@ -136,7 +136,7 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
       ))}
       <a
         href={`mailto:${siteConfig.email}`}
-        class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
       >
         <Icon name="mail" size="sm" />
         {t('blog.emailLabel', locale)}

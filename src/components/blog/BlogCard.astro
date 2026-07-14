@@ -117,7 +117,7 @@ const readingTime = getReadingTime(body ?? description);
     {tags.length > 0 && (
       <div class="mt-4 flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <span class="inline-flex items-center rounded-full bg-background-secondary px-2.5 py-0.5 text-xs font-medium text-foreground-muted ring-1 ring-inset ring-border transition-colors group-hover:bg-brand-50 group-hover:text-brand-700 group-hover:ring-brand-200 dark:group-hover:bg-brand-900/20 dark:group-hover:text-brand-400 dark:group-hover:ring-brand-800">
+          <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
             #{tag}
           </span>
         ))}

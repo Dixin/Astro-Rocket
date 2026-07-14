@@ -203,11 +203,11 @@ function getSocialIcon(platform: string): string {
             </div>
           )}
 
-          <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-3 text-sm font-medium text-foreground-muted">
+          <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-3 text-sm font-medium text-brand-700 dark:text-brand-400">
             {allNavItems.map((item) => (
               <a
                 href={item.href}
-                class="transition-colors hover:text-foreground"
+                class="transition-colors hover:text-brand-800 dark:hover:text-brand-300"
                 target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
                 rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
@@ -226,9 +226,9 @@ function getSocialIcon(platform: string): string {
               <p class="text-sm text-foreground-muted text-balance" set:html={legalLine} />
             )}
             {resolvedLegalLinks.length > 0 && (
-              <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-2 text-xs text-foreground-muted">
+              <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-2 text-xs text-brand-700 dark:text-brand-400">
                 {resolvedLegalLinks.map((link) => (
-                  <a href={link.href} class="transition-colors hover:text-foreground">
+                  <a href={link.href} class="transition-colors hover:text-brand-800 dark:hover:text-brand-300">
                     {link.label}
                   </a>
                 ))}

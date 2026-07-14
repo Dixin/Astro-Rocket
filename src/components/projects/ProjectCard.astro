@@ -7,7 +7,6 @@
  * how the listing treats projects that don't have their own detail page.
  */
 import Card from '@/components/ui/data-display/Card/Card.astro';
-import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 import { defaultLocale } from '@/i18n';
@@ -54,7 +53,9 @@ const { data } = project;
     {data.tags && data.tags.length > 0 && (
       <div class="flex flex-wrap gap-1.5">
         {data.tags.map((tag) => (
-          <Badge variant="brand" pill>#{tag}</Badge>
+          <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
+            #{tag}
+          </span>
         ))}
       </div>
     )}
