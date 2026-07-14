@@ -301,7 +301,7 @@
         "description": "Astro Rocket is free, open source, and MIT licensed. Browse the source, open issues, submit PRs, or just clone it and build something great.",
         "button": "View on GitHub",
         "cards": [
-          { "title": "Made by Hans Martens Dev", "text": "Astro Rocket was designed and built by <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens Dev</a> — a web designer and developer who uses it as the foundation for client projects." },
+          { "title": "Made by Hans Martens Dev", "text": "Astro Rocket was designed and built by <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens Dev</a> — a freelance Astro developer who uses it as the foundation for client projects." },
           { "title": "MIT License", "text": "Free to use in personal and commercial projects. No attribution required, though a star on GitHub is always appreciated." },
           { "title": "Actively maintained", "text": "The theme is kept up to date with new Astro releases and regularly improved based on community feedback." }
         ]
