@@ -273,7 +273,9 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
               {project.data.tags && project.data.tags.length > 0 && (
                 <div class="flex flex-wrap gap-1.5">
                   {project.data.tags.map((tag) => (
-                    <Badge variant="brand">#{tag}</Badge>
+                    <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
+                      #{tag}
+                    </span>
                   ))}
                 </div>
               )}
