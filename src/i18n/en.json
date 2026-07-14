@@ -318,7 +318,7 @@
         "title": "Services — Web Design, Development & Performance",
         "description": "Three core services for modern websites: thoughtful design, clean Astro development, and measurable performance & SEO."
       },
-      "includedLabel": "What's included",
+      "includedLabel": "What you get",
       "hero": {
         "badge": "Services",
         "titleLead": "What I offer —",
@@ -327,53 +327,83 @@
         "jumpLabels": ["Web Design", "Development", "Performance"]
       },
       "design": {
-        "badge": "Web Design",
-        "heading": "Design with intention",
+        "badge": "Design",
+        "heading": "Web design",
         "paragraphs": [
-          "Great design starts with the people who'll use it. I design layouts shaped around your content and your audience, not around trends that age badly. Typography, spacing, and colour are chosen for clarity — not novelty.",
-          "Every screen is considered: desktop, tablet, and the phone someone holds at the bus stop. The brand stays consistent across the whole experience, and the small details are treated as part of the design, not the polish."
+          "Great design starts with the people who'll use it. I shape layouts around your content and your audience — typography, spacing, and colour chosen for clarity, not novelty.",
+          "Every screen is considered, from a wide desktop to the phone in someone's hand, and both light and dark mode are part of the design from day one."
         ],
         "included": [
-          { "lead": "Bespoke layouts", "text": "built for your content, not from a template. Every section earns its place by serving the page's goal." },
-          { "lead": "Responsive across breakpoints", "text": "phone, tablet, desktop, ultrawide. Layouts reflow with intent, not just shrink to fit." },
-          { "lead": "Typography systems", "text": "readable, scaleable, on-brand. A clear hierarchy from page title down to caption, tuned for long-form reading." },
-          { "lead": "Light & dark themes", "text": "one design, two moods, user's choice. Both modes are checked at every step, not retrofitted at the end." },
-          { "lead": "Considered motion", "text": "interactions that guide, never distract. Reduced-motion preferences are respected without exception." },
-          { "lead": "Accessibility baked in", "text": "contrast, focus, semantic structure. Keyboard paths and screen-reader output are verified before launch." }
+          {
+            "lead": "A design around your content",
+            "text": "layouts built for what you want to say, not squeezed into a template."
+          },
+          {
+            "lead": "A site for every screen",
+            "text": "phone, tablet, desktop, and ultrawide, reflowing with intent."
+          },
+          {
+            "lead": "Light and dark mode",
+            "text": "one design, two moods, both finished to the same standard."
+          },
+          {
+            "lead": "A clear typographic hierarchy",
+            "text": "readable from page title down to caption."
+          }
         ],
         "ctaLabel": "Discuss a design project"
       },
       "development": {
-        "badge": "Web Development",
-        "heading": "Code that earns its place",
+        "badge": "Development",
+        "heading": "Web development",
         "paragraphs": [
-          "I build with Astro because it ships what's needed and nothing else. The result is sites that score well in audits, feel fast in the hand, and don't grow brittle over time.",
-          "Architecture matters as much as output: typed content, predictable component boundaries, and a build pipeline a future developer (or future you) can pick up without a guided tour."
+          "I build with Astro because it ships what's needed and nothing else: clean HTML, minimal JavaScript, and pages that feel instant.",
+          "The architecture is made to be picked up later — typed content, clear component boundaries, and a deploy pipeline that works the same every time."
         ],
         "included": [
-          { "lead": "Astro + Tailwind", "text": "modern stack, minimal JavaScript, clean HTML. The browser renders the page almost instantly, with no hydration tax." },
-          { "lead": "Typed content collections", "text": "structured blog, projects, and data. Schema validation runs at build time, so broken content never ships." },
-          { "lead": "Forms & integrations", "text": "protected, GDPR-aware, hooked into your tools. Submissions reach your inbox or CRM without leaking client-side." },
-          { "lead": "Hosting & deploy", "text": "Netlify, Vercel, Cloudflare, or your own infra. Preview deploys for every branch, so changes can be reviewed before they go live." },
-          { "lead": "Version control & CI", "text": "git-based workflow, repeatable deploys. Automated checks gate every pull request before merge." },
-          { "lead": "Handover documentation", "text": "code, keys, and a README you can actually read. Written so a future developer (or future you) can pick the project up without a tour." }
+          {
+            "lead": "A modern Astro + Tailwind stack",
+            "text": "minimal JavaScript and clean, readable HTML."
+          },
+          {
+            "lead": "Typed content collections",
+            "text": "broken content fails the build instead of reaching your visitors."
+          },
+          {
+            "lead": "A deploy pipeline",
+            "text": "preview builds for every change, on Netlify, Vercel, or Cloudflare."
+          },
+          {
+            "lead": "A clean handover",
+            "text": "the code, the keys, and a README that actually explains things."
+          }
         ],
         "ctaLabel": "See recent projects"
       },
       "performance": {
         "badge": "Performance",
-        "heading": "Fast pages, found pages",
+        "heading": "Web performance",
         "paragraphs": [
-          "Speed and search visibility aren't features to add at the end — they're constraints to honour from the first commit. Every second a page loads costs attention, ranking, and trust.",
-          "I work to measurable targets, not vibes. Core Web Vitals, technical SEO, and accessibility are tracked, tuned, and verified before launch — and the dashboards stay yours after handover."
+          "Speed and search visibility are constraints from the first commit, not polish at the end. Every extra second costs attention, ranking, and trust.",
+          "I work to measurable targets — Core Web Vitals, technical SEO, and accessibility are tuned and verified before launch."
         ],
         "included": [
-          { "lead": "Core Web Vitals", "text": "LCP, INP, and CLS held to Google's thresholds. Measured on real devices, not just synthetic tests." },
-          { "lead": "Image pipeline", "text": "modern formats, responsive sizes, lazy loading. Hero images art-directed so they look right on every screen." },
-          { "lead": "Technical SEO", "text": "metadata, sitemaps, structured data, OG images. All wired up and validated before the first crawl." },
-          { "lead": "Accessibility", "text": "WCAG-aware markup and verified focus order. Tested with a screen reader and the keyboard alone, not just a contrast checker." },
-          { "lead": "Lighthouse audits", "text": "measurable scores delivered with the site. Repeatable in CI so they don't quietly drift after launch." },
-          { "lead": "Privacy-friendly analytics", "text": "useful data, no cookie banner. Self-hosted or vendor-anonymised, never sold on." }
+          {
+            "lead": "Green Core Web Vitals",
+            "text": "LCP, INP, and CLS held to Google's thresholds."
+          },
+          {
+            "lead": "Technical SEO, wired up",
+            "text": "metadata, sitemaps, structured data, and OG images."
+          },
+          {
+            "lead": "An accessible website",
+            "text": "tested with the keyboard and a screen reader, not just a contrast checker."
+          },
+          {
+            "lead": "Repeatable Lighthouse audits",
+            "text": "scores measured in CI, so they don't drift after launch."
+          }
         ],
         "ctaLabel": "Start a project"
       },

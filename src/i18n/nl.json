@@ -318,7 +318,7 @@
         "title": "Diensten — Webdesign, ontwikkeling & prestaties",
         "description": "Drie kerndiensten voor moderne websites: doordacht ontwerp, schone Astro-ontwikkeling en meetbare prestaties & SEO."
       },
-      "includedLabel": "Wat is inbegrepen",
+      "includedLabel": "Wat je krijgt",
       "hero": {
         "badge": "Diensten",
         "titleLead": "Wat ik bied —",
@@ -327,53 +327,83 @@
         "jumpLabels": ["Webdesign", "Ontwikkeling", "Prestaties"]
       },
       "design": {
-        "badge": "Webdesign",
-        "heading": "Ontwerpen met intentie",
+        "badge": "Design",
+        "heading": "Webdesign",
         "paragraphs": [
-          "Goed ontwerp begint bij de mensen die het gaan gebruiken. Ik ontwerp lay-outs rond jouw content en jouw publiek, niet rond trends die slecht verouderen. Typografie, witruimte en kleur kies ik voor helderheid — niet voor nieuwigheid.",
-          "Elk scherm telt mee: desktop, tablet en de telefoon die iemand bij de bushalte vasthoudt. Het merk blijft consistent over de hele ervaring, en de kleine details horen bij het ontwerp, niet bij de afwerking."
+          "Goed design begint bij de mensen die het gaan gebruiken. Ik vorm lay-outs rond jouw content en jouw publiek — typografie, witruimte en kleur gekozen voor helderheid, niet voor effect.",
+          "Elk scherm telt mee, van een breed beeldscherm tot de telefoon in iemands hand, en zowel light als dark mode horen vanaf dag één bij het ontwerp."
         ],
         "included": [
-          { "lead": "Maatwerk lay-outs", "text": "gebouwd voor jouw content, niet uit een sjabloon. Elke sectie verdient zijn plek door het doel van de pagina te dienen." },
-          { "lead": "Responsief op elk breekpunt", "text": "telefoon, tablet, desktop, ultrawide. Lay-outs vloeien met intentie, ze krimpen niet zomaar mee." },
-          { "lead": "Typografische systemen", "text": "leesbaar, schaalbaar, on-brand. Een heldere hiërarchie van paginatitel tot bijschrift, afgestemd op lang lezen." },
-          { "lead": "Lichte & donkere thema's", "text": "één ontwerp, twee stemmingen, keuze van de gebruiker. Beide modi worden bij elke stap gecontroleerd, niet achteraf toegevoegd." },
-          { "lead": "Doordachte beweging", "text": "interacties die leiden, nooit afleiden. Voorkeuren voor verminderde beweging worden zonder uitzondering gerespecteerd." },
-          { "lead": "Toegankelijkheid ingebakken", "text": "contrast, focus, semantische structuur. Toetsenbordpaden en schermlezeruitvoer worden vóór livegang geverifieerd." }
+          {
+            "lead": "Een ontwerp rond jouw content",
+            "text": "lay-outs gebouwd voor wat jij wilt vertellen, niet in een template geperst."
+          },
+          {
+            "lead": "Een site voor elk scherm",
+            "text": "telefoon, tablet, desktop en ultrawide, met een lay-out die bewust meebeweegt."
+          },
+          {
+            "lead": "Light en dark mode",
+            "text": "één ontwerp, twee sferen, allebei tot hetzelfde niveau afgewerkt."
+          },
+          {
+            "lead": "Een heldere typografische hiërarchie",
+            "text": "leesbaar van paginatitel tot bijschrift."
+          }
         ],
         "ctaLabel": "Bespreek een ontwerpproject"
       },
       "development": {
-        "badge": "Webontwikkeling",
-        "heading": "Code die zijn plek verdient",
+        "badge": "Development",
+        "heading": "Webdevelopment",
         "paragraphs": [
-          "Ik bouw met Astro omdat het levert wat nodig is en niets meer. Het resultaat: sites die goed scoren in audits, snel aanvoelen en na verloop van tijd niet broos worden.",
-          "Architectuur telt net zo zwaar als output: getypeerde content, voorspelbare componentgrenzen en een buildpijplijn die een toekomstige ontwikkelaar (of de toekomstige jij) zonder rondleiding kan oppakken."
+          "Ik bouw met Astro omdat het alleen levert wat nodig is: schone HTML, minimale JavaScript en pagina's die direct aanvoelen.",
+          "De architectuur is gemaakt om later weer op te pakken — getypeerde content, duidelijke componentgrenzen en een deploy-pipeline die elke keer hetzelfde werkt."
         ],
         "included": [
-          { "lead": "Astro + Tailwind", "text": "moderne stack, minimale JavaScript, schone HTML. De browser rendert de pagina vrijwel direct, zonder hydratiekosten." },
-          { "lead": "Getypeerde content collections", "text": "gestructureerde blog, projecten en data. Schemavalidatie draait tijdens de build, zodat kapotte content nooit live gaat." },
-          { "lead": "Formulieren & integraties", "text": "beveiligd, AVG-bewust, gekoppeld aan jouw tools. Inzendingen bereiken je inbox of CRM zonder client-side te lekken." },
-          { "lead": "Hosting & deploy", "text": "Netlify, Vercel, Cloudflare of je eigen infrastructuur. Preview-deploys voor elke branch, zodat wijzigingen vóór livegang te beoordelen zijn." },
-          { "lead": "Versiebeheer & CI", "text": "git-gebaseerde workflow, herhaalbare deploys. Geautomatiseerde controles bewaken elke pull request vóór de merge." },
-          { "lead": "Overdrachtsdocumentatie", "text": "code, sleutels en een README die je echt kunt lezen. Geschreven zodat een toekomstige ontwikkelaar (of de toekomstige jij) het project zonder rondleiding kan oppakken." }
+          {
+            "lead": "Een moderne Astro + Tailwind stack",
+            "text": "minimale JavaScript en schone, leesbare HTML."
+          },
+          {
+            "lead": "Getypeerde content collections",
+            "text": "kapotte content breekt de build in plaats van je bezoekers te bereiken."
+          },
+          {
+            "lead": "Een deploy-pipeline",
+            "text": "preview-builds voor elke wijziging, op Netlify, Vercel of Cloudflare."
+          },
+          {
+            "lead": "Een nette overdracht",
+            "text": "de code, de sleutels en een README die echt uitlegt hoe het zit."
+          }
         ],
         "ctaLabel": "Bekijk recente projecten"
       },
       "performance": {
-        "badge": "Prestaties",
-        "heading": "Snelle pagina's, vindbare pagina's",
+        "badge": "Performance",
+        "heading": "Webperformance",
         "paragraphs": [
-          "Snelheid en vindbaarheid zijn geen functies om op het eind toe te voegen — het zijn randvoorwaarden om vanaf de eerste commit te respecteren. Elke seconde laadtijd kost aandacht, ranking en vertrouwen.",
-          "Ik werk naar meetbare doelen, niet op gevoel. Core Web Vitals, technische SEO en toegankelijkheid worden gevolgd, afgesteld en vóór livegang geverifieerd — en de dashboards blijven van jou na de overdracht."
+          "Snelheid en vindbaarheid zijn randvoorwaarden vanaf de eerste commit, geen polijstwerk achteraf. Elke extra seconde kost aandacht, ranking en vertrouwen.",
+          "Ik werk naar meetbare doelen — Core Web Vitals, technische SEO en toegankelijkheid worden vóór livegang afgesteld en gecontroleerd."
         ],
         "included": [
-          { "lead": "Core Web Vitals", "text": "LCP, INP en CLS binnen de drempels van Google. Gemeten op echte apparaten, niet alleen synthetische tests." },
-          { "lead": "Beeldpijplijn", "text": "moderne formaten, responsieve maten, lazy loading. Hero-afbeeldingen art-directed zodat ze op elk scherm goed staan." },
-          { "lead": "Technische SEO", "text": "metadata, sitemaps, gestructureerde data, OG-afbeeldingen. Allemaal aangesloten en gevalideerd vóór de eerste crawl." },
-          { "lead": "Toegankelijkheid", "text": "WCAG-bewuste markup en geverifieerde focusvolgorde. Getest met een schermlezer en alleen het toetsenbord, niet enkel een contrastchecker." },
-          { "lead": "Lighthouse-audits", "text": "meetbare scores geleverd met de site. Herhaalbaar in CI zodat ze na livegang niet stilletjes wegzakken." },
-          { "lead": "Privacyvriendelijke analytics", "text": "nuttige data, geen cookiebanner. Zelf gehost of geanonimiseerd door de leverancier, nooit doorverkocht." }
+          {
+            "lead": "Groene Core Web Vitals",
+            "text": "LCP, INP en CLS binnen de drempels van Google."
+          },
+          {
+            "lead": "Technische SEO, aangesloten",
+            "text": "metadata, sitemaps, structured data en OG-images."
+          },
+          {
+            "lead": "Een toegankelijke website",
+            "text": "getest met toetsenbord en schermlezer, niet alleen met een contrastchecker."
+          },
+          {
+            "lead": "Herhaalbare Lighthouse-audits",
+            "text": "scores gemeten in CI, zodat ze na livegang niet wegzakken."
+          }
         ],
         "ctaLabel": "Start een project"
       },
