@@ -1,0 +1,62 @@
+---
+import ContentLayout from '@/layouts/ContentLayout.astro';
+import { render } from 'astro:content';
+import { assertNoSlugCollisions } from '@/lib/content-validation';
+import { assertValidContentUids } from '@/lib/content-links';
+import { getContentSlug, getPublishedContents, getContentDirectoryNames } from '@/lib/contents';
+import { defaultLocale } from '@/i18n';
+import ContentLink from '@/components/contents/ContentLink.astro';
+
+export async function getStaticPaths() {
+  // Fail the build early on content-integrity problems: two entries resolving
+  // to the same URL within a locale, or a duplicated canonical id.
+  await assertNoSlugCollisions();
+  await assertValidContentUids();
+
+  const paths: {
+    params: { content: string; slug: string };
+    props: { content: Awaited<ReturnType<typeof getPublishedContents>>[number]; contentDirectoryName: string };
+  }[] = [];
+
+  for (const contentDirectoryName of getContentDirectoryNames()) {
+    const contents = await getPublishedContents(contentDirectoryName, defaultLocale);
+    for (const content of contents) {
+      paths.push({
+        params: { content: contentDirectoryName, slug: getContentSlug(contentDirectoryName, content.id, content.data.locale) },
+        props: { content: content, contentDirectoryName },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { content, contentDirectoryName } = Astro.props;
+const { Content, headings } = await render(content);
+---
+
+<ContentLayout
+  title={content.data.title}
+  description={content.data.description}
+  publishedAt={content.data.publishedAt}
+  updatedAt={content.data.updatedAt}
+  author={content.data.author}
+  image={content.data.image}
+  imageAlt={content.data.imageAlt}
+  svgSlug={content.data.svgSlug}
+  tags={content.data.tags}
+  slug={content.id}
+  uid={content.data.uid}
+  faqs={content.data.faqs}
+  headings={headings}
+  toc={content.data.toc}
+  comments={content.data.comments}
+  body={content.body}
+  meta={content.data.meta}
+  links={content.data.links}
+  gallery={content.data.gallery}
+  year={content.data.year}
+  contentDirectoryName={contentDirectoryName}
+>
+  <Content components={{ ContentLink }} />
+</ContentLayout>

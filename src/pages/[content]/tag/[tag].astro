@@ -1,0 +1,49 @@
+---
+import ContentTagView from '@/components/contents/views/ContentTagView.astro';
+import { defaultLocale } from '@/i18n';
+import {
+  CONTENT_TAG_CLOUD_LIMIT,
+  collectTags,
+  collectTopTags,
+  getPublishedContents,
+  tagToSlug,
+} from '@/lib/contents';
+import { getContentDirectoryNames } from '@/lib/contents';
+
+// Tag archive pages for the default locale. Additional locales are served by
+// `src/pages/[locale]/blog/tag/[tag].astro`, which renders the same view.
+export async function getStaticPaths() {
+  const paths: {
+    params: { content: string; tag: string };
+    props: {
+      tag: string;
+      contents: Awaited<ReturnType<typeof getPublishedContents>>;
+      visibleTags: string[];
+      contentDirectoryName: string;
+    };
+  }[] = [];
+
+  for (const contentDirectoryName of getContentDirectoryNames()) {
+    const contents = await getPublishedContents(contentDirectoryName, defaultLocale);
+    const tags = collectTags(contents);
+    const topTags = collectTopTags(contents, CONTENT_TAG_CLOUD_LIMIT);
+
+    for (const tag of tags) {
+      const contentsForTag = contents.filter((p) => p.data.tags.includes(tag));
+      const visibleTags = topTags.includes(tag)
+        ? topTags
+        : [tag, ...topTags.slice(0, CONTENT_TAG_CLOUD_LIMIT - 1)];
+      paths.push({
+        params: { content: contentDirectoryName, tag: tagToSlug(tag) },
+        props: { tag, contents: contentsForTag, visibleTags, contentDirectoryName },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { tag, contents, visibleTags, contentDirectoryName } = Astro.props;
+---
+
+<ContentTagView locale={defaultLocale} tag={tag} contents={contents} visibleTags={visibleTags} contentDirectoryName={contentDirectoryName} />

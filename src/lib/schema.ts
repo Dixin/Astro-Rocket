@@ -106,7 +106,7 @@ export function createOrganizationSchema(): WithContext<Organization> {
 /**
  * Create BlogPosting schema for blog posts
  */
-export function createBlogPostSchema(post: {
+export function createContentSchema(post: {
   title: string;
   description: string;
   url: string;

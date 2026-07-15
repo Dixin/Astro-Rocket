@@ -1,7 +1,6 @@
-import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import siteConfig from '@/config/site.config';
-import { getPostSlug } from '@/lib/blog';
+import { getContentSlug, getAllPublishedContents } from '@/lib/contents';
 import { defaultLocale } from '@/i18n';
 
 /**
@@ -24,40 +23,29 @@ function formatRfc822Date(date: Date): string {
 }
 
 export async function GET(context: APIContext) {
-  // Get only the default locale's non-draft posts for RSS
-  const posts = await getCollection('blog', ({ data }) =>
-    data.locale === defaultLocale && !data.draft
-  );
-
-  // Sort posts by date (newest first)
-  const sortedPosts = posts.sort(
-    (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
-  );
-
-  // Generate slug from post id (strip the default-locale folder prefix)
-  const getSlug = (id: string) => getPostSlug(id, defaultLocale);
-
   const site = context.site?.toString() ?? siteConfig.url;
   const siteUrl = site.endsWith('/') ? site.slice(0, -1) : site;
 
-  const items = sortedPosts
-    .map((post) => {
-      const link = `${siteUrl}/blog/${getSlug(post.id)}/`;
-      const categories = post.data.tags
-        .map((tag) => `<category>${escapeXml(tag)}</category>`)
-        .join('\n        ');
+  const contentRssItems: string[] = [];
+  const contents = (await getAllPublishedContents()).slice(0, 100);
+  for (const content of contents) {
+    const link = content.content.data.locale === defaultLocale
+      ? `${siteUrl}/${content.contentDirectoryName}/${getContentSlug(content.contentDirectoryName, content.content.id, content.content.data.locale)}/`
+      : `${siteUrl}/${content.content.data.locale}/${content.contentDirectoryName}/${getContentSlug(content.contentDirectoryName, content.content.id, content.content.data.locale)}/`;
+    const categories = content.content.data.tags
+      .map((tag) => `<category>${escapeXml(tag)}</category>`)
+      .join('\n        ');
 
-      return `    <item>
-      <title>${escapeXml(post.data.title)}</title>
-      <link>${link}</link>
-      <guid>${link}</guid>
-      <description>${escapeXml(post.data.description)}</description>
-      <pubDate>${formatRfc822Date(post.data.publishedAt)}</pubDate>
-      <author>${escapeXml(post.data.author)}</author>
-      ${categories}
-    </item>`;
-    })
-    .join('\n');
+    contentRssItems.push(`    <item>
+        <title>${escapeXml(content.content.data.title)}</title>
+        <link>${link}</link>
+        <guid>${link}</guid>
+        <description>${escapeXml(content.content.data.description)}</description>
+        <pubDate>${formatRfc822Date(content.content.data.publishedAt)}</pubDate>
+        <author>${escapeXml(content.content.data.author ?? '')}</author>
+        ${categories}
+      </item>`);
+  }
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -68,7 +56,7 @@ export async function GET(context: APIContext) {
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     <language>${defaultLocale}</language>
     <lastBuildDate>${formatRfc822Date(new Date())}</lastBuildDate>
-${items}
+${contentRssItems.join('\n')}
   </channel>
 </rss>`;
 

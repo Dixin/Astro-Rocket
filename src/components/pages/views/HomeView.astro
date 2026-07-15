@@ -17,15 +17,17 @@ import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import ProofTile from '@/components/ui/data-display/ProofTile/ProofTile.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import BlogCard from '@/components/blog/BlogCard.astro';
+import ContentCard from '@/components/contents/ContentCard.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import StackMarquee from '@/components/landing/StackMarquee.astro';
 import { getCollection } from 'astro:content';
 import siteConfig from '@/config/site.config';
-import { getPostUrl, getPublishedPosts } from '@/lib/blog';
-import { getProjectUrl, getVisibleProjects } from '@/lib/projects';
+import { getContentUrl, getPublishedContents } from '@/lib/contents';
 import { t, tData, defaultLocale, localizedPath } from '@/i18n';
 import { cn } from '@/lib/cn';
+
+const blogContentDirectoryName = 'blog';
+const projectContentDirectoryName = 'projects';
 
 interface Props {
   /** Locale whose copy and content this page renders. Defaults to the site default. */
@@ -47,18 +49,17 @@ const { locale = defaultLocale } = Astro.props;
 
 // Featured projects for this locale, falling back to the default locale so the
 // section is never empty on a locale that hasn't translated its projects yet.
-let projectItems = await getVisibleProjects(locale);
+let projectItems = await getPublishedContents(projectContentDirectoryName, locale);
 if (projectItems.length === 0 && locale !== defaultLocale) {
-  projectItems = await getVisibleProjects(defaultLocale);
+  projectItems = await getPublishedContents(projectContentDirectoryName, defaultLocale);
 }
 const featuredProjects = projectItems
   .filter((p) => p.data.featured)
-  .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 4);
 
-let postItems = await getPublishedPosts(locale);
+let postItems = await getPublishedContents(blogContentDirectoryName, locale);
 if (postItems.length === 0 && locale !== defaultLocale) {
-  postItems = await getPublishedPosts(defaultLocale);
+  postItems = await getPublishedContents(blogContentDirectoryName, defaultLocale);
 }
 const posts = [...postItems]
   .sort((a, b) => {
@@ -254,7 +255,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
 
       <div class="grid gap-6 md:grid-cols-2">
         {featuredProjects.map((project, i) => {
-          const href = project.data.placeholder ? undefined : getProjectUrl(project.id, project.data.locale);
+          const href = project.data.placeholder ? undefined : getContentUrl(projectContentDirectoryName, project.id, project.data.locale);
           return (
             <Card
               variant="elevated"
@@ -424,10 +425,10 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post, index) => (
-          <BlogCard
+          <ContentCard
             title={post.data.title}
             description={post.data.description}
-            href={getPostUrl(post.id, post.data.locale)}
+            href={getContentUrl(blogContentDirectoryName, post.id, post.data.locale)}
             publishedAt={post.data.publishedAt}
             tags={post.data.tags}
             author={post.data.author}
@@ -435,7 +436,11 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
             svgSlug={post.data.svgSlug}
             body={post.body}
             revealDelay={index}
+            placeholder={post.data.placeholder}
+            year={post.data.year}
+            icon={post.data.icon}
             class={index === 3 ? 'hidden sm:block lg:hidden' : undefined}
+            contentDirectoryName={blogContentDirectoryName}
           />
         ))}
       </div>

@@ -1,3 +1,7 @@
+import { getAllPublishedContents } from '@/lib/contents'
+import { getCollection } from 'astro:content';
+import { defaultLocale } from '@/i18n';
+
 /**
  * Build-time content validation.
  *
@@ -16,20 +20,10 @@
 
 /** A single URL a piece of content will be published at, within a locale. */
 export interface SlugRecord {
-  /** Human-readable origin for diagnostics, e.g. `blog: en/getting-started`. */
-  source: string;
+  contentDirectoryName: string;
   /** Locale the entry belongs to; collisions are only checked within a locale. */
   locale: string;
-  /** URL path within the locale, e.g. `/blog/getting-started` or `/about`. */
-  path: string;
-}
-
-/** Two or more entries that resolve to the same path within a locale. */
-export interface SlugCollision {
-  locale: string;
-  path: string;
-  /** The `source` of every entry that landed on this path. */
-  sources: string[];
+  slug: string;
 }
 
 /** Minimal shape shared by content-collection entries used here. */
@@ -40,7 +34,7 @@ interface ContentEntryLike {
 
 /**
  * Strip a leading `<locale>/` segment from a collection entry id to get its
- * slug. Mirrors `getPostSlug` in `./blog`, kept here free of the
+ * slug. Mirrors `getContentSlug` in `./contents`, kept here free of the
  * `astro:content` runtime import so it stays unit-testable and can be reused
  * by other build-time helpers (e.g. canonical-id resolution).
  */
@@ -50,41 +44,42 @@ export function localeStrippedSlug(id: string, locale: string): string {
 }
 
 /**
+ * Strip a leading `<contents>/<locale>/` segment from a collection entry id to get its
+ * slug. Mirrors `getContentSlug` in `./content`, kept here free of the
+ * `astro:content` runtime import so it stays unit-testable and can be reused
+ * by other build-time helpers (e.g. canonical-id resolution).
+ */
+export function directoryLocaleStrippedSlug(id: string, contentDirectoryName: string, locale: string): string {
+  const prefix = new RegExp(`^${contentDirectoryName}/(${locale})/`, `i`);
+  return id.replace(prefix, '');
+}
+
+/**
  * Build the list of published URLs from the blog, pages, and projects
  * collections. Blog posts live under `/blog/<slug>`; projects under
  * `/projects/<slug>`; pages live at the site root `/<slug>`.
  */
 export function collectSlugRecords(
-  posts: ContentEntryLike[],
   pages: ContentEntryLike[],
-  projects: ContentEntryLike[] = []
+  contents: { contentDirectoryName: string; content: ContentEntryLike }[] = []
 ): SlugRecord[] {
   const records: SlugRecord[] = [];
 
-  for (const post of posts) {
-    const { locale } = post.data;
+  for (const content of contents) {
+    const locale = content.content.data.locale;
     records.push({
-      source: `blog: ${post.id}`,
+      contentDirectoryName: content.contentDirectoryName,
       locale,
-      path: `/blog/${localeStrippedSlug(post.id, locale)}`,
-    });
-  }
-
-  for (const project of projects) {
-    const { locale } = project.data;
-    records.push({
-      source: `projects: ${project.id}`,
-      locale,
-      path: `/projects/${localeStrippedSlug(project.id, locale)}`,
+      slug: directoryLocaleStrippedSlug(content.content.id, content.contentDirectoryName, locale),
     });
   }
 
   for (const page of pages) {
-    const { locale } = page.data;
+    const locale = page.data.locale;
     records.push({
-      source: `pages: ${page.id}`,
+      contentDirectoryName: '',
       locale,
-      path: `/${localeStrippedSlug(page.id, locale)}`,
+      slug: localeStrippedSlug(page.id, locale),
     });
   }
 
@@ -96,40 +91,36 @@ export function collectSlugRecords(
  * entry resolves to. Output is sorted (locale, then path) and each collision's
  * sources are sorted, so error messages are deterministic.
  */
-export function findSlugCollisions(records: SlugRecord[]): SlugCollision[] {
+export function findSlugCollisions(records: SlugRecord[]): string[] {
   const groups = new Map<string, SlugRecord[]>();
   for (const record of records) {
-    const key = JSON.stringify([record.locale, record.path]);
+    const key = record.contentDirectoryName 
+      ? record.locale === defaultLocale
+        ? `${record.contentDirectoryName}/${record.slug}`
+        : `${record.contentDirectoryName}/${record.locale}/${record.slug}`
+      : record.locale === defaultLocale
+        ? `${record.slug}`
+        : `${record.locale}/${record.slug}`;
     const existing = groups.get(key);
     if (existing) existing.push(record);
     else groups.set(key, [record]);
   }
 
-  const collisions: SlugCollision[] = [];
-  for (const group of groups.values()) {
+  const collisions: string[] = [];
+  for (const [key, group] of groups.entries()) {
     if (group.length > 1) {
-      collisions.push({
-        locale: group[0].locale,
-        path: group[0].path,
-        sources: group.map((r) => r.source).sort(),
-      });
+      collisions.push(key);
     }
   }
 
-  return collisions.sort(
-    (a, b) => a.locale.localeCompare(b.locale) || a.path.localeCompare(b.path)
-  );
+  return collisions.sort((a, b) => a.localeCompare(b));
 }
 
 /** Render collisions as a single, actionable error message. */
-export function formatSlugCollisions(collisions: SlugCollision[]): string {
-  const blocks = collisions.map((c) => {
-    const sources = c.sources.map((s) => `      - ${s}`).join('\n');
-    return `  [${c.locale}] ${c.path}\n${sources}`;
-  });
+export function formatSlugCollisions(collisions: string[]): string {
   return (
     `Duplicate slugs detected — every entry must resolve to a unique URL ` +
-    `within its locale:\n\n${blocks.join('\n\n')}\n\n` +
+    `within its locale:\n\n${collisions.join('\n')}\n\n` +
     `Rename the offending file(s) so each resolves to a distinct slug.`
   );
 }
@@ -141,17 +132,10 @@ export function formatSlugCollisions(collisions: SlugCollision[]): string {
  * `getStaticPaths`; a throw here aborts `astro build`.
  */
 export async function assertNoSlugCollisions(): Promise<void> {
-  const { getCollection } = await import('astro:content');
-  const [posts, pages, projects] = await Promise.all([
-    getCollection('blog'),
-    getCollection('pages'),
-    getCollection('projects'),
-  ]);
-
-  const publishablePosts = posts.filter((post) => post.data.draft !== true);
-  const publishableProjects = projects.filter((project) => project.data.draft !== true);
+  const pages = await getCollection('pages');
+  const publishableContents = await getAllPublishedContents();
   const collisions = findSlugCollisions(
-    collectSlugRecords(publishablePosts, pages, publishableProjects)
+    collectSlugRecords(pages, publishableContents)
   );
 
   if (collisions.length > 0) {

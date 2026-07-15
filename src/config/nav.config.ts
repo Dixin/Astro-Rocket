@@ -71,6 +71,8 @@ export interface ResolvedNavItem {
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/', order: 0, labelKey: 'nav.items.home' },
   { label: 'Services', href: '/services', order: 1, labelKey: 'nav.items.services' },
+  { label: 'News', href: '/news', order: 2, labelKey: 'nav.items.news' },
+  { label: 'Events', href: '/events', order: 2, labelKey: 'nav.items.events' },
   { label: 'Projects', href: '/projects', order: 2, labelKey: 'nav.items.projects' },
   { label: 'Blog', href: '/blog', order: 3, labelKey: 'nav.items.blog' },
   { label: 'About', href: '/about', order: 4, labelKey: 'nav.items.about' },
@@ -80,6 +82,8 @@ export const navItems: NavItem[] = [
 export const footerNavItems: NavItem[] = [
   { label: 'Home', href: '/', order: 0, labelKey: 'nav.items.home' },
   { label: 'Services', href: '/services', order: 1, labelKey: 'nav.items.services' },
+  { label: 'News', href: '/news', order: 2, labelKey: 'nav.items.news' },
+  { label: 'Events', href: '/events', order: 2, labelKey: 'nav.items.events' },
   { label: 'Projects', href: '/projects', order: 2, labelKey: 'nav.items.projects' },
   { label: 'Blog', href: '/blog', order: 3, labelKey: 'nav.items.blog' },
   { label: 'About', href: '/about', order: 4, labelKey: 'nav.items.about' },

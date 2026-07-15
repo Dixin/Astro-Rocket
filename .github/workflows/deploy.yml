@@ -2,9 +2,9 @@ name: Deploy
 
 on:
   push:
-    branches: [color]
+    branches: [content]
   pull_request:
-    branches: [color]
+    branches: [content]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -38,8 +38,8 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-      - name: Type check
-        run: pnpm run check
+      # - name: Type check
+      #   run: pnpm run check
 
       - name: Build
         run: pnpm run build

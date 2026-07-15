@@ -1,0 +1,32 @@
+---
+import ContentPageView from '@/components/contents/views/ContentPageView.astro';
+import { defaultLocale } from '@/i18n';
+import { getContentPageCount } from '@/lib/contents';
+import { getContentDirectoryNames } from '@/lib/contents';
+
+// Paginated blog index for the default locale (page 2..N). Page 1 lives at
+// `/blog`. Additional locales are served by
+// `src/pages/[locale]/blog/page/[page].astro`.
+export async function getStaticPaths() {
+  const paths: {
+    params: { content: string; page: string };
+    props: { page: number; totalPages: number, contentDirectoryName: string };
+  }[] = [];
+
+  for (const contentDirectoryName of getContentDirectoryNames()) {
+    const totalPages = await getContentPageCount(contentDirectoryName, defaultLocale);
+    for (let page = 2; page <= totalPages; page++) {
+      paths.push({
+        params: { content: contentDirectoryName, page: String(page) },
+        props: { page, totalPages, contentDirectoryName },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { page, totalPages, contentDirectoryName } = Astro.props;
+---
+
+<ContentPageView locale={defaultLocale} page={page} totalPages={totalPages} contentDirectoryName={contentDirectoryName} />

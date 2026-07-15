@@ -1,0 +1,151 @@
+---
+/**
+ * ContentPageView — a paginated content index page (page 2..N).
+ *
+ * Shared body for the default-locale route (`/contents/page/N`) and the
+ * locale-prefixed route (`/<locale>/contents/page/N`). The page number and total
+ * are resolved in each route's `getStaticPaths` and passed in; URLs are built
+ * locale-aware via `lib/contents`.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import ContentCard from '@/components/contents/ContentCard.astro';
+import Pagination from '@/components/contents/Pagination.astro';
+import TagList from '@/components/contents/TagList.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import { Hero } from '@/components/hero';
+import siteConfig from '@/config/site.config';
+import { resolveSocialLinks } from '@/lib/utils';
+import { t, defaultLocale } from '@/i18n';
+import {
+  CONTENTS_PER_PAGE,
+  CONTENT_TAG_CLOUD_LIMIT,
+  collectTopTags,
+  getContentBaseUrl,
+  getContentPageUrl,
+  getContentUrl,
+  getPublishedContents,
+} from '@/lib/contents';
+import Button from '@/components/ui/form/Button/Button.astro';
+
+interface Props {
+  /** Locale whose contents this page renders. Defaults to the site default. */
+  locale?: string;
+  /** 1-based page number (always >= 2 for this view). */
+  page: number;
+  /** Total number of index pages for this locale. */
+  totalPages: number;
+  contentDirectoryName: string;
+  contentUrlPath?: string;
+  i18nKey?: string;
+}
+
+const { locale = defaultLocale, page, totalPages, contentDirectoryName, contentUrlPath = contentDirectoryName, i18nKey = contentDirectoryName } = Astro.props;
+
+const contents = await getPublishedContents(contentDirectoryName, locale);
+const nonFeatured = contents.filter((p) => !p.data.featured);
+const regularContentsAll = nonFeatured.length > 0 ? nonFeatured : contents;
+
+const start = (page - 1) * CONTENTS_PER_PAGE;
+const pageContents = regularContentsAll.slice(start, start + CONTENTS_PER_PAGE);
+
+const topTags = collectTopTags(contents, CONTENT_TAG_CLOUD_LIMIT);
+
+const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
+---
+
+<PageLayout
+  title={t(`${i18nKey}.pageMetaTitle`, locale, { page })}
+  description={t(`${i18nKey}.pageMetaDescription`, locale, { page, total: totalPages })}
+  showScrollProgress
+  eagerReveal
+  footerBackground="secondary"
+>
+  <Hero layout="centered" size="sm">
+    <Badge slot="badge" variant="default" pill>
+      <Icon name="book" size="sm" />
+      {t(`${i18nKey}.pageBadge`, locale, { page, total: totalPages })}
+    </Badge>
+
+    <h1 slot="title">{t(`${i18nKey}.title`, locale)}</h1>
+
+    <p slot="description">{t(`${i18nKey}.heroDescription`, locale)}</p>
+    
+    <Button href={getContentBaseUrl(contentUrlPath, locale)}>
+      <Icon name="arrow-left" size="sm" />
+      {t(`${i18nKey}.newestContents`, locale)}
+    </Button>
+  </Hero>
+
+  <section class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-4" data-reveal>
+        {topTags.length > 0 && (
+          <TagList tags={topTags} locale={locale} class="justify-center" contentDirectoryName={contentDirectoryName} contentUrlPath={contentUrlPath} />
+        )}
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {pageContents.map((content, index) => (
+          <ContentCard
+            title={content.data.title}
+            description={content.data.description}
+            href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+            publishedAt={content.data.publishedAt}
+            tags={content.data.tags}
+            author={content.data.author}
+            image={content.data.image}
+            svgSlug={content.data.svgSlug}
+            body={content.body}
+            revealDelay={index % 3}
+            eager={index === 0}
+            placeholder={content.data.placeholder}
+            year={content.data.year}
+            icon={content.data.icon}
+            contentDirectoryName={contentDirectoryName}
+          />
+        ))}
+      </div>
+
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        href={(page) => getContentPageUrl(contentUrlPath, page, locale)}
+      />
+    </div>
+  </section>
+
+  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal>
+    <h2 slot="heading" class="!text-4xl">{t(`${i18nKey}.followAlong`, locale)}</h2>
+    <p slot="description" class="!text-lg text-balance">{t(`${i18nKey}.followAlongLead`, locale)}</p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="/rss.xml"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-background px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:text-brand-300"
+      >
+        <Icon name="rss" size="sm" />
+        {t(`${i18nKey}.rssFeed`, locale)}
+      </a>
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-background px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:text-brand-300"
+        >
+          <Icon name={link.icon} size="sm" />
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-background px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:text-brand-300"
+      >
+        <Icon name="mail" size="sm" />
+        {t(`${i18nKey}.emailLabel`, locale)}
+      </a>
+    </div>
+  </CTA>
+</PageLayout>

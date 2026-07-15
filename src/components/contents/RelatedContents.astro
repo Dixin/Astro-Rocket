@@ -1,0 +1,69 @@
+---
+import ContentCard from '@/components/contents/ContentCard.astro';
+import { getCollection } from 'astro:content';
+import { t, defaultLocale } from '@/i18n';
+import { getContentUrl, getPublishedContents } from '@/lib/contents';
+
+interface Props {
+  currentSlug: string;
+  tags: string[];
+  locale?: string;
+  maxContents?: number;
+  contentDirectoryName: string;
+  contentUrlPath?: string;
+  i18nKey?: string;
+}
+
+const { currentSlug, tags, locale = defaultLocale, maxContents = 3, contentDirectoryName, contentUrlPath = contentDirectoryName, i18nKey = contentDirectoryName } = Astro.props;
+
+// Get all published contents in the same locale
+const allContents = await getPublishedContents(contentDirectoryName, locale);
+
+// Filter to find contents with matching tags
+const relatedContents = allContents
+  .filter((content) => {
+    // Exclude current content
+    if (content.id === currentSlug || content.id.endsWith(`/${currentSlug}`)) return false;
+
+    // Must have at least one matching tag
+    if (!tags.length) return false;
+    return content.data.tags.some((tag) => tags.includes(tag));
+  })
+  // Sort by number of matching tags, then by date
+  .sort((a, b) => {
+    const aMatches = a.data.tags.filter((tag) => tags.includes(tag)).length;
+    const bMatches = b.data.tags.filter((tag) => tags.includes(tag)).length;
+
+    if (bMatches !== aMatches) return bMatches - aMatches;
+    return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
+  })
+  .slice(0, maxContents);
+---
+
+{relatedContents.length > 0 && (
+  <section class="border-t border-border py-[var(--space-section-sm)]">
+    <h2 class="font-display text-2xl font-bold text-foreground mb-[var(--space-stack-lg)] text-center">
+      {t(`${i18nKey}.relatedContents`, locale)}
+    </h2>
+
+    <div class="grid gap-[var(--space-stack-lg)] md:grid-cols-2 lg:grid-cols-3">
+      {relatedContents.map((content) => (
+        <ContentCard
+          title={content.data.title}
+          description={content.data.description}
+          href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+          publishedAt={content.data.publishedAt}
+          tags={content.data.tags}
+          author={content.data.author}
+          image={content.data.image}
+          svgSlug={content.data.svgSlug}
+          body={content.body}
+          placeholder={content.data.placeholder}
+          year={content.data.year}
+          icon={content.data.icon}
+          contentDirectoryName={contentDirectoryName}
+        />
+      ))}
+    </div>
+  </section>
+)}

@@ -1,0 +1,348 @@
+---
+import type { ImageMetadata, MarkdownHeading } from 'astro';
+import siteConfig from '@/config/site.config';
+import BaseLayout from './BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Breadcrumbs from '@/components/seo/Breadcrumbs.astro';
+import ContentHero from '@/components/contents/ContentHero.astro';
+import ShareButtons from '@/components/contents/ShareButtons.astro';
+import RelatedContents from '@/components/contents/RelatedContents.astro';
+import TableOfContents from '@/components/contents/TableOfContents.astro';
+import Comments from '@/components/contents/Comments.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+import { resolveSocialLinks } from '@/lib/utils';
+import { createContentSchema, createFAQSchema } from '@/lib/schema';
+import { getContentOgPath } from '@/lib/og';
+import { t, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
+import { getContentSlug, getContentBaseUrl } from '@/lib/contents';
+import { getContentTranslations } from '@/lib/content-links';
+import type { GallerySlide } from '@/lib/gallery';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+
+const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
+
+interface Props {
+  title: string;
+  description: string;
+  publishedAt: Date;
+  updatedAt?: Date;
+  author?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  svgSlug?: string;
+  tags?: string[];
+  slug?: string;
+  /** Canonical id of the content, used to resolve its translations across locales. */
+  uid?: string;
+  /** Optional FAQs — when provided, an FAQ JSON-LD schema is emitted alongside the BlogPosting schema. */
+  faqs?: Array<{ question: string; answer: string }>;
+  /** MDX headings — used by the optional table of contents */
+  headings?: MarkdownHeading[];
+  /** Per-content override: hide table of contents on this content */
+  toc?: boolean;
+  /** Per-content override: hide comments on this content */
+  comments?: boolean;
+  /** Raw content body, forwarded to ArticleHero for the reading-time estimate. */
+  body?: string;
+  meta?: string[];
+  links?: Array<{ url: string; text: string; icon: string }>;
+  gallery?: GallerySlide[];
+  year?: number;
+  contentDirectoryName: string;
+  contentUrlPath?: string;
+  i18nKey?: string;
+}
+
+const {
+  title,
+  description,
+  publishedAt,
+  updatedAt,
+  author = '',
+  image,
+  imageAlt,
+  svgSlug,
+  tags = [],
+  slug = '',
+  uid,
+  faqs,
+  headings = [],
+  toc: tocOverride,
+  comments: commentsOverride,
+  body,
+  meta = [],
+  links = [],
+  gallery = [],
+  year,
+  contentDirectoryName,
+  contentUrlPath = contentDirectoryName,
+  i18nKey = contentDirectoryName,
+} = Astro.props;
+
+// Resolve opt-in features (site config + per-content overrides).
+// Per-content override only fires when explicitly set to `false`, so authors
+// can hide the TOC/comments on a single content without changing site config.
+const tocConfig = siteConfig.articleFeatures?.toc;
+const commentsConfig = siteConfig.articleFeatures?.comments;
+const showToc = !!tocConfig?.enabled && tocOverride !== false;
+const showComments = !!commentsConfig?.enabled && commentsOverride !== false;
+
+// TOC layout: 'inline' (top-of-article card), 'sidebar' (xl+ sticky aside,
+// hidden below xl), or 'auto' (sidebar on xl+; inline opt-in elsewhere).
+// `sidebarActive` controls whether we render the wider grid wrapper.
+const tocLayout = tocConfig?.layout ?? 'auto';
+const sidebarActive = showToc && (tocLayout === 'sidebar' || tocLayout === 'auto');
+// Inline TOC is now opt-in: 'auto' shows only the desktop sidebar so the
+// mobile/landscape/tablet experience isn't dominated by a TOC card the
+// majority of visitors don't use. Contents that want the inline TOC visible
+// everywhere can set `toc.layout: 'inline'` in frontmatter.
+const inlineActive = showToc && tocLayout === 'inline';
+const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
+
+// Prefer the content's own image; otherwise serve the per-content dynamic OG image
+// generated at build time (see src/pages/og/contents/[slug].svg.ts). Falls back to
+// the site-wide default only when slug is missing.
+const ogImage = image?.src || (slug ? getContentOgPath(contentDirectoryName, getContentSlug(contentDirectoryName, slug, locale)) : siteConfig.ogImage);
+
+const breadcrumbs = [
+  { label: t('common.home', locale), href: localizedPath('/', locale) },
+  { label: t(`${i18nKey}.title`, locale), href: getContentBaseUrl(contentUrlPath, locale) },
+  { label: title },
+];
+
+// Get full URL for sharing
+const fullUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const contentSchema = createContentSchema({
+  title,
+  description,
+  url: fullUrl,
+  image: new URL(ogImage, Astro.site).toString(),
+  datePublished: publishedAt,
+  dateModified: updatedAt,
+  author: { name: author, url: siteConfig.url },
+});
+
+const faqSchema = faqs && faqs.length > 0 ? createFAQSchema(faqs) : null;
+const schemas = faqSchema ? [contentSchema, faqSchema] : [contentSchema];
+
+// Resolve this content's real per-locale URLs so the hreflang tags and the
+// LanguageSwitcher point at the correct translation — which may live at a
+// different slug — instead of blindly swapping the locale segment of the URL.
+// hreflang lists only verified translations; the switcher shows every locale,
+// falling back to a locale's content index when this content has no translation
+// there, so switching language never lands on a 404.
+const contentTranslations = await getContentTranslations(contentDirectoryName, contentUrlPath, slug, locale, uid);
+const translationByLocale = new Map(contentTranslations.map((tr) => [tr.locale, tr.url]));
+const languageAlternates = Object.fromEntries(
+  getLocales().map((loc) => [loc, translationByLocale.get(loc) ?? getContentBaseUrl(contentUrlPath, loc)])
+);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  imageAlt={imageAlt || title}
+  article={{
+    publishedTime: publishedAt,
+    modifiedTime: updatedAt,
+    authors: [author],
+    tags,
+  }}
+  extraSchemas={schemas}
+  localeAlternates={contentTranslations}
+>
+  <Header
+    slot="header"
+    position="fixed"
+    shape="bar"
+    variant="solid"
+    size="lg"
+    showCta={false}
+    showScrollProgress
+    maxWidth="7xl"
+    languageAlternates={languageAlternates}
+  />
+
+  <div class="min-h-screen pt-16">
+  <!-- Article Hero -->
+  <ContentHero
+    title={title}
+    description={description}
+    publishedAt={publishedAt}
+    updatedAt={updatedAt}
+    author={author}
+    tags={tags}
+    image={image}
+    imageAlt={imageAlt}
+    svgSlug={svgSlug}
+    body={body}
+    meta={meta}
+    links={links}
+    gallery={gallery}
+    year={year}
+    contentUrlPath={contentUrlPath}
+    contentDirectoryName={contentDirectoryName}
+  />
+
+  <article class="pt-8 pb-[var(--space-section-md)]">
+    <div class:list={[
+      'mx-auto px-6 max-w-7xl',
+      sidebarActive && (sidebarOnLeft
+        ? 'xl:grid xl:grid-cols-[15rem_minmax(0,1fr)] xl:gap-10'
+        : 'xl:grid xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-10'),
+    ]}>
+      {sidebarActive && sidebarOnLeft && (
+        <aside class="hidden xl:block" aria-label={t(`${i18nKey}.tableOfContents`, locale)}>
+          <TableOfContents
+            headings={headings}
+            maxDepth={tocConfig?.maxDepth ?? 3}
+            minHeadings={tocConfig?.minHeadings ?? 3}
+            sticky
+            contentDirectoryName={contentDirectoryName}
+          />
+        </aside>
+      )}
+
+      <div class:list={['min-w-0 max-w-4xl w-full mx-auto', sidebarActive && 'xl:mx-0']}>
+      <!-- Breadcrumbs -->
+      <Breadcrumbs items={breadcrumbs} class="mb-8" />
+
+      {inlineActive && (
+        <div class="mb-10 rounded-xl border border-border bg-background-secondary p-5">
+          <TableOfContents
+            headings={headings}
+            maxDepth={tocConfig?.maxDepth ?? 3}
+            minHeadings={tocConfig?.minHeadings ?? 3}
+            contentDirectoryName={contentDirectoryName}
+          />
+        </div>
+      )}
+
+      <!-- Article Content -->
+      <div
+        class="prose prose-lg max-w-none"
+        data-reveal-content
+      >
+        <slot />
+      </div>
+
+      <!-- Share buttons (centered, above the divider) -->
+      <div class="mt-12 flex justify-center" data-reveal>
+        <ShareButtons title={title} url={fullUrl} contentDirectoryName={contentDirectoryName} />
+      </div>
+
+      <!-- Article Footer -->
+      <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
+        <Button href={getContentBaseUrl(contentUrlPath, locale)} size="sm">
+          <Icon name="arrow-left" size="sm" />
+          {t(`${i18nKey}.backToContents`, locale)}
+        </Button>
+      </footer>
+      </div>
+
+      {sidebarActive && !sidebarOnLeft && (
+        <aside class="hidden xl:block" aria-label={t(`${i18nKey}.tableOfContents`, locale)}>
+          <TableOfContents
+            headings={headings}
+            maxDepth={tocConfig?.maxDepth ?? 3}
+            minHeadings={tocConfig?.minHeadings ?? 3}
+            sticky
+            contentDirectoryName={contentDirectoryName}
+          />
+        </aside>
+      )}
+    </div>
+  </article>
+
+  {showComments && (
+    <Comments />
+  )}
+
+  <!-- Related Contents -->
+  {tags.length > 0 && (
+    <div class="mx-auto max-w-7xl px-6" data-reveal>
+      <RelatedContents currentSlug={slug} tags={tags} locale={locale} maxContents={3} contentDirectoryName={contentDirectoryName} />
+    </div>
+  )}
+
+  <!-- Follow Along -->
+  <!-- Mobile: standard CTA, no LetterGlitch -->
+  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class="glitch:hidden bg-background-secondary">
+    <h2 slot="heading" class="!text-4xl">{t(`${i18nKey}.followAlong`, locale)}</h2>
+    <p slot="description" class="!text-lg text-balance">{t(`${i18nKey}.followAlongLead`, locale)}</p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="/rss.xml"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
+      >
+        <Icon name="rss" size="sm" />
+        {t(`${i18nKey}.rssFeed`, locale)}
+      </a>
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
+        >
+          <Icon name={link.icon} size="sm" />
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
+      >
+        <Icon name="mail" size="sm" />
+        {t(`${i18nKey}.emailLabel`, locale)}
+      </a>
+    </div>
+  </CTA>
+
+  <!-- Desktop: contained LetterGlitch band with glass card -->
+  <section class="hidden glitch:block relative z-10 py-[var(--space-section-md)] bg-background-secondary">
+    <LetterGlitchBand maxWidth="7xl">
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">{t(`${i18nKey}.followAlong`, locale)}</h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">{t(`${i18nKey}.followAlongLead`, locale)}</p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/rss.xml"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-brand-500/20 hover:text-brand-300"
+        >
+          <Icon name="rss" size="sm" />
+          {t(`${i18nKey}.rssFeed`, locale)}
+        </a>
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-brand-500/20 hover:text-brand-300"
+          >
+            <Icon name={link.icon} size="sm" />
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-brand-500/20 hover:text-brand-300"
+        >
+          <Icon name="mail" size="sm" />
+          {t(`${i18nKey}.emailLabel`, locale)}
+        </a>
+      </div>
+    </LetterGlitchBand>
+  </section>
+  </div>
+
+  <Footer slot="footer" layout="centered" background="default" maxWidth="7xl" />
+</BaseLayout>
