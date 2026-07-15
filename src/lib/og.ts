@@ -137,14 +137,9 @@ function safeHost(url: string): string {
   }
 }
 
-/** Path (relative to site root) for a blog post's dynamic OG image. */
-export function getBlogOgPath(slug: string): string {
-  return `/og/blog/${slug}.svg`;
-}
-
-/** Path (relative to site root) for a project's dynamic OG image. */
-export function getProjectOgPath(slug: string): string {
-  return `/og/projects/${slug}.svg`;
+/** Path (relative to site root) for a content's dynamic OG image. */
+export function getContentOgPath(contentDirectoryName: string, slug: string): string {
+  return `/og/${contentDirectoryName}/${slug}.svg`;
 }
 
 /** Path for a generic dynamic OG image (used for tag/page archives). */

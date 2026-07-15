@@ -1,0 +1,231 @@
+---
+/**
+ * ContentIndexView — the content landing page (page 1).
+ *
+ * Shared body for the default-locale route (`/contents`) and the locale-prefixed
+ * route (`/<locale>/contents`). All content/pagination/tag URLs are built locale-aware
+ * via the helpers in `lib/content`, so rendering with the default locale produces
+ * exactly the same markup the route did before this was extracted.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import ContentCard from '@/components/contents/ContentCard.astro';
+import Pagination from '@/components/contents/Pagination.astro';
+import TagList from '@/components/contents/TagList.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import CTA from '@/components/ui/marketing/CTA/CTA.astro';
+import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+import { Hero } from '@/components/hero';
+import siteConfig from '@/config/site.config';
+import { resolveSocialLinks } from '@/lib/utils';
+import { t, defaultLocale } from '@/i18n';
+import {
+  CONTENTS_PER_PAGE,
+  CONTENT_TAG_CLOUD_LIMIT,
+  collectTopTags,
+  getContentPageUrl,
+  getContentUrl,
+  getPublishedContents,
+} from '@/lib/contents';
+
+interface Props {
+  /** Locale whose contents this index renders. Defaults to the site default. */
+  locale?: string;
+  contentDirectoryName: string;
+  contentUrlPath?: string;
+  i18nKey?: string;
+}
+
+const { locale = defaultLocale, contentDirectoryName, contentUrlPath = contentDirectoryName, i18nKey = contentDirectoryName } = Astro.props;
+
+const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
+
+const contents = await getPublishedContents(contentDirectoryName, locale);
+
+// Featured contents always appear on page 1; the "All contents" grid paginates
+// the non-featured set so the first impression stays curated.
+const featuredContents = contents.filter(content => content.data.featured);
+const nonFeaturedContents = contents.filter(content => !content.data.featured);
+// If everything is featured, mirror it into the main grid so the page isn't empty.
+const regularContentsAll = nonFeaturedContents.length > 0 ? nonFeaturedContents : contents;
+
+const totalPages = Math.max(1, Math.ceil(regularContentsAll.length / CONTENTS_PER_PAGE));
+const regularContents = regularContentsAll.slice(0, CONTENTS_PER_PAGE);
+
+const topTags = collectTopTags(contents, CONTENT_TAG_CLOUD_LIMIT);
+---
+
+<PageLayout title={t(`${i18nKey}.metaTitle`, locale)} description={t(`${i18nKey}.metaDescription`, locale)} showScrollProgress eagerReveal footerBackground={featuredContents.length > 0 ? 'default' : 'secondary'}>
+  <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
+    <Badge slot="badge" variant="default" pill>
+      <Icon name="book" size="sm" />
+      {t(`${i18nKey}.heroBadge`, locale)}
+    </Badge>
+
+    <h1 slot="title">{t(`${i18nKey}.title`, locale)}</h1>
+
+    <p slot="description" class="!text-balance">{t(`${i18nKey}.heroDescription`, locale)}</p>
+  </Hero>
+
+  <!-- Featured Contents Section -->
+  {
+    featuredContents.length > 0 && (
+      <section id="featured-section" class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
+        <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+          <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold text-center" data-reveal>
+            {t(`${i18nKey}.featured`, locale)}
+          </h2>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            {featuredContents.map((content, index) => (
+              <ContentCard
+                title={content.data.title}
+                description={content.data.description}
+                href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+                publishedAt={content.data.publishedAt}
+                tags={content.data.tags}
+                author={content.data.author}
+                image={content.data.image}
+                svgSlug={content.data.svgSlug}
+                body={content.body}
+                revealDelay={index % 2}
+                eager={index === 0}
+                placeholder={content.data.placeholder}
+                year={content.data.year}
+                icon={content.data.icon}
+                contentDirectoryName={contentDirectoryName}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- All Contents Section -->
+  <section class:list={[featuredContents.length > 0 ? 'bg-background' : 'bg-background-secondary', 'py-[var(--space-section-md)] border-t border-border']}>
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
+      <div class="flex flex-col items-center gap-4" data-reveal>
+        {
+          featuredContents.length > 0 && nonFeaturedContents.length > 0 && (
+            <h2 class="font-display text-foreground text-3xl md:text-4xl font-bold text-center">{t(`${i18nKey}.allContents`, locale)}</h2>
+          )
+        }
+
+        {topTags.length > 0 && (
+          <TagList tags={topTags} locale={locale} class="justify-center" contentDirectoryName={contentDirectoryName} contentUrlPath={contentUrlPath} />
+        )}
+      </div>
+
+      {
+        regularContents.length > 0 ? (
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {regularContents.map((content, index) => (
+              <ContentCard
+                title={content.data.title}
+                description={content.data.description}
+                href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+                publishedAt={content.data.publishedAt}
+                tags={content.data.tags}
+                author={content.data.author}
+                image={content.data.image}
+                svgSlug={content.data.svgSlug}
+                body={content.body}
+                revealDelay={index % 3}
+                eager={featuredContents.length === 0 && index === 0}
+                placeholder={content.data.placeholder}
+                year={content.data.year}
+                icon={content.data.icon}
+                contentDirectoryName={contentDirectoryName}
+              />
+            ))}
+          </div>
+        ) : (
+          <div class="py-16 text-center">
+            <div class="bg-background mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <Icon name="file-text" size="lg" class="text-foreground-muted" />
+            </div>
+            <p class="text-foreground-muted text-lg">{t(`${i18nKey}.noContents`, locale)}</p>
+          </div>
+        )
+      }
+
+      <Pagination
+        currentPage={1}
+        totalPages={totalPages}
+        href={(page) => getContentPageUrl(contentUrlPath, page, locale)}
+      />
+    </div>
+  </section>
+
+  <!-- Follow CTA Section -->
+  <!-- Mobile: standard CTA, no LetterGlitch -->
+  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class:list={['glitch:hidden', featuredContents.length > 0 && '!bg-background-secondary']}>
+    <h2 slot="heading" class="!text-4xl">{t(`${i18nKey}.followAlong`, locale)}</h2>
+    <p slot="description" class="!text-lg text-balance">{t(`${i18nKey}.followAlongLead`, locale)}</p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="/rss.xml"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
+      >
+        <Icon name="rss" size="sm" />
+        {t(`${i18nKey}.rssFeed`, locale)}
+      </a>
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
+        >
+          <Icon name={link.icon} size="sm" />
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
+      >
+        <Icon name="mail" size="sm" />
+        {t(`${i18nKey}.emailLabel`, locale)}
+      </a>
+    </div>
+  </CTA>
+
+  <!-- Desktop: contained LetterGlitch band with glass card -->
+  <section class:list={['hidden glitch:block relative z-10 py-[var(--space-section-md)]', featuredContents.length > 0 ? 'bg-background-secondary' : 'bg-background']}>
+    <LetterGlitchBand>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">{t(`${i18nKey}.followAlong`, locale)}</h2>
+      <p class="text-lg text-foreground-muted mb-8 text-balance">{t(`${i18nKey}.followAlongLead`, locale)}</p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/rss.xml"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-secondary/70 hover:text-brand-300"
+        >
+          <Icon name="rss" size="sm" />
+          {t(`${i18nKey}.rssFeed`, locale)}
+        </a>
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-secondary/70 hover:text-brand-300"
+          >
+            <Icon name={link.icon} size="sm" />
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-secondary/70 hover:text-brand-300"
+        >
+          <Icon name="mail" size="sm" />
+          {t(`${i18nKey}.emailLabel`, locale)}
+        </a>
+      </div>
+    </LetterGlitchBand>
+  </section>
+</PageLayout>

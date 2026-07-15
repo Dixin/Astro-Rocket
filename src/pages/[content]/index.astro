@@ -1,0 +1,19 @@
+---
+import ContentIndexView from '@/components/contents/views/ContentIndexView.astro';
+import { defaultLocale } from '@/i18n';
+import { getContentDirectoryNames } from '@/lib/contents';
+
+// The content landing page for the default locale. Additional locales are served
+// by `src/pages/[locale]/[content]/index.astro`, which renders the same view.
+
+export function getStaticPaths() {
+  return getContentDirectoryNames().map((contentDirectoryName) => ({ 
+    params: { content: contentDirectoryName },
+    props: { contentDirectoryName }
+  }));
+}
+
+const { contentDirectoryName } = Astro.props;
+---
+
+<ContentIndexView locale={defaultLocale} contentDirectoryName={contentDirectoryName} />

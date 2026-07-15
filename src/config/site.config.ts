@@ -185,22 +185,15 @@ export interface SiteConfig {
     };
   };
   /**
-   * Blog listing configuration. Counts that were previously hard-coded across
-   * `lib/blog.ts` and the route files live here so they're tunable in one
-   * place. (The existing `blogImageOverlay` / `articleFeatures` keys are left
+   * Contents listing configuration. Counts that were previously hard-coded across
+   * `lib/contents.ts` and the route files live here so they're tunable in one
+   * place. (The existing `contentImageOverlay` / `articleFeatures` keys are left
    * where they are for backwards compatibility and may fold in at a major.)
    */
-  blog?: {
-    /** Regular (non-featured) posts shown per blog index page. Default 12. */
-    postsPerPage?: number;
-    /** How many of the most-used tags to surface in the blog tag cloud. Default 10. */
-    tagCloudLimit?: number;
-  };
-  /** Projects listing configuration. */
-  projects?: {
-    /** Projects shown per page on the projects listing. Default 12. */
-    perPage?: number;
-    /** How many of the most-used tags to surface in the projects tag cloud. Default 10. */
+  contents?: {
+    /** Regular (non-featured) contents shown per content index page. Default 12. */
+    contentsPerPage?: number;
+    /** How many of the most-used tags to surface in the content tag cloud. Default 10. */
     tagCloudLimit?: number;
   };
   /**
@@ -281,7 +274,7 @@ const siteConfig: SiteConfig = {
   authorImage: '/avatar.svg',
   blogImageOverlay: true,
   effects: {
-    cursorTrail: true,
+    cursorTrail: false,
   },
   articleFeatures: {
     toc: {
@@ -335,12 +328,8 @@ const siteConfig: SiteConfig = {
       },
     },
   },
-  blog: {
-    postsPerPage: 12,
-    tagCloudLimit: 10,
-  },
-  projects: {
-    perPage: 12,
+  contents: {
+    contentsPerPage: 12,
     tagCloudLimit: 10,
   },
   i18n: i18nConfig,

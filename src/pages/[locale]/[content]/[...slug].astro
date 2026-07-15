@@ -1,0 +1,61 @@
+---
+import ContentLayout from '@/layouts/ContentLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { getContentSlug, getSecondaryLocales, getContentDirectoryNames, getPublishedContents } from '@/lib/contents';
+import ContentLink from '@/components/contents/ContentLink.astro';
+
+// Locale-prefixed blog posts (`/<locale>/blog/<slug>`). One page per
+// (non-default locale × published post in that locale). Emits nothing when
+// i18n is off. The default-locale posts are served by `src/pages/blog/
+// [...slug].astro`, which also runs the build-time content-integrity guards
+// across every locale, so they are not repeated here.
+export async function getStaticPaths() {
+  const paths: {
+    params: { locale: string; slug: string; content: string };
+    props: { content: Awaited<ReturnType<typeof getCollection<'contents'>>>[number]; contentDirectoryName: string, locale: string };
+  }[] = [];
+
+  for (const locale of getSecondaryLocales()) {
+    for (const contentDirectoryName of getContentDirectoryNames()) {
+      const contents = await getPublishedContents(contentDirectoryName, locale);
+      for (const content of contents) {
+        paths.push({
+          params: { locale, slug: getContentSlug(contentDirectoryName, content.id, locale), content: contentDirectoryName },
+          props: { content, contentDirectoryName, locale },
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { content, contentDirectoryName, locale } = Astro.props;
+const { Content, headings } = await render(content);
+---
+
+<ContentLayout
+  title={content.data.title}
+  description={content.data.description}
+  publishedAt={content.data.publishedAt}
+  updatedAt={content.data.updatedAt}
+  author={content.data.author}
+  image={content.data.image}
+  imageAlt={content.data.imageAlt}
+  svgSlug={content.data.svgSlug}
+  tags={content.data.tags}
+  slug={content.id}
+  uid={content.data.uid}
+  faqs={content.data.faqs}
+  headings={headings}
+  toc={content.data.toc}
+  comments={content.data.comments}
+  body={content.body}
+  meta={content.data.meta}
+  links={content.data.links}
+  gallery={content.data.gallery}
+  year={content.data.year}
+  contentDirectoryName={contentDirectoryName}
+>
+  <Content components={{ ContentLink }} />
+</ContentLayout>

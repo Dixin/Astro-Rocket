@@ -1,0 +1,31 @@
+---
+import ContentPageView from '@/components/contents/views/ContentPageView.astro';
+import { getContentPageCount, getSecondaryLocales, getContentDirectoryNames } from '@/lib/contents';
+
+// Locale-prefixed paginated content index (`/<locale>/news/page/N`, N >= 2).
+// Page 1 lives at `/<locale>/news`. Emits nothing when i18n is off.
+export async function getStaticPaths() {
+  const paths: {
+    params: { locale: string; page: string; content: string };
+    props: { page: number; totalPages: number, contentDirectoryName: string, locale: string };
+  }[] = [];
+
+  for (const locale of getSecondaryLocales()) {
+    for (const contentDirectoryName of getContentDirectoryNames()) {
+      const totalPages = await getContentPageCount(contentDirectoryName, locale);
+      for (let page = 2; page <= totalPages; page++) {
+        paths.push({
+          params: { locale, content: contentDirectoryName, page: String(page) },
+          props: { page, totalPages, contentDirectoryName, locale },
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { page, totalPages, contentDirectoryName, locale } = Astro.props;
+---
+
+<ContentPageView locale={locale} page={page} totalPages={totalPages} contentDirectoryName={contentDirectoryName} />
