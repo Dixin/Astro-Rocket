@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - **The demo speaks as a complete freelance business** — the services page and the homepage services cards are rewritten with the full content of a real freelance Astro practice: three service deep-dives with concrete "what you get" lists, a four-step project process with fixed-price framing, and honest buying answers. All copy ships in English and Dutch. Sites pulling this update should take the view files and the locale dictionaries together, since the views read the new keys.
 
+### Security
+
+- **Contact form email escaping** — user-submitted name, email, and message are now HTML-escaped before they're placed in the notification email, preventing injected markup (links, tracking pixels, spoofed content) from rendering in the site owner's inbox.
+
 ## [2.1.0] — 2026-07-16
 
 ### Added
