@@ -5,6 +5,17 @@ import { z } from 'astro/zod';
 import { Resend } from 'resend';
 import siteConfig from '@/config/site.config';
 
+// Escape user-supplied values before they are interpolated into the
+// notification email's HTML, so a message containing markup (links,
+// tracking pixels, spoofed content) can't render in the recipient's inbox.
+const escapeHtml = (value: string): string =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(100),
   email: z.email('Please enter a valid email address'),
@@ -78,10 +89,10 @@ export const POST: APIRoute = async ({ request }) => {
       replyTo: result.data.email,
       subject,
       html: `
-        <p><strong>Name:</strong> ${result.data.name}</p>
-        <p><strong>Email:</strong> ${result.data.email}</p>
+        <p><strong>Name:</strong> ${escapeHtml(result.data.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(result.data.email)}</p>
         <p><strong>Message:</strong></p>
-        <p>${result.data.message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtml(result.data.message).replace(/\n/g, '<br>')}</p>
       `,
     });
 
