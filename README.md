@@ -901,6 +901,18 @@ Animation delay utilities (`.delay-0` through `.delay-5`, in 50ms steps) let you
 
 ---
 
+## Security
+
+Astro Rocket builds to a **static site** — plain HTML, CSS, and JavaScript with no server or database in what you deploy. The attack surface is small by design.
+
+**The only server-side code** is the optional contact and newsletter endpoints (`src/pages/api/`). Both validate input with [Zod](https://zod.dev), use a honeypot against bots, and HTML-escape submitted values before placing them in the notification email. Everything else is prerendered at build time.
+
+**About `pnpm audit`.** An audit will report advisories in the dependency tree. Almost all of them come from the **build-time tooling of the deploy adapters** — Netlify and Cloudflare each bring a large local-development toolchain. That code runs only during `astro build` on your own machine; it is never part of the deployed site and never reaches a visitor.
+
+**Reporting a security issue.** If you find a real vulnerability in the theme itself, please report it privately — open a [GitHub security advisory](https://github.com/hansmartensdev/Astro-Rocket/security/advisories/new) or email hello@hansmartens.dev — rather than a public issue, so it can be fixed before it's widely known.
+
+---
+
 ## Contributing
 
 Contributions are welcome!
