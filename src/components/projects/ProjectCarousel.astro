@@ -22,6 +22,10 @@ interface Props {
 const { slides, label = 'Project screenshots' } = Astro.props;
 const carouselId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
 const hasMultiple = slides.length > 1;
+// A single image slide is shown complete at its natural ratio (no crop), so
+// nothing important — like the browser header of a screenshot — gets sliced
+// off. Galleries and video slides keep the uniform 16:9 frame.
+const imageClass = hasMultiple ? 'aspect-video w-full object-cover' : 'w-full h-auto';
 
 // Optimise video posters up front — the poster is the slide's visual (and the
 // LCP candidate when a video is the first slide), so it gets the same image
@@ -73,7 +77,7 @@ const posters = await Promise.all(
               alt={slide.alt}
               widths={[640, 960, 1280]}
               sizes="(max-width: 1024px) 100vw, 640px"
-              class="aspect-video w-full object-cover"
+              class={imageClass}
               loading={i === 0 ? 'eager' : 'lazy'}
             />
           )}
