@@ -3,15 +3,20 @@
  * Analytics Component
  *
  * Conditionally loads analytics scripts based on environment variables.
- * Supports Google Analytics (GA4) and Google Tag Manager.
+ * Supports Google Analytics (GA4), Google Tag Manager, and Umami.
  *
  * When PUBLIC_CONSENT_ENABLED is true, integrates with Google Consent Mode v2:
  * - consent_mode_v2: Scripts load normally but with denied defaults (cookieless pings)
  * - strict: Scripts only load after explicit user consent
  *
+ * Umami is privacy-friendly and cookieless by design, so it loads directly and
+ * is not gated by the cookie-consent flow (there are no cookies to consent to).
+ *
  * Environment variables:
  * - PUBLIC_GA_MEASUREMENT_ID: Google Analytics 4 Measurement ID (e.g., G-XXXXXXXXXX)
  * - PUBLIC_GTM_ID: Google Tag Manager Container ID (e.g., GTM-XXXXXXX)
+ * - PUBLIC_UMAMI_WEBSITE_ID: Umami website ID (a UUID from your Umami dashboard)
+ * - PUBLIC_UMAMI_SRC: Umami script URL (defaults to Umami Cloud; override when self-hosting)
  * - PUBLIC_CONSENT_ENABLED: Enable cookie consent integration (boolean)
  *
  * CSP: All is:inline scripts here are STATIC (no define:vars). Dynamic values are
@@ -35,11 +40,20 @@
  * www.google-analytics.com will silently drop all tracking requests with
  * no console errors. The wildcard *.google-analytics.com is required.
  */
-import { PUBLIC_GA_MEASUREMENT_ID, PUBLIC_GTM_ID, PUBLIC_CONSENT_ENABLED } from 'astro:env/client';
+import {
+  PUBLIC_GA_MEASUREMENT_ID,
+  PUBLIC_GTM_ID,
+  PUBLIC_CONSENT_ENABLED,
+  PUBLIC_UMAMI_WEBSITE_ID,
+  PUBLIC_UMAMI_SRC,
+} from 'astro:env/client';
 import consentConfig from '@/config/consent.config';
 
 const gaId = PUBLIC_GA_MEASUREMENT_ID;
 const gtmId = PUBLIC_GTM_ID;
+const umamiId = PUBLIC_UMAMI_WEBSITE_ID;
+const umamiSrc = PUBLIC_UMAMI_SRC;
+const hasUmami = !!umamiId;
 const consentEnabled = PUBLIC_CONSENT_ENABLED;
 const consentMode = consentConfig.mode;
 const storageKey = consentConfig.storageKey;
@@ -94,6 +108,14 @@ const analyticsDataJson = JSON.stringify({
   analyticsCategoryKey,
 });
 ---
+
+{/* ── Umami — privacy-friendly, cookieless analytics ──
+    Loads directly (no consent gating): Umami sets no cookies and stores no
+    personal data, so it needs no cookie banner. Self-host by overriding
+    PUBLIC_UMAMI_SRC. */}
+{hasUmami && (
+  <script is:inline async src={umamiSrc} data-website-id={umamiId}></script>
+)}
 
 {/* Analytics data element — read by all inline scripts below */}
 {hasAnalytics && (
