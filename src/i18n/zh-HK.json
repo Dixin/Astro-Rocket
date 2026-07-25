@@ -486,6 +486,35 @@
           { "title": "上線和支援", "description": "部署、交接、保持可用。上線後的迭代非常簡單。" }
         ]
       },
+      "faq": {
+        "badge": "Questions",
+        "heading": "Questions and answers",
+        "lead": "The things clients ask before we start.",
+        "cards": [
+          {
+            "icon": "tag",
+            "title": "Before we start",
+            "items": [
+              { "question": "What does a website cost?", "answer": "Every project gets one fixed price, agreed before we start. No hourly billing, no surprises afterwards. The free talk — and the free check, if there's already a website — tells me what your project needs, and you get the price in one clear proposal." },
+              { "question": "How long does a project take?", "answer": "That depends on the size of the website. The proposal names the timeline together with the price, so you know both before we start." },
+              { "question": "What happens with my current website?", "answer": "It stays online until the new one is ready. Your content, your web address, and your Google rankings come along. I check your current website before our first talk, so you get clear answers from the start." },
+              { "question": "Do I need to arrange hosting or a domain?", "answer": "No. I set up the hosting and the domain for you, in your own name. If you already have a domain, we simply keep it." },
+              { "question": "Do we need to meet in person?", "answer": "It's not needed. Most projects run entirely by phone, video, and email. I work with clients worldwide, and time zones are rarely a problem." }
+            ]
+          },
+          {
+            "icon": "user",
+            "title": "Working with me",
+            "items": [
+              { "question": "Are you a company or agency?", "answer": "I'm a one-person business: a freelancer, not an agency. You work directly with the person doing the work, from the first talk to the finished website. No sales team, no account managers, no handoffs." },
+              { "question": "Can I change the website myself after launch?", "answer": "You can simply send me your changes, and the monthly care plan exists exactly for that. If you want to edit the website yourself, say so in the first talk and I set the site up for it." },
+              { "question": "Do you also build webshops?", "answer": "No. Big online shops are the one thing I don't build. Everything else that needs a custom Astro website, I build: tell me in the first talk what you have in mind, and I'll be honest about whether I'm the right builder for it." },
+              { "question": "Is the website really mine?", "answer": "Completely. The domain, the hosting, and the code are in your name from day one. If you ever want to move on, you take everything with you: you're never locked in." },
+              { "question": "What happens if something breaks after launch?", "answer": "Very little can break: the website has no plugins and no database to fail. And I stay reachable after launch; for regular updates and monitoring there is the monthly care plan." }
+            ]
+          }
+        ]
+      },
       "cta": {
         "badge": "聯繫我們",
         "heading": "開始新的項目？",
@@ -538,6 +567,18 @@
           { "icon": "code", "title": "網頁開發", "description": "使用 Astro 和 Tailwind 構建的現代網站。精簡、無障礙，並準備隨您的業務擴展 — 無模板鎖定。" },
           { "icon": "zap", "title": "SEO 和性能", "description": "頁面即時加載，從啟動起就有良好的排名。核心網頁指標、元數據和結構化數據，正確完成。" }
         ]
+      },
+      "workWithMe": {
+        "badge": "Work with me",
+        "heading": "Let's build your website",
+        "lead": "What you get when we work together.",
+        "cards": [
+          { "icon": "palette", "title": "Custom design", "description": "Designed around your business, your content, and your customers." },
+          { "icon": "zap", "title": "A lightning-fast website", "description": "Pages that open instantly, on every phone and every connection." },
+          { "icon": "search", "title": "Found by Google and AI", "description": "Every page built so search engines and AI assistants read it cleanly and customers can find you." },
+          { "icon": "shield-check", "title": "Zero maintenance", "description": "Kept up to date and secure with the care plan, so you can focus on your business." }
+        ],
+        "cta": "Read my services page"
       },
       "portfolio": {
         "badge": "精選作品",
