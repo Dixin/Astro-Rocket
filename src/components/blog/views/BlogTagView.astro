@@ -41,7 +41,7 @@ const countKey = posts.length === 1 ? 'blog.tagCountOne' : 'blog.tagCountOther';
   eagerReveal
 >
   <Hero layout="centered" size="sm">
-    <Badge slot="badge" variant="brand" pill>
+    <Badge slot="badge" variant="default" pill>
       <Icon name="tag" size="sm" />
       {t('blog.tagBadge', locale)}
     </Badge>
@@ -54,19 +54,16 @@ const countKey = posts.length === 1 ? 'blog.tagCountOne' : 'blog.tagCountOther';
     <p slot="description">
       {t(countKey, locale, { count: posts.length, tag })}
     </p>
+
+    <Button href={blogHref}>
+      <Icon name="arrow-left" size="sm" />
+      {t('blog.allPosts', locale)}
+    </Button>
   </Hero>
 
   <section class="bg-background-secondary py-[var(--space-section-md)] border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4" data-reveal>
-        <a
-          href={blogHref}
-          class="group inline-flex items-center gap-2 rounded-lg border border-brand-500/40 bg-transparent px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 hover:border-brand-500/80 hover:bg-brand-500/10 transition-colors"
-        >
-          <Icon name="arrow-left" size="sm" />
-          {t('blog.allPosts', locale)}
-        </a>
-
         {visibleTags.length > 0 && (
           <TagList tags={visibleTags} active={tag} locale={locale} class="justify-center" />
         )}
@@ -97,7 +94,7 @@ const countKey = posts.length === 1 ? 'blog.tagCountOne' : 'blog.tagCountOther';
           </div>
           <p class="text-foreground-muted text-lg">{t('blog.tagEmpty', locale)}</p>
           <div class="mt-6">
-            <Button href={blogHref} variant="brand-outline" size="sm">
+            <Button href={blogHref} size="sm">
               <Icon name="arrow-left" size="sm" />
               {t('blog.tagBackToAll', locale)}
             </Button>

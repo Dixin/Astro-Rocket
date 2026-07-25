@@ -66,7 +66,7 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
   return (
     <Wrapper
       class:list={[
-        'toc not-prose rounded-xl border border-brand-500/40 bg-card',
+        'toc not-prose rounded-xl border border-foreground-muted/30 bg-card',
         !collapsible && 'p-5',
         sticky && 'toc-sticky',
       ]}
@@ -92,13 +92,13 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
           id={headingId}
           class="mb-3 flex items-center gap-2 text-sm font-semibold text-foreground"
         >
-          <Icon name="list" size="sm" class="text-brand-500" />
+          <Icon name="list" size="sm" class="text-foreground" />
           {tocTitle}
         </p>
       )}
       <ul
         class:list={[
-          'space-y-1.5 text-sm border-l border-border',
+          'space-y-1.5 text-sm border-l border-brand-500',
           collapsible && 'mx-5 mb-5',
         ]}
       >
@@ -106,16 +106,16 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
           <li
             class="toc-item"
             data-depth={h.depth}
-            style={`padding-left: ${(h.depth - 2) * 0.875}rem`}
           >
             <a
               href={`#${h.slug}`}
               data-toc-link={h.slug}
               class:list={[
-                'toc-link block pl-3 -ml-px border-l border-transparent text-foreground-muted hover:text-foreground hover:border-brand-500 transition-colors',
+                'toc-link block pl-3 -ml-px text-brand-500 hover:text-brand-300 hover:bg-secondary/70 rounded-r-xl transition-colors hover:border-brand-300 border-l border-brand-500',
                 // Roomier tap targets on the touch-first collapsed variant.
                 collapsible ? 'py-1.5' : 'py-1',
               ]}
+              style={`padding-left: ${(h.depth - 1) * 0.875}rem`}
             >
               {h.text}
             </a>
@@ -139,7 +139,15 @@ const headingId = `toc-heading-${Math.random().toString(36).slice(2, 9)}`;
 
   .toc-link[data-active='true'] {
     color: var(--color-foreground);
-    border-left-color: var(--color-brand-500);
+    border-left-color: var(--color-foreground);
+    font-weight: 500;
+    border-left-width: 1px;
+    background-color: var(--color-brand-500);
+  }
+
+  .toc-link[data-active='true']:hover {
+    color: var(--color-brand-300);
+    border-left-color: var(--color-brand-300);
     font-weight: 500;
   }
 

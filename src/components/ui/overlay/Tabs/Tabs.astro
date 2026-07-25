@@ -27,7 +27,7 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
 
 <div class={cn('w-full', className)} data-tabs data-default={defaultValue}>
   <!-- Tab List -->
-  <div class="flex border-b border-border" role="tablist" aria-label="Tabs">
+  <div class="flex border-b border-border border-foreground-muted" role="tablist" aria-label="Tabs">
     {tabs.map((tab) => (
       <button
         type="button"
@@ -37,11 +37,8 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
         aria-controls={`panel-${tab.id}`}
         tabindex={tab.id === defaultValue ? 0 : -1}
         class={cn(
-          'px-4 py-2.5 text-sm font-medium -mb-px border-b-2 transition-colors',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          tab.id === defaultValue
-            ? 'border-foreground text-foreground'
-            : 'border-transparent text-foreground-muted hover:text-foreground hover:border-border'
+          'tabs-button px-4 py-2.5 text-sm font-medium -mb-px border-b-2 transition-colors',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-t-xl'
         )}
         data-tab-trigger={tab.id}
       >
@@ -83,14 +80,6 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
           const isActive = trigger.getAttribute('data-tab-trigger') === id;
           trigger.setAttribute('aria-selected', String(isActive));
           trigger.setAttribute('tabindex', isActive ? '0' : '-1');
-
-          if (isActive) {
-            trigger.classList.add('border-foreground', 'text-foreground');
-            trigger.classList.remove('border-transparent', 'text-foreground-muted');
-          } else {
-            trigger.classList.remove('border-foreground', 'text-foreground');
-            trigger.classList.add('border-transparent', 'text-foreground-muted');
-          }
         });
 
         contentElements.forEach((el) => {
@@ -160,5 +149,25 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
   .tabs-content > :global([data-tab-content]:focus-visible) {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
+  }
+
+  .tabs-button[aria-selected="true"] {
+    border-bottom-color: var(--color-foreground);
+    background-color: var(--color-brand-500);
+    color: var(--color-foreground);
+  }
+
+  .tabs-button:not([aria-selected="true"]) {
+    border-bottom-color: var(--color-foreground-muted);
+    background-color: none;
+    color: var(--color-brand-500);
+    cursor: pointer;
+  }
+
+  .tabs-button:hover:not([aria-selected="true"]) {
+    border-bottom-color: var(--color-brand-300);
+    background-color: var(--color-secondary);
+    color: var(--color-brand-300);
+    cursor: pointer;
   }
 </style>

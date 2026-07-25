@@ -54,7 +54,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 
 <PageLayout title={t('blog.metaTitle', locale)} description={t('blog.metaDescription', locale)} showScrollProgress eagerReveal footerBackground={featuredPosts.length > 0 ? 'default' : 'secondary'}>
   <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
-    <Badge slot="badge" variant="brand" pill>
+    <Badge slot="badge" variant="default" pill>
       <Icon name="book" size="sm" />
       {t('blog.heroBadge', locale)}
     </Badge>
@@ -191,7 +191,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
       <div class="flex flex-wrap items-center justify-center gap-3">
         <a
           href="/rss.xml"
-          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-secondary/70 hover:text-brand-300"
         >
           <Icon name="rss" size="sm" />
           {t('blog.rssFeed', locale)}
@@ -201,7 +201,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+            class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-secondary/70 hover:text-brand-300"
           >
             <Icon name={link.icon} size="sm" />
             {link.label}
@@ -209,7 +209,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
         ))}
         <a
           href={`mailto:${siteConfig.email}`}
-          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-400 hover:bg-brand-500/20 hover:text-foreground"
+          class="inline-flex items-center gap-2 rounded-full border border-brand-500 bg-white/5 px-4 py-2 text-sm font-medium text-brand-500 transition-colors hover:border-brand-300 hover:bg-secondary/70 hover:text-brand-300"
         >
           <Icon name="mail" size="sm" />
           {t('blog.emailLabel', locale)}
