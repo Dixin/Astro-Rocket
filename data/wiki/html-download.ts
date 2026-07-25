@@ -88,13 +88,13 @@ export const downloadHtmlsAndImages = async (
                 }
                 const imageFilePath = path.join(imageRootDirectory, imageFileName);
                 if (!overwriteImages && (await exists(imageFilePath))) {
-                    console.log(`Image already exists and overwrite is false: ${imageFileName}`);
+                    console.warn(`Image already exists and overwrite is false: ${imageFileName}`);
                     return;
                 }
 
                 const buffer = await response.body();
                 await fs.writeFile(imageFilePath, buffer);
-                console.log(`Downloaded image: ${imageFileName}`);
+                console.warn(`Downloaded image: ${imageFileName}`);
             } catch (error) {
                 console.error(`Failed to download image from ${response.url()}:`, error);
             }
@@ -131,7 +131,7 @@ export const downloadHtmlsAndImages = async (
                     urlPathToFileName(decodeURIComponent(url.split('/').pop()!)) + '.html';
                 const htmlFilePath = path.join(htmlDirectory, htmlFileName);
                 if (!overwriteHtml && (await exists(htmlFilePath))) {
-                    console.log(`File already exists, skipping: ${htmlFilePath}`);
+                    console.warn(`File already exists, skipping: ${htmlFilePath}`);
                     htmlFiles.push({ file: htmlFilePath, isSkipped: true });
                     continue;
                 }
@@ -139,7 +139,7 @@ export const downloadHtmlsAndImages = async (
                 await page.goto(localeUrl, { waitUntil: 'networkidle' });
                 const htmlContent = await page.content();
                 await fs.writeFile(htmlFilePath, htmlContent, { encoding: 'utf8' });
-                console.log(`Downloaded and saved HTML for ${url} to ${htmlFilePath}`);
+                console.warn(`Downloaded and saved HTML for ${url} to ${htmlFilePath}`);
                 htmlFiles.push({ file: htmlFilePath, isSkipped: false });
                 await setTimeout(1000); // Wait for 2 seconds to ensure all images are loaded
             } catch (err) {
@@ -173,16 +173,16 @@ const downloadAllHtmlByLanguageLocale = async (
             const htmlFileName = getHtmlFileName(url);
             const htmlFilePath = path.join(htmlDirectory, `${htmlFileName}.html`);
             if (!overwrite && (await exists(htmlFilePath))) {
-                console.log(`File already exists, skipping: ${htmlFilePath}`);
+                console.warn(`File already exists, skipping: ${htmlFilePath}`);
                 htmlFiles.push({ file: htmlFilePath, isSkipped: true });
                 continue;
             }
 
-            console.log(`Downloading: ${url}`);
+            console.warn(`Downloading: ${url}`);
             const content = await downloadHtmlContent(url, language, locale);
-            console.log(`Downloaded content length: ${content.length}`);
+            console.warn(`Downloaded content length: ${content.length}`);
             await fs.writeFile(htmlFilePath, content, { encoding: 'utf8' });
-            console.log(`Saved to: ${htmlFilePath}`);
+            console.warn(`Saved to: ${htmlFilePath}`);
             htmlFiles.push({ file: htmlFilePath, isSkipped: false });
         } catch (err) {
             console.error(`Failed to download ${url}:`, err);

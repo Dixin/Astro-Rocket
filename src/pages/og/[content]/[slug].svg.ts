@@ -1,7 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { renderOgSvg } from '@/lib/og';
 import { getContentSlug, getContentDirectoryNames, getPublishedContents } from '@/lib/contents';
-import { defaultLocale } from '@/i18n';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: {

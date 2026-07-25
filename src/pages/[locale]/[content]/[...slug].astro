@@ -30,7 +30,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { content, contentDirectoryName, locale } = Astro.props;
+const { content, contentDirectoryName } = Astro.props;
 const { Content, headings } = await render(content);
 ---
 

@@ -1,21 +1,23 @@
 // import TurndownService from 'turndown';
 // import { gfm } from '@truto/turndown-plugin-gfm';
-import * as cheerio from 'cheerio';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import matter from 'gray-matter';
 import htmlToMarkdown from '@xberg-io/html-to-markdown';
 const { convert, VisitResult } = htmlToMarkdown;
 import { exists, readFiles } from '../common.ts';
-import { defaultLocale, fileNameToUrlPath, currentDataRootDirectory } from './html-download.ts';
-import { LinkTagName, urlPathToId } from './html-trim.ts';
+import { defaultLocale, currentDataRootDirectory } from './html-download.ts';
+import { LinkTagName } from './html-trim.ts';
 
 // const turndownService = new TurndownService();
 // turndownService.use(gfm);
 //turndownService.turndown(stringOfHTML);
 
 const trimmedHtmlRootDirectory = path.join(currentDataRootDirectory, 'html-trimmed');
-const markdownRootDirectory = path.resolve(currentDataRootDirectory, `../../src/content/contents/${defaultLocale}`);
+const markdownRootDirectory = path.resolve(
+    currentDataRootDirectory,
+    `../../src/content/contents/${defaultLocale}`
+);
 
 const linkElementStart = new RegExp(`<${LinkTagName.toLowerCase()}`, 'gi');
 const linkElementEnd = new RegExp(`</${LinkTagName.toLowerCase()}`, 'gi');
@@ -41,7 +43,7 @@ const convertHtmlContentToMarkdown = (htmlContent: string): string => {
         bullets: '-',
         visitor: {
             visitCustomElement: (
-                ctx: htmlToMarkdown.NodeContext,
+                _ctx: htmlToMarkdown.NodeContext,
                 tagName: string,
                 html: string
             ): htmlToMarkdown.VisitResult.Continue | { Custom: string } => {
@@ -55,7 +57,7 @@ const convertHtmlContentToMarkdown = (htmlContent: string): string => {
                 };
             },
             visitListItem: (
-                ctx: htmlToMarkdown.NodeContext,
+                _ctx: htmlToMarkdown.NodeContext,
                 ordered: boolean,
                 marker: string,
                 text: string
@@ -70,11 +72,11 @@ const convertHtmlContentToMarkdown = (htmlContent: string): string => {
                         : `${indent}${marker}   ${text}`,
                 };
             },
-            visitListStart: (ctx: htmlToMarkdown.NodeContext, ordered: boolean) => {
+            visitListStart: (_ctx: htmlToMarkdown.NodeContext, _ordered: boolean) => {
                 listDepth++;
                 return VisitResult.Continue;
             },
-            visitListEnd: (ctx: htmlToMarkdown.NodeContext, ordered: boolean, output: string) => {
+            visitListEnd: (_ctx: htmlToMarkdown.NodeContext, _ordered: boolean, _output: string) => {
                 // if (listDepth === 0) {
                 //     listDepth--;
                 //     let isFixed = false;
@@ -113,7 +115,7 @@ const convertHtmlContentToMarkdown = (htmlContent: string): string => {
                 ctx: htmlToMarkdown.NodeContext,
                 output: string
             ): htmlToMarkdown.VisitResult.Continue | { Custom: string } => {
-                if(ctx.tagName.toLowerCase()==='a' && output.toLowerCase().startsWith('<http')) {
+                if (ctx.tagName.toLowerCase() === 'a' && output.toLowerCase().startsWith('<http')) {
                     console.error(`Unexpected output: ${output}`);
                     const url = output.substring(1, output.indexOf('>'));
                     return { [VisitResult.Custom]: `[${url}](${url})` };
@@ -182,15 +184,15 @@ export const convertAllHtmlFiles = async (
         trimmedHtmlFiles = await readFiles(trimmedHtmlRootDirectory, true, '.html');
     }
 
-    console.log(`Found ${trimmedHtmlFiles.length} HTML files to convert.`);
+    console.warn(`Found ${trimmedHtmlFiles.length} HTML files to convert.`);
     const markdownFiles = [];
     for (const trimmedHtmlFile of trimmedHtmlFiles) {
-        const parsedTrimedHtmlFile = path.parse(trimmedHtmlFile);
-        const id = urlPathToId(fileNameToUrlPath(parsedTrimedHtmlFile.name));
+        // const parsedTrimedHtmlFile = path.parse(trimmedHtmlFile);
+        // const id = urlPathToId(fileNameToUrlPath(parsedTrimedHtmlFile.name));
         const markdownFile = trimmedHtmlFile
             .replace(trimmedHtmlRootDirectory, markdownRootDirectory)
             .replace('.html', '.mdx');
-        console.log(`Converting ${trimmedHtmlFile} to ${markdownFile}`);
+        console.warn(`Converting ${trimmedHtmlFile} to ${markdownFile}`);
         markdownFiles.push(
             await convertHtmlFileToMarkdown(trimmedHtmlFile, markdownFile, overwrite)
         );

@@ -1,6 +1,3 @@
-import { dataRootDirectory, exists, readFiles } from '../common.ts';
-import * as fs from 'fs/promises';
-import * as path from 'path';
 import * as htmlDownload from './html-download.ts';
 import * as htmlTrim from './html-trim.ts';
 import * as markdown from './markdown.ts';
@@ -13,7 +10,7 @@ const trimmedHtmlFiles = await htmlTrim.trimAllHtmlFiles(
     new Date(),
     true
 );
-const convertedMarkdownFiles = await markdown.convertAllHtmlFiles(
+await markdown.convertAllHtmlFiles(
     trimmedHtmlFiles.map(({ file }) => file),
     true
 );
