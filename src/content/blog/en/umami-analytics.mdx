@@ -1,0 +1,112 @@
+---
+title: "Umami Analytics, Built In: Privacy-Friendly, Cookieless Stats"
+description: "Astro Rocket now supports Umami out of the box — private, cookieless web analytics. Set one environment variable and you get real visitor numbers with no cookie banner."
+publishedAt: 2026-07-25
+author: "Hans Martens"
+tags: ["astro-rocket", "features", "analytics", "umami", "privacy"]
+featured: false
+locale: en
+image: "../../../assets/blog/umami-analytics.svg"
+svgSlug: "umami-analytics"
+imageAlt: "A rising bar chart above the word 'analytics' with a 'cookieless' tag, on a brand-coloured background"
+---
+
+[Astro Rocket](https://astrorocket.dev) has always shipped with built-in support for Google Analytics 4 and Google Tag Manager — set an environment variable and the tracking script loads itself. Now there's a third option that a lot of people have been asking for: **[Umami](https://umami.is)**. It works exactly the same way — one environment variable and you're done — but it's privacy-friendly and cookieless by design.
+
+This post covers what Umami is, how the theme wires it up for you, and how to turn it on for your own site.
+
+## What Umami is
+
+Umami is an open-source, privacy-focused web analytics tool — a lightweight alternative to Google Analytics. It gives you the numbers you actually care about (page views, visitors, referrers, top pages, countries, devices) in a clean dashboard, without the weight and complexity of a full marketing-analytics stack.
+
+The important part is *how* it collects those numbers:
+
+- **No cookies.** Umami doesn't set any cookies and doesn't track people across sites.
+- **No personal data.** It stores no personally identifiable information, so under the GDPR and similar laws you generally don't need a cookie-consent banner for it.
+- **Tiny.** The tracking script is only a couple of kilobytes, so it barely touches your page-load performance.
+- **Yours.** It's open source (MIT). You can use the hosted **Umami Cloud** service, or run Umami on your own server and keep every byte of your data in-house.
+
+In short: real analytics, without the privacy trade-offs — a good fit for the kind of fast, respectful sites Astro Rocket is built for.
+
+## How it works in Astro Rocket
+
+Umami lives in the same place as the other analytics providers — the theme's `Analytics` component (`src/components/layout/Analytics.astro`), which is already included in the base layout on every page. You don't edit any component code. The whole feature is driven by two environment variables:
+
+| Variable | Required? | What it does |
+|----------|-----------|--------------|
+| `PUBLIC_UMAMI_WEBSITE_ID` | Yes (to enable) | The website ID (a UUID) from your Umami dashboard. Setting it switches Umami on. |
+| `PUBLIC_UMAMI_SRC` | No | The tracking-script URL. Defaults to Umami Cloud (`https://cloud.umami.is/script.js`). Only set this if you self-host. |
+
+When `PUBLIC_UMAMI_WEBSITE_ID` is set, the theme adds this to your pages automatically:
+
+```html
+<script async src="https://cloud.umami.is/script.js" data-website-id="your-website-id"></script>
+```
+
+When it's not set, nothing is added — no script, no requests. And because Umami is cookieless, the script loads directly and is **not** tied to the cookie-consent flow: there are no cookies to ask permission for.
+
+> **You can run more than one.** Umami is independent of Google Analytics and Google Tag Manager. Set `PUBLIC_UMAMI_WEBSITE_ID` on its own for a Google-free setup, or run it alongside GA4 if you want both. They don't interfere with each other.
+
+## How to use it yourself
+
+### Step 1 — Get a Umami website ID
+
+You have two ways to get Umami running:
+
+- **Umami Cloud (easiest):** sign up at [cloud.umami.is](https://cloud.umami.is), which has a free tier that's plenty for a personal site. Add your website, and Umami gives you a **Website ID** (a UUID that looks like `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`). Copy it.
+- **Self-hosted:** follow the [Umami install guide](https://umami.is/docs) to run it on your own server (Docker, a VPS, wherever you like). Add your website in your own dashboard and copy its Website ID from there.
+
+### Step 2 — Set the environment variable
+
+For **local development**, add it to the `.env` file at your project root:
+
+```bash
+PUBLIC_UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+For **production on Vercel**, open your project and go to **Settings → Environment Variables**, then add:
+
+- **Name:** `PUBLIC_UMAMI_WEBSITE_ID`
+- **Value:** your Website ID
+- **Environment:** Production (and Preview too, if you want stats on preview deployments)
+
+That's the only variable you need for Umami Cloud. The script URL defaults to Cloud, so you can leave `PUBLIC_UMAMI_SRC` unset.
+
+### Step 3 — (Self-hosting only) point the script at your server
+
+If you run your own Umami instance, also set `PUBLIC_UMAMI_SRC` to your instance's script URL:
+
+```bash
+PUBLIC_UMAMI_SRC=https://analytics.yourdomain.com/script.js
+```
+
+Leave this out entirely if you're on Umami Cloud.
+
+### Step 4 — Redeploy
+
+Environment-variable changes don't apply to a deployment that's already running. Trigger a new deploy so the variable is picked up:
+
+1. In Vercel, go to **Deployments**
+2. Open the three-dot menu on your latest deployment and choose **Redeploy**
+
+Or just push any small change to your main branch — Vercel builds and deploys automatically.
+
+### Step 5 — Check it's working
+
+Open your live site, click around a page or two, then look at your Umami dashboard — you should see the visit appear within a few seconds (Umami reports in near real time). If you want to confirm the script itself is on the page, open your browser's developer tools, go to the **Network** tab, reload, and look for a request to `script.js`.
+
+## Troubleshooting
+
+| Problem | Likely cause |
+|---------|-------------|
+| No data in the dashboard | The env variable wasn't set, or the site wasn't redeployed after adding it. Re-run the deployment. |
+| Still nothing after a redeploy | Double-check the Website ID is exactly the UUID from your dashboard, with no extra spaces. |
+| Works locally but not in production | The variable was added to `.env` but not to Vercel's environment variables (or only to Preview, not Production). |
+| Self-hosted instance shows no hits | `PUBLIC_UMAMI_SRC` is missing or points at the wrong URL — it must be your instance's `script.js`. |
+| Your own visits inflate the numbers | Umami Cloud can exclude your own traffic; you can also use its built-in filters. This is expected, not a bug. |
+
+## That's the whole setup
+
+One environment variable for Umami Cloud, two if you self-host — no component edits, no cookie banner, no performance hit worth mentioning. It sits quietly alongside the Google Analytics and Google Tag Manager support that was already there, so you can pick the analytics that fit how you want to treat your visitors.
+
+If you'd like to see the rest of what the theme includes, browse the [other feature posts](https://astrorocket.dev/blog) or grab the theme on [GitHub](https://github.com/hansmartensdev/astro-rocket).
