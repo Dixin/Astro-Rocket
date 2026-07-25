@@ -72,15 +72,15 @@ const download = async (chineseLocale: string, overwrite = false) => {
             const filename = getFileName(url);
             const outputPath = path.join(mediaDirectory, filename);
             if (!overwrite && (await exists(outputPath))) {
-                console.log(`File already exists, skipping: ${outputPath}`);
+                console.warn(`File already exists, skipping: ${outputPath}`);
                 continue;
             }
 
-            console.log(`Downloading: ${url}`);
+            console.warn(`Downloading: ${url}`);
             const content = await downloadMedia(url, chineseLocale);
-            console.log(`Downloaded content length: ${content.length}`);
+            console.warn(`Downloaded content length: ${content.length}`);
             await fs.writeFile(outputPath, content, { encoding: 'utf8' });
-            console.log(`Saved to: ${outputPath}`);
+            console.warn(`Saved to: ${outputPath}`);
         } catch (err) {
             console.error(`Failed to download ${url}:`, err);
         }
@@ -89,7 +89,7 @@ const download = async (chineseLocale: string, overwrite = false) => {
 
 const main = async () => {
     for (const chineseLocale of chineseLocales) {
-        console.log(`Processing locale: ${chineseLocale}`);
+        console.warn(`Processing locale: ${chineseLocale}`);
         await download(chineseLocale, false);
     }
 };

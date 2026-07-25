@@ -1,13 +1,7 @@
 import * as cheerio from 'cheerio';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { setTimeout } from 'timers/promises';
-import {
-    decodeHtml,
-    exists,
-    getLanguageFromLocale,
-    readFiles,
-} from '../common.ts';
+import { decodeHtml, exists, getLanguageFromLocale, readFiles } from '../common.ts';
 
 import {
     defaultLocale,
@@ -98,7 +92,22 @@ const trimHtmlContent = async (
     locale: string,
     author: string,
     publishedAt: Date
-): Promise<{ html: string; metadata: {} }> => {
+): Promise<{
+    html: string;
+    metadata: {
+        title: string;
+        sourceUrl: string;
+        uid: string;
+        description: string;
+        publishedAt: Date;
+        author: string;
+        tags: string[];
+        locale: string;
+        featured: boolean;
+        image: string | undefined;
+        imageAlt: string | undefined;
+    };
+}> => {
     const $: cheerio.CheerioAPI = cheerio.load(htmlContent, {
         xml: {
             selfClosingTags: true,
@@ -146,7 +155,7 @@ const trimHtmlContent = async (
         .each((_index, item) => {
             const $item = $(item);
             $item.find('.mw-cite-backlink, br').remove();
-            const referenceNumber = $item.attr('id')?.split('-').pop()!;
+            const referenceNumber = $item.attr('id')?.split('-').pop() || '';
             $content.append(
                 `<p data-reference="${referenceNumber}">[^${referenceNumber}]: ${$item.html()?.replaceAll('\r\n', '').replaceAll('\n', '').replaceAll(/\s+/g, ' ')}</p>` as string
             );
@@ -237,9 +246,11 @@ const trimHtmlContent = async (
             .replaceAll('\n', '')
             .replaceAll(/\s+/g, ' ');
         if (!localIds.includes(hrefId)) {
-            //console.log(`Replaced link: ${$a.text()}`);
+            //console.warn(`Replaced link: ${$a.text()}`);
             sameLanguageLinks.push($link.text() || '');
-            $link.replaceWith(`<span class="link-same-language" data-href="${href}">${html}</span>`);
+            $link.replaceWith(
+                `<span class="link-same-language" data-href="${href}">${html}</span>`
+            );
         } else {
             $link.replaceWith(
                 `<${LinkTagName} uid="${LinkIdPrefix}${hrefId}">${html}</${LinkTagName}>`
@@ -408,7 +419,19 @@ const trimHtmlContent = async (
     if (imageSource && (imageSource.startsWith('//') || imageSource.startsWith('https://'))) {
         throw new Error(`Image source should be a relative path, but got: ${imageSource}`);
     }
-    const metadata = {
+    const metadata: {
+        title: string;
+        sourceUrl: string;
+        uid: string;
+        description: string;
+        publishedAt: Date;
+        author: string;
+        tags: string[];
+        locale: string;
+        featured: boolean;
+        image: string | undefined;
+        imageAlt: string | undefined;
+    } = {
         title,
         sourceUrl,
         uid: id,
@@ -419,7 +442,7 @@ const trimHtmlContent = async (
             .join(' | '),
         publishedAt,
         author,
-        tags: [] as string[],
+        tags: [],
         locale,
         featured: featuredIds.includes(id),
         image: imageSource,
@@ -535,8 +558,8 @@ const normalizeTableCells = (
         const columnCountsWithoutSpan = rowIndexesWithoutSpan.map((rowIndexWithoutSpan) => {
             return columnCounts[rowIndexWithoutSpan];
         });
-        if (columnCountsWithoutSpan.distinct().length === 1) {
-        } else {
+
+        if (columnCountsWithoutSpan.distinct().length !== 1) {
             const groups = Object.groupBy(
                 columnCountsWithoutSpan.map((count, index) => ({ count, index })),
                 (item) => item.count
@@ -810,17 +833,17 @@ export const trimAllHtmlFiles = async (
         rawHtmlFiles = await readFiles(rawHtmlRootDirectory, true, '.html');
     }
 
-    console.log(`Found ${rawHtmlFiles.length} raw HTML files to process.`);
+    console.warn(`Found ${rawHtmlFiles.length} raw HTML files to process.`);
     const trimedHtmlFiles = [];
     for (const rawHtmlFile of rawHtmlFiles) {
-        console.log(`Trim file: ${rawHtmlFile}`);
+        console.warn(`Trim file: ${rawHtmlFile}`);
         const rawHtmlFileName = path.parse(rawHtmlFile).name;
         const trimmedHtmlFilePath = rawHtmlFile.replace(
             rawHtmlRootDirectory,
             trimmedHtmlRootDirectory
         );
         if (rawHtmlFileName.includes('劉志遠')) {
-            console.log('Debugging 劉志遠');
+            console.warn('Debugging 劉志遠');
         }
         const id = urlPathToId(fileNameToUrlPath(rawHtmlFileName));
         trimedHtmlFiles.push(
@@ -828,15 +851,15 @@ export const trimAllHtmlFiles = async (
         );
     }
 
-    console.log('Replaced same language links:');
-    console.log(
+    console.warn('Replaced same language links:');
+    console.warn(
         sameLanguageLinks
             .distinct()
             .sort((a, b) => a.localeCompare(b))
             .join('\n')
     );
-    console.log('Replaced cross language links:');
-    console.log(
+    console.warn('Replaced cross language links:');
+    console.warn(
         crossLanguageLinks
             .filter((value, index, array) => array.indexOf(value) === index)
             .sort((a, b) => a.localeCompare(b))
