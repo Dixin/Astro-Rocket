@@ -20,10 +20,10 @@
     "MD033": {
         "table_allowed_elements": [
             "br",
-            "PostLink"
+            "ContentLink"
         ],
         "allowed_elements": [
-            "PostLink"
+            "ContentLink"
         ]
     },
     "MD034": false,
