@@ -1,5 +1,5 @@
 import { getAllPublishedContents } from '@/lib/contents'
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { defaultLocale } from '@/i18n';
 
 /**
@@ -61,7 +61,7 @@ export function directoryLocaleStrippedSlug(id: string, contentDirectoryName: st
  */
 export function collectSlugRecords(
   pages: ContentEntryLike[],
-  contents: { contentDirectoryName: string; content: ContentEntryLike }[] = []
+  contents: { contentDirectoryName: string; content: CollectionEntry<'contents'> }[] = []
 ): SlugRecord[] {
   const records: SlugRecord[] = [];
 
@@ -70,7 +70,7 @@ export function collectSlugRecords(
     records.push({
       contentDirectoryName: content.contentDirectoryName,
       locale,
-      slug: directoryLocaleStrippedSlug(content.content.id, content.contentDirectoryName, locale),
+      slug: directoryLocaleStrippedSlug(content.content.data.uid ?? content.content.id, content.contentDirectoryName, locale),
     });
   }
 
@@ -133,7 +133,7 @@ export function formatSlugCollisions(collisions: string[]): string {
  */
 export async function assertNoSlugCollisions(): Promise<void> {
   const pages = await getCollection('pages');
-  const publishableContents = await getAllPublishedContents();
+  const publishableContents: {contentDirectoryName: string; content: CollectionEntry<'contents'>}[] = await getAllPublishedContents();
   const collisions = findSlugCollisions(
     collectSlugRecords(pages, publishableContents)
   );

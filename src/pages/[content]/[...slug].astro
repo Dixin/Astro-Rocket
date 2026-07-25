@@ -23,7 +23,7 @@ export async function getStaticPaths() {
     const contents = await getPublishedContents(contentDirectoryName, defaultLocale);
     for (const content of contents) {
       paths.push({
-        params: { content: contentDirectoryName, slug: getContentSlug(contentDirectoryName, content.id, content.data.locale) },
+        params: { content: contentDirectoryName, slug: getContentSlug(contentDirectoryName, content.data.uid ?? content.id, content.data.locale) },
         props: { content: content, contentDirectoryName },
       });
     }
@@ -46,7 +46,7 @@ const { Content, headings } = await render(content);
   imageAlt={content.data.imageAlt}
   svgSlug={content.data.svgSlug}
   tags={content.data.tags}
-  slug={content.id}
+  id={content.id}
   uid={content.data.uid}
   faqs={content.data.faqs}
   headings={headings}
