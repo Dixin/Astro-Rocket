@@ -1,0 +1,121 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Millennium</title>
+    <ns>0</ns>
+    <id>4483790</id>
+    <revision>
+      <id>80256132</id>
+      <parentid>80252191</parentid>
+      <timestamp>2023-12-27T03:22:29Z</timestamp>
+      <contributor>
+        <username>Shizhao</username>
+        <id>138</id>
+      </contributor>
+      <minor/>
+      <comment>回退[[Special:Contributions/183.178.233.116|183.178.233.116]]（[[User talk:183.178.233.116|对话]]）的编辑，改回[[Special:Contributions/Tjmj|Tjmj]]的最后一个版本</comment>
+      <origin>73930725</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1185" sha1="374452c2etfmctszp71gq1l2lklk1re" xml:space="preserve">{{unreferenced|time=2015-01-25T03:09:50+00:00}}
+{{otheruses|subject=一張Beyond唱片|other=一個名為Millennium City的香港商場|創紀之城}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = Millennium
+| type       = [[精選輯]]
+| artist     = [[Beyond]]
+| cover      = blank
+| released   = 2000-01
+| recorded   = 
+| genre      = [[粵語流行音樂]]
+| language   = [[粵語]]
+| label      = [[滾石唱片]]
+| prev_title = [[全部]]
+| prev_year  = 2000
+| next_title = [[Beyond精選滾石香港黃金十年]]
+| next_year  = 2003
+}}
+《'''Millennium'''》是[[beyond]]2000年的精選集。
+
+== 曲目 == 
+#喜歡你
+#冷雨夜
+#原諒我今天
+#是錯也再不分
+#誰伴我闖蕩
+#願我能
+#曾是擁有
+#未曾後悔
+#無淚的遺憾
+#懷念你
+#灰色軌跡
+#報答一生
+#真的愛你
+#再見理想
+#光輝歲月
+#AMANI
+#秘密警察
+#東方寶藏
+#爆裂都市
+#阿拉伯跳舞女郎
+#歲月無聲
+#昔日舞曲
+#午夜流浪
+#衝開一切
+#不再猶豫
+#午夜怨曲
+#舊日的足跡
+#大地
+#孤單一吻
+#送給不知怎去保護環境的人(包括我)
+#俾面派對
+#堅持信念
+
+{{album-stub}}
+{{Beyond}}
+
+[[Category:Beyond精選輯]]</text>
+      <sha1>374452c2etfmctszp71gq1l2lklk1re</sha1>
+    </revision>
+  </page>
+</mediawiki>

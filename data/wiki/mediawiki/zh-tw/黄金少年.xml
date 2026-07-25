@@ -1,0 +1,157 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>黄金少年</title>
+    <ns>0</ns>
+    <id>8642312</id>
+    <revision>
+      <id>90369247</id>
+      <parentid>87903068</parentid>
+      <timestamp>2025-11-29T19:31:59Z</timestamp>
+      <contributor>
+        <username>Zestbot</username>
+        <id>2425244</id>
+      </contributor>
+      <minor/>
+      <comment>/* top */ bot:[[User:Zestbot/Bot17|替換lang-x模板為langx]]</comment>
+      <origin>90369247</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3976" sha1="8454a1u1tuaxs476x5ku84rjg0gntt3" xml:space="preserve">{{noteTA 
+|G1=JP Show
+|T=zh-cn:黃金少年;zh-tw:壞小孩契約;zh-hk:黃金少年;
+|1=zh-cn:黃金少年;zh-tw:壞小孩契約;zh-hk:黃金少年;
+}}
+{{电影信息框
+| 電影原名 = {{lang|ja|ゴールド・ボーイ}}
+| 導演 = [[金子修介]]
+| 編劇 = 港岳彦
+| 配樂 = 谷口尚久
+| 製片商 = [[海润影业]]、TEAM JOY株式会社
+| 上映日期 = {{film date|2024|3|8|日本|2025|06|20|臺灣}}
+| 片長 = 128分钟
+| 產地 = {{hlist|{{JPN}}|{{CHN}}}}
+| 語言 = [[日語]]
+| 官方網站 = https://gold-boy.com/
+| 主演 = [[岡田将生]]、[[羽村仁成]]
+| 攝影 = 柳島克己(J.S.C)
+| 原著 = {{based on|《坏小孩》|[[紫金陈]]}}
+| 發行商 = TEAM JOY株式会社、{{Link-jp|东京Theatres|東京テアトル}}
+| 統籌 = 白金
+| 監製 = 吉田多喜男、仲野潤一
+| hk_name = 黄金少年
+| tw_name = 壞小孩契約
+| 片名 = 黃金少年
+}}
+
+'''《-{zh-hk:黄金少年; zh-cn:黄金少年; zh-tw:壞小孩契約}-》'''（{{Langx|ja|ゴールド・ボーイ}}，{{Langx|en|Gold Boy}}），2024年日本悬疑[[剧情片]]，改编自中国作家[[紫金陈]]小说《坏小孩》，由北京[[海润影业]]股份有限公司、北京卓然影业日本子公司TEAM JOY株式会社出品&lt;ref&gt;{{Cite web|title=《GOLD BOY》曝光超特报预告 金子修介携羽村仁成等亮相2023年东京国际电影节开幕红毯 - 海润电影|url=http://www.hairunpictures.com/news_show.asp?id=592|access-date=2024-01-28|website=www.hairunpictures.com|archive-date=2024-01-28|archive-url=https://web.archive.org/web/20240128101704/http://www.hairunpictures.com/news_show.asp?id=592|dead-url=no}}&lt;/ref&gt;，[[金子修介]]导演，[[港岳彦]]编剧，[[冈田将生]]、[[羽村仁成]]主演。本片在第36届[[东京国际电影节]]全球首映&lt;ref&gt;{{Cite web|title=大盛況の第36回東京国際映画祭レッドカーペットと舞台挨拶 オフィシャルレポートを公開|url=https://gold-boy.com/news/%e5%a4%a7%e7%9b%9b%e6%b3%81%e3%81%ae%e7%ac%ac36%e5%9b%9e%e6%9d%b1%e4%ba%ac%e5%9b%bd%e9%9a%9b%e6%98%a0%e7%94%bb%e7%a5%ad%e3%83%ac%e3%83%83%e3%83%89%e3%82%ab%e3%83%bc%e3%83%9a%e3%83%83%e3%83%88%e3%81%a8/|access-date=2024-01-28|website=映画『ゴールド・ボーイ』公式サイト|language=ja|archive-date=2024-05-10|archive-url=https://web.archive.org/web/20240510003528/https://gold-boy.com/news/%E5%A4%A7%E7%9B%9B%E6%B3%81%E3%81%AE%E7%AC%AC36%E5%9B%9E%E6%9D%B1%E4%BA%AC%E5%9B%BD%E9%9A%9B%E6%98%A0%E7%94%BB%E7%A5%AD%E3%83%AC%E3%83%83%E3%83%89%E3%82%AB%E3%83%BC%E3%83%9A%E3%83%83%E3%83%88%E3%81%A8/|dead-url=no}}&lt;/ref&gt;，于2024年3月8日在日本正式上映。
+
+== 剧情 ==
+「本应该是完美犯罪，却没想到偶然间被少年们目击了……」在[[冲绳]]海边玩耍的三个少年，无意间拍摄到了富家女婿東昇（[[冈田将生]]饰）从悬崖上推下岳父母的画面，13岁的安室朝阳（[[羽村仁成]]饰）因家庭际遇走投无路下，與好友上間浩（前出燿志飾）和上間夏月（星乃安娜飾）策划胁迫東昇谋取巨款。杀人犯和少年们的心理攻防战正式展开。
+
+== 演员 ==
+{| class="wikitable"
+|+
+!演员
+!角色
+!原作角色
+!介绍
+|-
+|[[冈田将生]]
+|東昇
+|张东升
+|富家女婿
+|-
+|[[羽村仁成]]
+|安室朝陽
+|朱朝阳
+|13岁的中学生
+|-
+|[[黑木华]]
+|安室香
+|周春红
+|安室朝陽的母亲，单亲妈妈
+|-
+|[[前出燿志]]
+|上間浩
+|丁浩
+|安室朝陽的小学同学
+|-
+|[[星乃安娜]]
+|上間夏月
+|夏月普
+|上间浩的义妹
+|-
+|[[松井玲奈]]
+|東静
+|徐静
+|東昇妻子
+|-
+|[[北村一辉]]
+|打越一平
+|朱永平
+|安室朝陽的父亲，与安室香离婚后再婚
+|-
+|[[江口洋介]]
+|東严
+|严良
+|東静的堂兄，刑警
+|}
+
+== 主题曲 ==
+* [[倖田來未]]「Silence」
+
+== 参考 ==
+{{reflist}}
+
+== 外部連結 ==
+* {{official|https://gold-boy.com/}}{{ja}}
+
+[[Category:2024年日本電影作品]]
+[[Category:日本劇情片]]
+[[Category:犯罪劇情片]]</text>
+      <sha1>8454a1u1tuaxs476x5ku84rjg0gntt3</sha1>
+    </revision>
+  </page>
+</mediawiki>

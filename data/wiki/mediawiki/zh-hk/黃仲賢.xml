@@ -1,0 +1,92 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>黃仲賢</title>
+    <ns>0</ns>
+    <id>3452136</id>
+    <revision>
+      <id>93431727</id>
+      <parentid>93431720</parentid>
+      <timestamp>2026-07-12T09:45:00Z</timestamp>
+      <contributor>
+        <username>ErkangJin</username>
+        <id>4035299</id>
+      </contributor>
+      <minor/>
+      <comment>勘誤</comment>
+      <origin>93431727</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1650" sha1="dfl6v039f0bhwgwg19avmb142lw2k7c" xml:space="preserve">'''黃仲賢'''（'''{{lang|la|Wong Chung Yin}}'''，{{bd|1964年|12月|||catIdx=Huang黃仲賢}}），[[香港]]出生&lt;ref name="#1"&gt;{{Cite web |url=http://www.bsm.com.hk/b5/ipop_04.htm |title=伯樂音樂學院 {{!}} 學院導師 {{!}} 黃仲賢Wong Chung Yin |access-date=2013-05-07 |archive-date=2020-02-14 |archive-url=https://web.archive.org/web/20200214115054/http://www.bsm.com.hk/b5/ipop_04.htm |dead-url=no }}&lt;/ref&gt;&lt;ref name="#1"/&gt;，是香港著名[[吉他手|結他手]]&lt;ref name="#1"/&gt;。在[[唱片]]製作及[[演唱會]]方面，與他合作過的[[歌手]]無數，其中包括[[王菲]]、[[黎明]]、[[容祖兒]]、[[Beyond]]、[[楊千嬅]]、[[許志安]]、[[陳小春]]、[[陳奕迅]]、[[陳慧琳]]、[[Twins]]等&lt;ref name="#1"/&gt;。
+
+{{藝人
+| 姓名 = 黃仲賢
+| 類型 = 幕後
+| 英文名 = Wong Chung Yin
+| 暱稱 = 亞賢
+| 其他藝名 = 
+| 國籍 = [[中華人民共和國]]（[[香港]]）
+| 民族 = [[漢族]]
+| 出生日期 = {{birth year and age|1964|12}}
+| 職業 = [[吉他手]]
+| 語言 = [[粵語]]、[[英語]]、[[現代標準漢語|國語]]
+| 演奏樂器 = 吉他
+}}
+
+黃仲賢1984年於[[香港理工學院]]畢業。同時，黃仲賢也是[[黃家駒]]的結他學生，1986年師從黃家駒，曾多次在Beyond樂隊演唱會上幫手彈結他。亦參加過[[汗 (樂隊)|汗]]、[[Mid-Night Party]]、[[遙多]]等數隊[[樂隊]]。
+
+黃仲賢也是[[伯樂音樂學院]]流行音樂演奏系的流行結他[[導師]]&lt;ref name="#1"/&gt;。
+
+== 參考 ==
+{{Reflist|2}}
+
+{{HK-bio-stub}}
+{{Beyond}}
+[[Category:香港結他手]]
+[[Category:黃姓|Zhong仲賢]]
+[[Category:香港理工大學校友]]</text>
+      <sha1>dfl6v039f0bhwgwg19avmb142lw2k7c</sha1>
+    </revision>
+  </page>
+</mediawiki>

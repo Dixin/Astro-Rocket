@@ -1,0 +1,151 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>墨斗先生</title>
+    <ns>0</ns>
+    <id>5271711</id>
+    <revision>
+      <id>85714675</id>
+      <parentid>77906814</parentid>
+      <timestamp>2025-01-17T11:22:00Z</timestamp>
+      <contributor>
+        <username>JeffChen8989</username>
+        <id>3135382</id>
+      </contributor>
+      <origin>85714675</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3351" sha1="7c7vmledlpkq0u03gb1zf55wnue4pss" xml:space="preserve">{{expand|time=2016-03-19T03:00:36+00:00}}
+{{Infobox film
+| name                          = 墨斗先生
+| original_name &lt;!-- 英文名 --&gt; = ''{{lang|en|Escape from Hong Kong Island}}''
+| director&lt;!-- 导演 --&gt;         = [[雷宇揚]]
+| producer &lt;!-- 監製 --&gt;        = 黃潔芳
+| writer  &lt;!-- 编剧 --&gt;         = 李思臻 &lt;br&gt; 陳大利
+| starring &lt;!-- 主演 --&gt;        = [[陳小春]] &lt;br&gt; [[杜汶澤]]
+| music &lt;!-- 配乐 --&gt;           = 羅堅
+| cinematography &lt;!-- 摄影 --&gt;  = 陳輝
+| editing &lt;!-- 剪接 --&gt;         = 潘雄
+| distributor &lt;!-- 发行商 --&gt;   = 東方電影制作有限公司
+| released  &lt;!-- 上映日期 --&gt;   = {{HKG}}：{{start date|2004|9|23}}
+| runtime  &lt;!-- 片长时间 --&gt;    = 90分鐘
+| country  &lt;!-- 产地 --&gt;        = {{香港電影產地}}
+| language                      = [[粤语]]
+| budget  &lt;!-- 预算花费 --&gt;     =
+| gross  &lt;!-- 票房 --&gt;          = 505,300
+}}
+
+{{engname|《墨斗先生》|''Escape from Hong Kong Island''}}是2004年首映的香港電影。[[雷宇揚]]導演，[[陳小春]]、[[杜汶澤]]主演。電影主要講述飾演囂張跋扈兼目中無人的證券公司高層麥竇為了轉職到新公司簽約，如何掙扎從香港島前往九龍，其間被警察刁難、尝尽人间的苦难滋味，最终醒覺要重新做人的故事。
+
+其實戲中一眾演員均為陳小春現實生活中的好友，故眾人雖然表面上作弄他，實為對好友的勸勉。故此最後一幕是陳小春為了答謝他們令他得以重新做人，便逐一與他們各人影合照。
+
+== 演员 ==
+{|class="wikitable " width="60%"
+|- style="background:cornflowerblue; color:white" align=center
+|style="width:10%"|'''演员'''||style="width:10%"|'''角色'''||style="width:40%"|'''备注'''
+|-
+| [[陳小春]]   || 麥竇  ||  本故事主角，早期為犯眾憎，其後醒覺要重新做人。
+|-
+| [[杜汶澤]]   || 毛德輝  || 警察，一直圍繞並刁難麥竇。
+|-
+| [[蔣怡]]     || Candy || 麥竇前女友
+|-
+| [[黃貫中]]   || 劫匪|| 客串
+|-
+| [[葉世榮]]   || David || 客串
+|-
+| [[黃家強]]   || 巴士司機 || 客串
+|-
+| [[劉以達]]   ||  乞丐 || 客串
+|-
+| 陳淑儀       || 阿祥 || 客串  
+|-
+| [[羅家英]]   ||   || 麥竇前上司，客串
+|-
+| [[詹瑞文]]   ||   何經理      ||  客串
+|-
+| [[關寶慧]]    ||   孕婦      ||   客串
+|-
+| [[盧淑儀 (加拿大)|盧淑儀]]  ||   Lucy  ||   客串，Candy好友，與麥兜在洗手間內偷情
+|-
+| [[梁繼璋]]   ||      ||   客串
+|-
+| [[張學潤]]   ||  西餐廳侍應    ||   客串
+|-
+| [[梁榮忠]]   ||  家計會職員    ||   客串
+|-
+| [[李楓 (演員)|李楓]]   ||  老人院姑娘    ||   客串
+|-
+| [[田啟文]]   ||  的士司機    ||   客串
+|-
+| [[谷德昭]]   ||  出租店經理    ||   客串
+|-
+| [[黃真真]]   ||  麥竇姊    ||   客串
+|-
+| [[張達明 (演員)|張達明]]  ||  麥竇兄    ||   客串
+|-
+| [[唐詩詠]]  ||  Joey    ||   麥竇秘書，客串
+|-
+|[[黎耀祥]]
+|警員
+|客串
+|}
+
+== 外部連結 ==
+*{{@movies|fehk40441359}}
+*{{hkmdb title|10740}}
+*{{Mtime|18991}}
+*{{douban}}
+*{{rotten-tomatoes|escape_from_hong_kong_island}}
+*{{imdb title|0441359}}
+{{Beyond}}
+{{唐詩詠}}
+[[Category:2004年香港電影作品]]
+[[Category:粵語電影]]
+[[Category:華語電影]]
+[[Category:一天以内背景电影]]</text>
+      <sha1>7c7vmledlpkq0u03gb1zf55wnue4pss</sha1>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,100 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Together (Beyond EP)</title>
+    <ns>0</ns>
+    <id>5760223</id>
+    <revision>
+      <id>78595708</id>
+      <parentid>77217965</parentid>
+      <timestamp>2023-08-20T15:42:38Z</timestamp>
+      <contributor>
+        <username>Enordrone</username>
+        <id>3400909</id>
+      </contributor>
+      <origin>78595708</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="5785" sha1="nsdl9na9a8pc9gow443i25mpuy2i8aj" xml:space="preserve">{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = Together
+| type       = EP
+| artist     = [[Beyond]]
+| cover      = Together (Beyond EP).jpg
+| released   = 2003年4月
+| recorded   = 
+| genre      = [[搖滾]]、[[粵語流行音樂]]
+| label      = [[EMI]]
+| prev_title = [[Action]]
+| prev_year  = 1998 &lt;!-- 7月 --&gt;
+| next_title = 
+| next_year  = 
+}}
+
+《'''Together'''》是香港搖滾樂隊[[Beyond]]發行第九张EP，為Beyond二十週年演唱會特別推出，出自[[黃家駒]]手筆的《抗戰二十年》顯示他們[[搖滾樂]]之風，有三首是重新灌錄，《永遠等待》從[[藝術搖滾]]轉變為電氣化潛伏電影氛圍21世紀的[[新金屬]]，《昔日舞曲》放下輕盈優雅和[[鄉村音樂]]韻味換上有如Massive Attack在Mezzanine時期的闇黑陰濕神遊電子舞曲（Trip-hop)曲式，《灰色軌跡》以Back to Basics的原聲音樂姿態重現。
+
+其中《抗戰二十年》這首歌與《[[海闊天空 (Beyond專輯)|海闊天空]]》、《[[光輝歲月 (專輯)|光輝歲月]]》均被視為2014年香港[[6.22民間全民投票]]、[[七一大遊行]]、[[2014年香港學界大罷課|學界大罷課]]與[[讓愛與和平佔領中環]]/[[雨傘革命]]爭取[[自由]][[民主]]的主題歌曲。&lt;ref&gt;[http://www.businessweekly.com.tw/KBlogArticle.aspx?ID=9469&amp;pnumber=1 被台灣影響？小女孩主唱 香港占領中環主題曲《誰還未覺醒》] {{Wayback|url=http://www.businessweekly.com.tw/KBlogArticle.aspx?ID=9469&amp;pnumber=1 |date=20141006144533 }}, [[商業周刊]], 2014/09/29&lt;/ref&gt;&lt;ref&gt;[http://www.epochtimes.com.tw/n92644/影片-孩子問-誰還未覺醒網路熱傳.html 影片:《孩子問:誰還未覺醒》網路熱傳] {{Wayback|url=http://www.epochtimes.com.tw/n92644/%E5%BD%B1%E7%89%87-%E5%AD%A9%E5%AD%90%E5%95%8F-%E8%AA%B0%E9%82%84%E6%9C%AA%E8%A6%BA%E9%86%92%E7%B6%B2%E8%B7%AF%E7%86%B1%E5%82%B3.html |date=20170731231427 }}, [[大紀元]], 2014年05月29日&lt;/ref&gt;&lt;ref&gt;[http://www.inmediahk.net/13000e 13000人罷課拒認命] {{Wayback|url=http://www.inmediahk.net/13000e |date=20141006092217 }}, [[香港獨立媒體]], 2014/09/22&lt;/ref&gt;&lt;ref&gt;[http://www.mingpaocanada.com/Tor/htm/News/20140923/tac1_r.htm 萬人罷課 高呼「拒絕認命」港府：尊重同學追求民主 信政制能邁步] {{Wayback|url=http://www.mingpaocanada.com/Tor/htm/News/20140923/tac1_r.htm |date=20140928083832 }}, [[明報]], 2014/09/23&lt;/ref&gt;&lt;ref&gt;[http://www.nexttv.com.tw/news/realtime/international/11151047/privacy 歌詞貼切! 　Beyond「海闊天空」成佔中曲] {{Wayback|url=http://www.nexttv.com.tw/news/realtime/international/11151047/privacy |date=20141006070106 }}, [[壹電視]], 2014/09/30&lt;/ref&gt;&lt;ref&gt;[http://www.appledaily.com.tw/realtimenews/article/entertainment/20141001/479647/ BEYOND-海闊天空] {{Wayback|url=http://www.appledaily.com.tw/realtimenews/article/entertainment/20141001/479647/ |date=20141006114419 }}, [[蘋果日報 (台灣)]], 2014年10月1日&lt;/ref&gt;&lt;ref&gt;[http://www.ettoday.net/news/20140930/407523.htm?from=easynews 因為不羈放縱愛自由　Beyond《海闊天空》成佔中主題曲] {{Wayback|url=http://www.ettoday.net/news/20140930/407523.htm?from=easynews |date=20141001171237 }}, [[ETtoday]], 2014/09/30&lt;/ref&gt;&lt;ref&gt;[http://news.tvbs.com.tw/entry/548590 香港佔中／「佔中」打死不退！　空拍13萬人遍地開花] {{Wayback|url=http://news.tvbs.com.tw/entry/548590 |date=20141006085438 }}, [[TVBS]], 2014/09/30&lt;/ref&gt;&lt;ref&gt;[http://news.ebc.net.tw/apps/newsList.aspx?id=1412131789 Beyond挺！ 黃貫中與民眾唱「海闊天空」] {{Wayback|url=http://news.ebc.net.tw/apps/newsList.aspx?id=1412131789 |date=20141006065640 }}, [[東森新聞]], 2014/10/1&lt;/ref&gt;&lt;ref&gt;[http://m.ntdtv.com/xtr/mb5/2014/10/01/a1142560.html 「風雨中抱緊自由」 香港佔中大V隱秘發聲] {{Wayback|url=http://m.ntdtv.com/xtr/mb5/2014/10/01/a1142560.html |date=20141006090315 }}, [[新唐人]], 2014年10月1日&lt;/ref&gt;&lt;ref&gt;[http://www.appledaily.com.tw/realtimenews/article/new/20140630/425521/ 謝安琪 Kay Tse《雞蛋與羔羊》] {{Wayback|url=http://www.appledaily.com.tw/realtimenews/article/new/20140630/425521/ |date=20141006071146 }}, [[蘋果日報 (台灣)]], 2014年06月30日&lt;/ref&gt;&lt;ref&gt;[http://video.n.yam.com/20141001588811/現身金鐘送物資%20「學運女神」謝安琪挺佔中 現身金鐘送物資 「學運女神」謝安琪挺佔中] {{Wayback|url=http://video.n.yam.com/20141001588811/%E7%8F%BE%E8%BA%AB%E9%87%91%E9%90%98%E9%80%81%E7%89%A9%E8%B3%87%20 |date=20160305111818 }}, [[TVBS]], 2014年10月1日&lt;/ref&gt;&lt;ref&gt;[http://www.epochtimes.com.tw/n96081/歌詞敏感點擊近百萬-中宣部查刪2影片.html 歌詞敏感點擊近百萬 中宣部查刪2影片] {{Wayback|url=http://www.epochtimes.com.tw/n96081/%E6%AD%8C%E8%A9%9E%E6%95%8F%E6%84%9F%E9%BB%9E%E6%93%8A%E8%BF%91%E7%99%BE%E8%90%AC-%E4%B8%AD%E5%AE%A3%E9%83%A8%E6%9F%A5%E5%88%AA2%E5%BD%B1%E7%89%87.html |date=20170731232439 }}, [[大紀元]], 2014年07月07日&lt;/ref&gt;
+
+== 曲目 ==
+#抗戰二十年 
+#永遠等待
+#灰色軌跡
+#昔日舞曲   
+
+==參考資料==
+{{Reflist}}
+
+== 外部連結 ==
+*[https://www.youtube.com/watch?v=03hwCh8iC1s 抗戰二十年]{{Wayback|url=https://www.youtube.com/watch?v=03hwCh8iC1s |date=20180703235112 }} 
+*[https://www.youtube.com/watch?v=V3VmEVl_9Zg 永遠等待]{{Wayback|url=https://www.youtube.com/watch?v=V3VmEVl_9Zg |date=20190116160416 }}
+*[https://www.youtube.com/watch?v=JK8Xzt-GBcY 灰色軌跡]{{Wayback|url=https://www.youtube.com/watch?v=JK8Xzt-GBcY |date=20170809145855 }}
+*[https://www.youtube.com/watch?v=EJSYrOnHYkc 昔日舞曲]{{Wayback|url=https://www.youtube.com/watch?v=EJSYrOnHYkc |date=20180612121617 }}   
+{{Beyond}}
+{{雨傘革命}}
+
+[[Category:2003年音樂]]
+[[Category:Beyond迷你專輯]]</text>
+      <sha1>nsdl9na9a8pc9gow443i25mpuy2i8aj</sha1>
+    </revision>
+  </page>
+</mediawiki>

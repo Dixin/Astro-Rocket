@@ -1,0 +1,115 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>狂人習作</title>
+    <ns>0</ns>
+    <id>4458220</id>
+    <revision>
+      <id>82070025</id>
+      <parentid>75262896</parentid>
+      <timestamp>2024-03-29T06:44:12Z</timestamp>
+      <contributor>
+        <username>Tjmj</username>
+        <id>214451</id>
+      </contributor>
+      <comment>清理[[Category:String模块出错的音乐信息框]]、[[Category:在音乐信息框中使用过时参数的页面]]</comment>
+      <origin>82070025</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1357" sha1="cceale7g51hrn5olfv05wlcrexesra5" xml:space="preserve">{{unreferenced|time=2011-11-20T01:49:56+00:00}}
+{{Infobox album
+| name       = 狂人習作
+| type       = EP
+| artist     = [[黄贯中]]
+| cover      = blank
+| recorded   = 
+| released   = 2006年12月5日
+| genre      = [[摇滚音乐]]
+| label      = 
+| length     = 
+| producer   = 黄贯中
+| reviews    = 
+| prev_title = [[同根]]
+| prev_year  = 2002
+| next_title = 
+| next_year  = 
+}}
+
+《'''狂人習作'''》，是[[香港]]歌手[[黄贯中]]的第二張EP，與2006年12月5日發售。此張EP仍然延續黃貫中不妥協堅持自己理念的搖滾風格。
+
+== 曲目 ==
+{| class="wikitable"
+|-
+!次序
+!歌名
+!作曲
+!填詞
+!編曲
+|-
+| 1. || 踩界|| 黃貫中 || 黃貫中 || [[黃貫中]]/[[恭碩良]]/[[黃仲賢]] 
+|-
+| 2. || 原罪犯 || 黃貫中 || 黃貫中 || 黃貫中/恭碩良/黃仲賢  
+|-
+| 3. || 阿博二世 || 黃貫中 || [[林若寧]] || 黃貫中/恭碩良/[[梁俊威]]/黃仲賢 
+|-
+| 4. || 逃 || 黃貫中 || 黃貫中 || 黃貫中/恭碩良  
+|-
+| 5. || 彩色世界 || 黃貫中 || 黃貫中 || 黃貫中/[[唐奕聰]]
+|-
+| 6. || 深紫色高踭鞋 Live Version || 黃貫中 || 黃貫中 || 黃貫中
+|-
+| 7. || 駛乜死 Live Version || 黃貫中|| 黃貫中 || 黃貫中/[[林海峰 (香港)|林海峰]] 
+|}
+ 
+
+
+{{album-stub}}
+{{黃貫中}}
+
+[[Category:香港音樂專輯]]
+[[Category:2006年音樂專輯]]</text>
+      <sha1>cceale7g51hrn5olfv05wlcrexesra5</sha1>
+    </revision>
+  </page>
+</mediawiki>

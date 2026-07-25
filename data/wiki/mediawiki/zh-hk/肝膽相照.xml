@@ -1,0 +1,163 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>肝膽相照</title>
+    <ns>0</ns>
+    <id>1536179</id>
+    <revision>
+      <id>88130972</id>
+      <parentid>86888093</parentid>
+      <timestamp>2025-07-06T03:40:28Z</timestamp>
+      <contributor>
+        <username>Willy1018-bot</username>
+        <id>2363254</id>
+      </contributor>
+      <minor/>
+      <comment>[[Wikipedia:机器人/作业请求#請求批量替換所有lang-xx模板為langx模板|BOTR]]：批量替換所有lang-xx模板為langx模板( V6.4.0.1 )</comment>
+      <origin>88130972</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="5699" sha1="rximgio3g6m6kcmf929rqsrhjt69wux" xml:space="preserve">{{Primarysources|time=2025-04-18T16:37:43+00:00}}
+{{Infobox Film
+| name             = 肝膽相照
+| original_name    = ''{{lang|en|Sworn Brothers}}''
+| image            = Sworn Brothers.jpg
+| alt              = 
+| caption          = 
+| director         = [[黎大煒]]
+| producer         = [[洪金寶]]
+| producer_2       = 陳佩華、黃小瓊
+| writer           = 黎大煒、[[文雋]] 
+| narrator         = 
+| starring         = [[劉德華]]&lt;br /&gt;[[張國強 (香港演員)|張國強]]&lt;br /&gt;[[楊群 (演員)|楊群]]&lt;br /&gt;[[蕭紅梅 (演員)|蕭紅梅]]&lt;br /&gt;[[王玉環]]
+| music            = [[鮑比達]]、[[周錦祥]]
+| cinematography   = [[林輝泰]]、[[林國華 (攝影師)|林國華]]
+| editing          = [[張耀宗]]
+| studio           = [[嘉禾電影|嘉禾(香港)有限公司]]
+| distributor      = [[嘉禾電影|嘉禾(香港)有限公司]]
+| released         = {{BHKG}}：{{film date|1987|3|12}}
+| sec-title        =
+| rate             = 
+| runtime          = 91 分鐘
+| country          = {{英屬香港電影}}
+| language         = 粵語
+| imdb_id          = tt0093071
+| amg_id           = 140750
+| budget           = 
+| gross            = [[HK$]] 8,480,443.00 
+| preceded_by      = 
+| followed_by      = 
+}}
+
+《'''肝膽相照'''》（{{langx|en|''Sworn Brothers''}}）是1987年上映的一部[[香港動作電影|香港動作剧情片]]，由[[黎大煒]]執導，[[劉德華]]、[[張國強 (香港演員)|張國強]]、[[楊群 (演員)|楊群]]和[[蕭紅梅 (演員)|蕭紅梅]]主演。
+
+== 剧情简介 ==
+豹叔收养了朋友的儿子阿定（刘德华饰），与自己儿子阿国（张国强饰）情同手足。两人长大後，阿国成为从苏格兰场学成的警官，阿定成为犯罪集团的杀手杨东海（楊群飾）的得力助手。阿定驾车往机场，迎接返港的警官阿国。
+
+杨东海实为黑社会头子，贩卖军火，走私毒品。阿定在黑社会上发迹，但阿定盗亦有道，拒绝沾手毒品。阿国报到后，即奉命缉破杨东海的犯罪集团。阿定船上遇雯雯（萧红梅饰），一见倾心，并赢得芳心。阿国劝阿定改邪归正，阿定也有悔意。
+
+杨东海知道阿定想离开他之後，不想放过他，欲使其成为黑吃黑的牺牲品。杨东海欲找阿定替其处理毒品生意，故意买人刺伤自己，要求阿定替其出面谈判，阿定答允，不料谈判破裂。
+
+== 角色 ==
+{|class="wikitable" width="57%"
+|- style="background:cornflowerblue; color:white" align=center
+|style="width:5%"|'''演員'''||style="width:5%"|'''角色'''||style="width:5%"|'''粵語配音'''||style="width:6%"|'''简介'''
+|-
+|[[劉德華]]||林定一||[[李學斌 (電台主持)|李學斌]]||
+|-
+|[[張國強 (香港演員)|張國強]]||阿国||[[黃志成]]
+||
+|-
+|[[楊群 (演員)|楊群]]||杨东海||楊群||
+|-
+|[[蕭紅梅 (演員)|蕭紅梅]]||雯雯||[[沈小蘭]]||化妆品店员，想成为歌星
+|-
+|[[董驃]]||豹叔||董驃||阿国父亲，警察
+|-
+|[[錢嘉樂]]||嘉樂||
+||
+|-
+|[[王玉環]]|| ||||楊東海的女兒
+|-
+|[[黎大煒]]||||||港聞記者（客串）&lt;ref&gt;{{cite news |title=黎大煒出入台海關 常免受檢內有原因 |url=https://mmis.hkpl.gov.hk/coverpage/-/coverpage/view?_coverpage_WAR_mmisportalportlet_hsf=%E9%BB%8E%E5%A4%A7%E7%85%92&amp;p_r_p_-1078056564_c=QF757YsWv5%2BakvA8rFW5EqqlqspnV0%2F6&amp;_coverpage_WAR_mmisportalportlet_o=73&amp;_coverpage_WAR_mmisportalportlet_actual_q=%28%20verbatim_dc.collection%3A%28%22Old%5C%20HK%5C%20Newspapers%22%29%20%29%20AND+%28%20%28%20allTermsMandatory%3A%28true%29%20OR+all_dc.title%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.creator%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.contributor%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.subject%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+fulltext%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.description%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20%29%20%29&amp;_coverpage_WAR_mmisportalportlet_sort_field=score&amp;_coverpage_WAR_mmisportalportlet_sort_order=desc |page=25 |language= |publisher=華僑日報 |date=1987-03-10 |accessdate=2022-02-24 |quote= |archive-date=2022-02-24 |archive-url=https://web.archive.org/web/20220224134434/https://mmis.hkpl.gov.hk/coverpage/-/coverpage/view?_coverpage_WAR_mmisportalportlet_hsf=%E9%BB%8E%E5%A4%A7%E7%85%92&amp;p_r_p_-1078056564_c=QF757YsWv5%2BakvA8rFW5EqqlqspnV0%2F6&amp;_coverpage_WAR_mmisportalportlet_o=73&amp;_coverpage_WAR_mmisportalportlet_actual_q=%28%20verbatim_dc.collection%3A%28%22Old%5C%20HK%5C%20Newspapers%22%29%20%29%20AND+%28%20%28%20allTermsMandatory%3A%28true%29%20OR+all_dc.title%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.creator%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.contributor%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.subject%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+fulltext%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20OR+all_dc.description%3A%28%E9%BB%8E%E5%A4%A7%E7%85%92%29%20%29%20%29&amp;_coverpage_WAR_mmisportalportlet_sort_order=desc&amp;_coverpage_WAR_mmisportalportlet_sort_field=score }}&lt;/ref&gt;
+|}
+
+==影片分級==
+
+;電視
+{|class="wikitable" 
+|- align=center
+|國家／地區||分級
+|-
+|{{HKG}}||PG(成人情節、不雅用語及暴力)
+|}
+
+== 參考資料 ==
+{{reflist}}
+
+== 外部連結 ==
+*{{hkmdb title|6894}}
+*{{@movies|fshk40093071}}
+*{{Mtime|22884}}
+*{{douban}}
+*{{rotten-tomatoes|sworn_brother}}
+*{{Amg movie|140750}}
+*{{imdb title|0093071}}
+
+{{刘德华}}
+{{Beyond}}
+
+{{DEFAULTSORT:gandan}}
+[[Category:1987年香港電影作品]]
+[[Category:香港警匪片]]
+[[Category:嘉禾电影]]
+[[Category:黎大炜电影]]
+[[Category:藥物題材電影]]
+[[Category:文隽编剧作品]]
+[[Category:悲剧电影]]
+[[Category:英雄式血灑電影]]</text>
+      <sha1>rximgio3g6m6kcmf929rqsrhjt69wux</sha1>
+    </revision>
+  </page>
+</mediawiki>

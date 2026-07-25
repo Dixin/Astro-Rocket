@@ -1,0 +1,122 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>This Is Love 1</title>
+    <ns>0</ns>
+    <id>930894</id>
+    <revision>
+      <id>93316721</id>
+      <parentid>92249019</parentid>
+      <timestamp>2026-07-04T16:15:41Z</timestamp>
+      <contributor>
+        <username>ErkangJin</username>
+        <id>4035299</id>
+      </contributor>
+      <minor/>
+      <origin>93316721</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2407" sha1="5nyp3m7ew2qeelt74clxx9tdomwnifc" xml:space="preserve">{{Infobox album
+| name = This Is Love 1
+| type = [[專輯]]
+| artist = [[Beyond]]
+| cover = cdcover17.jpg
+| released = {{Start date and age|1993|7|25}}
+| recorded = 1993年1月－4月
+| genre = [[流行摇滚]]
+| label = Fun House
+| prev_title = [[超越]]
+| prev_year = 1992
+| next_title = [[Second Floor]]
+| next_year = 1994
+| misc = {{單曲
+  | name        = This Is Love 1
+  | type        = studio album
+  | single1     = くちびるを奪いたい
+  | single1date = 1993年6月25日
+  | single2     = 遙かなる夢に～Far away～
+  | single2date = 1993年6月25日
+  }}
+}}
+
+《'''This Is Love 1'''》是香港搖滾樂隊[[Beyond]]發行第二张日語专辑，《This Is Love 1》是一張迷你日語雙專輯，是[[黃家駒]]最後錄製的專輯，並沒有100%完成。這張專輯發行時，黃家駒已經在6月30日逝世，原先計畫分成《This Is Love 1》和《This Is Love 2》的兩張以迷你專輯方式發行，黃家駒逝世後，《This Is Love 2》發行的計畫永遠無法實現。 
+
+日本版本收錄七首歌曲，台灣版本多收錄三首日語專輯《[[超越]]》的歌曲。
+
+== 曲目 ==
+{| class="wikitable"
+|-
+!次序
+!歌名
+!中文譯名
+!作曲
+!填詞
+!演唱
+!OT
+!OA
+|-
+| 1. || Never Change World || 永不改變世界 || [[黃貫中]] || {{link-jp|森浩美}} || [[黃家駒]] || 和平與愛 || [[黃家強]]
+|-
+| 2. || くちびるを奪いたい || 我想奪取你的唇 || [[黃家強]] || {{link-jp|森浩美}} || [[黃家強]], [[黃家駒]]  || 完全地愛吧 || [[黃家強]]
+|-
+| 3. || Hurry Up! || 快點! || [[Beyond]] || {{link-jp|森浩美}} || [[黃家駒]] || 狂人山莊 || [[黃家駒]]
+|-
+| 4. || 君には僕が || 我為你 || [[黃家駒]] || {{link-jp|森浩美}} || [[黃家駒]] || 命運是你家 || [[黃貫中]]
+|-
+| 5. || 蒸し暑い夜 || 悶熱的夏夜 || [[Beyond]] || {{link-jp|森浩美}} || [[黃貫中]] || 妄想 || [[黃家駒]]
+|-
+| 6. || [[遙遠的夢～Far away～|遥かなる夢に~Far Away~]] || 遙遠的夢 || [[黃家駒]] || {{link-jp|森浩美}} || [[黃家駒]] || [[海闊天空 (Beyond歌曲)|海闊天空]] || [[黃家駒]]
+|-
+| 7. || もー まん たい！ || 冇問題 || [[葉世榮]] || {{link-jp|鈴木雄大}} || [[Beyond]] || 無無謂 || [[葉世榮]]
+|}
+ 
+{{album-stub}}
+{{Beyond}}
+[[Category:日語音樂專輯]]
+[[Category:1993年音樂專輯]]
+[[Category:Beyond音樂專輯]]</text>
+      <sha1>5nyp3m7ew2qeelt74clxx9tdomwnifc</sha1>
+    </revision>
+  </page>
+</mediawiki>

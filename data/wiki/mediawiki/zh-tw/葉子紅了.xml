@@ -1,0 +1,94 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>葉子紅了</title>
+    <ns>0</ns>
+    <id>1828240</id>
+    <revision>
+      <id>92689757</id>
+      <parentid>75058417</parentid>
+      <timestamp>2026-05-17T08:51:40Z</timestamp>
+      <contributor>
+        <username>PexEric</username>
+        <id>3059077</id>
+      </contributor>
+      <minor/>
+      <comment>使用[[User:暁月凛奈/DisamAssist|DisamAssist]]清理[[Wikipedia:消歧义|消歧义]]链接：[[国语]]（链接至[[普通话]]）。</comment>
+      <origin>92689757</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1201" sha1="9saia6qackn1nxmnjrfbc339uhj4a3s" xml:space="preserve">《'''叶子红了'''》是前[[Beyond]]乐队鼓手[[叶世荣]]离开Beyond独立后，于2005年11月发行的专辑。本专辑是叶世荣第二份发售的个人专辑，专辑中一共有10首歌曲，其中5首用[[粤语]]演唱、5首用[[普通话|国语]]演唱&lt;ref&gt;{{cite web|url=http://ent.sina.com.cn/y/2005-11-22/1637904205.html|title=叶世荣携《叶子红了》亮相北京 许巍等捧场|publisher=sina|access-date=2018-07-07|archive-date=2018-07-07|archive-url=https://web.archive.org/web/20180707201725/http://ent.sina.com.cn/y/2005-11-22/1637904205.html|dead-url=no}}&lt;/ref&gt;&lt;ref&gt;{{cite web|url=http://yule.sohu.com/20051215/n227682926.shtml|title=叶世荣再现搜狐 高唱“叶子”已经“红了”|publisher=sohu|access-date=2018-07-07|archive-date=2013-02-01|archive-url=https://web.archive.org/web/20130201223415/http://yule.sohu.com/20051215/n227682926.shtml|dead-url=no}}&lt;/ref&gt;。
+
+==曲目==
+{| class="wikitable"
+|-
+| 叶子红了	
+|-
+| 重头来	
+|-
+| 色彩	
+|-
+| 爱着你	
+|-
+| 我们的梦想	
+|-
+| 一鼓作气	
+|-
+| 一个地方 一个梦想	
+|-
+| 风雨	
+|-
+| 卖	
+|-
+| 寻找
+|}
+
+==参考文献==
+{{reflist}}
+{{album-stub}}
+[[Category:香港音樂專輯]]</text>
+      <sha1>9saia6qackn1nxmnjrfbc339uhj4a3s</sha1>
+    </revision>
+  </page>
+</mediawiki>

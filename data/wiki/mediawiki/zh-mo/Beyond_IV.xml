@@ -1,0 +1,243 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Beyond IV</title>
+    <ns>0</ns>
+    <id>804715</id>
+    <revision>
+      <id>73500894</id>
+      <parentid>73434505</parentid>
+      <timestamp>2022-09-03T11:03:28Z</timestamp>
+      <contributor>
+        <username>Tjmj</username>
+        <id>214451</id>
+      </contributor>
+      <comment>清理[[Category:在音乐信息框中使用过时参数的页面]]</comment>
+      <origin>73500894</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="5785" sha1="m33fk80e797z9rmjzuulfk1mlu42rmw" xml:space="preserve">{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = Beyond IV
+| type       = [[專輯]]
+| artist     = [[Beyond]]
+| cover      = blank
+| released   = {{Start date and age|1989|7|11}}
+| recorded   = 1989年
+| genre      = [[粵語流行音樂]]
+| label      = [[新藝寶唱片]]
+| prev_title = [[秘密警察 (Beyond專輯)|秘密警察]]
+| prev_year  = 1988 &lt;!-- 9月6日 --&gt;
+| next_title = [[真的見證]]
+| next_year  = 1989 &lt;!-- 12月5日 --&gt;
+}}
+
+《'''Beyond IV'''》是[[香港]]搖滾樂隊[[Beyond]]發行第四张粵語专辑。由於這是Beyond樂隊由唱片公司發行的第四張專輯，故碟名取作「Beyond IV」。
+
+== 專輯介紹 ==
+《Beyond IV》以商業化大碟躋身為樂壇的主流流行樂隊，音樂上亦繼續拓展其流行搖滾風格，仍不忘以《午夜迷牆》等具商業元素的搖滾音樂，來滿足搖滾樂迷的需要。
+
+專輯的《真的愛你》是唱片的主打曲，歌詞內容是歌頌母愛，雖然樂隊成員並不喜歡此曲太具商業元素，且甚少搖滾色彩，但至今此曲成為[[母親節]]的流行主題曲。
+
+2016年[[毛記電視第一屆十大勁曲金曲分獎典禮]]改編歌詞版〈喇沙，真的愛你〉，歌詞則與母愛無關，講述一個苦命香港小學生，除了要求讀書成績好，還要積極參與各種興趣班，名校才會「愛你」（取錄你作學生）。
+
+==曲目==
+{{Track listing
+| collapsed = 
+| headline = 第 1 面
+| total_length = 21:43
+| all_writing = 
+| all_music = 
+| all_lyrics = 
+| all_arranger = 
+| all_producer = 
+
+| title1 = 真的愛妳
+| note1 = 
+| longnote1 = 電影《[[開心鬼救開心鬼]]》 插曲
+| lyrics1 = [[小美 (香港)|梁美薇]]
+| music1 = [[黃家駒]]
+| arranger1 = 
+| producer1 = 
+| extra1 = 
+| length1 = 4:38
+
+| title2 = 我有我風格
+| note2 = 
+| longnote2 = 
+| lyrics2 = [[黃家強]]
+| music2 = [[黃家駒]]
+| arranger2 = 
+| producer2 = 
+| extra2 = 
+| length2 = 3:43
+
+| title3 = 曾是擁有
+| note3 = 
+| longnote3 = 
+| lyrics3 = [[黃家駒]]
+| music3 = [[黃家駒]]
+| arranger3 = 
+| producer3 = 
+| extra3 = 
+| length3 = 4:31
+
+| title4 = 摩登時代
+| note4 = 
+| longnote4 = 
+| lyrics4 = 翁偉微
+| music4 = [[葉世榮]]
+| arranger4 = 
+| producer4 = 
+| extra4 = 
+| length4 = 4:01
+
+| title5 = 原諒我今天
+| note5 = 
+| longnote5 = 
+| lyrics5 = [[黃貫中]]
+| music5 = [[黃家駒]]
+| arranger5 = 
+| producer5 = 
+| extra5 = 
+| length5 = 4:50
+}}
+{{Track listing
+| collapsed = 
+| headline = 第 2 面
+| total_length = 20:52
+| all_writing = 
+| all_music = 
+| all_lyrics = 
+| all_arranger = 
+| all_producer = 
+
+| title1 = 與妳共行
+| note1 = 
+| longnote1 = 無綫電視劇《[[淘氣雙子星]]》第 8 集片尾曲
+| lyrics1 = [[黃家強]]
+| music1 = [[黃貫中]]
+| arranger1 = 
+| producer1 = 
+| extra1 = 
+| length1 = 4:02
+
+| title2 = 逝去日子
+| note2 = 
+| longnote2 = 無綫電視劇《[[淘氣雙子星]]》主題曲
+| lyrics2 = [[劉卓輝]]
+| music2 = [[黃家駒]]
+| arranger2 = 
+| producer2 = 
+| extra2 = 
+| length2 = 3:50
+
+| title3 = 爆裂都市
+| note3 = 
+| longnote3 = 
+| lyrics3 = [[黃貫中]]
+| music3 = [[黃貫中]]
+| arranger3 = 
+| producer3 = 
+| extra3 = 
+| length3 = 4:04
+
+| title4 = 午夜迷牆
+| note4 = 
+| longnote4 = 電影《黑色迷牆》主題曲。曾獲[[第9屆香港電影金像獎#最佳電影歌曲|第 9 屆香港電影金像獎]]「最佳電影歌曲」提名。同時收錄於 1989 年 EP《[[四拍四#曲目|四拍四]]》內
+| lyrics4 = [[黃貫中]]
+| music4 = [[黃家駒]]
+| arranger4 = 
+| producer4 = 
+| extra4 = 
+| length4 = 4:38
+
+| title5 = 最後的對話
+| note5 = 
+| longnote5 = 
+| lyrics5 = [[葉世榮]]
+| music5 = [[黃貫中]]
+| arranger5 = 
+| producer5 = 
+| extra5 = 
+| length5 = 4:18
+}}
+
+== 入圍未得獎獎項 ==
+*[[1990年香港電影金像獎|1990年度香港電影金像獎頒獎典禮]]
+:*「最佳電影歌曲」：《午夜迷牆》
+
+== 入圍得獎獎項 ==
+*[[第十二屆十大中文金曲得獎名單|1989年度十大中文金曲頒獎典禮]]
+:*「十大中文金曲」：《真的愛妳》
+*[[1989年度十大勁歌金曲得獎名單|1989年度十大勁歌金曲頒獎典禮]]
+:*「十大勁歌金曲」：《真的愛妳》
+*[[1989年度叱咤樂壇流行榜頒獎典禮得獎名單|1989年度叱咤樂壇流行榜頒獎典禮]]：
+**叱咤組合銀獎－Beyond
+*[[1990年度香港金唱片頒獎典禮]]:*「白金唱片」：《Beyond IV》
+
+== 音樂錄影帶 ==
+{| class="wikitable"
+! 歌名 !! 演唱 !! 首播日期 !! 首播頻道 !! 導演 
+|-
+|[http://www.youtube.com/watch?v=O5VhJdpZJnQ 真的愛妳]{{Wayback|url=http://www.youtube.com/watch?v=O5VhJdpZJnQ |date=20161003152941 }}||Beyond||1989年||[[電視廣播有限公司|無綫電視]]||
+|-
+|[http://www.youtube.com/watch?v=Ew15zJkzGGE 原諒我今天]{{Wayback|url=http://www.youtube.com/watch?v=Ew15zJkzGGE |date=20190215160148 }}||黃貫中||1989年||[[電視廣播有限公司|無綫電視]]||潘裕佳
+|-
+|[http://www.youtube.com/watch?v=6rYVHz3Iwnw 逝去日子]{{Wayback|url=http://www.youtube.com/watch?v=6rYVHz3Iwnw |date=20190215160148 }}||黃貫中||1989年||[[電視廣播有限公司|無綫電視]]||黃家亮
+|-
+|[http://www.youtube.com/watch?v=15bA438MHAU 爆裂都市]{{Wayback|url=http://www.youtube.com/watch?v=15bA438MHAU |date=20150705040138 }}||黃家駒||1989年||[[電視廣播有限公司|無綫電視]]||唐婉儀
+|-
+|[http://www.youtube.com/watch?v=tQi9vlZK8xI 午夜迷牆]{{Wayback|url=http://www.youtube.com/watch?v=tQi9vlZK8xI |date=20150714220738 }}||黃家駒||1989年||[[電視廣播有限公司|無綫電視]]||楊偉業
+|}
+
+{{Beyond}}
+[[Category:香港音樂專輯]]
+[[Category:1989年音樂專輯]]
+[[Category:流行音樂專輯]]
+[[Category:Beyond音樂專輯]]
+[[Category:新艺宝唱片音乐专辑]]</text>
+      <sha1>m33fk80e797z9rmjzuulfk1mlu42rmw</sha1>
+    </revision>
+  </page>
+</mediawiki>

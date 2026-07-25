@@ -1,0 +1,120 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>最動聽的Beyond</title>
+    <ns>0</ns>
+    <id>4483804</id>
+    <revision>
+      <id>81916716</id>
+      <parentid>81686129</parentid>
+      <timestamp>2024-03-16T09:21:53Z</timestamp>
+      <contributor>
+        <username>Tjmj</username>
+        <id>214451</id>
+      </contributor>
+      <comment>清理[[Category:String模块出错的音乐信息框]]、[[Category:在音乐信息框中使用过时参数的页面]]</comment>
+      <origin>81916716</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1077" sha1="2ab3ersobq9feaq2k1dluqg7xbi1j61" xml:space="preserve">{{unreferenced|time=2015-01-25T03:35:23+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 最動聽的Beyond
+| type       = [[精選輯]]
+| artist     = [[Beyond]]
+| cover      = blank
+| released   = 2004-02
+| recorded   = 
+| genre      = [[粵語流行音樂]]
+| language   = [[粵語]]
+| label      = [[香港華納唱片]]
+| prev_title = [[Beyond精選滾石香港黃金十年]]
+| prev_year  = 2003
+| next_title = [[勁Band四鬥士Beyond音樂特輯1990]]
+| next_year  = 2003
+}}
+
+
+《'''最動聽的Beyond'''》是[[beyond]]2004年的精選集。
+
+== 曲目 == 
+#遙望
+#長城
+#情人
+#海闊天空
+#我是憤怒
+#爸爸媽媽
+#和平與愛
+#命運是你家
+#全是愛
+#狂人山莊
+#妄想
+#農民
+#不可一世
+#無盡空虛
+#快樂王國
+#早班火車
+#無語問蒼天
+#繼續沉醉
+#半斤八兩
+#點解點解
+#為了你為了我
+#完全地愛吧
+#Bye-Bye
+#溫暖的家鄉
+#厭倦寂寞
+#無無謂
+#走不開的快樂
+#可否衝破
+#長城(Live Verion)
+#The Wall長城(日本版)
+
+
+{{album-stub}}
+{{Beyond}}
+
+[[Category:Beyond精選輯]]</text>
+      <sha1>2ab3ersobq9feaq2k1dluqg7xbi1j61</sha1>
+    </revision>
+  </page>
+</mediawiki>

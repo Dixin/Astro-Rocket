@@ -1,0 +1,93 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>戰勝心魔</title>
+    <ns>0</ns>
+    <id>930342</id>
+    <revision>
+      <id>82417030</id>
+      <parentid>81909235</parentid>
+      <timestamp>2024-04-27T13:00:25Z</timestamp>
+      <contributor>
+        <username>Ohtashinichiro</username>
+        <id>2345075</id>
+      </contributor>
+      <origin>82417030</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1109" sha1="jc5844vu9sawzokyjlacp302a5cpklo" xml:space="preserve">{{Unreferenced|time=2024-04-27T13:00:25+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 戰勝心魔
+| type       = EP
+| artist     = [[Beyond]]
+| cover      = 戰勝心魔.jpg
+| released   = 1990年7月
+| recorded   = 1990年
+| genre      = [[搖滾]]、[[粵語流行音樂]]
+| label      = [[新藝寶唱片]]
+| prev_title = [[天若有情 (Beyond EP)|天若有情]]
+| prev_year  = 1990 &lt;!-- 6月 --&gt;
+| next_title = [[無盡空虛]]
+| next_year  = 1993 &lt;!-- 1月7日 --&gt;
+}}
+
+《'''戰勝心魔'''》是香港搖滾樂隊[[Beyond]]發行第四張[[EP]]，收錄樂隊主演電影《[[開心鬼救開心鬼]]》的主題曲《戰勝心魔》及插曲《文武英傑宣言》。
+
+《文武英傑宣言》節奏輕快、活潑、年輕，之後被重新編曲，演變成《農民》一曲，並收錄於1992年專輯《[[繼續革命]]》內。
+
+== 曲目 ==
+#戰勝心魔
+#戰勝心魔（Karaoke）
+#文武英傑宣言
+#文武英傑宣言（Karaoke）
+
+{{Beyond}}
+[[Category:香港迷你專輯]]
+[[Category:1990年迷你專輯]]
+[[Category:Beyond迷你專輯]]
+{{album-stub}}</text>
+      <sha1>jc5844vu9sawzokyjlacp302a5cpklo</sha1>
+    </revision>
+  </page>
+</mediawiki>

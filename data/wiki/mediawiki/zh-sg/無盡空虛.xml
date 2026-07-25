@@ -1,0 +1,93 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>無盡空虛</title>
+    <ns>0</ns>
+    <id>930842</id>
+    <revision>
+      <id>84265428</id>
+      <parentid>82069719</parentid>
+      <timestamp>2024-09-19T06:08:03Z</timestamp>
+      <contributor>
+        <ip>2001:B011:8015:3C34:3837:2452:2E8B:5E58</ip>
+      </contributor>
+      <origin>84265428</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1301" sha1="3396f8im0ctiogavr5pndky1zk6snbs" xml:space="preserve">{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 無盡空虛
+| type       = EP
+| artist     = [[Beyond]]
+| cover      = cdcover10.jpg
+| released   = 1993年1月7日
+| recorded   = 1992年
+| genre      = [[粵語流行音樂]]
+| label      = [[華納唱片]]
+| prev_title = [[戰勝心魔]]
+| prev_year  = 1990 &lt;!-- 7月 --&gt;
+| next_title = [[Beyond得精彩]]
+| next_year  = 1996 &lt;!-- 2月 --&gt;
+}}{{不是|無盡虛空}}
+《'''無盡空虛'''》是香港搖滾樂隊[[Beyond]]發行第六张EP，《無盡空虛》帶來兩首新歌《無盡空虛》和《點解‧點解》以及《The Wall～長城～》長城日語版。
+
+== 曲目 ==
+#無盡空虛 
+#點解‧點解
+#为了你，为了我
+#The Wall～長城～
+
+==音樂==
+*[http://www.youtube.com/watch?v=Le1WWCkQ7Fw 無盡空虛 MV] {{Wayback|url=http://www.youtube.com/watch?v=Le1WWCkQ7Fw |date=20200420063548 }}
+*[http://www.tudou.com/programs/view/fS_z4joKdVI/ 點解‧點解 MV] {{Wayback|url=http://www.tudou.com/programs/view/fS_z4joKdVI/ |date=20160412034348 }}
+*[http://www.dvpod.cn/6BJ49VUJ/ The Wall～長城～]{{dead link|date=2018年1月 |bot=InternetArchiveBot |fix-attempted=yes }}
+
+{{music-stub}}
+{{Beyond}}
+[[Category:香港迷你專輯]]
+[[Category:1992年迷你專輯]]
+[[Category:Beyond迷你專輯]]</text>
+      <sha1>3396f8im0ctiogavr5pndky1zk6snbs</sha1>
+    </revision>
+  </page>
+</mediawiki>
