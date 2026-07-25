@@ -1,0 +1,163 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>忍者神龟 (1990年电影)</title>
+    <ns>0</ns>
+    <id>4314145</id>
+    <revision>
+      <id>88289025</id>
+      <parentid>83974717</parentid>
+      <timestamp>2025-07-15T13:44:20Z</timestamp>
+      <contributor>
+        <username>Willy1018-bot</username>
+        <id>2363254</id>
+      </contributor>
+      <minor/>
+      <comment>[[Wikipedia:机器人/作业请求#請求批量替換所有lang-xx模板為langx模板|BOTR]]：批量替換所有lang-xx模板為langx模板( V6.4.0.1 )</comment>
+      <origin>88289025</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="6732" sha1="3pox4jytm326x1f3zd1r0avbyr25cee" xml:space="preserve">{{noteTA
+|G1 = Movie
+|T=zh-hans:忍者神龟 (1990年电影);zh-hant:忍者龜 (1990年電影);
+|1=zh-cn:忍者神龟;zh-tw:忍者龜;zh-hk:忍者龜;zh-mo:忍者龜;zh-my:忍者龟;
+}}
+{{multiple issues|
+{{expand|time=2014-10-27T11:05:54+00:00}}
+{{refimprove|time=2014-10-27T11:05:54+00:00}}
+}}
+{{Infobox film
+| name           = -{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-
+| original_name  = {{lang|en|''Teenage Mutant Ninja Turtles''}}
+| image          = Teenage Mutant Ninja Turtles poster (1990 film Version).jpg
+| director       = {{tsl|en|Steve Barron||Steve Barron}}
+| screenplay     = {{Plainlist|
+* {{tsl|en|Todd W. Langen||Todd W. Langen}}
+* {{tsl|en|Bobby Herbeck||Bobby Herbeck}}
+}}
+| story          = Bobby Herbeck
+| based_on       = {{Based on|[[忍者龜]]|[[凯文·伊斯特曼]]|[[彼得·莱尔德]]}}
+| producer       = {{Plainlist|
+* Kim Dawson
+* {{tsl|en|Simon Fields||Simon Fields}}
+* David Chan
+}}
+| starring       = {{Plainlist|&lt;!--Per poster billing--&gt;
+* {{tsl|en|Judith Hoag||Judith Hoag}}
+* {{tsl|en|Elias Koteas||Elias Koteas}}
+}}
+| music          = {{tsl|en|John Du Prez||John Du Prez}}
+| cinematography = John Fenner
+| editing        = {{Plainlist|
+* William D. Gordean
+* {{tsl|en|Sally Menke||Sally Menke}}
+* James R. Symons
+}}
+| studio         = {{Plainlist|
+* [[橙天嘉禾]]&lt;ref name="afi"&gt;{{cite web |url=https://catalog.afi.com/Film/58704-TEENAGE-MUTANTNINJATURTLES |title=TEENAGE MUTANT NINJA TURTLES (1990) |website={{tsl|en|AFI Catalog of Feature Films||AFI Catalog of Feature Films}} |access-date=2020-03-21 |archive-date=2019-09-02 |archive-url=https://web.archive.org/web/20190902130350/https://catalog.afi.com/Film/58704-TEENAGE-MUTANTNINJATURTLES |url-status=live }}&lt;/ref&gt;
+* Limelight Productions&lt;ref name="afi"/&gt;
+* 888 Productions&lt;ref name="afi"/&gt;
+}}
+| released       = {{Film date|1990|3|30|美國}} &lt;!-- See WP:FILMRELEASE before editing. --&gt;
+| runtime        = 93分鐘
+| distributor    = [[新線影業]]&lt;ref name="afi"/&gt;
+| country        = {{Plainlist|
+* 美國&lt;ref name="afi"/&gt;&lt;ref&gt;{{Cite web|url=https://www2.bfi.org.uk/films-tv-people/4ce2b7a443991|title=Teenage Mutant Ninja Turtles (1990)|access-date=2021-05-15|archive-date=2021-05-15|archive-url=https://web.archive.org/web/20210515023434/https://www2.bfi.org.uk/films-tv-people/4ce2b7a443991|url-status=dead}}&lt;/ref&gt;
+* 香港
+}}
+| language       = 英語
+| budget         = 1350萬美元&lt;ref name="afi" /&gt;&lt;ref name="BOM"&gt;{{cite web |title=Teenage Mutant Ninja Turtles |work=[[Box Office Mojo]] |url=https://boxofficemojo.com/movies/?id=teenagemutantninjaturtles.htm |access-date=2006-09-24 |archive-date=2006-10-06 |archive-url=https://web.archive.org/web/20061006032941/http://boxofficemojo.com/movies/?id=teenagemutantninjaturtles.htm |url-status=live }}&lt;/ref&gt;
+| gross          = 2.02億美元&lt;ref name="BOM" /&gt;&lt;ref name="Teenage Mutant Ninja Turtles (1990)"&gt;{{cite web |title=Teenage Mutant Ninja Turtles (1990) |url=https://www.the-numbers.com/movie/Teenage-Mutant-Ninja-Turtles-(1990)#tab=summary |website=The Numbers |access-date=2020-04-22 |archive-date=2020-06-23 |archive-url=https://web.archive.org/web/20200623221416/https://www.the-numbers.com/movie/Teenage-Mutant-Ninja-Turtles-(1990)#tab=summary |url-status=live }}&lt;/ref&gt;
+| followed_by    = 《{{link-en|忍者龜II|Teenage Mutant Ninja Turtles II: The Secret of the Ooze}}》
+| cn_name        = 忍者神龟
+| hk_name        = 忍者龜
+| tw_name        = 忍者龜
+}}
+《'''-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜&lt;ref name="電影譯名"&gt;{{cite web|title= 忍者龜跨過太平洋威力折半 都是星爺害的！？|work= 聯合新聞網|date= 2016-06-15 13:40|url= https://udn.com/news/story/9592/1763214|access-date= 2022-04-06|archive-date= 2021-09-23|archive-url= https://web.archive.org/web/20210923034325/https://udn.com/news/story/9592/1763214}}&lt;/ref&gt;;}-'''》（{{langx|en|''Teenage Mutant Ninja Turtles''}}）是一部1990年的[[美國]][[超級英雄電影]]，也是第一部《[[忍者神龟|-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-]]》原著的[[忍者龜系列|改编电影]]。
+
+== 演員 ==
+* {{link-en|茱蒂絲·豪格|Judith Hoag}}飾演 {{link-en|艾波·歐尼爾|April O'Neil}}
+* {{link-en|艾理斯・寇迪|Elias Koteas}}飾演 {{link-en|凱西·瓊斯|Casey Jones (Teenage Mutant Ninja Turtles)}}
+
+== 評價 ==
+[[爛番茄]]根據55條評論，本片得到新鮮度42%，均分5.1／10，觀眾的好評度81%，均分4／5。&lt;ref name="RT"&gt;{{cite web|url=https://www.rottentomatoes.com/m/teenage_mutant_ninja_turtles_the_movie|title=Teenage Mutant Ninja Turtles|work=[[爛番茄|Rotten Tomatoes]]|publisher=[[Fandango Media]]|5=|access-date=1990-03-30|archive-date=2021-04-15|archive-url=https://web.archive.org/web/20210415031012/https://www.rottentomatoes.com/m/teenage_mutant_ninja_turtles_the_movie|dead-url=no}}&lt;/ref&gt;本片在[[Metacritic]]上根據21條評論而獲得51分&lt;ref name="Metacritic"&gt;{{cite web|url=https://www.metacritic.com/movie/teenage-mutant-ninja-turtles-1990/|title=Teenage Mutant Ninja Turtles|work=[[Metacritic]]|publisher=[[CBS互動|CBS Interactive]]|5=|access-date=1990-03-30|archive-date=2024-07-11|archive-url=https://web.archive.org/web/20240711041848/https://www.metacritic.com/movie/teenage-mutant-ninja-turtles-1990/|dead-url=no}}&lt;/ref&gt;。
+
+== 参考文献 ==
+{{Reflist}}
+
+== 外部連結 ==
+{{Wikiquote|Teenage Mutant Ninja Turtles (1990 film)|Teenage Mutant Ninja Turtles}}
+*{{@movies|ften00100758|忍者龜}}
+*{{douban|title=忍者神龟}}
+*{{Mtime|18424|忍者神龟}}
+*{{Metacritic film|teenage-mutant-ninja-turtles-1990/}}
+*{{Amg movie|120119|-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-}}
+*{{rotten-tomatoes|teenage_mutant_ninja_turtles_the_movie|-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-}}
+*{{mojo title|teenagemutantninjaturtles|-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-}}
+*{{Tcmdb title|18106|-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-}}
+*{{imdb title|0100758|-{zh:忍者神龟;zh-hans:忍者神龟;zh-hant:忍者龜;}-}}
+
+{{忍者龜}}
+
+{{DEFAULTSORT:Teenage Mutant Ninja Turtles}}
+[[Category:1990年美國電影作品]]
+[[Category:1990年香港電影作品]]
+[[Category:1990年代喜剧动作片]]
+[[Category:美國喜劇動作片]]
+[[Category:美国报复题材电影]]
+[[Category:1990年代美国独立电影]]
+[[Category:美國超級英雄電影]]
+[[Category:嘉禾电影]]
+[[Category:纽约市警察局虚构作品]]
+[[Category:美国漫画改编电影]]
+[[Category:紐約市背景電影]]
+[[Category:紐約市取景電影]]
+[[Category:北卡羅來納州取景電影]]
+[[Category:漫畫改編真人電影]]
+[[Category:新線電影]]
+[[Category:忍者片]]</text>
+      <sha1>3pox4jytm326x1f3zd1r0avbyr25cee</sha1>
+    </revision>
+  </page>
+</mediawiki>

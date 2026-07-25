@@ -1,0 +1,117 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>畢家索的馬</title>
+    <ns>0</ns>
+    <id>4482969</id>
+    <revision>
+      <id>91585565</id>
+      <parentid>82188692</parentid>
+      <timestamp>2026-02-19T03:33:14Z</timestamp>
+      <contributor>
+        <username>Apple v</username>
+        <id>448849</id>
+      </contributor>
+      <comment>/* 曲目 */</comment>
+      <origin>91585565</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1882" sha1="szhlyxo7hx62mtaiiczq1mestix5a8a" xml:space="preserve">{{unreferenced|time=2015-01-24T09:08:09+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 畢家索的馬
+| type       = [[專輯]]
+| artist     = [[黃家強]]
+| cover      = blank
+| released   = 2004年11月
+| recorded   = 
+| genre      = [[粵語流行音樂]]
+| label      = [[環球唱片]]
+| prev_title = [[家強第一Gig (新曲+Live)]]
+| prev_year  = 2003
+| next_title = [[她他]]
+| next_year  = 2007
+}}
+《'''畢家索的馬'''》是[[黃家強]]於2004年所發行的個人專輯。
+
+關於此張專輯為什麼會取如此奇怪的名字，黃家強曾透露:「畢加索是他最崇拜的畫家，而『馬』則代表了二哥家駒。」而其中有一首《愛得昂貴》是 他花了半年時間專門為紀念黃家駒而寫的。
+
+== 曲目 ==
+{| class="wikitable"
+|-
+!次序
+!歌名
+!填詞
+!作曲
+!編曲
+!語言
+|-
+| 1. || 禱告|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 粵
+|-
+| 2. || 歪念|| [[黃家強]] || [[黃家強]]|| [[黃家強]]/[[蘇浩才]]/[[Stephane Wong]] || 粵
+|-
+| 3. || 沉溺|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 粵
+|-
+| 4. || 殺戮戰場|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 粵
+|-
+| 5. || 香港好多有錢人|| [[黃家強]] || [[黃家強]]|| [[黃家強]]/[[蘇浩才]] || 粵
+|-
+| 6. || 大賭注|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 粵
+|-
+| 7. || 愛得昂貴|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 粵
+|-
+| 8. || 因為有你|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 國
+|-
+| 9. || 失憶|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 國
+|-
+| 10. || 徘徊|| [[黃家強]] || [[黃家強]]|| [[黃家強]] || 國
+|-
+| 11. || 壞男人（原曲：好男人）|| [[黃家強]] || [[黃家強]]|| [[黃家強]]/[[黃文華 (音樂人)|黃文華]] || 國
+|-
+{{album-stub}}
+|-}
+[[Category:香港音樂專輯]]</text>
+      <sha1>szhlyxo7hx62mtaiiczq1mestix5a8a</sha1>
+    </revision>
+  </page>
+</mediawiki>

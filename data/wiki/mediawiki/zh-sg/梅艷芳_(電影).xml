@@ -1,0 +1,479 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>梅艷芳 (電影)</title>
+    <ns>0</ns>
+    <id>7580330</id>
+    <revision>
+      <id>93385700</id>
+      <parentid>93385679</parentid>
+      <timestamp>2026-07-09T16:21:35Z</timestamp>
+      <contributor>
+        <username>~2026-38937-44</username>
+        <id>4185694</id>
+      </contributor>
+      <origin>93385700</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="31292" sha1="olq77zbwvqjqre8ylxgxu0cl7o4um6i" xml:space="preserve">{{NoteTA
+|G1=姓氏
+}}
+{{otheruses|梅艷芳 (消歧義)}}{{Infobox Film
+| 片名 = 梅艷芳
+| 電影原名 = {{lang|en|''Anita''}}
+| 圖像 = Anita 2021.jpg
+| 圖像說明 = 電影海報
+| 副標題 = 
+| 導演 = [[梁樂民]]
+| 監製 = [[江志強]]&lt;br/&gt;[[何韻明]]&lt;br/&gt;[[鄧維弼]]
+| 製片 = 
+| 動作指導 = 
+| 編劇 = [[梁樂民]]&lt;br/&gt;[[吳煒倫]]
+| 原著 = 
+| 統籌 = 
+| 主演 = [[王丹妮]]&lt;br&gt;[[劉俊謙 (香港)|劉俊謙]]&lt;br&gt;[[廖子妤]]&lt;br&gt;[[林家栋]]&lt;br&gt;[[古天樂]]&lt;br&gt;[[杨千嬅]]&lt;br&gt;[[楊祐寧]]
+| 配樂 = [[趙增熹]]、[[張人杰]]（原創音樂）&lt;br&gt;[[梁翹柏]]（音樂監製）&lt;br&gt;[[梁皓一]]（導演版）
+| 原創音樂 = [[趙增熹]]&lt;br/&gt;[[張人杰]]
+| 主題曲 = 
+| 攝影 = [[潘耀明]]
+| 剪輯 = [[張嘉輝]]&lt;br&gt;[[閻婷婷]]&lt;br&gt;[[大衛·理查森]]&lt;br&gt;[[陳忠明]]
+| 製片商 = {{flagicon|HK}} [[安樂影片]]&lt;br&gt;{{flagicon|CHN}} [[華夏電影發行]]&lt;br&gt;{{flagicon|HK}} [[萬誘引力乙]]&lt;br&gt;{{flagicon|HK}} [[天下一電影]]&lt;br&gt;{{flagicon|HK}} [[盈娛製作]]
+| 片長 = 137分鐘&lt;br/&gt;225分鐘（導演剪輯版）&lt;br/&gt;191分鐘 (4K全新剪輯版)
+| 產地 = {{香港電影產地}}
+| 語言 = [[粵語]]
+| 上映日期 = {{film date|2021|11|12|香港、中國大陸、臺灣、&lt;br&gt;日本、澳門、英國、韩国、美國、澳洲|2021|11|18|馬來西亞|2021|11|25|新加坡|2022|1|6|泰國|2025|10|10|4K全新剪輯版 香港}}
+| 發行商 = 安樂影片（香港、澳門）&lt;br&gt;[[索尼影視娛樂]]（台灣，新加坡，馬來西亞）&lt;br&gt;[[華人影業]]（CMC Pictures）（北美、英國、澳洲）&lt;br&gt;[[Disney+]]（串流平台）(電影版)（導演版）
+| 預算 = 1億港元&lt;ref&gt;{{cite news |author1=穆 梓 |title=《梅艷芳》過億票房蝕本戲 |url=http://www.macaodaily.com/html/2021-12/09/content_1562345.htm |accessdate=2022-09-06 |work=澳門日報 |date=2021-12-09 }}{{Dead link}}&lt;/ref&gt;
+| 票房 = 香港：6206万港元&lt;br/&gt;全球：1850萬美金（1.44億港元）
+| 前集 = 
+| 續集 = 
+| 官方網站 = 
+}}
+《'''梅艷芳'''》（{{langx|en|''Anita''}}）是一部2021年香港[[傳記電影|传记]][[剧情电影]]，由导演[[梁樂民]]担任執導及编剧，[[江志強]]监制，由[[王丹妮]]、[[劉俊謙 (香港)|劉俊謙]]、[[廖子妤]]、[[林家棟]]、[[古天樂]]、[[楊千嬅]]及[[楊祐寧]]领衔主演&lt;ref&gt;{{cite news |author1=許育民 |title=《梅艷芳》古天樂演良師劉培基 為梅姐設計無新郎婚紗圓最後心願 |url=https://www.hk01.com/%E9%9B%BB%E5%BD%B1/650769/%E6%A2%85%E8%89%B7%E8%8A%B3-%E5%8F%A4%E5%A4%A9%E6%A8%82%E6%BC%94%E8%89%AF%E5%B8%AB%E5%8A%89%E5%9F%B9%E5%9F%BA-%E7%82%BA%E6%A2%85%E5%A7%90%E8%A8%AD%E8%A8%88%E7%84%A1%E6%96%B0%E9%83%8E%E5%A9%9A%E7%B4%97%E5%9C%93%E6%9C%80%E5%BE%8C%E5%BF%83%E9%A1%98 |accessdate=2021-08-07 |work=香港01 |date=2021-07-15 |archive-date=2021-10-19 |archive-url=https://web.archive.org/web/20211019100439/https://www.hk01.com/%E9%9B%BB%E5%BD%B1/650769/%E6%A2%85%E8%89%B7%E8%8A%B3-%E5%8F%A4%E5%A4%A9%E6%A8%82%E6%BC%94%E8%89%AF%E5%B8%AB%E5%8A%89%E5%9F%B9%E5%9F%BA-%E7%82%BA%E6%A2%85%E5%A7%90%E8%A8%AD%E8%A8%88%E7%84%A1%E6%96%B0%E9%83%8E%E5%A9%9A%E7%B4%97%E5%9C%93%E6%9C%80%E5%BE%8C%E5%BF%83%E9%A1%98 |dead-url=no }}&lt;/ref&gt;，本故事是根据已故的香港艺人乐坛巨星[[梅艳芳]]的真实经历包括親情、愛情、友情、事業發展改编，也是向其[[致敬]]的作品，讲述梅艳芳一生的传奇经历&lt;ref&gt;{{cite web|url=https://www.voguehk.com/zh/article/art-lifestyle/anita-mui-film/|title=梅艷芳傳奇一生搬上大銀幕：籌備7年終於推出電影，致敬香港一代百變舞台女王！|publisher=Vouge|date=2021-10-10|author=KARMA CHEUNG|access-date=2021-11-09|archive-date=2021-11-09|archive-url=https://web.archive.org/web/20211109012920/https://www.voguehk.com/zh/article/art-lifestyle/anita-mui-film/|dead-url=no}}&lt;/ref&gt;&lt;ref name="#1"&gt;{{cite web|url=https://aandmdiary.com/%E9%A6%99%E6%B8%AF%E5%BD%B1%E8%A9%95-a%E5%A7%90m%E4%BD%AC%E5%BD%B1%E8%A9%95%E4%BA%BA/%E5%BD%B1%E8%A9%95-%E3%80%8A%E6%A2%85%E8%89%B7%E8%8A%B3%E3%80%8B-%E9%9B%BB%E5%BD%B1-%E7%A5%9E%E9%82%84%E5%8E%9F%E6%A2%85%E8%89%B7%E8%8A%B3%E5%82%B3%E5%A5%87%E4%B8%80%E7%94%9F/|title=影評 —《梅艷芳》 電影 神還原梅艷芳傳奇一生|date=2021-10-28|publisher=香港影評-a姐m佬影評人|access-date=2021-11-09|archive-date=2021-11-09|archive-url=https://web.archive.org/web/20211109184055/https://aandmdiary.com/%e9%a6%99%e6%b8%af%e5%bd%b1%e8%a9%95-a%e5%a7%90m%e4%bd%ac%e5%bd%b1%e8%a9%95%e4%ba%ba/%e5%bd%b1%e8%a9%95-%e3%80%8a%e6%a2%85%e8%89%b7%e8%8a%b3%e3%80%8b-%e9%9b%bb%e5%bd%b1-%e7%a5%9e%e9%82%84%e5%8e%9f%e6%a2%85%e8%89%b7%e8%8a%b3%e5%82%b3%e5%a5%87%e4%b8%80%e7%94%9f/|dead-url=no}}&lt;/ref&gt;。
+
+本片於2021年11月12日上映，並位列於[[香港最高電影票房收入列表]]華語電影排行第六位，僅次於本片導演[[梁樂民]]前作《[[寒戰II]]》。&lt;ref&gt;{{Cite web |url=https://topick.hket.com/article/4090973/%E5%A4%9C%E7%8E%8B%EF%B8%B1%E8%B3%80%E6%AD%B2%E7%89%87%E3%80%8A%E5%A4%9C%E7%8E%8B%E3%80%8B%E8%BA%8B%E8%BA%AB%E9%A6%99%E6%B8%AF%E5%8F%B2%E4%B8%8A%E6%B8%AF%E7%94%A2%E7%89%87%E7%A5%A8%E6%88%BF%E7%AC%AC8%E4%BD%8D%E3%80%8010%E5%A4%A7%E6%9C%80%E8%B3%A3%E5%BA%A7%E6%B8%AF%E7%89%87%E5%BB%96%E5%AD%90%E5%A6%A4%E5%8F%83%E8%88%87%E5%85%B6%E4%B8%AD6%E9%83%A8 |title=夜王︱賀歲片《夜王》躋身香港史上港產片票房第8位　10大最賣座港片廖子妤參與其中6部 |date=28 February 2026 |website=[[Hong Kong Economic Times]] |access-date=7 March 2026 |language=zh}}&lt;/ref&gt;
+
+本片足本導演版以五集迷你劇形式，於2022年2月2日在[[Disney+]]（香港、台灣、新加坡）[[Hotstar|Disney+ Hotstar]]（馬來西亞）每逢週三下午4時上線。其後全集於2022年3月底開始陸續在全球其他地區的[[Disney+]]上線。電影版於2022年7月2日晚上9:30在[[Disney+]]上架。8月13日上架電影4K版本。本片將代表香港角逐第95屆奧斯卡金像獎最佳國際影片獎。
+
+《梅艷芳》 電影除了在很多國家上映外，還於各地的電影節放映，包括於2021年10月韓國釜山國際電影節、2022年3月日本大阪國際電影節、2022年4月美國聖地牙哥亞洲電影節、2022年5月奧地利維也納亞洲電影節、2022年7月西班牙維克亞洲夏季電影節及2022年8月北京國際大學生電影節。
+
+2025年10月10日電影公司為紀念梅艷芳62歲冥壽，安排（4K全新剪輯版）在百老匯院線獨家公映。並說明僅於香港戲院限量放映，將不會於其他平台播放
+
+== 劇情 ==
+梅艷芳與胞姊[[梅愛芳]]在孩童時於[[荔園]]賣唱及巧遇[[鄭少秋]]而開始演藝生涯，及後得[[黎小田]]賞識，贏得[[無綫電視]]與[[華星唱片]]合辦的[[TVB全球華人新秀歌唱大賽|第一屆新秀歌唱比賽]]後與華星簽約。有一次因為前輩（按：電影提及Johnny Ip，即[[葉振棠]]）失場，她自薦頂替到[[夜總會]]表演，為她與[[張國榮]]首次同台演出，張國榮則因為選錯歌而未能令聽眾投入，梅艷芳在[[尖東]][[維港]]岸邊安慰他，承諾日後誰在[[香港體育館|紅館]]開演唱會，對方都要當嘉賓，而且不准收費。
+
+日籍歌手後藤夕輝訪問香港，梅艷芳與後藤則一見鍾情，但有一次二人在舊式日本旅館度假，後藤的社長趕至與他爭吵，躲在衣櫃裡的梅艷芳用錄音機錄下對話翻譯成中文，知道後藤的難處，戀情最後無疾而終。回港後有導演找她拍《[[胭脂扣]]》，問她想誰當男主角，她第一時間回答：「張國榮」。《胭脂扣》為她帶來[[金馬獎]]的榮譽，後來演出無數電影。
+
+有一次與朋友於夜場慶祝生日，期間黑幫頭目欲邀請她獻唱被她拒絕，黑幫頭目盛怒下搧了她一巴。梅艷芳因而避走泰國清邁，並且在那裡與當時的男朋友[[林國斌]]共渡了大半年的光景，後與林國斌分手並返回香港。從此她志力公益，為流浪者派飯，亦到中國大陸籌建義學&lt;ref name=slap&gt;{{cite news|url=https://www.hk01.com/%E9%9B%BB%E5%BD%B1/700973/%E6%A2%85%E8%89%B7%E8%8A%B3-%E5%80%9F-%E9%83%AD%E8%80%81%E9%97%86-%E5%BD%B1%E5%B0%84%E7%A4%BE%E5%9C%98%E5%A4%A7%E4%BD%AC%E9%BB%83%E6%9C%97%E7%B6%AD-%E9%82%84%E5%8E%9F%E6%A2%85%E5%A7%90k%E6%88%BF%E9%81%AD%E6%8E%8C%E6%91%91%E4%BA%8B%E4%BB%B6|title=梅艷芳│借「郭老闆」影射社團大佬黃朗維　還原梅姐K房遭掌摑事件|date=2021-11-16|publisher=香港01|author=王誦賢|accessdate=2021-11-16|archive-date=2021-11-22|archive-url=https://web.archive.org/web/20211122204528/https://www.hk01.com/%E9%9B%BB%E5%BD%B1/700973/%E6%A2%85%E8%89%B7%E8%8A%B3-%E5%80%9F-%E9%83%AD%E8%80%81%E9%97%86-%E5%BD%B1%E5%B0%84%E7%A4%BE%E5%9C%98%E5%A4%A7%E4%BD%AC%E9%BB%83%E6%9C%97%E7%B6%AD-%E9%82%84%E5%8E%9F%E6%A2%85%E5%A7%90k%E6%88%BF%E9%81%AD%E6%8E%8C%E6%91%91%E4%BA%8B%E4%BB%B6|dead-url=no}}&lt;/ref&gt;。
+
+2000年，梅愛芳因[[子宮頸癌]]逝世，隨後梅艷芳在兩三年內亦得此病。而張國榮因情緒病於[[文華酒店]]跳樓身亡，讓梅艷芳崩潰。她去了日本時與後藤見最後一面，後返港接受化療。儘管得到徒弟和眾友人們反對，梅艷芳穿著[[劉培基]]為她設計婚紗，舉行最後一次演唱會，作嫁給舞台的決心，在舞台上獻唱《[[夕陽之歌]]》。演唱會後四十五日，梅艷芳於2003年12月30日去世，終年40歲。&lt;ref name="#1"/&gt;
+
+== 演員 ==
+{|class="wikitable" width="50%"
+|- style="background:#f27a57; color:snow" align=center
+|style="width:20%"|演員||style="width:20%"|角色||'''昵称/职位/備註'''||style="width:20%"|國語配音
+|-
+| [[陳禛]]（童年） &lt;ref&gt;{{cite news|url=https://topick.hket.com/article/3106628/%E3%80%90%E6%A2%85%E8%89%B7%E8%8A%B3%E3%80%91%E7%BE%85%E6%95%8F%E8%8E%8A%E5%A5%B3%E5%85%92%E6%BC%94%E7%AB%A5%E5%B9%B4%E6%A2%85%E5%A7%90%E7%94%9A%E6%90%B6%E9%8F%A1%20%E3%80%80%E9%99%B3%E7%A6%9B5%E6%AD%B2%E5%B7%B2%E4%B8%8A%E7%B4%85%E9%A4%A8%E5%8F%88%E5%94%B1%E5%8F%88%E8%B7%B3?mtc=10012|title=【梅艷芳】羅敏莊女兒演童年梅姐甚搶鏡 　陳禛5歲已上紅館又唱又跳|publisher=香港經濟日報|date=2021-11-14|accessdate=2021-11-15|archive-date=2021-11-15|archive-url=https://web.archive.org/web/20211115042938/https://topick.hket.com/article/3106628/%E3%80%90%E6%A2%85%E8%89%B7%E8%8A%B3%E3%80%91%E7%BE%85%E6%95%8F%E8%8E%8A%E5%A5%B3%E5%85%92%E6%BC%94%E7%AB%A5%E5%B9%B4%E6%A2%85%E5%A7%90%E7%94%9A%E6%90%B6%E9%8F%A1%20%E3%80%80%E9%99%B3%E7%A6%9B5%E6%AD%B2%E5%B7%B2%E4%B8%8A%E7%B4%85%E9%A4%A8%E5%8F%88%E5%94%B1%E5%8F%88%E8%B7%B3?mtc=10012|dead-url=no}}&lt;/ref&gt;|| rowspan="2" |[[梅艷芳]] || rowspan="2"|Anita、阿梅、梅姐&lt;br&gt;珠女（[[梅愛芳]]專稱）&lt;br&gt;依依（早年與梅愛芳合以「伊麗娜姐妹」名義登台之藝名）&lt;br&gt;香港天后巨星，歌后及影后&lt;br&gt; [[張國榮]]、[[劉培基]]之摯友&lt;br&gt;後藤夕輝、Ben之前女友
+| 
+|-
+| [[王丹妮]]
+| [[王丹妮]]
+|-
+| [[劉俊謙 (香港)|劉俊謙]] || [[張國榮]] || Leslie、哥哥&lt;br&gt;香港天皇巨星，歌王及影帝&lt;br&gt;梅艷芳、[[劉培基]]之摯友||[[常進]]
+|-
+| [[甄敏鴻]]（童年）|| rowspan="2" | [[梅愛芳]] ||rowspan="2"| Ann&lt;br&gt;依娜（早年與梅艷芳合以「伊麗娜姐妹」名義登台之藝名）&lt;br&gt;梅艷芳之姊姊
+|
+|-
+|[[廖子妤]]
+|
+|-
+| [[古天樂]] || [[劉培基|Eddie]] || Eddie&lt;br&gt;时装设计师&lt;br&gt;梅艷芳之形象設計师兼恩師&lt;br&gt;梅艷芳、[[张国荣]]之摯友&lt;br&gt;原型为劉培基
+|
+|-
+| {{lj|中島步|中島歩}} || 後藤夕輝 ||[[梅艷芳]]之男友&lt;br&gt;日本當紅偶像歌手&lt;br&gt;原型为[[近藤真彦]]&lt;ref&gt;{{cite news|url=https://www.hk01.com/電影/697753/梅艷芳-披露與近藤真彥戀情-胡子彤飾徒弟-戴上假髮便有感覺|title=《梅艷芳》披露與近藤真彥戀情　胡子彤飾徒弟︰戴上假髮便有感覺|date=2021-11-07|author=許育民|publisher=香港01|accessdate=2022-01-02|archive-date=2021-12-02|archive-url=https://web.archive.org/web/20211202002707/https://www.hk01.com/%E9%9B%BB%E5%BD%B1/697753/%E6%A2%85%E8%89%B7%E8%8A%B3-%E6%8A%AB%E9%9C%B2%E8%88%87%E8%BF%91%E8%97%A4%E7%9C%9F%E5%BD%A5%E6%88%80%E6%83%85-%E8%83%A1%E5%AD%90%E5%BD%A4%E9%A3%BE%E5%BE%92%E5%BC%9F-%E6%88%B4%E4%B8%8A%E5%81%87%E9%AB%AE%E4%BE%BF%E6%9C%89%E6%84%9F%E8%A6%BA|dead-url=no}}&lt;/ref&gt;
+|-
+| [[楊祐寧]]&lt;br&gt;&lt;small&gt;粵語配音：[[海俊傑]]&lt;/small&gt;&lt;ref&gt;[https://www.hk01.com/%E9%9B%BB%E5%BD%B1/702837/%E6%A2%85%E8%89%B7%E8%8A%B3-%E9%82%8A%E5%80%8B%E5%B9%AB-%E6%9E%97%E5%9C%8B%E6%96%8C-%E6%A5%8A%E7%A5%90%E5%AF%A7%E9%85%8D%E9%9F%B3-%E5%8E%9F%E4%BE%86%E4%BF%82%E6%A2%85%E5%A7%90%E6%B7%B7%E8%A1%80%E9%9D%9A%E4%BB%94%E5%B8%AB%E5%BC%9F 邊個幫「林國斌」楊祐寧配音？原來係梅姐混血靚仔師弟] {{Wayback|url=https://www.hk01.com/%E9%9B%BB%E5%BD%B1/702837/%E6%A2%85%E8%89%B7%E8%8A%B3-%E9%82%8A%E5%80%8B%E5%B9%AB-%E6%9E%97%E5%9C%8B%E6%96%8C-%E6%A5%8A%E7%A5%90%E5%AF%A7%E9%85%8D%E9%9F%B3-%E5%8E%9F%E4%BE%86%E4%BF%82%E6%A2%85%E5%A7%90%E6%B7%B7%E8%A1%80%E9%9D%9A%E4%BB%94%E5%B8%AB%E5%BC%9F |date=20211203141905 }}，「HK01」，2021年11月20日。&lt;/ref&gt;|| [[林國斌]] || Ben&lt;br&gt;[[梅艷芳]]之男友，為救梅艷芳帶手下與郭老闆對峙，後陪梅艷芳遠走泰國避難||[[楊祐寧]]
+|-
+| [[林家棟]] || [[蘇孝良]]|| 蘇先生&lt;br&gt;[[華星唱片]]公司總經理||[[赵毅 (配音演员)|赵毅]]
+|-
+| [[楊千嬅]] || [[陳淑芬]] || Florence&lt;br&gt;華星唱片公司唱片部經理||[[邱秋]]
+|-
+| [[白只]] || [[黎小田]] ||Michael&lt;br&gt;作曲家、華星唱片音樂製作人
+|-
+| [[蔣志光]] || [[伦永亮]] || 音樂製作人&lt;br&gt;時為錄音室員工
+|
+|-
+| [[胡子彤]] || [[蔡一智]] ||rowspan="3"|  [[草蜢 (組合)|草蜢]]成員&lt;br&gt;梅艷芳之徒弟
+|-
+| [[柯煒林]] || [[蔡一傑]] 
+|-
+| [[李任燊]] || [[蘇志威]] 
+|-
+| [[陳家樂 (藝人)|陳家樂]]|| [[鄭少秋]] || [[荔園]]表演者
+|-
+| [[楊詩敏]] || 安妮姐姐|| 荔園表演者
+|-
+| [[陳柏宇]] ||        || 荔園樂隊主音
+|-
+| [[李子雄]] || [[何冠昌]] || 電影製作人、[[橙天嘉禾|嘉禾電影]]創辦人之一&lt;br&gt;梅艷芳之[[契爺]]||[[姜小亮]]
+|-
+| [[黃進 (導演)|黃　進]] || [[关锦鹏]] || 电影《[[胭脂扣]]》导演
+|-
+| [[朱鑑然]] ||  ||[[梅艷芳]]之男友&lt;br&gt;鐵達時手錶廣告男主角&lt;br&gt;原型為劉米高&lt;BR&gt;只在導演版登場
+|-
+| [[邵仲衡]] || 郭老闆|| 黑幫頭目，掌摑梅艷芳之人&lt;br&gt;原型为黃朗維&lt;ref name=slap/&gt;
+|-
+| [[姜文杰]] |||| 阿Joe，郭老闆手下
+|-
+| [[阮德鏘]]||事頭|| 大牌檔老闆
+|-
+| [[何啟華]]||達仔|| 大牌檔侍應
+|-
+| [[袁鎮業]]|||| 婚宴新郎
+|-
+| [[張松枝]]|||| 張兆聰醫生
+|-
+| [[袁富華]]|||| 歌廳東主
+|-
+| [[王敏奕]]||MIWA|| 後藤夕輝唱片發佈會主持及私人翻譯
+|-
+| [[鍾雪瑩]]|||| [[梅艷芳]]歌迷
+|-
+| [[鍾溥敏]]|||| 酒樓侍應
+|-
+| [[羅永昌]]|||| 電視台清談節目監制
+|-
+|[[韋羅莎]]|| [[郑裕玲]] ||清談節目主持
+|-
+| [[李敏 (影視演員)|李敏]]|| [[刘天兰 ]]||
+|-
+|[[姜卓文]]||[[许志安]] ||rowspan="4"| 梅艷芳之徒弟
+|-
+|[[蘇皓兒]]|| [[郑秀文]]
+|-
+|[[陳苑晴]]|| [[李蕙敏]]
+|-
+|[[麥芷誼]]||[[何韻詩]]
+|-
+| [[余世騰]]|| || 主持《1:99音樂會》申辦場地的政府康文署官员
+|-
+| [[鬼塚]] || 佐哥 ||《1:99音樂會》音響工程師
+|-
+|[[張進翹]]||[[黃家駒]]||[[Beyond]]主唱&lt;ref name="Beyond"&gt;{{Cite web |url=https://topick.hket.com/article/3118385/?r=mcsdfb |title=【梅艷芳】Manson扮黃家駒戲份無奈全刪　某年青實力歌手疑飾演譚詠麟 |date=2021-11-28 |publisher=[[香港經濟日報|TOPick]] |access-date=2021-11-28 |archive-date=2021-11-28 |archive-url=https://web.archive.org/web/20211128120023/https://topick.hket.com/article/3118385/?r=mcsdfb |dead-url=no }}&lt;/ref&gt;&lt;BR&gt;只在導演版登場
+|-
+|[[周漢寧]]||[[黃家強]]||[[Beyond]]低音結他手&lt;ref name="Beyond" /&gt;&lt;br&gt;只在導演版登場
+|-
+|[[麥秋成]]||舞蹈老師||梅艷芳《壞女孩》舞蹈教室&lt;br&gt;只在導演版登場
+|-
+|[[胡俊軒]]||潘文皓||梅愛芳長子
+|
+|-
+| [[岩城滉一]]|| 日本唱片公司社長 ||原型為[[尊尼事務所]]社長[[尊尼·喜多川]]
+|
+|-
+|[[楊尚斌]]
+|阿成
+|梅艷芳之助手
+|
+|}
+
+== 導演版 ==
+{| class="wikitable plainrowheaders" style="text-align:center;" width=100%;
+!scope="col" width="%" style="background:#f27a57" rowspan=1|&lt;span style="color:white;"&gt;集數&lt;/span&gt;
+!scope="col" width="%" style="background:#f27a57" rowspan=1|&lt;span style="color:white;"&gt;片長&lt;/span&gt;
+!scope="col" width="%" style="background:#f27a57" rowspan=1|&lt;span style="color:white;"&gt;上線日期&lt;/span&gt;
+!scope="col" width="%" style="background:#f27a57" rowspan=1|&lt;span style="color:white;"&gt;導演&lt;/span&gt;
+!scope="col" width="%" style="background:#f27a57" rowspan=1|&lt;span style="color:white;"&gt;編劇&lt;/span&gt;
+!scope="col" width="%" style="background:#f27a57" rowspan=1|&lt;span style="color:white;"&gt;播放平台&lt;/span&gt;
+|-
+| 第1集
+| 42分鐘
+| {{Start date|2022|2|2}}
+| rowspan="5"| [[梁樂民]]
+| rowspan="5"| [[梁樂民]]&lt;br/&gt;[[吳煒倫]]
+| rowspan="5"| [[Disney+]]
+|-
+| 第2集
+| rowspan="2" | 45分鐘
+| {{Start date|2022|2|9}}
+|-
+| 第3集
+| {{Start date|2022|2|16}}
+|-
+| 第4集
+| 43分鐘
+| {{Start date|2022|2|23}}
+|-
+| 第5集（終章）
+| 44分鐘
+| {{Start date|2022|3|2}}
+|}
+
+== 票房 ==
+《梅艷芳》於2021年11月12日在香港開畫，連同之前的優先場數字，開畫日累計大收港幣379萬元，就算減去優先場票房，首日票房都大收311萬元，成為2021年開畫票房最高及入場人次最多的[[香港電影]]。數字更直逼由[[梁朝偉]]、[[劉思慕 (演員)|劉思慕]]、[[陳法拉]]主演的《[[尚氣與十環傳奇]]》開畫票房&lt;ref&gt;{{cite news |author1=許育民 |title=《梅艷芳》首日累積票房379萬稱霸 單日票房直逼Marvel《尚氣》 |url=https://www.hk01.com/sns/article/700368/ |accessdate=2021-11-13 |work=香港01 |date=2021-11-13}}&lt;/ref&gt;。
+
+《梅艷芳》開畫第五周，累計票房已達港幣5,600多萬元，超越《[[媽媽的神奇小子]]》，成為[[2021年香港一週電影票房冠軍列表#本年發行|2021年香港最高電影票房收入列表]]（華語電影）之冠。
+
+*第一周票房：$11,761,426，累計票房：$12,241,493（《梅艷芳》于周五开画，首周三天票房为 $11,761,426。加上优先场票房，累计票房为 $12,241,493）；
+*第二周票房：$19,124,640，累計票房：$31,366,133；
+*第三周票房：$12,471,893，累計票房：$43,838,026；
+*第四周票房：$7,510,382，累計票房：$51,366,583；
+*第五周票房：$5,309,635，累計票房：$56,679,338；
+*第六周票房：$2,188,692，累計票房：$58,868,030；  
+*第七周票房：$1,786,202，累計票房：$60,654,032；
+*第八周票房：$1,495,088，累計票房: $62,148,675；
+*第九周票房：$260,770，累計票房：$62,409,445（受[[2019冠狀病毒病香港疫情|香港第五波疫情]]影響，這星期只上映了4天）
+*第十周票房：$110,778，累計票房：$62,068,723（2022年4月21日戲院重開再度上映）
+*港澳票房合共：$62,520,223。
+
+此外，電影在內地開畫日票房为1130萬人民幣，累積票房为1.13億人民幣&lt;ref&gt;{{cite web |title=梅艳芳_猫眼电影 |url=https://www.maoyan.com/films/1228771 |website=猫眼电影 |accessdate=2022-01-04 |archive-date=2022-07-02 |archive-url=https://web.archive.org/web/20220702065319/https://www.maoyan.com/films/1228771 }}&lt;/ref&gt;&lt;ref&gt;{{cite news |author1=蘇國豪 |title=梅艷芳｜內地票房累積破2千萬 各大評分網口碑破7分 |url=https://www.hk01.com/%E9%9B%BB%E5%BD%B1/700487/%E6%A2%85%E8%89%B7%E8%8A%B3-%E5%85%A7%E5%9C%B0%E7%A5%A8%E6%88%BF%E7%B4%AF%E7%A9%8D%E7%A0%B42%E5%8D%83%E8%90%AC-%E5%90%84%E5%A4%A7%E8%A9%95%E5%88%86%E7%B6%B2%E5%8F%A3%E7%A2%91%E7%A0%B47%E5%88%86 |accessdate=2021-11-20 |work=香港01 |date=2021-11-14 |language=zh-HK |archive-date=2021-11-30 |archive-url=https://web.archive.org/web/20211130154438/https://www.hk01.com/%E9%9B%BB%E5%BD%B1/700487/%E6%A2%85%E8%89%B7%E8%8A%B3-%E5%85%A7%E5%9C%B0%E7%A5%A8%E6%88%BF%E7%B4%AF%E7%A9%8D%E7%A0%B42%E5%8D%83%E8%90%AC-%E5%90%84%E5%A4%A7%E8%A9%95%E5%88%86%E7%B6%B2%E5%8F%A3%E7%A2%91%E7%A0%B47%E5%88%86 |dead-url=no }}&lt;/ref&gt;。而截至12月26日，台灣累計票房為10,019,424新台幣&lt;ref&gt;{{cite web |title=全國電影票房2021年12/20-12/26統計資訊 |url=https://www.tfai.org.tw/boxOffice/weekly |website=www.tfai.org.tw |accessdate=2022-01-04 |archive-date=2022-01-04 |archive-url=https://web.archive.org/web/20211205154410/https://www.tfai.org.tw/boxOffice/weekly |dead-url=no }}&lt;/ref&gt;。
+
+{{start box}}
+{{succession prize box|《[[永恆族 (電影)|永恆族]]》|《[[蜘蛛俠：不戰無歸]]》|{{flagicon|HKG}}[[2021年香港一週電影票房冠軍列表|2021年香港一週票房冠軍]]|第46-49週}}
+{{succession prize box|《[[永恆族 (電影)|永恆族]]》|《[[蜘蛛俠：不戰無歸]]》|{{flagicon|HKG}}[[2021年香港週末電影票房冠軍列表|2021年香港週末票房冠軍]]|第47-50週}}
+{{end box}}
+
+== 評價 ==
+商業電台903格的[[方俊傑]]表示：「我覺得更重要的，是導演版不以長片形式登場，而是變成五集連續劇。一集一個重點，多了停頓位、回氣位，讓電影出現的剪接過於呆板弊病，被大幅度改善。好睇度，又即時再提升好幾個層次。」&lt;ref&gt;{{cite web|url=https://my903.com/903openbox/fongchunkit/post/12015/|author=方俊傑|date=2022年3月3日|title=《梅艷芳》（導演版）：1:99音樂會還有用嗎？|website=[[商業電台]]|access-date=2022年3月22日|archive-date=2022年4月20日|archive-url=https://web.archive.org/web/20220420214537/https://my903.com/903openbox/fongchunkit/post/12015/}}&lt;/ref&gt;
+
+跟她现实围绕的至关重要好友[[成龙]]，[[刘德华]]，[[谭咏麟]]，[[曾志伟]]等没有亮相在角色名单，其中成龙跟她结义，慈善工作，影坛事业，合作成立[[香港演艺人协会]]等事务与她互动频繁，而电影过分把焦点放在[[张国荣]]跟她的情谊，这在电影也是非常大争议&lt;ref&gt;http://www.xinhuanet.com/ent/20211118/c0b6ea76cd924618b6a3e44e23808a4c/c.html {{Wayback|url=http://www.xinhuanet.com/ent/20211118/c0b6ea76cd924618b6a3e44e23808a4c/c.html |date=20230829162721 }} 《梅艳芳》 一片赤诚 几多遗憾&lt;/ref&gt;。
+
+== 爭議 ==
+=== 新加坡政府對粵語的打壓 ===
+早在电影登陆[[新加坡]]前，当地的梅艳芳粉丝已发起网上请愿，並上书部长，希望有关部门能准许新加坡当地的电影院上映粤语原音版，指出因为唯有以粤语讲述的旧香港故事才能让观众有代入感。&lt;ref name=jyut1&gt;
+{{cite news|url=https://gongjyuhok.hk/articles/9452|title=《梅艷芳》齋講普通話？新加坡千人請願爭取加開粵語場「梅姐一生都講廣東話 華語配音好唔真實」|date=2021-11-19|publisher=港語學|author=港語學|accessdate=2021-11-19|archive-date=2021-11-19|archive-url=https://web.archive.org/web/20211119093746/https://gongjyuhok.hk/articles/9452|dead-url=no}}&lt;/ref&gt;&lt;ref name=jyut3&gt;{{cite news|url=https://www.zaobao.com.sg/entertainment/story20211117-1214359|title=《梅艳芳》下周四登狮城 粉丝请愿原音放映|date=2021-11-17|publisher=新明日报/联合早报|author=陈韵红|accessdate=2021-11-17|archive-date=2021-11-17|archive-url=https://web.archive.org/web/20211117141757/http://www.zaobao.com.sg/entertainment/story20211117-1214359|dead-url=no}}&lt;/ref&gt;
+
+然而，新加坡[[资讯通信媒体发展局]]（簡稱IMDA）却以配合政府”讲华语运动”为由，坚持《梅艳芳》属 “一般普及大众”的商业片，必须以「华语」配音版上映——這裏的「[[新加坡華語|華語]]」是專指規範化[[官話]]，跟[[普通話]]看齊，不是指[[華語]]的本來意義——包含各種漢語族語言。此决定不但引起了新加坡当地观众的争议，海外關注粵語權益團體亦批評新加坡政府扼殺粵語的應有空間和權益。&lt;ref name=jyut2&gt;{{cite news|url=https://web.archive.org/web/20211212171120/https://gongjyuhok.hk/articles/9724|title=新加坡鐵面回應歌迷請願：「一般戲院不准放映粵語《梅豔芳》 要配合『講華語運動』」|date=2021-12-13|publisher=港語學|author=港語學|accessdate=2021-12-13|archive-date=2021-12-13|archive-url=|dead-url=no}}&lt;/ref&gt;&lt;ref name=jyut4&gt;{{cite news|url=https://www.zaobao.com.sg/entertainment/story20211210-1221769|title=IMDA：考量覆盖范围 不批放映粤语版《梅艳芳》|date=2021-12-10|publisher=新明日报/联合早报|author=张晓鹏|accessdate=2021-12-10|archive-date=2021-12-10|archive-url=https://web.archive.org/web/20211215020157/https://www.zaobao.com.sg/entertainment/story20211210-1221769|dead-url=no}}&lt;/ref&gt;&lt;ref name=jyut5&gt;{{cite news|url=https://news.seehua.com/post/781926|title=云天恩：当《梅艳芳》说华语|date=2021-12-16|publisher=詩華日報|author=云天恩|accessdate=2021-12-16|archive-date=2021-12-16|archive-url=https://web.archive.org/web/20240520095503/https://news.seehua.com/post/781926|dead-url=no}}&lt;/ref&gt;
+
+=== 後續家人態度 ===
+*[[梅艷芳]]親生兄長[[梅啟明]]表示他擁有梅艷芳商標權利。2021年12月2日控吿安樂電影有限公司，要求賠償。2021年12月4日[[梅艷芳]]媽媽[[覃美金]]發出聲明此事與她無關。2021年12月5日安樂電影有限公司發言人吿訴傳媒，已交給公司的法律圑隊跟進。2022年3月下旬[[梅啟明]]說不再追究。
+*住加拿大的姨甥[[潘文皓]]先後接受過[[東方日報 (香港)|東方日報]]及[[香港電台]][[車淑梅]]訪問，表示很快和弟弟回港拜祭姨姨梅艷芳及探望外婆覃美金。
+
+==獎項及提名==
+{| class="wikitable" width="80%
+|-align=center
+! width="5%"|年度
+! width="18%"|颁奖典礼
+! width="15%"|奖项
+! width="20%"|姓名
+! width="7%"|结果
+|-align=center
+| rowspan="25" |2022
+|rowspan="3"| [[香港電影評論學會大獎|第28屆香港電影評論學會大獎]]
+|rowspan="2"|[[香港電影評論學會大獎最佳女演員|最佳女演員]]  
+|[[王丹妮]]
+|{{nom}}
+|-align=center
+|[[廖子妤]]
+|{{nom}}
+|-align=center
+|推薦電影
+|《梅艷芳》
+|{{won}}
+|-align=center
+|rowspan="2"|2021年度[[香港電影編劇家協會|香港電影編劇家協會大奬]]
+|最佳角色演繹獎
+|[[王丹妮]]、[[陳禛]]
+|{{nom}}
+|-align=center
+|推薦劇本獎
+|[[梁樂民]]、[[吳煒倫]]
+|{{nom}}
+|-align=center
+| rowspan="12"|[[第40屆香港電影金像獎]]
+| [[香港電影金像獎最佳電影|最佳電影]]
+| 《梅艷芳》
+| {{nom}}
+|-align=center
+| [[香港電影金像獎最佳導演|最佳導演]]
+| [[梁樂民]]
+| {{nom}}
+|-align=center
+| [[香港電影金像獎最佳女主角|最佳女主角]]
+|rowspan="2"|[[王丹妮]]
+| {{nom}}
+|-align=center
+| [[香港電影金像獎最佳新演員|最佳新演員]]
+| {{won}}
+|-align=center
+| [[香港電影金像獎最佳男配角|最佳男配角]]
+| [[古天樂]]
+| {{nom}}
+|-align=center
+| [[香港電影金像獎最佳女配角|最佳女配角]]
+| [[廖子妤]]
+| {{won}}
+|-align=center
+| [[香港電影金像獎最佳攝影|最佳攝影]]
+| [[潘耀明]]
+| {{nom}}
+|-align=center
+| [[香港電影金像獎最佳美術指導|最佳美術指導]]
+| [[黃炳耀]]
+| {{nom}}
+|-align=center
+| [[香港電影金像獎最佳服裝造型設計|最佳服裝造型設計]]
+| [[吳里璐]]、[[葉嘉茵]]
+| {{won}}
+|-align=center
+| [[香港電影金像獎最佳音響效果|最佳音響效果]]
+| [[杜篤之]]、[[吳書瑤]]
+| {{won}}
+|-align=center
+| [[香港電影金像獎最佳視覺效果|最佳視覺效果]]
+| [[余國亮]]、[[林嘉樂]]、[[梁偉民]]、[[洪敏詩]]
+| {{won}}
+|-align=center
+| [[香港電影金像獎最佳原創電影音樂|最佳原創電影音樂]]
+| [[趙增熹]]、[[張人傑]]
+| {{nom}}
+|-align=center
+| rowspan="2" | [[大阪亞洲電影節]] 
+|「觀客賞」
+| rowspan="2" |《梅艷芳》
+|{{won}}
+|-align=center
+|特別推薦獎
+|{{won}}
+|- align=center
+| rowspan="1"|[[北京大学生电影节]]
+| [[最受大学生欢迎年度新人]]
+|[[王丹妮]]
+| {{won}}
+|- align=center
+| rowspan="2" |[[亚洲影艺创意大奖]]
+|最佳女主角（香港）
+|[[王丹妮]]
+| {{won}}
+|- align=center
+|最佳摄影（香港）
+|[[潘耀明]]
+| {{won}}
+|- align="center"
+| rowspan="3" |[[第35届中国电影金鸡奖|第35屆中國電影金雞獎]]
+|[[金鸡奖最佳女主角|最佳女主角]]
+|[[王丹妮]]
+|{{nom}}
+|-align=center
+|[[金鸡奖最佳导演|最佳導演]]
+|[[梁樂民]]
+|{{nom}}
+|-align=center
+|[[金鸡奖最佳录音|最佳錄音]]
+|[[杜篤之]]、[[吳書瑤（錄音師）|吳書瑤]]
+|{{nom}}
+|- style="text-align:center;"
+| rowspan="3" |2023|| rowspan="3" |[[第16屆亞洲電影大獎]]||[[亞洲電影大獎最佳新演員|最佳新演員]]
+|[[王丹妮]]||{{nom}}
+|- style="text-align:center;"
+|{{le|亞洲電影大獎最佳造型設計|Asian Film Award for Best Costume Design|最佳造型設計}}||吳里璐、葉嘉茵||{{won}}
+|-align=center
+|最佳音響
+|[[杜篤之]]、吳書瑤
+|{{won}}
+|}
+
+==參考資料==
+{{reflist|2}}
+
+==外部連結==
+* {{hkmdb title|22962|梅艷芳}}
+* {{douban|30176790}}
+*{{imdb title|15010590|梅艷芳}}
+* [https://www.disneyplus.com/zh-hant/movies/anita/1CmFSI9CCW0H 梅艷芳] - [[Disney+]]
+* [https://www.disneyplus.com/zh-hant/series/anita-directors-cut/4bjUEqDhlghB 梅艷芳（導演版）] - [[Disney+]]
+
+{{梅艷芳}}
+{{梁樂民}}
+{{古天樂主要電影}}
+{{ERROR}}
+{{香港電影金像獎最佳服裝造型設計|第40屆}}
+{{香港電影金像獎最佳音響效果|第40屆}}
+{{香港電影金像獎最佳視覺效果|第40屆}}
+{{大阪亞洲電影節觀眾賞}}
+{{北京大學生電影節最受大學生歡迎女演員}}
+
+{{DEFAULTSORT:Anita}}
+[[Category:粵語電影]]
+[[Category:英属香港背景电影]]
+[[Category:香港背景電影]]
+[[Category:香港取景電影]]
+[[Category:2021年香港電影作品]]
+[[Category:香港傳記片]]
+[[Category:傳記劇情片]]
+[[Category:安乐电影]]
+[[Category:华夏电影出品电影]]
+[[Category:艺人传记片]]
+[[Category:梅艷芳]]
+[[Category:悲劇電影]]
+[[Category:張國榮]]
+[[Category:东京都取景电影]]
+[[Category:東京背景電影]]
+[[Category:曼谷取景電影]]
+[[Category:曼谷背景电影]]
+[[Category:1978年背景電影]]
+[[Category:1982年背景電影]]
+[[Category:1985年背景电影]]
+[[Category:1987年背景电影]]
+[[Category:1991年背景電影]]
+[[Category:2000年背景電影]]
+[[Category:2003年背景電影]]
+[[Category:天下一電影]]
+[[Category:泰國取景電影]]
+[[Category:泰国背景电影]]
+[[Category:癌症題材電影]]
+[[Category:自殺題材電影]]
+[[Category:江志強監製電影]]
+[[Category:香港電影金像獎最佳新演員獲獎電影]]
+[[Category:香港電影金像獎最佳女配角獲獎電影]]
+[[Category:香港電影金像獎最佳服裝造型設計獲獎電影]]
+[[Category:香港電影金像獎最佳音響效果獲獎電影]]
+[[Category:香港電影金像獎最佳視覺效果獲獎電影]]
+[[Category:亚洲电影大奖最佳造型设计获奖电影]]
+[[Category:亚洲电影大奖最佳音响获奖电影]]
+[[Category:台北市背景電影]]</text>
+      <sha1>olq77zbwvqjqre8ylxgxu0cl7o4um6i</sha1>
+    </revision>
+  </page>
+</mediawiki>

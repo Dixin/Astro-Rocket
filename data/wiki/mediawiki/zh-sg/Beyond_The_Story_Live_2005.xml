@@ -1,0 +1,277 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Beyond The Story Live 2005</title>
+    <ns>0</ns>
+    <id>8798680</id>
+    <revision>
+      <id>90654095</id>
+      <parentid>87108248</parentid>
+      <timestamp>2025-12-12T13:06:21Z</timestamp>
+      <contributor>
+        <username>~2025-40137-47</username>
+        <id>3956546</id>
+      </contributor>
+      <comment>/* 演唱曲目 (香港) */</comment>
+      <origin>90654095</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3901" sha1="g5ll2il07j69aevrtw1wderxcai00x4" xml:space="preserve">{{Refimprove|time=2024-07-13T19:55:46+00:00}}
+{{Infobox concert tour
+  | concert_tour_name = Beyond The Story Live 2005
+  | image  = 
+  | image_caption = 
+  | artist = [[Beyond]]
+  | location = {{HKG}}&lt;br&gt;{{CHN}}&lt;br&gt;{{SGP}}
+  | type = 世界
+  | album = 
+  | start_date = 2005年1月27日  
+  | end_date = 2005年10月15日
+  | number_of_legs = 
+  | number_of_shows = 20
+  | last_tour = [[Beyond超越Beyond演唱會]] &lt;br&gt;（2003年）
+  | this_tour = '''Beyond The Story Live 2005'''&lt;br&gt;（2005年）
+  | next_tour = 
+  | The_End = 
+}}
+
+'''Beyond The Story Live 2005'''是由[[香港]]著名樂隊[[Beyond]]於2005年在[[香港體育館]]的大型個人演唱會。這亦為[[Beyond]]的告別演唱會，演唱會完成後[[Beyond]]正式解散，但解散後卻傳出[[黃家強]]和黃貫中關係惡劣，亦傳出此為解散原因，黃家強亦在微博證實此事。&lt;ref&gt;{{Cite web |url=http://ent.appledaily.com.tw/realtimenews/article/entertainment/20141011/485534/ |title=黃家強爆黃貫中8宗罪　揭Beyond解散真相 |accessdate=2024-07-13 |archive-date=2014-10-12 |archive-url=https://web.archive.org/web/20141012184715/http://ent.appledaily.com.tw/realtimenews/article/entertainment/20141011/485534/ |dead-url=yes }}&lt;/ref&gt;
+
+== 巡迴場次 ==
+{| class="wikitable" width=100%
+!align="left" width="10px"| 場次
+!align="left" width="90px"| 日期
+!align="left" width="80px"| 國家／地區
+!align="left" width="40px"| 城市
+!align="left" width="160px"| 場館
+!align="left" width="200px"| 備註
+|-
+|1
+|2005年1月27日
+| rowspan="6" |{{HKG}}
+| rowspan="6" |香港
+| rowspan="6" |[[香港體育館|紅磡體育館]] 
+| 
+|-
+|2
+|2005年1月28日
+|
+|-
+|3
+|2005年1月29日
+|
+|-
+|4
+|2005年1月30日
+|
+|-
+|5
+|2005年1月31日
+|
+|-
+|6
+|2005年2月1日
+|
+|-
+|7
+|2005年4月9日
+|{{USA}}
+|大西洋城
+|
+|
+|-
+|8
+|2005年4月16日
+|{{CAN}}
+|多倫多
+|
+|
+|-
+|9
+|2005年5月27日
+| rowspan="11" |{{CHNML}}
+|北京
+|[[北京首都體育館]]
+|
+|-
+|10
+|2005年5月29日
+|黑龍江
+|[[人民體育場]]
+|
+|-
+|11
+|2005年6月3日
+|瀋陽
+|[[五裏河體育場]]
+|
+|-
+|12
+|2005年6月11日
+|天津
+|[[天津體育中心]]
+|
+|-
+|13
+|2005年7月16日
+|長沙
+|[[賀龍體育文化中心|賀龍體育中心體育場]]
+|
+|-
+|14
+|2005年7月16日
+|鄭州
+|[[清華園體育館]]
+|
+|-
+|15
+|2005年8月27日
+|重慶
+|[[重慶中心體育場]]
+|
+|-
+|16
+|2005年9月3日
+|上海
+|[[上海體育館]]
+|
+|-
+|17
+|2005年9月7日
+|武漢
+|[[新華路體育場]]
+| 
+|-
+|18
+|2005年9月16日
+|杭州
+|[[黄龙体育中心|黄龍體育場]]
+|
+|-
+|19
+|2005年9月23日
+|昆明
+|[[拓東體育場]]
+|
+|-
+|20
+|2005年10月15日
+|{{SGP}}
+|新加坡
+|[[新加坡室內體育館]]
+|
+|}
+
+== 演唱曲目 (香港)==
+*永遠等待
+*金屬狂人
+*再見理想
+*亞拉伯跳舞女郎
+*赤紅熱血
+*爸爸媽媽
+*我是憤怒
+*歲月無聲
+*逝去日子
+*誰伴我闖蕩
+*願我能
+*遙望
+*紅色跑車(With [[太極樂隊]])/憂傷都市(With [[浮世繪 (樂隊)|浮世繪]])/十個救火的少年(With [[達明一派]])
+*不再猶豫(With [[太極樂隊]])/喜歡你(With [[浮世繪 (樂隊)|浮世繪]])/真的愛你(With [[達明一派]])
+*情人
+*海闊天空
+*遙遠的Paradise
+*祝您愉快
+*無事無事
+*困獸鬥
+*醒你
+*請將手放開
+*時日無多
+*不見不散
+*抗戰二十年
+*長空
+*農民
+*追憶
+*真的愛你/活著便精彩(第五場,第六場)
+*AMANI
+*光輝歲月
+*總有愛
+
+== 演唱會曲目(中國大陸) ==
+*永遠等待
+*金屬狂人
+*再見理想
+*亞拉伯跳舞女郎
+*爸爸媽媽
+*我是憤怒
+*歲月無聲
+*長城
+*大地
+*遙望
+*願我能
+*真的愛你(With [[黑豹乐队|黑豹樂隊]])
+*無地自容(With [[黑豹乐队|黑豹樂隊]])
+*情人
+*海闊天空
+*Paradise
+*祝您愉快
+*困獸斗
+*醒你
+*Love
+*不見不散
+*抗戰二十年
+*長空
+*光輝歲月
+*一輩子陪我走
+
+==參考文獻==
+{{reflist}}
+
+{{Beyond}}
+
+[[Category:歌手演唱會]]
+[[Category:Beyond]]</text>
+      <sha1>g5ll2il07j69aevrtw1wderxcai00x4</sha1>
+    </revision>
+  </page>
+</mediawiki>

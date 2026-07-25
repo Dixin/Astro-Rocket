@@ -1,0 +1,109 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Action</title>
+    <ns>0</ns>
+    <id>4458240</id>
+    <revision>
+      <id>78595725</id>
+      <parentid>73489438</parentid>
+      <timestamp>2023-08-20T15:44:00Z</timestamp>
+      <contributor>
+        <username>Enordrone</username>
+        <id>3400909</id>
+      </contributor>
+      <minor/>
+      <comment>/* 介紹 */</comment>
+      <origin>78595725</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1502" sha1="6e7qec98b290jm4olh6uhq7j7s6n70g" xml:space="preserve">{{unreferenced|time=2015-01-09T16:38:11+00:00}}
+{{for|[[B'z]]的第十六张专辑|ACTION}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = Action
+| type       = EP
+| artist     = [[Beyond]]
+| cover      = blank
+| released   = 1998年7月
+| recorded   = 
+| genre      = [[粵語流行音樂]]
+| label      = [[滾石唱片]]
+| prev_title = [[BEYOND得精彩|Beyond得精彩]]
+| prev_year  = 1996 &lt;!-- 6月 --&gt;
+| next_title = [[Together (Beyond EP)|Together]]
+| next_year  = 2003 &lt;!-- 4月 --&gt;
+}}
+《'''Action'''》是[[香港]][[搖滾樂隊]][[Beyond]]於1998年發行的第八張[[EP]]，共收錄5首作品。
+
+== 介紹 ==
+此張EP是BEYOND少數粵語和國語一同收入的EP，收入了粵語版以及國語版的《喜歡一個人》，而第一首《我不信》為第三首《打不死》的國語版，最後一首《想你》則為上一張EP《[[Beyond得精彩]]》內的《想你》國語版。
+
+== 曲目 ==
+{| class="wikitable"
+|-
+!次序
+!歌名
+!作曲
+!填詞
+!演唱
+!語言
+|-
+| 1. || 我不信|| [[黃貫中]] || [[劉卓輝]] || [[黃貫中]] || 國
+|-
+| 2. || 喜歡一個人 || [[黃家強]] || [[黃家強]] || [[黃家強]] || 粵 
+|-
+| 3. || 打不死 || [[黃貫中]] || [[葉世榮]]/[[劉卓輝]] || [[黃貫中]] || 粵 
+|-
+| 4. || 喜歡一個人 || [[黃家強]] || [[周耀輝]] || [[黃家強]] || 國
+|-
+| 5. || 想你 || [[黃貫中]] || [[黃貫中]] || [[黃貫中]] || 國
+|}
+
+{{Beyond}}
+[[Category:香港音樂專輯]]
+{{album-stub}}</text>
+      <sha1>6e7qec98b290jm4olh6uhq7j7s6n70g</sha1>
+    </revision>
+  </page>
+</mediawiki>

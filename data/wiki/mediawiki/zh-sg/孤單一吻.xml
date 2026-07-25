@@ -1,0 +1,91 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>孤單一吻</title>
+    <ns>0</ns>
+    <id>803973</id>
+    <revision>
+      <id>87021855</id>
+      <parentid>85185067</parentid>
+      <timestamp>2025-04-28T03:21:39Z</timestamp>
+      <contributor>
+        <username>Jimmy-bot</username>
+        <id>657101</id>
+      </contributor>
+      <minor/>
+      <comment>机器人: 尚未清空的已重定向分类） （[[Cat:Beyond單曲]]→[[Cat:Beyond歌曲]]</comment>
+      <origin>87021855</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="989" sha1="7po9g0u4ydqumvadfizo9mgx2k2sagd" xml:space="preserve">{{Infobox single
+|  name        = 孤單一吻
+|  artist      = [[Beyond]]
+|  cover       = BEYOND9B.jpg 
+|  released    = 1987年9月發行
+|  recorded    = 
+|  genre       = [[粵語流行音樂]]
+|  label       = [[KINN'S MUSIC LTD.]]
+}}
+
+《'''孤單一吻'''》是香港搖滾樂隊[[Beyond]]發行第一张單曲，《孤單一吻》把別具西班牙Famenco的風情的歌曲，抽取用單曲發行，炮製一個Noon-D Mix，開宗名義討喜當時的年輕人Noon Disco市場，收錄於《[[亞拉伯跳舞女郎]]》。
+
+== 曲目 ==
+#孤單一吻（單曲混音版）
+#孤單一吻（Noon-D Mix）
+#無聲的告別（單曲混音版）
+
+== 外部連結 ==
+*[http://www.tudou.com/programs/view/b38ZT8YG-wk/ 孤單一吻]{{Wayback|url=http://www.tudou.com/programs/view/b38ZT8YG-wk/ |date=20150608102258 }}
+
+{{single-stub}}
+{{Beyond}}
+[[Category:香港單曲]]
+[[Category:1987年單曲]]
+[[Category:Beyond歌曲]]
+[[Category:孤獨題材歌曲]]
+[[Category:親吻題材歌曲]]</text>
+      <sha1>7po9g0u4ydqumvadfizo9mgx2k2sagd</sha1>
+    </revision>
+  </page>
+</mediawiki>

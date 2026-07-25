@@ -1,0 +1,95 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>信念 (Beyond專輯)</title>
+    <ns>0</ns>
+    <id>514049</id>
+    <revision>
+      <id>87790983</id>
+      <parentid>87790969</parentid>
+      <timestamp>2025-06-16T16:16:20Z</timestamp>
+      <contributor>
+        <username>Tisscherry</username>
+        <id>3517914</id>
+      </contributor>
+      <comment>/* 信念 (Beyond專輯) */ // Edit via Wikiplus</comment>
+      <origin>87790983</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2311" sha1="i9vjmm1yt7y8te0b7plsdqri33ivcis" xml:space="preserve">{{unreferenced|time=2013-04-28T09:33:44+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 信念
+| type       = [[專輯]]
+| artist     = [[Beyond]]
+| cover      = cdcover13.jpg
+| released   = {{Start date and age|1992|12|4}}
+| recorded   = 
+| genre      = [[搖滾]]、[[華語流行音樂]]
+| label      = [[滾石唱片]]
+| prev_title = [[光輝歲月 (專輯)|光輝歲月]]
+| prev_year  = 1991
+| next_title = [[海闊天空 (Beyond專輯)|海闊天空]]
+| next_year  = 1993
+}}
+
+《'''信念'''》是香港搖滾樂隊[[Beyond]]發行第三张國語专辑，《信念》是Beyond加盟[[華納唱片]]及起行往日本發展後發行的第一張專輯，[[台灣]]由[[滾石唱片]]代理發行，歌曲是由粵語專輯《[[繼續革命]]》填上國語歌詞進行錄製。
+
+==曲目==
+{{Tracklist|title1=長城|title2=關心永遠在|title3=愛過的罪|title4=厭倦寂寞|title5=今天就做|title6=溫暖的家鄉|title7=農民|title8=最想念妳|title9=可否衝破|title10=BYE BYE|title11=問自己|title12=年輕|music1=[[黃家駒]]|music2=黃家駒|music3=黃貫中|music4=黃家強|music5=黃家駒|music6=黃貫中|music7=黃家駒|music8=黃家駒/黃家強/黃貫中|music9=黃家駒/黃家強/黃貫中|music10=黃家駒|music11=黃家駒|music12=黃家駒|lyrics1=[[詹德茂]]|lyrics2=[[姚若龍]]|lyrics3=[[陳昇]]|lyrics4=狗毛|lyrics5=狗毛|lyrics6=[[丁曉雯]]|lyrics7=姚若龍|lyrics8=宋世鴻|lyrics9=詹德茂|lyrics10=狗毛|lyrics11=羅纮武|lyrics12=黃文輝|all_arranger=Beyond/[[梁邦彥]]|all_producer=Beyond/梁邦彥/[[陳美威]]/Jim Lee|longnote1=粵語版為《長城》|longnote2=粵語版為《遙望》|longnote3=粵語版為《繼續沉醉》|longnote4=粵語版為《厭倦寂寞》|longnote5=粵語版為《不可一世》|longnote6=粵語版為《溫暖的家鄉》|longnote7=粵語版為《農民》|longnote8=粵語版為《早班火車》|longnote9=粵語版為《可否衝破》|longnote10=粵語版為《Bye Bye》|longnote11=粵語版為《無語問蒼天》|longnote12=粵語版為《快樂王國》}}
+
+== 參考來源 ==
+{{refs}}
+
+== 外部連結 ==
+
+{{Beyond}}
+[[Category:台灣音樂專輯]]
+[[Category:1992年音樂專輯]]
+[[Category:Beyond音樂專輯]]
+[[Category:滚石唱片音乐专辑]]
+{{album-stub}}</text>
+      <sha1>i9vjmm1yt7y8te0b7plsdqri33ivcis</sha1>
+    </revision>
+  </page>
+</mediawiki>

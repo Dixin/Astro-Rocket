@@ -1,0 +1,116 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>現代灰姑娘</title>
+    <ns>0</ns>
+    <id>3321964</id>
+    <revision>
+      <id>88127764</id>
+      <parentid>85742346</parentid>
+      <timestamp>2025-07-06T01:03:39Z</timestamp>
+      <contributor>
+        <username>Willy1018-bot</username>
+        <id>2363254</id>
+      </contributor>
+      <minor/>
+      <comment>[[Wikipedia:机器人/作业请求#請求批量替換所有lang-xx模板為langx模板|BOTR]]：批量替換所有lang-xx模板為langx模板( V6.4.0.1 )</comment>
+      <origin>88127764</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3235" sha1="dbfqgm5k3e5uwnaimvjgwa45e7oi92e" xml:space="preserve">{{noteTA
+|T=zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;
+|G1=Movie
+|G2=Show
+}}
+{{Infobox Film
+| name               = -{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-
+| original_name      = {{lang|en|''Mystic Pizza''}}
+| image              = Mystic Pizza poster.jpg
+| caption            = 電影海報
+| director           = {{lang|en|Donald Petrie}}
+| producer           = {{lang|en|Mark Levinson}}&lt;br/&gt;{{lang|en|Scott Rosenfelt}}
+| writer             = {{lang|en|Any Jones}}&lt;br/&gt;{{lang|en|Perry Howze}}&lt;br/&gt;{{lang|en|Randy Howze}}&lt;br/&gt;{{lang|en|Alfred Uhry}}
+| story              = {{lang|en|Any Jones}}
+| starring           = {{lang|en|Annabeth Gish}}&lt;br/&gt;{{lang|en|Julia Roberts}}&lt;br/&gt;{{lang|en|Lili Taylor}}&lt;br/&gt;{{lang|en|Vincent Phillip D'Onofrio}}&lt;br/&gt;{{lang|en|William R. Moses}}&lt;br/&gt;{{lang|en|Adam Storke}}
+| music              = {{lang|en|David McHugh}}
+| cinematography     = 
+| editing            = 
+| production_company = 
+| distributor        = 
+| released           = {{film date|1988|10|21}}
+| runtime            = 104 分鐘
+| country            = {{美國電影產地}}
+| language           = [[英語]]
+| budget             = 
+| gross              = 
+| cn_name            = 现在灰姑娘
+| hk_name            = 芳心情濃
+| tw_name            = 現代灰姑娘
+}}
+《'''-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-'''》（{{langx|en|''Mystic Pizza''}}）是1988年[[美國]]的一部電影。導演是[[唐納德·佩特瑞]]。主演是[[安娜貝絲·吉什]]、[[朱莉婭·羅伯茨]]和[[莉莉·泰勒]]。這部電影也是[[馬特·戴蒙]]出演的首部電影。
+
+== 外部連結 ==
+*{{@movies|fmen50095690|現代灰姑娘}}
+*{{douban|title=现代灰姑娘}}
+*{{Mtime|23000|现代灰姑娘}}
+*{{Amg movie|34238|-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-}}
+*{{rotten-tomatoes|mystic_pizza|-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-}}
+*{{mojo title|mysticpizza|-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-}}
+*{{Tcmdb title|84499|-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-}}
+*{{metacritic film|mystic-pizza|-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-}}
+*{{imdb title|0095690|-{zh:現代灰姑娘;zh-hans:现代灰姑娘;zh-hant:現代灰姑娘;zh-hk:芳心情濃;zh-mo:芳心情濃;zh-tw:現代灰姑娘;}-}}
+
+{{DEFAULTSORT:Mystic Pizza}}
+[[Category:英语电影]]
+[[Category:康乃狄克州取景電影]]
+[[Category:康乃狄克州背景電影]]
+[[Category:美國浪漫劇情片]]
+[[Category:1988年美國電影作品]]
+[[Category:1980年代浪漫喜剧片]]
+[[Category:美國喜劇劇情片]]
+[[Category:美國導演處女作]]</text>
+      <sha1>dbfqgm5k3e5uwnaimvjgwa45e7oi92e</sha1>
+    </revision>
+  </page>
+</mediawiki>

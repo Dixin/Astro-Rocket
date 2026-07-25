@@ -19,10 +19,17 @@
     },
     "MD033": {
         "table_allowed_elements": [
-            "br"
+            "br",
+            "PostLink"
+        ],
+        "allowed_elements": [
+            "PostLink"
         ]
     },
+    "MD034": false,
+    "MD036": false,
     "MD041": {
         "level": 2
     },
+    "MD053": false
 }

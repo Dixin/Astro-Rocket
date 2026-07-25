@@ -1,0 +1,91 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>我想奪取妳的唇</title>
+    <ns>0</ns>
+    <id>1015883</id>
+    <revision>
+      <id>90727765</id>
+      <parentid>87021856</parentid>
+      <timestamp>2025-12-17T13:44:22Z</timestamp>
+      <contributor>
+        <username>Sanmosa</username>
+        <id>1572602</id>
+      </contributor>
+      <minor/>
+      <comment>/* 我想奪取妳的唇 */ // Edit via Wikiplus</comment>
+      <origin>90727765</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1217" sha1="cvycwkh186tzcyb84k6if0dx9l6oi12" xml:space="preserve">{{Infobox single
+|  name        = {{lang|ja|くちびるを奪いたい}} 
+|  artist      = [[Beyond]]
+|  cover       = Beyond_lips.jpg
+|  released    = 1993年6月25日
+|  recorded    = 1993年
+|  genre       = [[日本流行音樂]]
+|  label       = [[BMG JAPAN|Fun House]]
+| prev_title = [[リソ ラバ ～International～]]
+| prev_year  = 1992
+| next_title = [[Paradise (Beyond單曲)|Paradise]]
+| next_year  = 1994
+}}
+《'''{{lang|ja|くちびるを奪いたい}}'''》（《'''我想奪取妳的唇'''》）是香港搖滾樂隊[[Beyond]]發行第三张[[日本]][[單曲]]，是雙主打單曲，收錄兩首歌曲是主打歌曲，《{{lang|ja|くちびるを奪いたい}}》是《完全地愛吧》日文版，亦是[[黃家駒]]和[[黃家強]]最後一次合唱歌曲。《[[遥かなる夢に～Far away～]]》是慶祝成軍十週年的歌曲，同時也是《[[海闊天空 (Beyond歌曲)|海闊天空]]》的日文版。
+
+== 曲目 ==
+#{{lang|ja|くちびるを奪いたい}}
+
+== 音樂 ==
+*https://www.youtube.com/watch?v=wJRGhyDNs-c {{Wayback|url=https://www.youtube.com/watch?v=wJRGhyDNs-c |date=20200420063805 }}
+
+{{Beyond}}
+
+[[Category:1993年單曲]]
+[[Category:Beyond歌曲]]
+
+{{Single-stub}}</text>
+      <sha1>cvycwkh186tzcyb84k6if0dx9l6oi12</sha1>
+    </revision>
+  </page>
+</mediawiki>

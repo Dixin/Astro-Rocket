@@ -1,0 +1,118 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>香港 (合輯)</title>
+    <ns>0</ns>
+    <id>805235</id>
+    <revision>
+      <id>85150923</id>
+      <parentid>82417155</parentid>
+      <timestamp>2024-11-30T20:37:29Z</timestamp>
+      <contributor>
+        <username>Comrade John</username>
+        <id>871753</id>
+      </contributor>
+      <comment>清理參數</comment>
+      <origin>85150923</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2711" sha1="aj5iidskry02o9d0ue5vf8es6h3hwoa" xml:space="preserve">{{noteTA
+|1=zh-cn:吉他; zh-tw:吉他; zh-hk:結他;
+|2=zh-cn:贝斯; zh-tw:貝斯; zh-hk:低音結他;
+|3=zh-cn:电贝斯; zh-tw:電貝斯; zh-hk:低音結他;
+|4=zh-cn:贝斯吉他; zh-tw:貝斯吉他; zh-hk:低音結他;
+|5=zh-cn:低音吉他; zh-tw:低音吉他; zh-hk:低音結他;
+}}
+{{Album infobox | &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+|  name        = 香港
+|  type        = [[合輯]]
+|  artist      = 結他比賽五組優勝組合冠軍
+|  cover       = xianggang_album.jpg
+|  released    = 1984年9月
+|  recorded    = 
+|  genre       = [[搖滾]]
+|  label       = [[郭達年]]
+}}
+
+《'''香港結他比賽冠軍精英輯'''》是[[黑鳥樂隊]]主音[[郭達年]]的《結他雜誌》於1983年舉辦「Guitar Players Festival 結他大賽」&lt;ref name="william"&gt;《我與BEYOND的日子》2010年 鄧煒謙著&lt;/ref&gt;（又名「山葉結他比賽」）後，集合五個優勝組合推出的[[黑膠唱片]]合輯，主要訴說香港音樂人徘徊於'''商業'''和'''藝術'''的分裂。
+
+這次結他比賽對[[香港]]搖滾樂壇影響深遠，各參賽者後來成為[[香港樂壇]]之中流砥柱，包括冠軍隊伍[[Beyond]]、[[達明一派]]的[[劉以達]]及[[太極樂隊]]的低音結他手[[盛旦華]]（POWERPAK），還有爵士樂手[[包以正]]。
+
+== 比賽 ==
+比賽由1982年12月開始分多天進行，約有70隊樂隊參加，樂隊需要以原創作品參賽，當中只有10隊可以晉級進入決賽。&lt;ref name="william"&gt;&lt;/ref&gt;
+
+決賽在1983年3月6日在[[香港藝術中心]]壽臣劇院舉行。
+
+== 比賽結果 ==
+比賽只設冠軍一個獎項。&lt;ref name="william"&gt;&lt;/ref&gt;
+* 冠軍（Best Group Award&lt;ref name="william"&gt;&lt;/ref&gt;）：腦部侵襲 BRAIN ATTACK（[[BEYOND]]：[[黃家駒]]、[[葉世榮]]）
+
+== 曲目 ==
+#BOSS NO GO GO（[[POWERPAK]]：David Ling）
+#WEAR N' TEAR（[[包以正]]）      
+#腦部侵襲 BRAIN ATTACK（[[BEYOND]]：[[黃家駒]]、[[葉世榮]]）
+#中國女孩 CHINA GIRL（[[劉以達]]）
+#ICE IN THE FLAME（[[Ancient]]）
+#GANG BANG（[[POWERPAK]]：David Ling）
+#TAPESTRY（包以正）      
+#大廈 BUILDING（[[BEYOND]]：[[黃家駒]]、[[鄧煒謙]]、[[葉世榮]]）
+#紅衛兵 RED ARMY（劉以達）    
+#THE BODY N' THE FLESH（Ancient）
+
+==附註==
+&lt;references/&gt;
+
+== 外部連結 == 
+*[http://www.youtube.com/watch?v=ZFi1lhx9DJ0 Beyond - 腦部侵襲] {{Wayback|url=http://www.youtube.com/watch?v=ZFi1lhx9DJ0 |date=20160412035107 }}
+*[https://www.youtube.com/watch?v=ctc-v-nwcik Beyond - 大廈] {{Wayback|url=https://www.youtube.com/watch?v=ctc-v-nwcik |date=20200420032145 }}   
+
+{{Beyond}}
+
+[[Category:香港音樂合輯]]
+[[Category:1984年音樂专輯]]
+[[Category:香港背景作品|H]]</text>
+      <sha1>aj5iidskry02o9d0ue5vf8es6h3hwoa</sha1>
+    </revision>
+  </page>
+</mediawiki>
