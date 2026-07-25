@@ -14,7 +14,8 @@ export function tagToSlug(tag: string): string {
     .toLowerCase()
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/[^a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+/gu, '-')
+    .replaceAll(/-+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
 

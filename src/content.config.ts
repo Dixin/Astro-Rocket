@@ -36,7 +36,7 @@ const contents = defineCollection({
       uid: z
         .string()
         .regex(
-          /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+          /^[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+(?:-[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+)*$/u,
           'uid must be lowercase kebab-case, e.g. "getting-started"'
         )
         .optional(),
