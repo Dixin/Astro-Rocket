@@ -91,7 +91,7 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
           <ContentCard
             title={content.data.title}
             description={content.data.description}
-            href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+            href={getContentUrl(contentDirectoryName, content.data.uid ?? content.id, locale, contentUrlPath)}
             publishedAt={content.data.publishedAt}
             tags={content.data.tags}
             author={content.data.author}

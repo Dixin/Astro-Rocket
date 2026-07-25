@@ -36,7 +36,7 @@ interface Props {
   imageAlt?: string;
   svgSlug?: string;
   tags?: string[];
-  slug?: string;
+  id?: string;
   /** Canonical id of the content, used to resolve its translations across locales. */
   uid?: string;
   /** Optional FAQs — when provided, an FAQ JSON-LD schema is emitted alongside the BlogPosting schema. */
@@ -68,7 +68,7 @@ const {
   imageAlt,
   svgSlug,
   tags = [],
-  slug = '',
+  id = '',
   uid,
   faqs,
   headings = [],
@@ -83,6 +83,8 @@ const {
   contentUrlPath = contentDirectoryName,
   i18nKey = contentDirectoryName,
 } = Astro.props;
+
+const slug = uid ?? id;
 
 // Resolve opt-in features (site config + per-content overrides).
 // Per-content override only fires when explicitly set to `false`, so authors

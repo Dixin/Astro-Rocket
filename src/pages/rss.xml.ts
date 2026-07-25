@@ -30,8 +30,8 @@ export async function GET(context: APIContext) {
   const contents = (await getAllPublishedContents()).slice(0, 100);
   for (const content of contents) {
     const link = content.content.data.locale === defaultLocale
-      ? `${siteUrl}/${content.contentDirectoryName}/${getContentSlug(content.contentDirectoryName, content.content.id, content.content.data.locale)}/`
-      : `${siteUrl}/${content.content.data.locale}/${content.contentDirectoryName}/${getContentSlug(content.contentDirectoryName, content.content.id, content.content.data.locale)}/`;
+      ? `${siteUrl}/${content.contentDirectoryName}/${getContentSlug(content.contentDirectoryName, content.content.data.uid ?? content.content.id, content.content.data.locale)}/`
+      : `${siteUrl}/${content.content.data.locale}/${content.contentDirectoryName}/${getContentSlug(content.contentDirectoryName, content.content.data.uid ?? content.content.id, content.content.data.locale)}/`;
     const categories = content.content.data.tags
       .map((tag) => `<category>${escapeXml(tag)}</category>`)
       .join('\n        ');

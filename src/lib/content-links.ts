@@ -65,7 +65,7 @@ export function buildUidIndex(
       );
     }
     byLocale.set(locale, {
-      slug: directoryLocaleStrippedSlug(content.id, contentDirectoryName, locale),
+      slug: directoryLocaleStrippedSlug(content.data.uid ?? content.id, contentDirectoryName, locale),
       title,
     });
   }

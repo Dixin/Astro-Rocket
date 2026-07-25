@@ -23,7 +23,8 @@ const allContents = await getPublishedContents(contentDirectoryName, locale);
 const relatedContents = allContents
   .filter((content) => {
     // Exclude current content
-    if (content.id === currentSlug || content.id.endsWith(`/${currentSlug}`)) return false;
+    const contentId = content.data.uid ?? content.id;
+    if (contentId === currentSlug || contentId.endsWith(`/${currentSlug}`)) return false;
 
     // Must have at least one matching tag
     if (!tags.length) return false;
@@ -51,7 +52,7 @@ const relatedContents = allContents
         <ContentCard
           title={content.data.title}
           description={content.data.description}
-          href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+          href={getContentUrl(contentDirectoryName, content.data.uid ?? content.id, locale, contentUrlPath)}
           publishedAt={content.data.publishedAt}
           tags={content.data.tags}
           author={content.data.author}

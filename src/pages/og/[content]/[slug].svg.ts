@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       paths.push({
         params: {
           content: contentDirectoryName,
-          slug: getContentSlug(contentDirectoryName, content.id, content.data.locale),
+          slug: getContentSlug(contentDirectoryName, content.data.uid ?? content.id, content.data.locale),
         },
         props: {
           title: content.data.title,
