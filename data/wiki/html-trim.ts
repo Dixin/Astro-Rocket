@@ -20,9 +20,9 @@ import {
 
 const rawHtmlRootDirectory = path.join(currentDataRootDirectory, 'html-raw');
 const trimmedHtmlRootDirectory = path.join(currentDataRootDirectory, 'html-trimmed');
-const markdownImageDirectory = '../../../assets/blog/';
-export const LinkTagName = 'PostLink';
-const LinkIdPrefix = 'post:';
+const markdownImageDirectory = `../../../../assets/${defaultLocale}/`;
+export const LinkTagName = 'ContentLink';
+const LinkIdPrefix = `${defaultLocale}/`;
 export const defaultAuthor = 'Beyond.ms';
 
 const mapId = (id: string) => (id in idMapping ? idMapping[id] : id);

@@ -6,7 +6,7 @@ author: "Beyond.ms"
 tags: ["markdown"]
 featured: true
 locale: "zh-CN"
-image: "../../assets/blog/astro-rocket-configuration-guide.svg"
+image: "../../../assets/blog/astro-rocket-configuration-guide.svg"
 svgSlug: "astro-rocket-configuration-guide"
 imageAlt: "Feature overview graphic for Astro Rocket on a dark background"
 uid: "markdown-test"

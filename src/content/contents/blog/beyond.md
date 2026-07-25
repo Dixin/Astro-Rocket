@@ -6,7 +6,7 @@ author: "Beyond.ms"
 tags: ["Beyond"]
 featured: true
 locale: "zh-CN"
-image: "../../assets/blog/beyond.jpg"
+image: "../../../assets/blog/beyond.jpg"
 imageAlt: "Beyond是一支香港摇滚乐团"
 uid: "beyond"
 ---
