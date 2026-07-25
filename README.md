@@ -325,10 +325,16 @@ SITE_URL=https://yoursite.com
 PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 PUBLIC_GTM_ID=GTM-XXXXXXX
 
+# Optional - Umami (privacy-friendly, cookieless analytics)
+PUBLIC_UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+# PUBLIC_UMAMI_SRC=https://cloud.umami.is/script.js   # override to self-host
+
 # Optional - Verification
 GOOGLE_SITE_VERIFICATION=your-code
 BING_SITE_VERIFICATION=your-code
 ```
+
+Astro Rocket ships with built-in support for **Google Analytics 4**, **Google Tag Manager**, and **Umami**. For Umami, set `PUBLIC_UMAMI_WEBSITE_ID` (the UUID from your Umami dashboard) and the tracking script loads automatically — it defaults to Umami Cloud, so override `PUBLIC_UMAMI_SRC` only when you self-host. Umami is cookieless and stores no personal data, so it loads without the cookie-consent banner.
 
 ---
 

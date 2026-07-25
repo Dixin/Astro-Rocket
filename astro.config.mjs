@@ -97,6 +97,15 @@ export default defineConfig({
       SITE_URL: envField.string({ context: 'server', access: 'public', optional: true }),
       PUBLIC_GA_MEASUREMENT_ID: envField.string({ context: 'client', access: 'public', optional: true }),
       PUBLIC_GTM_ID: envField.string({ context: 'client', access: 'public', optional: true }),
+      // Umami — privacy-friendly, cookieless analytics. Set the website ID to
+      // enable it; the src defaults to Umami Cloud, override it when self-hosting.
+      PUBLIC_UMAMI_WEBSITE_ID: envField.string({ context: 'client', access: 'public', optional: true }),
+      PUBLIC_UMAMI_SRC: envField.string({
+        context: 'client',
+        access: 'public',
+        optional: true,
+        default: 'https://cloud.umami.is/script.js',
+      }),
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
       NEWSLETTER_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
