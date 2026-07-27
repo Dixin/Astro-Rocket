@@ -214,11 +214,22 @@ const languageAlternates = Object.fromEntries(
       )}
 
       <!-- Article Content -->
-      <div
-        class="prose prose-lg max-w-none"
-        data-reveal-content
-      >
-        <slot />
+      <!--
+        The reading surface is framed like the TOC card beside it: same
+        corner radius, same surface. The border stays neutral rather than
+        brand-tinted — an accent suits a small card, but reads as
+        decoration around a full-length article, and the neutral token
+        behaves the same across all thirteen colour themes. The frame
+        starts at `sm` so a phone held upright keeps the full screen
+        width for the text.
+      -->
+      <div class="sm:rounded-xl sm:border sm:border-border sm:bg-card sm:p-8 lg:p-10">
+        <div
+          class="prose prose-lg max-w-none"
+          data-reveal-content
+        >
+          <slot />
+        </div>
       </div>
 
       <!-- Share buttons (centered, above the divider) -->
