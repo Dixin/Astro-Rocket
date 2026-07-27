@@ -45,7 +45,14 @@ const posters = await Promise.all(
   aria-roledescription="carousel"
   aria-label={label}
 >
-  <div class="relative overflow-hidden rounded-xl media-shadow ring-1 ring-black/5 dark:ring-white/10">
+  <!--
+    The ring uses the standard border colour in light mode. A screenshot of a
+    light interface has no edge of its own against the page, which leaves the
+    shadow marking where the image stops; a defined edge puts the shadow back
+    to suggesting depth. Dark screenshots are unaffected — they already read
+    as a distinct shape — and dark mode keeps its own ring.
+  -->
+  <div class="relative overflow-hidden rounded-xl media-shadow ring-1 ring-border dark:ring-white/10">
     <div
       class="carousel-track flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
       data-carousel-track

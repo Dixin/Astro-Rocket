@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **The table of contents now sits on the right** — `articleFeatures.toc.sidebarPosition` ships as `'right'`, the usual side for an article and the side the layouts already fell back to when the setting was omitted. Set it back to `'left'` in `site.config.ts` to keep the previous placement.
 - **Blog posts and project pages have a framed reading surface** — the article sits in a card with a neutral border, matching the TOC card beside it. The border stays neutral rather than brand-tinted: an accent suits a small card, while the same tint around a full-length article reads as decoration. The frame starts at the `sm` breakpoint, so a phone held upright keeps the full screen width for the text.
 
+### Fixed
+
+- **Light screenshots in a project hero had no visible edge** — the hero frame's light-mode ring was 5% black, which against a white page is close to invisible. A screenshot of a light interface therefore ended where its shadow began, and the shadow read as the outline rather than as depth. The ring now uses the standard border colour. Dark screenshots and dark mode are unchanged, and the shadow itself was not touched.
+
 ## [2.2.0] — 2026-07-27
 
 ### Added
