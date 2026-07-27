@@ -8,14 +8,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.2.0] — 2026-07-27
+
 ### Added
 
+- **Umami analytics, built in** — Umami joins Google Analytics 4 and Google Tag Manager as a supported provider. Set `PUBLIC_UMAMI_WEBSITE_ID` and the tracking script loads itself; `PUBLIC_UMAMI_SRC` defaults to Umami Cloud and can point at a self-hosted instance instead. Umami sets no cookies, so it loads directly and is not gated by the cookie-consent flow.
+- **`/llms.txt`** — a short, plain-Markdown map of the site for language models, following the [llmstxt.org](https://llmstxt.org) proposal. Generated at build time from `site.config.ts` and the content collections, so it describes the site you built and never drifts from the real pages. `robots.txt` points at it.
+- **`AGENTS.md`** — documentation of this codebase for an AI agent helping someone build a site on the theme: where settings, content and interface text live, that page copy sits in the locale files rather than the page files, the conventions worth keeping, and the mistakes that are easy to make.
+- **`SECURITY.md`** — supported versions and a private route for reporting vulnerabilities, through GitHub Security Advisories or email rather than a public issue.
+- **A Security section in the README** — the theme's static-by-design attack surface, how the contact and newsletter endpoints handle input, and why `pnpm audit` reports advisories that live only in the deploy adapters' build tooling and never reach the deployed site.
 - **"Work with me" homepage section** — a new four-card section (custom design, a lightning-fast website, found by Google and AI, zero maintenance) between the services cards and the portfolio, closing with a "Read my services page" button. Driven by new `pages.home.workWithMe` keys in `en.json`/`nl.json`. The homepage zebra rebalances around it: the sections below flip shade and the landing footer returns to the default background.
 - **Questions & answers on the services page** — a two-card FAQ accordion with ten buying questions (pricing, timelines, ownership, maintenance) between the process and the closing CTA, in the same pattern as the About page FAQ. New `pages.services.faq` keys in both locale files, and the services footer flips to `secondary` to keep the page's alternation intact.
+- **Two guides on the theme blog** — one on the Umami integration, and one on updating the theme without losing your content (the git-based upstream-remote workflow, which folders hold your own content, and how to read a merge conflict).
 
 ### Fixed
 
+- **Single project images are no longer cropped** — a project hero with one image renders at its natural aspect ratio instead of being cut to a fixed 16:9 frame, so nothing important, such as the browser header of a screenshot, is sliced off. Video slides and multi-image galleries keep the uniform 16:9 frame for consistent swiping.
 - **About-teaser tiles invisible in light mode on secondary sections** — the light-mode surface swap (tertiary tiles turn page-white inside secondary sections) also fired for tiles nested inside an elevated card, leaving white tiles on the card's white surface. A scoped exception keeps the tertiary tint one nesting level deeper, verified across all 13 colour themes in both modes.
+- **The services Design section animated off-screen** — it carried `data-reveal-eager`, which reveals shortly after load regardless of scroll position. On mobile the tall hero pushes the section below the fold, so the animation played unseen and the section looked dead once reached. It now reveals on entering the viewport, like the sections below it, and its two blocks stagger left-to-right to match them.
+- **Services hero bottom spacing** — the hero ends with three jump buttons, which carry no trailing margin, leaving it around 32px tighter than heroes that end with a description. It now lines up with the contact, blog, projects and about heroes at every width.
 
 ### Changed
 
