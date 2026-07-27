@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **The table of contents now sits on the right** — `articleFeatures.toc.sidebarPosition` ships as `'right'`, the usual side for an article and the side the layouts already fell back to when the setting was omitted. Set it back to `'left'` in `site.config.ts` to keep the previous placement.
+- **Blog posts and project pages have a framed reading surface** — the article sits in a card with a neutral border, matching the TOC card beside it. The border stays neutral rather than brand-tinted: an accent suits a small card, while the same tint around a full-length article reads as decoration. The frame starts at the `sm` breakpoint, so a phone held upright keeps the full screen width for the text.
+
 ## [2.2.0] — 2026-07-27
 
 ### Added

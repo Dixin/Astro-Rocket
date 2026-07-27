@@ -172,8 +172,14 @@ const languageAlternates = Object.fromEntries(
             </div>
           )}
 
-          <div class="prose prose-lg max-w-none" data-reveal-content>
-            <slot />
+          <!--
+            Framed reading surface, matching the TOC card. Starts at `sm` so
+            a phone held upright keeps the full screen width for the text.
+          -->
+          <div class="sm:rounded-xl sm:border sm:border-border sm:bg-card sm:p-8 lg:p-10">
+            <div class="prose prose-lg max-w-none" data-reveal-content>
+              <slot />
+            </div>
           </div>
 
           <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
