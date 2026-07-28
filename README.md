@@ -26,6 +26,34 @@
 
 ---
 
+<details>
+<summary><strong>Table of contents</strong></summary>
+
+- [Overview](#overview)
+- [What Astro Rocket has to offer](#what-astro-rocket-has-to-offer)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Commands](#commands)
+- [Configuration](#configuration)
+- [Design System](#design-system)
+- [Components](#components)
+- [Content Management](#content-management)
+- [SEO](#seo)
+- [Search](#search)
+- [API Routes](#api-routes)
+- [Deployment](#deployment)
+- [Browser Support](#browser-support)
+- [Performance](#performance)
+- [Animations](#animations)
+- [Security](#security)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
+
+</details>
+
+---
+
 ## Overview
 
 Astro Rocket is a **free, lightning-fast Astro 7 starter theme to build anything on**. Its heart is a complete component library: 57 designed, accessible, TypeScript components that all speak one design language — so whatever you build with them looks right. Around that library it brings everything a real website needs: pages to start from, a full blog, search, SEO, i18n, dark mode, and 12 colour themes. It's made for web designers, developers, bloggers, and anyone who wants to build a beautiful website without starting from zero. Use all of it or only the parts you need — the website you build on it is yours.

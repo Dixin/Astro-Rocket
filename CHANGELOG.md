@@ -18,11 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - **The table of contents now sits on the right** — `articleFeatures.toc.sidebarPosition` ships as `'right'`, the usual side for an article and the side the layouts already fell back to when the setting was omitted. Set it back to `'left'` in `site.config.ts` to keep the previous placement.
 - **Blog posts and project pages have a framed reading surface** — the article sits in a card with a neutral border, matching the TOC card beside it. The border stays neutral rather than brand-tinted: an accent suits a small card, while the same tint around a full-length article reads as decoration. The frame starts at the `sm` breakpoint, so a phone held upright keeps the full screen width for the text.
-
 - **`NewsletterForm` redesigned to sit anywhere** — a mail icon in the field, a button that goes full width on a phone and keeps its natural width from `sm` up, and a reserved line for the status message so nothing below the form jumps when it appears. New optional `heading`, `description` and `note` props make it a complete block on its own; `size` and `layout` (`'auto'` or `'stacked'`) cover narrow columns and footers, and `buttonClass` lets a section pass the theme's `cta-btn-brand` / `hero-btn-brand` so the submit button matches the other actions around it in both colour modes. The field now carries an accessible name, and the status line is announced with `role="status"`.
 
 ### Fixed
 
+- **Light screenshots in a project hero had no visible edge** — the hero frame's light-mode ring was 5% black, which against a white page is close to invisible. A screenshot of a light interface therefore ended where its shadow began, and the shadow read as the outline rather than as depth. The ring now uses the standard border colour. Dark screenshots and dark mode are unchanged, and the shadow itself was not touched.
 - **The newsletter honeypot never ran** — the form rendered no hidden field, and the endpoint read `website` while the contact endpoint uses `honeypot`. The form now carries a `honeypot` field and the endpoint reads that name, so the bot check happens before validation as it was meant to.
 - **Cloudflare deploy secrets** — the deployment section named `NEWSLETTER_API_KEY`, which nothing in the theme reads. It now names `RESEND_AUDIENCE_ID`, which is what the newsletter endpoint actually needs.
 
