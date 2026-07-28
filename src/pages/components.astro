@@ -40,6 +40,7 @@ import { Hero } from '@/components/hero';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import SearchInput from '@/components/patterns/SearchInput.astro';
+import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 import PasswordInput from '@/components/patterns/PasswordInput.astro';
 import StatCard from '@/components/patterns/StatCard.astro';
 import EmptyState from '@/components/patterns/EmptyState.astro';
@@ -1998,6 +1999,32 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
             <SearchInput size="sm" placeholder="Search files..." />
             <SearchInput placeholder="Search components..." />
             <SearchInput size="lg" placeholder="Search documentation..." />
+          </div>
+        </div>
+
+        <!-- NewsletterForm -->
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Newsletter Form</span>
+              <span class="showcase-hint">Side by side from sm up</span>
+            </div>
+            <div class="showcase-content">
+              <NewsletterForm
+                heading="Subscribe to the newsletter"
+                description="Get the latest posts in your inbox."
+                note="No spam. Unsubscribe with one click."
+              />
+            </div>
+          </div>
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Newsletter Form — stacked</span>
+              <span class="showcase-hint">For narrow columns and footers</span>
+            </div>
+            <div class="showcase-content">
+              <NewsletterForm layout="stacked" size="sm" />
+            </div>
           </div>
         </div>
 

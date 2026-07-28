@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.formData();
     const email = formData.get('email')?.toString() || '';
-    const honeypot = formData.get('website')?.toString() || '';
+    const honeypot = formData.get('honeypot')?.toString() || '';
 
     // Check honeypot - if filled, it's likely a bot
     if (honeypot) {

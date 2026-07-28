@@ -15,6 +15,7 @@ import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 import { Hero } from '@/components/hero';
 import siteConfig from '@/config/site.config';
 import { resolveSocialLinks } from '@/lib/utils';
@@ -36,6 +37,9 @@ interface Props {
 const { locale = defaultLocale } = Astro.props;
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
+
+// Newsletter signup — opt-in, since the endpoint needs Resend keys to work.
+const showNewsletter = !!siteConfig.newsletter?.enabled;
 
 const posts = await getPublishedPosts(locale);
 
@@ -180,6 +184,12 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
         {t('blog.emailLabel', locale)}
       </a>
     </div>
+
+    {showNewsletter && (
+      <div class="mx-auto mt-8 max-w-md border-t border-border px-6 pt-8 sm:px-0">
+        <NewsletterForm description={t('newsletter.description', locale)} buttonClass="cta-btn-brand" />
+      </div>
+    )}
   </CTA>
 
   <!-- Desktop: contained LetterGlitch band with glass card -->
@@ -215,6 +225,12 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
           {t('blog.emailLabel', locale)}
         </a>
       </div>
+
+      {showNewsletter && (
+        <div class="mx-auto mt-8 max-w-md border-t border-white/20 pt-8">
+          <NewsletterForm description={t('newsletter.description', locale)} buttonClass="hero-btn-brand" />
+        </div>
+      )}
     </LetterGlitchBand>
   </section>
 </PageLayout>

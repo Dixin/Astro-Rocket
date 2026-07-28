@@ -85,6 +85,7 @@ Built on Astro 7 and Tailwind CSS v4.
 | **Colour Mode** | 3-state picker — **System / Light / Dark** with `localStorage` persistence and live OS-preference tracking under 'System'; surfaced as a pill dropdown in the header (and inside the mobile menu) |
 | **Content Collections** | Type-safe blog, pages, authors, and FAQs with Zod validation |
 | **API Routes** | Contact form and newsletter endpoints with validation |
+| **Newsletter Signup** | Optional email signup in the "follow along" section of the blog index and every post, posting to a Resend audience. Off by default — set `RESEND_API_KEY` and `RESEND_AUDIENCE_ID`, then `newsletter.enabled` in `site.config.ts`. The `NewsletterForm` component can be placed anywhere else too. See [Newsletter Signup](#newsletter-signup) |
 | **Table of Contents** | Optional table of contents on blog posts, auto-generated from MDX headings, with three layouts: inline card, sticky desktop sidebar, or `auto` (sidebar on `xl+`, inline card below). Includes `IntersectionObserver` scroll-spy. Off by default; per-post `toc: false` in frontmatter hides on a single post |
 | **Blog Comments (Giscus / Cusdis / Artalk)** | Optional comments at the bottom of blog posts via a pluggable provider — [Giscus](https://giscus.app) (GitHub Discussions), the privacy-friendly [Cusdis](https://cusdis.com) (hosted or self-hosted), or self-hosted [Artalk](https://artalk.js.org) (point `comments.artalk.server` at your own instance — use an `https://` URL in production). Choose with `comments.provider`. **Lazy-loaded** so readers who don't scroll to comments pay zero network cost; reserved `min-height` prevents CLS. Theme and language follow the site. Off by default; per-post `comments: false` in frontmatter hides on a single post |
 | **Durable Internal Links** | Link between posts by a stable canonical id with `<PostLink uid="…">` instead of a slug, so renaming a post never breaks inbound links. Ids resolve to the correct locale-aware URL at build time, and a broken reference **fails the build** rather than shipping a 404. Add an optional `uid` to a post's frontmatter to make it linkable |
@@ -357,12 +358,46 @@ PUBLIC_GTM_ID=GTM-XXXXXXX
 PUBLIC_UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 # PUBLIC_UMAMI_SRC=https://cloud.umami.is/script.js   # override to self-host
 
+# Optional - Contact form and newsletter (server-side only)
+RESEND_API_KEY=your-resend-api-key
+RESEND_AUDIENCE_ID=your-audience-id
+
 # Optional - Verification
 GOOGLE_SITE_VERIFICATION=your-code
 BING_SITE_VERIFICATION=your-code
 ```
 
 Astro Rocket ships with built-in support for **Google Analytics 4**, **Google Tag Manager**, and **Umami**. For Umami, set `PUBLIC_UMAMI_WEBSITE_ID` (the UUID from your Umami dashboard) and the tracking script loads automatically — it defaults to Umami Cloud, so override `PUBLIC_UMAMI_SRC` only when you self-host. Umami is cookieless and stores no personal data, so it loads without the cookie-consent banner.
+
+### Newsletter Signup
+
+A newsletter signup can appear in the "follow along" section at the foot of the blog index and of every blog post. It is **off by default**, because the form posts to `/api/newsletter`, which needs a Resend API key and audience. Without them the endpoint answers *"Newsletter service is not configured"* — so a site that showed the form before its owner had a mailing list would only be collecting failures.
+
+To turn it on, set both variables in `.env`:
+
+```bash
+RESEND_API_KEY=your-resend-api-key
+RESEND_AUDIENCE_ID=your-audience-id
+```
+
+Then flip the switch in `src/config/site.config.ts`:
+
+```typescript
+newsletter: {
+  enabled: true,
+},
+```
+
+The form itself is the `NewsletterForm` pattern component, so you can also drop it anywhere else in your own pages:
+
+```astro
+---
+import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
+---
+<NewsletterForm />
+```
+
+All of its text comes from the `newsletter.*` keys in `src/i18n/en.json`, and the props `placeholder`, `buttonText` and `successMessage` override them per usage. Submissions carry a hidden honeypot field that the endpoint checks before anything else.
 
 ---
 
@@ -848,7 +883,7 @@ DEPLOY_TARGET=cloudflare pnpm build
 npx wrangler deploy
 ```
 
-The build generates the Worker and static-asset config automatically; the bundled `wrangler.toml` adds the `nodejs_compat` flag the API routes need. Prefer the dashboard? In **Workers & Pages → Create → Connect to Git**, set the build command to `DEPLOY_TARGET=cloudflare pnpm build`. Either way, add your secrets — `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `NEWSLETTER_API_KEY` — plus `SITE_URL` as environment variables so the contact form and newsletter work.
+The build generates the Worker and static-asset config automatically; the bundled `wrangler.toml` adds the `nodejs_compat` flag the API routes need. Prefer the dashboard? In **Workers & Pages → Create → Connect to Git**, set the build command to `DEPLOY_TARGET=cloudflare pnpm build`. Either way, add your secrets — `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_AUDIENCE_ID` — plus `SITE_URL` as environment variables so the contact form and newsletter work.
 
 ### Static export (no serverless)
 
