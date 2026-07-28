@@ -36,6 +36,14 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   /** 'auto' goes side by side from `sm`; 'stacked' stays stacked everywhere. */
   layout?: 'auto' | 'stacked';
+  /**
+   * Extra classes for the submit button. Inside a CTA or a LetterGlitch band,
+   * pass the theme's `cta-btn-brand` / `hero-btn-brand` so the button matches
+   * the other actions there: a brand-700 fill with white label text in both
+   * colour modes, rather than the light fill the primary variant takes in
+   * dark mode.
+   */
+  buttonClass?: string;
   class?: string;
 }
 
@@ -51,6 +59,7 @@ const {
   note,
   size = 'md',
   layout = 'auto',
+  buttonClass,
   class: className,
 } = Astro.props;
 
@@ -90,7 +99,7 @@ const stacked = layout === 'stacked';
       <Button
         type="submit"
         size={size}
-        class:list={['newsletter-submit w-full shrink-0', !stacked && 'sm:w-auto']}
+        class:list={['newsletter-submit w-full shrink-0', !stacked && 'sm:w-auto', buttonClass]}
       >
         {buttonText}
       </Button>

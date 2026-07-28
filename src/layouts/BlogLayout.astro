@@ -310,7 +310,7 @@ const languageAlternates = Object.fromEntries(
 
     {showNewsletter && (
       <div class="mx-auto mt-8 max-w-md border-t border-border px-6 pt-8 sm:px-0">
-        <NewsletterForm description={t('newsletter.description', locale)} />
+        <NewsletterForm description={t('newsletter.description', locale)} buttonClass="cta-btn-brand" />
       </div>
     )}
   </CTA>
@@ -351,7 +351,7 @@ const languageAlternates = Object.fromEntries(
 
       {showNewsletter && (
         <div class="mx-auto mt-8 max-w-md border-t border-white/20 pt-8">
-          <NewsletterForm description={t('newsletter.description', locale)} />
+          <NewsletterForm description={t('newsletter.description', locale)} buttonClass="hero-btn-brand" />
         </div>
       )}
     </LetterGlitchBand>
