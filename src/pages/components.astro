@@ -40,6 +40,7 @@ import { Hero } from '@/components/hero';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import SearchInput from '@/components/patterns/SearchInput.astro';
+import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 import PasswordInput from '@/components/patterns/PasswordInput.astro';
 import StatCard from '@/components/patterns/StatCard.astro';
 import EmptyState from '@/components/patterns/EmptyState.astro';
@@ -1998,6 +1999,17 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
             <SearchInput size="sm" placeholder="Search files..." />
             <SearchInput placeholder="Search components..." />
             <SearchInput size="lg" placeholder="Search documentation..." />
+          </div>
+        </div>
+
+        <!-- NewsletterForm -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Newsletter Form</span>
+            <span class="showcase-hint">Email signup posting to /api/newsletter</span>
+          </div>
+          <div class="showcase-content">
+            <NewsletterForm />
           </div>
         </div>
 

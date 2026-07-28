@@ -8,10 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Newsletter signup on the blog** — the `NewsletterForm` component and the `/api/newsletter` endpoint both shipped already, but no page used either. The form now appears in the "follow along" section at the foot of the blog index and of every post, under the RSS and social links. It is off by default: set `RESEND_API_KEY` and `RESEND_AUDIENCE_ID`, then `newsletter.enabled` in `site.config.ts`. Without the keys the endpoint reports that it is not configured, so no site is left showing a form that fails on submit. Text comes from the existing `newsletter.*` locale keys, in English and Dutch.
+- **`NewsletterForm` on the components page** — the patterns section showed `SearchInput` but not the newsletter form, which left the component hard to find.
+
 ### Changed
 
 - **The table of contents now sits on the right** — `articleFeatures.toc.sidebarPosition` ships as `'right'`, the usual side for an article and the side the layouts already fell back to when the setting was omitted. Set it back to `'left'` in `site.config.ts` to keep the previous placement.
 - **Blog posts and project pages have a framed reading surface** — the article sits in a card with a neutral border, matching the TOC card beside it. The border stays neutral rather than brand-tinted: an accent suits a small card, while the same tint around a full-length article reads as decoration. The frame starts at the `sm` breakpoint, so a phone held upright keeps the full screen width for the text.
+
+### Fixed
+
+- **The newsletter honeypot never ran** — the form rendered no hidden field, and the endpoint read `website` while the contact endpoint uses `honeypot`. The form now carries a `honeypot` field and the endpoint reads that name, so the bot check happens before validation as it was meant to.
+- **Cloudflare deploy secrets** — the deployment section named `NEWSLETTER_API_KEY`, which nothing in the theme reads. It now names `RESEND_AUDIENCE_ID`, which is what the newsletter endpoint actually needs.
 
 ## [2.2.0] — 2026-07-27
 

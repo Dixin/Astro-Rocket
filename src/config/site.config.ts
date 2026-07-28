@@ -185,6 +185,20 @@ export interface SiteConfig {
     };
   };
   /**
+   * Newsletter signup, shown in the "follow along" section of the blog index
+   * and the foot of every post.
+   *
+   * Off by default, and deliberately so: the form posts to `/api/newsletter`,
+   * which needs `RESEND_API_KEY` and `RESEND_AUDIENCE_ID`. Without those the
+   * endpoint answers "Newsletter service is not configured", so a site that
+   * showed the form before its owner had a mailing list would be collecting
+   * failures. Set your keys, then turn this on.
+   */
+  newsletter?: {
+    /** Master switch — set to true to show the signup site-wide */
+    enabled: boolean;
+  };
+  /**
    * Blog listing configuration. Counts that were previously hard-coded across
    * `lib/blog.ts` and the route files live here so they're tunable in one
    * place. (The existing `blogImageOverlay` / `articleFeatures` keys are left
@@ -334,6 +348,10 @@ const siteConfig: SiteConfig = {
         // locale: 'en',
       },
     },
+  },
+  newsletter: {
+    // Turn on once RESEND_API_KEY and RESEND_AUDIENCE_ID are set.
+    enabled: false,
   },
   blog: {
     postsPerPage: 12,
