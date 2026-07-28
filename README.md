@@ -26,7 +26,8 @@
 
 ---
 
-## Contents
+<details>
+<summary><strong>Table of contents</strong></summary>
 
 - [Overview](#overview)
 - [What Astro Rocket has to offer](#what-astro-rocket-has-to-offer)
@@ -48,6 +49,8 @@
 - [Contributing](#contributing)
 - [License](#license)
 - [Links](#links)
+
+</details>
 
 ---
 
