@@ -2003,13 +2003,28 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
         </div>
 
         <!-- NewsletterForm -->
-        <div class="component-showcase">
-          <div class="showcase-header">
-            <span class="showcase-label">Newsletter Form</span>
-            <span class="showcase-hint">Email signup posting to /api/newsletter</span>
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Newsletter Form</span>
+              <span class="showcase-hint">Side by side from sm up</span>
+            </div>
+            <div class="showcase-content">
+              <NewsletterForm
+                heading="Subscribe to the newsletter"
+                description="Get the latest posts in your inbox."
+                note="No spam. Unsubscribe with one click."
+              />
+            </div>
           </div>
-          <div class="showcase-content">
-            <NewsletterForm />
+          <div class="component-showcase">
+            <div class="showcase-header">
+              <span class="showcase-label">Newsletter Form — stacked</span>
+              <span class="showcase-hint">For narrow columns and footers</span>
+            </div>
+            <div class="showcase-content">
+              <NewsletterForm layout="stacked" size="sm" />
+            </div>
           </div>
         </div>
 

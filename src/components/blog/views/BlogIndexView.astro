@@ -186,9 +186,8 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
     </div>
 
     {showNewsletter && (
-      <div class="mx-auto mt-8 max-w-md border-t border-border pt-8">
-        <p class="mb-4 text-sm font-medium text-foreground">{t('newsletter.description', locale)}</p>
-        <NewsletterForm />
+      <div class="mx-auto mt-8 max-w-md border-t border-border px-6 pt-8 sm:px-0">
+        <NewsletterForm description={t('newsletter.description', locale)} />
       </div>
     )}
   </CTA>
@@ -229,8 +228,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 
       {showNewsletter && (
         <div class="mx-auto mt-8 max-w-md border-t border-white/20 pt-8">
-          <p class="mb-4 text-sm font-medium text-foreground">{t('newsletter.description', locale)}</p>
-          <NewsletterForm />
+          <NewsletterForm description={t('newsletter.description', locale)} />
         </div>
       )}
     </LetterGlitchBand>

@@ -11,12 +11,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - **Newsletter signup on the blog** — the `NewsletterForm` component and the `/api/newsletter` endpoint both shipped already, but no page used either. The form now appears in the "follow along" section at the foot of the blog index and of every post, under the RSS and social links. It is off by default: set `RESEND_API_KEY` and `RESEND_AUDIENCE_ID`, then `newsletter.enabled` in `site.config.ts`. Without the keys the endpoint reports that it is not configured, so no site is left showing a form that fails on submit. Text comes from the existing `newsletter.*` locale keys, in English and Dutch.
-- **`NewsletterForm` on the components page** — the patterns section showed `SearchInput` but not the newsletter form, which left the component hard to find.
+- **`NewsletterForm` on the components page** — the patterns section showed `SearchInput` but not the newsletter form, which left the component hard to find. Both layouts are shown: the default, which puts the field and button side by side from `sm` up, and the stacked one for narrow columns.
+- **`RESEND_AUDIENCE_ID` in the environment schema** — the newsletter endpoint read it through `import.meta.env`, skipping the typing and validation every other secret gets. It is now declared in `astro.config.mjs` alongside `RESEND_API_KEY`.
 
 ### Changed
 
 - **The table of contents now sits on the right** — `articleFeatures.toc.sidebarPosition` ships as `'right'`, the usual side for an article and the side the layouts already fell back to when the setting was omitted. Set it back to `'left'` in `site.config.ts` to keep the previous placement.
 - **Blog posts and project pages have a framed reading surface** — the article sits in a card with a neutral border, matching the TOC card beside it. The border stays neutral rather than brand-tinted: an accent suits a small card, while the same tint around a full-length article reads as decoration. The frame starts at the `sm` breakpoint, so a phone held upright keeps the full screen width for the text.
+
+- **`NewsletterForm` redesigned to sit anywhere** — a mail icon in the field, a button that goes full width on a phone and keeps its natural width from `sm` up, and a reserved line for the status message so nothing below the form jumps when it appears. New optional `heading`, `description` and `note` props make it a complete block on its own; `size` and `layout` (`'auto'` or `'stacked'`) cover narrow columns and footers. The field now carries an accessible name, and the status line is announced with `role="status"`.
 
 ### Fixed
 
