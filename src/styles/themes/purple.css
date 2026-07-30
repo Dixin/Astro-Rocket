@@ -143,7 +143,7 @@ html.dark[data-theme="purple"] {
   --foreground: oklch(91% 0.010 292);          /* purple-tinted near-white — 15:1 on dark bg, WCAG AAA */
   --foreground-secondary: oklch(83% 0.015 292);
   --foreground-muted: oklch(68% 0.012 292);
-  --foreground-subtle: oklch(58% 0.009 292);   /*  ~4.8:1 on bg — WCAG AA  */
+  --foreground-subtle: oklch(62% 0.009 292);   /*  4.9:1 on --secondary, the lightest dark surface — WCAG AA  */
 
   --border: oklch(20% 0.016 292);
   --border-strong: oklch(27% 0.013 292);
