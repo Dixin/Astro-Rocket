@@ -193,7 +193,7 @@
     "about": {
       "meta": {
         "title": "About — Free Open-Source Astro 7 Theme",
-        "description": "What Astro Rocket is and how it's built: a free, lightning-fast Astro 7 starter theme with 57 designed components, 12 colour themes, built-in i18n, and dark mode."
+        "description": "What Astro Rocket is and how it's built: a free Astro 7 starter theme with 57 designed components, 12 colour themes, i18n, and dark mode."
       },
       "hero": {
         "badge": "About",
@@ -492,7 +492,7 @@
     "home": {
       "meta": {
         "title": "Free open-source Astro 7 theme",
-        "description": "Astro Rocket is a free, lightning-fast Astro 7 starter theme to build anything on — with 57+ designed components, 12 colour themes, dark mode, and built-in i18n on board."
+        "description": "A free, fast Astro 7 starter theme to build anything on: 57+ designed components, 12 colour themes, dark mode, and built-in i18n."
       },
       "hero": {
         "badge": "Available for new projects",
