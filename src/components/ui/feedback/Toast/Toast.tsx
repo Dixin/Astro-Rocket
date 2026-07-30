@@ -111,9 +111,18 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ toast, dismiss }}>
       {children}
-      {/* Toast container */}
+      {/*
+        Toast container.
+
+        ARIA prohibits `aria-label` on a plain div: with no role there is
+        nothing for the name to belong to, so the label was being dropped.
+        `role="region"` gives the live area an identity, which makes the label
+        legal and turns the container into a landmark that screen-reader users
+        can jump to.
+      */}
       <div
         className="fixed bottom-4 right-4 z-[100] flex flex-col gap-2 max-w-[420px] w-full pointer-events-none"
+        role="region"
         aria-live="polite"
         aria-label="Notifications"
       >

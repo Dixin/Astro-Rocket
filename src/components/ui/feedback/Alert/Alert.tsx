@@ -56,7 +56,7 @@ export function Alert({ ref, variant = 'info', title, dismissible = false, onDis
 
       <div className="flex-1 min-w-0 pl-1">
         {title && (
-          <h5 className="font-semibold text-sm mb-1 text-foreground">{title}</h5>
+          <div className="font-semibold text-sm mb-1 text-foreground">{title}</div>
         )}
         <div className="text-sm leading-relaxed text-foreground-muted">{children}</div>
       </div>
