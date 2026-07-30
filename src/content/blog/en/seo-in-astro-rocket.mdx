@@ -61,25 +61,27 @@ Every page generates a complete set of social metadata. For regular pages:
 ```html
 <meta property="og:title" content="Page Title" />
 <meta property="og:description" content="Page description" />
-<meta property="og:image" content="https://yoursite.com/og-default.jpg" />
+<meta property="og:image" content="https://yoursite.com/og/default.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
 ```
 
-Blog posts use their cover image automatically:
+Blog posts and projects get a share card of their own, drawn at build time from the page title, on your brand colour, and written out as a 1200×630 PNG:
 
 ```html
-<meta property="og:image" content="https://yoursite.com/blog/post-cover.jpg" />
+<meta property="og:image" content="https://yoursite.com/og/blog/my-post.png" />
 <meta property="og:type" content="article" />
 ```
 
-The default OG image for non-blog pages is configured in `site.config.ts`:
+A post that has its own cover photo or screenshot uses that instead, as long as it is a raster file (`.png`, `.jpg`, `.webp`, `.gif`). An SVG cover does not work as a share image: social platforms do not render SVG, and the theme's cover SVGs take their colours from CSS variables that only exist on the page, so on their own they come out transparent. Posts with an SVG cover get the generated card.
+
+The image for pages without one of their own is configured in `site.config.ts`:
 
 ```ts
-ogImage: '/og-default.svg',
+ogImage: '/og/default.png',
 ```
 
-Drop your 1200×630 image into `/public/` and update the path. Every page that does not have its own image will use it.
+That path is generated too, from your site name, tagline and brand colour. To use your own artwork instead, drop a 1200×630 PNG or JPEG into `/public/` and point `ogImage` at it.
 
 ## Canonical URLs
 

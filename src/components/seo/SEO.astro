@@ -41,7 +41,12 @@ const {
   localeAlternates,
 } = Astro.props;
 
+// The <title> tag carries the site name so the brand shows in search results.
+// Social cards do not: Facebook, LinkedIn and X render `og:site_name` as their
+// own line above the title, so repeating it in `og:title` shows the name twice
+// and spends ~16 characters of a box that truncates around 60-70.
 const pageTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.name;
+const socialTitle = title || siteConfig.name;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -111,14 +116,14 @@ const xDefaultHref = i18nOn ? new URL(xDefaultUrl, Astro.site).toString() : null
 {xDefaultHref && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
 
 <!-- Open Graph -->
-<meta property="og:title" content={pageTitle} />
+<meta property="og:title" content={socialTitle} />
 <meta property="og:type" content={article ? 'article' : 'website'} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:url" content={canonicalURL.toString()} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={siteConfig.name} />
 <meta property="og:locale" content={locale} />
-<meta property="og:image:alt" content={imageAlt || pageTitle} />
+<meta property="og:image:alt" content={imageAlt || socialTitle} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 {ogImageType && <meta property="og:image:type" content={ogImageType} />}
@@ -131,7 +136,7 @@ const xDefaultHref = i18nOn ? new URL(xDefaultUrl, Astro.site).toString() : null
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:title" content={socialTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
 {siteConfig.twitter?.site && <meta name="twitter:site" content={siteConfig.twitter.site} />}
