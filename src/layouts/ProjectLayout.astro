@@ -14,7 +14,7 @@ import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import siteConfig from '@/config/site.config';
-import { getProjectOgPath } from '@/lib/og';
+import { getDefaultOgPath, getProjectOgPath, isShareableImage } from '@/lib/og';
 import { t, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
 import {
   getProjectSlug,
@@ -59,10 +59,18 @@ const {
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 
-// Prefer the project's own image; otherwise serve the per-project dynamic OG
-// image (see src/pages/og/projects/[slug].svg.ts). `slug` is the full
+// Raster only — see the note in BlogLayout: an SVG cover cannot serve as a
+// share image, so projects without a screenshot fall back to the card generated
+// at build time (see src/pages/og/projects/[slug].png.ts). `slug` is the full
 // (locale-prefixed) project id, so strip the locale to match the OG route.
-const ogImage = image?.src || (slug ? getProjectOgPath(getProjectSlug(slug, locale)) : siteConfig.ogImage);
+const ogImage =
+  image && isShareableImage(image.src)
+    ? image.src
+    : slug
+      ? getProjectOgPath(getProjectSlug(slug, locale))
+      : getDefaultOgPath();
+
+const ogImageAlt = ogImage === image?.src ? imageAlt || title : title;
 
 // Mirror the blog TOC wiring — projects use the same site-wide config.
 const tocConfig = siteConfig.articleFeatures?.toc;
@@ -102,7 +110,7 @@ const languageAlternates = Object.fromEntries(
   title={title}
   description={description}
   image={ogImage}
-  imageAlt={imageAlt || title}
+  imageAlt={ogImageAlt}
   localeAlternates={projectTranslations}
 >
   <Header
