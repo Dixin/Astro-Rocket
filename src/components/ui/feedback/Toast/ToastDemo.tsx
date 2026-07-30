@@ -19,7 +19,7 @@ function ToastButtons() {
       </button>
       <button
         type="button"
-        className="inline-flex items-center justify-center gap-2 rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+        className="inline-flex items-center justify-center gap-2 rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-800"
         onClick={() =>
           toast({
             variant: 'success',
@@ -45,7 +45,7 @@ function ToastButtons() {
       </button>
       <button
         type="button"
-        className="inline-flex items-center justify-center gap-2 rounded-md bg-amber-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-600"
+        className="inline-flex items-center justify-center gap-2 rounded-md bg-amber-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-800"
         onClick={() =>
           toast({
             variant: 'warning',

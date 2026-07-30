@@ -19,9 +19,9 @@ export const alertVariants = cva(
 
 export const alertIconColors = {
   info: 'text-foreground-muted',
-  success: 'text-[var(--success)]',
-  warning: 'text-[var(--warning)]',
-  error: 'text-[var(--error)]',
+  success: 'text-[var(--success-strong)]',
+  warning: 'text-[var(--warning-strong)]',
+  error: 'text-[var(--error-strong)]',
 } as const;
 
 export const alertAccentColors = {
