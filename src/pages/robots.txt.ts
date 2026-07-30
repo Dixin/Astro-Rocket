@@ -1,7 +1,8 @@
 import type { APIRoute } from 'astro';
+import { SITE_URL_FALLBACK } from '@/config/site-url';
 
 export const GET: APIRoute = ({ site }) => {
-  const siteUrl = site?.toString() || 'https://example.com';
+  const siteUrl = site?.toString() || SITE_URL_FALLBACK;
 
   const robotsTxt = `
 User-agent: *

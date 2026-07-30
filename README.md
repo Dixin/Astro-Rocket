@@ -346,6 +346,8 @@ That single field swaps the monogram for your image in the header, footer, and a
 
 Create a `.env` file from `.env.example`:
 
+`SITE_URL` is the one that matters everywhere: canonical tags, `og:url`, `og:image`, RSS links and the sitemap are all built from it, and your host needs it set as an environment variable too, not only in your local `.env`. Leave it unset and the build says so and falls back to `https://example.com`.
+
 ```bash
 # Required
 SITE_URL=https://yoursite.com
