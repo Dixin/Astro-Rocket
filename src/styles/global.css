@@ -86,6 +86,13 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
 
+  /* Higher-contrast variants for status colour used as text or as an icon on
+     the page background. See the note in tokens/primitives.css. */
+  --color-success-strong: var(--success-strong);
+  --color-warning-strong: var(--warning-strong);
+  --color-error-strong: var(--error-strong);
+  --color-info-strong: var(--info-strong);
+
   /* Inverted/Contrast Sections */
   --color-surface-invert: var(--surface-invert);
   --color-surface-invert-secondary: var(--surface-invert-secondary);
@@ -1308,6 +1315,20 @@
 .cta-btn-brand:hover {
   background-color: var(--color-brand-800) !important;
   background-image: none !important;
+}
+
+/* Primary button inside an inverted section.
+   The primary variant is `bg-foreground text-background`, but the Button's own
+   light-mode style wins the cascade for background-color and fills with
+   brand-700 (see the note on .hero-dark-gradient .btn-primary above). The
+   label kept following `text-background`, which .invert-section redefines all
+   the way down to the near-black inverted surface — so the button rendered as
+   near-black on brand blue, 3.9:1. White is what a brand-700 fill was built
+   for: 5.3:1 on the blue theme, and AA on every other, exactly as for
+   .hero-btn-brand and .cta-btn-brand above. !important to match them, since
+   the utility it overrides is applied by the same variant. */
+.invert-section .btn-primary {
+  color: white !important;
 }
 
 /* Header CTA — brand colour in light mode (brand-700 for AA white text) */

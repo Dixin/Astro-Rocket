@@ -142,8 +142,8 @@ const stacked = layout === 'stacked';
       // className, so the layout classes on the element survive a submit.
       const setMessage = (text: string, ok: boolean) => {
         message.textContent = text;
-        message.classList.remove('text-success', 'text-destructive');
-        message.classList.add(ok ? 'text-success' : 'text-destructive');
+        message.classList.remove('text-success-strong', 'text-destructive');
+        message.classList.add(ok ? 'text-success-strong' : 'text-destructive');
       };
 
       form.addEventListener('submit', async (e) => {

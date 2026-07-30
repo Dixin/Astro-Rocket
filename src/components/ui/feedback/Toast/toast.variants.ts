@@ -23,10 +23,10 @@ export const toastVariants = cva(
 
 export const toastIconColors = {
   default: 'text-foreground-muted',
-  success: 'text-[var(--success)]',
-  error: 'text-[var(--error)]',
-  warning: 'text-[var(--warning)]',
-  info: 'text-[var(--info)]',
+  success: 'text-[var(--success-strong)]',
+  error: 'text-[var(--error-strong)]',
+  warning: 'text-[var(--warning-strong)]',
+  info: 'text-[var(--info-strong)]',
 } as const;
 
 export type ToastVariants = VariantProps<typeof toastVariants>;
