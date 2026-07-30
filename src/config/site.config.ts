@@ -264,7 +264,10 @@ const siteConfig: SiteConfig = {
   tagline: 'Astro 7 starter theme to build anything on',
   footerNote: 'Free & open source · MIT licensed',
   url: SITE_URL || 'https://astrorocket.dev',
-  ogImage: '/og-default.svg',
+  // Generated at build time from `name`, `tagline` and the brand colour below.
+  // Point this at a file in `public/` to use your own — it has to be a raster
+  // (PNG or JPEG): social platforms don't render SVG share images.
+  ogImage: '/og/default.png',
   author: 'Hans Martens',
   email: 'hello@hansmartens.dev',
   address: {

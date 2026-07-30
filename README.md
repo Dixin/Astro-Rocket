@@ -317,7 +317,7 @@ const siteConfig = {
   name: 'Your Site Name',
   description: 'Your site description for SEO',
   url: 'https://yoursite.com',
-  ogImage: '/og-default.svg',
+  ogImage: '/og/default.png',
   author: 'Your Name',
   email: 'hello@yoursite.com',
   twitter: {
@@ -788,7 +788,11 @@ import SEO from '@/components/seo/SEO.astro';
 
 ### OG Image
 
-A static default OG image (`public/og-default.svg`) serves as the social preview for all pages. The path is set via `ogImage` in `src/config/site.config.ts`. To use a custom image for a specific page, pass it as the `image` prop to the layout component.
+Every post, project and blog tag archive gets its own 1200×630 share card, drawn at build time from the page title and your brand colour and written out as a PNG under `/og/`. Pages without a card of their own use `/og/default.png`, generated from `name` and `tagline` in `src/config/site.config.ts`. Point `ogImage` at a file in `public/` to use your own instead.
+
+A post or project that has its own **raster** cover (`.png`, `.jpg`, `.webp`, `.gif`) uses that as its share image. An SVG cover does not: social platforms don't render SVG, and the theme's cover SVGs colour themselves from CSS custom properties that only exist on the page — fetched on their own, they come out transparent. Posts with an SVG cover get the generated card instead.
+
+Cards are drawn with `sharp` using the fonts on the build machine. Hosted builders ship fonts; a bare container image may not, and the build warns if it finds none.
 
 ---
 

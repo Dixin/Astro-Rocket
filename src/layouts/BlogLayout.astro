@@ -17,7 +17,7 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 import { resolveSocialLinks } from '@/lib/utils';
 import { createBlogPostSchema, createFAQSchema } from '@/lib/schema';
-import { getBlogOgPath } from '@/lib/og';
+import { getBlogOgPath, getDefaultOgPath, isShareableImage } from '@/lib/og';
 import { t, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
 import { getPostSlug, getBlogBaseUrl } from '@/lib/blog';
 import { getPostTranslations } from '@/lib/post-links';
@@ -93,10 +93,22 @@ const sidebarActive = showToc && (tocLayout === 'sidebar' || tocLayout === 'auto
 const inlineActive = showToc && tocLayout === 'inline';
 const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 
-// Prefer the post's own image; otherwise serve the per-post dynamic OG image
-// generated at build time (see src/pages/og/blog/[slug].svg.ts). Falls back to
-// the site-wide default only when slug is missing.
-const ogImage = image?.src || (slug ? getBlogOgPath(getPostSlug(slug, locale)) : siteConfig.ogImage);
+// `og:image` has to be a raster file. Social platforms render PNG/JPEG/WEBP/GIF
+// and nothing else, and the theme's blog covers are SVGs that take their colours
+// from CSS custom properties — fetched on their own, outside the page, every
+// fill resolves to nothing and the preview comes out blank. A post with a photo
+// or a screenshot keeps using it; anything else gets the card generated at build
+// time (see src/pages/og/blog/[slug].png.ts).
+const ogImage =
+  image && isShareableImage(image.src)
+    ? image.src
+    : slug
+      ? getBlogOgPath(getPostSlug(slug, locale))
+      : getDefaultOgPath();
+
+// The generated card shows the title and nothing else, so the cover's own alt
+// text would be describing a picture the preview never shows.
+const ogImageAlt = ogImage === image?.src ? imageAlt || title : title;
 
 const breadcrumbs = [
   { label: t('common.home', locale), href: localizedPath('/', locale) },
@@ -137,7 +149,7 @@ const languageAlternates = Object.fromEntries(
   title={title}
   description={description}
   image={ogImage}
-  imageAlt={imageAlt || title}
+  imageAlt={ogImageAlt}
   article={{
     publishedTime: publishedAt,
     modifiedTime: updatedAt,

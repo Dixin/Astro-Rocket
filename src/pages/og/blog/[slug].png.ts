@@ -1,8 +1,10 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { renderOgSvg } from '@/lib/og';
+import { renderOgPng } from '@/lib/og';
 import { getPostSlug } from '@/lib/blog';
 import { defaultLocale } from '@/i18n';
+
+export const prerender = true;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection('blog', ({ data }) => {
@@ -17,15 +19,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-export const GET: APIRoute = ({ props }) => {
-  const svg = renderOgSvg({
+export const GET: APIRoute = async ({ props }) => {
+  const png = await renderOgPng({
     title: props.title as string,
     subtitle: props.description as string | undefined,
     kind: 'BLOG',
   });
-  return new Response(svg, {
+  return new Response(new Uint8Array(png), {
     headers: {
-      'Content-Type': 'image/svg+xml',
+      'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });

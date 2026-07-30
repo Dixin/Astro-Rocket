@@ -16,7 +16,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import { t, defaultLocale } from '@/i18n';
-import { getBlogBaseUrl, getPostUrl } from '@/lib/blog';
+import { getBlogBaseUrl, getPostUrl, tagToSlug } from '@/lib/blog';
+import { getBlogTagOgPath } from '@/lib/og';
 
 interface Props {
   /** Locale whose posts this archive renders. Defaults to the site default. */
@@ -38,6 +39,7 @@ const countKey = posts.length === 1 ? 'blog.tagCountOne' : 'blog.tagCountOther';
 <PageLayout
   title={t('blog.tagMetaTitle', locale, { tag })}
   description={t('blog.tagMetaDescription', locale, { tag })}
+  image={getBlogTagOgPath(tagToSlug(tag))}
   eagerReveal
 >
   <Hero layout="centered" size="sm">
