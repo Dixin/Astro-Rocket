@@ -10,6 +10,7 @@ import vercel from '@astrojs/vercel';
 import netlify from '@astrojs/netlify';
 import cloudflare from '@astrojs/cloudflare';
 import i18nConfig from './src/config/i18n.config.ts';
+import { SITE_URL_FALLBACK } from './src/config/site-url.ts';
 
 /**
  * Deploy-target adapter selection. Vercel is the default; set
@@ -29,6 +30,31 @@ function resolveAdapter() {
     default:
       return vercel();
   }
+}
+
+/**
+ * Build-time check that the site knows its own address.
+ *
+ * With `SITE_URL` unset the build still succeeds, and every canonical tag,
+ * `og:url`, `og:image`, RSS link and sitemap entry is written against the
+ * placeholder above — pointing search engines and social crawlers at a domain
+ * that isn't yours. Nothing in the output looks broken, so it survives to
+ * production easily. Warn where it will be read: the build log.
+ */
+function siteUrlCheck() {
+  return {
+    name: 'site-url-check',
+    hooks: {
+      'astro:build:start': ({ logger }) => {
+        if (process.env.SITE_URL) return;
+        logger.warn(
+          `SITE_URL is not set, so canonical URLs, og:image, RSS and the sitemap ` +
+            `will all be written against ${SITE_URL_FALLBACK}. Set SITE_URL in ` +
+            `your host's environment variables to your own domain.`
+        );
+      },
+    },
+  };
 }
 
 /**
@@ -80,7 +106,7 @@ const astroI18nOptions = i18nEnabled
 export default defineConfig({
   output: 'static',
   adapter: resolveAdapter(),
-  site: process.env.SITE_URL || 'https://example.com',
+  site: process.env.SITE_URL || SITE_URL_FALLBACK,
   ...(astroI18nOptions ? { i18n: astroI18nOptions } : {}),
 
   // Astro 7 changed the default to 'jsx', which strips whitespace between
@@ -127,6 +153,7 @@ export default defineConfig({
     mdx(),
     sitemap(),
     icon(),
+    siteUrlCheck(),
     pagefind(),
   ],
 
