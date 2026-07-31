@@ -56,7 +56,7 @@
 
 ## Overview
 
-Astro Rocket is a **free, lightning-fast Astro 7 starter theme to build anything on**. Its heart is a complete component library: 57 designed, accessible, TypeScript components that all speak one design language — so whatever you build with them looks right. Around that library it brings everything a real website needs: pages to start from, a full blog, search, SEO, i18n, dark mode, and 12 colour themes. It's made for web designers, developers, bloggers, and anyone who wants to build a beautiful website without starting from zero. Use all of it or only the parts you need — the website you build on it is yours.
+Astro Rocket is a **free, lightning-fast Astro 7 starter theme to build anything on**. Its heart is a complete component library: 44 designed, accessible, TypeScript components that all speak one design language — so whatever you build with them looks right. Around that library it brings everything a real website needs: pages to start from, a full blog, search, SEO, i18n, dark mode, and 12 colour themes. It's made for web designers, developers, bloggers, and anyone who wants to build a beautiful website without starting from zero. Use all of it or only the parts you need — the website you build on it is yours.
 
 Built on Astro 7 and Tailwind CSS v4.
 
@@ -254,7 +254,7 @@ astro-rocket/
 ├── src/
 │   ├── assets/              # Images and icons (processed by Astro)
 │   ├── components/
-│   │   ├── ui/              # UI component library (31 components)
+│   │   ├── ui/              # UI component library (34 components)
 │   │   │   ├── form/        # Button, Input, Textarea, Select, Checkbox, Radio, Switch
 │   │   │   ├── data-display/ # Card, Badge, Avatar, Table, Pagination, Progress, Skeleton
 │   │   │   ├── feedback/    # Alert, Toast, Tooltip
@@ -541,7 +541,7 @@ Foreground tokens are documented with their contrast ratios inline. When customi
 
 ## Components
 
-Astro Rocket includes 57 components across 7 categories. All UI components use [class-variance-authority (CVA)](https://cva.style) for type-safe variant management.
+Astro Rocket includes 44 components across four categories. All UI components use [class-variance-authority (CVA)](https://cva.style) for type-safe variant management.
 
 ### UI Components (31)
 

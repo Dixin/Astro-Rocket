@@ -11,7 +11,7 @@
  * without the copy following, so the claim cannot drift again.
  */
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 import registry from '../../component-registry.json';
@@ -39,11 +39,48 @@ describe('component count', () => {
   });
 
   it('the English dictionary quotes it', () => {
-    const json = JSON.stringify(en);
-    expect(json).toContain(`${COUNT} designed components`);
-    // Nothing should still be carrying the old figure.
-    expect(json).not.toMatch(/\b57\+? (designed )?[Cc]omponents/);
-    expect(json).not.toMatch(/\b50\+ production components/);
+    expect(JSON.stringify(en)).toContain(`${COUNT} designed components`);
+  });
+
+  it('no file anywhere quotes a count the registry cannot justify', () => {
+    // Named files are not enough. The first sweep listed the files it thought
+    // mattered and missed the Dutch dictionary, a homepage stat tile, the
+    // project page, the post body, two README paragraphs, and the number
+    // drawn on the post's cover image. So walk the tree instead.
+    //
+    // Any two-digit figure next to the word component has to be either the
+    // total or one of the per-category counts — both taken from the registry,
+    // so this keeps working when components are added.
+    const byCategory: Record<string, number> = {};
+    for (const entry of Object.values(registry.components)) {
+      byCategory[entry.category] = (byCategory[entry.category] ?? 0) + 1;
+    }
+    const allowed = new Set<number>([COUNT, ...Object.values(byCategory)]);
+
+    const roots = ['src', 'README.md', 'AGENTS.md'];
+    const skip = /node_modules|\/dist\/|\.vercel|__tests__|CHANGELOG/;
+    const exts = /\.(md|mdx|astro|ts|tsx|json|svg)$/;
+
+    const files: string[] = [];
+    const walk = (rel: string) => {
+      const full = join(process.cwd(), rel);
+      if (skip.test(full)) return;
+      if (statSync(full).isDirectory()) {
+        for (const e of readdirSync(full)) walk(join(rel, e));
+      } else if (exts.test(rel)) files.push(rel);
+    };
+    for (const r of roots) walk(r);
+
+    const claim =
+      /\b(\d{2})\+?[\s-]+(?:designed,?\s+|production-ready\s+|ontworpen\s+|)(?:accessible,?\s+|)(?:UI\s+|)[Cc]omponent/g;
+
+    const wrong: string[] = [];
+    for (const f of files) {
+      for (const m of readFileSync(join(process.cwd(), f), 'utf8').matchAll(claim)) {
+        if (!allowed.has(Number(m[1]))) wrong.push(`${f}: "${m[0].trim()}"`);
+      }
+    }
+    expect(wrong, `not a total (${COUNT}) or a category count`).toEqual([]);
   });
 
   it('the showcase page and its post quote it', () => {
