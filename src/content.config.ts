@@ -107,6 +107,13 @@ const projects = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
+      /**
+       * Lucide icon shown on the project card, e.g. "rocket", "book-open",
+       * "shopping-bag". Give each project its own: the card is mostly text,
+       * and one repeated icon across every card makes them read as
+       * placeholders. Falls back to "layers" when unset.
+       */
+      icon: z.string().optional(),
       url: z.string().url().optional(),
       repo: z.string().url().optional(),
       image: image().optional(),
