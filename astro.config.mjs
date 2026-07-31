@@ -102,9 +102,12 @@ function pagefind() {
  * files land in the same place on all three targets, with no native module
  * anywhere near a page.
  *
- * `favicon.svg` stays a route: it needs no native module, and keeping it as a
- * route means `astro dev` still serves a favicon, which a build hook cannot.
- * The SVG is also what modern browsers prefer, so dev looks right.
+ * `favicon.svg` is written here too, rather than staying a route. It needs no
+ * *native* module, so keeping it as a route looked safe — but `buildFaviconSvg`
+ * decodes an embedded font subset with `Buffer` and parses it with fontkit,
+ * and neither exists in workerd without `nodejs_compat`. As a route it emitted
+ * a 0-byte file on Cloudflare while the build reported success. The cost is
+ * that `astro dev` has no favicon, since build hooks do not run there.
  */
 function faviconAssets() {
   const letter = SITE_NAME.charAt(0).toUpperCase();
@@ -122,15 +125,18 @@ function faviconAssets() {
         // Imported here rather than at the top of this file: a static import
         // of the sharp-backed module makes pagefind's own dynamic import above
         // fail with "Vite module runner has been closed" (#600).
+        const { buildFaviconSvg } = await import('./src/lib/favicon/svg.ts');
         const { renderFaviconPng, renderFaviconIco } = await import('./src/lib/favicon/raster.ts');
         const out = fileURLToPath(dir);
+
+        await writeFile(join(out, 'favicon.svg'), buildFaviconSvg(letter, THEME_COLOR));
 
         for (const [name, size] of Object.entries(pngSizes)) {
           await writeFile(join(out, name), await renderFaviconPng(letter, THEME_COLOR, size));
         }
         await writeFile(join(out, 'favicon.ico'), await renderFaviconIco(letter, THEME_COLOR));
 
-        logger.info(`wrote ${Object.keys(pngSizes).length + 1} favicon files to ${out}`);
+        logger.info(`wrote ${Object.keys(pngSizes).length + 2} favicon files to ${out}`);
       },
     },
   };
