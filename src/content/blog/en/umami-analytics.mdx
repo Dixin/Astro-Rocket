@@ -111,6 +111,24 @@ Check that request, not just the `script.js` one. The script loads successfully 
 
 With a 200, open the **Realtime** view in Umami and you should see yourself within a few seconds.
 
+### Step 6 — Stop counting yourself
+
+On a site with modest traffic your own visits will outnumber everyone else's, and the numbers stop meaning anything. Umami's tracker checks localStorage for a flag and skips sending when it finds one. On your live site, open the developer tools **Console** and run:
+
+```js
+localStorage.setItem('umami.disabled', 1)
+```
+
+Reload and check the Network tab again: there should now be no request to `/api/send` at all. To start counting yourself again:
+
+```js
+localStorage.removeItem('umami.disabled')
+```
+
+This is stored per browser profile, per device and per site, so repeat it on your phone and in any other browser you use, and expect to redo it if you clear the site's data. It also means the flag you set on one of your sites does nothing on another.
+
+Blocking the script host in an ad blocker works too and follows you between profiles — but then you can never check that tracking still works, which is how a broken setup goes unnoticed for months.
+
 ## Troubleshooting
 
 | Problem | Likely cause |
@@ -121,7 +139,7 @@ With a 200, open the **Realtime** view in Umami and you should see yourself with
 | Still nothing after a redeploy | Double-check the Website ID is exactly the UUID from your dashboard, with no extra spaces. |
 | Works locally but not in production | The variable was added to `.env` but not to Vercel's environment variables (or only to Preview, not Production). |
 | Self-hosted instance shows no hits | `PUBLIC_UMAMI_SRC` is missing or points at the wrong URL — it must be your instance's `script.js`. |
-| Your own visits inflate the numbers | Umami Cloud can exclude your own traffic; you can also use its built-in filters. This is expected, not a bug. |
+| Your own visits inflate the numbers | Expected on a new site, and worth switching off — see below. |
 
 ## That's the whole setup
 
