@@ -1,7 +1,7 @@
 {
   "name": "astro-rocket",
   "version": "2.2.0",
-  "description": "Astro Rocket — A production-ready Astro 7 theme built on Tailwind CSS v4",
+  "description": "Astro Rocket \u2014 A production-ready Astro 7 theme built on Tailwind CSS v4",
   "type": "module",
   "author": "Hans Martens",
   "license": "MIT",
@@ -28,13 +28,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:netlify": "DEPLOY_TARGET=netlify astro build",
+    "build:cloudflare": "DEPLOY_TARGET=cloudflare astro build",
+    "verify": "node scripts/verify-build.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "pnpm lint && pnpm check && pnpm build",
+    "validate": "pnpm lint && pnpm check && pnpm build && pnpm verify",
     "test": "vitest",
     "test:e2e": "playwright test"
   },
