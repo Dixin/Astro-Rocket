@@ -701,9 +701,23 @@ Your content here...
 
 To link from one post to another, use `<PostLink uid="target-post-id">link text</PostLink>` in your MDX instead of a hard-coded `/blog/...` URL. The id resolves to the right URL at build time, and a broken reference fails the build — so renaming a post never leaves a dead internal link. Give a post an optional `uid` (above) to make it a link target. The [configuration guide](/blog/astro-rocket-configuration-guide) post has the full walkthrough.
 
+### Project Cards
+
+Projects live in `src/content/projects/<locale>/` (the bundled ones in `src/content/projects/en/`) as one MDX file per project. Each one carries an `icon` — any [Lucide](https://lucide.dev/icons/) name — shown on its card in the projects listing and on the homepage:
+
+```yaml
+---
+title: "E-Commerce Store"
+description: "..."
+icon: "shopping-bag"
+---
+```
+
+Give every project its own. The card is mostly text, so one repeated icon across the grid makes them read as placeholders. Unset, it falls back to `layers`.
+
 ### Project Galleries
 
-Projects live in `src/content/projects/<locale>/` (the bundled ones in `src/content/projects/en/`) as one MDX file per project, and there are two ways to show more than one image.
+There are two ways to show more than one image on a project.
 
 **1. Hero carousel (frontmatter).** Add a `gallery` array and the project hero swaps the single `image` for a swipeable carousel (touch swipe, prev/next arrows, dot indicators, keyboard navigation). The first slide is the lead image:
 
