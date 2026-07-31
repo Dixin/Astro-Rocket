@@ -889,7 +889,7 @@ DEPLOY_TARGET=cloudflare pnpm build
 npx wrangler deploy
 ```
 
-The build generates the Worker and static-asset config automatically; the bundled `wrangler.toml` adds the `nodejs_compat` flag the API routes need. Prefer the dashboard? In **Workers & Pages → Create → Connect to Git**, set the build command to `DEPLOY_TARGET=cloudflare pnpm build`. Either way, add your secrets — `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_AUDIENCE_ID` — plus `SITE_URL` as environment variables so the contact form and newsletter work.
+The build generates the Worker and static-asset config automatically. The bundled `wrangler.toml` deliberately does **not** set `nodejs_compat`: the adapter prerenders every page inside workerd at build time, and that flag makes the prerender emit `[object Object]` instead of HTML for every page, without failing the build. If the contact form or newsletter need Node built-ins once deployed, set the flag on the Worker in the Cloudflare dashboard rather than in `wrangler.toml`. Prefer the dashboard? In **Workers & Pages → Create → Connect to Git**, set the build command to `DEPLOY_TARGET=cloudflare pnpm build`. Either way, add your secrets — `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_AUDIENCE_ID` — plus `SITE_URL` as environment variables so the contact form and newsletter work.
 
 ### Static export (no serverless)
 
