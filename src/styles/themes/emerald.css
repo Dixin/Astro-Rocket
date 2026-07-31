@@ -143,7 +143,7 @@ html.dark[data-theme="emerald"] {
   --foreground: oklch(91% 0.008 160);          /* emerald-tinted near-white — 15:1 on dark bg, WCAG AAA */
   --foreground-secondary: oklch(82% 0.01 160);
   --foreground-muted: oklch(68% 0.008 160);
-  --foreground-subtle: oklch(58% 0.006 160);   /*  ~4.8:1 on bg — WCAG AA  */
+  --foreground-subtle: oklch(62% 0.006 160);   /*  4.9:1 on --secondary, the lightest dark surface — WCAG AA  */
 
   --border: oklch(20% 0.01 160);
   --border-strong: oklch(27% 0.008 160);

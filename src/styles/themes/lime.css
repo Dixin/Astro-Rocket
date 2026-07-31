@@ -145,7 +145,7 @@ html.dark[data-theme="lime"] {
   --foreground: oklch(91% 0.010 130);          /* lime-tinted near-white — 15:1 on dark bg, WCAG AAA */
   --foreground-secondary: oklch(82% 0.012 130);
   --foreground-muted: oklch(68% 0.010 130);
-  --foreground-subtle: oklch(58% 0.008 130);   /*  ~4.8:1 on bg — WCAG AA  */
+  --foreground-subtle: oklch(62% 0.008 130);   /*  4.9:1 on --secondary, the lightest dark surface — WCAG AA  */
 
   --border: oklch(20% 0.012 130);
   --border-strong: oklch(27% 0.010 130);

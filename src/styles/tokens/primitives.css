@@ -89,14 +89,15 @@ html.dark {
      the `-foreground` text meant to sit on them did not, so a Badge rendered
      dark-on-dark: success came out at 1.8:1, the others near 2:1. In dark mode
      the `-strong` colour is already the readable version of each hue, so it
-     serves here too — 7.7:1 to 11.8:1 on the matching tint. */
+     serves here too — 7.7:1 to 11.8:1 on the matching tint.
+
+     --info-light gets its dark variant here rather than in the theme files,
+     because unlike the other three it is only ever defined in this file. It
+     was the reason an info Badge stayed a pale chip in dark mode while the
+     other three went dark. */
+  --info-light: oklch(18% 0.05 260);
   --success-foreground: var(--success-strong);
   --warning-foreground: var(--warning-strong);
   --error-foreground: var(--error-strong);
-
-  /* --info-foreground deliberately stays as it is. The themes give
-     --success-light, --warning-light and --error-light a dark variant but
-     never --info-light, so the info tint is still near-white here and its
-     text has to stay dark. Flipping it put light text on a light chip at
-     1.7:1. The odd one out is --info-light, not this. */
+  --info-foreground: var(--info-strong); /* 9.2:1 on the tint above */
 }
