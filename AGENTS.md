@@ -11,7 +11,7 @@ make changes that fit rather than changes that merely work.
 src/config/          Site settings — start here for almost any request
 src/content/         The site's content (Markdown/MDX/JSON collections)
 src/i18n/            All user-facing interface text, per language
-src/components/      57 components, grouped by purpose
+src/components/      44 components, grouped by purpose
 src/pages/           Routes; a file here is a URL
 src/layouts/         Page shells the routes render into
 src/lib/             Helpers for blog, projects, tags, SEO, themes
@@ -22,6 +22,13 @@ component-registry.json   Machine-readable catalogue of every component
 **Read `component-registry.json` first.** It lists every component with its
 category, purpose and props. It is the fastest way to find out whether the
 thing you are about to build already exists — it usually does.
+
+It is also the only source for the component count. Every number in the
+README and in the site copy is derived from it, and
+`src/__tests__/component-count.test.ts` fails if they drift apart. The figure
+used to be 57, taken from another theme's documentation; nothing checked it,
+so it survived in six places while the showcase page's own badge said 50+.
+Do not write a component count you have not counted from this file.
 
 ## Where to make a change
 
