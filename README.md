@@ -358,7 +358,7 @@ PUBLIC_GTM_ID=GTM-XXXXXXX
 
 # Optional - Umami (privacy-friendly, cookieless analytics)
 PUBLIC_UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-# PUBLIC_UMAMI_SRC=https://cloud.umami.is/script.js   # override to self-host
+# PUBLIC_UMAMI_SRC=https://cloud.umami.is/script.js   # set when your snippet's src differs
 
 # Optional - Contact form and newsletter (server-side only)
 RESEND_API_KEY=your-resend-api-key
@@ -369,7 +369,11 @@ GOOGLE_SITE_VERIFICATION=your-code
 BING_SITE_VERIFICATION=your-code
 ```
 
-Astro Rocket ships with built-in support for **Google Analytics 4**, **Google Tag Manager**, and **Umami**. For Umami, set `PUBLIC_UMAMI_WEBSITE_ID` (the UUID from your Umami dashboard) and the tracking script loads automatically — it defaults to Umami Cloud, so override `PUBLIC_UMAMI_SRC` only when you self-host. Umami is cookieless and stores no personal data, so it loads without the cookie-consent banner.
+Astro Rocket ships with built-in support for **Google Analytics 4**, **Google Tag Manager**, and **Umami**. For Umami, set `PUBLIC_UMAMI_WEBSITE_ID` (the UUID from your Umami dashboard) and the tracking script loads automatically. Umami is cookieless and stores no personal data, so it loads without the cookie-consent banner.
+
+Copy the Website ID **and** the script `src` out of the tracking snippet Umami shows you, and set `PUBLIC_UMAMI_SRC` whenever that `src` is not `https://cloud.umami.is/script.js` — which covers self-hosting and Umami Cloud's other instances alike. Set the **Domain** on the Umami website record to your bare hostname (`yoursite.com`), since Umami rejects events whose origin does not match it.
+
+Both are the same silent failure: the script loads, the page is fine, and nothing is recorded. After deploying, check the **Network** tab for `POST /api/send` returning 200 — a successful `script.js` request proves only that the file was fetched.
 
 ### Newsletter Signup
 

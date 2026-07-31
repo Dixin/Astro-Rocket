@@ -35,7 +35,7 @@ Umami lives in the same place as the other analytics providers — the theme's `
 | Variable | Required? | What it does |
 |----------|-----------|--------------|
 | `PUBLIC_UMAMI_WEBSITE_ID` | Yes (to enable) | The website ID (a UUID) from your Umami dashboard. Setting it switches Umami on. |
-| `PUBLIC_UMAMI_SRC` | No | The tracking-script URL. Defaults to Umami Cloud (`https://cloud.umami.is/script.js`). Only set this if you self-host. |
+| `PUBLIC_UMAMI_SRC` | No | The tracking-script URL. Defaults to `https://cloud.umami.is/script.js`. Set it when your snippet's `src` differs — because you self-host, or because your account is on another Umami Cloud instance. |
 
 When `PUBLIC_UMAMI_WEBSITE_ID` is set, the theme adds this to your pages automatically:
 
@@ -56,6 +56,16 @@ You have two ways to get Umami running:
 - **Umami Cloud (easiest):** sign up at [cloud.umami.is](https://cloud.umami.is), which has a free tier that's plenty for a personal site. Add your website, and Umami gives you a **Website ID** (a UUID that looks like `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`). Copy it.
 - **Self-hosted:** follow the [Umami install guide](https://umami.is/docs) to run it on your own server (Docker, a VPS, wherever you like). Add your website in your own dashboard and copy its Website ID from there.
 
+When you add the website, Umami asks for a **Domain**. Enter your bare hostname — `yoursite.com`, with no `https://`, no `www.` unless you really serve the site from there, and no trailing slash. Umami checks incoming events against this field and rejects the ones that do not match, so a small mistake here means the script loads, the page looks fine, and nothing is ever recorded.
+
+Umami then shows you a tracking snippet for that website:
+
+```html
+<script defer src="https://cloud.umami.is/script.js" data-website-id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"></script>
+```
+
+Copy both values out of it — the `data-website-id` and the `src`. Take them from your own dashboard rather than from this page: Umami Cloud runs more than one instance, including a European one, and a website created on one does not exist on the other. If your `src` is not `https://cloud.umami.is/script.js`, you will need `PUBLIC_UMAMI_SRC` in step 3 even though you are not self-hosting.
+
 ### Step 2 — Set the environment variable
 
 For **local development**, add it to the `.env` file at your project root:
@@ -72,15 +82,15 @@ For **production on Vercel**, open your project and go to **Settings → Environ
 
 That's the only variable you need for Umami Cloud. The script URL defaults to Cloud, so you can leave `PUBLIC_UMAMI_SRC` unset.
 
-### Step 3 — (Self-hosting only) point the script at your server
+### Step 3 — Point the script at the right instance
 
-If you run your own Umami instance, also set `PUBLIC_UMAMI_SRC` to your instance's script URL:
+Set `PUBLIC_UMAMI_SRC` when the `src` you copied in step 1 is anything other than `https://cloud.umami.is/script.js` — either because you self-host, or because your account is on a different Umami Cloud instance:
 
 ```bash
 PUBLIC_UMAMI_SRC=https://analytics.yourdomain.com/script.js
 ```
 
-Leave this out entirely if you're on Umami Cloud.
+Leave it out when your snippet's `src` already matches the default.
 
 ### Step 4 — Redeploy
 
@@ -93,13 +103,21 @@ Or just push any small change to your main branch — Vercel builds and deploys 
 
 ### Step 5 — Check it's working
 
-Open your live site, click around a page or two, then look at your Umami dashboard — you should see the visit appear within a few seconds (Umami reports in near real time). If you want to confirm the script itself is on the page, open your browser's developer tools, go to the **Network** tab, reload, and look for a request to `script.js`.
+Open your live site in a normal window — ad blockers stop Umami, so an incognito window with one running will show you nothing.
+
+Then open your browser's developer tools, go to the **Network** tab, type `send` in the filter box, and reload. You are looking for a `POST` to `/api/send` coming back **200** or **204**.
+
+Check that request, not just the `script.js` one. The script loads successfully even when every event it sends is being rejected, so a page that looks fine and a dashboard that stays empty is the normal shape of this going wrong. A **400** here means the events are reaching Umami and being refused — see the troubleshooting table below.
+
+With a 200, open the **Realtime** view in Umami and you should see yourself within a few seconds.
 
 ## Troubleshooting
 
 | Problem | Likely cause |
 |---------|-------------|
 | No data in the dashboard | The env variable wasn't set, or the site wasn't redeployed after adding it. Re-run the deployment. |
+| `/api/send` returns 400 | Umami received the events and refused them. Either the **Domain** on the website record does not match the site sending them, or the Website ID belongs to a different Umami instance than the script URL. Check the Domain field first. |
+| Script loads, dashboard stays empty | Same cause as the row above. A loaded `script.js` only proves the file was fetched, not that anything was accepted. Check `/api/send` in the Network tab. |
 | Still nothing after a redeploy | Double-check the Website ID is exactly the UUID from your dashboard, with no extra spaces. |
 | Works locally but not in production | The variable was added to `.env` but not to Vercel's environment variables (or only to Preview, not Production). |
 | Self-hosted instance shows no hits | `PUBLIC_UMAMI_SRC` is missing or points at the wrong URL — it must be your instance's `script.js`. |
