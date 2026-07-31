@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import siteConfig from '@/config/site.config';
-import { buildFaviconSvg } from '@/lib/favicon';
+import { buildFaviconSvg } from '@/lib/favicon/svg';
 
 // Pre-render at build time so the favicon is a plain static file in the
 // output — no serverless function needed, no runtime overhead.
