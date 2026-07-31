@@ -21,9 +21,15 @@ interface Props {
    * `/projects/...`; other locales are prefixed (`/<locale>/projects/...`).
    */
   locale?: string;
+  /**
+   * Add the scroll-reveal trigger. Turn it off where a parent already reveals
+   * the whole section — nesting one reveal inside another leaves the cards
+   * waiting on a trigger that has already fired.
+   */
+  reveal?: boolean;
 }
 
-const { project, index = 0, locale = defaultLocale } = Astro.props;
+const { project, index = 0, locale = defaultLocale, reveal = true } = Astro.props;
 const { data } = project;
 ---
 
@@ -33,8 +39,8 @@ const { data } = project;
   padding="none"
   href={data.placeholder ? undefined : getProjectUrl(project.id, locale)}
   class="group flex flex-col"
-  data-reveal
-  data-reveal-delay={index % 2 || undefined}
+  data-reveal={reveal || undefined}
+  data-reveal-delay={reveal ? index % 2 || undefined : undefined}
 >
   <!--
     Bottom padding is larger than the rest on purpose. Above the icon sits the

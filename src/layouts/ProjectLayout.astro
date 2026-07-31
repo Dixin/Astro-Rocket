@@ -9,7 +9,7 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs.astro';
 import ProjectHero from '@/components/projects/ProjectHero.astro';
 import TableOfContents from '@/components/blog/TableOfContents.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
-import Card from '@/components/ui/data-display/Card/Card.astro';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
@@ -18,7 +18,6 @@ import { getDefaultOgPath, getProjectOgPath, isShareableImage } from '@/lib/og/s
 import { t, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
 import {
   getProjectSlug,
-  getProjectUrl,
   getProjectsBaseUrl,
   getProjectTranslations,
 } from '@/lib/projects';
@@ -216,42 +215,11 @@ const languageAlternates = Object.fromEntries(
         <div class="mx-auto max-w-7xl px-6">
           <h2 class="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">{t('projects.moreProjects', locale)}</h2>
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((project) => (
-              <Card
-                variant="elevated"
-                hover
-                padding="none"
-                href={project.data.placeholder ? undefined : getProjectUrl(project.id, locale)}
-                class="group flex flex-col"
-              >
-                <div class="flex flex-1 flex-col p-6">
-                  <div class="mb-3 flex items-start justify-between gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                      <Icon name="layers" size="sm" />
-                    </div>
-                    <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0 ml-auto" />
-                  </div>
-                  <div class="mb-2 flex items-baseline gap-2">
-                    <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
-                    {project.data.year && (
-                      <span class="text-xs text-foreground-muted">{project.data.year}</span>
-                    )}
-                  </div>
-                  <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1 line-clamp-3">{project.data.description}</p>
-                  {project.data.tags && project.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5">
-                      {project.data.tags.map((tag, i) => (
-                        <>
-                          {i === 3 && <div class="basis-full" aria-hidden="true"></div>}
-                          <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
-                            #{tag}
-                          </span>
-                        </>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </Card>
+            {/* The same card the projects index, the paginated pages, the tag
+                archives and the homepage use. `reveal={false}` because the
+                section above already carries the trigger. */}
+            {related.map((project, i) => (
+              <ProjectCard project={project} index={i} locale={locale} reveal={false} />
             ))}
           </div>
         </div>
