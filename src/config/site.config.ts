@@ -1,6 +1,7 @@
 import { SITE_URL, GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION } from 'astro:env/server';
 import i18nConfig, { type I18nConfig } from './i18n.config';
 import { SITE_URL_FALLBACK } from './site-url';
+import { SITE_NAME, THEME_COLOR } from './branding';
 
 export { i18nConfig };
 export type { I18nConfig };
@@ -259,7 +260,9 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Astro Rocket',
+  // Read from ./branding so the build-time favicon generator, which cannot
+  // import this file, uses the same values. Change them there.
+  name: SITE_NAME,
   description:
     'A free, fast Astro 7 starter theme to build anything on: 57+ designed components, 12 colour themes, dark mode, and built-in i18n.',
   tagline: 'Astro 7 starter theme to build anything on',
@@ -376,7 +379,7 @@ const siteConfig: SiteConfig = {
       svg: '/favicon.svg',
     },
     colors: {
-      themeColor: '#0083fe',
+      themeColor: THEME_COLOR,
       backgroundColor: '#ffffff',
     },
   },

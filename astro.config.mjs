@@ -1,4 +1,5 @@
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { writeFile, mkdir, readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
@@ -11,6 +12,7 @@ import netlify from '@astrojs/netlify';
 import cloudflare from '@astrojs/cloudflare';
 import i18nConfig from './src/config/i18n.config.ts';
 import { SITE_URL_FALLBACK } from './src/config/site-url.ts';
+import { SITE_NAME, THEME_COLOR } from './src/config/branding.ts';
 
 /**
  * Deploy-target adapter selection. Vercel is the default; set
@@ -86,6 +88,145 @@ function pagefind() {
 }
 
 /**
+ * Favicon PNG/ICO files, written after every `astro build`.
+ *
+ * These used to be prerendered endpoints under `src/pages/`. That worked on
+ * Vercel and Netlify but broke on Cloudflare: `@astrojs/cloudflare` prerenders
+ * routes inside workerd, and the renderer needs `sharp`, a native Node module
+ * that cannot load there. Every favicon route failed with
+ * `No such module "…/chunks/sharp"` and the build died — so Cloudflare users
+ * got no site at all. Reported in #600.
+ *
+ * `astro:build:done` always runs in Node, whichever adapter is active, and
+ * `dir` already points at that adapter's real output directory. So the same
+ * files land in the same place on all three targets, with no native module
+ * anywhere near a page.
+ *
+ * `favicon.svg` stays a route: it needs no native module, and keeping it as a
+ * route means `astro dev` still serves a favicon, which a build hook cannot.
+ * The SVG is also what modern browsers prefer, so dev looks right.
+ */
+function faviconAssets() {
+  const letter = SITE_NAME.charAt(0).toUpperCase();
+  const pngSizes = {
+    'favicon-32x32.png': 32,
+    'apple-touch-icon.png': 180,
+    'pwa-192x192.png': 192,
+    'pwa-512x512.png': 512,
+  };
+
+  return {
+    name: 'favicon-assets',
+    hooks: {
+      'astro:build:done': async ({ dir, logger }) => {
+        // Imported here rather than at the top of this file: a static import
+        // of the sharp-backed module makes pagefind's own dynamic import above
+        // fail with "Vite module runner has been closed" (#600).
+        const { renderFaviconPng, renderFaviconIco } = await import('./src/lib/favicon/raster.ts');
+        const out = fileURLToPath(dir);
+
+        for (const [name, size] of Object.entries(pngSizes)) {
+          await writeFile(join(out, name), await renderFaviconPng(letter, THEME_COLOR, size));
+        }
+        await writeFile(join(out, 'favicon.ico'), await renderFaviconIco(letter, THEME_COLOR));
+
+        logger.info(`wrote ${Object.keys(pngSizes).length + 1} favicon files to ${out}`);
+      },
+    },
+  };
+}
+
+/**
+ * OG share cards, drawn after every `astro build`.
+ *
+ * These used to be prerendered endpoints under `src/pages/og/`, and they hit
+ * the same wall as the favicons in #600: rasterising needs `sharp`, which
+ * cannot load in the workerd runtime the Cloudflare adapter prerenders in.
+ * Worse than the favicons, `src/lib/og.ts` also held the `getBlogOgPath`
+ * helpers that `BlogLayout` and `ProjectLayout` import — so `sharp` was
+ * reachable from every blog and project page, not just from the card routes.
+ * The library is split in two now: `og/svg.ts` is safe anywhere, `og/raster.ts`
+ * is Node-only and reached only from here.
+ *
+ * Rather than re-deriving which cards to draw from the content collections —
+ * which this file cannot read — the hook scans the built HTML for the
+ * `og:image` each page declares, and draws exactly those. Cards therefore
+ * match what the pages ask for by construction, and a page using its own cover
+ * photo silently produces no card, which is correct. Title and subtitle come
+ * from the same page's `og:title` and `og:description`.
+ */
+function ogCards() {
+  const KINDS = [
+    [/^\/og\/blog\/tag\//, 'BLOG'],
+    [/^\/og\/blog\//, 'BLOG'],
+    [/^\/og\/projects\//, 'PROJECTS'],
+  ];
+
+  async function htmlFiles(directory) {
+    const found = [];
+    for (const entry of await readdir(directory, { withFileTypes: true })) {
+      const path = join(directory, entry.name);
+      if (entry.isDirectory()) found.push(...(await htmlFiles(path)));
+      else if (entry.name.endsWith('.html')) found.push(path);
+    }
+    return found;
+  }
+
+  const meta = (html, property) => {
+    const m = html.match(new RegExp(`<meta property="${property}" content="([^"]*)"`));
+    return m ? m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+                   .replace(/&lt;/g, '<').replace(/&gt;/g, '>') : undefined;
+  };
+
+  return {
+    name: 'og-cards',
+    hooks: {
+      'astro:build:done': async ({ dir, logger }) => {
+        const { renderOgPng } = await import('./src/lib/og/raster.ts');
+        const out = fileURLToPath(dir);
+        const siteUrl = process.env.SITE_URL || SITE_URL_FALLBACK;
+        const domain = new URL(siteUrl).host;
+
+        // Collect one entry per distinct card path; several pages can point at
+        // the same card (the default one, most obviously).
+        const wanted = new Map();
+        for (const file of await htmlFiles(out)) {
+          const html = await readFile(file, 'utf8');
+          const image = meta(html, 'og:image');
+          if (!image) continue;
+          let path;
+          try {
+            path = new URL(image, siteUrl).pathname;
+          } catch {
+            continue;
+          }
+          if (!path.startsWith('/og/') || !path.endsWith('.png') || wanted.has(path)) continue;
+          wanted.set(path, {
+            title: meta(html, 'og:title') || SITE_NAME,
+            subtitle: meta(html, 'og:description'),
+            kind: KINDS.find(([re]) => re.test(path))?.[1],
+          });
+        }
+
+        for (const [path, card] of wanted) {
+          const png = await renderOgPng({
+            ...card,
+            brandColor: THEME_COLOR,
+            domain,
+            siteName: SITE_NAME,
+          });
+          const target = join(out, path.replace(/^\//, ''));
+          await mkdir(dirname(target), { recursive: true });
+          await writeFile(target, png);
+        }
+
+        logger.info(`drew ${wanted.size} OG cards into ${out}`);
+      },
+    },
+  };
+}
+
+/**
  * Native Astro i18n is only wired up when the user opts in *and* has
  * more than one locale configured. With i18n off (the default) this
  * block is undefined and the build emits the exact same routes as
@@ -155,6 +296,8 @@ export default defineConfig({
     icon(),
     siteUrlCheck(),
     pagefind(),
+    faviconAssets(),
+    ogCards(),
   ],
 
   vite: {

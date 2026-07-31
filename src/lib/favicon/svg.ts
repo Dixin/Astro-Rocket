@@ -1,25 +1,23 @@
 /**
- * Favicon generation.
+ * Favicon generation — the SVG half.
  *
  * The brand mark is the first letter of the site name on a rounded square.
  * Historically it was emitted as an SVG `<text>` element relying on the
  * "Outfit" web font. Search-engine crawlers (and other renderers) do not load
  * external fonts, so the letter never drew and Google fell back to its default
- * globe icon in the SERP.
+ * globe icon in the SERP. The letter is outlined to a real vector `<path>`
+ * against an embedded Outfit subset instead, so the SVG is self-contained.
  *
- * This module instead outlines the letter to a real vector `<path>` at build
- * time using an embedded Outfit subset, so the SVG is fully self-contained
- * (no font needed to render it). The same outlined SVG is rasterised with
- * `sharp` to produce PNG and ICO fallbacks for crawlers, Safari, social
- * previews and legacy browsers. Every asset derives from one source render, so
- * the logo is identical everywhere.
+ * This file deliberately imports nothing native. `sharp` lives in `raster.ts`
+ * and must stay there: the Cloudflare adapter prerenders routes inside
+ * workerd, where a native module cannot load, so anything reachable from a
+ * page or a prerendered endpoint has to be free of it. Keeping the two halves
+ * apart — with no barrel re-exporting both — is what stops that coming back.
  */
 // fontkit ships no type declarations; declare the minimal surface we use.
 // @ts-expect-error - no types published for fontkit
 import * as fontkit from 'fontkit';
-import sharp from 'sharp';
-import pngToIco from 'png-to-ico';
-import { OUTFIT_700_SUBSET_BASE64 } from './font-data';
+import { OUTFIT_700_SUBSET_BASE64 } from './font-data.ts';
 
 interface Glyph {
   bbox: { minX: number; minY: number; maxX: number; maxY: number };
@@ -95,27 +93,4 @@ function wrapSvg(size: number, inner: string): string {
     `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" ` +
     `xmlns="http://www.w3.org/2000/svg">${inner}</svg>`
   );
-}
-
-/** Rasterise the favicon SVG to a square PNG buffer of the given pixel size. */
-export async function renderFaviconPng(
-  letter: string,
-  bgColor: string,
-  size: number,
-  fgColor = '#ffffff'
-): Promise<Buffer> {
-  const svg = buildFaviconSvg(letter, bgColor, fgColor, size);
-  return sharp(Buffer.from(svg)).resize(size, size).png().toBuffer();
-}
-
-/** Build a multi-size favicon.ico (16/32/48) from the outlined SVG. */
-export async function renderFaviconIco(
-  letter: string,
-  bgColor: string,
-  fgColor = '#ffffff'
-): Promise<Buffer> {
-  const pngs = await Promise.all(
-    [16, 32, 48].map((s) => renderFaviconPng(letter, bgColor, s, fgColor))
-  );
-  return pngToIco(pngs);
 }

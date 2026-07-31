@@ -1,24 +1,28 @@
 /**
- * Build-time OG (Open Graph) image generator.
+ * OG (Open Graph) card drawing — the SVG half.
  *
- * Draws a 1200x630 card — brand-color background, corner marks, title,
- * wordmark — and rasterises it to PNG at build time.
+ * Draws a 1200x630 card: brand-colour background, corner marks, title,
+ * wordmark. Rasterising it to PNG lives in `raster.ts`.
  *
- * The PNG step is not cosmetic. `og:image` has to point at a raster file:
- * Facebook, X, LinkedIn, WhatsApp and Slack all document JPEG/PNG/GIF/WEBP,
- * and none of them render SVG, so an SVG `og:image` shows up as a blank or
- * missing preview. The blog's cover SVGs are worse still as a share image —
- * they take their colours from CSS custom properties (`var(--brand-500)`),
- * which only exist on the page, so fetched on their own every fill resolves
- * to nothing and the file is fully transparent.
+ * `og:image` has to point at a raster file: Facebook, X, LinkedIn, WhatsApp
+ * and Slack all document JPEG/PNG/GIF/WEBP and none of them render SVG, so an
+ * SVG `og:image` shows up as a blank or missing preview. The blog's cover SVGs
+ * are worse still — they take their colours from CSS custom properties, which
+ * only exist on the page, so fetched on their own every fill resolves to
+ * nothing and the file is fully transparent.
  *
- * `sharp` does the rasterising and is already a dependency — Astro's image
- * service and the favicon routes in `src/lib/favicon` both use it — so this
- * adds nothing to install. Cards are generated once per build and only ever
- * fetched by social crawlers, so pages carry no cost.
+ * This file imports nothing native and nothing from `astro:*`, so it is safe
+ * in any runtime and can be loaded from `astro.config.mjs`. `sharp` lives in
+ * `raster.ts` and must stay there: the Cloudflare adapter prerenders inside
+ * workerd, where a native module cannot load. The layouts import the path
+ * helpers below, so if those pulled in `sharp` every page would break on
+ * Cloudflare — which is exactly what happened before #600.
+ *
+ * The brand colour, domain and site name are parameters rather than defaults
+ * read from `site.config.ts`: that file reads `astro:env/server`, which does
+ * not exist at config-load time, and the build hook that draws these cards
+ * runs there.
  */
-import sharp from 'sharp';
-import siteConfig from '@/config/site.config';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -110,18 +114,21 @@ export interface OgImageOptions {
   kind?: string;
   /** Optional subtitle line under the title (truncated to one line). */
   subtitle?: string;
-  /** Hex brand color. Defaults to `siteConfig.branding.colors.themeColor`. */
-  brandColor?: string;
-  /** Domain shown bottom-right. Defaults to the host of `siteConfig.url`. */
-  domain?: string;
+  /** Hex brand colour filling the card. */
+  brandColor: string;
+  /** Domain shown bottom-right. */
+  domain: string;
+  /** Site name drawn as the wordmark, omitted when it equals the title. */
+  siteName: string;
 }
 
 export function renderOgSvg({
   title,
   kind,
   subtitle,
-  brandColor = siteConfig.branding.colors.themeColor,
-  domain = safeHost(siteConfig.url),
+  brandColor,
+  domain,
+  siteName,
 }: OgImageOptions): string {
   const { lines, fontSize } = layoutTitle(title);
   const lineHeight = Math.round(fontSize * 1.21);
@@ -148,9 +155,9 @@ export function renderOgSvg({
   // The site-wide card puts the site name in the title, where the wordmark
   // would repeat it back a second time.
   const wordmarkEl =
-    title.trim() === siteConfig.name.trim()
+    title.trim() === siteName.trim()
       ? ''
-      : `<text x="80" y="580" font-size="28" fill="#ffffff" fill-opacity="0.92" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700">${escapeXml(siteConfig.name)}</text>`;
+      : `<text x="80" y="580" font-size="28" fill="#ffffff" fill-opacity="0.92" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700">${escapeXml(siteName)}</text>`;
 
   return `<svg width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -178,64 +185,6 @@ export function renderOgSvg({
 </svg>`;
 }
 
-/**
- * Rasterise the card to an opaque PNG buffer.
- *
- * `flatten` guarantees the background colour survives even if a fill is ever
- * lost — a transparent share image is the one failure mode this whole module
- * exists to prevent.
- */
-export async function renderOgPng(options: OgImageOptions): Promise<Buffer> {
-  const brandColor = options.brandColor ?? siteConfig.branding.colors.themeColor;
-  await warnIfTextCannotRender();
-
-  const svg = renderOgSvg({ ...options, brandColor });
-  return sharp(Buffer.from(svg))
-    .resize(WIDTH, HEIGHT)
-    .flatten({ background: brandColor })
-    .png({ compressionLevel: 9 })
-    .toBuffer();
-}
-
-/**
- * Warn once per build if the machine has no fonts installed.
- *
- * The card's type is drawn by sharp through the system font stack, so a build
- * environment with an empty font set — a bare `node:*-slim` container is the
- * usual case — produces a card with its background and rules but no words, and
- * does so silently. Hosted builders (Vercel, Netlify, Cloudflare Pages, GitHub
- * Actions) and every desktop OS ship fonts, so this only ever fires on setups
- * that need telling.
- */
-let fontProbe: Promise<boolean> | null = null;
-let fontWarningShown = false;
-async function warnIfTextCannotRender(): Promise<void> {
-  fontProbe ??= probeTextRendering();
-  if (!(await fontProbe) && !fontWarningShown) {
-    fontWarningShown = true;
-    console.warn(
-      '[og] No usable system font found, so generated OG images will have a ' +
-        'background but no text. Install fontconfig and a font family (for ' +
-        'example fonts-dejavu) on the machine running `astro build`.'
-    );
-  }
-}
-
-/** Draw white text on black and look for a lit pixel. */
-async function probeTextRendering(): Promise<boolean> {
-  const probe =
-    '<svg width="64" height="32" xmlns="http://www.w3.org/2000/svg">' +
-    '<rect width="64" height="32" fill="#000000"/>' +
-    '<text x="4" y="25" font-size="26" fill="#ffffff" ' +
-    'font-family="system-ui, sans-serif" font-weight="700">Hg</text></svg>';
-  try {
-    const pixels = await sharp(Buffer.from(probe)).flatten().greyscale().raw().toBuffer();
-    return pixels.some((value) => value > 40);
-  } catch {
-    return true; // Never let the probe itself break a build.
-  }
-}
-
 /** Shorten to `max` characters, breaking at a word boundary where there is one. */
 function truncate(text: string, max: number): string {
   if (text.length <= max) return text;
@@ -245,13 +194,6 @@ function truncate(text: string, max: number): string {
   return kept.replace(/[\s.,;:—-]+$/, '') + '…';
 }
 
-function safeHost(url: string): string {
-  try {
-    return new URL(url).host;
-  } catch {
-    return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-  }
-}
 
 /** Path (relative to site root) for a blog post's generated OG image. */
 export function getBlogOgPath(slug: string): string {

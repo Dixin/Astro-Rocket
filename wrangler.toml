@@ -10,6 +10,17 @@
 name = "astro-rocket"
 compatibility_date = "2026-01-31"
 
-# Astro's Workers runtime shim (and some dependencies) use Node built-ins, so
-# the on-demand routes — the contact form and newsletter — need nodejs_compat.
-compatibility_flags = ["nodejs_compat"]
+# nodejs_compat is deliberately NOT set here.
+#
+# The adapter prerenders every static route inside workerd during the build,
+# and with this flag on that prerender emits the string "[object Object]" for
+# every page instead of its HTML. The build still reports success, so the
+# failure is silent. Bisected to this one line: with `name` and
+# `compatibility_date` alone all 89 pages render correctly.
+#
+# Neither on-demand route imports a `node:` builtin — contact.ts and
+# newsletter.ts use astro/zod and the Resend SDK, both of which target edge
+# runtimes — so the flag looks unnecessary. That is reasoned from the imports
+# and a clean build, not from a deployed Worker: if the forms fail in
+# production, set the flag on the Worker itself (Cloudflare dashboard →
+# Settings → Runtime) rather than here, so it never reaches the build.
