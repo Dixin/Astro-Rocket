@@ -2,25 +2,16 @@
 /**
  * FollowAlong — the subscribe block that closes every blog surface.
  *
- * This markup used to live inline in three files as five separate copies:
- * `BlogIndexView` and `BlogLayout` each carried a mobile CTA and a desktop
- * LetterGlitch band, and `BlogPageView` carried the CTA alone. They drifted,
- * which is why `/blog/page/2` has no glitch band and no newsletter form while
- * the blog index has both, and why `/blog/tag/…` has no block at all.
+ * The markup used to live inline in three files as five separate copies, and
+ * they had drifted: `/blog/page/2` offered no desktop band and no newsletter
+ * form, and `/blog/tag/…` offered nothing at all. Which subscribe options a
+ * reader saw depended on how they had arrived at the blog.
  *
- * The differences that survive are wrapper-level and are props here; the pill
- * list is built once and rendered twice, differing only in its class string
- * because the band sits on a dark backdrop.
- *
- * Two inconsistencies are preserved deliberately rather than fixed, so this
- * component is a like-for-like replacement that renders byte-identical output:
- *
- * - `BlogPageView` passes `glitchBand={false}` and `newsletter={false}`. The
- *   second has no visible effect while `siteConfig.newsletter.enabled` is off,
- *   but turning that on would give the blog index a signup form and page two
- *   none.
- * - Tag pages still render nothing. Adding it there is a change of behaviour,
- *   not a refactor.
+ * One copy now serves all four surfaces — the index, a single post, the
+ * paginated pages and the tag pages. The differences that survive are
+ * wrapper-level and are props here; the pill list is built once and rendered
+ * twice, differing only in its class string because the band sits on a dark
+ * backdrop.
  */
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';

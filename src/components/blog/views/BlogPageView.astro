@@ -108,5 +108,9 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
     </div>
   </section>
 
-  <FollowAlong locale={locale} glitchBand={false} newsletter={false} />
+  <FollowAlong
+    locale={locale}
+    ctaClass="glitch:hidden"
+    bandSectionClass="hidden glitch:block relative z-10 py-[var(--space-section-md)] bg-background"
+  />
 </PageLayout>
