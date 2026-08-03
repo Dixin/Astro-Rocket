@@ -51,6 +51,17 @@ export interface NavItem {
   locales?: Record<string, NavItemOverride>;
 }
 
+/**
+ * A footer column declared in config. `titleKey` is looked up in the locale
+ * files when present, so a translated site gets a translated heading;
+ * `title` is the fallback for a column that has no key.
+ */
+export interface FooterLinkGroupConfig {
+  titleKey?: string;
+  title: string;
+  links: NavItem[];
+}
+
 export interface LegalLink {
   label: string;
   href: string;
@@ -88,6 +99,37 @@ export const footerNavItems: NavItem[] = [
 ];
 
 export const legalLinks: LegalLink[] = [];
+
+/**
+ * Extra columns for the footer's `columns` layout.
+ *
+ * Leave this empty and the footer builds its own from the site: a Site column
+ * from `footerNavItems`, a Topics column from the most-used blog tags, and a
+ * Projects column from the visible projects. Each is dropped when it has
+ * nothing in it, so a new site shows one column and fills out as it grows.
+ *
+ * Anything here is *added* to those, which is what this is for: a column the
+ * site has that cannot be derived — a support column, an offices column, a
+ * second product. To replace the derived set entirely rather than add to it,
+ * pass `linkGroups` to `<Footer>` directly.
+ *
+ * Every link is real on the demo. A footer that pads itself out with links to
+ * somewhere else is worse than a short one, and worse still on a theme people
+ * fork: they inherit whatever is here.
+ */
+export const footerLinkGroups: FooterLinkGroupConfig[] = [
+  {
+    titleKey: 'footer.groups.questions',
+    title: 'Got questions?',
+    links: [
+      { label: 'Email', href: 'mailto:hello@hansmartens.dev' },
+      { label: 'Astro Rocket', href: 'https://hansmartens.dev/astro-rocket', external: true },
+      { label: 'GitHub', href: 'https://github.com/hansmartensdev/Astro-Rocket', external: true },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hansmartensdev', external: true },
+      { label: 'Bluesky', href: 'https://bsky.app/profile/hansmartensdev.bsky.social', external: true },
+    ],
+  },
+];
 
 /**
  * Hrefs that must never be locale-prefixed: absolute/protocol-relative URLs,

@@ -28,6 +28,9 @@ import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import siteConfig from '@/config/site.config';
 import { t, tData, getLocaleFromPath } from '@/i18n';
+import { getDerivedFooterGroups } from '@/lib/footer';
+import { resolveSocialLinks } from '@/lib/utils';
+import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 
 export interface NavItem {
   label: string;
@@ -54,7 +57,12 @@ export interface LegalLink {
 interface Props extends HTMLAttributes<'footer'> {
   /** Layout style */
   layout?: 'simple' | 'columns' | 'minimal' | 'stacked' | 'centered';
-  /** Number of columns (only for columns layout) */
+  /**
+   * Number of columns (only for columns layout). Left unset the grid follows
+   * the content: the brand column plus however many link groups there are,
+   * clamped to the 2-4 the grid supports. Pass it to take control — the
+   * components page does, to show fixed arrangements.
+   */
   columns?: 2 | 3 | 4;
   /** Background variant */
   background?: 'default' | 'secondary' | 'invert';
@@ -85,7 +93,7 @@ interface Props extends HTMLAttributes<'footer'> {
 
 const {
   layout = 'simple',
-  columns = 3,
+  columns,
   background = 'default',
   nav,
   linkGroups = [],
@@ -126,6 +134,48 @@ const allNavItems: NavItem[] = navItems;
 
 // Resolved legal links: prop wins, otherwise fall back to nav.config.ts
 const resolvedLegalLinks: LegalLink[] = legalLinks ?? getLegalLinks(locale);
+
+/**
+ * Columns with nothing in them was how this layout used to render for anyone
+ * who found it: `linkGroups` defaulted to `[]`, so the grid held a logo and
+ * empty space. A caller that passes groups still wins; one that passes none
+ * gets groups derived from the site's own nav, tags and projects.
+ */
+const resolvedLinkGroups: FooterLinkGroup[] =
+  linkGroups.length > 0 ? linkGroups : layout === 'columns' ? await getDerivedFooterGroups(locale) : [];
+
+/**
+ * The signup block takes the wide first column when the site offers a
+ * newsletter. The form knows whether it has keys and says so itself, so this
+ * only asks whether a newsletter is wanted at all.
+ */
+const showFooterNewsletter = layout === 'columns' && !!siteConfig.newsletter?.enabled;
+
+/**
+ * An explicit `columns` wins. Without one the grid counts what is actually
+ * there — the brand column plus the link groups — so a site with two groups
+ * does not leave a third of the row empty, and one with four does not squeeze
+ * them into three.
+ */
+const resolvedColumns: 2 | 3 | 4 =
+  columns ??
+  (Math.min(4, Math.max(2, (hideLogo ? 0 : 1) + resolvedLinkGroups.length)) as 2 | 3 | 4);
+
+/**
+ * The `socialLinks` prop defaults to an empty array and no layout has ever
+ * passed it, so the social row never rendered anywhere — the markup was there
+ * and unreachable. It falls back to the site's own `socialLinks` now, which is
+ * where they are already configured and where every other component reads them
+ * from. Passing the prop still overrides.
+ */
+const resolvedSocialLinks: SocialLink[] =
+  socialLinks.length > 0
+    ? socialLinks
+    : resolveSocialLinks(siteConfig.socialLinks).map((link) => ({
+        platform: link.icon,
+        href: link.href,
+        label: link.label,
+      }));
 
 // Copyright resolution: an explicit `copyright` prop wins; otherwise every
 // locale uses the localized `footer.copyright` string (supports {year} and
@@ -279,12 +329,12 @@ function getSocialIcon(platform: string): string {
         </nav>
 
         {/* Social Links */}
-        {showSocial && socialLinks.length > 0 && (
+        {showSocial && resolvedSocialLinks.length > 0 && (
           hasSocialSlot ? (
             <slot name="social" />
           ) : (
             <div class="flex items-center gap-[var(--space-stack-md)]">
-              {socialLinks.map((social) => (
+              {resolvedSocialLinks.map((social) => (
                 <a
                   href={social.href}
                   class="transition-colors text-foreground-muted hover:text-foreground"
@@ -309,7 +359,7 @@ function getSocialIcon(platform: string): string {
 
     {layout === 'columns' && (
       <>
-        <div class={footerColumnGridVariants({ columns })}>
+        <div class={footerColumnGridVariants({ columns: resolvedColumns })}>
           {/* Logo Column */}
           {!hideLogo && (
             <div class="space-y-[var(--space-stack-md)]">
@@ -328,20 +378,9 @@ function getSocialIcon(platform: string): string {
                   {hasTaglineSlot ? <slot name="tagline" /> : tagline}
                 </p>
               )}
-              {/* Social Links in columns layout */}
-              {showSocial && socialLinks.length > 0 && (
-                <div class="flex items-center gap-[var(--space-stack-md)] pt-2">
-                  {socialLinks.map((social) => (
-                    <a
-                      href={social.href}
-                      class="transition-colors text-foreground-muted hover:text-foreground"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label || t('footer.followOn', locale, { platform: social.platform })}
-                    >
-                      <Icon name={getSocialIcon(social.platform)} size="md" />
-                    </a>
-                  ))}
+              {showFooterNewsletter && !hasLogoSlot && (
+                <div class="max-w-xs pt-2">
+                  <NewsletterForm layout="stacked" size="sm" description={t('newsletter.description', locale)} />
                 </div>
               )}
             </div>
@@ -351,7 +390,7 @@ function getSocialIcon(platform: string): string {
           {hasColumnsSlot ? (
             <slot name="columns" />
           ) : (
-            linkGroups.map((group) => (
+            resolvedLinkGroups.map((group) => (
               <div class="space-y-[var(--space-stack-md)]">
                 <h3 class="font-semibold text-sm text-foreground">
                   {group.title}
@@ -385,18 +424,30 @@ function getSocialIcon(platform: string): string {
                 {showCopyright && (
                   <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
                 )}
-                {resolvedLegalLinks.length > 0 && (
-                  <div class="flex items-center gap-[var(--space-inline-lg)]">
-                    {resolvedLegalLinks.map((link) => (
-                      <a
-                        href={link.href}
-                        class="text-sm transition-colors text-foreground-muted hover:text-foreground"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
+                <div class="flex items-center gap-[var(--space-inline-lg)]">
+                  {resolvedLegalLinks.map((link) => (
+                    <a
+                      href={link.href}
+                      class="text-sm transition-colors text-foreground-muted hover:text-foreground"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                  {/* The brand column carries the signup block in this layout,
+                      so the social row sits down here instead — opposite the
+                      copyright, which is where a reader looks for it. */}
+                  {showSocial && resolvedSocialLinks.map((social) => (
+                    <a
+                      href={social.href}
+                      class="transition-colors text-foreground-muted hover:text-foreground"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label || t('footer.followOn', locale, { platform: social.platform })}
+                    >
+                      <Icon name={getSocialIcon(social.platform)} size="md" />
+                    </a>
+                  ))}
+                </div>
               </>
             )}
           </div>
@@ -450,9 +501,9 @@ function getSocialIcon(platform: string): string {
         </nav>
 
         {/* Social Links */}
-        {showSocial && socialLinks.length > 0 && (
+        {showSocial && resolvedSocialLinks.length > 0 && (
           <div class="flex items-center gap-[var(--space-stack-md)]">
-            {socialLinks.map((social) => (
+            {resolvedSocialLinks.map((social) => (
               <a
                 href={social.href}
                 class="transition-colors text-foreground-muted hover:text-foreground"
