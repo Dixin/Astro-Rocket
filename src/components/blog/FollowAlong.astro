@@ -18,6 +18,7 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 import { resolveSocialLinks } from '@/lib/utils';
+import { getRssUrl } from '@/lib/blog';
 import siteConfig from '@/config/site.config';
 import { t } from '@/i18n';
 
@@ -53,7 +54,7 @@ const showNewsletter = newsletter && !!siteConfig.newsletter?.enabled;
  * new tab; the feed and the mailto stay in place.
  */
 const pills = [
-  { href: '/rss.xml', icon: 'rss', label: t('blog.rssFeed', locale), external: false },
+  { href: getRssUrl(locale), icon: 'rss', label: t('blog.rssFeed', locale), external: false },
   ...socialLinks.map((link) => ({
     href: link.href,
     icon: link.icon,
