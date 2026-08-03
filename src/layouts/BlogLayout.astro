@@ -17,7 +17,7 @@ import { getBlogOgPath, getDefaultOgPath, isShareableImage } from '@/lib/og/svg'
 import { t, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
 import { getPostSlug, getBlogBaseUrl } from '@/lib/blog';
 import { getPostTranslations } from '@/lib/post-links';
-import FollowAlong from '@/components/blog/FollowAlong.astro';
+import BlogCta from '@/components/blog/BlogCta.astro';
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 
@@ -281,8 +281,8 @@ const languageAlternates = Object.fromEntries(
     </div>
   )}
 
-  <!-- Follow Along -->
-  <FollowAlong
+  <!-- Closing CTA -->
+  <BlogCta
     locale={locale}
     ctaClass="glitch:hidden bg-background-secondary"
     bandSectionClass="hidden glitch:block relative z-10 py-[var(--space-section-md)] bg-background-secondary"
@@ -290,5 +290,5 @@ const languageAlternates = Object.fromEntries(
   />
   </div>
 
-  <Footer slot="footer" layout="centered" background="default" maxWidth="7xl" />
+  <Footer slot="footer" layout="columns" background="default" maxWidth="7xl" />
 </BaseLayout>

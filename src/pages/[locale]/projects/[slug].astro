@@ -1,7 +1,7 @@
 ---
 import ProjectLayout from '@/layouts/ProjectLayout.astro';
 import { getCollection, render } from 'astro:content';
-import { getProjectSlug, getSecondaryLocales, getVisibleProjects } from '@/lib/projects';
+import { getProjectSlug, getSecondaryLocales, getVisibleProjects, getRoutableProjects } from '@/lib/projects';
 
 // Locale-prefixed project detail pages (`/<locale>/projects/<slug>`). One page
 // per (non-default locale × visible project in that locale). Emits nothing when
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
   for (const locale of getSecondaryLocales()) {
     const visibleProjects = await getVisibleProjects(locale);
-    const routableProjects = visibleProjects.filter((p) => !p.data.placeholder);
+    const routableProjects = await getRoutableProjects(locale);
 
     for (const project of routableProjects) {
       paths.push({

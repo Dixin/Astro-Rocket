@@ -15,7 +15,7 @@ import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import { Hero } from '@/components/hero';
 import { t, defaultLocale } from '@/i18n';
-import FollowAlong from '@/components/blog/FollowAlong.astro';
+import BlogCta from '@/components/blog/BlogCta.astro';
 import {
   BLOG_POSTS_PER_PAGE,
   BLOG_TAG_CLOUD_LIMIT,
@@ -145,8 +145,8 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
     </div>
   </section>
 
-  <!-- Subscribe block: RSS, socials, email, and the newsletter form -->
-  <FollowAlong
+  <!-- Closing CTA -->
+  <BlogCta
     locale={locale}
     ctaClass={['glitch:hidden', featuredPosts.length > 0 && '!bg-background-secondary'].filter(Boolean).join(' ')}
     bandSectionClass={`hidden glitch:block relative z-10 py-[var(--space-section-md)] ${featuredPosts.length > 0 ? 'bg-background-secondary' : 'bg-background'}`}

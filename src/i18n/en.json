@@ -72,10 +72,12 @@
     "tocHide": "Hide",
     "backToBlog": "Back to Blog",
     "updated": "Updated",
-    "followAlong": "Follow along",
-    "followAlongLead": "Stay in the loop — new articles, thoughts, and updates.",
     "rssFeed": "RSS Feed",
-    "emailLabel": "Email"
+    "cta": {
+      "heading": "Ready to build?",
+      "description": "Clone Astro Rocket, pick a theme, and launch your next project in minutes.",
+      "button": "Get Started"
+    }
   },
   "comments": {
     "title": "Comments",
@@ -145,6 +147,8 @@
     "subscribing": "Subscribing…",
     "success": "Thanks for subscribing!",
     "genericError": "Something went wrong",
+    "notConfigured": "Not configured yet — set RESEND_API_KEY and RESEND_AUDIENCE_ID to switch this on. Only you can see this line.",
+    "unavailable": "Signups are not available right now.",
     "error": "Subscription failed. Please try again."
   },
   "contact": {
@@ -157,6 +161,8 @@
     "sending": "Sending…",
     "success": "Message sent successfully!",
     "genericError": "Something went wrong",
+    "notConfigured": "Not configured yet — set RESEND_API_KEY to switch this on. Only you can see this line.",
+    "unavailable": "This form is not available right now.",
     "error": "Failed to send message. Please try again."
   },
   "theme": {
@@ -187,6 +193,12 @@
     "copyright": "© {year} {siteName}",
     "credit": "Theme by <a href=\"https://hansmartens.dev\" class=\"transition-colors hover:text-foreground\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens Dev</a>",
     "builtWith": "Built with Astro Rocket",
+    "groups": {
+      "site": "Site",
+      "topics": "Topics",
+      "projects": "Projects",
+      "questions": "Got questions?"
+    },
     "followOn": "Follow us on {platform}"
   },
   "pages": {

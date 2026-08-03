@@ -18,7 +18,7 @@ import { Hero } from '@/components/hero';
 import { t, defaultLocale } from '@/i18n';
 import { getBlogBaseUrl, getPostUrl, tagToSlug } from '@/lib/blog';
 import { getBlogTagOgPath } from '@/lib/og/svg';
-import FollowAlong from '@/components/blog/FollowAlong.astro';
+import BlogCta from '@/components/blog/BlogCta.astro';
 
 interface Props {
   /** Locale whose posts this archive renders. Defaults to the site default. */
@@ -110,7 +110,7 @@ const countKey = posts.length === 1 ? 'blog.tagCountOne' : 'blog.tagCountOther';
     </div>
   </section>
 
-  <FollowAlong
+  <BlogCta
     locale={locale}
     ctaClass="glitch:hidden"
     bandSectionClass="hidden glitch:block relative z-10 py-[var(--space-section-md)] bg-background"

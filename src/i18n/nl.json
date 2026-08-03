@@ -72,10 +72,12 @@
     "tocHide": "Verberg",
     "backToBlog": "Terug naar blog",
     "updated": "Bijgewerkt",
-    "followAlong": "Blijf op de hoogte",
-    "followAlongLead": "Blijf op de hoogte — nieuwe artikelen, ideeën en updates.",
     "rssFeed": "RSS-feed",
-    "emailLabel": "E-mail"
+    "cta": {
+      "heading": "Klaar om te bouwen?",
+      "description": "Kloon Astro Rocket, kies een thema en lanceer je volgende project in minuten.",
+      "button": "Aan de slag"
+    }
   },
   "comments": {
     "title": "Reacties",
@@ -145,6 +147,8 @@
     "subscribing": "Bezig met abonneren…",
     "success": "Bedankt voor je aanmelding!",
     "genericError": "Er ging iets mis",
+    "notConfigured": "Nog niet ingesteld — stel RESEND_API_KEY en RESEND_AUDIENCE_ID in om dit aan te zetten. Alleen jij ziet deze regel.",
+    "unavailable": "Aanmelden is op dit moment niet mogelijk.",
     "error": "Aanmelding mislukt. Probeer het opnieuw."
   },
   "contact": {
@@ -157,6 +161,8 @@
     "sending": "Bezig met verzenden…",
     "success": "Bericht succesvol verzonden!",
     "genericError": "Er ging iets mis",
+    "notConfigured": "Nog niet ingesteld — stel RESEND_API_KEY in om dit aan te zetten. Alleen jij ziet deze regel.",
+    "unavailable": "Dit formulier is op dit moment niet beschikbaar.",
     "error": "Verzenden mislukt. Probeer het opnieuw."
   },
   "theme": {
@@ -187,6 +193,12 @@
     "copyright": "© {year} {siteName}",
     "credit": "Thema door <a href=\"https://hansmartens.dev\" class=\"transition-colors hover:text-foreground\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens Dev</a>",
     "builtWith": "Gebouwd met Astro Rocket",
+    "groups": {
+      "site": "Site",
+      "topics": "Onderwerpen",
+      "projects": "Projecten",
+      "questions": "Vragen?"
+    },
     "followOn": "Volg ons op {platform}"
   },
   "pages": {

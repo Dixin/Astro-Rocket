@@ -284,7 +284,7 @@ const siteConfig: SiteConfig = {
   socialLinks: [
     'https://github.com/hansmartensdev',
     'https://x.com/hansmartens_dev',
-    'https://www.linkedin.com',
+    'https://www.linkedin.com/in/hansmartensdev',
     'https://bsky.app/profile/hansmartensdev.bsky.social',
   ],
   header: {
@@ -357,8 +357,9 @@ const siteConfig: SiteConfig = {
     },
   },
   newsletter: {
-    // Turn on once RESEND_API_KEY and RESEND_AUDIENCE_ID are set.
-    enabled: false,
+    // On by default: the form knows whether it has keys and says so itself,
+    // in dev only. Set RESEND_API_KEY and RESEND_AUDIENCE_ID to make it work.
+    enabled: true,
   },
   blog: {
     postsPerPage: 12,
