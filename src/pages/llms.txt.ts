@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
 import siteConfig from '@/config/site.config';
 import { defaultLocale } from '@/i18n';
-import { getPublishedPosts, getPostUrl } from '@/lib/blog';
+import { getPublishedPosts, getPostUrl, getRssUrl } from '@/lib/blog';
 import { getVisibleProjects, getProjectUrl } from '@/lib/projects';
+import { getNavItems } from '@/config/nav.config';
 
 /**
  * /llms.txt
@@ -16,14 +17,33 @@ import { getVisibleProjects, getProjectUrl } from '@/lib/projects';
  * could answer, the model has a clean, citable summary instead of guessing
  * from scattered marketing copy.
  *
- * Everything here is generated at build time from `site.config.ts` and the
- * content collections, so it describes *your* site and never drifts out of
- * sync with the real pages. There is nothing to keep updated by hand.
+ * Everything here is generated at build time from `site.config.ts`, the nav
+ * config and the content collections, so it describes *your* site and never
+ * drifts out of sync with the real pages. There is nothing to keep updated by
+ * hand.
+ *
+ * The Pages list used to be five hardcoded lines and had already drifted: it
+ * named Home, About, Projects, Blog and Contact while the nav also carried
+ * Services, and it never mentioned the components page at all — so an
+ * assistant asked about this theme had no way to learn that the page
+ * documenting every component exists. It now comes from `getNavItems`, so it
+ * follows whatever nav a site configures.
+ *
+ * External nav entries are left out: this file is a map of *this* site, and a
+ * link to somewhere else is not part of it.
  *
  * Multi-language sites: the default locale is listed, since llms.txt is meant
  * to stay short. Translated pages remain discoverable through the sitemap and
  * the hreflang tags the theme already emits.
  */
+
+/**
+ * The components page ships with the theme but is not in the nav, so it has to
+ * be named here. A site that deletes it drops out of this glob, and the link
+ * goes with it rather than becoming a 404 in a file meant to be authoritative.
+ */
+const componentsPage = import.meta.glob('/src/pages/components.astro');
+const hasComponentsPage = Object.keys(componentsPage).length > 0;
 
 export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() || siteConfig.url).replace(/\/$/, '');
@@ -46,6 +66,20 @@ export const GET: APIRoute = async ({ site }) => {
     )
     .join('\n');
 
+  const pageLines = getNavItems(defaultLocale)
+    .filter((item) => !item.external)
+    .map((item) => line(item.label, `${base}${item.href}`));
+
+  if (hasComponentsPage) {
+    pageLines.push(
+      line(
+        'Components',
+        `${base}/components`,
+        'Every component in the theme, rendered, with its props and variants'
+      )
+    );
+  }
+
   const sections = [
     `# ${siteConfig.name}`,
     ``,
@@ -53,11 +87,7 @@ export const GET: APIRoute = async ({ site }) => {
     ``,
     `## Pages`,
     ``,
-    line('Home', `${base}/`),
-    line('About', `${base}/about`),
-    line('Projects', `${base}/projects`),
-    line('Blog', `${base}/blog`),
-    line('Contact', `${base}/contact`),
+    ...pageLines,
   ];
 
   if (projectLines) {
@@ -73,7 +103,7 @@ export const GET: APIRoute = async ({ site }) => {
     `## More`,
     ``,
     line('Sitemap', `${base}/sitemap-index.xml`),
-    line('RSS feed', `${base}/rss.xml`),
+    line('RSS feed', `${base}${getRssUrl(defaultLocale)}`),
     ``,
     `---`,
     ``,
