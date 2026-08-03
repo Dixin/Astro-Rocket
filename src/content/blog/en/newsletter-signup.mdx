@@ -1,7 +1,7 @@
 ---
 title: "Newsletter Signup: Collect Subscribers"
-description: "A newsletter signup that posts to a Resend audience. Set two environment variables, flip one switch, and the form appears on your blog index and every post."
-publishedAt: 2026-07-28
+description: "A signup that posts to a Resend audience, in the footer of every page. On by default, and it tells you when its keys are missing instead of waiting for a visitor to find out."
+publishedAt: 2026-08-03
 author: "Hans Martens"
 tags: ["astro-rocket", "features", "newsletter", "resend", "forms"]
 featured: false
@@ -13,7 +13,7 @@ imageAlt: "An envelope icon above the word 'newsletter', on a brand-coloured bac
 
 Every post on your blog is worth reading twice — once when someone finds it, and once when they come back. An RSS link helps the people who use a reader. A newsletter reaches everyone else.
 
-[Astro Rocket](https://astrorocket.dev) ships a newsletter signup for exactly that: a form component, an API endpoint, and a place for it in the blog. It is **off by default**, and this post covers what it does, how to switch it on, and how to put the form wherever you want it.
+[Astro Rocket](https://astrorocket.dev) ships a newsletter signup for exactly that: a form component, an API endpoint, and a place for it in the footer of every page. This post covers where it lives, what it does before you have configured anything, and how to put the form wherever you want it.
 
 ## What you get
 
@@ -22,19 +22,23 @@ Two pieces, both already in the theme:
 - **`NewsletterForm`** — the signup component, in `src/components/patterns/NewsletterForm.astro`.
 - **`POST /api/newsletter`** — the endpoint it posts to, in `src/pages/api/newsletter.ts`. It validates the address and adds it as a contact to a [Resend](https://resend.com) audience.
 
-Turn the feature on and the form appears in the *follow along* section — the block at the foot of the blog index and of every post that already offers your RSS feed, your social links and your email address. The newsletter joins that list rather than becoming another section competing with it.
+The form sits in the footer's brand column, beside the link groups, on every page of the site. It is not a blog feature: someone who arrives on a project page and likes what they see can subscribe from there.
 
-![The follow-along section on desktop in dark mode: the signup inside the LetterGlitch glass card, below the RSS and social links](../../../assets/blog/newsletter-follow-along-dark.png)
+## It is on by default
 
-On a phone the same section drops the glass card, and the field and the button stack to the full width of the screen.
+This is a change from earlier releases, where the feature shipped switched off and you turned it on once you had a Resend account.
 
-## Why it is off by default
+Having the newsletter on by default in the footer makes the theme look more complete, and that is what it is all about. A theme you clone should look finished on the first `pnpm dev`, not after a checklist.
 
-The endpoint needs a Resend API key and an audience. Without them it answers *"Newsletter service is not configured"* and the visitor sees an error.
+That only works if an unconfigured form is honest about itself, so it is:
 
-A signup box that fails on submit is worse than no signup box, and most people who clone a starter theme do not have a mailing list on day one. So the theme ships the feature complete and switched off. You turn it on when you have somewhere for the addresses to go.
+- **In development**, the form renders with a line under it naming the two environment variables you need, and saying that only you can see it. That message is for whoever is building the site.
+- **In production without keys**, the submit button is disabled and one plain line says signups are not available. No visitor reads a maintenance notice, and nobody types an address that has nowhere to go.
+- **Configured**, it just works, and neither line appears.
 
-## How to switch it on
+The form reads that state when the page renders rather than when someone submits. The older behaviour was worse than it sounds: the endpoint answered *"Newsletter service is not configured"* with an error, but only after a visitor had typed their address and pressed the button.
+
+## Making it work
 
 ### Step 1 — Create a Resend audience
 
@@ -56,21 +60,23 @@ For **production on Vercel**, open **Settings → Environment Variables** and ad
 
 Both are server-side secrets. Neither carries the `PUBLIC_` prefix, so neither ever reaches the browser.
 
-### Step 3 — Flip the switch
+### Step 3 — Redeploy
 
-In `src/config/site.config.ts`:
+Environment variables are read at build time, so a deployment that is already running will not pick up the new ones. Trigger a fresh deploy, then open any page and scroll to the footer.
+
+> **Test it with a real address.** Submit the form once and check the audience in your Resend dashboard. If the address is there, the whole path works. If the form reports an error instead, check your deploy logs — the endpoint logs the reason it refused.
+
+## Turning it off
+
+If you do not want a newsletter at all, in `src/config/site.config.ts`:
 
 ```typescript
 newsletter: {
-  enabled: true,
+  enabled: false,
 },
 ```
 
-### Step 4 — Redeploy
-
-Environment variables are read at build time, so a deployment that is already running will not pick up the new ones. Trigger a fresh deploy, then open your blog index and scroll to the bottom.
-
-> **Test it with a real address.** Submit the form once and check the audience in your Resend dashboard. If the address is there, the whole path works. If the form reports an error instead, check your deploy logs — the endpoint logs the reason it refused.
+The footer then shows the logo and tagline in that column instead, and the rest of it is unchanged.
 
 ## Putting the form somewhere else
 
@@ -140,6 +146,8 @@ None of the text lives in the component. It comes from the `newsletter.*` keys i
   "subscribing": "Subscribing…",
   "success": "Thanks for subscribing!",
   "genericError": "Something went wrong",
+  "notConfigured": "Not configured yet — set RESEND_API_KEY and RESEND_AUDIENCE_ID to switch this on. Only you can see this line.",
+  "unavailable": "Signups are not available right now.",
   "error": "Subscription failed. Please try again."
 }
 ```
