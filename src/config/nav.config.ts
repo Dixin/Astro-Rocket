@@ -59,7 +59,11 @@ export interface NavItem {
 export interface FooterLinkGroupConfig {
   titleKey?: string;
   title: string;
-  links: NavItem[];
+  /**
+   * `LegalLink` rather than `NavItem`: the two carry the same fields except
+   * `order`, which a group has no use for — the array is the order.
+   */
+  links: LegalLink[];
 }
 
 export interface LegalLink {
