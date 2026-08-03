@@ -158,8 +158,30 @@ const showFooterNewsletter = layout === 'columns' && !!siteConfig.newsletter?.en
  * them into three.
  */
 const resolvedColumns: 2 | 3 | 4 =
-  columns ??
-  (Math.min(4, Math.max(2, (hideLogo ? 0 : 1) + resolvedLinkGroups.length)) as 2 | 3 | 4);
+  columns ?? (Math.min(4, Math.max(2, (hideLogo ? 0 : 1) + resolvedLinkGroups.length)) as 2 | 3 | 4);
+
+/**
+ * Equal columns cannot hold a signup block and four link groups on one row:
+ * five equal tracks leave the form about 190px. The derived footer gets a
+ * wider first track and narrow link columns instead, so brand plus four
+ * groups fits a desktop row and the form still has room to be used.
+ *
+ * A caller that passes `columns` keeps the old equal-width grid, so the
+ * components page and anyone relying on it are unaffected.
+ *
+ * The class strings are written out rather than composed, because Tailwind
+ * scans source text and never sees a name built at runtime.
+ */
+const GROUP_GRIDS: Record<number, string> = {
+  1: 'md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]',
+  2: 'md:grid-cols-[minmax(0,1.5fr)_repeat(2,minmax(0,1fr))]',
+  3: 'lg:grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(0,1fr))]',
+  4: 'lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))]',
+};
+const derivedGridClass = cn(
+  'grid grid-cols-1 sm:grid-cols-2 gap-y-[var(--space-stack-lg)] gap-x-8',
+  GROUP_GRIDS[Math.min(4, resolvedLinkGroups.length)]
+);
 
 /**
  * The `socialLinks` prop defaults to an empty array and no layout has ever
@@ -205,6 +227,9 @@ const legalLine = footerCredit ? `${processedCopyright} · ${footerCredit}` : pr
 const hasLogoSlot = Astro.slots.has('logo');
 const hasTaglineSlot = Astro.slots.has('tagline');
 const hasColumnsSlot = Astro.slots.has('columns');
+
+/** The derived grid only applies when nothing overrides the columns. */
+const useDerivedGrid = layout === 'columns' && columns === undefined && !hasColumnsSlot;
 const hasSocialSlot = Astro.slots.has('social');
 const hasBottomSlot = Astro.slots.has('bottom');
 
@@ -359,7 +384,7 @@ function getSocialIcon(platform: string): string {
 
     {layout === 'columns' && (
       <>
-        <div class={footerColumnGridVariants({ columns: resolvedColumns })}>
+        <div class={useDerivedGrid ? derivedGridClass : footerColumnGridVariants({ columns: resolvedColumns })}>
           {/* Logo Column */}
           {!hideLogo && (
             <div class="space-y-[var(--space-stack-md)]">

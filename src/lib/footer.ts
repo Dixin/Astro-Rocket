@@ -1,6 +1,6 @@
 import { getFooterNavItems, footerLinkGroups, resolveNavItem } from '@/config/nav.config';
 import { getPublishedPosts, collectTopTags, getTagUrl } from '@/lib/blog';
-import { getVisibleProjects, getProjectUrl } from '@/lib/projects';
+import { getRoutableProjects, getProjectUrl } from '@/lib/projects';
 import { defaultLocale, t } from '@/i18n';
 import type { FooterLinkGroup } from '@/components/layout/Footer.astro';
 
@@ -52,7 +52,7 @@ export async function getDerivedFooterGroups(
     groups.push({ title: t('footer.groups.topics', locale), links: topics });
   }
 
-  const projects = (await getVisibleProjects(locale)).slice(0, PROJECTS_LIMIT).map((project) => ({
+  const projects = (await getRoutableProjects(locale)).slice(0, PROJECTS_LIMIT).map((project) => ({
     label: project.data.title,
     href: getProjectUrl(project.id, locale),
   }));

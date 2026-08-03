@@ -92,6 +92,21 @@ export async function getVisibleProjects(
  * Total number of project index pages for a locale. Shared by the default and
  * locale-prefixed pagination routes so they agree on the page count.
  */
+/**
+ * The projects that have a page of their own.
+ *
+ * `getVisibleProjects` includes entries marked `placeholder: true` — they show
+ * as cards on the index but deliberately have no detail route, which is why
+ * `ProjectCard` renders them without an href. Anything building links to
+ * project pages has to apply the same filter, and the footer's derived Projects
+ * column did not: it linked five, four of which 404ed.
+ *
+ * The rule lives here now so there is one copy of it.
+ */
+export async function getRoutableProjects(locale: string = defaultLocale) {
+  return (await getVisibleProjects(locale)).filter((project) => !project.data.placeholder);
+}
+
 export async function getProjectPageCount(locale: string = defaultLocale): Promise<number> {
   const projects = await getVisibleProjects(locale);
   return Math.max(1, Math.ceil(projects.length / PROJECTS_PER_PAGE));
