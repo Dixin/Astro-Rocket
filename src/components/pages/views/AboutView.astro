@@ -167,8 +167,9 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     background="secondary"
   />
 
-  <!-- FAQ -->
-  <section class="py-[var(--space-section-md)] bg-background border-t border-border">
+  <!-- FAQ. The id is what the footer's "Got questions?" column links to;
+       without it there was no way to point at this section. -->
+  <section id="faq" class="scroll-mt-24 py-[var(--space-section-md)] bg-background border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">

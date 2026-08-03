@@ -126,8 +126,8 @@ export const footerLinkGroups: FooterLinkGroupConfig[] = [
     titleKey: 'footer.groups.questions',
     title: 'Got questions?',
     links: [
+      { label: 'FAQ', href: '/about#faq' },
       { label: 'Email', href: 'mailto:hello@hansmartens.dev' },
-      { label: 'Astro Rocket', href: 'https://hansmartens.dev/astro-rocket', external: true },
       { label: 'GitHub', href: 'https://github.com/hansmartensdev/Astro-Rocket', external: true },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hansmartensdev', external: true },
       { label: 'Bluesky', href: 'https://bsky.app/profile/hansmartensdev.bsky.social', external: true },
