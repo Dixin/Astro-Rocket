@@ -66,6 +66,17 @@ export function getTagUrl(tag: string, locale: string = defaultLocale): string {
 }
 
 /**
+ * URL of the RSS feed for a locale (`/rss.xml` or `/<locale>/rss.xml`).
+ *
+ * There used to be one feed. It carried the default locale's posts and
+ * declared `<language>` to match, but every page in every locale linked to it,
+ * so a Dutch reader was offered a feed of English posts.
+ */
+export function getRssUrl(locale: string = defaultLocale): string {
+  return localizedPath('/rss.xml', locale);
+}
+
+/**
  * The non-default locales that should get their own prefixed blog routes
  * (`/<locale>/blog/...`). Empty when i18n is off or only one locale is
  * configured, so the locale-prefixed `getStaticPaths` emit nothing and

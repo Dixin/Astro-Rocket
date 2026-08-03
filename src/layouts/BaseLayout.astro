@@ -11,6 +11,7 @@ import { createWebsiteSchema, createOrganizationSchema, createPersonSchema, crea
 import type { Thing, WithContext } from 'schema-dts';
 import siteConfig from '@/config/site.config';
 import { t, getLocaleFromPath } from '@/i18n';
+import { getRssUrl } from '@/lib/blog';
 
 interface Props {
   title?: string;
@@ -122,7 +123,7 @@ if (commentsConfig?.enabled) {
     />
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title={`${siteConfig.name} RSS Feed`} href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${siteConfig.name} RSS Feed`} href={getRssUrl(locale)} />
 
     <!-- JSON-LD Structured Data -->
     <JsonLd schema={schemas} />
