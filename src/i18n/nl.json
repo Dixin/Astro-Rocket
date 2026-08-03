@@ -72,10 +72,12 @@
     "tocHide": "Verberg",
     "backToBlog": "Terug naar blog",
     "updated": "Bijgewerkt",
-    "followAlong": "Blijf op de hoogte",
-    "followAlongLead": "Blijf op de hoogte — nieuwe artikelen, ideeën en updates.",
     "rssFeed": "RSS-feed",
-    "emailLabel": "E-mail"
+    "cta": {
+      "heading": "Klaar om te bouwen?",
+      "description": "Kloon Astro Rocket, kies een thema en lanceer je volgende project in minuten.",
+      "button": "Aan de slag"
+    }
   },
   "comments": {
     "title": "Reacties",
