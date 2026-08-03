@@ -38,9 +38,21 @@ export interface NavItem {
   external?: boolean;
 }
 
+/**
+ * A link inside a footer column. `href` is optional: an entry without one
+ * renders as plain text rather than a link, which is how the demo shows
+ * projects that have no page of their own — the same thing `ProjectCard`
+ * does on the projects index.
+ */
+export interface FooterGroupLink {
+  label: string;
+  href?: string;
+  external?: boolean;
+}
+
 export interface FooterLinkGroup {
   title: string;
-  links: NavItem[];
+  links: FooterGroupLink[];
 }
 
 export interface SocialLink {
@@ -217,9 +229,11 @@ const processedCopyright = copyrightTemplate
 const footerTagline = tagline ?? siteConfig.tagline;
 const footerNote = siteConfig.footerNote;
 
-// Optional designer credit, appended to the copyright line. Lives entirely
-// in the locale dictionaries (footer.credit) rather than in this component,
-// so it is per-locale content: reword it, or delete the key to remove it.
+// Optional designer credit, appended to the copyright line in every layout.
+// Lives entirely in the locale dictionaries (footer.credit) rather than in
+// this component, so it is per-locale content: reword it, or delete the key
+// to remove it. It used to be wired into the centered layout alone, so any
+// site on another layout lost it without anything saying so.
 const footerCredit = tData<string>('footer.credit', locale);
 const legalLine = footerCredit ? `${processedCopyright} · ${footerCredit}` : processedCopyright;
 
@@ -376,7 +390,7 @@ function getSocialIcon(platform: string): string {
       </div>
       {showCopyright && (
         <div class="mt-[var(--space-stack-lg)] pt-[var(--space-stack-lg)] border-t border-border text-center">
-          <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
+          <p class="text-sm text-foreground-muted" set:html={legalLine} />
         </div>
       )}
       </>
@@ -423,14 +437,18 @@ function getSocialIcon(platform: string): string {
                 <ul class="space-y-2">
                   {group.links.map((link) => (
                     <li>
-                      <a
-                        href={link.href}
-                        class="text-sm transition-colors text-foreground-muted hover:text-foreground"
-                        target={link.external || link.href.startsWith('http') ? '_blank' : undefined}
-                        rel={link.external || link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      >
-                        {link.label}
-                      </a>
+                      {link.href ? (
+                        <a
+                          href={link.href}
+                          class="text-sm transition-colors text-foreground-muted hover:text-foreground"
+                          target={link.external || link.href.startsWith('http') ? '_blank' : undefined}
+                          rel={link.external || link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <span class="text-sm text-foreground-subtle">{link.label}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -447,7 +465,7 @@ function getSocialIcon(platform: string): string {
             ) : (
               <>
                 {showCopyright && (
-                  <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
+                  <p class="text-sm text-foreground-muted" set:html={legalLine} />
                 )}
                 <div class="flex items-center gap-[var(--space-inline-lg)]">
                   {resolvedLegalLinks.map((link) => (
@@ -483,7 +501,7 @@ function getSocialIcon(platform: string): string {
     {layout === 'minimal' && (
       <div class="text-center">
         {showCopyright && (
-          <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
+          <p class="text-sm text-foreground-muted" set:html={legalLine} />
         )}
       </div>
     )}
@@ -546,7 +564,7 @@ function getSocialIcon(platform: string): string {
         {(showCopyright || resolvedLegalLinks.length > 0) && (
           <div class="pt-[var(--space-stack-lg)] border-t border-border w-full flex flex-col items-center gap-[var(--space-stack-md)]">
             {showCopyright && (
-              <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
+              <p class="text-sm text-foreground-muted" set:html={legalLine} />
             )}
             {resolvedLegalLinks.length > 0 && (
               <div class="flex items-center gap-[var(--space-inline-lg)]">
