@@ -145,6 +145,8 @@
     "subscribing": "Bezig met abonneren…",
     "success": "Bedankt voor je aanmelding!",
     "genericError": "Er ging iets mis",
+    "notConfigured": "Nog niet ingesteld — stel RESEND_API_KEY en RESEND_AUDIENCE_ID in om dit aan te zetten. Alleen jij ziet deze regel.",
+    "unavailable": "Aanmelden is op dit moment niet mogelijk.",
     "error": "Aanmelding mislukt. Probeer het opnieuw."
   },
   "contact": {
@@ -157,6 +159,8 @@
     "sending": "Bezig met verzenden…",
     "success": "Bericht succesvol verzonden!",
     "genericError": "Er ging iets mis",
+    "notConfigured": "Nog niet ingesteld — stel RESEND_API_KEY in om dit aan te zetten. Alleen jij ziet deze regel.",
+    "unavailable": "Dit formulier is op dit moment niet beschikbaar.",
     "error": "Verzenden mislukt. Probeer het opnieuw."
   },
   "theme": {

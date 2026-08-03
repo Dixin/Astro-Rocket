@@ -18,6 +18,7 @@ import Input from '@/components/ui/form/Input/Input.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { cn } from '@/lib/cn';
 import { t, getLocaleFromPath } from '@/i18n';
+import { newsletterConfigured } from '@/lib/email';
 
 interface Props {
   /** Endpoint the form posts to. */
@@ -64,6 +65,15 @@ const {
 } = Astro.props;
 
 const stacked = layout === 'stacked';
+
+/**
+ * The form renders either way, so the theme looks complete out of the box.
+ * What changes is who is told it has no keys: the notice is for whoever is
+ * building the site, so it shows only in dev. In production the submit is
+ * disabled rather than inviting an address that has nowhere to go.
+ */
+const unconfigured = !newsletterConfigured;
+const showDevNotice = unconfigured && import.meta.env.DEV;
 ---
 
 <div class={cn('newsletter', className)}>
@@ -99,6 +109,7 @@ const stacked = layout === 'stacked';
       <Button
         type="submit"
         size={size}
+        disabled={unconfigured && !import.meta.env.DEV}
         class:list={['newsletter-submit w-full shrink-0', !stacked && 'sm:w-auto', buttonClass]}
       >
         {buttonText}
@@ -118,6 +129,18 @@ const stacked = layout === 'stacked';
       aria-live="polite"
     ></p>
   </form>
+
+  {showDevNotice && (
+    <p class="mt-2 text-xs text-foreground-subtle text-balance" data-newsletter-dev-notice>
+      {t('newsletter.notConfigured', locale)}
+    </p>
+  )}
+
+  {unconfigured && !import.meta.env.DEV && (
+    <p class="mt-2 text-xs text-foreground-subtle text-balance">
+      {t('newsletter.unavailable', locale)}
+    </p>
+  )}
 
   {note && <p class="mt-2 text-xs text-foreground-subtle text-balance">{note}</p>}
 </div>

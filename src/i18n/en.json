@@ -145,6 +145,8 @@
     "subscribing": "Subscribing…",
     "success": "Thanks for subscribing!",
     "genericError": "Something went wrong",
+    "notConfigured": "Not configured yet — set RESEND_API_KEY and RESEND_AUDIENCE_ID to switch this on. Only you can see this line.",
+    "unavailable": "Signups are not available right now.",
     "error": "Subscription failed. Please try again."
   },
   "contact": {
@@ -157,6 +159,8 @@
     "sending": "Sending…",
     "success": "Message sent successfully!",
     "genericError": "Something went wrong",
+    "notConfigured": "Not configured yet — set RESEND_API_KEY to switch this on. Only you can see this line.",
+    "unavailable": "This form is not available right now.",
     "error": "Failed to send message. Please try again."
   },
   "theme": {
