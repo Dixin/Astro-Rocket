@@ -623,6 +623,92 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
           </div>
         </div>
 
+        <!--
+          Footer Columns Layout — large site
+
+          The same layout as above, arranged the way a medium or large site
+          uses it: a wide first column carrying a newsletter block, four link
+          groups beside it, and the social row moved down into the bottom bar.
+
+          Nothing here is a new component. `columns={2}` splits the row into
+          the wide column and the link area, and the four groups get their own
+          grid inside `slot="columns"` — that is what produces one wide column
+          beside four narrow ones rather than five equal ones. The `bottom`
+          slot is already `justify-between`, so the licence line and the icons
+          land at opposite ends of it.
+        -->
+        <div class="component-showcase">
+          <div class="showcase-header">
+            <span class="showcase-label">Columns Layout — large site</span>
+            <span class="showcase-hint">Newsletter block, four link groups, social row in the bottom bar</span>
+          </div>
+          <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
+            <Footer layout="columns" columns={2} background="secondary">
+              <div slot="logo">
+                <NewsletterForm
+                  layout="stacked"
+                  heading="Let's keep in touch"
+                  description="Get new components and releases in your inbox."
+                />
+              </div>
+
+              <div slot="columns" class="grid grid-cols-2 md:grid-cols-4 gap-[var(--space-stack-lg)]">
+                {[
+                  {
+                    title: 'Product',
+                    links: ['Features', 'Pricing', 'Changelog', 'Roadmap', 'Status'],
+                  },
+                  {
+                    title: 'Resources',
+                    links: ['Documentation', 'Components', 'Blog', 'Guides', 'Showcase'],
+                  },
+                  {
+                    title: 'Company',
+                    links: ['About', 'Careers', 'Partners', 'Press'],
+                  },
+                  {
+                    title: 'Legal',
+                    links: ['Privacy Policy', 'Terms of Service', 'Cookies'],
+                  },
+                ].map((group) => (
+                  <div class="space-y-[var(--space-stack-md)]">
+                    <h3 class="font-semibold text-sm text-foreground">{group.title}</h3>
+                    <ul class="space-y-2">
+                      {group.links.map((label) => (
+                        <li>
+                          <a
+                            href="#"
+                            class="text-sm transition-colors text-foreground-muted hover:text-foreground"
+                          >
+                            {label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <Fragment slot="bottom">
+                <p class="text-sm text-foreground-muted">
+                  MIT License © 2026 &nbsp;·&nbsp; Astro Rocket
+                </p>
+                <div class="flex items-center gap-[var(--space-inline-lg)]">
+                  {['github', 'bluesky', 'linkedin', 'instagram', 'x-twitter'].map((platform) => (
+                    <a
+                      href="#"
+                      aria-label={platform}
+                      class="transition-colors text-foreground-muted hover:text-foreground"
+                    >
+                      <Icon name={platform} size="md" />
+                    </a>
+                  ))}
+                </div>
+              </Fragment>
+            </Footer>
+          </div>
+        </div>
+
         <!-- Footer Props Reference -->
         <div class="component-showcase">
           <div class="showcase-header">
@@ -634,7 +720,7 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
               <div>
                 <h3 class="font-semibold text-foreground mb-2">Layout</h3>
                 <ul class="space-y-1 text-foreground-muted">
-                  <li><code class="text-xs bg-secondary px-1.5 py-0.5 rounded">layout</code> simple | columns | minimal | stacked</li>
+                  <li><code class="text-xs bg-secondary px-1.5 py-0.5 rounded">layout</code> simple | columns | minimal | stacked | centered</li>
                   <li><code class="text-xs bg-secondary px-1.5 py-0.5 rounded">columns</code> 2 | 3 | 4</li>
                   <li><code class="text-xs bg-secondary px-1.5 py-0.5 rounded">background</code> default | secondary | invert</li>
                 </ul>
