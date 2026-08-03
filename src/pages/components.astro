@@ -643,50 +643,67 @@ import StackMarquee from '@/components/landing/StackMarquee.astro';
             <span class="showcase-hint">Newsletter block, four link groups, social row in the bottom bar</span>
           </div>
           <div class="showcase-content !p-0 overflow-hidden rounded-b-xl">
-            <Footer layout="columns" columns={2} background="secondary">
-              <div slot="logo">
+            <Footer layout="columns" columns={2} hideLogo background="secondary">
+              <!--
+                One child spanning the whole row, holding its own asymmetric
+                grid. The layout's own grid is two equal halves, so capping the
+                signup block inside one of them leaves dead space rather than
+                giving the link groups room — the halves stay 50/50 whatever
+                the content does. Spanning it and splitting it here is the only
+                way to get a narrow signup column beside a wide link area, and
+                it is still slots and utility classes, with nothing changed in
+                the component.
+              -->
+              <div
+                slot="columns"
+                class="md:col-span-2 grid gap-y-[var(--space-stack-lg)] gap-x-12 md:grid-cols-[minmax(0,300px)_1fr] lg:grid-cols-[minmax(0,340px)_1fr]"
+              >
                 <NewsletterForm
                   layout="stacked"
+                  size="sm"
                   heading="Let's keep in touch"
                   description="Get new components and releases in your inbox."
                 />
-              </div>
 
-              <div slot="columns" class="grid grid-cols-2 md:grid-cols-4 gap-[var(--space-stack-lg)]">
-                {[
-                  {
-                    title: 'Product',
-                    links: ['Features', 'Pricing', 'Changelog', 'Roadmap', 'Status'],
-                  },
-                  {
-                    title: 'Resources',
-                    links: ['Documentation', 'Components', 'Blog', 'Guides', 'Showcase'],
-                  },
-                  {
-                    title: 'Company',
-                    links: ['About', 'Careers', 'Partners', 'Press'],
-                  },
-                  {
-                    title: 'Legal',
-                    links: ['Privacy Policy', 'Terms of Service', 'Cookies'],
-                  },
-                ].map((group) => (
-                  <div class="space-y-[var(--space-stack-md)]">
-                    <h3 class="font-semibold text-sm text-foreground">{group.title}</h3>
-                    <ul class="space-y-2">
-                      {group.links.map((label) => (
-                        <li>
-                          <a
-                            href="#"
-                            class="text-sm transition-colors text-foreground-muted hover:text-foreground"
-                          >
-                            {label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+                <!-- Four across only at `xl`. Below that each column falls
+                     under about 130px and labels like "Terms of Service" break
+                     across two lines. -->
+                <div class="grid grid-cols-2 xl:grid-cols-4 gap-y-[var(--space-stack-lg)] gap-x-8">
+                  {[
+                    {
+                      title: 'Product',
+                      links: ['Features', 'Pricing', 'Changelog', 'Roadmap', 'Status'],
+                    },
+                    {
+                      title: 'Resources',
+                      links: ['Documentation', 'Components', 'Blog', 'Guides', 'Showcase'],
+                    },
+                    {
+                      title: 'Company',
+                      links: ['About', 'Careers', 'Partners', 'Press'],
+                    },
+                    {
+                      title: 'Legal',
+                      links: ['Privacy Policy', 'Terms of Service', 'Cookies'],
+                    },
+                  ].map((group) => (
+                    <div class="space-y-[var(--space-stack-md)]">
+                      <h3 class="font-semibold text-sm text-foreground">{group.title}</h3>
+                      <ul class="space-y-2">
+                        {group.links.map((label) => (
+                          <li>
+                            <a
+                              href="#"
+                              class="text-sm transition-colors text-foreground-muted hover:text-foreground"
+                            >
+                              {label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <Fragment slot="bottom">
