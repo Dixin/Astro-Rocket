@@ -42,10 +42,23 @@ describe('i18n t() helper', () => {
 
 describe('i18n tData() helper', () => {
   it('returns a structured (array) value by dotted key', () => {
-    const facts = tData<{ icon: string; title: string }[]>('pages.about.intro.facts', 'en');
-    expect(Array.isArray(facts)).toBe(true);
-    expect(facts?.length).toBe(6);
-    expect(facts?.[0]?.title).toBe('Astro 7');
+    // Asserts the shape rather than the copy. The previous version read
+    // `pages.about.intro.facts` and checked for the literal "Astro 7"; the
+    // about page was later restructured, `intro` stopped existing, and the
+    // test failed for a reason that had nothing to do with tData().
+    const items = tData<{ icon: string; title: string; description: string }[]>(
+      'pages.about.principles.items',
+      'en'
+    );
+    expect(Array.isArray(items)).toBe(true);
+    expect(items?.length).toBeGreaterThan(0);
+    expect(items?.[0]).toEqual(
+      expect.objectContaining({
+        icon: expect.any(String),
+        title: expect.any(String),
+        description: expect.any(String),
+      })
+    );
   });
 
   it('returns the Dutch structured value when locale is nl', () => {
