@@ -8,7 +8,9 @@
  * reader saw depended on how they had arrived at the blog.
  *
  * One copy now serves all four surfaces — the index, a single post, the
- * paginated pages and the tag pages. The differences that survive are
+ * paginated pages and the tag pages. The signup form it used to carry has
+ * gone: the footer offers one on every page, and two forms a screen apart on
+ * the same post is one too many. The differences that survive are
  * wrapper-level and are props here; the pill list is built once and rendered
  * twice, differing only in its class string because the band sits on a dark
  * backdrop.
@@ -16,7 +18,6 @@
 import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 import { resolveSocialLinks } from '@/lib/utils';
 import { getRssUrl } from '@/lib/blog';
 import siteConfig from '@/config/site.config';
@@ -32,8 +33,6 @@ interface Props {
   bandSectionClass?: string;
   /** Inner width of the desktop band. Matches LetterGlitchBand's own prop. */
   bandMaxWidth?: '6xl' | '7xl';
-  /** Offer the newsletter form when the site has newsletters enabled. */
-  newsletter?: boolean;
 }
 
 const {
@@ -42,11 +41,9 @@ const {
   ctaClass,
   bandSectionClass,
   bandMaxWidth,
-  newsletter = true,
 } = Astro.props;
 
 const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
-const showNewsletter = newsletter && !!siteConfig.newsletter?.enabled;
 
 /**
  * One list, rendered twice. RSS first and email last, with the socials
@@ -92,12 +89,6 @@ const PILL_BAND =
       </a>
     ))}
   </div>
-
-  {showNewsletter && (
-    <div class="mx-auto mt-8 max-w-md border-t border-border px-6 pt-8 sm:px-0">
-      <NewsletterForm description={t('newsletter.description', locale)} buttonClass="cta-btn-brand" />
-    </div>
-  )}
 </CTA>
 
 {glitchBand && (
@@ -123,12 +114,6 @@ const PILL_BAND =
           </a>
         ))}
       </div>
-
-      {showNewsletter && (
-        <div class="mx-auto mt-8 max-w-md border-t border-white/20 pt-8">
-          <NewsletterForm description={t('newsletter.description', locale)} buttonClass="hero-btn-brand" />
-        </div>
-      )}
     </LetterGlitchBand>
   </section>
 )}

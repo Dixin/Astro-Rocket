@@ -30,6 +30,7 @@ import siteConfig from '@/config/site.config';
 import { t, tData, getLocaleFromPath } from '@/i18n';
 import { getDerivedFooterGroups } from '@/lib/footer';
 import { resolveSocialLinks } from '@/lib/utils';
+import { getRssUrl } from '@/lib/blog';
 import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 
 export interface NavItem {
@@ -478,7 +479,16 @@ function getSocialIcon(platform: string): string {
                   ))}
                   {/* The brand column carries the signup block in this layout,
                       so the social row sits down here instead — opposite the
-                      copyright, which is where a reader looks for it. */}
+                      copyright, which is where a reader looks for it. The feed
+                      leads it: it is the one subscription that needs no
+                      account, and it belongs with the other ways to follow. */}
+                  <a
+                    href={getRssUrl(locale)}
+                    class="transition-colors text-foreground-muted hover:text-foreground"
+                    aria-label={t('blog.rssFeed', locale)}
+                  >
+                    <Icon name="rss" size="md" />
+                  </a>
                   {showSocial && resolvedSocialLinks.map((social) => (
                     <a
                       href={social.href}
