@@ -13,11 +13,9 @@ import Pagination from '@/components/blog/Pagination.astro';
 import TagList from '@/components/blog/TagList.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import CTA from '@/components/ui/marketing/CTA/CTA.astro';
 import { Hero } from '@/components/hero';
-import siteConfig from '@/config/site.config';
-import { resolveSocialLinks } from '@/lib/utils';
 import { t, defaultLocale } from '@/i18n';
+import FollowAlong from '@/components/blog/FollowAlong.astro';
 import {
   BLOG_POSTS_PER_PAGE,
   BLOG_TAG_CLOUD_LIMIT,
@@ -48,7 +46,6 @@ const pagePosts = regularPostsAll.slice(start, start + BLOG_POSTS_PER_PAGE);
 
 const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 
-const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
 ---
 
 <PageLayout
@@ -111,36 +108,5 @@ const socialLinks = resolveSocialLinks(siteConfig.socialLinks);
     </div>
   </section>
 
-  <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal>
-    <h2 slot="heading" class="!text-4xl">{t('blog.followAlong', locale)}</h2>
-    <p slot="description" class="!text-lg text-balance">{t('blog.followAlongLead', locale)}</p>
-
-    <div class="flex flex-wrap items-center justify-center gap-3">
-      <a
-        href="/rss.xml"
-        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
-      >
-        <Icon name="rss" size="sm" />
-        {t('blog.rssFeed', locale)}
-      </a>
-      {socialLinks.map((link) => (
-        <a
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
-        >
-          <Icon name={link.icon} size="sm" />
-          {link.label}
-        </a>
-      ))}
-      <a
-        href={`mailto:${siteConfig.email}`}
-        class="inline-flex items-center gap-2 rounded-full border border-brand-500/40 bg-background px-4 py-2 text-sm font-medium text-brand-700 dark:text-brand-400 transition-colors hover:border-brand-500/80"
-      >
-        <Icon name="mail" size="sm" />
-        {t('blog.emailLabel', locale)}
-      </a>
-    </div>
-  </CTA>
+  <FollowAlong locale={locale} glitchBand={false} newsletter={false} />
 </PageLayout>
