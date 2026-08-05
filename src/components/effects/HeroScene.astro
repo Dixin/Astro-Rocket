@@ -1,18 +1,121 @@
 ---
 /**
- * HeroScene — the homepage hero's horizon.
+ * HeroScene — the homepage hero's sky.
  *
- * A planet's lit edge across the foot of the hero. The gradient wash the hero
- * already carries is the sky; this draws the curve the sky ends on.
+ * Back to front: three nebula washes, a starfield, two shooting stars, a
+ * vignette, and the planet with its lit limb. The hero's own gradient wash
+ * sits under all of it and is still what carries the brand; this is the depth
+ * on top of it.
  *
- * Every size, phones included. Portrait phones keep the four static stack
- * logos at the hero's floor and the curve runs behind them.
+ * STARS. Positioned in percentages, not on an SVG canvas. The field that was
+ * here before was drawn on a fixed 1440×900 viewBox at
+ * `preserveAspectRatio="xMidYMax slice"`, and a slice shows a different crop
+ * of that canvas at every aspect — at 430×932 only the middle 29% of it is on
+ * screen. So the same file read as bunched along the left and right edges on a
+ * desktop and as empty on a phone. Percentages have no canvas to crop.
  *
+ * They are weighted low on purpose. The top of the wash is brand-500 and a
+ * white dot there has almost no contrast, so stars in the upper third are
+ * dirt rather than sky; the density climbs as the wash goes black, which is
+ * also where stars behave in life. Size and opacity climb with it, so the
+ * field reads as depth instead of as one scattered layer. Six of the
+ * seventy-two twinkle, on durations that share no common multiple, so the
+ * field never pulses in unison.
+ *
+ * The list is generated here with a fixed seed rather than by hand or by
+ * `Math.random()` at request time: this page is server-rendered, so an
+ * unseeded field would land somewhere different on every load.
+ *
+ * LIT LIMB. The rim used to be an even stroke corner to corner, which reads as
+ * an outline drawn round a shape. One gradient along it — bright at 24% of
+ * the width, falling away both sides — puts a sun somewhere off the left of
+ * frame, and the same gradient on the inner atmosphere band makes the glow
+ * gather on the lit shoulder. No extra elements, no filter.
+ *
+ * SHOOTING STARS. Two, each visible for 1.2s out of its own 15: one from the
+ * left, then one from the right seven seconds later. Rare on purpose — often
+ * enough to catch, never often enough to become a loop the eye starts waiting
+ * on. Under reduced motion neither appears, rather than sitting there frozen.
+ *
+ * They are aimed, not just placed. A phone has almost no sky — the rocket
+ * sits in the middle of a band around 130px tall — and at the desktop length
+ * the left-hand one flew straight into it. Both are shorter there and start
+ * nearer the edge, so each stays inside its own outer third and the rocket's
+ * column is clear between them.
+ *
+ * The rocket is not in here — see HeroRocket, which hangs above the badge
+ * without taking space in the flow. Portrait phones keep the four static
+ * stack logos at the hero's floor; the planet's curve runs behind them.
+ *
+ * Every colour resolves from --brand-*, so the scene follows the active theme.
  * Requires a positioned, clipping parent. `.hero-dark-gradient` is
  * `position: relative` with `isolation: isolate`, and Hero's section is
- * `overflow-hidden`, so the curve cannot escape the hero.
+ * `overflow-hidden`, so nothing here can escape the hero.
  */
+
+// Linear congruential generator — small, and identical on every render.
+let seed = 20260805;
+const rand = () => {
+  seed = (seed * 1664525 + 1013904223) % 4294967296;
+  return seed / 4294967296;
+};
+
+const STAR_COUNT = 72;
+const TOP = 14; // % — nothing above this; the wash is too bright to hold a star
+const SPAN = 71; // % of hero height the field covers, stopping at the horizon
+
+const stars = Array.from({ length: STAR_COUNT }, (_, i) => {
+  // sqrt(u) pushes the mass toward the BOTTOM of the range — the density
+  // rises as the wash goes black. (1 - sqrt(1 - u) is the same curve
+  // mirrored, and put the field in the bright half where it disappeared.)
+  const y = TOP + Math.sqrt(rand()) * SPAN;
+  const depth = (y - TOP) / SPAN; // 0 high in the sky, 1 at the horizon
+  const x = rand() * 100;
+  const size = +(1 + rand() * 0.9 + depth * 0.9).toFixed(1);
+  const opacity = +(0.16 + depth * 0.34 + rand() * 0.14).toFixed(2);
+  // Every twelfth star breathes. Durations are coprime-ish so they drift apart.
+  const twinkle = i % 12 === 0;
+  return {
+    x: +x.toFixed(2),
+    y: +y.toFixed(2),
+    size,
+    opacity,
+    twinkle,
+    duration: twinkle ? [3.7, 4.3, 5.1, 5.9, 6.7, 7.3][(i / 12) | 0] : 0,
+    delay: twinkle ? +(rand() * 4).toFixed(1) : 0,
+  };
+});
 ---
+
+<!-- Three soft washes of colour, behind everything. No objects, no dots — they
+     give the wash body where a flat gradient goes thin. -->
+<div class="hero-nebula" aria-hidden="true">
+  <i class="hn-a"></i>
+  <i class="hn-b"></i>
+  <i class="hn-c"></i>
+</div>
+
+<div class="hero-stars" aria-hidden="true">
+  {stars.map((s) => (
+    <span
+      class:list={['hs-star', s.twinkle && 'hs-twinkle']}
+      style={`left:${s.x}%;top:${s.y}%;width:${s.size}px;height:${s.size}px;opacity:${s.opacity};${
+        s.twinkle ? `--hs-dur:${s.duration}s;--hs-delay:${s.delay}s;--hs-op:${s.opacity};` : ''
+      }`}
+    />
+  ))}
+</div>
+
+<!-- Two streaks: one from the left, then one from the right seven seconds
+     later, each in flight for 1.2s of its own 15s cycle. Both stay in their
+     own outer margin — checked with the animation frozen at the point it
+     stops, against the rocket's box and the headline's, at every size. -->
+<div class="hero-shoot hero-shoot-l" aria-hidden="true"></div>
+<div class="hero-shoot hero-shoot-r" aria-hidden="true"></div>
+
+<!-- Darkens the corners and leaves the middle alone, so the headline sits in
+     the clearest part of the frame. Above the stars, below the planet. -->
+<div class="hero-vignette" aria-hidden="true"></div>
 
 <!-- Stretched rather than sliced.
 
@@ -33,6 +136,17 @@
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
 >
+  <defs>
+    {/* Object-bounding-box units, so the bright point stays at 24% of the
+        width however the box is stretched. */}
+    <linearGradient id="hp-lit" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" class="hp-lit-edge" />
+      <stop offset="24%" class="hp-lit-peak" />
+      <stop offset="52%" class="hp-lit-mid" />
+      <stop offset="100%" class="hp-lit-far" />
+    </linearGradient>
+  </defs>
+
   <path d="M0 100 Q50 0 100 100 Z" class="hp-body"/>
   <path d="M0 100 Q50 0 100 100" class="hp-atmo-3" vector-effect="non-scaling-stroke"/>
   <path d="M0 100 Q50 0 100 100" class="hp-atmo-2" vector-effect="non-scaling-stroke"/>
@@ -41,6 +155,137 @@
 </svg>
 
 <style>
+  .hero-nebula,
+  .hero-stars,
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-nebula { overflow: hidden; }
+
+  .hero-nebula > i {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+  }
+
+  /* `closest-side` so each wash fades out at its own edge whatever the box is
+     stretched to — no hard rim at any viewport. */
+  .hn-a {
+    left: -18%; top: 36%; width: 62%; height: 56%;
+    background: radial-gradient(closest-side, var(--brand-400) 0%, transparent 100%);
+    opacity: 0.16;
+  }
+  .hn-b {
+    right: -16%; top: 2%; width: 54%; height: 48%;
+    background: radial-gradient(closest-side, var(--brand-200) 0%, transparent 100%);
+    opacity: 0.1;
+  }
+  .hn-c {
+    left: 30%; bottom: 6%; width: 44%; height: 26%;
+    background: radial-gradient(closest-side, var(--brand-300) 0%, transparent 100%);
+    opacity: 0.09;
+  }
+
+  /* The tail is the element, the head is its ::after. `rotate` holds the angle
+     as its own property, which leaves `transform` free for the travel — and
+     because the individual properties resolve before `transform`, that
+     translateX runs along the streak's own axis rather than the screen's. One
+     number, --hs-travel, therefore controls how far each one flies whatever
+     direction it is pointed in. */
+  .hero-shoot {
+    --hs-len: clamp(90px, 12vw, 180px);
+    --hs-travel: 130%;
+    position: absolute;
+    top: 12%;
+    width: var(--hs-len);
+    height: 2px;
+    border-radius: 2px;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      color-mix(in oklch, var(--brand-100) 100%, transparent) 55%,
+      var(--brand-50) 100%
+    );
+  }
+
+  /* 164deg is 16deg mirrored, so the right-hand one runs down and to the left
+     with its head still leading — the gradient rotates with the element. */
+  .hero-shoot-l { left: 4%; rotate: 16deg; }
+  .hero-shoot-r { right: 4%; rotate: 164deg; }
+
+  /* A phone has almost no sky: the rocket sits in the middle of a band only
+     130px tall, and at the desktop length the left-hand streak flew straight
+     into it. Shorter, and starting nearer the edge, keeps each one inside its
+     own outer third with the rocket's column clear between them. */
+  @media (max-width: 639px) {
+    .hero-shoot { --hs-len: 70px; --hs-travel: 90%; }
+    .hero-shoot-l { left: 2%; }
+    .hero-shoot-r { right: 2%; }
+  }
+
+  .hero-shoot::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: -2.5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-50);
+    box-shadow: 0 0 10px 3px color-mix(in oklch, var(--brand-100) 70%, transparent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Same cycle, seven seconds apart: left, a wait, right, a longer wait. */
+    .hero-shoot-l { animation: hero-shoot 15s linear infinite; }
+    .hero-shoot-r { animation: hero-shoot 15s linear 7s infinite; }
+  }
+
+  /* 8% of 15s is 1.2s in flight; the other 92% it is not there at all. Fully
+     faded by 7%, which keeps the head clear of the headline at its far end. */
+  @keyframes hero-shoot {
+    0% { transform: translateX(-20%); opacity: 0; }
+    1% { opacity: 0.9; }
+    5% { opacity: 0.9; }
+    7% { opacity: 0; }
+    8%, 100% { transform: translateX(var(--hs-travel)); opacity: 0; }
+  }
+
+  .hs-star {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--brand-50);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hs-twinkle {
+      animation: hs-twinkle var(--hs-dur) ease-in-out var(--hs-delay) infinite;
+    }
+  }
+
+  /* Down to a third and back. The star's own opacity is the ceiling, so a
+     faint star stays faint and a bright one keeps its place in the depth. */
+  @keyframes hs-twinkle {
+    0%, 100% { opacity: var(--hs-op); }
+    50% { opacity: calc(var(--hs-op) * 0.35); }
+  }
+
+  .hero-vignette {
+    background: radial-gradient(
+      ellipse 78% 62% at 50% 42%,
+      transparent 0%,
+      transparent 55%,
+      rgb(0 0 0 / 0.28) 100%
+    );
+  }
+
   /* The curve's height is what sets how much planet shows. 15% of the hero
      leaves the arc shallow on a wide screen; a phone is narrower than it is
      tall, so the same curve across less width reads steeper, and 11% keeps
@@ -63,6 +308,14 @@
   .hp-body   { fill: color-mix(in oklch, var(--brand-900) 45%, #000); }
   .hp-atmo-3 { fill: none; stroke: var(--brand-500); stroke-opacity: 0.18; stroke-width: 46; }
   .hp-atmo-2 { fill: none; stroke: var(--brand-400); stroke-opacity: 0.20; stroke-width: 22; }
-  .hp-atmo-1 { fill: none; stroke: var(--brand-300); stroke-opacity: 0.26; stroke-width: 9; }
-  .hp-rim    { fill: none; stroke: var(--brand-100); stroke-opacity: 0.85; stroke-width: 3; }
+
+  /* These two carry the light. The gradient holds the alpha, so no
+     stroke-opacity here — it would multiply against it twice. */
+  .hp-atmo-1 { fill: none; stroke: url(#hp-lit); stroke-width: 11; opacity: 0.55; }
+  .hp-rim    { fill: none; stroke: url(#hp-lit); stroke-width: 3; }
+
+  .hp-lit-edge { stop-color: var(--brand-100); stop-opacity: 0.18; }
+  .hp-lit-peak { stop-color: var(--brand-50);  stop-opacity: 1; }
+  .hp-lit-mid  { stop-color: var(--brand-100); stop-opacity: 0.6; }
+  .hp-lit-far  { stop-color: var(--brand-200); stop-opacity: 0.14; }
 </style>

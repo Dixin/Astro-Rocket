@@ -21,9 +21,10 @@
  * Its glow is a radial gradient behind it rather than a filter, so there is
  * nothing to rasterise at any size.
  *
- * It rises and falls on a 4s loop with the glow breathing in step. Transform
- * and opacity only, so it stays on the compositor, and the whole thing is
- * behind `prefers-reduced-motion: no-preference`.
+ * It rises and falls on a 4s loop, with the glow and the exhaust plume
+ * breathing on the same beat. Transform and opacity only, so it stays on the
+ * compositor, and the whole thing is behind
+ * `prefers-reduced-motion: no-preference`.
  */
 ---
 
@@ -34,8 +35,27 @@
         <stop offset="0%" class="hr-glow-in" />
         <stop offset="100%" class="hr-glow-out" />
       </radialGradient>
+      {/* Along the plume, not out from its middle: the ellipse below is
+          rotated 135deg, so this gradient's own x-axis rotates with it and
+          x=0 is the end nearest the nozzle. */}
+      <linearGradient id="hero-rocket-plume" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" class="hr-plume-in" />
+        <stop offset="45%" class="hr-plume-mid" />
+        <stop offset="100%" class="hr-plume-out" />
+      </linearGradient>
     </defs>
     <circle class="hr-glow" cx="60" cy="60" r="60" fill="url(#hero-rocket-glow)" />
+
+    {/* Exhaust. Lucide's rocket is drawn on a diagonal with the nose to the
+        upper right, so the thrust runs down and to the left — rotate(135)
+        turns the ellipse's long axis onto that line. It is a gradient, not a
+        blurred shape, so there is nothing to rasterise. */}
+    <ellipse
+      class="hr-plume"
+      cx="25" cy="91" rx="22" ry="7.5"
+      transform="rotate(135 25 91)"
+      fill="url(#hero-rocket-plume)"
+    />
     <g class="hr-mark" transform="translate(20 20) scale(3.333)" stroke-width="1.15">
       <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
       <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
@@ -80,6 +100,12 @@
     .hero-rocket .hr-glow {
       animation: hero-rocket-glow 4s ease-in-out infinite;
     }
+
+    /* The plume swells as the mark rises, which is the half of the loop that
+       reads as thrust. Same 4s, offset by nothing — they are the same beat. */
+    .hero-rocket .hr-plume {
+      animation: hero-rocket-plume 4s ease-in-out infinite;
+    }
   }
 
   @keyframes hero-rocket-float {
@@ -90,6 +116,11 @@
   @keyframes hero-rocket-glow {
     0%, 100% { opacity: 0.72; }
     50% { opacity: 1; }
+  }
+
+  @keyframes hero-rocket-plume {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.85; }
   }
 
   /* A 163px band. */
@@ -113,6 +144,13 @@
 
   .hr-glow-in { stop-color: var(--brand-400); stop-opacity: 0.34; }
   .hr-glow-out { stop-color: var(--brand-400); stop-opacity: 0; }
+
+  /* Hot core to cool edge — brand tints rather than white, so the plume
+     belongs to the theme and not to the icon. */
+  .hr-plume { opacity: 0.8; }
+  .hr-plume-in  { stop-color: var(--brand-50);  stop-opacity: 0.6; }
+  .hr-plume-mid { stop-color: var(--brand-200); stop-opacity: 0.28; }
+  .hr-plume-out { stop-color: var(--brand-400); stop-opacity: 0; }
 
   .hr-mark {
     fill: none;

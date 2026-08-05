@@ -597,6 +597,14 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
   }
   .hp-hero-marquee {
     pointer-events: none; /* decorative; never intercepts taps */
+
+    /* Lifted clear of the horizon. Offset rather than margin or padding on
+       purpose: the slot is floored inside a fixed-height section, so growing
+       it would take 32px out of the slack `my-auto` shares above and below
+       the copy, and the copy would rise 16px with it. This moves the marquee
+       and nothing else. */
+    position: relative;
+    bottom: var(--space-8); /* 2rem */
   }
 
   /* Entrance: the marquee sits outside the content stagger container, so it fades
