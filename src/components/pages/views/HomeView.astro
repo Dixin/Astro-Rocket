@@ -13,6 +13,7 @@
 import LandingLayout from '@/layouts/LandingLayout.astro';
 import { Hero } from '@/components/hero';
 import HeroRocket from '@/components/effects/HeroRocket.astro';
+import HeroScene from '@/components/effects/HeroScene.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
@@ -154,6 +155,12 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
 >
   <!-- Hero -->
   <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight>
+    {/* Hero renders the background slot before its content and inside the
+        section, which is `position: relative` with `isolation: isolate` — so
+        the horizon clips to the hero and cannot escape behind the page. The
+        gradient wash stays underneath it. */}
+    <HeroScene slot="background" />
+
     <Fragment slot="badge">
       {/* Zero-height and absolutely positioned, so the badge and everything
           under it stay exactly where they are — see HeroRocket. */}
