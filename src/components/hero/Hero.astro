@@ -50,6 +50,9 @@ const hasDescriptionSlot = Astro.slots.has('description');
 const hasActionsSlot = Astro.slots.has('actions');
 const hasAsideSlot = Astro.slots.has('aside');
 const hasBottomSlot = Astro.slots.has('bottom');
+// Rendered first and inside the section, so anything passed in sits behind the
+// content and clips to the hero.
+const hasBackgroundSlot = Astro.slots.has('background');
 
 // Compute alignment based on layout
 const alignment = layout === 'centered' ? 'text-center items-center' : 'text-left items-start';
@@ -94,6 +97,8 @@ const gridClasses = cn(
 ---
 
 <section class={sectionClasses} {...attrs}>
+  {hasBackgroundSlot && <slot name="background" />}
+
   {showHeroHalo && <HeroGrid />}
   {showHeroHalo && <HeroBeam />}
 

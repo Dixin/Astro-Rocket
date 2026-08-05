@@ -1,0 +1,68 @@
+---
+/**
+ * HeroScene — the homepage hero's horizon.
+ *
+ * A planet's lit edge across the foot of the hero. The gradient wash the hero
+ * already carries is the sky; this draws the curve the sky ends on.
+ *
+ * Every size, phones included. Portrait phones keep the four static stack
+ * logos at the hero's floor and the curve runs behind them.
+ *
+ * Requires a positioned, clipping parent. `.hero-dark-gradient` is
+ * `position: relative` with `isolation: isolate`, and Hero's section is
+ * `overflow-hidden`, so the curve cannot escape the hero.
+ */
+---
+
+<!-- Stretched rather than sliced.
+
+     The curve has to meet the bottom corners of the screen at every size, and
+     a fixed-aspect canvas cannot do that: `slice` crops by a different amount
+     at every aspect, so an ellipse that reaches the corners at 1920×1080 exits
+     the bottom edge 107 units short of them at 1440×900, and goes nearly flat
+     at 768×1024.
+
+     `preserveAspectRatio="none"` makes the curve fill the width exactly, so
+     its ends are the corners by construction. Non-uniform scaling would
+     normally smear the stroke; `vector-effect="non-scaling-stroke"` keeps each
+     rim an even width whatever the box is stretched to. -->
+<svg
+  class="hero-planet"
+  viewBox="0 0 100 100"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <path d="M0 100 Q50 0 100 100 Z" class="hp-body"/>
+  <path d="M0 100 Q50 0 100 100" class="hp-atmo-3" vector-effect="non-scaling-stroke"/>
+  <path d="M0 100 Q50 0 100 100" class="hp-atmo-2" vector-effect="non-scaling-stroke"/>
+  <path d="M0 100 Q50 0 100 100" class="hp-atmo-1" vector-effect="non-scaling-stroke"/>
+  <path d="M0 100 Q50 0 100 100" class="hp-rim" vector-effect="non-scaling-stroke"/>
+</svg>
+
+<style>
+  /* The curve's height is what sets how much planet shows. 15% of the hero
+     leaves the arc shallow on a wide screen; a phone is narrower than it is
+     tall, so the same curve across less width reads steeper, and 11% keeps
+     the two looking alike. */
+  .hero-planet {
+    position: absolute;
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 15%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 639px) {
+    .hero-planet { height: 11%; }
+  }
+
+  /* Darker than brand-900 on purpose: the wash is the sky, and a planet the
+     same value as the sky has no edge. */
+  .hp-body   { fill: color-mix(in oklch, var(--brand-900) 45%, #000); }
+  .hp-atmo-3 { fill: none; stroke: var(--brand-500); stroke-opacity: 0.18; stroke-width: 46; }
+  .hp-atmo-2 { fill: none; stroke: var(--brand-400); stroke-opacity: 0.20; stroke-width: 22; }
+  .hp-atmo-1 { fill: none; stroke: var(--brand-300); stroke-opacity: 0.26; stroke-width: 9; }
+  .hp-rim    { fill: none; stroke: var(--brand-100); stroke-opacity: 0.85; stroke-width: 3; }
+</style>
