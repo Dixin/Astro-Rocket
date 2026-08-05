@@ -590,6 +590,20 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
     --hero-floor-gap: var(--space-16); /* 4rem — minimum gap above the marquee */
     padding-bottom: var(--space-16); /* 4rem — breathing room below it */
   }
+  /* Portrait phones: the hero is top-aligned, not centred. Hero gives a
+     full-height hero `my-auto`, which shares the leftover height evenly above
+     and below the copy — so the block's position depends on how tall the copy
+     happens to be, and that depends on where the paragraph wraps. Pinned to
+     the padding line, the rocket, the badge, the headline and the paragraph
+     start at the same place whatever the text does, and the leftover pools
+     above the planet. hansmartens.dev carries the same rule, so the two heroes
+     agree on a phone at every width. */
+  @media (max-width: 767px) and (orientation: portrait) {
+    section.hero-dark-gradient > .grid {
+      margin-block: 0;
+    }
+  }
+
   .hp-hero-marquee {
     pointer-events: none; /* decorative; never intercepts taps */
 
