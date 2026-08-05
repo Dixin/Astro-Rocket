@@ -512,7 +512,7 @@
         "titleLine2": "Web Designer",
         "titleLine3": "& Developer",
         "description": "A free, lightning-fast Astro 7 starter theme to build anything on: 44 designed components, 12 colour themes, and dark mode.",
-        "descriptionMobile": "A free, lightning-fast Astro 7 starter theme to build anything on, with 44 designed components.",
+        "descriptionMobile": "A free, lightning-fast Astro 7 starter theme to build anything on: 44 designed components and 12 colour themes.",
         "github": "Get it on GitHub",
         "getStarted": "Get started"
       },
