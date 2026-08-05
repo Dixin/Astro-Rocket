@@ -1,0 +1,123 @@
+---
+/**
+ * HeroRocket — the mark high in the hero's sky, above the badge.
+ *
+ * It takes NO space. The element is a zero-height, zero-flow box rendered at
+ * the top of the badge slot, with the drawing absolutely positioned above it;
+ * the badge, the H1, the paragraph, the buttons and the marquee sit exactly
+ * where they sit without it. That is the whole design constraint: a real block
+ * in the badge slot pushes the entire hero down the screen.
+ *
+ * Anchored to the badge, the space it has is the band between the floating
+ * header and the badge — and that band is not constant. Measured on the
+ * homepage hero it runs from 110px (1280×720, 1366×768, 1024×768, 390×844)
+ * through 163px (1440×900) to 253px (1920×1080), because the hero centres its
+ * content and a short window has none to spare. The three sizes below each fit
+ * the band they apply to with room under the header, so the mark never touches
+ * it.
+ *
+ * Lucide's `rocket`, the same icon the badges elsewhere on the site use,
+ * unrotated — it is drawn on a diagonal with the nose to the upper right.
+ * Its glow is a radial gradient behind it rather than a filter, so there is
+ * nothing to rasterise at any size.
+ *
+ * It rises and falls on a 4s loop with the glow breathing in step. Transform
+ * and opacity only, so it stays on the compositor, and the whole thing is
+ * behind `prefers-reduced-motion: no-preference`.
+ */
+---
+
+<div class="hero-rocket" aria-hidden="true">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="hero-rocket-glow">
+        <stop offset="0%" class="hr-glow-in" />
+        <stop offset="100%" class="hr-glow-out" />
+      </radialGradient>
+    </defs>
+    <circle class="hr-glow" cx="60" cy="60" r="60" fill="url(#hero-rocket-glow)" />
+    <g class="hr-mark" transform="translate(20 20) scale(3.333)" stroke-width="1.15">
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
+      <path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  /* Zero height, so the badge below it does not move; full width, so the
+     drawing can centre on the badge's own centre line, which is the page's. */
+  .hero-rocket {
+    position: relative;
+    width: 100%;
+    height: 0;
+  }
+
+  /* `bottom` measured from a zero-height box means "above the badge", and the
+     value is the gap between the two. The size is of the glow, which reaches
+     the edge of the viewBox — the mark itself covers a little over half of it.
+
+     Centred with `translate`, not `transform`, so the float below can own
+     `transform` outright instead of restating the -50% in every keyframe. */
+  .hero-rocket svg {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    translate: -50% 0;
+    width: 80px;
+    height: 80px;
+  }
+
+  /* A rise and fall, with the glow breathing on the same 4s so the mark
+     looks lit rather than shifted. 6px of travel: the mark clears the header
+     by 14px at its tightest, and the glow's own edge is transparent, so the
+     top of the arc has room. Both properties are composited. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rocket svg {
+      animation: hero-rocket-float 4s ease-in-out infinite;
+    }
+
+    .hero-rocket .hr-glow {
+      animation: hero-rocket-glow 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes hero-rocket-float {
+    0%, 100% { transform: translateY(3px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes hero-rocket-glow {
+    0%, 100% { opacity: 0.72; }
+    50% { opacity: 1; }
+  }
+
+  /* A 163px band. */
+  @media (min-width: 1280px) and (min-height: 880px) {
+    .hero-rocket svg {
+      bottom: 20px;
+      width: 132px;
+      height: 132px;
+    }
+  }
+
+  /* A 242px band and up — every window tall enough to centre the hero with
+     room left over, portrait tablets included. */
+  @media (min-height: 1000px) {
+    .hero-rocket svg {
+      bottom: 24px;
+      width: 176px;
+      height: 176px;
+    }
+  }
+
+  .hr-glow-in { stop-color: var(--brand-400); stop-opacity: 0.34; }
+  .hr-glow-out { stop-color: var(--brand-400); stop-opacity: 0; }
+
+  .hr-mark {
+    fill: none;
+    stroke: var(--brand-50);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>
