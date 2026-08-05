@@ -102,6 +102,19 @@ export const downloadFile = async (url: string, filePath: string): Promise<void>
     await fs.writeFile(filePath, Buffer.from(fileData));
 };
 
+export const downloadString = async (url: string): Promise<string> => {
+    const response = await fetch(url, {
+        headers: {
+            'User-Agent':
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+        },
+    });
+    if (!response.ok) {
+        throw new Error(`Failed to download file from ${url}: ${response.statusText}`);
+    }
+    return await response.text();
+};
+
 export const decodeHtml = (html: string): string => {
     return html
         .replace(/&lt;/g, '<')
