@@ -18,6 +18,7 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import ProofTile from '@/components/ui/data-display/ProofTile/ProofTile.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
+import ProjectImageSVG from '@/components/projects/ProjectImageSVG.astro';
 import TypingEffect from '@/components/ui/TypingEffect.astro';
 import TechStack from '@/components/landing/TechStack.astro';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
@@ -83,7 +84,7 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
   description={t('pages.about.meta.description', locale)}
   footerBackground="secondary"
 >
-  <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
+  <Hero layout="centered" size="sm" class="isolate pb-[var(--space-section-md)]" showHeroHalo>
     <Badge slot="badge" variant="brand" pill>
       <Icon name="rocket" size="sm" />
       {hero.badge}
@@ -101,6 +102,38 @@ const cta = tData<{ badge: string; heading: string; description: string; button:
     <p slot="description" class="!text-balance">
       {hero.description}
     </p>
+
+    <!-- Hero's default slot renders directly under the actions, inside the
+         content column, which is `items-center text-center` on a centred
+         layout — so this needs no centring of its own.
+
+         Spacing is the same two-value scale the hero already runs on:
+         --space-section-md at the section edge, carried by the pb override
+         above, and --space-section-gap between the copy and the image.
+         --space-stack-lg is the block value and leaves an image this size
+         crowding the copy; a section-edge value above it would put a
+         boundary-scale gap inside a section.
+
+         The subtraction is why this is a calc rather than the token on its
+         own. Hero gives the description slot mb-[var(--space-stack-lg)],
+         because a row of buttons normally follows it. Nothing does here, so
+         that 32px stacks under the paragraph before this margin even starts,
+         and the token alone renders 80px at desktop and 64px on a phone
+         against the 48 and 32 it is meant to be. Taking --space-stack-lg back
+         off lands the total on the token at every width: 16 + 32 = 48 at
+         desktop, 0 + 32 = 32 on a phone. Delete the subtraction if the
+         paragraph ever gains buttons after it.
+
+         max-w-4xl also decides which of the two canvases renders, because
+         ProjectImageSVG switches on the image's own width rather than the
+         viewport's: 896px keeps the wide one, a phone's ~382px column takes
+         the tall one. -->
+    <div class="mt-[calc(var(--space-section-gap)_-_var(--space-stack-lg))] w-full max-w-4xl mx-auto">
+      <ProjectImageSVG
+        slug="astro-rocket"
+        title="Start building with Astro Rocket — the rocket mark over a lit planet's edge, against a starfield."
+      />
+    </div>
   </Hero>
 
   <!-- What you get -->
