@@ -602,6 +602,15 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
     section.hero-dark-gradient > .grid {
       margin-block: 0;
     }
+
+    /* 176px of head clearance instead of the size="xl" preset's 192. The hero
+       is one viewport tall by min-height, but on a 812px or 800px phone its
+       own content came to 817 and 811 — so it ran past the screen and the foot
+       of the planet fell below the fold. Nothing moves at 390x844 or 430x932,
+       where the content already fits and min-height sets the height. */
+    section.hero-dark-gradient {
+      padding-top: calc(var(--space-page-top) + var(--space-12)); /* 176px */
+    }
   }
 
   .hp-hero-marquee {
