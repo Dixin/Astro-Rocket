@@ -2,9 +2,16 @@ name: Build
 
 on:
   push:
-    branches: [main]
+    branches: [color]
   pull_request:
-    branches: [main]
+    branches: [color]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   quality:
@@ -54,7 +61,7 @@ jobs:
         env:
           # `vercel` is the default and takes no DEPLOY_TARGET.
           DEPLOY_TARGET: ${{ matrix.target != 'vercel' && matrix.target || '' }}
-          SITE_URL: ${{ secrets.SITE_URL || 'https://example.com' }}
+          SITE_URL: ${{ secrets.SITE_URL }}
 
       - name: Verify the output is a usable site
         run: pnpm run verify
@@ -69,3 +76,14 @@ jobs:
 #               publish-dir './dist', NETLIFY_AUTH_TOKEN, NETLIFY_SITE_ID
 #   Cloudflare  cloudflare/wrangler-action@v3
 #               apiToken, accountId, command 'deploy'
+
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: './dist/client'
+          include-hidden-files: true
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

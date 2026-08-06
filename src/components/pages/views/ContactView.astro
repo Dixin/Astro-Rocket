@@ -58,13 +58,13 @@ const channels = [
   eagerReveal
 >
   <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
-    <Badge slot="badge" variant="brand" pill>
+    <Badge slot="badge" variant="default" pill>
       <Icon name="mail" size="sm" />
       {hero.badge}
     </Badge>
 
     <h1 slot="title">
-      {hero.titleLead} <span class="text-brand-500">{hero.titleHighlight}</span>
+      <span class="text-foreground-muted">{hero.titleLead}</span> <span class="text-foreground">{hero.titleHighlight}</span>
     </h1>
 
     <p slot="description" class="!text-balance">
@@ -95,31 +95,25 @@ const channels = [
           <!-- Channel list -->
           <div class="space-y-2">
             {channels.map((ch) => (
-              <a
-                href={ch.href}
-                {...ch.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
-                class="block group"
-              >
-                <Card hover padding="sm" class="h-full">
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500">
-                      <Icon name={ch.icon} size="sm" />
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <p class="font-semibold text-sm text-foreground">{ch.label}</p>
-                      <p class="text-xs text-foreground-muted truncate">{ch.value}</p>
-                    </div>
-                    <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0" />
+              <Card hover padding="sm" class="h-full" href={ch.href} {...ch.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500">
+                    <Icon name={ch.icon} size="sm" />
                   </div>
-                </Card>
-              </a>
+                  <div class="min-w-0 flex-1">
+                    <p class="font-semibold text-sm text-brand-500 group-hover:text-brand-300">{ch.label}</p>
+                    <p class="text-xs text-foreground-muted truncate">{ch.value}</p>
+                  </div>
+                  <Icon name="arrow-up-right" size="sm" class="text-brand-500 group-hover:text-brand-300 transition-colors shrink-0" />
+                </div>
+              </Card>
             ))}
           </div>
 
           <!-- Location card -->
-          <Card hover padding="sm" class="bg-brand-500/5 border-brand-500/20">
+          <Card hover padding="sm">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500">
+              <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-foreground/20 to-foreground/5 flex items-center justify-center text-foreground">
                 <Icon name="map-pin" size="sm" />
               </div>
               <div>

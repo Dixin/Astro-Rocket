@@ -32,6 +32,7 @@ import { getDerivedFooterGroups } from '@/lib/footer';
 import { resolveSocialLinks } from '@/lib/utils';
 import { getRssUrl } from '@/lib/blog';
 import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
+import { isActive } from '@/components/layout/Header.astro';
 
 export interface NavItem {
   label: string;
@@ -102,6 +103,7 @@ interface Props extends HTMLAttributes<'footer'> {
   tagline?: string;
   /** Max width of the inner container. Defaults to `'6xl'`. */
   maxWidth?: '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+  showActiveState?: boolean;
 }
 
 const {
@@ -119,6 +121,7 @@ const {
   tagline,
   maxWidth = '6xl',
   class: className,
+  showActiveState = true,
   ...attrs
 } = Astro.props;
 
@@ -293,11 +296,16 @@ function getSocialIcon(platform: string): string {
             </div>
           )}
 
-          <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-3 text-sm font-medium text-foreground-muted">
+          <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-3 text-sm font-medium">
             {allNavItems.map((item) => (
               <a
                 href={item.href}
-                class="transition-colors hover:text-foreground"
+                class={cn(
+                  'transition-colors rounded-md px-2 py-1',
+                  (isActive(item.href, showActiveState, Astro.url.pathname)
+                        ? 'text-foreground bg-brand-500 hover:text-brand-300 hover:bg-secondary/70'
+                        : 'text-brand-500 hover:text-brand-300 hover:bg-secondary/70')
+                )}
                 target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
                 rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
@@ -318,7 +326,7 @@ function getSocialIcon(platform: string): string {
             {resolvedLegalLinks.length > 0 && (
               <nav class="flex flex-wrap justify-center gap-x-[var(--space-inline-lg)] gap-y-2 text-xs text-foreground-muted">
                 {resolvedLegalLinks.map((link) => (
-                  <a href={link.href} class="transition-colors hover:text-foreground">
+                  <a href={link.href} class="transition-colors text-brand-500 hover:text-brand-300">
                     {link.label}
                   </a>
                 ))}
@@ -355,11 +363,16 @@ function getSocialIcon(platform: string): string {
         )}
 
         {/* Navigation Links */}
-        <nav class="flex flex-wrap justify-center gap-[var(--space-inline-lg)] md:gap-[var(--space-stack-lg)] text-sm font-medium text-foreground-muted">
+        <nav class="flex flex-wrap justify-center gap-[var(--space-inline-lg)] md:gap-[var(--space-stack-lg)] text-sm font-medium">
           {allNavItems.map((item) => (
             <a
               href={item.href}
-              class="transition-colors hover:text-foreground"
+              class={cn(
+                  'transition-colors rounded-md px-2 py-1',
+                  (isActive(item.href, showActiveState, Astro.url.pathname)
+                        ? 'text-foreground bg-brand-500 hover:text-brand-300 hover:bg-secondary/70'
+                        : 'text-brand-500 hover:text-brand-300 hover:bg-secondary/70')
+                )}
               target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
               rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
@@ -377,7 +390,7 @@ function getSocialIcon(platform: string): string {
               {resolvedSocialLinks.map((social) => (
                 <a
                   href={social.href}
-                  class="transition-colors text-foreground-muted hover:text-foreground"
+                  class="transition-colors text-brand-500 hover:text-brand-300"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label || t('footer.followOn', locale, { platform: social.platform })}
@@ -432,23 +445,28 @@ function getSocialIcon(platform: string): string {
           ) : (
             resolvedLinkGroups.map((group) => (
               <div class="space-y-[var(--space-stack-md)]">
-                <h3 class="font-semibold text-sm text-foreground">
+                <h3 class="font-semibold text-sm text-foreground pl-1">
                   {group.title}
                 </h3>
-                <ul class="space-y-2">
+                <ul class="space-y-1">
                   {group.links.map((link) => (
                     <li>
                       {link.href ? (
                         <a
                           href={link.href}
-                          class="text-sm transition-colors text-foreground-muted hover:text-foreground"
+                          class={cn(
+                            'text-sm transition-colors text-brand-500 hover:text-brand-300 py-1 px-1 rounded-md',
+                            (isActive(link.href, showActiveState, Astro.url.pathname)
+                              ? 'text-foreground bg-brand-500 hover:text-brand-300 hover:bg-secondary/70'
+                              : '')
+                          )}
                           target={link.external || link.href.startsWith('http') ? '_blank' : undefined}
                           rel={link.external || link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         >
                           {link.label}
                         </a>
                       ) : (
-                        <span class="text-sm text-foreground-subtle">{link.label}</span>
+                        <span class="text-sm text-foreground-subtle pl-1">{link.label}</span>
                       )}
                     </li>
                   ))}
@@ -484,7 +502,7 @@ function getSocialIcon(platform: string): string {
                       account, and it belongs with the other ways to follow. */}
                   <a
                     href={getRssUrl(locale)}
-                    class="transition-colors text-foreground-muted hover:text-foreground"
+                    class="transition-colors text-brand-500 hover:text-brand-300"
                     aria-label={t('blog.rssFeed', locale)}
                   >
                     <Icon name="rss" size="md" />
@@ -492,7 +510,7 @@ function getSocialIcon(platform: string): string {
                   {showSocial && resolvedSocialLinks.map((social) => (
                     <a
                       href={social.href}
-                      class="transition-colors text-foreground-muted hover:text-foreground"
+                      class="transition-colors text-brand-500 hover:text-brand-300"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label || t('footer.followOn', locale, { platform: social.platform })}
@@ -540,11 +558,16 @@ function getSocialIcon(platform: string): string {
         )}
 
         {/* Navigation Links */}
-        <nav class="flex flex-wrap justify-center gap-[var(--space-inline-lg)] text-sm font-medium text-foreground-muted">
+        <nav class="flex flex-wrap justify-center gap-[var(--space-inline-lg)] text-sm font-medium">
           {allNavItems.map((item) => (
             <a
               href={item.href}
-              class="transition-colors hover:text-foreground"
+              class={cn(
+                  'transition-colors rounded-md px-2 py-1',
+                  (isActive(item.href, showActiveState, Astro.url.pathname)
+                        ? 'text-foreground bg-brand-500 hover:text-brand-300 hover:bg-secondary/70'
+                        : 'text-brand-500 hover:text-brand-300 hover:bg-secondary/70')
+                )}
               target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
               rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
@@ -559,7 +582,7 @@ function getSocialIcon(platform: string): string {
             {resolvedSocialLinks.map((social) => (
               <a
                 href={social.href}
-                class="transition-colors text-foreground-muted hover:text-foreground"
+                class="transition-colors text-brand-500 hover:text-brand-300"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label || t('footer.followOn', locale, { platform: social.platform })}
@@ -581,7 +604,7 @@ function getSocialIcon(platform: string): string {
                 {resolvedLegalLinks.map((link) => (
                   <a
                     href={link.href}
-                    class="text-sm transition-colors text-foreground-muted hover:text-foreground"
+                    class="text-sm transition-colors text-brand-500 hover:text-brand-300"
                   >
                     {link.label}
                   </a>

@@ -52,7 +52,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
 
 <PageLayout title={t('blog.metaTitle', locale)} description={t('blog.metaDescription', locale)} showScrollProgress eagerReveal footerBackground={featuredPosts.length > 0 ? 'default' : 'secondary'}>
   <Hero layout="centered" size="sm" class="isolate" showHeroHalo>
-    <Badge slot="badge" variant="brand" pill>
+    <Badge slot="badge" variant="default" pill>
       <Icon name="book" size="sm" />
       {t('blog.heroBadge', locale)}
     </Badge>

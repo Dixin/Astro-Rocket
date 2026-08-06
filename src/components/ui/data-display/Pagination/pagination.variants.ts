@@ -9,8 +9,8 @@ export const paginationItemVariants = cva(
   {
     variants: {
       variant: {
-        default: 'hover:bg-secondary text-foreground-muted hover:text-foreground',
-        active: 'bg-foreground text-background',
+        default: 'hover:bg-secondary text-brand-500 hover:text-brand-300',
+        active: 'bg-brand-500 text-foreground',
         disabled: 'text-foreground-subtle cursor-not-allowed opacity-50',
       },
       size: {
