@@ -225,9 +225,13 @@ const stars = Array.from({ length: STAR_COUNT }, (_, i) => {
      into it. Shorter, and starting nearer the edge, keeps each one inside its
      own outer third with the rocket's column clear between them. */
   @media (max-width: 639px) {
-    .hero-shoot { --hs-len: 70px; --hs-travel: 90%; }
-    .hero-shoot-l { left: 2%; }
-    .hero-shoot-r { right: 2%; }
+    .hero-shoot { --hs-len: 96px; --hs-travel: 115%; }
+    /* Starting off the edge buys runway the screen does not have: the visible
+       flight is longer than the phone is wide, and each one still stops short
+       of the rocket's column. Steeper too — 30deg rather than 16 — so they
+       read as heading for the badge instead of skimming the top. */
+    .hero-shoot-l { left: -16%; rotate: 30deg; }
+    .hero-shoot-r { right: -16%; rotate: 150deg; }
   }
 
   .hero-shoot::after {
