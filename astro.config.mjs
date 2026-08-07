@@ -1,5 +1,6 @@
 import { join, dirname } from 'node:path';
 import { writeFile, mkdir, readdir, readFile } from 'node:fs/promises';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
@@ -257,6 +258,56 @@ const i18nEnabled = i18nConfig.enabled === true && i18nConfig.locales.length > 1
  * everyone who clones the repository; an environment variable on one
  * deployment turns it on for one deployment.
  */
+/**
+ * URLs of every blog post carrying an `access:` value.
+ *
+ * Read off disk with a frontmatter scan rather than through the content layer,
+ * because routes have to be injected in `astro:config:setup` and collections
+ * do not exist yet at that point.
+ *
+ * The URL rule is `getPostUrl`'s: strip the locale folder from the id, and
+ * prefix the path with the locale for every locale but the default. Two copies
+ * of one rule is a drift risk, so `members-gating.test.ts` builds the same URL
+ * both ways and fails if they stop agreeing.
+ */
+function gatedPosts() {
+  const base = new URL('./src/content/blog/', import.meta.url);
+  const locales = i18nConfig.locales ?? [];
+  const defaultLocale = i18nConfig.defaultLocale;
+  const urls = [];
+
+  let entries;
+  try {
+    entries = readdirSync(base, { recursive: true, withFileTypes: true });
+  } catch {
+    return urls;
+  }
+
+  for (const entry of entries) {
+    if (!entry.isFile() || !/\.(md|mdx)$/.test(entry.name)) continue;
+
+    const path = join(entry.parentPath ?? entry.path, entry.name);
+    const source = readFileSync(path, 'utf8');
+    const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!frontmatter) continue;
+
+    const access = frontmatter[1].match(/^access:\s*["']?([^"'\r\n]+)["']?\s*$/m)?.[1]?.trim();
+    if (!access || access === 'public') continue;
+
+    // The id is the path under the collection root, without its extension.
+    const id = path
+      .slice(fileURLToPath(base).length)
+      .replace(/\\/g, '/')
+      .replace(/\.(md|mdx)$/, '');
+    const locale = frontmatter[1].match(/^locale:\s*["']?([\w-]+)["']?\s*$/m)?.[1] ?? defaultLocale;
+    const slug = id.replace(new RegExp(`^(${[locale, ...locales].join('|')})/`), '');
+
+    urls.push(locale === defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`);
+  }
+
+  return urls;
+}
+
 function membersArea() {
   const enabled =
     membersConfig.enabled === true || process.env.MEMBERS_ENABLED === 'true';
@@ -286,7 +337,30 @@ function membersArea() {
           });
         }
 
-        logger.info(`enabled at ${prefix} — ${routes.length} routes on demand`);
+        // One route per gated post, at the post's own URL.
+        //
+        // A gated post cannot be prerendered — middleware runs at build time
+        // for prerendered pages, so the guard would decide once, at build,
+        // for everybody. Making the whole `/blog/[...slug]` route on-demand
+        // would fix that and cost every public post its static build, so
+        // instead the dynamic route drops gated posts from getStaticPaths and
+        // each one is injected here. Astro gives a static pattern priority
+        // over a dynamic one, so `/blog/members-only` wins over
+        // `/blog/[...slug]` and the URL does not change.
+        const gated = gatedPosts();
+        for (const url of gated) {
+          injectRoute({
+            pattern: url,
+            entrypoint: './src/members/gated-post.astro',
+            prerender: false,
+          });
+        }
+
+        logger.info(
+          `enabled at ${prefix} — ${routes.length} routes, ${gated.length} gated ${
+            gated.length === 1 ? 'post' : 'posts'
+          }, all on demand`
+        );
       },
       'astro:build:start': ({ logger }) => {
         if (!enabled) return;

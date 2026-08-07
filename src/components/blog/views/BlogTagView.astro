@@ -88,6 +88,7 @@ const countKey = posts.length === 1 ? 'blog.tagCountOne' : 'blog.tagCountOther';
               image={post.data.image}
               svgSlug={post.data.svgSlug}
               body={post.body}
+              access={post.data.access}
               revealDelay={index % 3}
               eager={index === 0}
             />

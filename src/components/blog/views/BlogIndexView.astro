@@ -83,6 +83,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
                 image={post.data.image}
                 svgSlug={post.data.svgSlug}
                 body={post.body}
+                access={post.data.access}
                 revealDelay={index % 2}
                 eager={index === 0}
               />
@@ -122,6 +123,7 @@ const topTags = collectTopTags(posts, BLOG_TAG_CLOUD_LIMIT);
                 image={post.data.image}
                 svgSlug={post.data.svgSlug}
                 body={post.body}
+                access={post.data.access}
                 revealDelay={index % 3}
                 eager={featuredPosts.length === 0 && index === 0}
               />

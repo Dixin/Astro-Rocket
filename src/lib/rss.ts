@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 import siteConfig from '@/config/site.config';
 import { getPostUrl } from '@/lib/blog';
 import { defaultLocale } from '@/i18n';
+import { publicEntries } from '@/lib/members/gating';
 
 /**
  * RSS feed generation, shared by `/rss.xml` and `/<locale>/rss.xml`.
@@ -41,7 +42,13 @@ export async function buildRssFeed({
   site,
   feedPath = '/rss.xml',
 }: BuildFeedOptions = {}): Promise<string> {
-  const posts = await getCollection('blog', ({ data }) => data.locale === locale && !data.draft);
+  // Gated posts never go out over RSS. A feed item carries the description
+  // and links to the post, and a reader who cannot open it gets an entry that
+  // only frustrates — but the real reason is that feeds get republished, and
+  // a members-only post has no business travelling that way.
+  const posts = publicEntries(
+    await getCollection('blog', ({ data }) => data.locale === locale && !data.draft)
+  );
 
   const sortedPosts = posts.sort(
     (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
