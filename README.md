@@ -846,9 +846,21 @@ The search button shows by default. Hide it per header instance:
 
 ## Members Area
 
-Put one line in a post's frontmatter and it needs a sign-in. Readers enter
-their email address, get a link, and they are in — no password to choose,
-nothing to reset, and no database anywhere.
+Put one line in a post's frontmatter and it needs a sign-in. A member enters
+the address you listed them under, gets a link, and is in — no password to
+choose, nothing to reset, and no database anywhere.
+
+**There is no signup. You keep the list.** Nobody can grant themselves access:
+an address that is not in `members.config.ts` gets no link, however many times
+it is typed. Someone becomes a member when you add them and deploy, after
+whatever arrangement you have with them. That is not a limitation beside the
+feature — it is why there is no database. There is no signup because there is
+nowhere to put one.
+
+The sign-in form answers identically either way, on purpose. Saying "no such
+member" would turn it into a way to discover who your members are. The
+consequence is yours to handle: someone who ought to be a member will wait for
+a link that is not coming, so give them a way to ask.
 
 **Off by default.** With `enabled: false` no member routes are built at all,
 so a site that never turns it on is byte-identical to one built before this
