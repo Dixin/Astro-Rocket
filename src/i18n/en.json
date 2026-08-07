@@ -53,7 +53,7 @@
     "metaTitle": "Blog",
     "metaDescription": "The Astro Rocket blog: practical guides to setting up, configuring, and building with the theme.",
     "heroBadge": "All posts",
-    "heroDescription": "Everything you need to know about Astro Rocket, explained in practical guides.",
+    "heroDescription": "Everything you need to know about Astro\u00a0Rocket, explained in practical guides.",
     "allPosts": "All posts",
     "noPosts": "No posts found",
     "pageMetaTitle": "Blog — Page {page}",
@@ -210,22 +210,9 @@
       "hero": {
         "badge": "About",
         "titleLead": "Astro Rocket —",
-        "typingWords": [
-          "Lightning-fast",
-          "Starter theme",
-          "44 Components",
-          "12 Themes",
-          "Dark Mode",
-          "Built-in i18n"
-        ],
-        "typingWordsMobile": [
-          "Lightning-fast",
-          "Starter theme",
-          "12 Themes",
-          "Dark Mode",
-          "Built-in i18n"
-        ],
-        "description": "A free, open-source Astro 7 starter theme to build anything on."
+        "typingWords": ["Lightning-fast", "Starter theme", "44 Components", "12 Themes", "Dark Mode", "Built-in i18n"],
+        "typingWordsMobile": ["Lightning-fast", "Starter theme", "12 Themes", "Dark Mode", "Built-in i18n"],
+        "description": "A free, open-source Astro 7 starter\u00a0theme to build anything on."
       },
       "whatYouGet": {
         "badge": "What you get",
@@ -284,21 +271,9 @@
         "heading": "Built with intention",
         "lead": "Every decision in Astro Rocket, from component structure to default config, is driven by the same three principles.",
         "items": [
-          {
-            "icon": "zap",
-            "title": "Performance First",
-            "description": "Zero JavaScript by default. Every component is optimised for speed, Core Web Vitals, and lean output."
-          },
-          {
-            "icon": "award",
-            "title": "Developer Experience",
-            "description": "TypeScript throughout, sensible defaults, and a component library you can drop straight into any page."
-          },
-          {
-            "icon": "rocket",
-            "title": "Modern from the Ground Up",
-            "description": "Astro 7, Tailwind CSS 4, and a clean architecture that's easy to extend and maintain."
-          }
+          { "icon": "zap", "title": "Performance First", "description": "Zero JavaScript by default. Every component is optimised for speed, Core Web Vitals, and lean output." },
+          { "icon": "award", "title": "Developer Experience", "description": "TypeScript throughout, sensible defaults, and a component library you can drop straight into any page." },
+          { "icon": "rocket", "title": "Modern from the Ground Up", "description": "Astro 7, Tailwind CSS 4, and a clean architecture that's easy to extend and maintain." }
         ]
       },
       "stack": {
@@ -315,52 +290,22 @@
             "icon": "rocket",
             "title": "About Astro",
             "items": [
-              {
-                "question": "What is Astro?",
-                "answer": "Astro is a modern web framework built for content-driven sites. It ships zero JavaScript by default — only sending what the page actually needs. The result is fast load times, excellent Core Web Vitals scores, and lean, maintainable code."
-              },
-              {
-                "question": "Why build with Astro?",
-                "answer": "Astro is the right tool for content-heavy sites: minimal JavaScript, clean HTML, great SEO out of the box, and a developer experience that stays out of your way. It's lean, purposeful, and built to last."
-              },
-              {
-                "question": "What can I build with Astro Rocket?",
-                "answer": "Portfolios, business sites, marketing pages, blogs, documentation sites — any content-driven project. Astro Rocket gives you the structure, components, and defaults to hit the ground running."
-              },
-              {
-                "question": "Is Astro Rocket listed on the official Astro themes directory?",
-                "answer": "Yes. <a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> is listed on the official Astro themes directory as a free, production-ready theme."
-              },
-              {
-                "question": "Will Astro Rocket keep up with new Astro releases?",
-                "answer": "Yes. Astro Rocket is actively maintained and updated to track new Astro releases. Follow along on the blog or watch the GitHub repository for updates."
-              }
+              { "question": "What is Astro?", "answer": "Astro is a modern web framework built for content-driven sites. It ships zero JavaScript by default — only sending what the page actually needs. The result is fast load times, excellent Core Web Vitals scores, and lean, maintainable code." },
+              { "question": "Why build with Astro?", "answer": "Astro is the right tool for content-heavy sites: minimal JavaScript, clean HTML, great SEO out of the box, and a developer experience that stays out of your way. It's lean, purposeful, and built to last." },
+              { "question": "What can I build with Astro Rocket?", "answer": "Portfolios, business sites, marketing pages, blogs, documentation sites — any content-driven project. Astro Rocket gives you the structure, components, and defaults to hit the ground running." },
+              { "question": "Is Astro Rocket listed on the official Astro themes directory?", "answer": "Yes. <a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> is listed on the official Astro themes directory as a free, production-ready theme." },
+              { "question": "Will Astro Rocket keep up with new Astro releases?", "answer": "Yes. Astro Rocket is actively maintained and updated to track new Astro releases. Follow along on the blog or watch the GitHub repository for updates." }
             ]
           },
           {
             "icon": "code-2",
             "title": "Using the theme",
             "items": [
-              {
-                "question": "Is it free to use?",
-                "answer": "Yes, completely free. Astro Rocket is MIT licensed — use it for personal and commercial projects, no attribution required."
-              },
-              {
-                "question": "How do I switch themes?",
-                "answer": "Change a single line in your config. Astro Rocket ships with 12 hand-crafted colour themes — swap between them instantly without touching a line of CSS."
-              },
-              {
-                "question": "Does it support TypeScript?",
-                "answer": "Yes, TypeScript is used throughout. All components, configs, and utilities are fully typed."
-              },
-              {
-                "question": "How do I add my own language for i18n?",
-                "answer": "Astro Rocket's i18n is config-driven. Add your locale to the i18n config file, create a matching translation file, and the routing and UI adapt automatically."
-              },
-              {
-                "question": "Where do I report bugs or suggest features?",
-                "answer": "Open an issue or start a discussion on the <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub repository</a>. Contributions and feedback are always welcome."
-              }
+              { "question": "Is it free to use?", "answer": "Yes, completely free. Astro Rocket is MIT licensed — use it for personal and commercial projects, no attribution required." },
+              { "question": "How do I switch themes?", "answer": "Change a single line in your config. Astro Rocket ships with 12 hand-crafted colour themes — swap between them instantly without touching a line of CSS." },
+              { "question": "Does it support TypeScript?", "answer": "Yes, TypeScript is used throughout. All components, configs, and utilities are fully typed." },
+              { "question": "How do I add my own language for i18n?", "answer": "Astro Rocket's i18n is config-driven. Add your locale to the i18n config file, create a matching translation file, and the routing and UI adapt automatically." },
+              { "question": "Where do I report bugs or suggest features?", "answer": "Open an issue or start a discussion on the <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub repository</a>. Contributions and feedback are always welcome." }
             ]
           }
         ]
@@ -371,18 +316,9 @@
         "description": "Astro Rocket is free, open source, and MIT licensed. Browse the source, open issues, submit PRs, or just clone it and build something great.",
         "button": "View on GitHub",
         "cards": [
-          {
-            "title": "Made by Hans Martens Dev",
-            "text": "Astro Rocket was designed and built by <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens Dev</a> — a freelance Astro developer who uses it as the foundation for client projects."
-          },
-          {
-            "title": "MIT License",
-            "text": "Free to use in personal and commercial projects. No attribution required, though a star on GitHub is always appreciated."
-          },
-          {
-            "title": "Actively maintained",
-            "text": "The theme is kept up to date with new Astro releases and regularly improved based on community feedback."
-          }
+          { "title": "Made by Hans Martens Dev", "text": "Astro Rocket was designed and built by <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens Dev</a> — a freelance Astro developer who uses it as the foundation for client projects." },
+          { "title": "MIT License", "text": "Free to use in personal and commercial projects. No attribution required, though a star on GitHub is always appreciated." },
+          { "title": "Actively maintained", "text": "The theme is kept up to date with new Astro releases and regularly improved based on community feedback." }
         ]
       },
       "cta": {
@@ -403,11 +339,7 @@
         "titleLead": "Web design, development,",
         "titleHighlight": "and optimisation",
         "description": "Three services, one product: a sleek, lightning-fast custom Astro website you're proud to put your name on.",
-        "jumpLabels": [
-          "Web design",
-          "Web development",
-          "Web optimisation"
-        ]
+        "jumpLabels": ["Web design", "Web development", "Web optimisation"]
       },
       "design": {
         "badge": "Design",
@@ -507,22 +439,10 @@
         "heading": "How a project runs",
         "lead": "From your first message to a live website.",
         "steps": [
-          {
-            "title": "First contact",
-            "description": "You send a message through the contact form. I reply within a working day, and we plan a free, informational talk about what you need. No obligations."
-          },
-          {
-            "title": "Proposal",
-            "description": "After our talk you get one clear document: what I'll build, when it's ready, and the fixed price. You decide with everything on the table."
-          },
-          {
-            "title": "Design & build",
-            "description": "I work in short cycles. You follow the progress on a staging link, and you see your website take shape."
-          },
-          {
-            "title": "Launch & support",
-            "description": "Your website goes live on your own domain and hosting, in your name. Afterwards I stay reachable, and there's a monthly care plan if you want regular updates."
-          }
+          { "title": "First contact", "description": "You send a message through the contact form. I reply within a working day, and we plan a free, informational talk about what you need. No obligations." },
+          { "title": "Proposal", "description": "After our talk you get one clear document: what I'll build, when it's ready, and the fixed price. You decide with everything on the table." },
+          { "title": "Design & build", "description": "I work in short cycles. You follow the progress on a staging link, and you see your website take shape." },
+          { "title": "Launch & support", "description": "Your website goes live on your own domain and hosting, in your name. Afterwards I stay reachable, and there's a monthly care plan if you want regular updates." }
         ]
       },
       "faq": {
@@ -534,52 +454,22 @@
             "icon": "tag",
             "title": "Before we start",
             "items": [
-              {
-                "question": "What does a website cost?",
-                "answer": "Every project gets one fixed price, agreed before we start. No hourly billing, no surprises afterwards. The free talk — and the free check, if there's already a website — tells me what your project needs, and you get the price in one clear proposal."
-              },
-              {
-                "question": "How long does a project take?",
-                "answer": "That depends on the size of the website. The proposal names the timeline together with the price, so you know both before we start."
-              },
-              {
-                "question": "What happens with my current website?",
-                "answer": "It stays online until the new one is ready. Your content, your web address, and your Google rankings come along. I check your current website before our first talk, so you get clear answers from the start."
-              },
-              {
-                "question": "Do I need to arrange hosting or a domain?",
-                "answer": "No. I set up the hosting and the domain for you, in your own name. If you already have a domain, we simply keep it."
-              },
-              {
-                "question": "Do we need to meet in person?",
-                "answer": "It's not needed. Most projects run entirely by phone, video, and email. I work with clients worldwide, and time zones are rarely a problem."
-              }
+              { "question": "What does a website cost?", "answer": "Every project gets one fixed price, agreed before we start. No hourly billing, no surprises afterwards. The free talk — and the free check, if there's already a website — tells me what your project needs, and you get the price in one clear proposal." },
+              { "question": "How long does a project take?", "answer": "That depends on the size of the website. The proposal names the timeline together with the price, so you know both before we start." },
+              { "question": "What happens with my current website?", "answer": "It stays online until the new one is ready. Your content, your web address, and your Google rankings come along. I check your current website before our first talk, so you get clear answers from the start." },
+              { "question": "Do I need to arrange hosting or a domain?", "answer": "No. I set up the hosting and the domain for you, in your own name. If you already have a domain, we simply keep it." },
+              { "question": "Do we need to meet in person?", "answer": "It's not needed. Most projects run entirely by phone, video, and email. I work with clients worldwide, and time zones are rarely a problem." }
             ]
           },
           {
             "icon": "user",
             "title": "Working with me",
             "items": [
-              {
-                "question": "Are you a company or agency?",
-                "answer": "I'm a one-person business: a freelancer, not an agency. You work directly with the person doing the work, from the first talk to the finished website. No sales team, no account managers, no handoffs."
-              },
-              {
-                "question": "Can I change the website myself after launch?",
-                "answer": "You can simply send me your changes, and the monthly care plan exists exactly for that. If you want to edit the website yourself, say so in the first talk and I set the site up for it."
-              },
-              {
-                "question": "Do you also build webshops?",
-                "answer": "No. Big online shops are the one thing I don't build. Everything else that needs a custom Astro website, I build: tell me in the first talk what you have in mind, and I'll be honest about whether I'm the right builder for it."
-              },
-              {
-                "question": "Is the website really mine?",
-                "answer": "Completely. The domain, the hosting, and the code are in your name from day one. If you ever want to move on, you take everything with you: you're never locked in."
-              },
-              {
-                "question": "What happens if something breaks after launch?",
-                "answer": "Very little can break: the website has no plugins and no database to fail. And I stay reachable after launch; for regular updates and monitoring there is the monthly care plan."
-              }
+              { "question": "Are you a company or agency?", "answer": "I'm a one-person business: a freelancer, not an agency. You work directly with the person doing the work, from the first talk to the finished website. No sales team, no account managers, no handoffs." },
+              { "question": "Can I change the website myself after launch?", "answer": "You can simply send me your changes, and the monthly care plan exists exactly for that. If you want to edit the website yourself, say so in the first talk and I set the site up for it." },
+              { "question": "Do you also build webshops?", "answer": "No. Big online shops are the one thing I don't build. Everything else that needs a custom Astro website, I build: tell me in the first talk what you have in mind, and I'll be honest about whether I'm the right builder for it." },
+              { "question": "Is the website really mine?", "answer": "Completely. The domain, the hosting, and the code are in your name from day one. If you ever want to move on, you take everything with you: you're never locked in." },
+              { "question": "What happens if something breaks after launch?", "answer": "Very little can break: the website has no plugins and no database to fail. And I stay reachable after launch; for regular updates and monitoring there is the monthly care plan." }
             ]
           }
         ]
@@ -632,21 +522,9 @@
         "lead": "Every project gets all three services.",
         "learnMore": "Learn more",
         "cards": [
-          {
-            "icon": "layout",
-            "title": "Web Design",
-            "description": "Interfaces that feel obvious. Layouts shaped around your content, your brand, and how people actually read on a screen."
-          },
-          {
-            "icon": "code",
-            "title": "Web Development",
-            "description": "Sites built to last. Astro, Tailwind, and a clean architecture: fast on day one, easy to maintain on day 500."
-          },
-          {
-            "icon": "trending-up",
-            "title": "Web Optimisation",
-            "description": "SEO, Core Web Vitals, and accessibility, built in from day one so your site ranks, loads well, and works for every visitor."
-          }
+          { "icon": "layout", "title": "Web Design", "description": "Interfaces that feel obvious. Layouts shaped around your content, your brand, and how people actually read on a screen." },
+          { "icon": "code", "title": "Web Development", "description": "Sites built to last. Astro, Tailwind, and a clean architecture: fast on day one, easy to maintain on day 500." },
+          { "icon": "trending-up", "title": "Web Optimisation", "description": "SEO, Core Web Vitals, and accessibility, built in from day one so your site ranks, loads well, and works for every visitor." }
         ]
       },
       "workWithMe": {
@@ -654,26 +532,10 @@
         "heading": "Let's build your website",
         "lead": "What you get when we work together.",
         "cards": [
-          {
-            "icon": "palette",
-            "title": "Custom design",
-            "description": "Designed around your business, your content, and your customers."
-          },
-          {
-            "icon": "zap",
-            "title": "A lightning-fast website",
-            "description": "Pages that open instantly, on every phone and every connection."
-          },
-          {
-            "icon": "search",
-            "title": "Found by Google and AI",
-            "description": "Every page built so search engines and AI assistants read it cleanly and customers can find you."
-          },
-          {
-            "icon": "shield-check",
-            "title": "Zero maintenance",
-            "description": "Kept up to date and secure with the care plan, so you can focus on your business."
-          }
+          { "icon": "palette", "title": "Custom design", "description": "Designed around your business, your content, and your customers." },
+          { "icon": "zap", "title": "A lightning-fast website", "description": "Pages that open instantly, on every phone and every connection." },
+          { "icon": "search", "title": "Found by Google and AI", "description": "Every page built so search engines and AI assistants read it cleanly and customers can find you." },
+          { "icon": "shield-check", "title": "Zero maintenance", "description": "Kept up to date and secure with the care plan, so you can focus on your business." }
         ],
         "cta": "Read my services page"
       },
@@ -688,16 +550,8 @@
         "heading": "What clients say",
         "lead": "Real words from finished projects.",
         "items": [
-          {
-            "quote": "The new site launched on time and hit every goal we set. Performance improved dramatically — load times dropped and the feedback from our customers has been overwhelmingly positive.",
-            "name": "Alex Morgan",
-            "role": "Founder, Bright Studio"
-          },
-          {
-            "quote": "Straightforward from first conversation to final handover. The right questions were asked, we were kept in the loop throughout, and the end result exceeded what we imagined. Would recommend without hesitation.",
-            "name": "Sarah Chen",
-            "role": "CEO, Luma Agency"
-          }
+          { "quote": "The new site launched on time and hit every goal we set. Performance improved dramatically — load times dropped and the feedback from our customers has been overwhelmingly positive.", "name": "Alex Morgan", "role": "Founder, Bright Studio" },
+          { "quote": "Straightforward from first conversation to final handover. The right questions were asked, we were kept in the loop throughout, and the end result exceeded what we imagined. Would recommend without hesitation.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }
         ]
       },
       "aboutTeaser": {
@@ -727,50 +581,5 @@
         "secondary": "More about me"
       }
     }
-  },
-  "members": {
-    "signIn": "Sign in",
-    "signOut": "Sign out",
-    "membersTitle": "Members",
-    "signInHeading": "Members",
-    "signInIntro": "Enter the email address you are registered with. We'll send you a link to sign in — no password needed.",
-    "emailLabel": "Email address",
-    "emailPlaceholder": "you@example.com",
-    "sendLink": "Send me a link",
-    "backToSite": "Back to the site",
-    "signedOut": "You are signed out.",
-    "errorEmail": "That does not look like an email address.",
-    "errorSend": "The link could not be sent. Try again in a moment.",
-    "errorLink": "That link has expired or is no longer valid. Ask for a new one.",
-    "errorRateLimit": "Too many requests. Wait a minute and try again.",
-    "checkEmailTitle": "Check your email",
-    "checkEmailBody": "If that email address belongs to a member, a sign-in link is on its way. It is valid for {minutes} minutes.",
-    "useDifferentAddress": "Try another email address",
-    "demoIntro": "Trying the theme? Skip the email and look around.",
-    "demoSignIn": "Sign in as a demo member",
-    "welcome": "Welcome, {name}",
-    "account": "Account",
-    "accountTitle": "Your account",
-    "back": "Back",
-    "name": "Name",
-    "nameUnset": "Not set",
-    "accessLabel": "Access",
-    "memberLabel": "Member",
-    "signedInUntil": "Signed in until",
-    "signedInUntilNote": "{date} — after that, ask for a new link",
-    "signingOut": "Signing out",
-    "signingOutBody": "Signing out clears this browser's session. There is no session stored on the server, so nothing else has to be cleaned up.",
-    "yoursToRead": "Yours to read",
-    "nothingGated": "Nothing gated yet",
-    "nothingGatedBody": "Add access: members to the frontmatter of a post and it appears here, and as a locked card on the blog.",
-    "notIncluded": "Not included in your membership",
-    "membersOnly": "Members only",
-    "lockedHeading": "This one is for members",
-    "lockedBody": "Members read it in full. If you are one, sign in with the email address you are registered with — no password needed.",
-    "notEntitledHeading": "Your membership does not cover this",
-    "notEntitledBody": "This one is for {tier} members. You are signed in as {email}.",
-    "backToBlog": "Back to the blog",
-    "emailSubject": "Your sign-in link",
-    "emailBody": "Sign in here:\n\n{url}\n\nThe link is valid for {minutes} minutes. If you did not ask for it, ignore this email."
   }
 }

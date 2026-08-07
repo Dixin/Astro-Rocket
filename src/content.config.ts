@@ -42,50 +42,7 @@ const blog = defineCollection({
         .optional(),
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),
-      /**
-       * Where this post sits in the featured row, lowest first.
-       *
-       * Featured posts otherwise appear newest first, which ties the order of
-       * a curated row to publication dates — so putting an older post at the
-       * front would mean backdating a new one, and that changes what goes out
-       * over RSS and what the sitemap reports. This decides the order without
-       * touching a single date.
-       *
-       * Posts without it fall in after the numbered ones, still newest first.
-       */
-      featuredOrder: z.number().int().positive().optional(),
       locale: localeSchema,
-      /**
-       * Members area — who may read this post.
-       *
-       * Omit it and the post is public, which is every post until someone
-       * decides otherwise. `members` means any signed-in member; any other
-       * value names a tier from `members.config.ts` and the member has to
-       * hold it.
-       *
-       * The post still appears in listings either way — as a locked card
-       * carrying the title, date and description — so the value is visible
-       * before anyone signs in. The body is never sent to a reader who is
-       * not entitled to it, and a gated post is kept out of the RSS feed and
-       * the search index.
-       *
-       * With the members area switched off, a post marked this way is hidden
-       * altogether rather than published. A gate that is turned off must not
-       * publish what it was hiding.
-       */
-      access: z.string().optional(),
-      /**
-       * Demo content — shown only where MEMBERS_DEMO is set, which is
-       * astrorocket.dev and nowhere else.
-       *
-       * A post that exists to demonstrate a feature must not turn up on
-       * somebody's site when they switch that feature on. Turning the members
-       * area on gives you your members and your gated posts; a sample of mine
-       * appearing among them would look like the feature shipped with filler
-       * in it. This keeps the demo where it belongs without asking every user
-       * to find and delete a file first.
-       */
-      demoOnly: z.boolean().default(false),
       /** Optional FAQs — when set, emit FAQ JSON-LD alongside the BlogPosting schema. */
       faqs: z
         .array(
