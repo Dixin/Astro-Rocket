@@ -30,8 +30,8 @@
   </g>
 
   <text x="600" y="248" font-size="38" text-anchor="middle" letter-spacing="-1" class="txt">Members</text>
-  <text x="600" y="284" font-size="17" text-anchor="middle" class="ptx" opacity="0.85">Enter the email address you are a member with.</text>
-  <text x="600" y="308" font-size="17" text-anchor="middle" class="ptx" opacity="0.85">We&#8217;ll send you a link to sign in &#8212; no password needed.</text>
+  <text x="600" y="284" font-size="17" text-anchor="middle" class="ptx" opacity="0.85">Enter the email address you are registered with.</text>
+  <text x="600" y="308" font-size="17" text-anchor="middle" class="ptx" opacity="0.85">We&#8217;ll send you a link to sign in. No password needed.</text>
 
   <!-- Field -->
   <text x="370" y="358" font-size="15" class="ptx" opacity="0.9">Email address</text>

@@ -846,21 +846,27 @@ The search button shows by default. Hide it per header instance:
 
 ## Members Area
 
-Put one line in a post's frontmatter and it needs a sign-in. A member enters
-the address you listed them under, gets a link, and is in — no password to
-choose, nothing to reset, and no database anywhere.
+Keep part of your site private — a post, a page, a series of them — readable
+only by the people you choose.
 
-**There is no signup. You keep the list.** Nobody can grant themselves access:
-an address that is not in `members.config.ts` gets no link, however many times
-it is typed. Someone becomes a member when you add them and deploy, after
-whatever arrangement you have with them. That is not a limitation beside the
-feature — it is why there is no database. There is no signup because there is
-nowhere to put one.
+**You register your members yourself.** You collect their email addresses and
+add them to a list in your project. Those people sign in with that email
+address: they ask for a link, it arrives, they click it, and they are in. There
+is no password.
 
-The sign-in form answers identically either way, on purpose. Saying "no such
-member" would turn it into a way to discover who your members are. The
-consequence is yours to handle: someone who ought to be a member will wait for
-a link that is not coming, so give them a way to ask.
+Anyone whose email address is not on your list cannot get in. No link is sent,
+however many times it is typed — there is no self-signup, which is also why
+there is no database. The form answers the same way for every email address, on
+purpose: replying "no such member" would let anyone work out who your members
+are. So give people a way to ask you for access, or they will wait for a link
+that is not coming.
+
+**Nothing is stored that can be stolen.** No passwords, hashed or otherwise,
+and no member database. A session is a signed cookie — HMAC-SHA256, `httpOnly`,
+`secure`, `sameSite` — with nothing kept on the server. Member pages are sent
+`private, no-store` so no CDN can serve one member's page to another, sign-in
+requests are rate limited, and the build refuses to run if the feature is
+enabled without a signing secret.
 
 **Off by default.** With `enabled: false` no member routes are built at all,
 so a site that never turns it on is byte-identical to one built before this
@@ -873,7 +879,7 @@ feature existed — no serverless function where there was none.
 ```bash
 MEMBERS_SESSION_SECRET=   # openssl rand -base64 32
 RESEND_API_KEY=           # sends the sign-in links
-RESEND_FROM_EMAIL=        # the address they come from
+RESEND_FROM_EMAIL=        # the email address links are sent from
 ```
 
 The build stops if the feature is enabled without a session secret. A gate
@@ -924,7 +930,7 @@ otherwise.
 ### Trying it without an email service
 
 In development the sign-in link is printed to your terminal instead of being
-sent. Run `pnpm dev`, enter an address on `/members/login`, and click the link
+sent. Run `pnpm dev`, enter an email address from your list on `/members/login`,
 in your console. No Resend account needed to see the whole thing work.
 
 `demo: true` adds one-click sign-in as the first member on the list, for a
@@ -938,36 +944,31 @@ real site.
 | `/members/login` | enter your email address |
 | `/members/check-email` | the link is on its way |
 | `/members` | everything your membership covers |
-| `/members/account` | your address, tiers, and sign out |
+| `/members/account` | your email address, tiers, and sign out |
 
 All of them sit under `prefix`, so renaming it moves the lot.
 
-### What it does not do
+### Beyond content: a client portal
 
-Stated plainly, because the boundary matters more than the feature list:
+The members area gives people access to your content. A client portal is a
+different thing — everyone signs in and sees their own records: projects,
+invoices, documents, progress through a course. Those differ for every
+business, so they are built for one site rather than shipped in a theme.
 
-- **No self-signup and no payments.** Members are a list you keep.
-- **No per-customer records** — no invoices, no per-client dashboard.
-- **No profiles, uploads, comments or messaging between members.**
+That is custom work built on top of this, and it can include per-customer
+records, payments and subscriptions through Stripe, self-signup on payment,
+and course progress. The members-area guide on
+[astrorocket.dev](https://astrorocket.dev) says how to ask for it.
 
-Everything above works because it gates content the theme already renders. A
-dashboard with someone's own records is a custom build, and it is different
-for every business — which is why the theme does not pretend to ship one. If
-that is what you need, the members-area guide on
-[astrorocket.dev](https://astrorocket.dev) says how to get it built.
+### Good to know
 
-### Honest limits
-
-- **A session cannot be revoked before it expires.** Removing someone stops
-  them signing in again, but a cookie already issued lives out `sessionDays`.
-  There is no session store to invalidate — that is the trade for needing no
-  database. Shorten `sessionDays` if it matters.
-- **A sign-in link is valid until it expires, not until it is used once.**
-  Recording that a token had been used would need somewhere to record it.
-  Hence 15 minutes.
-- **The sign-in brake is per server instance.** Five attempts a minute per
-  address, held in memory. Put a real limiter in front — your host's firewall
-  — if you need one.
+- **A sign-in lasts `sessionDays`** — 30 by default, and yours to set. Someone
+  you remove cannot sign in again; set it shorter if you want an existing
+  sign-in to stop sooner.
+- **Sign-in links last `linkMinutes`** — 15 by default.
+- **Rate limiting is per server instance.** Five sign-in requests a minute per
+  email address, held in memory. Put your host's firewall in front if you want
+  more than that.
 - **i18n:** the members area ships English and Dutch, in the `members` group
   of the locale files, and the sign-in email goes out in the locale of the
   request.
