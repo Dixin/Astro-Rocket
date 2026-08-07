@@ -1,0 +1,68 @@
+---
+export const prerender = false;
+
+/**
+ * What a member lands on.
+ *
+ * Step 1 of the plan, so this confirms the session and nothing more. Step 3
+ * turns it into the index of what this member can read; step 2 is what gives
+ * it something to list.
+ */
+
+import PageLayout from '@/layouts/PageLayout.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import membersConfig from '@/config/members.config';
+import { readSession } from '@/lib/members/session';
+import { findMember } from '@/lib/members/members';
+
+const session = await readSession(Astro.cookies);
+if (!session) return Astro.redirect(`${membersConfig.prefix}/login`, 303);
+
+const member = findMember(session.sub);
+const name = member?.name ?? session.sub;
+---
+
+<PageLayout title="Members" description="Your members area." noindex>
+  <section class="py-[var(--space-section-md)]">
+    <div class="mx-auto w-full max-w-3xl px-6 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <h1 class="font-display text-3xl font-bold text-foreground">Welcome, {name}</h1>
+          <p class="text-foreground-muted">{session.sub}</p>
+        </div>
+        <form method="POST" action={`${membersConfig.prefix}/logout`}>
+          <Button type="submit" variant="outline" size="sm">
+            <Icon name="log-out" size="sm" />
+            Sign out
+          </Button>
+        </form>
+      </div>
+
+      {
+        session.tiers.length > 0 && (
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-sm text-foreground-muted">Your access:</span>
+            {session.tiers.map((tier) => (
+              <Badge variant="brand" pill>
+                {tier}
+              </Badge>
+            ))}
+          </div>
+        )
+      }
+
+      <Card padding="lg">
+        <div class="flex flex-col gap-2">
+          <h2 class="font-display text-xl font-semibold text-foreground">You are signed in</h2>
+          <p class="text-foreground-muted">
+            Nothing is gated yet. Add <code class="text-brand-500">access: members</code> to the
+            frontmatter of a post, project or page and it will appear here.
+          </p>
+        </div>
+      </Card>
+    </div>
+  </section>
+</PageLayout>

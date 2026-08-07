@@ -1,0 +1,107 @@
+---
+export const prerender = false;
+
+/**
+ * The front door. One field, no password.
+ *
+ * Rendered on demand because a visitor who already has a session should not
+ * be asked to sign in again, and a prerendered page cannot know that.
+ */
+
+import PageLayout from '@/layouts/PageLayout.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Input from '@/components/ui/form/Input/Input.astro';
+import Alert from '@/components/ui/feedback/Alert/Alert.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import membersConfig from '@/config/members.config';
+import { readSession } from '@/lib/members/session';
+
+const session = await readSession(Astro.cookies);
+if (session) return Astro.redirect(membersConfig.prefix, 303);
+
+const error = Astro.url.searchParams.get('error');
+const signedOut = Astro.url.searchParams.get('signedout') === '1';
+
+const errorMessage =
+  error === 'email'
+    ? 'That does not look like an email address.'
+    : error === 'send'
+      ? 'The link could not be sent. Try again in a moment.'
+      : error === 'link'
+        ? 'That link has expired or is no longer valid. Ask for a new one.'
+        : null;
+---
+
+<PageLayout title="Sign in" description="Sign in to the members area." noindex>
+  <section class="py-[var(--space-section-md)]">
+    <div class="mx-auto w-full max-w-md px-6 flex flex-col gap-6">
+      <div class="flex flex-col items-center gap-3 text-center">
+        <span
+          class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-500/12 text-brand-500"
+        >
+          <Icon name="lock" size="lg" />
+        </span>
+        <h1 class="font-display text-3xl font-bold text-foreground">Members</h1>
+        <p class="text-foreground-muted text-balance">
+          Enter your email address and we&rsquo;ll send you a link to sign in. No password needed.
+        </p>
+      </div>
+
+      {signedOut && <Alert variant="success">You are signed out.</Alert>}
+      {errorMessage && <Alert variant="error">{errorMessage}</Alert>}
+
+      <Card variant="elevated" padding="lg">
+        <form method="POST" action={`${membersConfig.prefix}/request-link`} class="flex flex-col gap-4">
+          <div class="flex flex-col gap-2">
+            <label for="member-email" class="text-sm font-medium text-foreground">
+              Email address
+            </label>
+            <Input
+              id="member-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+            />
+          </div>
+
+          {/* Anti-spam, matching the contact and newsletter forms. */}
+          <input
+            type="text"
+            name="honeypot"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            class="absolute h-0 w-0 overflow-hidden opacity-0"
+          />
+
+          <Button type="submit" size="lg" class="w-full justify-center">
+            Send me a link
+            <Icon name="arrow-right" size="sm" />
+          </Button>
+        </form>
+      </Card>
+
+      {
+        membersConfig.demo && (
+          <Card padding="md">
+            <form method="POST" action={`${membersConfig.prefix}/demo-login`} class="flex flex-col gap-3">
+              <p class="text-sm text-foreground-muted text-center">
+                Trying the theme? Skip the email and look around.
+              </p>
+              <Button type="submit" variant="outline" class="w-full justify-center">
+                Sign in as a demo member
+              </Button>
+            </form>
+          </Card>
+        )
+      }
+
+      <p class="text-center text-sm text-foreground-subtle">
+        <a href="/" class="hover:text-foreground transition-colors">Back to the site</a>
+      </p>
+    </div>
+  </section>
+</PageLayout>

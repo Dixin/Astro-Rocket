@@ -1,0 +1,41 @@
+---
+export const prerender = false;
+
+/**
+ * Shown after a link is requested, whether or not the address belonged to a
+ * member — see request-link.ts for why the two cases cannot look different.
+ */
+
+import PageLayout from '@/layouts/PageLayout.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import membersConfig from '@/config/members.config';
+---
+
+<PageLayout title="Check your email" description="Your sign-in link is on its way." noindex>
+  <section class="py-[var(--space-section-md)]">
+    <div class="mx-auto w-full max-w-md px-6">
+      <Card variant="elevated" padding="lg">
+        <div class="flex flex-col items-center gap-4 text-center">
+          <span
+            class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-500/12 text-brand-500"
+          >
+            <Icon name="mail" size="lg" />
+          </span>
+          <h1 class="font-display text-2xl font-bold text-foreground">Check your email</h1>
+          <p class="text-foreground-muted text-balance">
+            If that address belongs to a member, a sign-in link is on its way. It is valid for {
+              membersConfig.linkMinutes
+            } minutes.
+          </p>
+          <a
+            href={`${membersConfig.prefix}/login`}
+            class="text-sm text-foreground-subtle hover:text-foreground transition-colors"
+          >
+            Use a different address
+          </a>
+        </div>
+      </Card>
+    </div>
+  </section>
+</PageLayout>

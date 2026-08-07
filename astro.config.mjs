@@ -11,6 +11,7 @@ import vercel from '@astrojs/vercel';
 import netlify from '@astrojs/netlify';
 import cloudflare from '@astrojs/cloudflare';
 import i18nConfig from './src/config/i18n.config.ts';
+import membersConfig from './src/config/members.config.ts';
 import { SITE_URL_FALLBACK } from './src/config/site-url.ts';
 import { SITE_NAME, THEME_COLOR } from './src/config/branding.ts';
 
@@ -239,6 +240,68 @@ function ogCards() {
  * before — no /en/ prefix, no extra pages.
  */
 const i18nEnabled = i18nConfig.enabled === true && i18nConfig.locales.length > 1;
+
+/**
+ * Members area — the off switch.
+ *
+ * OFF BY DEFAULT, and off means absent. When the flag is false this registers
+ * no routes, so the build is byte-identical to a site without the feature: no
+ * member pages, and no serverless function where there was none before. A
+ * runtime check inside the pages would not achieve that — anything left in
+ * `src/pages/` with `prerender = false` compiles as an on-demand route
+ * whatever the config says when it runs. That is why the pages live in
+ * `src/members/` and are injected from here instead.
+ *
+ * MEMBERS_ENABLED exists for astrorocket.dev, which runs the feature on while
+ * the theme ships it off. Committing `enabled: true` would turn it on for
+ * everyone who clones the repository; an environment variable on one
+ * deployment turns it on for one deployment.
+ */
+function membersArea() {
+  const enabled =
+    membersConfig.enabled === true || process.env.MEMBERS_ENABLED === 'true';
+
+  return {
+    name: 'members-area',
+    hooks: {
+      'astro:config:setup': ({ injectRoute, logger }) => {
+        if (!enabled) return;
+
+        const prefix = membersConfig.prefix.replace(/\/$/, '');
+        const routes = [
+          ['/login', 'login.astro'],
+          ['/check-email', 'check-email.astro'],
+          ['', 'index.astro'],
+          ['/request-link', 'api/request-link.ts'],
+          ['/verify', 'api/verify.ts'],
+          ['/logout', 'api/logout.ts'],
+          ['/demo-login', 'api/demo-login.ts'],
+        ];
+
+        for (const [path, entry] of routes) {
+          injectRoute({
+            pattern: `${prefix}${path}`,
+            entrypoint: `./src/members/${entry}`,
+            prerender: false,
+          });
+        }
+
+        logger.info(`enabled at ${prefix} — ${routes.length} routes on demand`);
+      },
+      'astro:build:start': ({ logger }) => {
+        if (!enabled) return;
+        if (process.env.MEMBERS_SESSION_SECRET) return;
+        // A gate that fails open is worse than no gate, so this stops the
+        // build rather than shipping a members area that cannot sign anything.
+        throw new Error(
+          'The members area is enabled but MEMBERS_SESSION_SECRET is not set. ' +
+            'Generate one with `openssl rand -base64 32` and add it to your ' +
+            "host's environment variables, or set members.enabled to false."
+        );
+      },
+    },
+  };
+}
 const astroI18nOptions = i18nEnabled
   ? {
       defaultLocale: i18nConfig.defaultLocale,
@@ -279,6 +342,9 @@ export default defineConfig({
         optional: true,
         default: 'https://cloud.umami.is/script.js',
       }),
+      // Signs member sessions and sign-in links. Only read when the members
+      // area is enabled; the build stops if it is enabled without this.
+      MEMBERS_SESSION_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_AUDIENCE_ID: envField.string({ context: 'server', access: 'secret', optional: true }),
@@ -304,6 +370,7 @@ export default defineConfig({
     pagefind(),
     faviconAssets(),
     ogCards(),
+    membersArea(),
   ],
 
   vite: {
