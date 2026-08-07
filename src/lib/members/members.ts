@@ -13,10 +13,31 @@ export function normaliseEmail(email: string): string {
   return email.trim().toLowerCase();
 }
 
+/**
+ * Is one-click demo sign-in on?
+ *
+ * MEMBERS_DEMO is how astrorocket.dev runs the demo from the repository the
+ * theme ships from. Committing `demo: true` would turn an open door on for
+ * everyone who clones it.
+ */
+export function demoEnabled(): boolean {
+  return membersConfig.demo === true || import.meta.env.MEMBERS_DEMO === 'true';
+}
+
+/**
+ * The list in force.
+ *
+ * In demo mode the demo list, so the real one can ship empty and a site that
+ * enables the feature grants nobody access by accident.
+ */
+export function activeMembers(): Member[] {
+  return demoEnabled() ? membersConfig.demoMembers : membersConfig.members;
+}
+
 /** The member with this address, or null. */
 export function findMember(email: string): Member | null {
   const wanted = normaliseEmail(email);
-  return membersConfig.members.find((m) => normaliseEmail(m.email) === wanted) ?? null;
+  return activeMembers().find((m) => normaliseEmail(m.email) === wanted) ?? null;
 }
 
 /**

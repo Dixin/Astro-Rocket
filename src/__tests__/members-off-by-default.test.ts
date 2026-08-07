@@ -29,6 +29,14 @@ describe('members area: off by default', () => {
     expect(membersConfig.members).toHaveLength(0);
   });
 
+  it('keeps demo members apart from the real list', () => {
+    // The demo list is only ever read while demo mode is on, which is how
+    // astrorocket.dev runs the demo from the same repository the theme ships
+    // from without the real list carrying anybody.
+    expect(membersConfig.demoMembers.length).toBeGreaterThan(0);
+    expect(membersConfig.members).toHaveLength(0);
+  });
+
   it('keeps the member pages out of src/pages, so nothing auto-routes', () => {
     // Anything under src/pages with `prerender = false` becomes an on-demand
     // route whatever the config says at runtime. The pages live in

@@ -57,6 +57,16 @@ export interface MembersConfig {
   tiers: string[];
   /** Who may sign in. */
   members: Member[];
+  /**
+   * Members used only while `demo` is on, kept apart from `members` so the
+   * real list ships empty and a site that enables the feature grants nobody
+   * access by accident.
+   *
+   * This is what lets astrorocket.dev run the demo from the same repository
+   * the theme ships from: two environment variables and no edit to this file.
+   * Delete these when you make the theme yours.
+   */
+  demoMembers: Member[];
 }
 
 const membersConfig: MembersConfig = {
@@ -67,6 +77,9 @@ const membersConfig: MembersConfig = {
   demo: false,
   tiers: [],
   members: [],
+  demoMembers: [
+    { email: 'demo@astrorocket.dev', name: 'Demo member', tiers: [] },
+  ],
 };
 
 export default membersConfig;

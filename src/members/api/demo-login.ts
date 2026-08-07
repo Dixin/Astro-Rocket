@@ -12,12 +12,12 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 import membersConfig from '@/config/members.config';
 import { createSession } from '@/lib/members/session';
-import { normaliseEmail, tiersFor } from '@/lib/members/members';
+import { normaliseEmail, tiersFor, demoEnabled, activeMembers } from '@/lib/members/members';
 
 export const POST: APIRoute = async ({ cookies, redirect }) => {
-  if (!membersConfig.demo) return new Response('Not found', { status: 404 });
+  if (!demoEnabled()) return new Response('Not found', { status: 404 });
 
-  const member = membersConfig.members[0];
+  const member = activeMembers()[0];
   if (!member) return new Response('No demo member configured', { status: 500 });
 
   await createSession(cookies, {

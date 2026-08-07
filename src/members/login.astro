@@ -16,6 +16,7 @@ import Alert from '@/components/ui/feedback/Alert/Alert.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import membersConfig from '@/config/members.config';
 import { readSession } from '@/lib/members/session';
+import { demoEnabled } from '@/lib/members/members';
 import { t, getLocaleFromPath } from '@/i18n';
 
 const session = await readSession(Astro.cookies);
@@ -91,7 +92,7 @@ const errorMessage = errorKey ? t(errorKey, locale) : null;
       </Card>
 
       {
-        membersConfig.demo && (
+        demoEnabled() && (
           <Card padding="md">
             <form method="POST" action={`${membersConfig.prefix}/demo-login`} class="flex flex-col gap-3">
               <p class="text-sm text-foreground-muted text-center">

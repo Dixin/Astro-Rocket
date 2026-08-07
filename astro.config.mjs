@@ -420,6 +420,9 @@ export default defineConfig({
       // Signs member sessions and sign-in links. Only read when the members
       // area is enabled; the build stops if it is enabled without this.
       MEMBERS_SESSION_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
+      // One-click demo sign-in. An open door by design — astrorocket.dev sets
+      // it so a visitor can see the members area without an email address.
+      MEMBERS_DEMO: envField.string({ context: 'server', access: 'public', optional: true }),
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_AUDIENCE_ID: envField.string({ context: 'server', access: 'secret', optional: true }),
