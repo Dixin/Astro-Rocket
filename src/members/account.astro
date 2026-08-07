@@ -1,0 +1,97 @@
+---
+export const prerender = false;
+
+/**
+ * The member's own account.
+ *
+ * Read-only: there is nothing here for them to change, because there is
+ * nowhere to write it. The member list is a file in the repository, so an
+ * address or a tier changes by editing that file — which is also what puts
+ * the history of who had access into the repository's history.
+ */
+
+import PageLayout from '@/layouts/PageLayout.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Separator from '@/components/ui/layout/Separator/Separator.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import membersConfig from '@/config/members.config';
+import { readSession } from '@/lib/members/session';
+import { findMember } from '@/lib/members/members';
+
+const session = await readSession(Astro.cookies);
+if (!session) return Astro.redirect(`${membersConfig.prefix}/login`, 303);
+
+const member = findMember(session.sub);
+const expires = new Date(session.exp * 1000);
+---
+
+<PageLayout title="Your account" description="Your membership." noindex>
+  <section class="py-[var(--space-section-md)]">
+    <div class="mx-auto w-full max-w-2xl px-6 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <h1 class="font-display text-3xl font-bold text-foreground">Your account</h1>
+        <Button href={membersConfig.prefix} variant="outline" size="sm">
+          <Icon name="arrow-left" size="sm" />
+          Back
+        </Button>
+      </div>
+
+      <Card padding="lg">
+        <dl class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <dt class="text-sm text-foreground-subtle">Name</dt>
+            <dd class="text-foreground">{member?.name ?? 'Not set'}</dd>
+          </div>
+          <Separator />
+          <div class="flex flex-col gap-1">
+            <dt class="text-sm text-foreground-subtle">Email address</dt>
+            <dd class="text-foreground">{session.sub}</dd>
+          </div>
+          <Separator />
+          <div class="flex flex-col gap-1">
+            <dt class="text-sm text-foreground-subtle">Access</dt>
+            <dd class="flex flex-wrap items-center gap-2">
+              {
+                session.tiers.length > 0 ? (
+                  session.tiers.map((tier) => (
+                    <Badge variant="brand" pill>
+                      {tier}
+                    </Badge>
+                  ))
+                ) : (
+                  <span class="text-foreground">Member</span>
+                )
+              }
+            </dd>
+          </div>
+          <Separator />
+          <div class="flex flex-col gap-1">
+            <dt class="text-sm text-foreground-subtle">Signed in until</dt>
+            <dd class="text-foreground">
+              {expires.toLocaleDateString()} — after that, ask for a new link
+            </dd>
+          </div>
+        </dl>
+      </Card>
+
+      <Card padding="lg">
+        <div class="flex flex-col gap-3">
+          <h2 class="font-display text-lg font-semibold text-foreground">Signing out</h2>
+          <p class="text-foreground-muted">
+            Signing out clears this browser&rsquo;s session. There is no session stored on the
+            server, so nothing else has to be cleaned up — and nothing about you is kept beyond
+            the list in the site&rsquo;s own configuration.
+          </p>
+          <form method="POST" action={`${membersConfig.prefix}/logout`}>
+            <Button type="submit" variant="outline">
+              <Icon name="log-out" size="sm" />
+              Sign out
+            </Button>
+          </form>
+        </div>
+      </Card>
+    </div>
+  </section>
+</PageLayout>

@@ -322,6 +322,7 @@ function membersArea() {
         const routes = [
           ['/login', 'login.astro'],
           ['/check-email', 'check-email.astro'],
+          ['/account', 'account.astro'],
           ['', 'index.astro'],
           ['/request-link', 'api/request-link.ts'],
           ['/verify', 'api/verify.ts'],

@@ -1,0 +1,52 @@
+---
+title: "A Members-Only Post"
+description: "What a gated post looks like: locked in the listing, readable once you sign in, and never in the feed. Demo content — delete it, or make it yours."
+publishedAt: 2026-08-07
+author: "Hans Martens"
+tags: ["astro-rocket", "members"]
+featured: false
+locale: en
+access: members
+---
+
+You are reading this because you are signed in. A visitor who is not sees the
+title, the date and the description above — the same words the listing card
+carries — with a lock and a way to sign in. The text you are reading now was
+never in their response.
+
+## How this post is gated
+
+One line of frontmatter:
+
+```yaml
+access: members
+```
+
+That is the whole of it. `members` means any signed-in member. Any other value
+names a tier from `members.config.ts`, and the member has to hold it:
+
+```yaml
+access: pro
+```
+
+Nothing else about the post changes. The URL is the one it always had, the
+listing still shows it, and the layout is the layout every other post uses.
+
+## What the theme does with it
+
+- **The listing shows a locked card** with the title, date and description, so
+  the value is visible before anyone signs in.
+- **The post is left out of the RSS feed.** Feeds get republished, and a
+  members-only post has no business travelling that way.
+- **The post is not prerendered.** It renders on demand so the check can run
+  per request, while every public page on the site stays static.
+- **With the members area switched off, the post disappears** rather than
+  becoming public. A gate that is turned off must not publish what it was
+  hiding.
+
+## Delete this
+
+It is demo content, like the other posts here. Delete the file, or keep it and
+write your own. If you want the whole members area gone, set
+`members.enabled` to `false` in `src/config/members.config.ts` — which is how
+the theme ships — and no member routes are built at all.

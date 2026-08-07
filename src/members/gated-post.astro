@@ -79,19 +79,20 @@ const signInUrl = `${membersConfig.prefix}/login`;
     <PageLayout title={post.data.title} description={post.data.description} noindex>
       <section class="py-[var(--space-section-md)]">
         <div class="mx-auto w-full max-w-2xl px-6 flex flex-col gap-6">
-          <div class="flex flex-col gap-3">
-            <div class="flex flex-wrap items-center gap-3">
-              <Badge variant="brand" pill>
-                <Icon name="lock" size="sm" />
-                {required === 'members' ? 'Members only' : required}
-              </Badge>
-              <time
-                datetime={post.data.publishedAt.toISOString()}
-                class="text-sm text-foreground-muted"
-              >
-                {formatDate(post.data.publishedAt)}
-              </time>
-            </div>
+          {/* Pill, then the date on its own line, then the heading and the
+              description — all centred on the card below, which carries the
+              same axis. */}
+          <div class="flex flex-col items-center gap-3 text-center">
+            <Badge variant="brand" pill>
+              <Icon name="lock" size="sm" />
+              {required === 'members' ? 'Members only' : required}
+            </Badge>
+            <time
+              datetime={post.data.publishedAt.toISOString()}
+              class="text-sm text-foreground-muted"
+            >
+              {formatDate(post.data.publishedAt)}
+            </time>
             <h1 class="font-display text-3xl md:text-4xl font-bold text-foreground text-balance">
               {post.data.title}
             </h1>
