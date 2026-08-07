@@ -184,7 +184,7 @@
       <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/>
   </g>
 
-  <text x="600" y="322" text-anchor="middle" class="sh-kicker">Start building with</text>
+  <text x="600" y="322" text-anchor="middle" class="sh-kicker">Launch your next site with</text>
   <text x="600" y="400" text-anchor="middle" class="sh-word">Astro Rocket</text>
 
   <ellipse cx="600" cy="960" rx="900" ry="512" class="sh-planet"/>
@@ -334,7 +334,7 @@
       <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/>
   </g>
 
-  <text x="360" y="384" text-anchor="middle" class="sh-kicker">Start building with</text>
+  <text x="360" y="384" text-anchor="middle" class="sh-kicker">Launch your next site with</text>
   <text x="360" y="462" text-anchor="middle" class="sh-word">Astro Rocket</text>
 
   <ellipse cx="360" cy="920" rx="620" ry="420" class="sh-planet"/>
