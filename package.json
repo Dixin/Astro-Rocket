@@ -54,7 +54,7 @@
     "@iconify-json/lucide": "^1.2.98",
     "@iconify-json/simple-icons": "^1.2.74",
     "@iconify/react": "^6.0.2",
-    "astro": "7.1.0",
+    "astro": "7.2.0",
     "astro-icon": "^1.1.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
