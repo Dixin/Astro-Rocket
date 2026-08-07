@@ -1,6 +1,6 @@
 ---
 title: "The Members Area: Gate Any Post With One Line"
-description: "Passwordless sign-in and members-only content, with no database and no membership platform. How to turn it on, what it does, and what it deliberately does not do."
+description: "One line of frontmatter turns a post into members-only. Passwordless sign-in, no database, no membership platform — and you can try the whole thing on this site in ten seconds."
 publishedAt: 2026-08-07
 author: "Hans Martens"
 tags: ["astro-rocket", "members", "auth", "guide"]
@@ -14,14 +14,65 @@ imageAlt: "A padlock above the words members area, on the theme's brand colour"
 
 import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
 
-Astro Rocket can now put a lock on your content. A reader signs in with their
-email address — no password to choose, nothing to reset — and reads what their
-membership covers.
+Add one line to a post and it stops being public:
 
-There is no database anywhere in it, and no membership platform taking a cut.
+```yaml
+access: members
+```
 
-This is the page a reader meets, in your own brand colour and following their
-colour mode:
+That is the whole change. The post keeps its URL, keeps its place on the blog,
+and keeps its title, date and description on the card. The words themselves now
+need a signed-in member.
+
+No database. No membership platform taking a percentage. No password for anyone
+to choose, forget, or have leaked.
+
+## Try it on this page, in ten seconds
+
+This site is running it, so you do not have to take my word for any of the
+above. There is no signup and no email address involved:
+
+1. Open [A Members-Only Post](/blog/members-only-example). You will see the
+   title, the date and the description, and a lock where the article should be.
+2. Click **Sign in**.
+3. On the sign-in page, click **Sign in as a demo member**.
+4. Go back to the post. It is all there.
+
+Then sign out from `/members` and it locks again.
+
+Four clicks, nothing to undo, nothing given away. If you only do one thing with
+this post, do that — the rest is explanation.
+
+## There is no signup. You decide who gets in.
+
+Worth being exact about this, because a form asking for an email address
+usually means self-service, and this one does not.
+
+Nobody can let themselves in. A person becomes a member when **you** put their
+address on the list — after they bought the course, signed the contract, joined
+the club, paid the invoice, whatever the arrangement is. That part happens
+away from the site: an email to you, a checkout somewhere else, a conversation.
+Then you add a line and deploy.
+
+Until their address is on that list, the form does nothing for them. They can
+type it and press the button, they will see the same *check your email* page
+everyone sees, and no link will ever arrive.
+
+**The sameness is on purpose.** If the form answered "no such member", it would
+become a way to find out who your members are: type addresses until one is
+recognised. A list of your clients is worth more to a stranger than it sounds.
+So the page answers identically either way, and only real members get an email.
+
+**One consequence is yours to handle.** Someone who ought to be a member but is
+not on the list yet will wait for a link that is never coming. Give them a way
+to ask — a line under the sign-in form, or a sentence in the locked post's
+description saying how to get access. The theme cannot know what your
+arrangement is; it only enforces the list.
+
+## What a member actually gets
+
+This is the page they meet. It is drawn from your own brand tokens, so on your
+site it is your colour, and it follows the reader's light or dark mode:
 
 <BlogImageSVG
   slug="members-sign-in-page"
@@ -29,50 +80,65 @@ colour mode:
   zoom={false}
 />
 
-## One line
+They type the address you listed them under and press the button. A link lands
+in their inbox, valid for fifteen minutes. They click it and they are in, for
+thirty days, on that device.
 
-Put this in a post's frontmatter:
+That is the entire flow for them. No account to create, no password field, no
+confirmation step, and nothing to manage afterwards — which is the point. The
+work of deciding who belongs stayed with you, where it was always going to be.
 
-```yaml
-access: members
-```
+## What happens to a gated post
 
-That post now needs a signed-in member. Nothing else about it changes: same
-URL, same layout, still listed on the blog.
+Five things, and the third is the one that matters:
 
-If you run more than one level, name a tier instead:
+**It stays on the blog** as a locked card carrying the title, the date and the
+description. Nobody signs up for something they cannot see the shape of, so the
+value stays visible.
 
-```yaml
-access: pro
-```
+**Opening it without signing in** gives those same words, a lock, and a way in.
+Not a 404, and not a page that looks broken.
 
-Omit the field and the post is public, which is every post until you decide
-otherwise.
+**The body is not in that response.** It is not hidden with CSS, not blurred
+behind an overlay, not sitting in the page waiting for JavaScript to reveal it.
+It is never sent. View source on a locked post and the article is not there.
 
-## What a visitor sees
+**It is kept out of the RSS feed and the search index.** Feeds get republished,
+and a members-only post has no business travelling that way.
 
-A gated post keeps its place in the listing as a locked card carrying the
-title, the date and the description. That matters: nobody signs up for
-something they cannot see the shape of.
+**It renders on demand while the rest of your site stays static.** Only the
+gated posts stop being prerendered; the other ninety pages build exactly as
+they did.
 
-Open it without signing in and you get those same words, a lock, and a way to
-sign in. **The body is not in that response at all** — it is not hidden with
-CSS or blurred behind an overlay, it is never sent.
+## How it works underneath
 
-Gated posts are also kept out of the RSS feed and the search index. Feeds get
-republished, and a members-only post has no business travelling that way.
+Worth knowing, because it explains both what it does well and what it will not
+do.
 
-## Turning it on
+A sign-in link is a short-lived signed token — your address, your tiers, and an
+expiry, signed with a secret only your server knows. Clicking it swaps that
+token for a session cookie, signed the same way.
 
-Two environment variables:
+**There is no session table anywhere.** The cookie *is* the session. That is
+what lets the whole feature run with no database, on the same static hosting
+you already use, with nothing else to pay for or keep alive.
+
+Tiers ride along in the same cookie. `access: members` needs any member;
+`access: pro` needs someone holding that tier.
+
+## Turning it on for your own site
+
+Three steps.
+
+**One — two environment variables:**
 
 ```bash
 MEMBERS_SESSION_SECRET=   # openssl rand -base64 32
-RESEND_API_KEY=           # sends the links
+RESEND_API_KEY=           # sends the sign-in links
 RESEND_FROM_EMAIL=        # the address they come from
 ```
 
-Then `src/config/members.config.ts`:
+**Two — enable it and list your members** in `src/config/members.config.ts`:
 
 ```ts
 enabled: true,
@@ -83,92 +149,102 @@ members: [
 ],
 ```
 
-Adding a member is a line and a deploy. The list lives in your repository,
-which means the record of who had access, and when, is your git history.
+**Three — gate something.** `access: members` in any post's frontmatter.
 
-**You can try it before signing up for anything.** In development the sign-in
-link prints to your terminal instead of being emailed. Run `pnpm dev`, enter
-an address, click the link in your console.
+Adding a member from then on is one line and a deploy. The list lives in your
+repository, which means the record of who had access, and when, is your git
+history — no admin screen to build, and none to secure.
 
-## What it is for
+### You can try it locally without signing up for anything
 
-The same build serves all of these, because they are all content rather than
+Before you go near Resend: in development the sign-in link is **printed to your
+terminal** instead of being emailed.
+
+```bash
+pnpm dev
+```
+
+Open `/members/login`, type any address on your list, and the link appears in
+your console. Click it and you are signed in. The entire feature works on your
+own machine with no account anywhere.
+
+## What people build with it
+
+All of these are the same build, because all of them are content rather than
 dashboards:
 
-- A **paid newsletter** — the archive public, new posts for members.
-- A **course** — lessons in order, later modules on a higher tier.
-- A **club or association** — minutes, schedules and forms for members.
+- **A paid newsletter** — the archive public, new posts for members.
+- **A course** — lessons in order, later modules on a higher tier.
+- **A club or association** — minutes, schedules and forms behind a sign-in.
 - **Trade pricing** — price lists shown to trade customers, hidden from the
   public.
-- A **supporter area** — extra material for people who chip in.
-- **Client resources** — guides and files for clients on a care plan.
+- **A supporter area** — extra material for people who chip in.
+- **Client resources** — guides, files and instructions for clients on a care
+  plan.
 
-None of them needs a line of custom code.
+None of them needs a line of custom code. You mark content and the theme does
+the rest.
 
-## Off by default, and off means absent
+## Nothing changes until you turn it on
 
-The theme ships with this switched off. Not hidden — absent. No member routes
-are built, and a site that never turns it on builds exactly as it did before
-the feature existed, with no serverless function where it had none.
+If you are upgrading an existing site and want none of this, you already have
+what you want. The members area ships disabled, and disabled means **absent**,
+not hidden: no member routes are built, and your site produces the same output
+it did before this feature existed — including no serverless function where you
+had none.
 
-Two rules follow from that, and both are deliberate:
+Two rules follow, and both are deliberate:
 
 A post marked `access: members` while the feature is off **disappears** rather
 than becoming public. A gate that is switched off must not publish what it was
 hiding.
 
-Enabling it without a session secret **stops the build**. A gate that fails
-open is worse than no gate, and it would look like it was working the whole
-time.
+Enabling it without a session secret **stops the build** with a message telling
+you how to make one. A gate that fails open is worse than no gate, because it
+would look like it was working the whole time.
 
-## The honest limits
+## The limits, stated plainly
 
-Four things this does not do, which are worth knowing before you build on it.
+Four, and you should know them before you build on it rather than after.
 
-**A session cannot be revoked before it expires.** Removing someone from the
-list stops them signing in again, but a cookie already issued lives out its 30
-days. There is no session store to invalidate — that is the trade for needing
-no database. Shorten `sessionDays` if that matters to you.
+**A session cannot be revoked early.** Removing someone from the list stops
+them signing in again, but a cookie already issued lives out its thirty days.
+There is no session store to invalidate — that is the trade for needing no
+database. Shorten `sessionDays` if it matters.
 
-**A sign-in link is valid until it expires, not until it is used once.**
-Recording that a token had been used would need somewhere to record it. Links
-last 15 minutes for that reason.
+**A link is valid until it expires, not until it is used once.** Recording that
+a token had been used would need somewhere to record it. Links last fifteen
+minutes for that reason.
 
 **The sign-in brake is per server instance.** Five attempts a minute per
-address, held in memory. It stops the obvious loop; put your host's firewall
-in front if you need a real limiter.
+address, held in memory. It stops the obvious loop; put your host's firewall in
+front for anything stronger.
 
-**No self-signup, no payments, and no per-customer records.** Members are a
-list you keep.
+**No self-signup, no payments, no per-customer records.** Members are a list
+you keep.
 
-## What it deliberately does not do
+## Where it stops, and what to do about it
 
-That last limit is the one worth dwelling on, because it is a decision rather
-than an omission.
+That last limit is a decision rather than an omission, and it is worth being
+clear about.
 
 Everything above works because it gates content the theme already renders —
-your posts, your pages. That is why it needs no dashboard: what a member lands
-on is a filtered list of your own content, which is the same thing your blog
-index already is.
+your posts, your pages. That is why there is no dashboard to design: what a
+member lands on is a filtered list of your own content, which is the same thing
+your blog index already is.
 
-A dashboard showing someone *their own records* — their invoices, their
-project, their progress through a course — is a different thing. It cannot be
-generic, because the records are different for every business. A theme that
-shipped one would be shipping a screen you would have to delete.
+A screen showing someone *their own records* — their invoices, their project,
+their progress through a course — is a different problem. The records are
+different for every business, so no theme can ship one that fits. A theme that
+tried would be shipping a screen you had to delete.
 
-So this ships the door, and the room behind it stays yours.
-
-## If you need the room built
-
-If you have read this far because you want the per-customer half — a client
-portal with invoices and project status, a learning area with progress, a
-document library with per-customer files — that is custom work, and I build
-it.
+So Astro Rocket gives you the door. The room behind it is a custom build, and
+it is work I do.
 
 There is one running in production I can show you: my own client portal at
 [hansmartens.dev](https://hansmartens.dev), built for real clients, with
-invoices and project tracking behind the same kind of passwordless sign-in
-described here.
+invoices and project status behind the same passwordless sign-in described
+here.
 
 No price list, because no two of these are the same job. Tell me what belongs
 behind your door and I will tell you what it takes to build.

@@ -74,6 +74,18 @@ const blog = defineCollection({
        * publish what it was hiding.
        */
       access: z.string().optional(),
+      /**
+       * Demo content — shown only where MEMBERS_DEMO is set, which is
+       * astrorocket.dev and nowhere else.
+       *
+       * A post that exists to demonstrate a feature must not turn up on
+       * somebody's site when they switch that feature on. Turning the members
+       * area on gives you your members and your gated posts; a sample of mine
+       * appearing among them would look like the feature shipped with filler
+       * in it. This keeps the demo where it belongs without asking every user
+       * to find and delete a file first.
+       */
+      demoOnly: z.boolean().default(false),
       /** Optional FAQs — when set, emit FAQ JSON-LD alongside the BlogPosting schema. */
       faqs: z
         .array(

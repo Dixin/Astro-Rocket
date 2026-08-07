@@ -7,6 +7,7 @@
  */
 
 import membersConfig, { type Member } from '@/config/members.config';
+import { demoEnabled, DEMO_MEMBER } from './demo';
 
 /** Addresses are compared lowercased and trimmed; nothing else is normalised. */
 export function normaliseEmail(email: string): string {
@@ -14,24 +15,14 @@ export function normaliseEmail(email: string): string {
 }
 
 /**
- * Is one-click demo sign-in on?
- *
- * MEMBERS_DEMO is how astrorocket.dev runs the demo from the repository the
- * theme ships from. Committing `demo: true` would turn an open door on for
- * everyone who clones it.
- */
-export function demoEnabled(): boolean {
-  return membersConfig.demo === true || import.meta.env.MEMBERS_DEMO === 'true';
-}
-
-/**
  * The list in force.
  *
- * In demo mode the demo list, so the real one can ship empty and a site that
- * enables the feature grants nobody access by accident.
+ * A site's own members, except on the demo — where the one demo identity
+ * stands in, so the real list can ship empty and a site that enables the
+ * feature grants nobody access by accident.
  */
 export function activeMembers(): Member[] {
-  return demoEnabled() ? membersConfig.demoMembers : membersConfig.members;
+  return demoEnabled() ? [DEMO_MEMBER] : membersConfig.members;
 }
 
 /** The member with this address, or null. */

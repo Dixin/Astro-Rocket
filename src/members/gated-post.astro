@@ -27,7 +27,7 @@ import { getPostUrl } from '@/lib/blog';
 import { formatDate } from '@/lib/utils';
 import membersConfig from '@/config/members.config';
 import { readSession } from '@/lib/members/session';
-import { canRead, accessOf, isGated } from '@/lib/members/gating';
+import { canRead, accessOf, isGated, isVisible } from '@/lib/members/gating';
 import { t, getLocaleFromPath } from '@/i18n';
 
 const path = Astro.url.pathname.replace(/\/$/, '');
@@ -41,7 +41,9 @@ const post = posts.find(
 
 // The route was injected for a gated post; if the content changed underneath
 // it, say not found rather than guessing.
-if (!post || !isGated(post.data)) return new Response('Not found', { status: 404 });
+if (!post || !isGated(post.data) || !isVisible(post.data)) {
+  return new Response('Not found', { status: 404 });
+}
 
 const session = await readSession(Astro.cookies);
 const allowed = canRead(session, post.data);

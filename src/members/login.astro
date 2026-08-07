@@ -16,7 +16,7 @@ import Alert from '@/components/ui/feedback/Alert/Alert.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import membersConfig from '@/config/members.config';
 import { readSession } from '@/lib/members/session';
-import { demoEnabled } from '@/lib/members/members';
+import { demoEnabled } from '@/lib/members/demo';
 import { t, getLocaleFromPath } from '@/i18n';
 
 const session = await readSession(Astro.cookies);
