@@ -948,32 +948,27 @@ real site.
 
 All of them sit under `prefix`, so renaming it moves the lot.
 
-### What it does not do
+### Beyond content: a client portal
 
-Stated plainly, because the boundary matters more than the feature list:
+The members area gives people access to your content. A client portal is a
+different thing — everyone signs in and sees their own records: projects,
+invoices, documents, progress through a course. Those differ for every
+business, so they are built for one site rather than shipped in a theme.
 
-- **No self-signup and no payments.** Members are a list you keep.
-- **No per-customer records** — no invoices, no per-client dashboard.
-- **No profiles, uploads, comments or messaging between members.**
+That is custom work built on top of this, and it can include per-customer
+records, payments and subscriptions through Stripe, self-signup on payment,
+and course progress. The members-area guide on
+[astrorocket.dev](https://astrorocket.dev) says how to ask for it.
 
-Everything above works because it gates content the theme already renders. A
-dashboard with someone's own records is a custom build, and it is different
-for every business — which is why the theme does not pretend to ship one. If
-that is what you need, the members-area guide on
-[astrorocket.dev](https://astrorocket.dev) says how to get it built.
+### Good to know
 
-### Honest limits
-
-- **A session cannot be revoked before it expires.** Removing someone stops
-  them signing in again, but a cookie already issued lives out `sessionDays`.
-  There is no session store to invalidate — that is the trade for needing no
-  database. Shorten `sessionDays` if it matters.
-- **A sign-in link is valid until it expires, not until it is used once.**
-  Recording that a token had been used would need somewhere to record it.
-  Hence 15 minutes.
-- **The sign-in brake is per server instance.** Five attempts a minute per
-  email address, held in memory. Put a real limiter in front — your host's firewall
-  — if you need one.
+- **A sign-in lasts `sessionDays`** — 30 by default, and yours to set. Someone
+  you remove cannot sign in again; set it shorter if you want an existing
+  sign-in to stop sooner.
+- **Sign-in links last `linkMinutes`** — 15 by default.
+- **Rate limiting is per server instance.** Five sign-in requests a minute per
+  email address, held in memory. Put your host's firewall in front if you want
+  more than that.
 - **i18n:** the members area ships English and Dutch, in the `members` group
   of the locale files, and the sign-in email goes out in the locale of the
   request.

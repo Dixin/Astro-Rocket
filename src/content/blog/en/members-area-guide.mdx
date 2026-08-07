@@ -94,6 +94,10 @@ line. Because the list is part of your project, the record of who had access,
 and when, is your version history — there is no admin screen to build and none
 to secure.
 
+A sign-in lasts thirty days, and you set how long: `sessionDays` in the same
+file. Someone you remove cannot sign in again, and a shorter setting is what
+you want if you would rather an existing sign-in stopped sooner.
+
 How people get onto that list is up to you and happens away from the site: they
 bought the course, signed the contract, joined the club, paid the invoice.
 
@@ -137,11 +141,8 @@ And around that:
   nobody can flood an inbox with links.
 - **The build refuses to run** if the members area is on without a signing
   secret. It is not possible to deploy this with the lock accidentally open.
-- **Sign-in links expire in fifteen minutes.**
-
-The honest limits are further down, under *What it does not do*. They are
-consequences of storing nothing on the server, and they are worth reading
-before you decide what to put behind this.
+- **Sign-in links expire in fifteen minutes**, and a link only ever works for
+  the email address it was issued to.
 
 ## Turning it on
 
@@ -200,24 +201,6 @@ and give the member the tier:
 
 Ben reads it; a member without that tier sees the locked page instead.
 
-## What it does not do
-
-Four things, worth knowing before you build on it.
-
-**There is no self-signup and no payment handling.** You register your members.
-
-**A signed-in member cannot be signed out early.** Removing someone from the
-list stops them signing in again, but a sign-in already granted lasts its full
-thirty days. There is nothing stored on the server to cancel, which is the
-trade for needing no database. Shorten `sessionDays` if that matters to you.
-
-**A sign-in link works until it expires, not until it is used once.** Recording
-that a link had been used would need somewhere to record it. Links last fifteen
-minutes for that reason.
-
-**There are no per-customer records.** No invoices, no project status, no
-progress through a course. The members area gates the content you already have.
-
 ## Nothing changes until you turn it on
 
 The theme ships with the members area switched off, and off means no member
@@ -229,16 +212,32 @@ is off is hidden rather than published. And enabling it without a session
 secret stops the build, with a message telling you how to make one — a lock
 that quietly fails open would be worse than no lock.
 
-## If you need more than this
+## If you need a client portal
 
-A page showing someone *their own records* — their invoices, their project,
-their progress through a course — is a different thing. Those records differ
-for every business, so no theme can ship one that fits.
+The members area gives people access to your content. A client portal is a
+different thing: everyone signs in and sees **their own records** — their
+projects, their invoices, their documents, their progress through a course.
 
-That is custom work, and I build it. There is one running in production I can
-show you: my own client portal at [hansmartens.dev](https://hansmartens.dev),
-built for real clients, with invoices and project status behind the same kind
-of sign-in described here.
+Those records are different for every business, which is why they are not part
+of a theme. They are built for one site, on top of this one, and that is work I
+do.
+
+I run one myself. The client portal on
+[hansmartens.dev](https://hansmartens.dev) shows each of my clients their own
+projects and invoices, behind the same kind of sign-in described here.
+
+Built on top of the members area, that can include:
+
+- **Per-customer records** — projects, invoices, documents, downloads, order
+  history.
+- **Payments through Stripe** — paid memberships, subscriptions, one-off
+  purchases, and people signing themselves up by paying.
+- **A course area** with lessons in order and progress kept per student.
+- **Anything that has to know who is looking**, rather than only whether they
+  are allowed in.
+
+The theme stays free and stays yours. You pay for the part that is built for
+you, and you keep it.
 
 Tell me what belongs behind your door and I will tell you what it takes to
 build.
