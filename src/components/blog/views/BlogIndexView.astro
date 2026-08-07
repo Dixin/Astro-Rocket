@@ -39,7 +39,11 @@ const posts = await getPublishedPosts(locale);
 
 // Featured posts always appear on page 1; the "All posts" grid paginates
 // the non-featured set so the first impression stays curated.
-const featuredPosts = posts.filter((post) => post.data.featured);
+// `featuredOrder` first, lowest to highest; anything without one keeps the
+// newest-first order `getPublishedPosts` already applied and follows behind.
+const featuredPosts = posts
+  .filter((post) => post.data.featured)
+  .sort((a, b) => (a.data.featuredOrder ?? Infinity) - (b.data.featuredOrder ?? Infinity));
 const nonFeaturedPosts = posts.filter((post) => !post.data.featured);
 // If everything is featured, mirror it into the main grid so the page isn't empty.
 const regularPostsAll = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;

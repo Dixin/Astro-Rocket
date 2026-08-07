@@ -42,6 +42,18 @@ const blog = defineCollection({
         .optional(),
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),
+      /**
+       * Where this post sits in the featured row, lowest first.
+       *
+       * Featured posts otherwise appear newest first, which ties the order of
+       * a curated row to publication dates — so putting an older post at the
+       * front would mean backdating a new one, and that changes what goes out
+       * over RSS and what the sitemap reports. This decides the order without
+       * touching a single date.
+       *
+       * Posts without it fall in after the numbered ones, still newest first.
+       */
+      featuredOrder: z.number().int().positive().optional(),
       locale: localeSchema,
       /**
        * Members area — who may read this post.

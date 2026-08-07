@@ -5,17 +5,29 @@ publishedAt: 2026-08-07
 author: "Hans Martens"
 tags: ["astro-rocket", "members", "auth", "guide"]
 featured: true
+featuredOrder: 3
 locale: en
 image: "../../../assets/blog/members-area-guide.svg"
 svgSlug: "members-area-guide"
 imageAlt: "A padlock above the words members area, on the theme's brand colour"
 ---
 
+import BlogImageSVG from '@/components/blog/BlogImageSVG.astro';
+
 Astro Rocket can now put a lock on your content. A reader signs in with their
 email address — no password to choose, nothing to reset — and reads what their
 membership covers.
 
 There is no database anywhere in it, and no membership platform taking a cut.
+
+This is the page a reader meets, in your own brand colour and following their
+colour mode:
+
+<BlogImageSVG
+  slug="members-sign-in-page"
+  title="The members sign-in page: a lock, the heading Members, one email field, and a Send me a link button"
+  zoom={false}
+/>
 
 ## One line
 
