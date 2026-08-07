@@ -9,6 +9,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import siteConfig from '@/config/site.config';
 import { defaultLocale, localizedPath, isEnabled, getLocales } from '@/i18n';
 import { tagToSlug, findTagBySlug } from '@/lib/tags';
+import { visibleEntries } from '@/lib/members/gating';
 
 /** Number of regular (non-featured) posts shown per blog index page. */
 export const BLOG_POSTS_PER_PAGE = siteConfig.blog?.postsPerPage ?? 12;
@@ -97,7 +98,11 @@ export async function getPublishedPosts(
   const all = await getCollection('blog', ({ data }) => {
     return data.locale === locale && (import.meta.env.PROD ? data.draft !== true : true);
   });
-  return all.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+  // Members-only posts stay in the listings as locked cards while the feature
+  // is on, and disappear entirely while it is off — see visibleEntries.
+  return visibleEntries(all).sort(
+    (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+  );
 }
 
 /**

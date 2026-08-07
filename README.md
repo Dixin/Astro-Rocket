@@ -844,6 +844,124 @@ The search button shows by default. Hide it per header instance:
 
 ---
 
+## Members Area
+
+Put one line in a post's frontmatter and it needs a sign-in. Readers enter
+their email address, get a link, and they are in — no password to choose,
+nothing to reset, and no database anywhere.
+
+**Off by default.** With `enabled: false` no member routes are built at all,
+so a site that never turns it on is byte-identical to one built before this
+feature existed — no serverless function where there was none.
+
+### Turning it on
+
+**1. Set two environment variables.**
+
+```bash
+MEMBERS_SESSION_SECRET=   # openssl rand -base64 32
+RESEND_API_KEY=           # sends the sign-in links
+RESEND_FROM_EMAIL=        # the address they come from
+```
+
+The build stops if the feature is enabled without a session secret. A gate
+that fails open is worse than no gate.
+
+**2. Enable it and list your members** in `src/config/members.config.ts`:
+
+```ts
+const membersConfig: MembersConfig = {
+  enabled: true,
+  prefix: '/members',   // rename it if you like
+  sessionDays: 30,      // how long a member stays signed in
+  linkMinutes: 15,      // how long a sign-in link is valid
+  demo: false,          // one-click sign-in — see below
+  tiers: ['pro'],       // omit entirely if you do not need tiers
+  members: [
+    { email: 'anna@example.com', name: 'Anna' },
+    { email: 'ben@example.com', name: 'Ben', tiers: ['pro'] },
+  ],
+};
+```
+
+Adding a member is a line and a deploy, so the list lives in your git history.
+
+**3. Gate some content.** In any post's frontmatter:
+
+```yaml
+access: members   # any signed-in member
+access: pro       # only members holding that tier
+```
+
+Omit it and the post is public, which is every post until you decide
+otherwise.
+
+### What happens to a gated post
+
+- **It stays in the listings** as a locked card with the title, date and
+  description, so the value is visible before anyone signs in.
+- **A visitor who opens it** gets those same words, a lock and a way to sign
+  in — not a 404. The body is never put in the response, rather than hidden
+  with CSS.
+- **It is left out of the RSS feed and the search index.**
+- **It renders on demand** while every public page on the site stays static.
+  Its URL does not change.
+- **With the members area off it disappears** rather than becoming public. A
+  gate that is switched off must not publish what it was hiding.
+
+### Trying it without an email service
+
+In development the sign-in link is printed to your terminal instead of being
+sent. Run `pnpm dev`, enter an address on `/members/login`, and click the link
+in your console. No Resend account needed to see the whole thing work.
+
+`demo: true` adds one-click sign-in as the first member on the list, for a
+public demo of the feature. It is an open door by design — never set it on a
+real site.
+
+### Routes
+
+| route | what it is |
+| --- | --- |
+| `/members/login` | enter your email address |
+| `/members/check-email` | the link is on its way |
+| `/members` | everything your membership covers |
+| `/members/account` | your address, tiers, and sign out |
+
+All of them sit under `prefix`, so renaming it moves the lot.
+
+### What it does not do
+
+Stated plainly, because the boundary matters more than the feature list:
+
+- **No self-signup and no payments.** Members are a list you keep.
+- **No per-customer records** — no invoices, no per-client dashboard.
+- **No profiles, uploads, comments or messaging between members.**
+
+Everything above works because it gates content the theme already renders. A
+dashboard with someone's own records is a custom build, and it is different
+for every business — which is why the theme does not pretend to ship one. If
+that is what you need, the members-area guide on
+[astrorocket.dev](https://astrorocket.dev) says how to get it built.
+
+### Honest limits
+
+- **A session cannot be revoked before it expires.** Removing someone stops
+  them signing in again, but a cookie already issued lives out `sessionDays`.
+  There is no session store to invalidate — that is the trade for needing no
+  database. Shorten `sessionDays` if it matters.
+- **A sign-in link is valid until it expires, not until it is used once.**
+  Recording that a token had been used would need somewhere to record it.
+  Hence 15 minutes.
+- **The sign-in brake is per server instance.** Five attempts a minute per
+  address, held in memory. Put a real limiter in front — your host's firewall
+  — if you need one.
+- **i18n:** the members area ships English and Dutch, in the `members` group
+  of the locale files, and the sign-in email goes out in the locale of the
+  request.
+
+---
+
 ## API Routes
 
 ### Contact Form

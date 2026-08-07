@@ -1,0 +1,132 @@
+---
+export const prerender = false;
+
+/**
+ * What a member lands on: everything gated they are entitled to, and what
+ * they are not.
+ *
+ * This is a filtered content index, which is the same thing the blog index
+ * already is — no dashboard was designed for it. What a member sees is the
+ * site's own content, which is why the feature works without every user
+ * having to build a screen of their own first.
+ */
+
+import PageLayout from '@/layouts/PageLayout.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import { getCollection } from 'astro:content';
+import { getPostUrl } from '@/lib/blog';
+import { formatDate } from '@/lib/utils';
+import membersConfig from '@/config/members.config';
+import { readSession } from '@/lib/members/session';
+import { findMember } from '@/lib/members/members';
+import { gatedEntries, canRead, accessOf } from '@/lib/members/gating';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const session = await readSession(Astro.cookies);
+if (!session) return Astro.redirect(`${membersConfig.prefix}/login`, 303);
+
+const member = findMember(session.sub);
+const name = member?.name ?? session.sub;
+const locale = getLocaleFromPath(Astro.url.pathname);
+
+const posts = gatedEntries(
+  await getCollection('blog', ({ data }) => (import.meta.env.PROD ? data.draft !== true : true))
+).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const unlocked = posts.filter((post) => canRead(session, post.data));
+const locked = posts.filter((post) => !canRead(session, post.data));
+---
+
+<PageLayout title={t('members.membersTitle', locale)} description={t('members.yoursToRead', locale)} noindex>
+  <section class="py-[var(--space-section-md)]">
+    <div class="mx-auto w-full max-w-3xl px-6 flex flex-col items-center gap-8 text-center">
+      <div class="flex flex-col items-center gap-4">
+        <div class="flex flex-col items-center gap-1">
+          <h1 class="font-display text-3xl font-bold text-foreground">{t('members.welcome', locale, { name })}</h1>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            <span class="text-foreground-muted">{session.sub}</span>
+            {session.tiers.map((tier) => <Badge variant="brand" pill>{tier}</Badge>)}
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <Button href={`${membersConfig.prefix}/account`} variant="outline" size="sm">
+            {t('members.account', locale)}
+          </Button>
+          <form method="POST" action={`${membersConfig.prefix}/logout`}>
+            <Button type="submit" variant="outline" size="sm">
+              <Icon name="log-out" size="sm" />
+              {t('members.signOut', locale)}
+            </Button>
+          </form>
+        </div>
+      </div>
+
+      <div class="flex w-full flex-col gap-4">
+        <h2 class="font-display text-xl font-semibold text-foreground">
+          {unlocked.length > 0 ? t('members.yoursToRead', locale) : t('members.nothingGated', locale)}
+        </h2>
+
+        {
+          unlocked.length === 0 && (
+            <Card padding="lg">
+              <p class="text-foreground-muted">{t('members.nothingGatedBody', locale)}</p>
+            </Card>
+          )
+        }
+
+        {
+          unlocked.map((post) => (
+            <Card padding="lg" hover href={getPostUrl(post.id, post.data.locale)}>
+              <div class="flex flex-col items-center gap-2">
+                <Badge variant="brand" pill>
+                  {accessOf(post.data)}
+                </Badge>
+                <time
+                  datetime={post.data.publishedAt.toISOString()}
+                  class="text-sm text-foreground-subtle"
+                >
+                  {formatDate(post.data.publishedAt)}
+                </time>
+                <h3 class="font-display text-lg font-bold text-foreground">{post.data.title}</h3>
+                <p class="text-foreground-muted line-clamp-2">{post.data.description}</p>
+              </div>
+            </Card>
+          ))
+        }
+      </div>
+
+      {
+        locked.length > 0 && (
+          /* What a higher tier would open. Shown rather than hidden, because a
+             member cannot ask for what they cannot see. */
+          <div class="flex w-full flex-col gap-4">
+            <h2 class="font-display text-xl font-semibold text-foreground">
+              {t('members.notIncluded', locale)}
+            </h2>
+            {locked.map((post) => (
+              <Card padding="lg">
+                <div class="flex flex-col items-center gap-2 opacity-70">
+                  <Badge variant="default" pill>
+                    <Icon name="lock" size="sm" />
+                    {accessOf(post.data)}
+                  </Badge>
+                  <time
+                    datetime={post.data.publishedAt.toISOString()}
+                    class="text-sm text-foreground-subtle"
+                  >
+                    {formatDate(post.data.publishedAt)}
+                  </time>
+                  <h3 class="font-display text-lg font-bold text-foreground">{post.data.title}</h3>
+                  <p class="text-foreground-muted line-clamp-2">{post.data.description}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</PageLayout>

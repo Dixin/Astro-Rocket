@@ -53,7 +53,7 @@
     "metaTitle": "Blog",
     "metaDescription": "De Astro Rocket-blog: praktische gidsen voor het instellen, configureren en bouwen met het thema.",
     "heroBadge": "Alle berichten",
-    "heroDescription": "Alles wat je over Astro\u00a0Rocket moet weten, uitgelegd in praktische gidsen.",
+    "heroDescription": "Alles wat je over Astro Rocket moet weten, uitgelegd in praktische gidsen.",
     "allPosts": "Alle berichten",
     "noPosts": "Geen berichten gevonden",
     "pageMetaTitle": "Blog — Pagina {page}",
@@ -210,8 +210,21 @@
       "hero": {
         "badge": "Over",
         "titleLead": "Astro Rocket —",
-        "typingWords": ["Razendsnel", "Starter-thema", "44 Componenten", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
-        "typingWordsMobile": ["Razendsnel", "Starter-thema", "12 Thema's", "Donkere modus", "Ingebouwde i18n"],
+        "typingWords": [
+          "Razendsnel",
+          "Starter-thema",
+          "44 Componenten",
+          "12 Thema's",
+          "Donkere modus",
+          "Ingebouwde i18n"
+        ],
+        "typingWordsMobile": [
+          "Razendsnel",
+          "Starter-thema",
+          "12 Thema's",
+          "Donkere modus",
+          "Ingebouwde i18n"
+        ],
         "description": "Een gratis, open-source Astro 7 starter-thema om alles op te bouwen."
       },
       "whatYouGet": {
@@ -271,9 +284,21 @@
         "heading": "Met intentie gebouwd",
         "lead": "Elke keuze in Astro Rocket, van componentstructuur tot standaardconfiguratie, komt voort uit dezelfde drie principes.",
         "items": [
-          { "icon": "zap", "title": "Prestaties eerst", "description": "Standaard nul JavaScript. Elk component is geoptimaliseerd voor snelheid, Core Web Vitals en compacte output." },
-          { "icon": "award", "title": "Ontwikkelaarservaring", "description": "Overal TypeScript, verstandige standaardinstellingen en een componentbibliotheek die je zo in elke pagina laat vallen." },
-          { "icon": "rocket", "title": "Modern vanaf de basis", "description": "Astro 7, Tailwind CSS 4 en een schone architectuur die eenvoudig uit te breiden en te onderhouden is." }
+          {
+            "icon": "zap",
+            "title": "Prestaties eerst",
+            "description": "Standaard nul JavaScript. Elk component is geoptimaliseerd voor snelheid, Core Web Vitals en compacte output."
+          },
+          {
+            "icon": "award",
+            "title": "Ontwikkelaarservaring",
+            "description": "Overal TypeScript, verstandige standaardinstellingen en een componentbibliotheek die je zo in elke pagina laat vallen."
+          },
+          {
+            "icon": "rocket",
+            "title": "Modern vanaf de basis",
+            "description": "Astro 7, Tailwind CSS 4 en een schone architectuur die eenvoudig uit te breiden en te onderhouden is."
+          }
         ]
       },
       "stack": {
@@ -290,22 +315,52 @@
             "icon": "rocket",
             "title": "Over Astro",
             "items": [
-              { "question": "Wat is Astro?", "answer": "Astro is een modern webframework gebouwd voor content-gedreven sites. Het levert standaard nul JavaScript — er wordt alleen verstuurd wat de pagina echt nodig heeft. Het resultaat: snelle laadtijden, uitstekende Core Web Vitals-scores en compacte, onderhoudbare code." },
-              { "question": "Waarom bouwen met Astro?", "answer": "Astro is de juiste keuze voor content-rijke sites: minimale JavaScript, schone HTML, standaard goede SEO en een ontwikkelaarservaring die je niet in de weg zit. Het is compact, doelgericht en gebouwd om lang mee te gaan." },
-              { "question": "Wat kan ik bouwen met Astro Rocket?", "answer": "Portfolio's, zakelijke sites, marketingpagina's, blogs, documentatiesites — elk content-gedreven project. Astro Rocket geeft je de structuur, componenten en standaardinstellingen om direct van start te gaan." },
-              { "question": "Staat Astro Rocket in de officiële Astro-themamap?", "answer": "Ja. <a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> staat in de officiële Astro-themamap als een gratis, productieklaar thema." },
-              { "question": "Blijft Astro Rocket nieuwe Astro-releases volgen?", "answer": "Ja. Astro Rocket wordt actief onderhouden en bijgewerkt om nieuwe Astro-releases te volgen. Volg de blog of houd de GitHub-repository in de gaten voor updates." }
+              {
+                "question": "Wat is Astro?",
+                "answer": "Astro is een modern webframework gebouwd voor content-gedreven sites. Het levert standaard nul JavaScript — er wordt alleen verstuurd wat de pagina echt nodig heeft. Het resultaat: snelle laadtijden, uitstekende Core Web Vitals-scores en compacte, onderhoudbare code."
+              },
+              {
+                "question": "Waarom bouwen met Astro?",
+                "answer": "Astro is de juiste keuze voor content-rijke sites: minimale JavaScript, schone HTML, standaard goede SEO en een ontwikkelaarservaring die je niet in de weg zit. Het is compact, doelgericht en gebouwd om lang mee te gaan."
+              },
+              {
+                "question": "Wat kan ik bouwen met Astro Rocket?",
+                "answer": "Portfolio's, zakelijke sites, marketingpagina's, blogs, documentatiesites — elk content-gedreven project. Astro Rocket geeft je de structuur, componenten en standaardinstellingen om direct van start te gaan."
+              },
+              {
+                "question": "Staat Astro Rocket in de officiële Astro-themamap?",
+                "answer": "Ja. <a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> staat in de officiële Astro-themamap als een gratis, productieklaar thema."
+              },
+              {
+                "question": "Blijft Astro Rocket nieuwe Astro-releases volgen?",
+                "answer": "Ja. Astro Rocket wordt actief onderhouden en bijgewerkt om nieuwe Astro-releases te volgen. Volg de blog of houd de GitHub-repository in de gaten voor updates."
+              }
             ]
           },
           {
             "icon": "code-2",
             "title": "Het thema gebruiken",
             "items": [
-              { "question": "Is het gratis te gebruiken?", "answer": "Ja, volledig gratis. Astro Rocket is MIT-gelicentieerd — gebruik het voor persoonlijke en commerciële projecten, geen naamsvermelding vereist." },
-              { "question": "Hoe wissel ik van thema?", "answer": "Wijzig één regel in je configuratie. Astro Rocket wordt geleverd met 12 met de hand gemaakte kleurthema's — wissel er direct tussen zonder ook maar één regel CSS aan te raken." },
-              { "question": "Ondersteunt het TypeScript?", "answer": "Ja, TypeScript wordt overal gebruikt. Alle componenten, configuraties en hulpprogramma's zijn volledig getypeerd." },
-              { "question": "Hoe voeg ik mijn eigen taal toe voor i18n?", "answer": "De i18n van Astro Rocket is config-gedreven. Voeg je locale toe aan het i18n-configuratiebestand, maak een bijbehorend vertaalbestand aan en de routering en interface passen zich automatisch aan." },
-              { "question": "Waar meld ik bugs of stel ik functies voor?", "answer": "Open een issue of start een discussie op de <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub-repository</a>. Bijdragen en feedback zijn altijd welkom." }
+              {
+                "question": "Is het gratis te gebruiken?",
+                "answer": "Ja, volledig gratis. Astro Rocket is MIT-gelicentieerd — gebruik het voor persoonlijke en commerciële projecten, geen naamsvermelding vereist."
+              },
+              {
+                "question": "Hoe wissel ik van thema?",
+                "answer": "Wijzig één regel in je configuratie. Astro Rocket wordt geleverd met 12 met de hand gemaakte kleurthema's — wissel er direct tussen zonder ook maar één regel CSS aan te raken."
+              },
+              {
+                "question": "Ondersteunt het TypeScript?",
+                "answer": "Ja, TypeScript wordt overal gebruikt. Alle componenten, configuraties en hulpprogramma's zijn volledig getypeerd."
+              },
+              {
+                "question": "Hoe voeg ik mijn eigen taal toe voor i18n?",
+                "answer": "De i18n van Astro Rocket is config-gedreven. Voeg je locale toe aan het i18n-configuratiebestand, maak een bijbehorend vertaalbestand aan en de routering en interface passen zich automatisch aan."
+              },
+              {
+                "question": "Waar meld ik bugs of stel ik functies voor?",
+                "answer": "Open een issue of start een discussie op de <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub-repository</a>. Bijdragen en feedback zijn altijd welkom."
+              }
             ]
           }
         ]
@@ -316,9 +371,18 @@
         "description": "Astro Rocket is gratis, open source en MIT-gelicentieerd. Bekijk de broncode, open issues, dien PR's in, of kloon het gewoon en bouw iets moois.",
         "button": "Bekijk op GitHub",
         "cards": [
-          { "title": "Gemaakt door Hans Martens Dev", "text": "Astro Rocket is ontworpen en gebouwd door <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens Dev</a> — een freelance Astro-developer die het als basis voor klantprojecten gebruikt." },
-          { "title": "MIT-licentie", "text": "Gratis te gebruiken in persoonlijke en commerciële projecten. Geen naamsvermelding vereist, al wordt een ster op GitHub altijd gewaardeerd." },
-          { "title": "Actief onderhouden", "text": "Het thema wordt up-to-date gehouden met nieuwe Astro-releases en regelmatig verbeterd op basis van feedback uit de community." }
+          {
+            "title": "Gemaakt door Hans Martens Dev",
+            "text": "Astro Rocket is ontworpen en gebouwd door <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens Dev</a> — een freelance Astro-developer die het als basis voor klantprojecten gebruikt."
+          },
+          {
+            "title": "MIT-licentie",
+            "text": "Gratis te gebruiken in persoonlijke en commerciële projecten. Geen naamsvermelding vereist, al wordt een ster op GitHub altijd gewaardeerd."
+          },
+          {
+            "title": "Actief onderhouden",
+            "text": "Het thema wordt up-to-date gehouden met nieuwe Astro-releases en regelmatig verbeterd op basis van feedback uit de community."
+          }
         ]
       },
       "cta": {
@@ -339,7 +403,11 @@
         "titleLead": "Webdesign, webdevelopment,",
         "titleHighlight": "en weboptimalisatie",
         "description": "Drie diensten, één product: een strakke, razendsnelle custom Astro-website waar je trots je naam op zet.",
-        "jumpLabels": ["Webdesign", "Webdevelopment", "Weboptimalisatie"]
+        "jumpLabels": [
+          "Webdesign",
+          "Webdevelopment",
+          "Weboptimalisatie"
+        ]
       },
       "design": {
         "badge": "Design",
@@ -439,10 +507,22 @@
         "heading": "Hoe een project verloopt",
         "lead": "Van je eerste bericht tot een live website.",
         "steps": [
-          { "title": "Eerste contact", "description": "Je stuurt een bericht via het contactformulier. Ik reageer binnen een werkdag en we plannen een gratis, informatief gesprek over wat je nodig hebt. Vrijblijvend." },
-          { "title": "Voorstel", "description": "Na ons gesprek krijg je één helder document: wat ik bouw, wanneer het klaar is en de vaste prijs. Jij beslist met alles op tafel." },
-          { "title": "Ontwerp & bouw", "description": "Ik werk in korte cycli. Je volgt de voortgang op een staging-link en ziet je website vorm krijgen." },
-          { "title": "Lancering & ondersteuning", "description": "Je website gaat live op je eigen domein en hosting, op jouw naam. Daarna blijf ik bereikbaar, en voor regelmatige updates is er het maandelijkse onderhoudsplan." }
+          {
+            "title": "Eerste contact",
+            "description": "Je stuurt een bericht via het contactformulier. Ik reageer binnen een werkdag en we plannen een gratis, informatief gesprek over wat je nodig hebt. Vrijblijvend."
+          },
+          {
+            "title": "Voorstel",
+            "description": "Na ons gesprek krijg je één helder document: wat ik bouw, wanneer het klaar is en de vaste prijs. Jij beslist met alles op tafel."
+          },
+          {
+            "title": "Ontwerp & bouw",
+            "description": "Ik werk in korte cycli. Je volgt de voortgang op een staging-link en ziet je website vorm krijgen."
+          },
+          {
+            "title": "Lancering & ondersteuning",
+            "description": "Je website gaat live op je eigen domein en hosting, op jouw naam. Daarna blijf ik bereikbaar, en voor regelmatige updates is er het maandelijkse onderhoudsplan."
+          }
         ]
       },
       "faq": {
@@ -454,22 +534,52 @@
             "icon": "tag",
             "title": "Voordat we beginnen",
             "items": [
-              { "question": "Wat kost een website?", "answer": "Elk project krijgt één vaste prijs, afgesproken voordat we beginnen. Geen uurtje-factuurtje, geen verrassingen achteraf. Het gratis gesprek — en de gratis check, als er al een website is — vertelt me wat je project nodig heeft, en je krijgt de prijs in één helder voorstel." },
-              { "question": "Hoe lang duurt een project?", "answer": "Dat hangt af van de omvang van de website. Het voorstel noemt de planning samen met de prijs, zodat je beide kent voordat we beginnen." },
-              { "question": "Wat gebeurt er met mijn huidige website?", "answer": "Die blijft online tot de nieuwe klaar is. Je content, je webadres en je Google-posities gaan mee. Ik bekijk je huidige website vóór ons eerste gesprek, zodat je vanaf het begin duidelijke antwoorden krijgt." },
-              { "question": "Moet ik zelf hosting of een domein regelen?", "answer": "Nee. Ik zet de hosting en het domein voor je op, op jouw eigen naam. Heb je al een domein, dan houden we dat gewoon." },
-              { "question": "Moeten we elkaar in persoon ontmoeten?", "answer": "Dat hoeft niet. De meeste projecten verlopen volledig via telefoon, video en e-mail. Ik werk met klanten wereldwijd, en tijdzones zijn zelden een probleem." }
+              {
+                "question": "Wat kost een website?",
+                "answer": "Elk project krijgt één vaste prijs, afgesproken voordat we beginnen. Geen uurtje-factuurtje, geen verrassingen achteraf. Het gratis gesprek — en de gratis check, als er al een website is — vertelt me wat je project nodig heeft, en je krijgt de prijs in één helder voorstel."
+              },
+              {
+                "question": "Hoe lang duurt een project?",
+                "answer": "Dat hangt af van de omvang van de website. Het voorstel noemt de planning samen met de prijs, zodat je beide kent voordat we beginnen."
+              },
+              {
+                "question": "Wat gebeurt er met mijn huidige website?",
+                "answer": "Die blijft online tot de nieuwe klaar is. Je content, je webadres en je Google-posities gaan mee. Ik bekijk je huidige website vóór ons eerste gesprek, zodat je vanaf het begin duidelijke antwoorden krijgt."
+              },
+              {
+                "question": "Moet ik zelf hosting of een domein regelen?",
+                "answer": "Nee. Ik zet de hosting en het domein voor je op, op jouw eigen naam. Heb je al een domein, dan houden we dat gewoon."
+              },
+              {
+                "question": "Moeten we elkaar in persoon ontmoeten?",
+                "answer": "Dat hoeft niet. De meeste projecten verlopen volledig via telefoon, video en e-mail. Ik werk met klanten wereldwijd, en tijdzones zijn zelden een probleem."
+              }
             ]
           },
           {
             "icon": "user",
             "title": "Samenwerken met mij",
             "items": [
-              { "question": "Ben je een bedrijf of bureau?", "answer": "Ik ben een eenmansbedrijf: een freelancer, geen bureau. Je werkt rechtstreeks met degene die het werk doet, van het eerste gesprek tot de afgeronde website. Geen salesteam, geen accountmanagers, geen overdrachten." },
-              { "question": "Kan ik de website zelf aanpassen na de lancering?", "answer": "Je kunt je wijzigingen simpelweg naar mij sturen, en daar is het maandelijkse onderhoudsplan precies voor. Wil je de website zelf bewerken, zeg het dan in het eerste gesprek en ik richt de site daarop in." },
-              { "question": "Bouw je ook webshops?", "answer": "Nee. Grote webwinkels zijn het enige dat ik niet bouw. Al het andere dat een custom Astro-website nodig heeft, bouw ik: vertel me in het eerste gesprek wat je voor ogen hebt, en ik ben eerlijk over of ik de juiste bouwer ervoor ben." },
-              { "question": "Is de website echt van mij?", "answer": "Helemaal. Het domein, de hosting en de code staan vanaf dag één op jouw naam. Wil je ooit verder, dan neem je alles mee: je zit nergens aan vast." },
-              { "question": "Wat als er na de lancering iets kapotgaat?", "answer": "Er kan maar weinig kapot: de website heeft geen plugins en geen database die kunnen falen. En ik blijf bereikbaar na de lancering; voor regelmatige updates en monitoring is er het maandelijkse onderhoudsplan." }
+              {
+                "question": "Ben je een bedrijf of bureau?",
+                "answer": "Ik ben een eenmansbedrijf: een freelancer, geen bureau. Je werkt rechtstreeks met degene die het werk doet, van het eerste gesprek tot de afgeronde website. Geen salesteam, geen accountmanagers, geen overdrachten."
+              },
+              {
+                "question": "Kan ik de website zelf aanpassen na de lancering?",
+                "answer": "Je kunt je wijzigingen simpelweg naar mij sturen, en daar is het maandelijkse onderhoudsplan precies voor. Wil je de website zelf bewerken, zeg het dan in het eerste gesprek en ik richt de site daarop in."
+              },
+              {
+                "question": "Bouw je ook webshops?",
+                "answer": "Nee. Grote webwinkels zijn het enige dat ik niet bouw. Al het andere dat een custom Astro-website nodig heeft, bouw ik: vertel me in het eerste gesprek wat je voor ogen hebt, en ik ben eerlijk over of ik de juiste bouwer ervoor ben."
+              },
+              {
+                "question": "Is de website echt van mij?",
+                "answer": "Helemaal. Het domein, de hosting en de code staan vanaf dag één op jouw naam. Wil je ooit verder, dan neem je alles mee: je zit nergens aan vast."
+              },
+              {
+                "question": "Wat als er na de lancering iets kapotgaat?",
+                "answer": "Er kan maar weinig kapot: de website heeft geen plugins en geen database die kunnen falen. En ik blijf bereikbaar na de lancering; voor regelmatige updates en monitoring is er het maandelijkse onderhoudsplan."
+              }
             ]
           }
         ]
@@ -522,9 +632,21 @@
         "lead": "Elk project krijgt alle drie de diensten.",
         "learnMore": "Meer weten",
         "cards": [
-          { "icon": "layout", "title": "Webdesign", "description": "Interfaces die vanzelfsprekend aanvoelen. Lay-outs gevormd rond je content, je merk en hoe mensen echt lezen op een scherm." },
-          { "icon": "code", "title": "Webdevelopment", "description": "Sites gebouwd om lang mee te gaan. Astro, Tailwind en een schone architectuur: snel op dag één, eenvoudig te onderhouden op dag 500." },
-          { "icon": "trending-up", "title": "Weboptimalisatie", "description": "SEO, Core Web Vitals en toegankelijkheid, vanaf dag één ingebouwd, zodat je site scoort, snel laadt en werkt voor elke bezoeker." }
+          {
+            "icon": "layout",
+            "title": "Webdesign",
+            "description": "Interfaces die vanzelfsprekend aanvoelen. Lay-outs gevormd rond je content, je merk en hoe mensen echt lezen op een scherm."
+          },
+          {
+            "icon": "code",
+            "title": "Webdevelopment",
+            "description": "Sites gebouwd om lang mee te gaan. Astro, Tailwind en een schone architectuur: snel op dag één, eenvoudig te onderhouden op dag 500."
+          },
+          {
+            "icon": "trending-up",
+            "title": "Weboptimalisatie",
+            "description": "SEO, Core Web Vitals en toegankelijkheid, vanaf dag één ingebouwd, zodat je site scoort, snel laadt en werkt voor elke bezoeker."
+          }
         ]
       },
       "workWithMe": {
@@ -532,10 +654,26 @@
         "heading": "Laten we jouw website bouwen",
         "lead": "Wat je krijgt als we samenwerken.",
         "cards": [
-          { "icon": "palette", "title": "Custom design", "description": "Ontworpen rond je bedrijf, je content en je klanten." },
-          { "icon": "zap", "title": "Een razendsnelle website", "description": "Pagina's die direct openen, op elke telefoon en elke verbinding." },
-          { "icon": "search", "title": "Gevonden door Google en AI", "description": "Elke pagina zo gebouwd dat zoekmachines en AI-assistenten hem goed lezen en klanten je vinden." },
-          { "icon": "shield-check", "title": "Geen onderhoud", "description": "Bijgehouden en beveiligd met het onderhoudsplan, zodat jij je op je bedrijf kunt richten." }
+          {
+            "icon": "palette",
+            "title": "Custom design",
+            "description": "Ontworpen rond je bedrijf, je content en je klanten."
+          },
+          {
+            "icon": "zap",
+            "title": "Een razendsnelle website",
+            "description": "Pagina's die direct openen, op elke telefoon en elke verbinding."
+          },
+          {
+            "icon": "search",
+            "title": "Gevonden door Google en AI",
+            "description": "Elke pagina zo gebouwd dat zoekmachines en AI-assistenten hem goed lezen en klanten je vinden."
+          },
+          {
+            "icon": "shield-check",
+            "title": "Geen onderhoud",
+            "description": "Bijgehouden en beveiligd met het onderhoudsplan, zodat jij je op je bedrijf kunt richten."
+          }
         ],
         "cta": "Lees mijn dienstenpagina"
       },
@@ -550,8 +688,16 @@
         "heading": "Wat klanten zeggen",
         "lead": "Echte woorden uit afgeronde projecten.",
         "items": [
-          { "quote": "De nieuwe site werd op tijd gelanceerd en haalde elk doel dat we stelden. De prestaties verbeterden enorm — laadtijden daalden en de reacties van onze klanten zijn overweldigend positief.", "name": "Alex Morgan", "role": "Oprichter, Bright Studio" },
-          { "quote": "Helder van het eerste gesprek tot de uiteindelijke oplevering. De juiste vragen werden gesteld, we werden overal bij betrokken en het eindresultaat overtrof wat we ons hadden voorgesteld. Een aanrader zonder twijfel.", "name": "Sarah Chen", "role": "CEO, Luma Agency" }
+          {
+            "quote": "De nieuwe site werd op tijd gelanceerd en haalde elk doel dat we stelden. De prestaties verbeterden enorm — laadtijden daalden en de reacties van onze klanten zijn overweldigend positief.",
+            "name": "Alex Morgan",
+            "role": "Oprichter, Bright Studio"
+          },
+          {
+            "quote": "Helder van het eerste gesprek tot de uiteindelijke oplevering. De juiste vragen werden gesteld, we werden overal bij betrokken en het eindresultaat overtrof wat we ons hadden voorgesteld. Een aanrader zonder twijfel.",
+            "name": "Sarah Chen",
+            "role": "CEO, Luma Agency"
+          }
         ]
       },
       "aboutTeaser": {
@@ -581,5 +727,50 @@
         "secondary": "Meer over mij"
       }
     }
+  },
+  "members": {
+    "signIn": "Inloggen",
+    "signOut": "Uitloggen",
+    "membersTitle": "Leden",
+    "signInHeading": "Leden",
+    "signInIntro": "Vul je e-mailadres in en we sturen je een link om in te loggen. Geen wachtwoord nodig.",
+    "emailLabel": "E-mailadres",
+    "emailPlaceholder": "jij@voorbeeld.nl",
+    "sendLink": "Stuur me een link",
+    "backToSite": "Terug naar de site",
+    "signedOut": "Je bent uitgelogd.",
+    "errorEmail": "Dat lijkt geen e-mailadres te zijn.",
+    "errorSend": "De link kon niet worden verstuurd. Probeer het zo nog eens.",
+    "errorLink": "Die link is verlopen of niet meer geldig. Vraag een nieuwe aan.",
+    "errorRateLimit": "Te veel aanvragen. Wacht een minuut en probeer het opnieuw.",
+    "checkEmailTitle": "Kijk in je e-mail",
+    "checkEmailBody": "Als dat adres bij een lid hoort, is er een inloglink onderweg. Die is {minutes} minuten geldig.",
+    "useDifferentAddress": "Een ander adres gebruiken",
+    "demoIntro": "Het thema aan het proberen? Sla de e-mail over en kijk rond.",
+    "demoSignIn": "Inloggen als demolid",
+    "welcome": "Welkom, {name}",
+    "account": "Account",
+    "accountTitle": "Je account",
+    "back": "Terug",
+    "name": "Naam",
+    "nameUnset": "Niet ingesteld",
+    "accessLabel": "Toegang",
+    "memberLabel": "Lid",
+    "signedInUntil": "Ingelogd tot",
+    "signedInUntilNote": "{date} — daarna vraag je een nieuwe link aan",
+    "signingOut": "Uitloggen",
+    "signingOutBody": "Uitloggen wist de sessie in deze browser. Er wordt geen sessie op de server bewaard, dus er hoeft verder niets te worden opgeruimd.",
+    "yoursToRead": "Voor jou om te lezen",
+    "nothingGated": "Nog niets afgeschermd",
+    "nothingGatedBody": "Zet access: members in de frontmatter van een bericht en het verschijnt hier, en als vergrendelde kaart op de blog.",
+    "notIncluded": "Niet inbegrepen bij je lidmaatschap",
+    "membersOnly": "Alleen voor leden",
+    "lockedHeading": "Log in om dit te lezen",
+    "lockedBody": "Leden lezen dit volledig. Log in met je e-mailadres — geen wachtwoord nodig.",
+    "notEntitledHeading": "Je lidmaatschap dekt dit niet",
+    "notEntitledBody": "Dit is voor {tier}-leden. Je bent ingelogd als {email}.",
+    "backToBlog": "Terug naar de blog",
+    "emailSubject": "Je inloglink",
+    "emailBody": "Log hier in:\n\n{url}\n\nDe link is {minutes} minuten geldig. Heb je hem niet aangevraagd, negeer deze e-mail dan."
   }
 }

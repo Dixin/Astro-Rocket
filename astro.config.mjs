@@ -1,5 +1,6 @@
 import { join, dirname } from 'node:path';
 import { writeFile, mkdir, readdir, readFile } from 'node:fs/promises';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, envField } from 'astro/config';
 import mdx from '@astrojs/mdx';
@@ -11,6 +12,7 @@ import vercel from '@astrojs/vercel';
 import netlify from '@astrojs/netlify';
 import cloudflare from '@astrojs/cloudflare';
 import i18nConfig from './src/config/i18n.config.ts';
+import membersConfig from './src/config/members.config.ts';
 import { SITE_URL_FALLBACK } from './src/config/site-url.ts';
 import { SITE_NAME, THEME_COLOR } from './src/config/branding.ts';
 
@@ -239,6 +241,142 @@ function ogCards() {
  * before — no /en/ prefix, no extra pages.
  */
 const i18nEnabled = i18nConfig.enabled === true && i18nConfig.locales.length > 1;
+
+/**
+ * Members area — the off switch.
+ *
+ * OFF BY DEFAULT, and off means absent. When the flag is false this registers
+ * no routes, so the build is byte-identical to a site without the feature: no
+ * member pages, and no serverless function where there was none before. A
+ * runtime check inside the pages would not achieve that — anything left in
+ * `src/pages/` with `prerender = false` compiles as an on-demand route
+ * whatever the config says when it runs. That is why the pages live in
+ * `src/members/` and are injected from here instead.
+ *
+ * MEMBERS_ENABLED exists for astrorocket.dev, which runs the feature on while
+ * the theme ships it off. Committing `enabled: true` would turn it on for
+ * everyone who clones the repository; an environment variable on one
+ * deployment turns it on for one deployment.
+ */
+/**
+ * URLs of every blog post carrying an `access:` value.
+ *
+ * Read off disk with a frontmatter scan rather than through the content layer,
+ * because routes have to be injected in `astro:config:setup` and collections
+ * do not exist yet at that point.
+ *
+ * The URL rule is `getPostUrl`'s: strip the locale folder from the id, and
+ * prefix the path with the locale for every locale but the default. Two copies
+ * of one rule is a drift risk, so `members-gating.test.ts` builds the same URL
+ * both ways and fails if they stop agreeing.
+ */
+function gatedPosts() {
+  const base = new URL('./src/content/blog/', import.meta.url);
+  const locales = i18nConfig.locales ?? [];
+  const defaultLocale = i18nConfig.defaultLocale;
+  const urls = [];
+
+  let entries;
+  try {
+    entries = readdirSync(base, { recursive: true, withFileTypes: true });
+  } catch {
+    return urls;
+  }
+
+  for (const entry of entries) {
+    if (!entry.isFile() || !/\.(md|mdx)$/.test(entry.name)) continue;
+
+    const path = join(entry.parentPath ?? entry.path, entry.name);
+    const source = readFileSync(path, 'utf8');
+    const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!frontmatter) continue;
+
+    const access = frontmatter[1].match(/^access:\s*["']?([^"'\r\n]+)["']?\s*$/m)?.[1]?.trim();
+    if (!access || access === 'public') continue;
+
+    // The id is the path under the collection root, without its extension.
+    const id = path
+      .slice(fileURLToPath(base).length)
+      .replace(/\\/g, '/')
+      .replace(/\.(md|mdx)$/, '');
+    const locale = frontmatter[1].match(/^locale:\s*["']?([\w-]+)["']?\s*$/m)?.[1] ?? defaultLocale;
+    const slug = id.replace(new RegExp(`^(${[locale, ...locales].join('|')})/`), '');
+
+    urls.push(locale === defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`);
+  }
+
+  return urls;
+}
+
+function membersArea() {
+  const enabled =
+    membersConfig.enabled === true || process.env.MEMBERS_ENABLED === 'true';
+
+  return {
+    name: 'members-area',
+    hooks: {
+      'astro:config:setup': ({ injectRoute, logger }) => {
+        if (!enabled) return;
+
+        const prefix = membersConfig.prefix.replace(/\/$/, '');
+        const routes = [
+          ['/login', 'login.astro'],
+          ['/check-email', 'check-email.astro'],
+          ['/account', 'account.astro'],
+          ['', 'index.astro'],
+          ['/request-link', 'api/request-link.ts'],
+          ['/verify', 'api/verify.ts'],
+          ['/logout', 'api/logout.ts'],
+          ['/demo-login', 'api/demo-login.ts'],
+        ];
+
+        for (const [path, entry] of routes) {
+          injectRoute({
+            pattern: `${prefix}${path}`,
+            entrypoint: `./src/members/${entry}`,
+            prerender: false,
+          });
+        }
+
+        // One route per gated post, at the post's own URL.
+        //
+        // A gated post cannot be prerendered — middleware runs at build time
+        // for prerendered pages, so the guard would decide once, at build,
+        // for everybody. Making the whole `/blog/[...slug]` route on-demand
+        // would fix that and cost every public post its static build, so
+        // instead the dynamic route drops gated posts from getStaticPaths and
+        // each one is injected here. Astro gives a static pattern priority
+        // over a dynamic one, so `/blog/members-only` wins over
+        // `/blog/[...slug]` and the URL does not change.
+        const gated = gatedPosts();
+        for (const url of gated) {
+          injectRoute({
+            pattern: url,
+            entrypoint: './src/members/gated-post.astro',
+            prerender: false,
+          });
+        }
+
+        logger.info(
+          `enabled at ${prefix} — ${routes.length} routes, ${gated.length} gated ${
+            gated.length === 1 ? 'post' : 'posts'
+          }, all on demand`
+        );
+      },
+      'astro:build:start': ({ logger }) => {
+        if (!enabled) return;
+        if (process.env.MEMBERS_SESSION_SECRET) return;
+        // A gate that fails open is worse than no gate, so this stops the
+        // build rather than shipping a members area that cannot sign anything.
+        throw new Error(
+          'The members area is enabled but MEMBERS_SESSION_SECRET is not set. ' +
+            'Generate one with `openssl rand -base64 32` and add it to your ' +
+            "host's environment variables, or set members.enabled to false."
+        );
+      },
+    },
+  };
+}
 const astroI18nOptions = i18nEnabled
   ? {
       defaultLocale: i18nConfig.defaultLocale,
@@ -279,6 +417,12 @@ export default defineConfig({
         optional: true,
         default: 'https://cloud.umami.is/script.js',
       }),
+      // Signs member sessions and sign-in links. Only read when the members
+      // area is enabled; the build stops if it is enabled without this.
+      MEMBERS_SESSION_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
+      // One-click demo sign-in. An open door by design — astrorocket.dev sets
+      // it so a visitor can see the members area without an email address.
+      MEMBERS_DEMO: envField.string({ context: 'server', access: 'public', optional: true }),
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
       RESEND_AUDIENCE_ID: envField.string({ context: 'server', access: 'secret', optional: true }),
@@ -304,6 +448,7 @@ export default defineConfig({
     pagefind(),
     faviconAssets(),
     ogCards(),
+    membersArea(),
   ],
 
   vite: {
