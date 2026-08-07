@@ -4,14 +4,22 @@ const svgs = import.meta.glob<string>('/src/assets/blog/*.svg', { query: '?raw',
 interface Props {
   slug: string;
   title: string;
+  /**
+   * Cover crop. The 1.35 scale below fills a card's 16:9 frame edge to edge,
+   * which is right for a cover and wrong for a drawing used inside a post —
+   * it would cut 35% off, including anything near the border.
+   *
+   * Defaults to true, so every existing cover is unchanged.
+   */
+  zoom?: boolean;
 }
 
-const { slug, title } = Astro.props;
+const { slug, title, zoom = true } = Astro.props;
 const svgContent = svgs[`/src/assets/blog/${slug}.svg`] ?? '';
 ---
 
 {svgContent && (
-  <div class="svg-host" role="img" aria-label={title} set:html={svgContent} />
+  <div class:list={['svg-host', !zoom && 'svg-host-flat']} role="img" aria-label={title} set:html={svgContent} />
 )}
 
 <style>
@@ -24,6 +32,15 @@ const svgContent = svgs[`/src/assets/blog/${slug}.svg`] ?? '';
   .svg-host :global(svg) {
     transform: scale(1.35);
     transform-origin: center center;
+  }
+
+  /* Used inside a post, where the whole drawing has to be on screen. */
+  .svg-host-flat :global(svg) {
+    transform: none;
+  }
+  .svg-host-flat {
+    border-radius: 0.75rem;
+    overflow: hidden;
   }
 
   /* ── Light mode ─────────────────────────────────────────────────────────
