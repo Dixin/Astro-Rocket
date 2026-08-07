@@ -63,6 +63,22 @@ If a page appears to have hard-coded text, check the locale file first.
 - **Zero JavaScript unless it earns its place.** Astro ships none by default;
   reach for a `<script>` only when the interaction genuinely needs one.
 
+## Commit messages
+
+This repository is public. Its history is read by people deciding whether to
+trust the theme, so a commit message is part of the product.
+
+- **Describe the change and why the design is what it is.** A maintainer
+  reading this in a year needs the reasoning behind a decision, not an account
+  of how it was reached.
+- **Never narrate the process.** No first-person account of what was tried,
+  what was missed, or what was learned. "The gate is scoped to the demo
+  deployment" belongs here; "I only tested two states" does not.
+- **No tool or session trailers.** No `Co-Authored-By` for an assistant, and no
+  links to an AI session. Some tooling adds these by default — remove them.
+- **Present tense, describing the code after the change.** "Scope demo content
+  to the demo deployment", not "Fixed the demo leaking".
+
 ## Commands
 
 ```bash
