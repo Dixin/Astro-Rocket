@@ -28,6 +28,7 @@ import { formatDate } from '@/lib/utils';
 import membersConfig from '@/config/members.config';
 import { readSession } from '@/lib/members/session';
 import { canRead, accessOf, isGated } from '@/lib/members/gating';
+import { t, getLocaleFromPath } from '@/i18n';
 
 const path = Astro.url.pathname.replace(/\/$/, '');
 
@@ -48,6 +49,7 @@ const required = accessOf(post.data);
 
 const rendered = allowed ? await render(post) : null;
 const signInUrl = `${membersConfig.prefix}/login`;
+const locale = getLocaleFromPath(Astro.url.pathname);
 ---
 
 {
@@ -85,7 +87,7 @@ const signInUrl = `${membersConfig.prefix}/login`;
           <div class="flex flex-col items-center gap-3 text-center">
             <Badge variant="brand" pill>
               <Icon name="lock" size="sm" />
-              {required === 'members' ? 'Members only' : required}
+              {required === 'members' ? t('members.membersOnly', locale) : required}
             </Badge>
             <time
               datetime={post.data.publishedAt.toISOString()}
@@ -105,16 +107,18 @@ const signInUrl = `${membersConfig.prefix}/login`;
                 <Icon name="lock" size="lg" />
               </span>
               <h2 class="font-display text-xl font-semibold text-foreground">
-                {session ? 'Your membership does not cover this' : 'Sign in to read this'}
+                {session
+                  ? t('members.notEntitledHeading', locale)
+                  : t('members.lockedHeading', locale)}
               </h2>
               <p class="text-foreground-muted text-balance">
                 {session
-                  ? `This one is for ${required} members. You are signed in as ${session.sub}.`
-                  : 'Members read this in full. Sign in with your email address — no password needed.'}
+                  ? t('members.notEntitledBody', locale, { tier: required ?? '', email: session.sub })
+                  : t('members.lockedBody', locale)}
               </p>
               {!session && (
                 <Button href={signInUrl} size="lg">
-                  Sign in
+                  {t('members.signIn', locale)}
                   <Icon name="arrow-right" size="sm" />
                 </Button>
               )}
@@ -123,7 +127,7 @@ const signInUrl = `${membersConfig.prefix}/login`;
 
           <p class="text-center text-sm text-foreground-subtle">
             <a href="/blog" class="hover:text-foreground transition-colors">
-              Back to the blog
+              {t('members.backToBlog', locale)}
             </a>
           </p>
         </div>

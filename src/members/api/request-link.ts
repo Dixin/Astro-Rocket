@@ -13,6 +13,9 @@ import type { APIRoute } from 'astro';
 import { z } from 'astro/zod';
 import membersConfig from '@/config/members.config';
 import { issueToken, deliverLink } from '@/lib/members/magic-link';
+import { getLocaleFromPath } from '@/i18n';
+import { allowRequest } from '@/lib/members/rate-limit';
+import { normaliseEmail } from '@/lib/members/members';
 
 const schema = z.object({
   email: z.email(),
@@ -32,6 +35,14 @@ export const POST: APIRoute = async ({ request, url, redirect }) => {
     return redirect(`${membersConfig.prefix}/login?error=email`, 303);
   }
 
+  // Keyed on the address, not the IP: the address is what is being targeted,
+  // and keying on IP would let one person behind a shared connection lock out
+  // everybody else on it. Checked before the member lookup so the brake
+  // applies whether or not the address exists.
+  if (!allowRequest(normaliseEmail(parsed.data.email))) {
+    return redirect(`${membersConfig.prefix}/login?error=rate`, 303);
+  }
+
   const token = await issueToken(parsed.data.email);
   // No member with that address. Say the link is on its way regardless.
   if (!token) return sent;
@@ -40,7 +51,7 @@ export const POST: APIRoute = async ({ request, url, redirect }) => {
   link.searchParams.set('token', token);
 
   try {
-    await deliverLink(parsed.data.email, link.toString());
+    await deliverLink(parsed.data.email, link.toString(), getLocaleFromPath(url.pathname));
   } catch {
     return redirect(`${membersConfig.prefix}/login?error=send`, 303);
   }

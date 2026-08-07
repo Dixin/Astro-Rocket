@@ -10,9 +10,12 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import membersConfig from '@/config/members.config';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 ---
 
-<PageLayout title="Check your email" description="Your sign-in link is on its way." noindex>
+<PageLayout title={t('members.checkEmailTitle', locale)} description={t('members.checkEmailBody', locale, { minutes: membersConfig.linkMinutes })} noindex>
   <section class="py-[var(--space-section-md)]">
     <div class="mx-auto w-full max-w-md px-6">
       <Card variant="elevated" padding="lg">
@@ -22,17 +25,15 @@ import membersConfig from '@/config/members.config';
           >
             <Icon name="mail" size="lg" />
           </span>
-          <h1 class="font-display text-2xl font-bold text-foreground">Check your email</h1>
+          <h1 class="font-display text-2xl font-bold text-foreground">{t('members.checkEmailTitle', locale)}</h1>
           <p class="text-foreground-muted text-balance">
-            If that address belongs to a member, a sign-in link is on its way. It is valid for {
-              membersConfig.linkMinutes
-            } minutes.
+            {t('members.checkEmailBody', locale, { minutes: membersConfig.linkMinutes })}
           </p>
           <a
             href={`${membersConfig.prefix}/login`}
             class="text-sm text-foreground-subtle hover:text-foreground transition-colors"
           >
-            Use a different address
+            {t('members.useDifferentAddress', locale)}
           </a>
         </div>
       </Card>

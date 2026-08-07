@@ -16,24 +16,30 @@ import Alert from '@/components/ui/feedback/Alert/Alert.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import membersConfig from '@/config/members.config';
 import { readSession } from '@/lib/members/session';
+import { t, getLocaleFromPath } from '@/i18n';
 
 const session = await readSession(Astro.cookies);
 if (session) return Astro.redirect(membersConfig.prefix, 303);
 
+const locale = getLocaleFromPath(Astro.url.pathname);
+
 const error = Astro.url.searchParams.get('error');
 const signedOut = Astro.url.searchParams.get('signedout') === '1';
 
-const errorMessage =
+const errorKey =
   error === 'email'
-    ? 'That does not look like an email address.'
+    ? 'members.errorEmail'
     : error === 'send'
-      ? 'The link could not be sent. Try again in a moment.'
+      ? 'members.errorSend'
       : error === 'link'
-        ? 'That link has expired or is no longer valid. Ask for a new one.'
-        : null;
+        ? 'members.errorLink'
+        : error === 'rate'
+          ? 'members.errorRateLimit'
+          : null;
+const errorMessage = errorKey ? t(errorKey, locale) : null;
 ---
 
-<PageLayout title="Sign in" description="Sign in to the members area." noindex>
+<PageLayout title={t('members.signIn', locale)} description={t('members.signInIntro', locale)} noindex>
   <section class="py-[var(--space-section-md)]">
     <div class="mx-auto w-full max-w-md px-6 flex flex-col gap-6">
       <div class="flex flex-col items-center gap-3 text-center">
@@ -42,20 +48,20 @@ const errorMessage =
         >
           <Icon name="lock" size="lg" />
         </span>
-        <h1 class="font-display text-3xl font-bold text-foreground">Members</h1>
+        <h1 class="font-display text-3xl font-bold text-foreground">{t('members.signInHeading', locale)}</h1>
         <p class="text-foreground-muted text-balance">
-          Enter your email address and we&rsquo;ll send you a link to sign in. No password needed.
+          {t('members.signInIntro', locale)}
         </p>
       </div>
 
-      {signedOut && <Alert variant="success">You are signed out.</Alert>}
+      {signedOut && <Alert variant="success">{t('members.signedOut', locale)}</Alert>}
       {errorMessage && <Alert variant="error">{errorMessage}</Alert>}
 
       <Card variant="elevated" padding="lg">
         <form method="POST" action={`${membersConfig.prefix}/request-link`} class="flex flex-col gap-4">
           <div class="flex flex-col gap-2">
             <label for="member-email" class="text-sm font-medium text-foreground">
-              Email address
+              {t('members.emailLabel', locale)}
             </label>
             <Input
               id="member-email"
@@ -63,7 +69,7 @@ const errorMessage =
               type="email"
               autocomplete="email"
               required
-              placeholder="you@example.com"
+              placeholder={t('members.emailPlaceholder', locale)}
             />
           </div>
 
@@ -78,7 +84,7 @@ const errorMessage =
           />
 
           <Button type="submit" size="lg" class="w-full justify-center">
-            Send me a link
+            {t('members.sendLink', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
         </form>
@@ -89,10 +95,10 @@ const errorMessage =
           <Card padding="md">
             <form method="POST" action={`${membersConfig.prefix}/demo-login`} class="flex flex-col gap-3">
               <p class="text-sm text-foreground-muted text-center">
-                Trying the theme? Skip the email and look around.
+                {t('members.demoIntro', locale)}
               </p>
               <Button type="submit" variant="outline" class="w-full justify-center">
-                Sign in as a demo member
+                {t('members.demoSignIn', locale)}
               </Button>
             </form>
           </Card>
@@ -100,7 +106,7 @@ const errorMessage =
       }
 
       <p class="text-center text-sm text-foreground-subtle">
-        <a href="/" class="hover:text-foreground transition-colors">Back to the site</a>
+        <a href="/" class="hover:text-foreground transition-colors">{t('members.backToSite', locale)}</a>
       </p>
     </div>
   </section>

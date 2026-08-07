@@ -16,6 +16,7 @@ import { stamp, unstamp, encodeText, decodeText } from './crypto';
 import { sessionSecret } from './session';
 import membersConfig from '@/config/members.config';
 import { findMember, normaliseEmail, tiersFor } from './members';
+import { t, defaultLocale } from '@/i18n';
 
 interface LinkPayload {
   email: string;
@@ -81,7 +82,19 @@ export async function readToken(
  * fails loudly if it is not configured, because a sign-in page that silently
  * sends nothing looks identical to one that works.
  */
-export async function deliverLink(email: string, url: string): Promise<void> {
+export async function deliverLink(
+  email: string,
+  url: string,
+  /**
+   * The locale of the request that asked for the link.
+   *
+   * At the moment a link is sent the recipient is not signed in, so there is
+   * no stored preference to read. The request already knows: /nl/members/login
+   * sends Dutch, /members/login sends English. On a single-locale site this
+   * produces the default language with no mechanism and nothing to configure.
+   */
+  locale: string = defaultLocale
+): Promise<void> {
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-console
     console.log(
@@ -103,7 +116,7 @@ export async function deliverLink(email: string, url: string): Promise<void> {
   await resend.emails.send({
     from,
     to: email,
-    subject: 'Your sign-in link',
-    text: `Sign in here:\n\n${url}\n\nThe link is valid for ${membersConfig.linkMinutes} minutes. If you did not ask for it, ignore this email.`,
+    subject: t('members.emailSubject', locale),
+    text: t('members.emailBody', locale, { url, minutes: membersConfig.linkMinutes }),
   });
 }
