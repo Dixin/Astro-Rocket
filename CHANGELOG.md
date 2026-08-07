@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Astro 7.2.0**, up from 7.1.0 — nothing is deprecated and no migration is required, so a site built on this theme needs no changes when it merges this. What 7.2 adds is opt-in and off until you ask for it: background preview servers, a project-relative `logger.entrypoint`, `session: false` to drop the session runtime from serverless bundles, `experimental.incrementalBuild`, and a `digest` property on content entries. The bump also carries the 7.1.1–7.1.6 fixes, three of which reach this theme — duplicate CSS emitted in hybrid mode, stale CSS after a component edit, and scoped styles going missing inside `client:only` islands. Every `@astrojs/*` integration here declares `astro: ^7.0.0`, so none of them moved. Node.js 22.12.0+ is still the floor.
+
 ## [2.3.0] — 2026-08-03
 
 > **The footer changes on every page.** All five layouts now use the `columns`
