@@ -8,45 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-## [2.4.0] — 2026-08-07
-
-> **Nothing changes unless you turn it on.** The members area ships disabled,
-> and disabled means no routes are built — a site that upgrades and changes
-> nothing gets the same build it had before, with no serverless function where
-> it had none.
-
-### Added
-
-- **A members area.** Put `access: members` in a post's frontmatter and it needs a signed-in reader. They enter an email address, get a link, and they are in — no password to choose, nothing to reset, and no database anywhere. Members are a list in `src/config/members.config.ts`, so adding one is a line and a deploy, and the record of who had access is your git history. Turn it on with `enabled: true` and a `MEMBERS_SESSION_SECRET`.
-- **Tiers, optional and invisible until used.** `access: members` covers any member; `access: pro` needs that tier. A site that never declares a tier never meets the word.
-- **Locked cards in the listings.** A gated post keeps its place on the blog with its title, date and description, so the value is visible before anyone signs in. The body is never in the response — not hidden with CSS, not blurred, absent.
-- **`/members` and `/members/account`.** The first lists what this member can read and, below it, what a higher tier would open. The second shows their address, tiers and session expiry. Both are filtered content indexes rather than a dashboard, which is why the feature works without every user building a screen of their own first.
-- **A `members` group in the locale files** — 43 strings, English and Dutch, written from the first commit rather than retrofitted. The sign-in email goes out in the locale of the request: `/nl/members/login` sends Dutch.
-- **Sign-in links print to the terminal in development**, so the whole thing can be tried with `pnpm dev` and no Resend account.
-- **A members-area guide** on the blog, and a Members Area section in the README.
-
 ### Changed
 
-- **Gated posts are left out of the RSS feed and the search index.** Feeds get republished, and a members-only post has no business travelling that way.
-- **Gated posts render on demand; every public page stays static.** `prerender` is set per file rather than per entry, so the obvious approach — making `/blog/[...slug]` on-demand — would have cost every public post its static build. Instead the dynamic route drops gated posts from `getStaticPaths` and the integration injects a route for each one at its own URL. No URL changes when a post is gated.
 - **Astro 7.2.0**, up from 7.1.0 — nothing is deprecated and no migration is required, so a site built on this theme needs no changes when it merges this. What 7.2 adds is opt-in and off until you ask for it: background preview servers, a project-relative `logger.entrypoint`, `session: false` to drop the session runtime from serverless bundles, `experimental.incrementalBuild`, and a `digest` property on content entries. The bump also carries the 7.1.1–7.1.6 fixes, three of which reach this theme — duplicate CSS emitted in hybrid mode, stale CSS after a component edit, and scoped styles going missing inside `client:only` islands. Every `@astrojs/*` integration here declares `astro: ^7.0.0`, so none of them moved. Node.js 22.12.0+ is still the floor.
-
-### Security
-
-- **Member responses are never cached by anything shared.** A gated post rendered for a signed-in member is an ordinary 200 with the full body, and a CDN is entitled to keep it and serve it to the next person asking for that URL — the gate would work and the content would leak anyway, with nothing in the application showing it. New middleware sets `private, no-store` and `Vary: Cookie` on member routes and gated posts, and leaves every public page untouched.
-- **The sign-in endpoint has a brake.** Five requests a minute per address, so nobody can loop the form and fill a member's inbox with links they never asked for, draining the site's Resend quota and its sending reputation with it. Per address rather than per IP, so one person on a shared connection cannot lock out everybody else. In memory and per instance: a shared counter needs a store, and this feature exists to work without one.
-- **The sign-in form answers the same way whether or not an address is on the list**, so it cannot be used to find out who a site's members are.
-- **Sessions and links are HMAC-SHA256 over Web Crypto**, compared in constant time, in `httpOnly` `sameSite=lax` cookies that are `secure` in production. Sign-out is POST-only, so no link or prefetch can trigger it.
-- **Enabling the members area without `MEMBERS_SESSION_SECRET` stops the build.** A gate that fails open is worse than no gate, and it would look like it was working the whole time.
-- **A post marked `access:` while the feature is off is hidden, not published.** A gate that is switched off must not publish what it was hiding.
-
-### Known limits
-
-Written down because they follow from having no database, and a user should meet them here rather than in production:
-
-- **A session cannot be revoked before it expires.** Removing someone stops them signing in again, but a cookie already issued lives out `sessionDays` (30 by default). There is no session store to invalidate.
-- **A sign-in link is valid until it expires, not until it is used once.** Recording that a token had been used would need somewhere to record it. Links last 15 minutes for that reason.
-- **No self-signup, no payments, and no per-customer records.** The members area gates content the theme already renders. A dashboard showing someone their own invoices or progress is different for every business, so the theme does not pretend to ship one.
 
 ## [2.3.0] — 2026-08-03
 

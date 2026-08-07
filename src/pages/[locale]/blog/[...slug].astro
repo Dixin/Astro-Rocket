@@ -2,7 +2,6 @@
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { getPostSlug, getSecondaryLocales } from '@/lib/blog';
-import { publicEntries } from '@/lib/members/gating';
 import PostLink from '@/components/blog/PostLink.astro';
 
 // Locale-prefixed blog posts (`/<locale>/blog/<slug>`). One page per
@@ -20,10 +19,7 @@ export async function getStaticPaths() {
     const posts = await getCollection('blog', ({ data }) => {
       return data.locale === locale && (import.meta.env.PROD ? data.draft !== true : true);
     });
-    // Gated posts are not prerendered: the guard has to run per request, and
-    // middleware runs at build time for a prerendered page. The members-area
-    // integration injects a route for each of them at this same URL.
-    for (const post of publicEntries(posts)) {
+    for (const post of posts) {
       paths.push({
         params: { locale, slug: getPostSlug(post.id, locale) },
         props: { post },

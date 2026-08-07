@@ -4,7 +4,6 @@ import { getCollection, render } from 'astro:content';
 import { assertNoSlugCollisions } from '@/lib/content-validation';
 import { assertValidPostUids } from '@/lib/post-links';
 import { getPostSlug } from '@/lib/blog';
-import { publicEntries } from '@/lib/members/gating';
 import { defaultLocale } from '@/i18n';
 import PostLink from '@/components/blog/PostLink.astro';
 
@@ -18,10 +17,7 @@ export async function getStaticPaths() {
     return data.locale === defaultLocale && (import.meta.env.PROD ? data.draft !== true : true);
   });
 
-  // Gated posts are not prerendered: the guard has to run per request, and
-  // middleware runs at build time for a prerendered page. The members-area
-  // integration injects a route for each of them at this same URL.
-  return publicEntries(posts).map((post) => ({
+  return posts.map((post) => ({
     params: { slug: getPostSlug(post.id, post.data.locale) },
     props: { post },
   }));
