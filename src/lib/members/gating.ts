@@ -9,6 +9,7 @@
 
 import membersConfig from '@/config/members.config';
 import { isEntitled } from './members';
+import { demoEnabled } from './demo';
 import type { MemberSession } from './session';
 
 /**
@@ -42,7 +43,10 @@ export function isGated(data: { access?: string }): boolean {
  * switch into a way of exposing exactly the content someone had chosen to
  * protect.
  */
-export function isVisible(data: { access?: string }): boolean {
+export function isVisible(data: { access?: string; demoOnly?: boolean }): boolean {
+  // Demo content belongs to astrorocket.dev. It must not appear on a user's
+  // site when they enable the members area — see the schema note on demoOnly.
+  if (data.demoOnly && !demoEnabled()) return false;
   if (!isGated(data)) return true;
   return membersEnabled();
 }
@@ -56,7 +60,9 @@ export function canRead(session: MemberSession | null, data: { access?: string }
 }
 
 /** Drop what the current state says nobody should see. */
-export function visibleEntries<T extends { data: { access?: string } }>(entries: T[]): T[] {
+export function visibleEntries<T extends { data: { access?: string; demoOnly?: boolean } }>(
+  entries: T[]
+): T[] {
   return entries.filter((entry) => isVisible(entry.data));
 }
 

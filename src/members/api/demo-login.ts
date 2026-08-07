@@ -6,13 +6,14 @@ export const prerender = false;
  * This is an open door: anyone who posts to it is signed in as the first
  * configured member. It exists so a visitor to astrorocket.dev can see the
  * members area working without an email address, and it refuses to do
- * anything unless `demo: true` is set, which the theme never ships.
+ * anything unless MEMBERS_DEMO is set, which no theme user's site does.
  */
 
 import type { APIRoute } from 'astro';
 import membersConfig from '@/config/members.config';
 import { createSession } from '@/lib/members/session';
-import { normaliseEmail, tiersFor, demoEnabled, activeMembers } from '@/lib/members/members';
+import { normaliseEmail, tiersFor, activeMembers } from '@/lib/members/members';
+import { demoEnabled } from '@/lib/members/demo';
 
 export const POST: APIRoute = async ({ cookies, redirect }) => {
   if (!demoEnabled()) return new Response('Not found', { status: 404 });

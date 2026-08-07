@@ -294,6 +294,11 @@ function gatedPosts() {
     const access = frontmatter[1].match(/^access:\s*["']?([^"'\r\n]+)["']?\s*$/m)?.[1]?.trim();
     if (!access || access === 'public') continue;
 
+    // Demo content gets no route unless the demo is running, so a user who
+    // enables the members area never has a sample of ours on their site.
+    const demoOnly = /^demoOnly:\s*true\s*$/m.test(frontmatter[1]);
+    if (demoOnly && process.env.MEMBERS_DEMO !== 'true') continue;
+
     // The id is the path under the collection root, without its extension.
     const id = path
       .slice(fileURLToPath(base).length)

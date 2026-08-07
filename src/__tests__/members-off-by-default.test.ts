@@ -19,22 +19,38 @@ describe('members area: off by default', () => {
     expect(membersConfig.enabled).toBe(false);
   });
 
-  it('ships with demo sign-in disabled', () => {
-    // demo: true is an open door — anyone who posts to /demo-login is signed
-    // in. It exists for astrorocket.dev and must never ship enabled.
-    expect(membersConfig.demo).toBe(false);
+  it('gives a user no way to switch the demo on from config', () => {
+    // One-click sign-in is an open door: anyone who posts to /demo-login is
+    // signed in. It is driven only by MEMBERS_DEMO, so a stray `true` cannot
+    // travel to a real site in a commit and cannot be mistaken for an
+    // ordinary setting in review.
+    expect('demo' in membersConfig).toBe(false);
+    expect('demoMembers' in membersConfig).toBe(false);
+    const demo = readFileSync(join(root, 'src/lib/members/demo.ts'), 'utf8');
+    expect(demo).toContain("import.meta.env.MEMBERS_DEMO === 'true'");
   });
 
   it('ships no members, so an accidental enable grants nobody access', () => {
     expect(membersConfig.members).toHaveLength(0);
   });
 
-  it('keeps demo members apart from the real list', () => {
-    // The demo list is only ever read while demo mode is on, which is how
-    // astrorocket.dev runs the demo from the same repository the theme ships
-    // from without the real list carrying anybody.
-    expect(membersConfig.demoMembers.length).toBeGreaterThan(0);
-    expect(membersConfig.members).toHaveLength(0);
+  it('puts no demo content on a site that enables the feature', () => {
+    // Turning the members area on must give a user their members and their
+    // gated posts — not a sample of ours locked on their blog, which would
+    // look like the feature shipped with filler in it.
+    const post = readFileSync(
+      join(root, 'src/content/blog/en/members-only-example.mdx'),
+      'utf8'
+    );
+    expect(post).toMatch(/^demoOnly: true$/m);
+
+    // Hidden from listings, feed and search...
+    const gating = readFileSync(join(root, 'src/lib/members/gating.ts'), 'utf8');
+    expect(gating).toContain('if (data.demoOnly && !demoEnabled()) return false;');
+
+    // ...and given no route at all.
+    const config = readFileSync(join(root, 'astro.config.mjs'), 'utf8');
+    expect(config).toContain("if (demoOnly && process.env.MEMBERS_DEMO !== 'true') continue;");
   });
 
   it('keeps the member pages out of src/pages, so nothing auto-routes', () => {
