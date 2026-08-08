@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.4.0] — 2026-08-08
+
+> **This release can stop a build that used to succeed.** If your pages'
+> canonical tags and their JSON-LD name different domains, `verify-site-url`
+> now fails the build and prints both. That output was always wrong; it never
+> announced itself. The usual cause is `SITE_URL` reaching one of the two and
+> not the other — set it in your host's environment variables, where both read
+> it, and the build passes.
+
 ### Fixed
 
 - **`SITE_URL` in a `.env` file now reaches the whole build.** `.env.example` lists it under "Required" and tells you to copy the file to `.env`, and doing that configured half the site: the JSON-LD, share cards and footer took the value, while the canonical tags, sitemap, RSS links and robots.txt kept the `https://example.com` fallback. `astro.config.mjs` runs before Astro loads any `.env` file, so `process.env.SITE_URL` was empty there however the file was written. Nothing failed and nothing looked wrong — and search engines act on canonical tags, so a site could lose its own pages to a domain nobody owns while its author saw a green deploy. The config now loads `.env.local` and `.env` itself before reading anything, in that order, because `process.loadEnvFile` leaves an already-set variable alone and Astro gives `.env.local` precedence. Real environment variables are set before any of it runs, so a host's own configuration still wins. Reported with a full diagnosis and a working fix by [@Mohamed3nan](https://github.com/Mohamed3nan) in [#643](https://github.com/hansmartensdev/astro-rocket/issues/643).
