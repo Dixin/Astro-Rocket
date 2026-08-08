@@ -1,0 +1,32 @@
+---
+/**
+ * Resolve a stable canonical id to a real internal link at build time.
+ *
+ * Usage in MDX (the component is provided globally to content, so no
+ * import is needed):
+ *
+ *   the <ContentLink uid="configuration-guide">configuration guide</ContentLink> covers…
+ *   <ContentLink uid="content:configuration-guide" />   (the content: prefix is optional; falls back to the content title)
+ *
+ * If the uid does not match any published content the build fails — broken
+ * internal links can never ship.
+ */
+import { resolveContentUrl } from '@/lib/content-links';
+import { defaultLocale } from '@/i18n';
+
+interface Props {
+  /** Canonical id of the target content (a leading `content:` is allowed and ignored). */
+  uid: string;
+  /** Locale to resolve against; defaults to the current route locale. */
+  locale?: string;
+  /** Optional class passthrough for the rendered anchor. */
+  class?: string;
+  contentUrlPath?: string;
+}
+
+const { uid, locale, class: className, contentUrlPath } = Astro.props;
+const targetLocale = locale ?? Astro.currentLocale ?? defaultLocale;
+const { url, title } = await resolveContentUrl(uid, targetLocale, contentUrlPath);
+---
+
+<a href={url} class={className}><slot>{title}</slot></a>

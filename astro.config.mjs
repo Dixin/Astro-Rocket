@@ -19,6 +19,7 @@ import {
   disagreementMessage,
 } from './scripts/site-url-agreement.mjs';
 import { SITE_NAME, THEME_COLOR } from './src/config/branding.ts';
+import { cachedContentDirectoryNames } from './src/lib/content-directory.ts';
 
 /**
  * Load `.env` into `process.env` before anything below reads it.
@@ -185,9 +186,9 @@ function faviconAssets() {
  * These used to be prerendered endpoints under `src/pages/og/`, and they hit
  * the same wall as the favicons in #600: rasterising needs `sharp`, which
  * cannot load in the workerd runtime the Cloudflare adapter prerenders in.
- * Worse than the favicons, `src/lib/og.ts` also held the `getBlogOgPath`
- * helpers that `BlogLayout` and `ProjectLayout` import — so `sharp` was
- * reachable from every blog and project page, not just from the card routes.
+ * Worse than the favicons, `src/lib/og.ts` also held the `getContentOgPath`
+ * helpers that `ContentLayout` import — so `sharp` was
+ * reachable from every content page, not just from the card routes.
  * The library is split in two now: `og/svg.ts` is safe anywhere, `og/raster.ts`
  * is Node-only and reached only from here.
  *
@@ -199,11 +200,11 @@ function faviconAssets() {
  * from the same page's `og:title` and `og:description`.
  */
 function ogCards() {
-  const KINDS = [
-    [/^\/og\/blog\/tag\//, 'BLOG'],
-    [/^\/og\/blog\//, 'BLOG'],
-    [/^\/og\/projects\//, 'PROJECTS'],
-  ];
+  const KINDS = cachedContentDirectoryNames.map(contentDirectoryName => [
+    [new RegExp(`^/og/${contentDirectoryName}/tag/`), contentDirectoryName.toUpperCase()],
+    [new RegExp(`^/og/${contentDirectoryName}/`), contentDirectoryName.toUpperCase()]
+  ]).flat();;
+  
 
   async function htmlFiles(directory) {
     const found = [];

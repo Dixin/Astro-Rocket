@@ -1,0 +1,50 @@
+---
+/**
+ * Horizontal list of tag chips that link to permalink tag archive pages
+ * (`/content/tag/<slug>`). Pure HTML — no JS. Replaces nothing on its own;
+ * coexists with the existing in-page dropdown filter.
+ */
+import { getTagUrl } from '@/lib/contents';
+import { defaultLocale } from '@/i18n';
+
+interface Props {
+  tags: string[];
+  /** Highlight this tag (used on the tag archive page). */
+  active?: string;
+  /**
+   * Locale the links belong to. Default-locale links stay at `/content/tag/...`;
+   * other locales are prefixed (`/<locale>/content/tag/...`).
+   */
+  locale?: string;
+  /** Optional class extension. */
+  class?: string;
+  contentDirectoryName: string;
+  contentUrlPath?: string;
+}
+
+const { tags, active, locale = defaultLocale, class: extraClass, contentDirectoryName, contentUrlPath = contentDirectoryName } = Astro.props;
+---
+
+{tags.length > 0 && (
+  <ul class:list={['flex flex-wrap items-center gap-2', extraClass]} aria-label="Browse by tag">
+    {tags.map((tag) => {
+      const isActive = active === tag;
+      return (
+        <li>
+          <a
+            href={getTagUrl(contentUrlPath, tag, locale)}
+            class:list={[
+              'inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-colors',
+              isActive
+                ? 'border-brand-500 bg-brand-500 text-foreground'
+                : 'border-brand-500 bg-background text-brand-500 hover:border-brand-300 hover:text-brand-300',
+            ]}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            #{tag}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+)}

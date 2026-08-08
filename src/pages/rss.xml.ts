@@ -1,6 +1,6 @@
 import type { APIContext } from 'astro';
 import { buildRssFeed } from '@/lib/rss';
-import { getRssUrl } from '@/lib/blog';
+import { getRssUrl } from '@/lib/contents';
 import { defaultLocale } from '@/i18n';
 
 /**

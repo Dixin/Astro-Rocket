@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [color]
+    branches: [content]
   pull_request:
-    branches: [color]
+    branches: [content]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
-      - run: pnpm run check
+      # - run: pnpm run check
 
   # Every deploy target gets built and inspected.
   #

@@ -196,18 +196,13 @@ function truncate(text: string, max: number): string {
 
 
 /** Path (relative to site root) for a blog post's generated OG image. */
-export function getBlogOgPath(slug: string): string {
-  return `/og/blog/${slug}.png`;
+export function getContentOgPath(contentUrlPath: string, slug: string): string {
+  return `/og/${contentUrlPath}/${slug}.png`;
 }
 
 /** Path (relative to site root) for a blog tag archive's generated OG image. */
-export function getBlogTagOgPath(tagSlug: string): string {
-  return `/og/blog/tag/${tagSlug}.png`;
-}
-
-/** Path (relative to site root) for a project's generated OG image. */
-export function getProjectOgPath(slug: string): string {
-  return `/og/projects/${slug}.png`;
+export function getContentTagOgPath(contentUrlPath: string, tagSlug: string): string {
+  return `/og/${contentUrlPath}/tag/${tagSlug}.png`;
 }
 
 /** Path for the site-wide OG image, used by every page without one of its own. */
