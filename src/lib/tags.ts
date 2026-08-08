@@ -1,7 +1,7 @@
 /**
  * Tag-slug conventions shared across content types (blog, projects).
  *
- * Kept here — rather than inside `lib/blog` — so blog and project tag
+ * Kept here — rather than inside `lib/contents` — so blog and project tag
  * archives derive identical, collision-free slugs from the same rules.
  */
 

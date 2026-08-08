@@ -1,13 +1,13 @@
 import type { APIContext } from 'astro';
 import { buildRssFeed } from '@/lib/rss';
-import { getRssUrl, getSecondaryLocales } from '@/lib/blog';
+import { getRssUrl, getSecondaryLocales } from '@/lib/contents';
 
 /**
  * A feed per secondary locale, at `/<locale>/rss.xml`.
  *
  * Emits nothing when i18n is off or only one locale is configured, so
- * single-locale builds are unchanged — the same rule the locale-prefixed blog
- * routes follow. A locale with no posts yet still gets a feed rather than a
+ * single-locale builds are unchanged — the same rule the locale-prefixed contents
+ * routes follow. A locale with no contents yet still gets a feed rather than a
  * 404, so the link in the page head is never broken.
  */
 export function getStaticPaths() {

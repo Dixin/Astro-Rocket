@@ -13,4 +13,4 @@
  * placeholder on purpose: a site that ships without `SITE_URL` should be
  * obviously unconfigured rather than quietly claim someone else's domain.
  */
-export const SITE_URL_FALLBACK = 'https://example.com';
+export const SITE_URL_FALLBACK = 'https://beyond.ms';

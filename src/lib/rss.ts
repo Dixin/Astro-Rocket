@@ -1,7 +1,6 @@
-import { getCollection } from 'astro:content';
 import siteConfig from '@/config/site.config';
-import { getPostUrl } from '@/lib/blog';
 import { defaultLocale } from '@/i18n';
+import { getAllPublishedContents, getContentUrl } from '@/lib/contents';
 
 /**
  * RSS feed generation, shared by `/rss.xml` and `/<locale>/rss.xml`.
@@ -13,6 +12,8 @@ import { defaultLocale } from '@/i18n';
  * language. Moving the body here lets each locale have its own feed without
  * two copies of the XML drifting apart.
  */
+
+const RssFeedMaxItems = 1000;
 
 function escapeXml(text: string): string {
   return text
@@ -41,34 +42,29 @@ export async function buildRssFeed({
   site,
   feedPath = '/rss.xml',
 }: BuildFeedOptions = {}): Promise<string> {
-  const posts = await getCollection('blog', ({ data }) => data.locale === locale && !data.draft);
-
-  const sortedPosts = posts.sort(
-    (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
-  );
+  const contents = (await getAllPublishedContents(locale)).slice(0, RssFeedMaxItems);
 
   const base = (site ?? siteConfig.url).replace(/\/$/, '');
 
-  const items = sortedPosts
-    .map((post) => {
+  const contentRssItems = contents
+    .map((content) => {
       // getPostUrl prefixes the locale for every locale but the default one,
       // so a translated feed links to the translated pages.
-      const link = `${base}${getPostUrl(post.id, locale)}/`;
-      const categories = post.data.tags
+      const link = `${base}${getContentUrl(content.contentDirectoryName, content.content.id, locale)}/`;
+      const categories = content.content.data.tags
         .map((tag) => `<category>${escapeXml(tag)}</category>`)
         .join('\n        ');
 
       return `    <item>
-      <title>${escapeXml(post.data.title)}</title>
+      <title>${escapeXml(content.content.data.title)}</title>
       <link>${link}</link>
       <guid>${link}</guid>
-      <description>${escapeXml(post.data.description)}</description>
-      <pubDate>${formatRfc822Date(post.data.publishedAt)}</pubDate>
-      <author>${escapeXml(post.data.author)}</author>
+      <description>${escapeXml(content.content.data.description)}</description>
+      <pubDate>${formatRfc822Date(content.content.data.publishedAt)}</pubDate>
+      <author>${escapeXml(content.content.data.author || '')}</author>
       ${categories}
     </item>`;
-    })
-    .join('\n');
+    });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -79,7 +75,7 @@ export async function buildRssFeed({
     <atom:link href="${base}${feedPath}" rel="self" type="application/rss+xml"/>
     <language>${locale}</language>
     <lastBuildDate>${formatRfc822Date(new Date())}</lastBuildDate>
-${items}
+${contentRssItems.join('\n')}
   </channel>
 </rss>`;
 }

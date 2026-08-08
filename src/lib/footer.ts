@@ -1,6 +1,5 @@
 import { getFooterNavItems, footerLinkGroups, resolveNavItem } from '@/config/nav.config';
-import { getPublishedPosts, collectTopTags, getTagUrl } from '@/lib/blog';
-import { getVisibleProjects, getProjectUrl } from '@/lib/projects';
+import { getTagUrl, getAllPublishedContents, collectTagsWithCounts, getContentUrl } from '@/lib/contents';
 import { defaultLocale, t } from '@/i18n';
 import type { FooterLinkGroup } from '@/components/layout/Footer.astro';
 
@@ -23,7 +22,7 @@ import type { FooterLinkGroup } from '@/components/layout/Footer.astro';
 
 /** How many entries each derived group shows before it stops. */
 const TOPICS_LIMIT = 6;
-const PROJECTS_LIMIT = 5;
+const CONTENTS_LIMIT = 5;
 
 export async function getDerivedFooterGroups(
   locale: string = defaultLocale
@@ -43,11 +42,23 @@ export async function getDerivedFooterGroups(
   // The most-used tags. Real pages, and they show the tagging off at the same
   // time — a footer full of a site's own subjects reads better than a footer
   // full of its section names twice over.
-  const posts = await getPublishedPosts(locale);
-  const topics = collectTopTags(posts, TOPICS_LIMIT).map((tag) => ({
-    label: tag,
-    href: getTagUrl(tag, locale),
-  }));
+  const allContents = await getAllPublishedContents(locale);
+  const contentsByDirectoryNames = Object.groupBy(
+    allContents,
+    (content) => content.contentDirectoryName
+  );
+  const topics = Object.entries(contentsByDirectoryNames)
+    .map(([contentDirectoryName, contents]) =>
+      collectTagsWithCounts(contents!.map((content) => content.content)).map((tagWithCount) => ({
+        label: tagWithCount.tag,
+        href: getTagUrl(contentDirectoryName, tagWithCount.tag, locale),
+        count: tagWithCount.count,
+      }))
+    )
+    .flat()
+    .sort((a, b) => b.count - a.count)
+    .slice(0, TOPICS_LIMIT);
+
   if (topics.length) {
     groups.push({ title: t('footer.groups.topics', locale), links: topics });
   }
@@ -60,16 +71,14 @@ export async function getDerivedFooterGroups(
   // the site's own `order` within its group. Straight `order` put four
   // placeholders ahead of the second real project and the limit then cut it,
   // so a column meant for navigating led with the entries that do not.
-  const allProjects = await getVisibleProjects(locale);
-  const projects = [...allProjects]
-    .sort((a, b) => Number(!!a.data.placeholder) - Number(!!b.data.placeholder))
-    .slice(0, PROJECTS_LIMIT)
-    .map((project) => ({
-      label: project.data.title,
-      href: project.data.placeholder ? undefined : getProjectUrl(project.id, locale),
+  const contents = allContents
+    .slice(0, CONTENTS_LIMIT)
+    .map((content) => ({
+      label: content.content.data.title,
+      href: content.content.data.placeholder ? undefined : getContentUrl(content.contentDirectoryName, content.content.id, locale),
     }));
-  if (projects.length) {
-    groups.push({ title: t('footer.groups.projects', locale), links: projects });
+  if (contents.length) {
+    groups.push({ title: t('footer.groups.contents', locale), links: contents });
   }
 
   // Columns declared in config are appended to the derived ones, and go

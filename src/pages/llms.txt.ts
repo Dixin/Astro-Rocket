@@ -1,8 +1,7 @@
 import type { APIRoute } from 'astro';
 import siteConfig from '@/config/site.config';
 import { defaultLocale } from '@/i18n';
-import { getPublishedPosts, getPostUrl, getRssUrl } from '@/lib/blog';
-import { getVisibleProjects, getProjectUrl } from '@/lib/projects';
+import { getContentUrl, getRssUrl, getAllPublishedContents } from '@/lib/contents';
 import { getNavItems } from '@/config/nav.config';
 
 /**
@@ -23,7 +22,7 @@ import { getNavItems } from '@/config/nav.config';
  * hand.
  *
  * The Pages list used to be five hardcoded lines and had already drifted: it
- * named Home, About, Projects, Blog and Contact while the nav also carried
+ * named Home, About, Contents and Contact while the nav also carried
  * Services, and it never mentioned the components page at all — so an
  * assistant asked about this theme had no way to learn that the page
  * documenting every component exists. It now comes from `getNavItems`, so it
@@ -48,22 +47,13 @@ const hasComponentsPage = Object.keys(componentsPage).length > 0;
 export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() || siteConfig.url).replace(/\/$/, '');
 
-  const posts = await getPublishedPosts(defaultLocale);
-  const projects = await getVisibleProjects(defaultLocale);
+  const contents = await getAllPublishedContents(defaultLocale);
 
   const line = (title: string, url: string, description?: string) =>
     description ? `- [${title}](${url}): ${description}` : `- [${title}](${url})`;
 
-  const postLines = [...posts]
-    .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
-    .map((post) => line(post.data.title, `${base}${getPostUrl(post.id, defaultLocale)}`, post.data.description))
-    .join('\n');
-
-  const projectLines = [...projects]
-    .sort((a, b) => a.data.order - b.data.order)
-    .map((project) =>
-      line(project.data.title, `${base}${getProjectUrl(project.id, defaultLocale)}`, project.data.description)
-    )
+  const contentLines = contents
+    .map((content) => line(content.content.data.title, `${base}${getContentUrl(content.contentDirectoryName, content.content.id, defaultLocale)}`, content.content.data.description))
     .join('\n');
 
   const pageLines = getNavItems(defaultLocale)
@@ -90,12 +80,8 @@ export const GET: APIRoute = async ({ site }) => {
     ...pageLines,
   ];
 
-  if (projectLines) {
-    sections.push(``, `## Projects`, ``, projectLines);
-  }
-
-  if (postLines) {
-    sections.push(``, `## Blog posts`, ``, postLines);
+  if (contentLines) {
+    sections.push(``, `## Contents`, ``, contentLines);
   }
 
   sections.push(
