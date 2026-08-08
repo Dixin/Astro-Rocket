@@ -45,7 +45,7 @@ const bgClass = background === 'primary' ? 'bg-background' : 'bg-background-seco
         {(badge || title) && (
           <div class="flex flex-col items-center gap-6">
             {badge && (
-              <Badge variant="brand" pill>
+              <Badge variant="default" pill>
                 {badgeIcon && <Icon name={badgeIcon} size="sm" />}
                 {badge}
               </Badge>
@@ -67,12 +67,12 @@ const bgClass = background === 'primary' ? 'bg-background' : 'bg-background-seco
         <div
           style={`--tech-color: oklch(${item.data.colorOklch}); --tech-bg: oklch(${item.data.colorOklch} / 0.1);`}
         >
-          <Card variant="elevated" padding="md" hover={true} href={item.data.url} target="_blank" rel="noopener noreferrer" class="h-full text-center">
+          <Card variant="elevated" padding="md" hover={true} href={item.data.url} target="_blank" rel="noopener noreferrer" class="h-full text-center group">
             <div class="flex flex-col items-center gap-[var(--space-stack-sm)]">
               <div class="tech-icon-wrap">
-                <Icon name={item.data.icon} size="lg" />
+                <Icon name={item.data.icon} size="lg" class="text-brand-500 group-hover:text-brand-300" />
               </div>
-              <span class="font-display text-lg font-bold text-foreground">{item.data.name}</span>
+              <span class="font-display text-lg font-bold text-brand-500 group-hover:text-brand-300">{item.data.name}</span>
             </div>
           </Card>
         </div>

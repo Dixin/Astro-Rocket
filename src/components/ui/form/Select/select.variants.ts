@@ -6,7 +6,7 @@ export const selectVariants = cva(
     'transition-colors duration-(--transition-fast)',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
     'disabled:cursor-not-allowed disabled:opacity-50',
-    'border-border',
+    'border-brand-500/30',
   ],
   {
     variants: {

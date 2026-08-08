@@ -182,7 +182,7 @@
   },
   "footer": {
     "copyright": "© {year} {siteName}",
-    "credit": "主題由 <a href=\"https://hansmartens.dev\" class=\"transition-colors hover:text-foreground\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens</a> 製作",
+    "credit": "主題由 <a href=\"https://hansmartens.dev\" class=\"transition-colors text-brand-500 hover:text-brand-300\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens</a> 製作",
     "builtWith": "用 Astro Rocket 構建",
     "followOn": "在 {platform} 上關注我們"
   },
@@ -278,7 +278,7 @@
               { "question": "什麼是 Astro？", "answer": "Astro 是一個為內容驅動網站構建的現代化網頁框架。它默認情況下不發送任何 JavaScript — 只發送頁面實際需要的內容。結果是快速的加載時間、優秀的核心網頁指標分數，以及精簡且可維護的代碼。" },
               { "question": "為什麼要使用 Astro？", "answer": "Astro 是內容密集型網站的理想工具：最少的 JavaScript、乾淨的 HTML、開箱即用的優秀 SEO，以及不干擾開發者的開發體驗。它精簡、有目的，並且構建持久。" },
               { "question": "我可以用 Astro Rocket 構建什麼？", "answer": "作品集、商業網站、營銷頁面、博客、文檔網站 — 任何內容驅動的項目。Astro Rocket 為您提供結構、組件和默認設置，讓您快速上手。" },
-              { "question": "Astro Rocket 是否列在官方 Astro 主題目錄中？", "answer": "是的。<a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Astro Rocket</a> 列在官方 Astro 主題目錄中，作為免費的、可投入生產的主題。" },
+              { "question": "Astro Rocket 是否列在官方 Astro 主題目錄中？", "answer": "是的。<a href=\"https://astro.build/themes/details/astro-rocket/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 text-brand-500 hover:text-brand-300 transition-colors\">Astro Rocket</a> 列在官方 Astro 主題目錄中，作為免費的、可投入生產的主題。" },
               { "question": "Astro Rocket 會跟上新的 Astro 版本嗎？", "answer": "是的。Astro Rocket 正在積極維護和更新，以跟踪新的 Astro 版本。請關注博客或查看 GitHub 倉庫以獲取更新。" }
             ]
           },
@@ -290,7 +290,7 @@
               { "question": "如何切換主題？", "answer": "只需更改配置中的一行。Astro Rocket 提供 12 種精心設計的顏色主題 — 無需修改任何 CSS，即可立即切換。" },
               { "question": "是否支持 TypeScript？", "answer": "是的，TypeScript 在整個項目中使用。所有組件、配置和工具都是完全類型化的。" },
               { "question": "如何為國際化添加自己的語言？", "answer": "Astro Rocket 的國際化是基於配置的。將您的語言添加到國際化配置文件中，創建對應的翻譯文件，路由和 UI 將自動適應。" },
-              { "question": "我應該在哪裡報告錯誤或建議功能？", "answer": "在 <a href=\"https://github.com/hansmartensdev/astro-rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">GitHub 倉庫</a> 上打開問題或開始討論。歡迎貢獻和反饋。" }
+              { "question": "我應該在哪裡報告錯誤或建議功能？", "answer": "在 <a href=\"https://github.com/Dixin/Astro-Rocket\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 text-brand-500 hover:text-brand-300 transition-colors\">GitHub 倉庫</a> 上打開問題或開始討論。歡迎貢獻和反饋。" }
             ]
           }
         ]
@@ -301,7 +301,7 @@
         "description": "Astro Rocket 是免費、開源，且採用 MIT 許可證。瀏覽源代碼、打開問題、提交 PR，或者直接克隆並構建一些很棒的東西。",
         "button": "在 GitHub 上查看",
         "cards": [
-          { "title": "由 Hans Martens 製作", "text": "Astro Rocket 由 <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 hover:text-brand-400 transition-colors\">Hans Martens</a> 設計和構建 — 網頁設計師和開發者，將其作為客戶項目的基礎。" },
+          { "title": "由 Hans Martens 製作", "text": "Astro Rocket 由 <a href=\"https://hansmartens.dev\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"underline underline-offset-2 decoration-brand-500 text-brand-500 hover:text-brand-300 transition-colors\">Hans Martens</a> 設計和構建 — 網頁設計師和開發者，將其作為客戶項目的基礎。" },
           { "title": "MIT 許可證", "text": "可免費用於個人和商業項目。無需署名，但在 GitHub 上點贊總是受歡迎的。" },
           { "title": "積極維護", "text": "該主題隨著新的 Astro 版本保持更新，並根據社區反饋定期改進。" }
         ]
