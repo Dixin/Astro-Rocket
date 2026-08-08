@@ -21,6 +21,37 @@ import {
 import { SITE_NAME, THEME_COLOR } from './src/config/branding.ts';
 
 /**
+ * Load `.env` into `process.env` before anything below reads it.
+ *
+ * Astro loads `.env` files for `astro:env` and for `import.meta.env`, but this
+ * file runs before any of that — Vite evaluates it as plain Node, where only
+ * real environment variables exist. So `SITE_URL` in `.env` reached
+ * `site.config.ts` and not `site` below, and a site configured the way
+ * `.env.example` describes shipped canonical tags for the fallback domain
+ * while its JSON-LD named the real one (#643).
+ *
+ * `.env.local` is loaded first on purpose. `process.loadEnvFile` does not
+ * overwrite a variable that is already set, so whichever file is read first
+ * wins — and Astro gives `.env.local` precedence over `.env`. Reading them in
+ * this order matches that.
+ *
+ * Real environment variables are set before any of this runs, so they still
+ * beat both files and a host's own configuration keeps precedence.
+ *
+ * Only these two: mode-specific files (`.env.production` and the like) would
+ * need the mode, which Astro has not decided yet at this point. Anyone using
+ * one of those still gets the mismatch — and `verifySiteUrl()` below stops the
+ * build and says so, rather than letting it ship.
+ */
+for (const file of ['.env.local', '.env']) {
+  try {
+    process.loadEnvFile(file);
+  } catch {
+    // Not present. Nothing to load.
+  }
+}
+
+/**
  * Deploy-target adapter selection. Vercel is the default; set
  * `DEPLOY_TARGET=netlify` or `DEPLOY_TARGET=cloudflare` to build for those
  * platforms instead. All three keep `output: 'static'`, so every page is
