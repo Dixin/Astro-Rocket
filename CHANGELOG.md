@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **The build stops when a site's pages disagree about its own address** — the canonical tag, the sitemap and robots.txt come from `site` in `astro.config.mjs`, while the JSON-LD, the share cards and the footer come from `url` in `src/config/site.config.ts`. The two cannot share code: the config runs before `astro:env` exists, and `site.config.ts` cannot use `process.env` because Cloudflare Workers have none at runtime. They also do not read the same places, so it is possible to configure one and not the other and get a build that reports success while every page carries a canonical tag for a domain you may not own. A new `verify-site-url` integration compares both values in the built output and fails the build with the two URLs and where each came from. Reported by [@Mohamed3nan](https://github.com/Mohamed3nan) in [#643](https://github.com/hansmartensdev/astro-rocket/issues/643). It runs in `astro:build:done` rather than in `scripts/verify-build.mjs`, where the theme's other output checks live, because that script runs on `pnpm verify` and a deploy runs `astro build`.
+
 ### Changed
 
 - **Astro 7.2.0**, up from 7.1.0 — nothing is deprecated and no migration is required, so a site built on this theme needs no changes when it merges this. What 7.2 adds is opt-in and off until you ask for it: background preview servers, a project-relative `logger.entrypoint`, `session: false` to drop the session runtime from serverless bundles, `experimental.incrementalBuild`, and a `digest` property on content entries. The bump also carries the 7.1.1–7.1.6 fixes, three of which reach this theme — duplicate CSS emitted in hybrid mode, stale CSS after a component edit, and scoped styles going missing inside `client:only` islands. Every `@astrojs/*` integration here declares `astro: ^7.0.0`, so none of them moved. Node.js 22.12.0+ is still the floor.

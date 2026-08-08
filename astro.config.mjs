@@ -12,6 +12,12 @@ import netlify from '@astrojs/netlify';
 import cloudflare from '@astrojs/cloudflare';
 import i18nConfig from './src/config/i18n.config.ts';
 import { SITE_URL_FALLBACK } from './src/config/site-url.ts';
+import {
+  canonicalOf,
+  jsonLdUrlOf,
+  siteUrlDisagreement,
+  disagreementMessage,
+} from './scripts/site-url-agreement.mjs';
 import { SITE_NAME, THEME_COLOR } from './src/config/branding.ts';
 
 /**
@@ -233,6 +239,70 @@ function ogCards() {
 }
 
 /**
+ * Stops a build whose pages disagree about the site's own address.
+ *
+ * The address is read from two places that cannot share code: `site` here,
+ * from `process.env`, which writes the canonical tags, the sitemap, the RSS
+ * links and robots.txt; and `url` in `src/config/site.config.ts`, from
+ * `astro:env/server`, which writes the JSON-LD, the share cards and the
+ * footer. See `scripts/site-url-agreement.mjs` for why neither can do the
+ * other's job.
+ *
+ * They do not read the same places. `astro:env` loads `.env` files and this
+ * file does not, so a user who follows `.env.example` and sets SITE_URL in
+ * `.env` configures one of the two. Their pages then carry canonical tags for
+ * the fallback domain and JSON-LD for their own (#643).
+ *
+ * This runs in `astro:build:done` rather than in `scripts/verify-build.mjs`,
+ * where the theme's other output checks live, because that script runs on
+ * `pnpm verify` and a deploy runs `astro build`. A misconfiguration that only
+ * a local audit catches is one that reaches production.
+ *
+ * One page is enough: both values are global, so if they agree anywhere they
+ * agree everywhere.
+ */
+function verifySiteUrl() {
+  return {
+    name: 'verify-site-url',
+    hooks: {
+      'astro:build:done': async ({ dir, logger }) => {
+        const root = fileURLToPath(dir);
+
+        async function htmlFiles(directory) {
+          const found = [];
+          for (const entry of await readdir(directory, { withFileTypes: true })) {
+            const path = join(directory, entry.name);
+            if (entry.isDirectory()) found.push(...(await htmlFiles(path)));
+            else if (entry.name.endsWith('.html')) found.push(path);
+          }
+          return found;
+        }
+
+        // index.html first: it is the page most likely to carry both, and
+        // finding it there avoids reading the rest of the site.
+        const pages = await htmlFiles(root);
+        pages.sort((a, b) => Number(b.endsWith('index.html')) - Number(a.endsWith('index.html')));
+
+        for (const page of pages) {
+          const html = await readFile(page, 'utf8');
+          const canonical = canonicalOf(html);
+          const jsonLd = jsonLdUrlOf(html);
+          if (!canonical || !jsonLd) continue; // proves nothing either way
+
+          const found = siteUrlDisagreement(html);
+          if (found) throw new Error(disagreementMessage(page.replace(`${root}`, ''), found));
+
+          logger.info(`site address agrees in canonical and JSON-LD: ${canonical}`);
+          return;
+        }
+
+        logger.info('no page carries both a canonical tag and JSON-LD — nothing to compare');
+      },
+    },
+  };
+}
+
+/**
  * Native Astro i18n is only wired up when the user opts in *and* has
  * more than one locale configured. With i18n off (the default) this
  * block is undefined and the build emits the exact same routes as
@@ -304,6 +374,7 @@ export default defineConfig({
     pagefind(),
     faviconAssets(),
     ogCards(),
+    verifySiteUrl(),
   ],
 
   vite: {
