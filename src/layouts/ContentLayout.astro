@@ -35,7 +35,7 @@ interface Props {
   imageAlt?: string;
   svgSlug?: string;
   tags?: string[];
-  slug?: string;
+  id?: string;
   /** Canonical id of the content, used to resolve its translations across locales. */
   uid?: string;
   /** Optional FAQs — when provided, an FAQ JSON-LD schema is emitted alongside the Content schema. */
@@ -67,7 +67,7 @@ const {
   imageAlt,
   svgSlug,
   tags = [],
-  slug = '',
+  id = '',
   uid,
   faqs,
   headings = [],
@@ -82,6 +82,8 @@ const {
   contentUrlPath = contentDirectoryName,
   i18nKey = contentDirectoryName,
 } = Astro.props;
+
+const slug = uid ?? id;
 
 // Resolve opt-in features (site config + per-content overrides).
 // Per-content override only fires when explicitly set to `false`, so authors
@@ -148,7 +150,7 @@ const schemas = faqSchema ? [contentSchema, faqSchema] : [contentSchema];
 // hreflang lists only verified translations; the switcher shows every locale,
 // falling back to a locale's content index when this content has no translation
 // there, so switching language never lands on a 404.
-const contentTranslations = await getContentTranslations(contentDirectoryName, contentUrlPath, slug, locale, uid);
+const contentTranslations = await getContentTranslations(contentDirectoryName, contentUrlPath, id, locale, uid);
 const translationByLocale = new Map(contentTranslations.map((tr) => [tr.locale, tr.url]));
 const languageAlternates = Object.fromEntries(
   getLocales().map((loc) => [loc, translationByLocale.get(loc) ?? getContentBaseUrl(contentUrlPath, loc)])

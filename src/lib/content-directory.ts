@@ -11,7 +11,11 @@ export const getContentDirectoryNameFromId = (id: string) => {
     if (index <= 0) {
         throw new Error(`Invalid content ID: ${id}. Expected format: "contentDirectoryName/.."`);
     }
-    return id.substring(0, index);
+    const contentDirectoryName = id.substring(0, index);
+    if (!contentDirectoryName) {
+        throw new Error(`Invalid content ID: ${id}. Expected format: "contentDirectoryName/.."`);
+    }
+    return contentDirectoryName;
 };
 
 const getContentDirectoryNameFromPath = (path: string) => {

@@ -53,7 +53,7 @@ export const GET: APIRoute = async ({ site }) => {
     description ? `- [${title}](${url}): ${description}` : `- [${title}](${url})`;
 
   const contentLines = contents
-    .map((content) => line(content.content.data.title, `${base}${getContentUrl(content.contentDirectoryName, content.content.id, defaultLocale)}`, content.content.data.description))
+    .map((content) => line(content.content.data.title, `${base}${getContentUrl(content.contentDirectoryName, content.content.data.uid ?? content.content.id, defaultLocale)}`, content.content.data.description))
     .join('\n');
 
   const pageLines = getNavItems(defaultLocale)

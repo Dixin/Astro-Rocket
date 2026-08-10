@@ -14,6 +14,7 @@
  */
 import { localizedPath, defaultLocale, getLocales } from '@/i18n';
 import { directoryLocaleStrippedSlug } from './content-validation';
+import { getContentDirectoryNameFromId } from './content-directory';
 
 /** A content resolved from its canonical id, within one locale. */
 export interface ResolvedContent {
@@ -41,12 +42,7 @@ export function buildUidIndex(
     const { uid, locale, title } = content.data;
     if (!uid) continue;
 
-    const contentDirectoryName = content.id.substring(0, content.id.indexOf('/'));
-    if (!contentDirectoryName) {
-      throw new Error(
-        `Invalid content id "${content.id}". Expected format: "<contentDirectoryName>/...".`
-      );
-    }
+    const contentDirectoryName = getContentDirectoryNameFromId(content.id);
     let byDirectory = index.get(contentDirectoryName);
     if (!byDirectory) {
       byDirectory = new Map();
@@ -65,7 +61,7 @@ export function buildUidIndex(
       );
     }
     byLocale.set(locale, {
-      slug: directoryLocaleStrippedSlug(content.id, contentDirectoryName, locale),
+      slug: directoryLocaleStrippedSlug(content.data.uid ?? content.id, contentDirectoryName, locale),
       title,
     });
   }
@@ -131,13 +127,13 @@ export async function getContentTranslations(
 ): Promise<ContentTranslation[]> {
   const slug = directoryLocaleStrippedSlug(id, contentDirectoryName, locale);
   const contents = (await loadPublishedContents()).filter((content) =>
-    content.id.startsWith(`${contentDirectoryName}/`)
+    contentDirectoryName === getContentDirectoryNameFromId(content.id)
   );
 
   // Set of "<contentDirectoryName>/<locale>/<slug>" for existence checks when matching by slug.
   const existing = new Set(
     contents.map((content) => {
-      return `${contentDirectoryName}/${content.data.locale}/${directoryLocaleStrippedSlug(content.id, contentDirectoryName, content.data.locale)}`;
+      return `${contentDirectoryName}/${content.data.locale}/${directoryLocaleStrippedSlug(content.data.uid ?? content.id, contentDirectoryName, content.data.locale)}`;
     })
   );
   const byUid = uid ? (await getUidIndex()).get(contentDirectoryName)?.get(uid) : undefined;

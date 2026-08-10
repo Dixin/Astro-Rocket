@@ -466,7 +466,7 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
           <ContentCard
             title={post.data.title}
             description={post.data.description}
-            href={getContentUrl(blogContentDirectoryName, post.id, post.data.locale)}
+            href={getContentUrl(blogContentDirectoryName, post.data.uid ?? post.id, post.data.locale)}
             publishedAt={post.data.publishedAt}
             tags={post.data.tags}
             author={post.data.author}

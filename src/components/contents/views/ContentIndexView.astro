@@ -76,7 +76,7 @@ const topTags = collectTopTags(contents, CONTENT_TAG_CLOUD_LIMIT);
               <ContentCard
                 title={content.data.title}
                 description={content.data.description}
-                href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+                href={getContentUrl(contentDirectoryName, content.data.uid ?? content.id, locale, contentUrlPath)}
                 publishedAt={content.data.publishedAt}
                 tags={content.data.tags}
                 author={content.data.author}
@@ -119,7 +119,7 @@ const topTags = collectTopTags(contents, CONTENT_TAG_CLOUD_LIMIT);
               <ContentCard
                 title={content.data.title}
                 description={content.data.description}
-                href={getContentUrl(contentDirectoryName, content.id, locale, contentUrlPath)}
+                href={getContentUrl(contentDirectoryName, content.data.uid ?? content.id, locale, contentUrlPath)}
                 publishedAt={content.data.publishedAt}
                 tags={content.data.tags}
                 author={content.data.author}

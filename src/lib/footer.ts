@@ -75,7 +75,7 @@ export async function getDerivedFooterGroups(
     .slice(0, CONTENTS_LIMIT)
     .map((content) => ({
       label: content.content.data.title,
-      href: content.content.data.placeholder ? undefined : getContentUrl(content.contentDirectoryName, content.content.id, locale),
+      href: content.content.data.placeholder ? undefined : getContentUrl(content.contentDirectoryName, content.content.data.uid ?? content.content.id, locale),
     }));
   if (contents.length) {
     groups.push({ title: t('footer.groups.contents', locale), links: contents });
