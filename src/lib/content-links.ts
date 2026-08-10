@@ -15,6 +15,7 @@
 import { localizedPath, defaultLocale, getLocales } from '@/i18n';
 import { directoryLocaleStrippedSlug } from './content-validation';
 import { getContentDirectoryNameFromId } from './content-directory';
+import { getCollection } from 'astro:content';
 
 /** A content resolved from its canonical id, within one locale. */
 export interface ResolvedContent {
@@ -82,7 +83,6 @@ let cachedContents: UidEntryLike[] | null = null;
 /** Load and cache the published (non-draft) content entries for build-time resolution. */
 async function loadPublishedContents(): Promise<UidEntryLike[]> {
   if (cachedContents) return cachedContents;
-  const { getCollection } = await import('astro:content');
   cachedContents = (await getCollection('contents')).filter(
     (content) => content.data.draft !== true
   );
