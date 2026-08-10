@@ -158,5 +158,6 @@ const topTags = collectTopTags(contents, CONTENT_TAG_CLOUD_LIMIT);
     locale={locale}
     ctaClass={['glitch:hidden', featuredContents.length > 0 && '!bg-background-secondary'].filter(Boolean).join(' ')}
     bandSectionClass={`hidden glitch:block relative z-10 py-[var(--space-section-md)] ${featuredContents.length > 0 ? 'bg-background-secondary' : 'bg-background'}`}
+    contentDirectoryName={contentDirectoryName} i18nKey={i18nKey}
   />
 </PageLayout>
