@@ -9,7 +9,7 @@ body:
         Thanks for building with Astro Rocket! 🚀
 
         Fill in the details below and your site can be featured in the
-        README's [Showcase](https://github.com/hansmartensdev/Astro-Rocket#showcase)
+        README's [Showcase](https://github.com/Dixin/Astro-Rocket#showcase)
         section. A live URL and a line about the project is all it takes.
   - type: input
     id: site-name

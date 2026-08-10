@@ -280,7 +280,7 @@
   },
   "footer": {
     "copyright": "© {year} {siteName}",
-    "credit": "主題由 <a href=\"https://hansmartens.dev\" class=\"transition-colors text-brand-500 hover:text-brand-300\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens</a> 設計",
+    "credit": "主題由 <a href=\"https://beyond.ms\" class=\"transition-colors text-brand-500 hover:text-brand-300\" target=\"_blank\" rel=\"noopener noreferrer\">Beyond.ms</a> 設計",
     "builtWith": "用 Astro Rocket 建置",
     "followOn": "在 {platform} 上追蹤我們"
   },

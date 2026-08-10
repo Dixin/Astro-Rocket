@@ -1002,7 +1002,7 @@ Astro Rocket builds to a **static site** — plain HTML, CSS, and JavaScript wit
 
 **About `pnpm audit`.** An audit will report advisories in the dependency tree. Almost all of them come from the **build-time tooling of the deploy adapters** — Netlify and Cloudflare each bring a large local-development toolchain. That code runs only during `astro build` on your own machine; it is never part of the deployed site and never reaches a visitor.
 
-**Reporting a security issue.** If you find a real vulnerability in the theme itself, please report it privately — open a [GitHub security advisory](https://github.com/hansmartensdev/Astro-Rocket/security/advisories/new) or email hello@hansmartens.dev — rather than a public issue, so it can be fixed before it's widely known.
+**Reporting a security issue.** If you find a real vulnerability in the theme itself, please report it privately — open a [GitHub security advisory](https://github.com/Dixin/Astro-Rocket/security/advisories/new) or email dixin@outlook.com — rather than a public issue, so it can be fixed before it's widely known.
 
 ---
 
@@ -1028,12 +1028,12 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Links
 
-- [Astro Rocket on GitHub](https://github.com/hansmartensdev/astro-rocket)
+- [Astro Rocket on GitHub](https://github.com/Dixin/astro-rocket)
 - [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com) — the theme Astro Rocket was originally forked from
 - [Astro Documentation](https://docs.astro.build)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
 
 ---
 
-**Astro Rocket** is designed and maintained by [Hans Martens](https://hansmartens.dev).
+**Astro Rocket** is designed and maintained by [Beyond.ms](https://beyond.ms).
 Originally forked from [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com) — credit to them for the solid base it grew from.

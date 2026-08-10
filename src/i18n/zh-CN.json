@@ -289,7 +289,7 @@
   },
   "footer": {
     "copyright": "© {year} {siteName}",
-    "credit": "主题作者：<a href=\"https://hansmartens.dev\" class=\"transition-colors text-brand-500 hover:text-brand-300\" target=\"_blank\" rel=\"noopener noreferrer\">Hans Martens</a>",
+    "credit": "主题作者：<a href=\"https://beyond.ms\" class=\"transition-colors text-brand-500 hover:text-brand-300\" target=\"_blank\" rel=\"noopener noreferrer\">Beyond.ms</a>",
     "builtWith": "使用 Astro Rocket 构建",
     "groups": {
       "site": "网站",
