@@ -1,0 +1,100 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>黑白 (专辑)</title>
+    <ns>0</ns>
+    <id>959002</id>
+    <revision>
+      <id>82201180</id>
+      <parentid>56084215</parentid>
+      <timestamp>2024-04-08T14:12:07Z</timestamp>
+      <contributor>
+        <username>Comrade John</username>
+        <id>871753</id>
+      </contributor>
+      <comment>清理參數</comment>
+      <origin>82201180</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1316" sha1="0nmgsg81y608uk1o9lbxov12lmo4p1k" xml:space="preserve">{{unreferenced|time=2019-09-13T17:35:44+00:00}}
+{{Album infobox | &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+|  name        = 黑白
+|  type        = [[專輯]]
+|  artist      = [[黃貫中]]
+|  cover       = 黃貫中 黑白.jpg
+|  released    = 2001年12月13日
+|  recorded    =
+|  genre       = [[搖滾]]、[[粵語流行音樂]]
+|  label       = [[環球唱片]]
+| prev_title = [[Yellow Paul Wong]]
+| prev_year  = 2001
+| next_title = [[Play It Loud]]
+| next_year  = 2002
+}}
+
+《'''黑白'''》是香港歌手[[黃貫中]]發行第二张粵語专辑。
+
+== 專輯介紹 ==
+《黑白》比起上一张专辑从世界各地邀来的众多客座乐手的状况来看，这张专辑就没有那么热闹了，风格也较趋统一。以黄贯中为主脑的[[汗 (乐队)|汗]]，成员包括很黑人、很groovy的鼓手[[恭硕良]]；手法较唯美和爵士的吉他手[[夏健龍]]以及黄贯中的多年好友-[[LMF]]的贝斯手[[麥文威]]。带着英式摇滚曲风的音乐中展现了黄贯中特有的忧郁美学。
+
+== 曲目 ==
+#初哥     
+#Lady     
+#深紫色高踭鞋     
+#爆    
+#自由人(獨唱版)   
+#離開我吧
+#憂書
+#自由人(合唱：[[譚詠麟]])
+#你懂不懂
+
+{{album-stub}}
+
+[[Category:香港音樂專輯]]
+[[Category:2001年音樂專輯]]
+[[Category:黃貫中音樂專輯]]</text>
+      <sha1>0nmgsg81y608uk1o9lbxov12lmo4p1k</sha1>
+    </revision>
+  </page>
+</mediawiki>

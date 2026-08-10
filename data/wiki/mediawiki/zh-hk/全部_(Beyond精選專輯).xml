@@ -1,0 +1,113 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>全部 (Beyond精選專輯)</title>
+    <ns>0</ns>
+    <id>4483772</id>
+    <revision>
+      <id>81786469</id>
+      <parentid>74389933</parentid>
+      <timestamp>2024-03-05T16:54:32Z</timestamp>
+      <contributor>
+        <username>Tjmj</username>
+        <id>214451</id>
+      </contributor>
+      <comment>清理[[Category:String模块出错的音乐信息框]]、[[Category:在音乐信息框中使用过时参数的页面]]</comment>
+      <origin>81786469</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="910" sha1="6pr9ziirfoaauvdd2b547bw5cvu9udy" xml:space="preserve">{{unreferenced|time=2015-01-25T03:36:32+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 全部
+| type       = [[精選輯]]
+| artist     = [[Beyond]]
+| cover      = blank
+| released   = 2000年
+| recorded   = 
+| genre      = [[粵語流行音樂]]
+| language   = [[粵語]]
+| label      = [[滾石唱片]]
+| prev_title = [[原來 (歌曲专辑)|原來]]
+| prev_year  = 1999
+| next_title = [[一世]]
+| next_year  = 1999
+}}
+《'''全部'''》是滾石替[[beyond]]發行的精選集。
+
+== 曲目 == 
+#打不死
+#教壞細路
+#請將手放開
+#別怪我
+#聲音
+#麻醉
+#喜歡一個人
+#預備
+#驚喜
+#門外看
+#時日無多(Last Day)
+#海闊天空
+#想你
+#霧
+#犧牲
+#回家
+#夜長夢多
+#不見不散
+#長城
+#活著便精彩
+#缺口
+#遙遠的PARADISE
+
+
+
+{{album-stub}}
+{{Beyond}}
+
+[[Category:香港精選輯]]
+[[Category:2000年精選輯]]
+[[Category:Beyond精選輯]]</text>
+      <sha1>6pr9ziirfoaauvdd2b547bw5cvu9udy</sha1>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,104 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Files!</title>
+    <ns>0</ns>
+    <id>4483779</id>
+    <revision>
+      <id>73546135</id>
+      <parentid>34084742</parentid>
+      <timestamp>2022-09-06T16:04:36Z</timestamp>
+      <contributor>
+        <username>Tjmj</username>
+        <id>214451</id>
+      </contributor>
+      <comment>清理[[Category:在音乐信息框中使用过时参数的页面]]</comment>
+      <origin>73546135</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="814" sha1="rewaeimfq969zqgjopqjg9ptzmuqxaw" xml:space="preserve">{{unreferenced|time=2015-01-25T03:09:20+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = Files!
+| type       = [[精選輯]]
+| artist     = [[Beyond]]
+| cover      = blank
+| released   = 1998年
+| recorded   = 
+| genre      = [[國語流行音樂]]
+| language   = [[國語]]
+| label      = [[滾石唱片]]
+| prev_title = [[ Play Back 自典 字典]]
+| prev_year  = 1997
+| next_title = [[The Best Of Beyond]]
+| next_year  = 1999
+}}
+
+《'''Files!'''》是[[beyond]]發行的國語精選集。
+
+== 曲目 == 
+#關心永遠在
+#CRYIN'(國)
+#情深依舊
+#和平世界
+#PARADISE(國)
+#一廂情願
+#情人(國)
+#長城(國)
+#糊塗的人
+#活得精彩
+#祝您愉快(國)
+#因為有你有我
+#命運是我家
+#一輩子陪我走
+
+
+
+
+{{album-stub}}
+{{Beyond}}
+[[Category:Beyond精選輯]]</text>
+      <sha1>rewaeimfq969zqgjopqjg9ptzmuqxaw</sha1>
+    </revision>
+  </page>
+</mediawiki>

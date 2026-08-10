@@ -1,0 +1,173 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>現代舞台</title>
+    <ns>0</ns>
+    <id>804153</id>
+    <revision>
+      <id>82165531</id>
+      <parentid>79235620</parentid>
+      <timestamp>2024-04-05T18:08:44Z</timestamp>
+      <contributor>
+        <username>Tjmj</username>
+        <id>214451</id>
+      </contributor>
+      <comment>清理[[Category:String模块出错的音乐信息框]]、[[Category:在音乐信息框中使用过时参数的页面]]</comment>
+      <origin>82165531</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="5317" sha1="f23vm8yuxejiaybp4u459yexlktzsmi" xml:space="preserve">{{noteTA
+|1=zh-cn:吉他; zh-tw:吉他; zh-hk:結他;
+|2=zh-cn:贝斯; zh-tw:貝斯; zh-hk:低音結他;
+|3=zh-cn:电贝斯; zh-tw:電貝斯; zh-hk:低音結他;
+|4=zh-cn:贝斯吉他; zh-tw:貝斯吉他; zh-hk:低音結他;
+|5=zh-cn:低音吉他; zh-tw:低音吉他; zh-hk:低音結他;
+}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 現代舞台
+| type       = [[專輯]]
+| artist     = [[Beyond]]
+| cover      = cdcover2.jpg
+| released   = {{Start date and age|1988|02|27}}
+| recorded   = 1987年－1988年
+| genre      = [[搖滾]]&lt;br/&gt;[[粵語流行音樂]]
+| label      = [[Kinn's Music Ltd.]]
+| producer   = [[Beyond]]、[[王紀華]]
+| prev_title = [[亞拉伯跳舞女郎]]
+| prev_year  = 1987 &lt;!-- 7月17日 --&gt;
+| next_title = [[秘密警察 (Beyond專輯)|秘密警察]]
+| next_year  = 1988 &lt;!-- 9月6日 --&gt;
+}}
+
+《'''現代舞台'''》是香港搖滾樂隊 [[Beyond]] 發行的第二張[[粵語]][[錄音室專輯]]，由 Kinn's Music Ltd. 製作及出品，[[寶麗金]]唱片有限公司發行。&lt;ref&gt;{{Cite book|title=香港粵語唱片收藏指南 ─ 粵語流行曲 (50's-80's)|publisher=三聯|year=1998|isbn=962-04-1458-6|location=香港|pages=397-398|editor-last=香港電台十大中文金曲委員會|chapter=Beyond}}&lt;/ref&gt;
+
+== 專輯介紹 ==
+《現代舞台》這張專輯比上一張 [[Beyond]] 專輯《[[亞拉伯跳舞女郎]]》回歸[[搖滾]]，但同時 [[Beyond]] 的音樂作品開始加入商業元素。其中《舊日的足跡》、《赤紅熱血》、《冷雨夜》、《現代舞台》為 [[Beyond]] 的經典代表作。
+
+== 曲目 ==
+{{Track listing
+|headline=
+|extra_column=主唱
+|all_arranger=[[Beyond]] 樂隊
+|title_width=52%|writing_width=|music_width=24%|lyrics_width=9%|extra_width=15%
+|title1=舊日的足跡| writer1=| music1=[[黃家駒]]|lyrics1=[[葉世榮]]|note1=最早的現場錄音版，收錄於樂隊 1986 年自資專輯《[[再見理想#曲目|再見理想]]》內。此曲有多個錄音室版本，本專輯收錄的是以鍵琴為前奏的版本。|extra1=[[黃家駒]]|length1=4:21
+|title2=天真的創傷| writer2=| music2=[[黃家駒]]|lyrics2=[[黃家駒]]|note2=|extra2=[[黃家駒]]|length2=4:00
+|title3=赤紅熱血|writer3=|music3=[[黃家駒]]|lyrics3=[[黃家強]]|note3=|extra3=[[黃家駒]]|length3=3:58
+|title4=衝上雲霄|writer4=|music4=[[黃家駒]]|lyrics4=[[黃家強]]|note4=[[黃家駒]]及[[黃家強]]兄弟首支合唱歌曲|extra4={{hlist|[[黃家強]]|[[黃家駒]]}}|length4=3:35
+|title5=冷雨夜| writer5=|music5=[[黃家駒]]|lyrics5=[[黃家強]]|note5=|extra5=[[黃家強]]|length5=4:19
+|title6=雨夜之後|writer6=|music6=[[劉志遠 (香港音樂人)|劉志遠]]|lyrics6=|note6=純音樂|extra6=|length6=0:39
+|title7=現代舞台|writer7=|music7={{hlist|[[黃家駒]]|[[黃貫中]]|[[劉志遠 (香港音樂人)|劉志遠]]}}|lyrics7=[[劉卓輝]]|note7=|extra7=[[黃家駒]]|length7=4:11
+|title8=午夜流浪|writer8=|music8=[[黃貫中]]|lyrics8=[[黃貫中]]|note8=|extra8=[[黃貫中]]|length8=4:16
+|title9=Once Again|writer9=|music9= {{hlist|[[黃貫中]]|[[黃家強]]}}|lyrics9=[[黃貫中]]|note9=|extra9=[[黃貫中]]|length9=4:25
+|title10=城市獵人|writer10=|music10=[[黃家駒]]|lyrics10=翁偉微|note10=曲名源自當時日本人氣漫畫《[[城市獵人]]》|extra10=[[黃家駒]]|length10=5:08
+|title11 =迷離境界|writer11=|music11=[[黃家駒]]|lyrics11=[[黃家強]]|note11=曲名源自當時[[無綫電視]]外購劇集《[[迷離境界]]》|extra11=[[黃家駒]]|length11=4:27
+|total_length=43:19
+}}
+
+{{Tracklist/common
+| collapsed = yes
+| headline = 2014年超越時代紀念版（附加曲目）
+| t12 = 現代舞台
+| n12 = ha, ha, ha remix 
+| t13 = 午夜流浪
+| n13 = 野馬remix version 
+| t14 = 舊日的足跡
+| n14 = full version 
+| t15= 衝上雲霄
+| n15 = guitar version
+| t16 = 天真的創傷
+| n16 = 2nd mix 
+| t17 = Once Again
+| n17 = 2nd mix 
+| t18 = 赤紅熱血
+| n18 = 1st mix 
+}}
+
+
+{{Tracklist/common
+| collapsed = yes
+| headline = 2014年超越時代紀念版（disc two: Live 88大專演唱會）
+| t1 = 灰色的心 
+| t2 = 家強Bass Solo 
+| t3= 水晶球
+| n3 = featuring guitar solo 
+| t4 = 新天地
+| n4 = featuring 遠仔 vs. Paul guitar jam
+| t5 = 冷雨夜
+| n5 = featuring 世榮drum solo &amp; Paul guitar solo
+| t6 = 赤紅熱血 
+| t7 = 卡門
+| n7 = featuring 家駒guitar solo
+| t8 = 遠仔Guitar Solo 
+| t9 = Once Again 
+| t10 = 金屬狂人 
+| t11 = 家駒獨白：愛情 
+| t12 = 追憶 
+| t13 = 家駒獨白：:遠仔離隊 
+| t14 = 再見理想 
+| t15 = 舊日的足跡 
+| t16 = 城市獵人 
+| t17 = 孤單一吻
+| n17 = 純音樂 
+}}
+
+== 音樂錄影帶 ==
+{| class="wikitable"
+! 歌名 !! 演唱 !! 首播日期 !! 首播頻道 !! 導演 
+|-
+|[http://www.youtube.com/watch?v=pPxouHncfts 舊日的足跡] {{Wayback|url=http://www.youtube.com/watch?v=pPxouHncfts |date=20210111234330 }}||黃家駒||1988年||[[電視廣播有限公司|無綫電視]]||蕭潮順
+|-
+|[http://www.youtube.com/watch?v=KUiIP0JfQX4 午夜流浪] {{Wayback|url=http://www.youtube.com/watch?v=KUiIP0JfQX4 |date=20200420032500 }}||黃貫中||1988年||[[電視廣播有限公司|無綫電視]]||
+|}
+
+== 參考文獻 ==
+&lt;references /&gt;
+{{Beyond}}
+[[Category:香港音樂專輯]]
+[[Category:1988年音樂專輯]]
+[[Category:Beyond音樂專輯]]</text>
+      <sha1>f23vm8yuxejiaybp4u459yexlktzsmi</sha1>
+    </revision>
+  </page>
+</mediawiki>

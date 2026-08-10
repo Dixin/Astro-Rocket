@@ -1,0 +1,96 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>The Wall～長城～</title>
+    <ns>0</ns>
+    <id>999032</id>
+    <revision>
+      <id>87021849</id>
+      <parentid>84326976</parentid>
+      <timestamp>2025-04-28T03:21:31Z</timestamp>
+      <contributor>
+        <username>Jimmy-bot</username>
+        <id>657101</id>
+      </contributor>
+      <minor/>
+      <comment>机器人: 尚未清空的已重定向分类） （[[Cat:Beyond單曲]]→[[Cat:Beyond歌曲]]</comment>
+      <origin>87021849</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1046" sha1="dzodg3qviwhsoqa11fnzz7nvx0y60ty" xml:space="preserve">{{Otheruses|長城 (消歧義)}}
+{{Unreferenced|time=2024-04-27T09:57:36+00:00}}
+{{Infobox single
+|  name        = The Wall &lt;br/&gt; Only Heaven Knows
+|  artist      = [[Beyond]]
+|  cover       = The Wall～長城～.jpg
+|  released    = 1992年7月25日
+|  language = [[日语]]
+|  recorded    =
+|  genre       = [[摇滚]]
+|  label       = {{link-ja|日本BMG|BMG JAPAN|Fun House}}
+| prev_title = 
+| prev_year  = 
+| next_title = [[リソ ラバ ～International～|リソ・ラバ ～International～]]
+| next_year  = 1992
+}}
+
+《'''The Wall c/w Only Heaven Knows'''》是香港搖滾樂隊[[Beyond]]發行第一張日本單曲。
+
+== 曲目 ==
+#The Wall～長城～（樂隊1992年粵語專輯《[[繼續革命]]》中歌曲《[[長城 (Beyond)|長城]]》的日語版）
+#無語問蒼天（樂隊1992年粵語專輯《[[繼續革命]]》中的《無語問蒼天》同曲）
+
+==参见==
+*{{link-ja|電波少年系列|電波少年シリーズ}}
+*[[長城 (Beyond)]]
+
+{{Beyond}}
+[[Category:1992年單曲]]
+[[Category:Beyond歌曲]]
+
+{{single-stub}}</text>
+      <sha1>dzodg3qviwhsoqa11fnzz7nvx0y60ty</sha1>
+    </revision>
+  </page>
+</mediawiki>

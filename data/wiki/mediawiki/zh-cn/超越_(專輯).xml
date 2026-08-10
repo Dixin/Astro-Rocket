@@ -1,0 +1,133 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>超越 (專輯)</title>
+    <ns>0</ns>
+    <id>930775</id>
+    <revision>
+      <id>93406108</id>
+      <parentid>93356562</parentid>
+      <timestamp>2026-07-10T22:40:56Z</timestamp>
+      <contributor>
+        <username>Mickie-Mickie</username>
+        <id>2137070</id>
+      </contributor>
+      <minor/>
+      <comment>消歧义 x 2</comment>
+      <origin>93406108</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="3391" sha1="4clihl7xo65z78v71g46vsdh9zwo2is" xml:space="preserve">{{Unreferenced|time=2026-07-07T14:45:39+00:00}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 超越
+| type       = [[專輯]]
+| artist     = [[Beyond]]
+| cover      = cdcover31.jpg
+| released   = {{Start date and age|1992|9|26}}
+| genre      = [[日本流行音樂]]
+| language   = [[日語]]&lt;br/&gt;[[粵語|廣東話]]&lt;br/&gt;[[中華民國國語|國語]]
+| label      = [[BMG JAPAN|Fun House]]
+| prev_title = 
+| prev_year  = 
+| next_title = [[This Is Love 1]]
+| next_year  = 1993
+| misc       = {{單曲
+  | name        = 超越
+  | type        = studio
+  | single1     = The Wall～長城～&lt;br/&gt;Only The Heaven Knows
+  | single1date = 1992年7月25日
+  | single2     = リゾ・ラバ～international～&lt;br/&gt;The Morning Train
+  | single2date = 1992年9月26日
+  }}
+}}
+
+《'''超越'''》是香港搖滾樂隊[[Beyond]]發行第一張日語專輯，《超越》並不是一張完全日語專輯，收錄了三首粵語歌曲來自專輯《[[繼續革命]]》和一首國語歌曲來自專輯《[[信念 (Beyond專輯)|信念]]》，當時在[[日本]]推出的專輯和單曲，反應不理想，原因是日語不靈光和宣傳不足，後來暫時放下香港的工作，積極開拓日本市場，長居於日本，在日本的生活感到非常孤獨，歌曲帶一點離鄉別井，孤單寂寞的感覺，其中《手紙》、《風》、《Home Sick Song》是在日本發展的寫照。
+
+==曲目==
+{| class="wikitable"
+! 順序 !! 歌名 !! 演唱 !! 作詞 !! 作曲 !! 編曲 !! 時間 !! 語言 !! 原曲 
+|-
+| 01 || The Wall ||黃家駒||真名杏樹||黃家駒||Beyond&lt;br/&gt;梁邦彥|Beyond
+梁邦彥
+|4:52|| 日語
+|長城
+|-
+| 02 || リゾ・ラバ&lt;br&gt;Riso Lover ～International～ ||黃家駒||サンプラザ中野くん||黃家駒&lt;br/&gt;黃家強&lt;br/&gt;黃貫中||Beyond&lt;br/&gt;梁邦彥||4:43||日語|| 可否衝破
+|-
+| 03 || 早班火车&lt;br&gt;The Morning Train ||黃家駒||林振強||黃家駒&lt;br/&gt;黃家強&lt;br/&gt;黃貫中||Beyond&lt;br/&gt;梁邦彥||5:51||粵語|| 早班火車
+|-
+| 04 || Kaze&lt;br&gt;風 ||黃家強||夏野芹子||黃家強||Beyond&lt;br/&gt;梁邦彥||4:22||日語|| 厭倦寂寞
+|-
+| 05 || 孤獨&lt;br&gt;Kodoku ||黃家駒||夏野芹子||黃家駒||Beyond&lt;br/&gt;梁邦彥||4:14||日語|| 不可一世
+|-
+| 06 || 愛過的罪&lt;br&gt;Guilty of Love ||黃家駒||陳昇||黃貫中||Beyond&lt;br/&gt;梁邦彥||4:48||國語|| 繼續沉醉
+|-
+| 07 || 農民 ||黃家駒||劉卓輝||黃家駒||Beyond&lt;br/&gt;梁邦彥||3:12||粵語||無
+|-
+| 08 || Home Sick Song ||黃貫中||夏野芹子||黃貫中||Beyond&lt;br/&gt;梁邦彥||4:38||日語|| 溫暖的家鄉
+|-
+| 09 || 無語問蒼天&lt;br&gt;Only The Heaven Knows||黃家駒||黃家強||黃家駒||Beyond&lt;br/&gt;梁邦彥||3:20||粵語||無
+|-
+| 10 || 刹那的混沌&lt;br&gt;Instant Crazy ||黃家駒||真名杏樹||黃家駒||Beyond&lt;br/&gt;梁邦彥||5:21||日語|| Bye - Bye
+|-
+| 11 || 手紙&lt;br&gt;Tegami ||黃家駒||真名杏樹||黃家駒||Beyond&lt;br/&gt;梁邦彥||3:25||日語|| 遙望
+|-
+|}
+
+== 音樂錄影帶 ==
+{| class="wikitable"
+! 歌名 !! 演唱 !! 首播日期 !! 首播頻道 !! 導演 
+|-
+|[http://www.youtube.com/watch?v=AN16MorjAOc リゾ・ラバ～International～] {{Wayback|url=http://www.youtube.com/watch?v=AN16MorjAOc |date=20150703002728 }} ||黃家駒||1992年|| ||
+|-
+
+{{Beyond}}
+[[Category:日語音樂專輯]]
+[[Category:1992年音樂專輯]]
+[[Category:Beyond音樂專輯]]
+[[Category:BMG JAPAN音樂專輯]]</text>
+      <sha1>4clihl7xo65z78v71g46vsdh9zwo2is</sha1>
+    </revision>
+  </page>
+</mediawiki>

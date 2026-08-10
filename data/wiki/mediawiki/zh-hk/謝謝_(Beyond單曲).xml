@@ -1,0 +1,90 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>謝謝 (Beyond單曲)</title>
+    <ns>0</ns>
+    <id>1007923</id>
+    <revision>
+      <id>87021853</id>
+      <parentid>84196259</parentid>
+      <timestamp>2025-04-28T03:21:35Z</timestamp>
+      <contributor>
+        <username>Jimmy-bot</username>
+        <id>657101</id>
+      </contributor>
+      <minor/>
+      <comment>机器人: 尚未清空的已重定向分类） （[[Cat:Beyond單曲]]→[[Cat:Beyond歌曲]]</comment>
+      <origin>87021853</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="955" sha1="5nc3mo7zxmr4ncq8bvn7cxb59wvmghx" xml:space="preserve">{{Infobox single
+|  name        = アリガトウ c/w 祝您愉快
+|  artist      = [[Beyond]]
+|  cover       = アリガトウ.jpg 
+|  released    = 1995年3月15日
+|  recorded    = 
+|  genre       = [[日本流行音樂]]
+|  label       = [[BMG JAPAN|Fun House]]
+| prev_title = [[Paradise (Beyond單曲)|Paradise]]
+| prev_year  = 1994
+| next_title = 
+| next_year  = 
+}}
+
+《'''アリガトウ c/w 祝您愉快'''》是香港搖滾樂隊[[Beyond]]發行第五张日本單曲，《總有愛》日語版本，歌名取為《アリガトウ》，為多謝的意思，是感謝這幾年日本樂迷的支持；雖然日本對Beyond來說是一個無法忘懷的傷心地...
+
+第二首歌曲收錄來自於《[[二樓後座]]》的《祝您愉快》，在Beyond要退出日本市場的最後單曲內收錄紀念黃家駒的歌曲。
+
+== 曲目 ==
+#アリガトウ
+#祝您愉快
+
+{{music-stub}}
+{{Beyond}}
+[[Category:1995年單曲]]
+[[Category:Beyond歌曲]]</text>
+      <sha1>5nc3mo7zxmr4ncq8bvn7cxb59wvmghx</sha1>
+    </revision>
+  </page>
+</mediawiki>

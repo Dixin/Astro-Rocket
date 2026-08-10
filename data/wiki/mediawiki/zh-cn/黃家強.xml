@@ -1,0 +1,389 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>黃家強</title>
+    <ns>0</ns>
+    <id>137192</id>
+    <revision>
+      <id>93103449</id>
+      <parentid>92840955</parentid>
+      <timestamp>2026-06-17T14:27:50Z</timestamp>
+      <contributor>
+        <username>InternetArchiveBot</username>
+        <id>2383178</id>
+      </contributor>
+      <comment>补救2个来源，并将0个来源标记为失效。) #IABot (v2.0.9.5</comment>
+      <origin>93103449</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="19890" sha1="4l90g21rttnnxxrexh1pt48et4sstej" xml:space="preserve">{{blpsources|time=2020-12-01}}
+{{noteTA
+|1=zh-cn:吉他; zh-tw:吉他; zh-hk:結他;
+|2=zh-cn:贝斯; zh-tw:貝斯; zh-hk:低音結他;
+|3=zh-cn:电贝斯; zh-tw:電貝斯; zh-hk:低音結他;
+|4=zh-cn:贝斯吉他; zh-tw:貝斯吉他; zh-hk:低音結他;
+|5=zh-cn:低音吉他; zh-tw:低音吉他; zh-hk:低音結他;
+}}
+
+{{藝人
+| 姓名 = 黃家強
+| 類型 = 男歌手
+| 羅馬拼音 = Wong Ka Keung
+| 英文名 = Steve Wong
+| 圖片 = 
+| 圖片簡介 = 
+| 圖片尺寸 = 
+| 出生日期 = {{birth_date_and_age|1964|11|13}}&lt;ref&gt;{{cite news | title=生日不快樂 黃家強︰天佑香港 | url=https://www.am730.com.hk/news/%E5%A8%9B%E6%A8%82/%E7%94%9F%E6%97%A5%E4%B8%8D%E5%BF%AB%E6%A8%82-%E9%BB%83%E5%AE%B6%E5%BC%B7%EF%B8%B0%E5%A4%A9%E4%BD%91%E9%A6%99%E6%B8%AF-196375 | page= | publisher=am730 | date=2019-11-13 | accessdate=2021-10-12 | quote= | archive-date=2021-11-09 | archive-url=https://web.archive.org/web/20211109051154/https://www.am730.com.hk/news/%E5%A8%9B%E6%A8%82/%E7%94%9F%E6%97%A5%E4%B8%8D%E5%BF%AB%E6%A8%82-%E9%BB%83%E5%AE%B6%E5%BC%B7%EF%B8%B0%E5%A4%A9%E4%BD%91%E9%A6%99%E6%B8%AF-196375 | dead-url=no }}&lt;/ref&gt;
+| 出生地點 = {{HKG-1959}}[[九龙]][[深水埗]]
+| 逝世日期 = 
+| 逝世地點 = 
+| 語言 = 粵語、英語、國語、台山話、日語
+| 國籍 = {{CNHK}}
+| 籍貫 = [[廣東省|廣東]][[台山市|台山]]
+| 職業 = 音樂人、歌手、詞曲作家、唱片製作人
+| 教育程度 = 中五&lt;ref name="Ka Keung's News" /&gt;
+| 母校 = 崇正小學&lt;ref name="Ka Keung's News"&gt;{{Cite web |url=http://www.beyondmusic.net/swnew031.html |title=BEYOND MUSIC.net〈Ka Keung's News〉 |access-date=2017-11-17 |archive-url=https://web.archive.org/web/20041021025242/http://www.beyondmusic.net/swnew031.html |archive-date=2004-10-21 |dead-url=yes }}&lt;/ref&gt;&lt;br&gt;天主教善導小學{{noteTag|根據黃澤鋒於2020年11月2日播出的香港電台第一台廣播節目《守下留情》訪問中提及，他入行後曾詢問黃家強讀哪一所小學。黃回應是天主教善導小學。而兄長黃家駒則入讀香港四邑商工總會新會商會學校。}}&lt;br&gt;[[香港基教書院]]&lt;ref name="Ka Keung's News" /&gt;&lt;ref&gt;{{cite web |url=https://blog.xuite.net/lingsbeyond/twblog/111540216%23 |title=Beyond 真的見証演唱會《心內心外》1988年自傳（隨碟附送小冊子版本） |website= |language= |publisher=Kinn's |date=1999 |access-date=2022-06-04 |quote= |archive-date=2022-06-04 |archive-url=https://archive.today/20220604011323/https://blog.xuite.net/lingsbeyond/twblog/111540216%23 |dead-url=yes }}&lt;/ref&gt;
+| 宗教信仰 = 
+| 親屬 = [[黃家駒]]†（兄長，排行第四）
+| 音樂類型 = [[搖滾樂|搖滾]]、[[華語流行音樂|華語流行]]、[[粵語流行音樂|粵語流行]]
+| 演奏樂器 = 吉他、貝斯、鼓、鋼琴
+| 配偶 = {{marriage|水口真纪子|2006}}&lt;ref&gt;{{cite news |title=慶祝結婚十年 黃家強帶老婆浪漫慶祝 |url=https://hk.on.cc/hk/bkn/cnt/entertainment/20160518/bkn-20160518030252180-0518_00862_001.html |page= |publisher=東網 |date=2016-05-18 |access-date=2021-10-12 |quote= |archive-date=2021-11-09 |archive-url=https://web.archive.org/web/20211109051209/https://hk.on.cc/hk/bkn/cnt/entertainment/20160518/bkn-20160518030252180-0518_00862_001.html |dead-url=no }}&lt;/ref&gt;&lt;ref&gt;{{cite news | title=黃家強拜祭家兄 自曝早已结婚本月7日補辦婚宴 | url=http://ent.sina.com.cn/s/h/2006-07-01/10541142637.html | page= | publisher=新浪娛樂 | date=2006-07-01 | accessdate=2021-10-12 | quote= | archive-date=2021-11-09 | archive-url=https://web.archive.org/web/20211109051221/http://ent.sina.com.cn/s/h/2006-07-01/10541142637.html | dead-url=no }}&lt;/ref&gt;
+| 兒女 = 長子：黃慶譽（黃慶陽）&lt;br&gt;{{birth year and age|2007|3}}&lt;br&gt;幼子：黃曜陽&lt;br&gt;{{birth date and age|2012|2|17}}&lt;ref&gt;{{cite news |url=http://news.sina.com.tw/article/20120221/5918200.html |title=黃家強醫院看幼子稱兒子像自己真可憐 |publisher=新浪新聞 |author= |date=2012-02-21 |accessdate=2012-02-21 |archive-date=2021-04-13 |archive-url=https://web.archive.org/web/20210413174443/https://news.sina.com.tw/article/20120221/5918200.html |dead-url=no }}&lt;/ref&gt;
+| 活躍年代 = 1984年至今
+| 唱片公司 = [[東亞星光]]&lt;ref&gt;{{Cite web |url=http://www.sohu.com/a/330301588_115487 |title=东亚星光旗下艺人助力2019张北音乐节 盛夏一起激情制噪 |date=2019-07-30 |publisher=搜狐娛樂 |access-date=2021-10-12 |archive-date=2021-01-19 |archive-url=https://web.archive.org/web/20210119022105/https://www.sohu.com/a/330301588_115487 |dead-url=no }}&lt;/ref&gt;
+| 經紀公司 = 
+| 相關團體 = [[Beyond]]、Picasso Horses、[[男人幫 (團體)|男人幫]]
+| imdb = 0939181
+| hongkongfilmawards = '''最佳原創電影歌曲'''&lt;br&gt;2004年 《[[無間道II]]》
+| 暱稱 = 家強
+}}
+
+'''黃家強'''（{{langx|en|Steve Wong Ka Keung}}，{{bd|1964年|11月13日|catIdx=Huang黄}}），[[香港]]男歌手、音樂家及詞曲作家，其搖滾樂隊[[Beyond]]貝斯手的身份最廣為人知，也是樂隊已故主音歌手及節奏吉他手[[黃家駒]]的弟弟，目前已婚，育有兩名兒子，妻子為日籍人士[[Mizuguchi Makiko]]（日譯：水口まきこ）。
+
+==背景==
+黃家強早年於[[九龍]][[深水埗]][[蘇屋邨]]茶花樓出生及長大{{noteTag|name=守下留情|關於黃家強出生與成長地、家庭背景、早年生活以及校園生活的資料出自香港電台第二台廣播節目《守下留情》於2015年6月1日播出的訪問。}}，有二兄二姊{{noteTag|name=守下留情}}，二兄長是已故歌手[[黃家駒]]。黃家強分別就讀[[崇正中學|崇正小學]]、[[天主教善導小學]]以及[[香港基教書院]]（文科{{noteTag|name=守下留情}}），中學畢業後到 Mark-1 Studio（現為一鳴音樂中心）任職助理{{noteTag|name=守下留情1|關於黃家強到錄音室工作和與梁翹柏一起組成樂隊的資料出自香港電台第二台廣播節目《守下留情》於2015年6月2日播出的訪問。}}，跟隨麥一鳴從事音響或演唱會音樂工程工作{{noteTag|name=守下留情1}}。他曾和[[梁翹柏]]一起組成樂隊{{noteTag|name=守下留情1}}，1983年底因李榮潮離開Beyond而加入成為一員。1984年至1988年推出唱片前，到學校及其他場所作音樂演出{{noteTag|關於黃家強推出首張樂隊唱片前發展的資料出自香港電台第二台廣播節目《守下留情》於2015年6月3日播出的訪問。}}。自1988年樂隊推出專輯《[[現代舞台]]》起，開始參與歌曲的主唱部份，其主唱之《冷雨夜》是黃家強在[[Beyond]]時代最為人熟悉歌曲之一。
+
+在樂隊發展時期，黃家強與其他成員曾簽約[[新藝城]]&lt;ref&gt;{{cite news | title=與新藝城片約將滿 黃家强未定新動向 | url=https://mmis.hkpl.gov.hk/coverpage/-/coverpage/view?_coverpage_WAR_mmisportalportlet_hsf=%E9%BB%83%E5%AE%B6%E5%BC%B7&amp;_coverpage_WAR_mmisportalportlet_actual_q=%28%20verbatim_dc.collection%3A%28%22Old%5C%20HK%5C%20Newspapers%22%29%20%29%20AND+%28%20%28%20allTermsMandatory%3A%28true%29%20OR+all_dc.title%3A%28%E9%BB%83%E5%AE%B6%E5%BC%B7%29%20OR+all_dc.creator%3A%28%E9%BB%83%E5%AE%B6%E5%BC%B7%29%20OR+all_dc.contributor%3A%28%E9%BB%83%E5%AE%B6%E5%BC%B7%29%20OR+all_dc.subject%3A%28%E9%BB%83%E5%AE%B6%E5%BC%B7%29%20OR+fulltext%3A%28%E9%BB%83%E5%AE%B6%E5%BC%B7%29%20OR+all_dc.description%3A%28%E9%BB%83%E5%AE%B6%E5%BC%B7%29%20%29%20%29&amp;_coverpage_WAR_mmisportalportlet_sort_field=score&amp;p_r_p_-1078056564_c=QF757YsWv58JCjtBMMIqonIuXAT6Y%2Bp3&amp;_coverpage_WAR_mmisportalportlet_o=4&amp;_coverpage_WAR_mmisportalportlet_sort_order=desc | page=13 | publisher=華僑日報 | date=1991-04-27 | accessdate=2021-10-12 | quote= | archive-date=2025-04-21 | archive-url=https://web.archive.org/web/20250421143136/https://mmis.hkpl.gov.hk/coverpage/-/coverpage/view?_coverpage_WAR_mmisportalportlet_hsf=%E9%BB%83%E5%AE%B6%E5%BC%B7&amp;_coverpage_WAR_mmisportalportlet_actual_q=(%20verbatim_dc.collection%3A(%22Old%5C%20HK%5C%20Newspapers%22)%20)%20AND+(%20(%20allTermsMandatory%3A(true)%20OR+all_dc.title%3A(%E9%BB%83%E5%AE%B6%E5%BC%B7)%20OR+all_dc.creator%3A(%E9%BB%83%E5%AE%B6%E5%BC%B7)%20OR+all_dc.contributor%3A(%E9%BB%83%E5%AE%B6%E5%BC%B7)%20OR+all_dc.subject%3A(%E9%BB%83%E5%AE%B6%E5%BC%B7)%20OR+fulltext%3A(%E9%BB%83%E5%AE%B6%E5%BC%B7)%20OR+all_dc.description%3A(%E9%BB%83%E5%AE%B6%E5%BC%B7)%20)%20)&amp;_coverpage_WAR_mmisportalportlet_sort_field=score&amp;p_r_p_-1078056564_c=QF757YsWv58JCjtBMMIqonIuXAT6Y%2Bp3&amp;_coverpage_WAR_mmisportalportlet_o=4&amp;_coverpage_WAR_mmisportalportlet_sort_order=desc | url-status=live }}&lt;/ref&gt;，經理人為[[陳健添]]&lt;ref&gt;{{cite news | title=BEYOND歌曲經六星期才上榜 覺港台處理不公 | url=https://mmis.hkpl.gov.hk/coverpage/-/coverpage/view?_coverpage_WAR_mmisportalportlet_hsf=beyond&amp;_coverpage_WAR_mmisportalportlet_actual_q=%28%20verbatim_dc.collection%3A%28%22Old%5C%20HK%5C%20Newspapers%22%29%20%29%20AND+%28%20%28%20allTermsMandatory%3A%28true%29%20OR+all_dc.title%3A%28beyond%29%20OR+all_dc.creator%3A%28beyond%29%20OR+all_dc.contributor%3A%28beyond%29%20OR+all_dc.subject%3A%28beyond%29%20OR+fulltext%3A%28beyond%29%20OR+all_dc.description%3A%28beyond%29%20%29%20%29&amp;_coverpage_WAR_mmisportalportlet_sort_field=score&amp;p_r_p_-1078056564_c=QF757YsWv59H%2FuxqfBwEJHkybezkf48O&amp;_coverpage_WAR_mmisportalportlet_o=0&amp;_coverpage_WAR_mmisportalportlet_sort_order=desc&amp;_coverpage_WAR_mmisportalportlet_filter=dc.publicationdate_dt%3A%5B1980-01-01T00%3A00%3A00Z+TO+1989-12-31T15%3A59%3A59Z%5D | page=14 | publisher=華僑日報 | date=1988-03-19 | accessdate=2021-10-12 | quote= | archive-date=2025-04-21 | archive-url=https://web.archive.org/web/20250421235718/https://mmis.hkpl.gov.hk/coverpage/-/coverpage/view?_coverpage_WAR_mmisportalportlet_hsf=beyond&amp;_coverpage_WAR_mmisportalportlet_actual_q=(%20verbatim_dc.collection%3A(%22Old%5C%20HK%5C%20Newspapers%22)%20)%20AND+(%20(%20allTermsMandatory%3A(true)%20OR+all_dc.title%3A(beyond)%20OR+all_dc.creator%3A(beyond)%20OR+all_dc.contributor%3A(beyond)%20OR+all_dc.subject%3A(beyond)%20OR+fulltext%3A(beyond)%20OR+all_dc.description%3A(beyond)%20)%20)&amp;_coverpage_WAR_mmisportalportlet_sort_field=score&amp;p_r_p_-1078056564_c=QF757YsWv59H%2FuxqfBwEJHkybezkf48O&amp;_coverpage_WAR_mmisportalportlet_o=0&amp;_coverpage_WAR_mmisportalportlet_sort_order=desc&amp;_coverpage_WAR_mmisportalportlet_filter=dc.publicationdate_dt%3A%5B1980-01-01T00%3A00%3A00Z+TO+1989-12-31T15%3A59%3A59Z%5D | url-status=live }}&lt;/ref&gt;。1993年6月，Beyond主音歌手黃家駒於[[日本]]遇上意外去世，令樂隊的發展有所改變。1994年，樂隊推出大碟《[[二樓後座]]》，黃家強與主音結他手[[黃貫中]]一起擔任[[Beyond]]樂隊主音歌手，發表音樂作品亦較四子時期多。直至1999年底，[[Beyond]]宣佈成員作個人發展{{noteTag|關於黃家強離開Beyond年份的資料出自香港電台第二台廣播節目《守下留情》於2015年6月5日播出的訪問。}}，黃家強開展其個人音樂事業。
+
+2000年代初，黃家強自設錄音室為電影做配樂&lt;ref&gt;{{cite news | title=葉世榮為黃家強貼金 | url=http://newsbot.lib.cuhk.edu.hk/news/singtao/20010905/A23-05.html | page= | publisher=星島日報 | date=2001-09-05 | accessdate=2021-10-12 | quote= | archive-date=2021-10-22 | archive-url=https://web.archive.org/web/20211022222255/http://newsbot.lib.cuhk.edu.hk/news/singtao/20010905/A23-05.html | dead-url=no }}&lt;/ref&gt;。2002年集合數名年青樂手組成[[Picasso Horses]]，簽約[[香港環球唱片]]推出個人專輯，並提拔樂隊。由2004年起，組建個人音樂版權公司[[Picasso Horses Ltd.]]并將其個人音樂作品轉入於此。2005年Beyond解散后，逐步將兄長[[黃家駒]]在1993年的音樂作品版權（OP）從已解散的Beyond Publishing Ltd.轉入Picasso Horses Ltd.。此外，他於1990年代已不時會為其他歌手作曲，曾經合作之歌手包括[[古巨基]]、[[陳奕迅]]、[[李蕙敏]]、[[陳小春]]、[[王菲]]等。2009年7月，黃家強與之前一直盛傳不和的Beyond隊友[[黃貫中]]在[[香港體育館]]開一連三場的演唱會，全場氣氛高漲。2013年6月4日至5日在[[九龍灣國際展貿中心]]Star Hall舉辦「黃家強It's Alright Live」演唱會。本來是[[Kolor]]樂隊經紀人的他後來因不和而解除雙方合作關係 。
+==個人生活==
+黃家強已婚。他在2006年與拍拖1年的日籍女友水口真纪子結婚，二人現育有兩名兒子。
+
+==音樂作品==
+
+===專輯===
+*《[[Be Right Back]]》（2002年）
+*《[[叱咤903組Band時間家強第一GIG]](新曲+Live)》（2003年）
+*《[[畢家索的馬]]》（2004年）
+*《[[她他]]》（2007年）
+*《[[弦續—別了家駒十五載]]》（2008年）
+*《[[沉香 (專輯)|沉香]]》（2015年）
+
+== 派台歌曲成績 ==
+'''''註：組合名義的派台歌，請參閱[[Beyond]]、[[男人幫_(團體)|男人幫]]之頁面。'''''
+{| class="wikitable" cellpadding="1"
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''派台歌曲成績'''
+|-
+| width="180"| 唱片 || width="200"| 歌曲 || width="50"| 903 || width="50"| RTHK || width="50"| 997 || width="50"| TVB || width="280"| 備註
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2002年'''
+|-
+| rowspan="2" | [[Be Right Back]] || 驚恐症 || '''1''' || - || - || '''1''' || 
+|-
+| 信則有 || 2 || - || 18 || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2003年'''
+|-
+| [[叱咤903組Band時間家強第一GIG(新曲+Live)]] || 遲到 || 15 || - || - || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2004年'''
+|-
+| rowspan="2" | [[畢家索的馬]] || 殺戮戰場 || - || - || - || - || 
+|-
+| 愛得昂貴 || 3 || - || - || 2 || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2005年'''
+|-
+| rowspan="2" | 畢家索的馬 || 禱告 || 12 || - || - || - ||
+|-
+| 沉溺 || - || - || 10 || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2007年'''
+|-
+| rowspan="3" | [[他.她]] || 獨角獸 || 13 || - || 5 || 2 || 與[[陳秋霞]]合唱
+|-
+| 哪咤回家 || 8 || - || - || 2 || 
+|-
+| 天生登對 || 11 || - || 5 || 2 || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2008年'''
+|-
+| rowspan="3" | [[弦續—別了家駒十五載]] || 他的結他 || '''1''' || 8 || '''1''' || - || 
+|-
+| 無人的演奏 || 18 || - || - || - || 
+|-
+| 奧林匹克 || - || - || 8 || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2009年'''
+|-
+| [[沉香 (專輯)|沉香]] || 衝開一切II || 17 || - || - || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2013年'''
+|-
+| rowspan="2" | 沉香 || 好好 || '''1''' || '''1''' || 3 || - || 
+|-
+| 有愛 || - || - || - || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2014年'''
+|-
+| 沉香 || 時代序曲 || - || - || - || - || 
+|-
+! style="background:#FFFF00; color:#082567" colspan="7" | '''2015年'''
+|-
+| rowspan="3" | 沉香 || 沉香 || 12 || - || 3 || - || 
+|-
+| 真人真事 || 8 || - || '''1''' || - || 
+|-
+| 送你一紮時間花 || - || - || - || - || 
+|}
+{| class="wikitable" cellpadding="1"
+|-
+! style="background:#FFFF00; color:#082567" colspan="5" | '''各台冠軍歌總數'''
+|-
+| width="50"| 903 || width="50"| RTHK || width="50"| 997 || width="50"| TVB || width="160"| 備註
+|-
+| '''3''' || '''1''' || '''2''' || '''1''' || '''四台冠軍歌總數：0'''
+|}
+
+* *表示仍在榜上
+
+==電視劇==
+*《[[淘氣雙子星]]》（1989年）飾 楊有智（YY博士）
+
+==電影==
+*《[[禿鷹特警隊]]》（電視電影）（1988年）
+*《[[吉星拱照]]》（1990年）飾 游向西
+*《[[開心鬼救開心鬼]]》（1990年）飾 英
+*《[[忍者龜]]》（1990年）
+*《[[Beyond日記之莫欺少年窮]]》（1991年）飾 陳志強
+*《[[豪門夜宴 (1991年電影)|豪門夜宴]]》（1991年）
+*《[[敵對]]》（2000年）飾 張小強
+*《[[陰陽愛]]》（電影配樂）（2000年）
+*《[[墨斗先生]]》（2004年）飾 巴士司機
+*《[[九龍不敗]]》（2019年）飾  法醫
+
+==廣播劇==
+*[[香港商業電台]]《落入凡間的天使5》（2002年）
+
+==為其他歌手的創作==
+{|class=wikitable
+|年份
+|歌手
+|歌名
+|創作部份
+|-
+|1988
+|[[譚詠麟]]
+|千金一刻
+|rowspan=2|作詞
+|-
+|1989
+|[[許冠傑]]
+|交織千個心
+|-
+|1989
+|[[林楚麒]]
+|怨你沒留下
+|作詞/編曲
+|-
+|rowspan=2|1990
+|rowspan=2|[[黃翊]]
+|命運造我
+|作詞
+|-
+|就算
+|編曲
+|-
+|rowspan=3|1996
+|rowspan=2|[[李蕙敏]]
+|其實……
+|作曲/作詞
+|-
+|愛我之前想清楚
+|rowspan=15|作曲
+|-
+|[[古巨基]]
+|有心
+|-
+|rowspan=9|1997
+|[[王菲]]
+|敷衍
+|-
+|[[陳奕迅]]
+|愛沒有左右
+|-
+|[[王菲]]
+|守護天使
+|-
+|[[陳慧琳]]
+|終有一天會遇見
+|-
+|[[莫文蔚]]
+|信徒
+|-
+|[[李蕙敏]]
+|大失戀
+|-
+|[[古巨基]]
+|回憶公路（有心國語版）
+|-
+|[[陳小春]]
+|背影樹
+|-
+|[[劉愷威]]
+|愛情三日遊
+|-
+|rowspan=2|1998
+|[[任賢齊]]、[[李心潔]]
+|風暴
+|-
+|[[陳小春]]
+|不錯的決定（背影樹國語版）
+|-
+|2005
+|[[張栢芝]]
+|應冇盡有
+|-
+|2006
+|[[陈小春]]
+|拐帶你
+|-
+|rowspan=2|2007
+|rowspan=2|[[Kolor]]
+|舉手
+|rowspan=2|作詞
+|-
+|了不起
+|-
+|2008
+|[[黃耀明]]
+|同一個世界
+|作曲
+|-
+|2009
+|[[Kolor]]
+|愛莫能助
+|作詞
+|}
+
+==演唱會==
+*2013年6月4日-5日《It's Alright》演唱會 香港站   演出場館：九龍灣國際展貿中心
+*2013年7月26日《It's Alright》演唱會 台灣站   演出場館：台北松山文創園區
+*2014年9月27日《時代序曲》演唱會2014 北京站   演出場館：北京萬事達中心Thinkpad Space
+*2014年10月12日《時代序曲》演唱會2014 重慶站  演出場館：重慶人民大禮堂
+*2014年10月18日《時代序曲》演唱會2014 上海站   演出場館：上海世博園加空間
+*2014年10月25日《時代序曲》演唱會2014 廣州站   演出場館：廣州中山紀念堂
+
+==個人獎項==
+*[[國際唱片業協會]]（香港會）「IFPI 2002年度香港唱片銷量大獎－最暢銷本地男新人」（專輯：《Be Right Back》）
+*《南方都市報》及中國廣東電台「第五屆華語音樂大獎－最佳搖滾藝人」獎（2005年）
+*[[路訊通|RoadShow路訊通]]：「[[RoadShow至尊音樂頒獎禮]]2007－RoadShow至尊歌曲獎」（得獎歌曲：《哪吒回家》）
+*RoadShow路訊通：「RoadShow至尊音樂頒獎禮2007－至尊創作歌手獎」
+
+==主持==
+*《[[夠Hit鬥玩Beyond加草蜢]]》（1989年10月）
+*《[[勁Band四鬥士]]》（1990年10月）
+*《[[Beyond放暑假]]》（共12集）（1991年7月至9月）
+*《[[暑假玩到盡]]》（1992年）
+
+==嘉賓==
+* 2015年：[[娛樂3兄弟]]
+* 2015年：[[康熙來了]]
+
+==相關影視形象==
+*2021年[[香港電影]]《[[梅艷芳 (電影)|梅艷芳]]》，由[[張進翘]]飾演黃家強
+
+== 參見 ==
+*[[Beyond]]
+*[[黃家駒]]
+*[[黃貫中]]
+*[[葉世榮]]
+*[[劉志遠 (香港音樂人)|劉志遠]]
+*[[男人幫_(團體)|男人幫]]
+
+==注釋==
+{{noteFoot}}
+
+== 參考來源 ==
+{{reflist|2}}
+
+==外部連結==
+*{{facebook|steve.wongkakeung}}
+*{{weibo|stevewkk}}
+*{{hkmdb name|8428}}
+*[https://web.archive.org/web/20171022174148/http://news.beyondmusic.net/ Beyond Music 新聞網：黃家強]
+*[http://www.ourbeyond.com/ 我们的BEYOND網] {{Wayback|url=http://www.ourbeyond.com/ |date=20210413174427 }}
+
+{{豐德麗旗下歌手}}
+{{Beyond}}
+{{Authority control}}
+{{DEFAULTSORT:H}}
+
+[[Category:Beyond]]
+[[Category:黃姓|K]]
+[[Category:香港台山人]]
+[[Category:20世紀歌手]]
+[[Category:21世紀歌手]]
+[[Category:香港貝斯手]]
+[[Category:香港搖滾歌手]]
+[[Category:粵語流行音樂歌手]]
+[[Category:香港創作歌手]]
+[[Category:香港基教書院校友]]
+[[Category:香港男歌手]]
+[[Category:天主教善導小學校友]]</text>
+      <sha1>4l90g21rttnnxxrexh1pt48et4sstej</sha1>
+    </revision>
+  </page>
+</mediawiki>

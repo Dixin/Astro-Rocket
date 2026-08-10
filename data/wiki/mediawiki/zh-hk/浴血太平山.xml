@@ -1,0 +1,147 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>浴血太平山</title>
+    <ns>0</ns>
+    <id>3248535</id>
+    <revision>
+      <id>92292114</id>
+      <parentid>92292111</parentid>
+      <timestamp>2026-04-15T13:33:34Z</timestamp>
+      <contributor>
+        <username>Will629</username>
+        <id>574168</id>
+      </contributor>
+      <origin>92292114</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="4386" sha1="iwi6jaa6jqdtxksuxe3ndl6vwwob40v" xml:space="preserve">{{亞視劇集 
+| 中文劇名 = 浴血太平山
+| 英文劇名 = Hong Kong Gentlemen (I)
+| 圖像 =
+| 製作年份 = 1981年
+| RTV首播日期 = 1981年3月16日
+| RTV首播時間 = 
+| 監製 = [[李兆熊]]、[[黎大煒]]
+| 編導 = {{nowrap|[[麥當傑]]、[[郭煜機]]、[[賴水清]]、[[阮惠源]]、&lt;br&gt;[[劉世添]]、[[李建武]]}}
+| 助理編導 = {{nowrap|[[陳志成]]、[[譚新源]]、[[鍾師堯]]、[[鄧衍成]]、&lt;br&gt;[[李旭華]]、[[曾皓文]]、[[李京祺]]}}
+| 故事 = -{[[左几|左　几]]}-、[[吳偉榮]]
+| 編審 = [[趙志堅 (編劇)|趙志堅]]
+| 製作統籌 = [[布美瑜]]、[[王國偉]]
+| 編劇 = {{nowrap|[[趙志堅 (編劇)|趙志堅]]、[[陳靜儀 (編劇)|陳靜儀]]、[[盧榮光]]、[[蔡業鳴]]、&lt;br&gt;[[鄭文華]]、[[許洵美]]}}
+| 集數 = 35
+| 劇種 = 時裝恩仇劇
+| 主演 = {{nowrap|[[劉志榮]]、[[馬敏兒]]、[[梁淑莊]]、[[劉緯民]]、&lt;br&gt;[[張瑛|張　瑛]]、[[鮑漢琳]]、[[許英秀]]、[[良鳴|良　鳴]]、&lt;br&gt;[[顧紀筠]]、[[伍衛國]]、[[聶安達]]}}
+| 主題曲 = 浴血太平山
+| 作曲 = [[黎小田]]
+| 填詞 = [[盧國沾]]
+| 主唱 = [[葉振棠]]
+| 插曲 = [[找不著藉口]]
+| 作曲3 = [[黎小田]]
+| 填詞3 = [[盧國沾]]
+| 主唱3 = [[葉振棠]]
+}}
+
+《'''浴血太平山'''》（{{langx|en|''Hong Kong Gentlemen (I)''}}），為[[香港]][[麗的電視]]製作的一部電視劇集，最初劇名為《'''香港紳士'''》，在1981年3月首播，全劇共35集，由[[李兆熊]]、[[黎大煒]]監製，劇集以1921年至1924年的香港作為歷史背景，《[[再會太平山]]》為本劇的續集。&lt;ref&gt;{{cite news |title=「浴血太平山」收視攀升　蕭若元擬再斬四兩　藝員表示並不樂觀 |url=https://sls.hkpl.gov.hk/digital-collection/tc/contentcoverpage.html?currentPosition=1&amp;searchId=526679b205684fe99703692bb893e9b8&amp;catalogueId=1983380e9cb711ef9c2&amp;mainKeyword=%E6%B5%B4%E8%A1%80%E5%A4%AA%E5%B9%B3%E5%B1%B1&amp;isHKMP= |accessdate=2026-04-15 |work=[[工商日報]] |date=1981-03-22 |page=9}}&lt;/ref&gt;
+
+本劇插曲《找不著藉口》獲得[[第四屆十大中文金曲得獎名單|第四屆]][[十大中文金曲]]最佳中文（流行）歌詞獎。
+
+後來本劇在2012年重播時被刪減為33集。
+
+==劇集內容==
+何家是香港富豪之家，何庭芳、何庭恩兄弟倆不顧親情，激烈地爭奪家財！周家父子周金與周阿瑞分別是何家的管家和傭工。周阿瑞與何庭芳的妹妹何嘉麗碼頭相遇，一見鍾情，相約太平山。周阿瑞的青梅竹馬彭觀帶，一氣之下離家出走，一場三角戀情的糾葛由此展開......
+更不幸的是，周阿瑞在何庭芳的兒子何菲力偷運軍火中被利用，並遭受警察的追捕，何菲力又要殺他滅口！周阿瑞只好先逃命，再捲土重來......
+太平山頂，正當周阿瑞與何嘉麗再次相會時，何菲力突然舉槍......
+
+==主要演員==
+*[[劉志榮]] 飾 周亞瑞
+*[[馬敏兒]] 飾 何嘉麗
+*[[梁淑莊]] 飾 彭觀帶
+*[[劉緯民]] 飾 何菲力
+*[[張瑛]] 飾 何庭恩
+*[[鮑漢琳]] 飾 何庭芳
+*[[許英秀]] 飾 何祖澤
+*[[聶安達]] 飾 威廉臣
+*[[李月清]] 飾 王銀娣
+*[[良鳴]] 飾 周金
+*[[顧紀筠]] 飾 周亞蓮
+*[[蔣金]] 飾 艇王
+*[[柳影虹]] 飾 孫月娥
+*[[伍衛國]] 飾 盧文英
+*[[馮真]] 飾 梁惠貞
+*[[許淑嫻]] 飾 容姐
+*[[徐意]] 飾 歡姐
+*[[許瑩英]] 飾 貴姐
+*[[區嶽]] 飾 吉叔
+*李壽祺 飾 盧滿堂
+*[[徐愛心]] 飾 古玉卿
+*[[陳中堅]] 飾 古二叔
+*[[孫季卿]] 飾 馬志和
+*[[張鴻昌]] 飾 聶榮
+*[[阮令濤]] 飾 阿仁
+*[[孫鏡鴻]] 飾 史密夫
+*[[司馬華龍]] 飾 德叔
+*[[黃一飛]] 飾 陳伙根
+*[[關偉倫]] 飾 雞江
+*[[鄭恕峰]] 飾 李耀
+*[[黃家駒]] 飾 牧師
+*[[梅艷芳]] 飾 参加舞会的客人
+*[[梅爱芳]] 飾 参加舞会的客人
+
+==參考資料==
+{{reflist}}
+
+==外部連結==
+* [http://www.56.com/w41/album-aid-6719441.html 浴血太平山-56.com] {{Wayback|url=http://www.56.com/w41/album-aid-6719441.html |date=20210302123547 }}
+* [http://www.oldcake.net/viewthread.php?tid=552 老餅論壇] {{Wayback|url=http://www.oldcake.net/viewthread.php?tid=552 |date=20200407022405 }}
+
+[[Category:1981年麗的電視劇集]]
+[[Category:粵語電視劇]]
+[[Category:1920年代背景電視劇]]
+[[Category:英屬香港背景電視劇]]
+[[Category:香港取景電視劇]]</text>
+      <sha1>iwi6jaa6jqdtxksuxe3ndl6vwwob40v</sha1>
+    </revision>
+  </page>
+</mediawiki>

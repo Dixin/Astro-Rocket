@@ -1,0 +1,99 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>四拍四</title>
+    <ns>0</ns>
+    <id>1382309</id>
+    <revision>
+      <id>88156208</id>
+      <parentid>81833796</parentid>
+      <timestamp>2025-07-07T14:02:19Z</timestamp>
+      <contributor>
+        <username>UnexpectedFate</username>
+        <id>2265979</id>
+      </contributor>
+      <comment>/* 曲目 */</comment>
+      <origin>88156208</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1507" sha1="35104ldoaesoh62puxe4cy5j84tm5y2" xml:space="preserve">{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 四拍四
+| type       = EP
+| artist     = [[Beyond]]
+| cover      = BEYOND3H.jpg
+| released   = 1989年4月9日
+| recorded   = 
+| genre      = [[搖滾]]&lt;br/&gt;[[粵語流行音樂]]
+| label      = [[新藝寶唱片]]
+| prev_title = [[新天地 (Beyond EP)|新天地]]
+| prev_year  = 1987 &lt;!-- 8月 --&gt;
+| next_title = [[天若有情 (Beyond EP)|天若有情]]
+| next_year  = 1990 &lt;!-- 6月 --&gt;
+}}
+
+《'''四拍四'''》是香港搖滾樂隊[[Beyond]]發行第四张EP，《Beyond 四拍四》1988年Beyond前往[[北京首都體育館]]舉辦演唱會，成為最早到中國內地演唱的香港歌手，由於Beyond是以唱廣東歌為主，所以一般大陸聽眾並未十分接受，從原來客滿到中場時走了一半的人，但Beyond仍成功的辦完了這場演唱會，返港後於參與電影《[[黑色迷牆]]》的配樂工作，演唱主題曲《午夜迷牆》。
+
+==曲目==
+{| class="wikitable"
+! 順序 !! 歌名 !! 演唱 !! 作詞 !! 作曲 !! 編曲 !! 製作人 !! 時間
+|-
+| 01 || 午夜迷牆 ||黃家駒||黃貫中||黃家駒||Beyond|| ||4:35
+|-
+| 02 || 大地 ||黃貫中||劉卓輝||黃家駒||Beyond&lt;br/&gt;Peter Lam|| ||4:20
+|-
+| 03 || 昔日舞曲 ||黃家駒||黃家駒||黃家駒|| || ||4:19
+|-
+| 04 || 大地音樂版 || || ||黃家駒|| ||Beyond&lt;br/&gt;王紀華||4:20
+|-
+|}
+
+ {{music-stub}}
+{{Beyond}}
+[[Category:香港迷你專輯]]
+[[Category:1989年迷你專輯]]
+[[Category:Beyond迷你專輯]]</text>
+      <sha1>35104ldoaesoh62puxe4cy5j84tm5y2</sha1>
+    </revision>
+  </page>
+</mediawiki>

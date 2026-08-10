@@ -1,0 +1,101 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="zh">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <dbname>zhwiki</dbname>
+    <base>https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5</base>
+    <generator>MediaWiki 1.47.0-wmf.11</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="102" case="first-letter">WikiProject</namespace>
+      <namespace key="103" case="first-letter">WikiProject talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="126" case="first-letter">MOS</namespace>
+      <namespace key="127" case="first-letter">MOS talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+      <namespace key="1728" case="first-letter">Event</namespace>
+      <namespace key="1729" case="first-letter">Event talk</namespace>
+      <namespace key="2600" case="first-letter">Topic</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>大地 (Beyond专辑)</title>
+    <ns>0</ns>
+    <id>805262</id>
+    <revision>
+      <id>87789791</id>
+      <parentid>87789785</parentid>
+      <timestamp>2025-06-16T14:59:17Z</timestamp>
+      <contributor>
+        <username>Tisscherry</username>
+        <id>3517914</id>
+      </contributor>
+      <comment>加入{{[[Template:Original research|Original research]]}}和{{[[Template:Refimprove|Refimprove]]}}標記</comment>
+      <origin>87789791</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2452" sha1="kid5eo6qug1i0yi7utfwzjc5hx20d17" xml:space="preserve">{{Multiple issues|
+{{Original research|time=2025-06-16T14:59:17+00:00}}
+{{Refimprove|time=2025-06-16T14:59:17+00:00}}
+}}
+{{Infobox album &lt;!-- See Wikipedia:WikiProject_Albums --&gt;
+| name       = 大地
+| type       = [[專輯]]
+| artist     = [[Beyond]]
+| cover      = cdcover14.jpg
+| released   = {{Start date and age|1990|10}}
+| recorded   = 
+| genre      = [[華語流行音樂]]
+| label      = [[新藝寶唱片]]
+| prev_title = 
+| prev_year  = 
+| next_title = [[光輝歲月 (專輯)|光輝歲月]]
+| next_year  = 1991
+}}
+
+《'''大地'''》是[[香港]]搖滾樂隊[[Beyond]]發行第一张國語专辑，《大地》正式在國內的唱片業登陸，大部分的歌曲是從粵語專輯《[[秘密警察 (專輯)|秘密警察]]》、《[[Beyond IV]]》翻譯，建立起Beyond在台灣樂壇的地位。
+
+同名歌曲《大地》（1988年粵語、1990年國語）由[[黃家駒]]作曲，由[[黃貫中]]主唱（粵語及國語）。{{cn|這首也是少數不是由黃家駒主唱的歌，但同時是Beyond的代表作。《大地》歌詞隱喻兩岸中國人長年分隔的骨肉分離的滄桑。|date=2025-06-16}}
+
+==曲目==
+{{Tracklist|title1=大地|title2=漆黑的空間|title3=短暫的溫柔|title4=不需要太懂|title5=九十年代的憂傷|title6=你知道我的迷惘|title7=送給不懂環保的人|title8=和自己的心比賽|title9=破壞遊戲的孩子|title10=今天有我|all_music=黃家駒|lyrics1=[[劉卓輝]]|lyrics2=劉卓輝|lyrics3=劉卓輝|lyrics4=劉宏博|lyrics5=馬斯晨|lyrics6=劉卓輝|lyrics7=劉卓輝|lyrics8=劉卓輝|lyrics9=[[何啟弘]]|lyrics10=何啟弘|all_arranger=Beyond（以下註明例外曲目）|arranger1=Beyond/林鄺培|all_producer=Beyond|longnote1=粵語版為《大地》|longnote2=粵語版為《灰色軌跡》|longnote3=粵語版為《未曾後悔》|longnote4=粵語版為《是錯也再不分》|longnote5=粵語版為《相依的心》|longnote6=粵語版為《真的愛你》|longnote7=粵語版為《送給不知怎去保護環境的人（包括我）》|longnote8=粵語版為《戰勝心魔》|longnote9=粵語版為《衝開一切》|longnote10=粵語版為《秘密警察》}}
+
+== 參考來源 ==
+{{refs}}
+
+== 外部連結 ==
+*[https://www.discogs.com/it/release/15129914-Beyond-大地 大地]-Discogs
+
+{{Beyond}}
+[[Category:台灣音樂專輯]]
+[[Category:1990年音樂專輯]]
+[[Category:Beyond音樂專輯]]
+[[Category:新艺宝唱片音乐专辑]]
+{{album-stub}}</text>
+      <sha1>kid5eo6qug1i0yi7utfwzjc5hx20d17</sha1>
+    </revision>
+  </page>
+</mediawiki>
