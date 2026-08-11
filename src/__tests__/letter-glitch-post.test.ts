@@ -3,39 +3,44 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 /**
- * The LetterGlitch tutorial publishes the component's whole source in a code
- * block, so a reader following it copies that block into their own project.
+ * The LetterGlitch tutorial publishes two whole files in code blocks — the
+ * React canvas component and the Astro wrapper around it — so a reader
+ * following it copies both into their own project.
  *
- * Between May and August 2026 the component was fixed twice and the post was
- * not, so the code being handed to readers was two versions behind the code
- * shipping in the theme — including a performance fault that was reported as
- * a bug (#646). Nothing failed, because nothing compared them.
+ * Both had drifted. The component was two versions behind, carrying the fault
+ * reported as #646 and a per-frame layout read fixed before that. The wrapper
+ * was missing a `maxWidth` prop and the whole shadow treatment. Nothing
+ * failed, because nothing compared them.
  *
- * This does. The block has to be the file, character for character.
+ * This does. Each block has to be its file, character for character.
  */
-const COMPONENT = fileURLToPath(
-  new URL('../components/effects/LetterGlitch.tsx', import.meta.url)
-);
+const files = {
+  component: '../components/effects/LetterGlitch.tsx',
+  wrapper: '../components/patterns/LetterGlitchBand.astro',
+} as const;
+
 const POST = fileURLToPath(
   new URL('../content/blog/en/letter-glitch-astro-7.mdx', import.meta.url)
 );
 
-/** The first ```tsx block in the post. */
-function publishedSource(markdown: string): string | null {
-  const match = /^```tsx\n([\s\S]*?)^```$/m.exec(markdown);
+/** The first fenced block of a given language in the post. */
+function publishedSource(markdown: string, lang: string): string | null {
+  const fence = new RegExp(`^\`\`\`${lang}\\n([\\s\\S]*?)^\`\`\`$`, 'm');
+  const match = fence.exec(markdown);
   return match ? match[1] : null;
 }
 
 describe('the LetterGlitch tutorial', () => {
   const post = readFileSync(POST, 'utf8');
-  const component = readFileSync(COMPONENT, 'utf8');
-
-  it('publishes a tsx block', () => {
-    expect(publishedSource(post)).not.toBeNull();
-  });
+  const read = (rel: string) =>
+    readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8');
 
   it('publishes exactly the component the theme ships', () => {
-    expect(publishedSource(post)).toBe(component);
+    expect(publishedSource(post, 'tsx')).toBe(read(files.component));
+  });
+
+  it('publishes exactly the wrapper the theme ships', () => {
+    expect(publishedSource(post, 'astro')).toBe(read(files.wrapper));
   });
 
   it('does not tell readers the loop is unthrottled', () => {
