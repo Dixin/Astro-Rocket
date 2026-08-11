@@ -78,6 +78,11 @@ trust the theme, so a commit message is part of the product.
   links to an AI session. Some tooling adds these by default — remove them.
 - **Present tense, describing the code after the change.** "Scope demo content
   to the demo deployment", not "Fixed the demo leaking".
+- **Keep the subject line to 72 characters, and prefer 50.** GitHub builds a
+  pull request's title from the subject and cuts it at that length, moving what
+  is left into the description — so an over-long subject opens the pull request
+  with a fragment like "…arsing". The body is where detail belongs; it has no
+  limit.
 
 ## Commands
 
