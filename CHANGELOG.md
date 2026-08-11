@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.4.1] — 2026-08-11
+
+### Fixed
+
+- **The LetterGlitch effect no longer runs while it is off screen, and no longer parses colours on every frame.** Two faults, one visible symptom: frames long enough to make other animations stutter as scrolling revealed them. The first is that the animation loop started at mount and ran until unmount, with no pause when the canvas left the viewport — and the effect usually sits at the foot of a page, so it consumed frames for an entire visit while the reader was somewhere else. An `IntersectionObserver` now starts the loop on entry and cancels it on exit, with the glitch timer reset on restart so returning to it does not fire a burst of catch-up frames; where `IntersectionObserver` is unavailable the loop runs as before. The second is that `handleSmoothTransitions` walked the whole grid each frame to find the cells whose colour was still moving, then parsed two CSS colour strings per cell with regular expressions — and by the component's own constants around 40% of a grid is mid-transition at any moment, which on a full-width band is well over a thousand parses per frame, each one failing both hex patterns first because an interpolated colour is an `rgb()` string. The palette is now parsed once at mount into numbers, cells carry their channels alongside a cached CSS string, and interpolation is arithmetic, so no colour is parsed after mount. Cells whose colour is moving are tracked in a list rather than found by scanning. The animation is unchanged — same interpolation, same timing, same palette — so a site on this theme needs no changes. Reported with a profile trace and a screen recording by [@0Ky](https://github.com/0Ky) in [#646](https://github.com/hansmartensdev/astro-rocket/issues/646).
+
 ## [2.4.0] — 2026-08-08
 
 > **This release can stop a build that used to succeed.** If your pages'
