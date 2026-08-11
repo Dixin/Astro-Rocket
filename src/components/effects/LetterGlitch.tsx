@@ -18,6 +18,35 @@ interface LetterGlitchProps {
 const FALLBACK_COLORS = ['#5e4491', '#A476FF', '#241a38'];
 const BRAND_VARS = ['--brand-300', '--brand-600', '--brand-900'];
 
+interface Rgb {
+  r: number;
+  g: number;
+  b: number;
+}
+
+/**
+ * One cell of the grid.
+ *
+ * Colours are held as numbers rather than CSS strings so a frame can
+ * interpolate with arithmetic instead of parsing. `css` is the string the
+ * canvas needs, rebuilt only on the frames where the colour moves.
+ *
+ * `transitioning` keeps the cell out of the active list twice — see
+ * `activeIndices` below.
+ */
+interface Letter {
+  char: string;
+  r: number;
+  g: number;
+  b: number;
+  targetR: number;
+  targetG: number;
+  targetB: number;
+  colorProgress: number;
+  css: string;
+  transitioning: boolean;
+}
+
 const LetterGlitch = ({
   glitchColors = FALLBACK_COLORS,
   glitchSpeed = 33,
@@ -28,14 +57,17 @@ const LetterGlitch = ({
 }: LetterGlitchProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number | null>(null);
-  const letters = useRef<
-    {
-      char: string;
-      color: string;
-      targetColor: string;
-      colorProgress: number;
-    }[]
-  >([]);
+  const letters = useRef<Letter[]>([]);
+  /**
+   * Indices of the cells whose colour is still moving.
+   *
+   * Around 40% of a grid is mid-transition at any moment with the default
+   * `glitchSpeed`, so scanning every cell each frame to find them was most of
+   * the work the effect did. Entries are removed by swapping in the last one,
+   * which keeps removal O(1) and does not preserve order — nothing here needs
+   * order.
+   */
+  const activeIndices = useRef<number[]>([]);
   const grid = useRef({ columns: 0, rows: 0 });
   // Cached canvas dimensions — updated only in resizeCanvas (called on init
   // and on window resize). Reading getBoundingClientRect() per frame from
@@ -44,7 +76,12 @@ const LetterGlitch = ({
   const dimensions = useRef({ width: 0, height: 0 });
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const lastGlitchTime = useRef(Date.now());
-  const activeColors = useRef<string[]>(glitchColors);
+  /** The palette as numbers, parsed once at mount. */
+  const palette = useRef<Rgb[]>([]);
+  /** The same palette as CSS strings, so an untouched cell allocates nothing. */
+  const paletteCss = useRef<string[]>([]);
+  /** Whether the canvas is in view. The loop does not run when it is not. */
+  const inView = useRef(true);
 
   const fontSize = 16;
   const charWidth = 10;
@@ -62,12 +99,10 @@ const LetterGlitch = ({
     return lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
   };
 
-  const getRandomColor = () => {
-    const list = activeColors.current;
-    return list[Math.floor(Math.random() * list.length)];
-  };
+  /** An index into the palette rather than a colour, so nothing is allocated. */
+  const getRandomColorIndex = () => Math.floor(Math.random() * palette.current.length);
 
-  const parseColor = (color: string) => {
+  const parseColor = (color: string): Rgb | null => {
     const sixHex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color);
     if (sixHex) {
       return {
@@ -95,17 +130,19 @@ const LetterGlitch = ({
     return null;
   };
 
-  const interpolateColor = (
-    start: { r: number; g: number; b: number },
-    end: { r: number; g: number; b: number },
-    factor: number,
-  ) => {
-    const result = {
-      r: Math.round(start.r + (end.r - start.r) * factor),
-      g: Math.round(start.g + (end.g - start.g) * factor),
-      b: Math.round(start.b + (end.b - start.b) * factor),
-    };
-    return `rgb(${result.r}, ${result.g}, ${result.b})`;
+  /**
+   * Turn the configured colours into numbers once.
+   *
+   * Every colour the effect ever paints is an interpolation between two of
+   * these, so this is the only place a colour string is ever parsed. Anything
+   * unparseable is dropped; if that leaves nothing, the fallback palette is
+   * used, because a grid with no colours draws nothing.
+   */
+  const setPalette = (colors: string[]) => {
+    const parsed = colors.map(parseColor).filter((c): c is Rgb => c !== null);
+    const usable = parsed.length > 0 ? parsed : (FALLBACK_COLORS.map(parseColor) as Rgb[]);
+    palette.current = usable;
+    paletteCss.current = usable.map((c) => `rgb(${c.r}, ${c.g}, ${c.b})`);
   };
 
   const calculateGrid = (width: number, height: number) => {
@@ -116,13 +153,26 @@ const LetterGlitch = ({
 
   const initializeLetters = (columns: number, rows: number) => {
     grid.current = { columns, rows };
+    activeIndices.current = [];
     const totalLetters = columns * rows;
-    letters.current = Array.from({ length: totalLetters }, () => ({
-      char: getRandomChar(),
-      color: getRandomColor(),
-      targetColor: getRandomColor(),
-      colorProgress: 1,
-    }));
+    letters.current = Array.from({ length: totalLetters }, () => {
+      const from = getRandomColorIndex();
+      const to = getRandomColorIndex();
+      const start = palette.current[from];
+      const target = palette.current[to];
+      return {
+        char: getRandomChar(),
+        r: start.r,
+        g: start.g,
+        b: start.b,
+        targetR: target.r,
+        targetG: target.g,
+        targetB: target.b,
+        colorProgress: 1,
+        css: paletteCss.current[from],
+        transitioning: false,
+      };
+    });
   };
 
   const drawLetters = () => {
@@ -133,12 +183,103 @@ const LetterGlitch = ({
     ctx.font = `${fontSize}px monospace`;
     ctx.textBaseline = 'top';
 
-    letters.current.forEach((letter, index) => {
-      const x = (index % grid.current.columns) * charWidth;
-      const y = Math.floor(index / grid.current.columns) * charHeight;
-      ctx.fillStyle = letter.color;
+    const columns = grid.current.columns;
+    const all = letters.current;
+    for (let index = 0; index < all.length; index++) {
+      const letter = all[index];
+      const x = (index % columns) * charWidth;
+      const y = Math.floor(index / columns) * charHeight;
+      ctx.fillStyle = letter.css;
       ctx.fillText(letter.char, x, y);
-    });
+    }
+  };
+
+  const updateLetters = () => {
+    if (!letters.current || letters.current.length === 0) return;
+
+    const updateCount = Math.max(1, Math.floor(letters.current.length * 0.05));
+
+    for (let i = 0; i < updateCount; i++) {
+      const index = Math.floor(Math.random() * letters.current.length);
+      const letter = letters.current[index];
+      if (!letter) continue;
+
+      const to = getRandomColorIndex();
+      const target = palette.current[to];
+
+      letter.char = getRandomChar();
+      letter.targetR = target.r;
+      letter.targetG = target.g;
+      letter.targetB = target.b;
+
+      if (!smooth) {
+        letter.r = target.r;
+        letter.g = target.g;
+        letter.b = target.b;
+        letter.colorProgress = 1;
+        letter.css = paletteCss.current[to];
+      } else {
+        letter.colorProgress = 0;
+        // A cell already in the list keeps its single entry and simply
+        // restarts, so the list can never hold a duplicate.
+        if (!letter.transitioning) {
+          letter.transitioning = true;
+          activeIndices.current.push(index);
+        }
+      }
+    }
+  };
+
+  const handleSmoothTransitions = () => {
+    const active = activeIndices.current;
+    if (active.length === 0) return;
+
+    const all = letters.current;
+    let needsRedraw = false;
+
+    for (let i = active.length - 1; i >= 0; i--) {
+      const letter = all[active[i]];
+      if (!letter) {
+        active[i] = active[active.length - 1];
+        active.pop();
+        continue;
+      }
+
+      letter.colorProgress += 0.05;
+      if (letter.colorProgress >= 1) letter.colorProgress = 1;
+
+      const factor = letter.colorProgress;
+      letter.r = Math.round(letter.r + (letter.targetR - letter.r) * factor);
+      letter.g = Math.round(letter.g + (letter.targetG - letter.g) * factor);
+      letter.b = Math.round(letter.b + (letter.targetB - letter.b) * factor);
+      letter.css = `rgb(${letter.r}, ${letter.g}, ${letter.b})`;
+      needsRedraw = true;
+
+      if (letter.colorProgress === 1) {
+        letter.transitioning = false;
+        active[i] = active[active.length - 1];
+        active.pop();
+      }
+    }
+
+    if (needsRedraw) {
+      drawLetters();
+    }
+  };
+
+  const animate = () => {
+    const now = Date.now();
+    if (now - lastGlitchTime.current >= glitchSpeed) {
+      updateLetters();
+      drawLetters();
+      lastGlitchTime.current = now;
+    }
+
+    if (smooth) {
+      handleSmoothTransitions();
+    }
+
+    animationRef.current = requestAnimationFrame(animate);
   };
 
   const resizeCanvas = () => {
@@ -167,63 +308,6 @@ const LetterGlitch = ({
     const { columns, rows } = calculateGrid(rect.width, rect.height);
     initializeLetters(columns, rows);
     drawLetters();
-  };
-
-  const updateLetters = () => {
-    if (!letters.current || letters.current.length === 0) return;
-
-    const updateCount = Math.max(1, Math.floor(letters.current.length * 0.05));
-
-    for (let i = 0; i < updateCount; i++) {
-      const index = Math.floor(Math.random() * letters.current.length);
-      if (!letters.current[index]) continue;
-
-      letters.current[index].char = getRandomChar();
-      letters.current[index].targetColor = getRandomColor();
-
-      if (!smooth) {
-        letters.current[index].color = letters.current[index].targetColor;
-        letters.current[index].colorProgress = 1;
-      } else {
-        letters.current[index].colorProgress = 0;
-      }
-    }
-  };
-
-  const handleSmoothTransitions = () => {
-    let needsRedraw = false;
-    letters.current.forEach((letter) => {
-      if (letter.colorProgress < 1) {
-        letter.colorProgress += 0.05;
-        if (letter.colorProgress > 1) letter.colorProgress = 1;
-
-        const startRgb = parseColor(letter.color);
-        const endRgb = parseColor(letter.targetColor);
-        if (startRgb && endRgb) {
-          letter.color = interpolateColor(startRgb, endRgb, letter.colorProgress);
-          needsRedraw = true;
-        }
-      }
-    });
-
-    if (needsRedraw) {
-      drawLetters();
-    }
-  };
-
-  const animate = () => {
-    const now = Date.now();
-    if (now - lastGlitchTime.current >= glitchSpeed) {
-      updateLetters();
-      drawLetters();
-      lastGlitchTime.current = now;
-    }
-
-    if (smooth) {
-      handleSmoothTransitions();
-    }
-
-    animationRef.current = requestAnimationFrame(animate);
   };
 
   // Resolves brand tokens (e.g. --brand-500: oklch(...)) to plain rgb(r,g,b)
@@ -256,12 +340,12 @@ const LetterGlitch = ({
 
     context.current = canvas.getContext('2d');
 
+    let colors = glitchColors;
     if (useBrandTokens) {
       const brand = resolveBrandColors();
-      if (brand.length > 0) {
-        activeColors.current = brand;
-      }
+      if (brand.length > 0) colors = brand;
     }
+    setPalette(colors);
 
     resizeCanvas();
 
@@ -269,8 +353,44 @@ const LetterGlitch = ({
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!prefersReducedMotion) {
+    const stop = () => {
+      if (animationRef.current !== null) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+    };
+
+    const start = () => {
+      if (prefersReducedMotion || animationRef.current !== null) return;
+      // The loop times itself from this instant, so a restart does not fire a
+      // burst of catch-up glitches for the time it spent off screen.
+      lastGlitchTime.current = Date.now();
       animate();
+    };
+
+    /**
+     * The effect is decorative and usually sits at the foot of a page, where
+     * it ran for the whole visit while the reader was somewhere else. It only
+     * runs while it is on screen now.
+     *
+     * Without IntersectionObserver — no browser the theme supports, but the
+     * component also renders in tests and other non-browser hosts — it runs
+     * as before rather than not at all.
+     */
+    let observer: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== 'undefined') {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries.some((entry) => entry.isIntersecting);
+          inView.current = visible;
+          if (visible) start();
+          else stop();
+        },
+        { rootMargin: '100px' },
+      );
+      observer.observe(canvas);
+    } else {
+      start();
     }
 
     let resizeTimeout: ReturnType<typeof setTimeout>;
@@ -278,22 +398,18 @@ const LetterGlitch = ({
     const handleResize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        if (animationRef.current !== null) {
-          cancelAnimationFrame(animationRef.current);
-        }
+        stop();
         resizeCanvas();
-        if (!prefersReducedMotion) {
-          animate();
-        }
+        if (inView.current) start();
       }, 100);
     };
 
     window.addEventListener('resize', handleResize);
 
     return () => {
-      if (animationRef.current !== null) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      stop();
+      clearTimeout(resizeTimeout);
+      observer?.disconnect();
       window.removeEventListener('resize', handleResize);
     };
   }, [glitchSpeed, smooth, useBrandTokens]);
