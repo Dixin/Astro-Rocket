@@ -8,6 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.5.0] — 2026-08-12
+
+### Added
+
+- **A Docker preview of the built site.** `docker compose up --build` serves the theme on `localhost:4321` without Node, pnpm or a dependency tree on your own machine, and `docker compose run --rm export` writes the build into `./dist` instead. Two stages: the build stage installs and runs `astro build`, and the runtime image is nginx carrying the generated files and nothing else — no Node, no pnpm, no Astro. It answers two things at once. Somebody weighing up the theme can see it running with only Docker installed, and somebody wary of what a dependency tree's install scripts might read can keep that install inside a container that sees this repository and nothing else of theirs. The contact form and the newsletter are the theme's only routes that are not prerendered, so they are absent from the static build the container serves; rather than a bare 404 — which reaches the form as unparseable text and surfaces as "Failed to send message", reading like a fault in the theme — nginx answers `/api/` with a 501 and a JSON body in the shape the form already parses, so the reason appears in the form itself. pnpm comes from the `packageManager` field rather than a version pinned in the Dockerfile, and `dist/client` is served because that is what Astro writes before any adapter copies it into its own layout, so the container is not tied to one deploy target. A CI job builds the image on every push and exercises it — the home page, a nested page, a 404, and a `POST` to `/api/contact` that has to answer 501 with a parseable body — because nothing else here would notice it breaking. Proposed, with a complete working setup, by [@0Ky](https://github.com/0Ky) in [#652](https://github.com/hansmartensdev/astro-rocket/issues/652).
+
+### Fixed
+
+- **The LetterGlitch tutorial publishes the component the theme actually ships.** That post hands a reader two whole files to copy, and both had fallen behind. The React component was two versions old: it still read the canvas size on every frame, and it carried the off-screen animation loop and per-frame colour parsing that were reported as [#646](https://github.com/hansmartensdev/astro-rocket/issues/646) and fixed in 2.4.1. The Astro wrapper had no `maxWidth` prop and none of the shadow treatment, so anyone following the post built a near-black band with no shadow in either colour mode and no way to know what was missing. Both blocks are now the files, character for character, and the notes under the component explain the two faults rather than describing the code that had them. A note at the top tells anyone who copied the old version to copy it again.
+- **A test checks every file a tutorial tells a reader to save.** The drift above went unnoticed for three months because nothing compared a published code block against the file it claimed to be. Any post that writes "Save this as `some/path`" and follows it with a code block is now making a promise the suite checks, so a new tutorial is covered the day it is written. It fails three ways, each one confirmed: the file changes and the post does not, the post names a path the theme does not have, and the phrasing drifts so nothing is found at all — the last guarding the check itself, which would otherwise pass by finding nothing.
+
+### Changed
+
+- **CI runs the tests.** The workflow ran the linter and the type checker and never the test suite, and neither did `validate`, so 136 tests only ran when somebody typed the command — leaving every guarantee they encode unenforced between commits, including the site-address agreement added in 2.4.0 and the tutorial check added here. A new `test:run` script is vitest without the watcher, so CI and `validate` both terminate; `validate` runs it before the build, because two seconds of tests should fail ahead of twenty seconds of building. pnpm is pinned once in `packageManager` and the workflow's own version pin is gone, so the container, CI and a developer's machine read the same value — CI had been on 9 while the lockfile was written by 10.33. The README's badge row gains the build status, which now means the tests passed rather than only the linter.
+
 ## [2.4.1] — 2026-08-11
 
 ### Fixed
