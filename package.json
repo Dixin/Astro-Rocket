@@ -1,6 +1,7 @@
 {
   "name": "astro-rocket",
   "version": "2.4.1",
+  "packageManager": "pnpm@10.33.0",
   "description": "Astro Rocket \u2014 A production-ready Astro 7 theme built on Tailwind CSS v4",
   "type": "module",
   "author": "Hans Martens",
@@ -37,8 +38,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "pnpm lint && pnpm check && pnpm build && pnpm verify",
+    "validate": "pnpm lint && pnpm check && pnpm test:run && pnpm build && pnpm verify",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:e2e": "playwright test"
   },
   "dependencies": {
