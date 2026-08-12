@@ -334,7 +334,6 @@ astro-rocket/
 | `pnpm format:check` | Check code formatting |
 | `pnpm test` | Run Vitest tests, watching for changes |
 | `pnpm test:run` | Run Vitest once and exit — what CI runs |
-| `pnpm test:e2e` | Run Playwright E2E tests |
 | `pnpm validate` | Everything CI runs: lint, types, tests, build, output check |
 
 ---
