@@ -1,0 +1,35 @@
+# Local preview only. This is not how the theme deploys — see the README.
+#
+#   docker compose up --build     build and serve on http://localhost:4321
+#   docker compose run --rm export  build and copy the site into ./dist
+#
+# The host filesystem is mounted at /export and nowhere else, so the build
+# never sees anything of yours but this repository.
+
+services:
+  # Serves the built site from nginx. No Node in this container.
+  astro:
+    build:
+      context: .
+      args:
+        # What canonical tags, og:image, RSS and the sitemap are written
+        # against. Override when previewing with your own domain.
+        SITE_URL: ${SITE_URL:-http://localhost:4321}
+    ports:
+      - '4321:8080'
+
+  # Builds and hands the files back, for looking at the output itself.
+  # Not started by `up`; run it on demand.
+  export:
+    profiles: ['export']
+    build:
+      context: .
+      target: build
+    volumes:
+      - ./dist:/export
+    command: >
+      sh -c "echo '[clearing ./dist]' &&
+             find /export -mindepth 1 -delete &&
+             echo '[copying the build to ./dist]' &&
+             cp -a /app/dist/client/. /export/ &&
+             echo '[done]'"
