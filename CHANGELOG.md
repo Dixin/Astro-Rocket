@@ -8,6 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.5.1] — 2026-08-12
+
+### Fixed
+
+- **The README asked for the wrong pnpm.** Its prerequisites said pnpm 9.x while `packageManager` pins 10.33.0 — the first instruction a newcomer follows, and it was wrong. The Astro and Tailwind badges named 7.0 and 4.0 against the 7.2.0 and ^4.3.1 that `package.json` declares. A test now compares the two: every `pnpm` command the README documents has to be a script that exists, the Node and pnpm versions have to match `engines` and `packageManager`, and each version badge has to match the dependency it names. `component-count.test.ts` already guarded the component figure; this covers the rest of what can be checked against the repository, and each of its six checks was confirmed to fail when the claim it guards is broken.
+- **`pnpm test:e2e` had no tests to run.** The README documented it and `@playwright/test` was a dependency, but there was no Playwright configuration and no spec file anywhere in the repository, so the documented command failed with "No tests found". A starter theme handing somebody a command that errors is worse than not offering one, and what end-to-end tests would have covered is covered: 142 unit tests, and a CI job that exercises the built site over HTTP through the preview container. The script, the dependency and Playwright's output directories are gone, and every command the README documents is now a script that exists.
+- **`.gitignore` named seven things that do not exist.** Six were files that have never appeared in this repository's history — two documents from the boilerplate this theme's ancestor was forked from, and four screenshots belonging to another site. They arrived with the file when the theme was cloned. The seventh was `public/pagefind/`: the search integration writes its index into whichever directory the active adapter builds into, so nothing has ever written there. A `.gitignore` is read by anyone working out how a repository is laid out, and entries pointing at absent files describe a project that is not this one.
+
+### Added
+
+- **Two sections at the top of the README.** "Run it" gives both ways to start in six lines — clone and `pnpm dev`, or `docker compose up --build` with nothing else installed — rather than leaving Quick Start a hundred and fifty lines below the feature table. "Good to know" names the three things people reasonably expect and do not get: there is no CMS or admin, the contact form and newsletter need a Resend key before they deliver, and search is indexed at build time so `astro dev` has none.
+
 ## [2.5.0] — 2026-08-12
 
 ### Added
