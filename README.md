@@ -247,6 +247,36 @@ Visit `http://localhost:4321` to see your site.
 
 ---
 
+### Or try it in Docker, without installing anything
+
+If you would rather not put a dependency tree on your own machine yet:
+
+```bash
+docker compose up --build
+```
+
+The site is then on **http://localhost:4321**. The build runs inside the
+container, which can see this repository and nothing else of yours, and the
+image that serves the site is nginx with the generated files in it — no Node,
+no pnpm, no Astro.
+
+To get the built files out instead of serving them:
+
+```bash
+docker compose run --rm export
+```
+
+That writes the site into `./dist`.
+
+**What the container does not cover.** It serves the static build, and the
+contact form and newsletter are the theme's only routes that are not
+prerendered — they become a serverless function on a real deploy. In the
+container they answer with an explanation instead, which the form displays.
+Everything else — all pages, search, the colour themes, RSS, the sitemap — is
+the real thing. For a full preview including the forms, use `pnpm dev` or
+deploy to Vercel, Netlify or Cloudflare.
+
+
 ## Project Structure
 
 ```
