@@ -10,6 +10,7 @@
   <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-7.0-bc52ee?logo=astro&logoColor=white" alt="Astro" /></a>
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="https://github.com/hansmartensdev/astro-rocket/actions/workflows/deploy.yml"><img src="https://github.com/hansmartensdev/astro-rocket/actions/workflows/deploy.yml/badge.svg" alt="Build, lint, type check and tests" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
   <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://img.shields.io/github/stars/hansmartensdev/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
   <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=hansmartensdev.astro-rocket" alt="Visitors" /></a>
@@ -301,8 +302,10 @@ astro-rocket/
 | `pnpm lint:fix` | Fix ESLint issues |
 | `pnpm format` | Format code with Prettier |
 | `pnpm format:check` | Check code formatting |
-| `pnpm test` | Run Vitest tests |
+| `pnpm test` | Run Vitest tests, watching for changes |
+| `pnpm test:run` | Run Vitest once and exit — what CI runs |
 | `pnpm test:e2e` | Run Playwright E2E tests |
+| `pnpm validate` | Everything CI runs: lint, types, tests, build, output check |
 
 ---
 

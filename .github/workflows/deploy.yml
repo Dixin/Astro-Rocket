@@ -8,13 +8,14 @@ on:
 
 jobs:
   quality:
-    name: Lint and type check
+    name: Lint, type check and tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # No version here on purpose: pnpm/action-setup reads `packageManager`
+      # from package.json, so CI, Docker and a developer's machine cannot
+      # drift onto three different pnpm versions.
       - uses: pnpm/action-setup@v3
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -22,6 +23,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
       - run: pnpm run check
+      - run: pnpm run test:run
 
   # Every deploy target gets built and inspected.
   #
@@ -40,9 +42,10 @@ jobs:
         target: [vercel, netlify, cloudflare]
     steps:
       - uses: actions/checkout@v4
+      # No version here on purpose: pnpm/action-setup reads `packageManager`
+      # from package.json, so CI, Docker and a developer's machine cannot
+      # drift onto three different pnpm versions.
       - uses: pnpm/action-setup@v3
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 22
