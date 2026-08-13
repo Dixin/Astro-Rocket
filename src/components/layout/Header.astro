@@ -679,7 +679,7 @@ const buttonId = `${menuId}-button`;
           if (isFloating) {
             header.classList.remove('rounded-t-2xl');
             header.classList.add('rounded-2xl');
-            if (window.scrollY <= 60) {
+            if (window.scrollY <= flipPoint(header)) {
               header.removeAttribute('data-scrolled');
             }
           } else {
@@ -745,6 +745,39 @@ const buttonId = `${menuId}-button`;
   // without re-introducing a critical-path reflow.
   const SCROLL_THRESHOLD = 60;
   const AUTO_HIDE_THRESHOLD = 150;
+
+  /* WHERE THE HEADER FLIPS.
+     60px of scroll by default. On a page with a full-height hero that is
+     wrong: the header's at-rest look is built to sit ON the hero — dark glass
+     in light mode, no shadow — so flipping to the light, shadowed state after
+     60px leaves it in the wrong costume for the remaining height of the hero.
+
+     A page overrides it by marking the element the header should stay over:
+
+         <section data-header-flip-anchor>
+
+     The flip then happens when that element's bottom edge reaches the header's
+     own bottom edge, which is the moment the next section arrives underneath
+     the header. Not before it — a light bar over the last of a dark hero is
+     the same mismatch, just briefer — and not after.
+
+     `offsetTop + offsetHeight` rather than a bounding rect: the header is
+     fixed, so offsetTop resolves to its CSS `top`, and neither value moves
+     when the auto-hide transform runs. Re-measured on resize, because the
+     anchor's height is viewport-dependent. */
+  function measureFlipPoint(header: HTMLElement) {
+    const anchor = document.querySelector<HTMLElement>('[data-header-flip-anchor]');
+    if (!anchor) {
+      header.dataset.flipAt = String(SCROLL_THRESHOLD);
+      return;
+    }
+    const anchorBottom = anchor.getBoundingClientRect().bottom + window.scrollY;
+    const headerBottom = header.offsetTop + header.offsetHeight;
+    header.dataset.flipAt = String(Math.max(SCROLL_THRESHOLD, Math.round(anchorBottom - headerBottom)));
+  }
+
+  /** The scroll position this header changes costume at. */
+  const flipPoint = (header: HTMLElement) => Number(header.dataset.flipAt) || SCROLL_THRESHOLD;
   const BAR_SCROLLED_CLASSES = ['bg-background/80', 'backdrop-blur-lg', 'border-b', 'border-border/50'];
 
   let docMaxScrollY = 0;
@@ -773,6 +806,9 @@ const buttonId = `${menuId}-button`;
       if (header.dataset.scrollInit) return;
       header.dataset.scrollInit = 'true';
 
+      measureFlipPoint(header);
+      window.addEventListener('resize', () => measureFlipPoint(header), { passive: true });
+
       const isBar = header.dataset.headerShape === 'bar';
       const isFloating = header.dataset.headerShape === 'floating';
       const isAutoHide = header.dataset.headerAutoHide !== 'false';
@@ -794,7 +830,7 @@ const buttonId = `${menuId}-button`;
           const wasHidden = header.hasAttribute('data-header-hidden');
 
           // ── WRITES ──
-          if (currentScrollY > SCROLL_THRESHOLD) {
+          if (currentScrollY > flipPoint(header)) {
             header.setAttribute('data-scrolled', '');
             if (isTransparentBar) {
               header.classList.add(...BAR_SCROLLED_CLASSES);
