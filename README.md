@@ -63,23 +63,6 @@ Built on Astro 7 and Tailwind CSS v4.
 
 **[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
 
-### Run it
-
-With Node 22.12+ and pnpm:
-
-```bash
-git clone https://github.com/hansmartensdev/astro-rocket.git my-project
-cd my-project && pnpm install && pnpm dev
-```
-
-Or with only Docker installed, building nothing on your own machine:
-
-```bash
-docker compose up --build
-```
-
-Either way the site is on **http://localhost:4321**. [Quick Start](#quick-start) has the detail.
-
 > **Origins & credits.** Astro Rocket was originally forked from [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Velocity provided the solid base — a well-engineered Astro boilerplate with a thoughtful design system and component library — and full credit for that foundation goes to the Southwell Media team. Since then, Astro Rocket has evolved into a theme in its own right, with far more to offer than the original: live colour-theme switching, built-in i18n, static search, project galleries with video, blog comments, durable internal links, and much more — see [What Astro Rocket has to offer](#what-astro-rocket-has-to-offer) below.
 
 ---
