@@ -25,6 +25,18 @@ services:
     build:
       context: .
       target: build
+      args:
+        # These files are the ones that go on a host, so SITE_URL matters here
+        # in a way it does not for the preview above. Without this the build
+        # took the Dockerfile's own default and wrote http://localhost:4321
+        # into every canonical tag, the sitemap and og:image — and said
+        # nothing, because SITE_URL was set, just to the wrong thing.
+        #
+        # Empty rather than a localhost default on purpose: an empty value is
+        # falsy, so the build falls back to the placeholder domain AND
+        # [site-url-check] warns that SITE_URL is not set. A wrong address that
+        # announces itself beats a wrong address that does not.
+        SITE_URL: ${SITE_URL:-}
     volumes:
       - ./dist:/export
     command: >
