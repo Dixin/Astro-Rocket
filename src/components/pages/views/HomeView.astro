@@ -152,7 +152,10 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
   includeProfessionalServiceSchema={true}
 >
   <!-- Hero -->
-  <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight>
+  <!-- data-header-flip-anchor: the floating header keeps its over-the-hero
+       look until this section is nearly out from under it. See the flip
+       threshold in Header.astro. -->
+  <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight data-header-flip-anchor>
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">{hero.badge}</Badge>
 
     {/* 12.6vw fills the mobile column (~95-98% at 320-390px), sized to the
