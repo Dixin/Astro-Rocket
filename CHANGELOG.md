@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - **`docker compose run --rm export` wrote `http://localhost:4321` into every canonical tag.** The export service builds the files people put on a host, and it was the one service in `compose.yml` with no `SITE_URL` build argument, so it took the Dockerfile's preview default. A site exported that way told search engines its canonical home was `localhost:4321`, and said so in the sitemap and `og:image` too. Nothing warned: `[site-url-check]` only speaks when `SITE_URL` is unset, and it was set — to the wrong thing — while `verify-site-url` compares the canonical against the JSON-LD, and both agreed. The service now takes `SITE_URL` the way the preview does, defaulting to empty rather than to localhost, so a build with no address falls back to the placeholder domain and warns instead of shipping a wrong one in silence. `docker compose up --build` was never affected.
+- **The container CI job could not fail.** Its readiness step tried thirty times to reach the container and then ended on `sleep`, which succeeds — so a container that never served passed the step that exists to notice. It now prints the compose logs and exits 1. The job also runs through `docker compose` rather than `docker build`, so it exercises what the README documents, and it reads the canonical tag and the sitemap out of both the served preview and the exported files: the guards inside the build cannot see a wrong address, only the output can.
 
 ## [2.5.1] — 2026-08-12
 

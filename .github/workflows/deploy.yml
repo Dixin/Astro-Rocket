@@ -71,22 +71,38 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build the image
-        run: docker build -t astro-rocket-preview .
-
+      # Through compose rather than `docker build`, because compose is what the
+      # README tells people to run and what carries SITE_URL into the build.
       - name: Serve it
+        env:
+          SITE_URL: https://ci.example
         run: |
-          docker run -d --name preview -p 4321:8080 astro-rocket-preview
+          docker compose up --build -d
           for i in $(seq 1 30); do
-            curl -fsS http://localhost:4321/ > /dev/null && break
+            curl -fsS http://localhost:4321/ > /dev/null && ready=1 && break
             sleep 1
           done
+          # Without this the loop simply ends and the step passes: its last
+          # command is `sleep`, which succeeds. A readiness check that cannot
+          # report a dead container is not a check.
+          if [ -z "$ready" ]; then
+            echo "::error::the container did not answer on :4321 within 30s"
+            docker compose logs --no-color
+            exit 1
+          fi
 
       - name: The home page is served
         run: curl -fsS http://localhost:4321/ | grep -q '<title>'
 
       - name: A nested page is served
         run: curl -fsS http://localhost:4321/blog/ | grep -q '<title>'
+
+      # SITE_URL reaches the build through compose, so a preview built with an
+      # address writes that address and not the localhost default.
+      - name: The preview writes the address it was given
+        run: |
+          curl -fsS http://localhost:4321/ -o home.html
+          grep -q 'rel="canonical" href="https://ci.example/"' home.html
 
       # The static build has no API routes. nginx has to say so in the shape
       # the contact form parses, or the form shows "Failed to send message"
@@ -100,9 +116,23 @@ jobs:
       - name: A missing page is a 404
         run: test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:4321/no-such-page/)" = "404"
 
+      # The export service builds the files people put on a host. It shipped
+      # once with no SITE_URL argument at all, writing localhost into every
+      # canonical tag while both build-time guards stayed quiet — one because
+      # SITE_URL was set, the other because the canonical and the JSON-LD
+      # agreed with each other. Neither can catch a wrong address; only
+      # reading the output can.
+      - name: The export writes the address it was given
+        env:
+          SITE_URL: https://ci.example
+        run: |
+          docker compose --profile export run --rm export
+          grep -q 'rel="canonical" href="https://ci.example/"' dist/index.html
+          grep -q '<loc>https://ci.example/</loc>' dist/sitemap-0.xml
+
       - name: Stop
         if: always()
-        run: docker rm -f preview || true
+        run: docker compose --profile export down -v --remove-orphans || true
 
 # Deployment is left to the platform's own Git integration by default.
 # To deploy from here instead, add one of these to a job that runs after

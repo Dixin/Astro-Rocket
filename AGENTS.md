@@ -89,6 +89,18 @@ trust the theme, so a commit message is part of the product.
   with a fragment like "…arsing". The body is where detail belongs; it has no
   limit.
 
+## Checks
+
+- **A check is not finished until it has failed once on purpose.** Write it,
+  run it against the broken state it exists to catch, watch it go red, then fix
+  the code and watch it go green. A check only ever run against working code is
+  an assumption with a green tick on it.
+- **Verify the path that fails, not only the path that works.** A container CI
+  job whose readiness loop ended in `sleep` passed while the container was
+  dead, and an export service with no `SITE_URL` argument shipped localhost
+  canonical tags with both build-time guards silent. Both were tested only in
+  the state where everything works.
+
 ## Commands
 
 ```bash
