@@ -36,6 +36,7 @@
 - [Project Structure](#project-structure)
 - [Commands](#commands)
 - [Configuration](#configuration)
+- [Internationalization (i18n)](#internationalization-i18n)
 - [Design System](#design-system)
 - [Components](#components)
 - [Content Management](#content-management)
@@ -57,13 +58,15 @@
 
 ## Overview
 
-Astro Rocket is a **free, lightning-fast Astro 7 starter theme to build anything on**. Its heart is a complete component library: 44 designed, accessible, TypeScript components that all speak one design language — so whatever you build with them looks right. Around that library it brings everything a real website needs: pages to start from, a full blog, search, SEO, i18n, dark mode, and 12 colour themes. It's made for web designers, developers, bloggers, and anyone who wants to build a beautiful website without starting from zero. Use all of it or only the parts you need — the website you build on it is yours.
+Astro Rocket's heart is a component library: **44 designed, accessible, TypeScript components** that share one design language, so whatever you assemble from them looks like it belongs together.
 
-Built on Astro 7 and Tailwind CSS v4.
+Around that library it brings what a site needs before you write a line of your own — pages to start from, a full blog, static search, SEO, opt-in i18n, dark mode, and 12 colour themes you can switch live in the browser.
+
+Use all of it or only the parts you need. The site you build on it is yours.
 
 **[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
 
-> **Origins & credits.** Astro Rocket was originally forked from [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Velocity provided the solid base — a well-engineered Astro boilerplate with a thoughtful design system and component library — and full credit for that foundation goes to the Southwell Media team. Since then, Astro Rocket has evolved into a theme in its own right, with far more to offer than the original: live colour-theme switching, built-in i18n, static search, project galleries with video, blog comments, durable internal links, and much more — see [What Astro Rocket has to offer](#what-astro-rocket-has-to-offer) below.
+> **Origins & credits.** Astro Rocket began as a fork of [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Velocity's design system and component library are the foundation this theme was built on, and the credit for that work belongs to the Southwell Media team. Astro Rocket has developed on its own since then.
 
 ---
 
@@ -95,127 +98,8 @@ Built on Astro 7 and Tailwind CSS v4.
 | **Static Search (Pagefind)** | Site-wide search in the header — a ⌘K / Ctrl+K modal powered by a [Pagefind](https://pagefind.app) index generated at build time. Zero JS until the modal opens; works on every deploy target. Hide it with `showSearch={false}` on the Header |
 | **Project Galleries** | Multiple images per project: a `gallery` array in frontmatter swaps the hero image for a swipeable carousel, and the `<ProjectGallery>` MDX component renders an in-body carousel with a click-to-zoom lightbox. See [Project Galleries](#project-galleries) |
 | **YouTube Embeds (Click-to-Play)** | `<YouTube id="…" title="…" />` in any MDX post or page renders a lightweight thumbnail facade — **zero YouTube JavaScript and no third-party cookies until the reader presses play**, then the player loads from privacy-friendly `youtube-nocookie.com`. Keeps article pages at Lighthouse 100; self-hosted files just use a native `<video>` tag |
+| **Internationalization (i18n)** | Opt-in and off by default; with the flag off the build is byte-for-byte identical to a single-locale site. On, you get locale-prefixed routes, a `LanguageSwitcher`, `hreflang` tags and a `t()` helper. See [Internationalization (i18n)](#internationalization-i18n) |
 | **React Islands** | Optional client-side interactivity where needed |
-
-### Internationalization (i18n)
-
-Astro Rocket ships with **native, opt-in i18n** since 1.3.0. When the flag is off (the default) the build is byte-for-byte identical to a single-locale Astro Rocket site — no `/en/` prefix, no `LanguageSwitcher`, no `hreflang`, no JS for locale routing. Turn it on and you get locale-prefixed routes, an accessible `LanguageSwitcher` dropdown in the header (and mobile menu), `hreflang` SEO tags, and a `t()` translation helper backed by JSON dictionaries.
-
-#### Enabling i18n
-
-Open `src/config/i18n.config.ts` and flip the flag:
-
-```ts
-const i18nConfig: I18nConfig = {
-  enabled: true,                     // master switch
-  defaultLocale: 'en',               // stays at the site root (/about)
-  locales: ['en', 'nl'],             // additional locales live at /nl/about
-  localeNames: {
-    en: 'English',
-    nl: 'Nederlands',
-    // …add more as needed; any BCP 47 code works
-  },
-  detectBrowserLocale: false,
-};
-```
-
-Astro's native i18n is wired up automatically when `enabled: true` AND `locales.length > 1`. With `prefixDefaultLocale: false`, the default locale stays at the site root and additional locales live under `/<locale>/`.
-
-#### Pages in another language
-
-The bundled pages — the **home page, About, Services and Contact** — are already locale-aware, exactly like the blog and projects. Enable a second locale and `/<locale>`, `/<locale>/about`, `/<locale>/services` and `/<locale>/contact` are generated automatically, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/about.astro` files for these — remove any you added previously, as they would collide with the generated routes.
-
-Their text lives in the locale dictionaries under the `pages.*` keys (`pages.home`, `pages.about`, `pages.services`, `pages.contact`). **To translate a page, copy those keys from `src/i18n/en.json` into your locale file (e.g. `src/i18n/nl.json`) and translate the values — there is no markup to touch.** Anything you haven't translated yet falls back to the default locale, so a localized page is never blank. The design lives in one shared view per page under `src/components/pages/views/`, rendered by both the default route and the `/<locale>/…` route.
-
-Adding your **own** new page follows the same three-file pattern — a view holding the design, a default-locale route, and a locale-prefixed route:
-
-```astro
----
-// src/components/pages/views/PricingView.astro — the design; copy comes from the dictionary
-import { t, defaultLocale } from '@/i18n';
-interface Props { locale?: string }
-const { locale = defaultLocale } = Astro.props;
----
-<h1>{t('pages.pricing.heading', locale)}</h1>
-```
-
-```astro
----
-// src/pages/pricing.astro          →  /pricing            (default locale)
-import PricingView from '@/components/pages/views/PricingView.astro';
-import { defaultLocale } from '@/i18n';
----
-<PricingView locale={defaultLocale} />
-```
-
-```astro
----
-// src/pages/[locale]/pricing.astro →  /<locale>/pricing   (every other locale)
-import PricingView from '@/components/pages/views/PricingView.astro';
-import { getSecondaryLocales } from '@/i18n';
-export function getStaticPaths() {
-  return getSecondaryLocales().map((locale) => ({ params: { locale } }));
-}
-const { locale } = Astro.params;
----
-<PricingView locale={locale} />
-```
-
-For lists and structured sections (an array of FAQ items, feature cards, …) use `tData('pages.pricing.faqs', locale)`, which returns arrays/objects from the dictionary with the same default-locale fallback as `t()`. Or, for a quick one-off, just write a standalone `src/pages/nl/pricing.astro` directly. Either way, the `LanguageSwitcher` automatically builds links to `/<locale>/<current-path>` for every configured locale.
-
-#### Translating UI strings
-
-UI strings (button labels, "Read more", "Published on", etc.) live in `src/i18n/<locale>.json`. Astro Rocket ships English (`en.json`) and Dutch (`nl.json`) out of the box. Use the `t()` helper in any `.astro` file:
-
-```astro
----
-import { t, getLocaleFromPath } from '@/i18n';
-const locale = getLocaleFromPath(Astro.url.pathname);
----
-
-<a href="/blog">{t('common.readMore', locale)}</a>
-```
-
-To add another language, drop a new `src/i18n/<code>.json` mirroring the structure of `en.json` — it's loaded automatically, with no edits to `src/i18n/index.ts`. Just add the locale code to `locales` in `src/config/i18n.config.ts` so it gets served. Missing keys fall back to the default locale's value, then to the key itself — so partial translations are safe.
-
-#### Navigation, legal links & the logo
-
-You write each navigation entry once in `nav.config.ts` (`navItems`, `footerNavItems`, `legalLinks`); the Header and Footer localize it for the active locale automatically, so the nav and logo keep visitors inside their locale:
-
-- **Paths** are locale-prefixed via `localizedPath` — `/blog` stays `/blog` on the default locale and becomes `/<locale>/blog` elsewhere. External, `mailto:`/`tel:`, and `#anchor` hrefs are left untouched, and the logo points at the locale's home (`/` or `/<locale>`).
-- **Labels** are translated when an item carries a `labelKey` pointing at a string in `src/i18n/<locale>.json` (the bundled items use `nav.items.*`). Without a `labelKey`, the literal `label` is used as-is.
-
-For the rare case where a locale needs a structurally different label or path (e.g. a localized slug like `/over-ons`), add a per-locale `locales` override to the item:
-
-```ts
-{ label: 'About', href: '/about', order: 4, labelKey: 'nav.items.about',
-  locales: { nl: { href: '/over-ons' } } },
-```
-
-With i18n off, none of this runs and the nav renders exactly as written.
-
-#### Content collections
-
-Blog posts, projects, and pages already carry a `locale` field on their schema (`src/content.config.ts`), validated against the `locales` you list in `src/config/i18n.config.ts` — register a locale there and the content schema accepts it automatically, with no enum to edit. Organize translated content by locale folder:
-
-```
-src/content/blog/en/hello-world.mdx
-src/content/blog/nl/hallo-wereld.mdx
-src/content/projects/en/studio-portfolio.mdx
-src/content/projects/nl/studio-portfolio.mdx
-```
-
-> **Switching the default locale.** Changing `defaultLocale` in `i18n.config.ts` is a routing label — it controls which locale serves at the site root, not which content folder gets read. To make a different language the default, also rename the matching content folder (e.g. `src/content/blog/en/` → `src/content/blog/zh-CN/`) so the root URL resolves to the right posts. The locale code in `i18n.config.ts` and the folder name under `src/content/blog/` must match.
-
-> **Localized blog routing is automatic.** Enable a locale in `i18n.config.ts`, drop posts under its folder (e.g. `src/content/blog/nl/`), and the whole blog is served at that locale's prefix with no extra wiring: the index (`/nl/blog`), individual posts (`/nl/blog/<slug>`), pagination (`/nl/blog/page/N`) and tag archives (`/nl/blog/tag/<tag>`) are all generated, and every in-locale link — cards, tag chips, pagination, breadcrumbs, related posts — stays inside that locale. The `defaultLocale` keeps its prefix-free URLs (`/blog`). A locale with no posts yet still gets a `/<locale>/blog` index that shows the empty state, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/blog*` files yourself — remove any you added previously, as they would collide with the generated routes. (The bundled static pages — home, About, Services and Contact — are generated for every locale the same way; you translate their text in `src/i18n/<locale>.json`, as shown in *Pages in another language* above.)
->
-> On blog posts, the `LanguageSwitcher` and the `hreflang` tags link to each translation's **real** URL — paired by canonical `uid` when the posts declare one (so a translation can live at a different slug, `/blog/hello` ↔ `/nl/blog/hallo`), otherwise by an identical slug. A locale with no translation of the current post is dropped from `hreflang`, and the switcher falls back to that locale's blog index instead of a dead URL. (Other page types resolve alternates by swapping the locale segment, which is correct when slugs match across locales.)
->
-> **Projects are localized the same way.** Drop translations under `src/content/projects/<locale>/` and the whole projects section is served at that locale's prefix — index (`/nl/projects`), each project (`/nl/projects/<slug>`), pagination (`/nl/projects/page/N`), and tag archives (`/nl/projects/tag/<tag>`), with every in-locale link, `hreflang`, and the `LanguageSwitcher` resolving inside that locale. Projects share one slug across locales: keep the same filename in each locale folder (e.g. `en/studio-portfolio.mdx` ↔ `nl/studio-portfolio.mdx`) and the theme pairs them automatically. As with the blog, you do **not** create `src/pages/<locale>/projects*` files yourself.
-
-#### Performance
-
-The whole system is build-time. No client-side routing, no framework hydration for the `LanguageSwitcher` — just static HTML and a tiny vanilla-JS open/close handler for the dropdown panel. Verified zero output-size delta on the disabled path between 1.2.1 and 1.3.0.
 
 ---
 
@@ -439,6 +323,128 @@ All of its text comes from the `newsletter.*` keys in `src/i18n/en.json`, and th
 
 ---
 
+## Internationalization (i18n)
+
+Astro Rocket ships with **native, opt-in i18n** since 1.3.0. When the flag is off (the default) the build is byte-for-byte identical to a single-locale Astro Rocket site — no `/en/` prefix, no `LanguageSwitcher`, no `hreflang`, no JS for locale routing. Turn it on and you get locale-prefixed routes, an accessible `LanguageSwitcher` dropdown in the header (and mobile menu), `hreflang` SEO tags, and a `t()` translation helper backed by JSON dictionaries.
+
+### Enabling i18n
+
+Open `src/config/i18n.config.ts` and flip the flag:
+
+```ts
+const i18nConfig: I18nConfig = {
+  enabled: true,                     // master switch
+  defaultLocale: 'en',               // stays at the site root (/about)
+  locales: ['en', 'nl'],             // additional locales live at /nl/about
+  localeNames: {
+    en: 'English',
+    nl: 'Nederlands',
+    // …add more as needed; any BCP 47 code works
+  },
+  detectBrowserLocale: false,
+};
+```
+
+Astro's native i18n is wired up automatically when `enabled: true` AND `locales.length > 1`. With `prefixDefaultLocale: false`, the default locale stays at the site root and additional locales live under `/<locale>/`.
+
+### Pages in another language
+
+The bundled pages — the **home page, About, Services and Contact** — are already locale-aware, exactly like the blog and projects. Enable a second locale and `/<locale>`, `/<locale>/about`, `/<locale>/services` and `/<locale>/contact` are generated automatically, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/about.astro` files for these — remove any you added previously, as they would collide with the generated routes.
+
+Their text lives in the locale dictionaries under the `pages.*` keys (`pages.home`, `pages.about`, `pages.services`, `pages.contact`). **To translate a page, copy those keys from `src/i18n/en.json` into your locale file (e.g. `src/i18n/nl.json`) and translate the values — there is no markup to touch.** Anything you haven't translated yet falls back to the default locale, so a localized page is never blank. The design lives in one shared view per page under `src/components/pages/views/`, rendered by both the default route and the `/<locale>/…` route.
+
+Adding your **own** new page follows the same three-file pattern — a view holding the design, a default-locale route, and a locale-prefixed route:
+
+```astro
+---
+// src/components/pages/views/PricingView.astro — the design; copy comes from the dictionary
+import { t, defaultLocale } from '@/i18n';
+interface Props { locale?: string }
+const { locale = defaultLocale } = Astro.props;
+---
+<h1>{t('pages.pricing.heading', locale)}</h1>
+```
+
+```astro
+---
+// src/pages/pricing.astro          →  /pricing            (default locale)
+import PricingView from '@/components/pages/views/PricingView.astro';
+import { defaultLocale } from '@/i18n';
+---
+<PricingView locale={defaultLocale} />
+```
+
+```astro
+---
+// src/pages/[locale]/pricing.astro →  /<locale>/pricing   (every other locale)
+import PricingView from '@/components/pages/views/PricingView.astro';
+import { getSecondaryLocales } from '@/i18n';
+export function getStaticPaths() {
+  return getSecondaryLocales().map((locale) => ({ params: { locale } }));
+}
+const { locale } = Astro.params;
+---
+<PricingView locale={locale} />
+```
+
+For lists and structured sections (an array of FAQ items, feature cards, …) use `tData('pages.pricing.faqs', locale)`, which returns arrays/objects from the dictionary with the same default-locale fallback as `t()`. Or, for a quick one-off, just write a standalone `src/pages/nl/pricing.astro` directly. Either way, the `LanguageSwitcher` automatically builds links to `/<locale>/<current-path>` for every configured locale.
+
+### Translating UI strings
+
+UI strings (button labels, "Read more", "Published on", etc.) live in `src/i18n/<locale>.json`. Astro Rocket ships English (`en.json`) and Dutch (`nl.json`) out of the box. Use the `t()` helper in any `.astro` file:
+
+```astro
+---
+import { t, getLocaleFromPath } from '@/i18n';
+const locale = getLocaleFromPath(Astro.url.pathname);
+---
+
+<a href="/blog">{t('common.readMore', locale)}</a>
+```
+
+To add another language, drop a new `src/i18n/<code>.json` mirroring the structure of `en.json` — it's loaded automatically, with no edits to `src/i18n/index.ts`. Just add the locale code to `locales` in `src/config/i18n.config.ts` so it gets served. Missing keys fall back to the default locale's value, then to the key itself — so partial translations are safe.
+
+### Navigation, legal links & the logo
+
+You write each navigation entry once in `nav.config.ts` (`navItems`, `footerNavItems`, `legalLinks`); the Header and Footer localize it for the active locale automatically, so the nav and logo keep visitors inside their locale:
+
+- **Paths** are locale-prefixed via `localizedPath` — `/blog` stays `/blog` on the default locale and becomes `/<locale>/blog` elsewhere. External, `mailto:`/`tel:`, and `#anchor` hrefs are left untouched, and the logo points at the locale's home (`/` or `/<locale>`).
+- **Labels** are translated when an item carries a `labelKey` pointing at a string in `src/i18n/<locale>.json` (the bundled items use `nav.items.*`). Without a `labelKey`, the literal `label` is used as-is.
+
+For the rare case where a locale needs a structurally different label or path (e.g. a localized slug like `/over-ons`), add a per-locale `locales` override to the item:
+
+```ts
+{ label: 'About', href: '/about', order: 4, labelKey: 'nav.items.about',
+  locales: { nl: { href: '/over-ons' } } },
+```
+
+With i18n off, none of this runs and the nav renders exactly as written.
+
+### Content collections
+
+Blog posts, projects, and pages already carry a `locale` field on their schema (`src/content.config.ts`), validated against the `locales` you list in `src/config/i18n.config.ts` — register a locale there and the content schema accepts it automatically, with no enum to edit. Organize translated content by locale folder:
+
+```
+src/content/blog/en/hello-world.mdx
+src/content/blog/nl/hallo-wereld.mdx
+src/content/projects/en/studio-portfolio.mdx
+src/content/projects/nl/studio-portfolio.mdx
+```
+
+> **Switching the default locale.** Changing `defaultLocale` in `i18n.config.ts` is a routing label — it controls which locale serves at the site root, not which content folder gets read. To make a different language the default, also rename the matching content folder (e.g. `src/content/blog/en/` → `src/content/blog/zh-CN/`) so the root URL resolves to the right posts. The locale code in `i18n.config.ts` and the folder name under `src/content/blog/` must match.
+
+> **Localized blog routing is automatic.** Enable a locale in `i18n.config.ts`, drop posts under its folder (e.g. `src/content/blog/nl/`), and the whole blog is served at that locale's prefix with no extra wiring: the index (`/nl/blog`), individual posts (`/nl/blog/<slug>`), pagination (`/nl/blog/page/N`) and tag archives (`/nl/blog/tag/<tag>`) are all generated, and every in-locale link — cards, tag chips, pagination, breadcrumbs, related posts — stays inside that locale. The `defaultLocale` keeps its prefix-free URLs (`/blog`). A locale with no posts yet still gets a `/<locale>/blog` index that shows the empty state, so the `LanguageSwitcher` never lands on a 404. You do **not** create `src/pages/<locale>/blog*` files yourself — remove any you added previously, as they would collide with the generated routes. (The bundled static pages — home, About, Services and Contact — are generated for every locale the same way; you translate their text in `src/i18n/<locale>.json`, as shown in *Pages in another language* above.)
+>
+> On blog posts, the `LanguageSwitcher` and the `hreflang` tags link to each translation's **real** URL — paired by canonical `uid` when the posts declare one (so a translation can live at a different slug, `/blog/hello` ↔ `/nl/blog/hallo`), otherwise by an identical slug. A locale with no translation of the current post is dropped from `hreflang`, and the switcher falls back to that locale's blog index instead of a dead URL. (Other page types resolve alternates by swapping the locale segment, which is correct when slugs match across locales.)
+>
+> **Projects are localized the same way.** Drop translations under `src/content/projects/<locale>/` and the whole projects section is served at that locale's prefix — index (`/nl/projects`), each project (`/nl/projects/<slug>`), pagination (`/nl/projects/page/N`), and tag archives (`/nl/projects/tag/<tag>`), with every in-locale link, `hreflang`, and the `LanguageSwitcher` resolving inside that locale. Projects share one slug across locales: keep the same filename in each locale folder (e.g. `en/studio-portfolio.mdx` ↔ `nl/studio-portfolio.mdx`) and the theme pairs them automatically. As with the blog, you do **not** create `src/pages/<locale>/projects*` files yourself.
+
+### Performance
+
+The whole system is build-time. No client-side routing, no framework hydration for the `LanguageSwitcher` — just static HTML and a tiny vanilla-JS open/close handler for the dropdown panel. Verified zero output-size delta on the disabled path between 1.2.1 and 1.3.0.
+
+---
+
 ## Design System
 
 Astro Rocket uses a three-tier design token system with OKLCH colors for perceptual uniformity:
@@ -575,7 +581,7 @@ Foreground tokens are documented with their contrast ratios inline. When customi
 
 Astro Rocket includes 44 components across four categories. All UI components use [class-variance-authority (CVA)](https://cva.style) for type-safe variant management.
 
-### UI Components (31)
+### UI Components (34)
 
 #### Form (`ui/form/`)
 
@@ -601,6 +607,8 @@ Astro Rocket includes 44 components across four categories. All UI components us
 | Pagination | Page navigation controls |
 | Progress | Progress bar indicator |
 | Skeleton | Loading placeholders |
+| ProofTile | Centred tile for a fact, feature, or process step — brand icon or step number above bold text, in two sizes |
+| GoogleMap | Consent-aware Google Maps embed: a setup prompt without an API key, a "Load Map" placeholder until consent is granted, the iframe after |
 
 #### Feedback (`ui/feedback/`)
 
@@ -619,6 +627,7 @@ Astro Rocket includes 44 components across four categories. All UI components us
 | Tabs | Horizontal tabbed content panels |
 | VerticalTabs | Vertical tab navigation |
 | Accordion | Collapsible content sections |
+| ConsentBanner | Cookie consent with Google Consent Mode v2 — accept, decline, or a settings panel. Renders only when `PUBLIC_CONSENT_ENABLED` is on |
 
 #### Layout (`ui/layout/`)
 
@@ -648,7 +657,7 @@ Astro Rocket includes 44 components across four categories. All UI components us
 | SocialProof | Testimonial and trust indicator cards |
 | TerminalDemo | Animated terminal demonstration (React) |
 
-### Pattern Components (8)
+### Pattern Components (7)
 
 | Component | Description |
 |-----------|-------------|
@@ -659,17 +668,15 @@ Astro Rocket includes 44 components across four categories. All UI components us
 | PasswordInput | Password input with visibility toggle |
 | StatCard | Statistics display card |
 | EmptyState | Empty state placeholder with icon and action |
-| YouTube | Privacy-friendly click-to-play video embed for MDX posts and pages |
 
 ### Other Categories
 
 | Category | Count | Components |
 |----------|-------|------------|
+| Layout | 2 | Header (with scroll progress bar), Footer |
 | Hero | 1 | Hero section with centered/split layouts, grid pattern, and typing effect |
-| Layout | 6 | Header (with scroll progress bar), Footer, ThemeModeDropdown, ThemeSelector, ThemeSelectorDropdown, Analytics |
-| Blog | 4 | ArticleHero, BlogCard, ShareButtons, RelatedPosts |
-| Landing | 5 | Credibility, LighthouseScores, TechStack, FeatureTabs, and more |
-| SEO | 3 | SEO, JsonLd, Breadcrumbs |
+
+`src/components/` also holds components built for this site's own pages — blog, landing, SEO and theme-switching pieces, the `YouTube` embed for MDX, and the `Callout` and `LetterGlitchBand` patterns. They are outside the 44 that `component-registry.json` counts.
 
 ### Usage Example
 
