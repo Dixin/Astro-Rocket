@@ -679,7 +679,10 @@ const buttonId = `${menuId}-button`;
           if (isFloating) {
             header.classList.remove('rounded-t-2xl');
             header.classList.add('rounded-2xl');
-            if (window.scrollY <= flipPoint(header)) {
+            // Written by measureFlipPoint() in the scroll-watcher script
+            // below. Read straight off the element because each <script>
+            // block is its own module — the helper there is not in scope here.
+            if (window.scrollY <= (Number(header.dataset.flipAt) || 60)) {
               header.removeAttribute('data-scrolled');
             }
           } else {
