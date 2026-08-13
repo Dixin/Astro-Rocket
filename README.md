@@ -58,9 +58,9 @@
 
 ## Overview
 
-Astro Rocket's heart is a component library: **44 designed, accessible, TypeScript components** that share one design language, so whatever you assemble from them looks like it belongs together.
+**Astro Rocket is a complete website you clone and make your own.** Running it gives you a working site: homepage, about, services, contact, a blog and a projects portfolio — both with tags and pagination — a components showcase, and a 404 page. Content is Markdown in `src/content/`, the rest is `site.config.ts`, and it deploys to Vercel, Netlify, Cloudflare, or as static files.
 
-Around that library it brings what a site needs before you write a line of your own — pages to start from, a full blog, static search, SEO, opt-in i18n, dark mode, and 12 colour themes you can switch live in the browser.
+Behind those pages sits a component library — **44 designed, accessible, TypeScript components** sharing one design language — with static search, SEO, opt-in i18n, dark mode, and 12 colour themes you can switch live in the browser. So whatever you add later still looks like the rest of the site.
 
 Use all of it or only the parts you need. The site you build on it is yours.
 
