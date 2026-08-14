@@ -10,21 +10,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-- **The dark-mode contrast figure for the primary button.** It recorded 4.54:1 as the worst case across the twelve themes. Measured from each theme's `--brand-600`/`--brand-700` against white, the worst is **amber at 4.56:1** at rest, and all twelve clear WCAG AA.
-- **The README and the configuration guide pointed at `ThemeSelector.astro` for the list of themes.** The registry is `colourThemes` in `src/lib/themes.ts`.
+- Dark-mode contrast figure for the primary button corrected to 4.56:1 (amber, at rest). All twelve themes clear WCAG AA.
+- The README and the configuration guide now point at `colourThemes` in `src/lib/themes.ts` for the list of themes.
 
 ## [2.5.3] — 2026-08-14
 
 ### Fixed
 
-- **Only `SITE_URL` reached a Docker build.** The nine other build-time variables — the Google Analytics, GTM and Umami settings, the Maps key, the consent flag and privacy URL, and the Google and Bing verification tokens — were not passed in, so a site built with `docker compose up --build` or written out with `docker compose run --rm export` carried none of them. The Dockerfile now declares all nine as build arguments and `compose.yml` passes them to both services, resolved from `.env` as `SITE_URL` already was. Empty behaves as unset, so a build with nothing configured is unchanged. The container CI job reads the values back out of the served page and the exported files. Reported by [@0Ky](https://github.com/0Ky) in [#652](https://github.com/hansmartensdev/astro-rocket/issues/652).
-
-- **`PUBLIC_GOOGLE_MAPS_API_KEY` was absent from `.env.example`.** It is declared in the environment schema and read by the `GoogleMap` component, but the one file that lists what the theme accepts never mentioned it, so the only way to learn it existed was to read `astro.config.mjs`. It is documented now, and the file also says which variables reach a Docker build and which do not — the four Resend and newsletter keys are read by the API routes, which a container does not carry.
-- **`AGENTS.md` gave the wrong number of colour themes.**
+- All build-time variables now reach a Docker build. Only `SITE_URL` was passed in, so a site built with `docker compose up --build`, or exported with `docker compose run --rm export`, carried no analytics, consent banner or verification tags. Reported by [@0Ky](https://github.com/0Ky) in [#652](https://github.com/hansmartensdev/astro-rocket/issues/652).
+- `PUBLIC_GOOGLE_MAPS_API_KEY` added to `.env.example`, which also now states which variables reach a Docker build.
+- `AGENTS.md` gave the wrong number of colour themes.
 
 ### Changed
 
-- **A rule for accepting a feature into the theme.** Two questions before a merge rather than after: does a general user of this theme need it, and does the theme need it.
+- A rule for accepting a feature into the theme: does a general user need it, and does the theme need it.
 
 ## [2.5.2] — 2026-08-13
 
