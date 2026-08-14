@@ -31,7 +31,17 @@
     "cancel": "Cancel",
     "next": "Next",
     "previous": "Previous",
-    "home": "Home"
+    "home": "Home",
+    "browseByTag": "Browse by tag",
+    "techStack": "Tech stack",
+    "togglePassword": "Toggle password visibility",
+    "breadcrumb": "Breadcrumb",
+    "copyCode": "Copy code to clipboard",
+    "dismiss": "Dismiss",
+    "notifications": "Notifications",
+    "closeDialog": "Close dialog",
+    "tabs": "Tabs",
+    "verticalTabs": "Vertical tabs"
   },
   "blog": {
     "title": "Blog",
@@ -90,6 +100,13 @@
     "viewProject": "View project",
     "viewSource": "View source",
     "noProjectsFound": "No projects found.",
+    "carouselChooseSlide": "Choose slide",
+    "carouselNextSlide": "Next slide",
+    "carouselPreviousSlide": "Previous slide",
+    "galleryLabel": "Media lightbox",
+    "galleryClose": "Close lightbox",
+    "galleryNextImage": "Next image",
+    "galleryPreviousImage": "Previous image",
     "metaTitle": "Projects",
     "metaDescription": "Selected work — websites, tools, and open-source projects built by Astro Rocket.",
     "heroBadge": "Selected work",
@@ -119,7 +136,8 @@
     "page": "Page {current} of {total}",
     "label": "Pagination",
     "previousPage": "Previous page",
-    "nextPage": "Next page"
+    "nextPage": "Next page",
+    "morePages": "More pages"
   },
   "errors": {
     "pageNotFound": "Page not found",
