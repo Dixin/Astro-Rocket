@@ -241,8 +241,8 @@
       },
       "whatYouGet": {
         "badge": "What you get",
-        "heading": "Everything a real website needs",
-        "lead": "The component library is the heart of the theme. Everything else a real website needs is already on board.",
+        "heading": "Everything a website needs",
+        "lead": "The component library is the heart of the theme. Everything else is already on board.",
         "items": [
           {
             "icon": "component",
