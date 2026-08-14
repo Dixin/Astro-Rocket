@@ -72,10 +72,21 @@ jobs:
       - uses: actions/checkout@v4
 
       # Through compose rather than `docker build`, because compose is what the
-      # README tells people to run and what carries SITE_URL into the build.
+      # README tells people to run and what carries the configuration into the
+      # build. Compose resolves these from the environment exactly as it
+      # resolves them from a developer's `.env`.
       - name: Serve it
         env:
           SITE_URL: https://ci.example
+          PUBLIC_GA_MEASUREMENT_ID: G-CITEST123
+          PUBLIC_GTM_ID: GTM-CITEST
+          PUBLIC_UMAMI_WEBSITE_ID: ci-umami-website-id
+          PUBLIC_UMAMI_SRC: https://umami.ci.example/script.js
+          PUBLIC_GOOGLE_MAPS_API_KEY: ci-maps-key
+          PUBLIC_CONSENT_ENABLED: 'true'
+          PUBLIC_PRIVACY_POLICY_URL: /ci-privacy-check
+          GOOGLE_SITE_VERIFICATION: ci-google-token
+          BING_SITE_VERIFICATION: ci-bing-token
         run: |
           docker compose up --build -d
           for i in $(seq 1 30); do
@@ -104,6 +115,35 @@ jobs:
           curl -fsS http://localhost:4321/ -o home.html
           grep -q 'rel="canonical" href="https://ci.example/"' home.html
 
+      # Astro inlines all of these at build time and every one of them is
+      # optional, so a build that never received them produces a working site
+      # with none of them in it and no warning anywhere. That is what 2.5.0
+      # shipped: compose passed SITE_URL and nothing else, and the other nine
+      # were silently absent from every Docker build. Reading them back out of
+      # the served page is the only thing that catches it.
+      #
+      # PUBLIC_GOOGLE_MAPS_API_KEY is passed to the build but not asserted
+      # here: GoogleMap is exported by the component library and rendered on no
+      # page of the demo, so the key has nothing to appear in.
+      - name: The preview carries the configuration it was given
+        run: |
+          curl -fsS http://localhost:4321/ -o config.html
+          for value in \
+            G-CITEST123 \
+            GTM-CITEST \
+            ci-umami-website-id \
+            umami.ci.example/script.js \
+            /ci-privacy-check \
+            ci-google-token \
+            ci-bing-token \
+            'id="consent-banner"'
+          do
+            grep -qF "$value" config.html || {
+              echo "::error::$value never reached the built site"
+              exit 1
+            }
+          done
+
       # The static build has no API routes. nginx has to say so in the shape
       # the contact form parses, or the form shows "Failed to send message"
       # and the reason is lost.
@@ -122,13 +162,30 @@ jobs:
       # SITE_URL was set, the other because the canonical and the JSON-LD
       # agreed with each other. Neither can catch a wrong address; only
       # reading the output can.
-      - name: The export writes the address it was given
+      - name: The export writes what it was given
         env:
           SITE_URL: https://ci.example
+          PUBLIC_GA_MEASUREMENT_ID: G-CITEST123
+          PUBLIC_GTM_ID: GTM-CITEST
+          PUBLIC_UMAMI_WEBSITE_ID: ci-umami-website-id
+          PUBLIC_UMAMI_SRC: https://umami.ci.example/script.js
+          PUBLIC_GOOGLE_MAPS_API_KEY: ci-maps-key
+          PUBLIC_CONSENT_ENABLED: 'true'
+          PUBLIC_PRIVACY_POLICY_URL: /ci-privacy-check
+          GOOGLE_SITE_VERIFICATION: ci-google-token
+          BING_SITE_VERIFICATION: ci-bing-token
         run: |
           docker compose --profile export run --rm export
           grep -q 'rel="canonical" href="https://ci.example/"' dist/index.html
           grep -q '<loc>https://ci.example/</loc>' dist/sitemap-0.xml
+          # These files are the ones that go on a host, so what is missing from
+          # them is missing from a live site.
+          for value in G-CITEST123 ci-google-token 'id="consent-banner"'; do
+            grep -qF "$value" dist/index.html || {
+              echo "::error::$value never reached the exported files"
+              exit 1
+            }
+          done
 
       - name: Stop
         if: always()

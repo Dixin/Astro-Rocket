@@ -154,6 +154,12 @@ docker compose run --rm export
 
 That writes the site into `./dist`.
 
+**Your `.env` is used.** Compose reads it and passes the settings in as build
+arguments, so a container build carries the same site address, analytics,
+consent banner and verification tags as any other build. The file itself never
+enters the build context. The Resend and newsletter keys are the exception:
+they belong to the API routes, which a container does not carry.
+
 **What the container does not cover.** It serves the static build, and the
 contact form and newsletter are the theme's only routes that are not
 prerendered — they become a serverless function on a real deploy. In the

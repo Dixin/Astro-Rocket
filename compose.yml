@@ -5,6 +5,30 @@
 #
 # The host filesystem is mounted at /export and nowhere else, so the build
 # never sees anything of yours but this repository.
+#
+# Your `.env` is not in the build context and does not need to be: Compose
+# reads it to resolve the ${...} substitutions below, and passes the values in
+# as build arguments. The file stays out; the settings get through.
+
+# Everything Astro inlines into the generated files at build time. Shared by
+# both services, so a preview and an export cannot disagree about what the
+# site contains. Anything missing here is missing from the built site, and
+# nothing says so — every one of them is optional.
+#
+# The four server-side secrets (RESEND_API_KEY, RESEND_FROM_EMAIL,
+# RESEND_AUDIENCE_ID, NEWSLETTER_API_KEY) are deliberately not here. They are
+# read by the API routes, and neither service carries routes: the preview is
+# nginx serving static files, and the export is those same files on your disk.
+x-build-config: &build-config
+  PUBLIC_GA_MEASUREMENT_ID: ${PUBLIC_GA_MEASUREMENT_ID:-}
+  PUBLIC_GTM_ID: ${PUBLIC_GTM_ID:-}
+  PUBLIC_UMAMI_WEBSITE_ID: ${PUBLIC_UMAMI_WEBSITE_ID:-}
+  PUBLIC_UMAMI_SRC: ${PUBLIC_UMAMI_SRC:-}
+  PUBLIC_GOOGLE_MAPS_API_KEY: ${PUBLIC_GOOGLE_MAPS_API_KEY:-}
+  PUBLIC_CONSENT_ENABLED: ${PUBLIC_CONSENT_ENABLED:-}
+  PUBLIC_PRIVACY_POLICY_URL: ${PUBLIC_PRIVACY_POLICY_URL:-}
+  GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
+  BING_SITE_VERIFICATION: ${BING_SITE_VERIFICATION:-}
 
 services:
   # Serves the built site from nginx. No Node in this container.
@@ -12,6 +36,7 @@ services:
     build:
       context: .
       args:
+        <<: *build-config
         # What canonical tags, og:image, RSS and the sitemap are written
         # against. Override when previewing with your own domain.
         SITE_URL: ${SITE_URL:-http://localhost:4321}
@@ -26,6 +51,7 @@ services:
       context: .
       target: build
       args:
+        <<: *build-config
         # These files are the ones that go on a host, so SITE_URL matters here
         # in a way it does not for the preview above. Without this the build
         # took the Dockerfile's own default and wrote http://localhost:4321
