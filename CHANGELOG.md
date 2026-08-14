@@ -8,26 +8,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-### Removed
-
-- **The `green` colour theme.** `green.css` was imported in `colors.css`, so it compiled into the stylesheet every visitor downloads, but it was absent from `colourThemes` in `src/lib/themes.ts` and from the bootstrap array in `BaseLayout.astro` — no picker offered it and nothing could select it. Emerald (hue 155°) and lime (130°) already sit either side of it. If you set `data-theme="green"` by hand after reading the configuration guide, which documented the file as available but not in the picker, switch to `emerald` or `lime`.
-
 ### Fixed
 
-- **The header comment in `colors.css` described a theme setup that no longer existed.** It named the default as indigo when it is blue, listed green as active in the selector, and split the rest into "hidden" and "available, not exposed" groups — while `src/lib/themes.ts` offers all twelve. That comment is what someone reads to work out how theming is wired, and every claim in it was wrong. It now points at the registry and says what actually curates the pickers.
-- **The dark-mode contrast figure named a theme that was never in the set.** `global.css` recorded the worst case across the twelve as 4.54:1, attributed to green. Measured across the twelve that ship, the worst is **amber at 4.56:1** at rest, and all twelve clear WCAG AA. The README and the configuration guide also pointed at `ThemeSelector.astro` for the theme list, which moved to `src/lib/themes.ts`.
+- **The dark-mode contrast figure for the primary button.** It recorded 4.54:1 as the worst case across the twelve themes. Measured from each theme's `--brand-600`/`--brand-700` against white, the worst is **amber at 4.56:1** at rest, and all twelve clear WCAG AA.
+- **The README and the configuration guide pointed at `ThemeSelector.astro` for the list of themes.** The registry is `colourThemes` in `src/lib/themes.ts`.
 
 ## [2.5.3] — 2026-08-14
 
 ### Fixed
 
-- **Only `SITE_URL` reached a Docker build.** Nine other variables are inlined into the output at build time — `PUBLIC_GA_MEASUREMENT_ID`, `PUBLIC_GTM_ID`, `PUBLIC_UMAMI_WEBSITE_ID`, `PUBLIC_UMAMI_SRC`, `PUBLIC_GOOGLE_MAPS_API_KEY`, `PUBLIC_CONSENT_ENABLED`, `PUBLIC_PRIVACY_POLICY_URL`, `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` — and `compose.yml` passed none of them. A site built with `docker compose up --build`, or written out with `docker compose run --rm export` and uploaded to a host, carried no analytics, no consent banner and no search-engine verification tags. All nine are optional, so nothing warned: the build succeeded and the output was simply missing everything that had been configured. The Dockerfile now declares all nine as build arguments and `compose.yml` passes them to both services, resolved from `.env` the same way `SITE_URL` already was — the file itself still never enters the build context. Empty stays empty and behaves as unset, so no measurement id injects no `gtag` and an empty `PUBLIC_CONSENT_ENABLED` resolves to false; a build with nothing configured is unchanged. The container CI job now reads the values back out of the served page and out of the exported files, and was run against a build made without them and watched to fail before it was trusted. `pnpm build` was never affected. Found by [@0Ky](https://github.com/0Ky) in [#652](https://github.com/hansmartensdev/astro-rocket/issues/652).
+- **Only `SITE_URL` reached a Docker build.** The nine other build-time variables — the Google Analytics, GTM and Umami settings, the Maps key, the consent flag and privacy URL, and the Google and Bing verification tokens — were not passed in, so a site built with `docker compose up --build` or written out with `docker compose run --rm export` carried none of them. The Dockerfile now declares all nine as build arguments and `compose.yml` passes them to both services, resolved from `.env` as `SITE_URL` already was. Empty behaves as unset, so a build with nothing configured is unchanged. The container CI job reads the values back out of the served page and the exported files. Reported by [@0Ky](https://github.com/0Ky) in [#652](https://github.com/hansmartensdev/astro-rocket/issues/652).
+
 - **`PUBLIC_GOOGLE_MAPS_API_KEY` was absent from `.env.example`.** It is declared in the environment schema and read by the `GoogleMap` component, but the one file that lists what the theme accepts never mentioned it, so the only way to learn it existed was to read `astro.config.mjs`. It is documented now, and the file also says which variables reach a Docker build and which do not — the four Resend and newsletter keys are read by the API routes, which a container does not carry.
-- **`AGENTS.md` said the theme ships twelve colour themes.** There are thirteen files in `src/styles/themes/`.
+- **`AGENTS.md` gave the wrong number of colour themes.**
 
 ### Changed
 
-- **A rule for accepting a feature into the theme.** Two questions before a merge rather than after: does a general user of this theme need it, and does the theme need it. Docker went in without either being asked and needed three fixes in its first three days.
+- **A rule for accepting a feature into the theme.** Two questions before a merge rather than after: does a general user of this theme need it, and does the theme need it.
 
 ## [2.5.2] — 2026-08-13
 

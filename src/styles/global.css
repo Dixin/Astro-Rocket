@@ -1439,9 +1439,8 @@ summary {
    brand in dark mode too, mirroring the light-mode primary: brand-600 fill,
    brand-700 hover, white label. The same four cooler hues as light mode
    (cyan/emerald/sky/teal) sit on brand-700/800 so the white text keeps
-   WCAG AA — worst case across all 12 themes is 4.56:1 (amber, at rest).
-   Measured from each theme's --brand-600/700 against white; the figure used
-   to name green, which was a theme file nobody could select. */
+   WCAG AA — worst case across all 12 themes is 4.56:1 (amber, at rest),
+   measured from each theme's --brand-600/700 against white. */
 html.dark .btn-primary.project-live-btn,
 html.dark .mobile-menu-cta-wrap .btn-primary {
   background-color: var(--color-brand-600);

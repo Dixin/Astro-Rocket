@@ -1,29 +1,17 @@
 /**
- * Keeps interface text out of the component source and inside the locale files.
+ * Every string a reader or a screen reader meets must come from the locale
+ * files, not from a component.
  *
- * The theme already translated everything you can see. It did not translate
- * what a screen reader announces: `aria-label`, `alt`, `placeholder` and
- * `title` carried English literals in the component library, so a Dutch site
- * built on this theme said "Close dialog" and "Previous page" to anyone using
- * one — invisible to a sighted reviewer, which is why it survived a
- * deliberate i18n sweep that got the same attribute right in 24 other places.
+ * Covers `aria-label`, `alt`, `placeholder` and `title` — as attributes, as
+ * prop defaults, as fallbacks and as `setAttribute` calls — across
+ * `src/components/` and `src/layouts/`.
  *
- * `AGENTS.md` said "any visible interface text", and an `aria-label` is not
- * visible. The rule permitted it. Both the rule and these checks now name the
- * attributes, because three manual sweeps of this produced three different
- * counts and the fourth would have too.
+ * `src/pages/components.astro` is out of scope: its strings are demo fixtures
+ * that exist to show a component, not interface text.
  *
- * Scope is `src/components/` and `src/layouts/` — the library that ships into
- * every site built on this theme. `src/pages/components.astro` is deliberately
- * outside it: its strings are demo fixtures ("Sarah Chen", "Build failed")
- * shown to demonstrate a component, and a showcase page is the first thing
- * most people delete. Whether that page should be available in other
- * languages is a question about the demo, not a defect in the library.
- *
- * There is no exception list on purpose. A string that is the same in every
- * language — a product name like "Google Maps" — belongs in the locale files
- * with the same value in each, not in an allowlist here. An allowlist is
- * where the next violation would hide.
+ * There is no exception list. A string that is identical in every language,
+ * such as a product name, belongs in the locale files with the same value in
+ * each.
  */
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -122,8 +110,8 @@ describe('every locale carries every key', () => {
       const expected = flatten(en);
       const actual = new Set(flatten(dictionary));
       // A missing key falls back to the default locale silently, so the page
-      // renders English in place of the translation and nothing reports it —
-      // exactly the failure this theme shipped in its own aria-labels.
+      // renders the default language in place of the translation and nothing
+      // reports it.
       expect(expected.filter((key) => !actual.has(key))).toEqual([]);
     });
 

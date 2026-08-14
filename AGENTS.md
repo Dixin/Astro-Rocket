@@ -50,10 +50,9 @@ If a page appears to have hard-coded text, check the locale file first.
 ## Before a feature goes in
 
 **Two questions, before the merge and not after.** Does a general user of this
-theme need it? Does the theme need it? A working contribution answers neither.
-Docker arrived working, was merged the same day, and went out in 2.5.0 without
-either question being asked — then took two emergency patches in its first day
-and a third fix three days later.
+theme need it? Does the theme need it? A working contribution answers neither,
+and a feature merged on the strength of working code arrives with a
+maintenance surface nobody agreed to carry.
 
 Answering no is not a rejection of the contributor. It is cheaper for everyone
 than a feature the theme carries and nobody maintains.
