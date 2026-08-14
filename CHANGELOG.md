@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Removed
+
+- **The `green` colour theme.** `green.css` was imported in `colors.css`, so it compiled into the stylesheet every visitor downloads, but it was absent from `colourThemes` in `src/lib/themes.ts` and from the bootstrap array in `BaseLayout.astro` — no picker offered it and nothing could select it. Emerald (hue 155°) and lime (130°) already sit either side of it. If you set `data-theme="green"` by hand after reading the configuration guide, which documented the file as available but not in the picker, switch to `emerald` or `lime`.
+
+### Fixed
+
+- **The header comment in `colors.css` described a theme setup that no longer existed.** It named the default as indigo when it is blue, listed green as active in the selector, and split the rest into "hidden" and "available, not exposed" groups — while `src/lib/themes.ts` offers all twelve. That comment is what someone reads to work out how theming is wired, and every claim in it was wrong. It now points at the registry and says what actually curates the pickers.
+- **The dark-mode contrast figure named a theme that was never in the set.** `global.css` recorded the worst case across the twelve as 4.54:1, attributed to green. Measured across the twelve that ship, the worst is **amber at 4.56:1** at rest, and all twelve clear WCAG AA. The README and the configuration guide also pointed at `ThemeSelector.astro` for the theme list, which moved to `src/lib/themes.ts`.
+
 ## [2.5.3] — 2026-08-14
 
 ### Fixed
