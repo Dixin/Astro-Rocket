@@ -7,13 +7,13 @@
 
    To add a new theme: create a file in ../themes/ following the same token
    contract, scope it under html[data-theme="name"], import it below, and add
-   it to `colourThemes` in src/lib/themes.ts — that array is the registry the
-   pickers read, and a file imported here but absent from it ships CSS nobody
-   can reach. green.css was exactly that, and was removed.
+   it to `colourThemes` in src/lib/themes.ts — the registry the pickers read.
+   A file imported here but missing from that array ships CSS nothing can
+   reach.
 
-   All twelve are offered. Curate what the pickers show with `showInSelector`
-   in src/lib/themes.ts rather than by commenting out an import here: a theme
-   left imported keeps working for a visitor who saved it earlier.
+   Curate what the pickers offer with `showInSelector` in src/lib/themes.ts
+   rather than by removing an import here, so a theme a visitor saved earlier
+   keeps working.
    ============================================================================= */
 
 @import './primitives.css';

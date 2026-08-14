@@ -40,17 +40,15 @@ ARG SITE_URL=http://localhost:4321
 ENV SITE_URL=$SITE_URL
 
 # The rest of the build-time configuration. Astro inlines each of these into
-# the generated files, so one that does not reach this stage is one the site
-# does not have. Every one is optional, so nothing complains — which is how a
-# Docker build shipped with no analytics, no consent banner and no search
-# verification tags, and said nothing about any of it.
+# the generated files, so a value that does not reach this stage is one the
+# built site does not have.
 #
-# Empty is the default, and empty behaves as unset: no measurement id injects
-# no gtag, and an empty PUBLIC_CONSENT_ENABLED resolves to false.
+# Empty is the default and behaves as unset: no measurement id injects no
+# gtag, and an empty PUBLIC_CONSENT_ENABLED resolves to false.
 #
 # RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_AUDIENCE_ID and NEWSLETTER_API_KEY
-# are absent on purpose. They are read by the API routes, and the runtime image
-# is nginx serving static files — it has no routes in it to read them.
+# are not here: they are read by the API routes, and the runtime image is
+# nginx serving static files.
 ARG PUBLIC_GA_MEASUREMENT_ID=
 ARG PUBLIC_GTM_ID=
 ARG PUBLIC_UMAMI_WEBSITE_ID=

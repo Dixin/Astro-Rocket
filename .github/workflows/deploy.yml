@@ -115,16 +115,13 @@ jobs:
           curl -fsS http://localhost:4321/ -o home.html
           grep -q 'rel="canonical" href="https://ci.example/"' home.html
 
-      # Astro inlines all of these at build time and every one of them is
-      # optional, so a build that never received them produces a working site
-      # with none of them in it and no warning anywhere. That is what 2.5.0
-      # shipped: compose passed SITE_URL and nothing else, and the other nine
-      # were silently absent from every Docker build. Reading them back out of
-      # the served page is the only thing that catches it.
+      # Astro inlines these at build time and all of them are optional, so a
+      # build that never received them still succeeds. Reading them back out
+      # of the served page is what catches a missing one.
       #
-      # PUBLIC_GOOGLE_MAPS_API_KEY is passed to the build but not asserted
-      # here: GoogleMap is exported by the component library and rendered on no
-      # page of the demo, so the key has nothing to appear in.
+      # PUBLIC_GOOGLE_MAPS_API_KEY is passed to the build but not asserted:
+      # GoogleMap is rendered on no page of the demo, so the key has nothing
+      # to appear in.
       - name: The preview carries the configuration it was given
         run: |
           curl -fsS http://localhost:4321/ -o config.html
@@ -156,12 +153,10 @@ jobs:
       - name: A missing page is a 404
         run: test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:4321/no-such-page/)" = "404"
 
-      # The export service builds the files people put on a host. It shipped
-      # once with no SITE_URL argument at all, writing localhost into every
-      # canonical tag while both build-time guards stayed quiet — one because
-      # SITE_URL was set, the other because the canonical and the JSON-LD
-      # agreed with each other. Neither can catch a wrong address; only
-      # reading the output can.
+      # The export service builds the files that go on a host, so the address
+      # in them matters. The build-time guards cannot catch a wrong one — they
+      # compare the canonical against the JSON-LD, which agree either way — so
+      # this reads it out of the output.
       - name: The export writes what it was given
         env:
           SITE_URL: https://ci.example
