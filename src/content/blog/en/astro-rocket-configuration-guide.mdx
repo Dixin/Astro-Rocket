@@ -581,8 +581,8 @@ The `uid` field is entirely optional — posts without one behave exactly as bef
 | Default dark/light mode | `src/layouts/BaseLayout.astro` | `class="dark"` on `<html>` |
 | JSON-LD schema switches | `src/pages/index.astro` | `includePersonSchema`, `includeOrgSchema` |
 | noindex / nofollow | any layout | `noindex={true}`, `nofollow={true}` |
-| Live theme selector (12 swatches) | `src/components/layout/ThemeSelector.astro` | `themes` array |
-| All 12 theme files | `src/styles/themes/` | One CSS file per theme (13 files exist — `green.css` is available but not in the picker) |
+| Live theme selector (12 swatches) | `src/lib/themes.ts` | `colourThemes` array |
+| All 12 theme files | `src/styles/themes/` | One CSS file per theme |
 | Brand colour scale (light & dark) | `src/styles/themes/*.css` | `--brand-50` → `--brand-900` |
 | Typography (fonts, weight, tracking) | `src/styles/themes/*.css` | `--theme-font-*`, `--theme-heading-*` |
 | Border radius (global roundness) | `src/styles/themes/*.css` | `--theme-radius-sm/md/lg/xl/full` |
