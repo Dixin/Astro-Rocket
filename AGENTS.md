@@ -41,7 +41,7 @@ Do not write a component count you have not counted from this file.
 | Any visible interface text | `src/i18n/en.json` (and other locales) |
 | A blog post | a new `.mdx` file in `src/content/blog/<locale>/` |
 | A project | a new `.mdx` file in `src/content/projects/<locale>/` |
-| Colours | `src/styles/themes/*.css` — twelve themes, tokens only |
+| Colours | `src/styles/themes/*.css` — thirteen themes, tokens only |
 
 **Page copy is not in the page files.** Text lives in `src/i18n/en.json` and is
 read through `t()`. Editing a heading usually means editing JSON, not `.astro`.
