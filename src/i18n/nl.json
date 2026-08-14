@@ -241,8 +241,8 @@
       },
       "whatYouGet": {
         "badge": "Wat je krijgt",
-        "heading": "Alles wat een echte website nodig heeft",
-        "lead": "De componentenbibliotheek is het hart van het thema. Al het andere dat een echte website nodig heeft, is al aan boord.",
+        "heading": "Alles wat een website nodig heeft",
+        "lead": "De componentenbibliotheek is het hart van het thema. Al het andere is al aan boord.",
         "items": [
           {
             "icon": "component",
