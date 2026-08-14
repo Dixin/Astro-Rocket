@@ -8,6 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.5.3] — 2026-08-14
+
+### Fixed
+
+- **Only `SITE_URL` reached a Docker build.** Nine other variables are inlined into the output at build time — `PUBLIC_GA_MEASUREMENT_ID`, `PUBLIC_GTM_ID`, `PUBLIC_UMAMI_WEBSITE_ID`, `PUBLIC_UMAMI_SRC`, `PUBLIC_GOOGLE_MAPS_API_KEY`, `PUBLIC_CONSENT_ENABLED`, `PUBLIC_PRIVACY_POLICY_URL`, `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` — and `compose.yml` passed none of them. A site built with `docker compose up --build`, or written out with `docker compose run --rm export` and uploaded to a host, carried no analytics, no consent banner and no search-engine verification tags. All nine are optional, so nothing warned: the build succeeded and the output was simply missing everything that had been configured. The Dockerfile now declares all nine as build arguments and `compose.yml` passes them to both services, resolved from `.env` the same way `SITE_URL` already was — the file itself still never enters the build context. Empty stays empty and behaves as unset, so no measurement id injects no `gtag` and an empty `PUBLIC_CONSENT_ENABLED` resolves to false; a build with nothing configured is unchanged. The container CI job now reads the values back out of the served page and out of the exported files, and was run against a build made without them and watched to fail before it was trusted. `pnpm build` was never affected. Found by [@0Ky](https://github.com/0Ky) in [#652](https://github.com/hansmartensdev/astro-rocket/issues/652).
+- **`PUBLIC_GOOGLE_MAPS_API_KEY` was absent from `.env.example`.** It is declared in the environment schema and read by the `GoogleMap` component, but the one file that lists what the theme accepts never mentioned it, so the only way to learn it existed was to read `astro.config.mjs`. It is documented now, and the file also says which variables reach a Docker build and which do not — the four Resend and newsletter keys are read by the API routes, which a container does not carry.
+- **`AGENTS.md` said the theme ships twelve colour themes.** There are thirteen files in `src/styles/themes/`.
+
+### Changed
+
+- **A rule for accepting a feature into the theme.** Two questions before a merge rather than after: does a general user of this theme need it, and does the theme need it. Docker went in without either being asked and needed three fixes in its first three days.
+
 ## [2.5.2] — 2026-08-13
 
 ### Fixed
