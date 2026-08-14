@@ -41,11 +41,22 @@ Do not write a component count you have not counted from this file.
 | Any visible interface text | `src/i18n/en.json` (and other locales) |
 | A blog post | a new `.mdx` file in `src/content/blog/<locale>/` |
 | A project | a new `.mdx` file in `src/content/projects/<locale>/` |
-| Colours | `src/styles/themes/*.css` — twelve themes, tokens only |
+| Colours | `src/styles/themes/*.css` — thirteen themes, tokens only |
 
 **Page copy is not in the page files.** Text lives in `src/i18n/en.json` and is
 read through `t()`. Editing a heading usually means editing JSON, not `.astro`.
 If a page appears to have hard-coded text, check the locale file first.
+
+## Before a feature goes in
+
+**Two questions, before the merge and not after.** Does a general user of this
+theme need it? Does the theme need it? A working contribution answers neither.
+Docker arrived working, was merged the same day, and went out in 2.5.0 without
+either question being asked — then took two emergency patches in its first day
+and a third fix three days later.
+
+Answering no is not a rejection of the contributor. It is cheaper for everyone
+than a feature the theme carries and nobody maintains.
 
 ## Conventions worth keeping
 

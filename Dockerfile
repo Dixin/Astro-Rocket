@@ -39,6 +39,37 @@ COPY . .
 ARG SITE_URL=http://localhost:4321
 ENV SITE_URL=$SITE_URL
 
+# The rest of the build-time configuration. Astro inlines each of these into
+# the generated files, so one that does not reach this stage is one the site
+# does not have. Every one is optional, so nothing complains — which is how a
+# Docker build shipped with no analytics, no consent banner and no search
+# verification tags, and said nothing about any of it.
+#
+# Empty is the default, and empty behaves as unset: no measurement id injects
+# no gtag, and an empty PUBLIC_CONSENT_ENABLED resolves to false.
+#
+# RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_AUDIENCE_ID and NEWSLETTER_API_KEY
+# are absent on purpose. They are read by the API routes, and the runtime image
+# is nginx serving static files — it has no routes in it to read them.
+ARG PUBLIC_GA_MEASUREMENT_ID=
+ARG PUBLIC_GTM_ID=
+ARG PUBLIC_UMAMI_WEBSITE_ID=
+ARG PUBLIC_UMAMI_SRC=
+ARG PUBLIC_GOOGLE_MAPS_API_KEY=
+ARG PUBLIC_CONSENT_ENABLED=
+ARG PUBLIC_PRIVACY_POLICY_URL=
+ARG GOOGLE_SITE_VERIFICATION=
+ARG BING_SITE_VERIFICATION=
+ENV PUBLIC_GA_MEASUREMENT_ID=$PUBLIC_GA_MEASUREMENT_ID \
+    PUBLIC_GTM_ID=$PUBLIC_GTM_ID \
+    PUBLIC_UMAMI_WEBSITE_ID=$PUBLIC_UMAMI_WEBSITE_ID \
+    PUBLIC_UMAMI_SRC=$PUBLIC_UMAMI_SRC \
+    PUBLIC_GOOGLE_MAPS_API_KEY=$PUBLIC_GOOGLE_MAPS_API_KEY \
+    PUBLIC_CONSENT_ENABLED=$PUBLIC_CONSENT_ENABLED \
+    PUBLIC_PRIVACY_POLICY_URL=$PUBLIC_PRIVACY_POLICY_URL \
+    GOOGLE_SITE_VERIFICATION=$GOOGLE_SITE_VERIFICATION \
+    BING_SITE_VERIFICATION=$BING_SITE_VERIFICATION
+
 RUN pnpm run build
 
 # ── Runtime ──────────────────────────────────────────────────────────────────
