@@ -1,8 +1,15 @@
 import { useId, type HTMLAttributes, type Ref, type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import { progressTrackVariants, progressBarVariants, type ProgressVariants } from './progress.variants';
+import { t, defaultLocale, type Locale } from '@/i18n';
 
 interface ProgressProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ref'> {
+  /**
+   * Locale for the component's own screen-reader labels. A React island is
+   * rendered in isolation and cannot see the page's locale, so a multi-locale
+   * site passes it in; a single-locale site needs nothing.
+   */
+  locale?: Locale;
   ref?: Ref<HTMLDivElement>;
   value?: number;
   max?: number;
@@ -17,7 +24,7 @@ interface ProgressProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ref'> {
   children?: ReactNode;
 }
 
-export function Progress({ ref, value, max = 100, variant = 'default', size = 'md', showLabel = false, label, className, children, ...rest }: ProgressProps) {
+export function Progress({ locale = defaultLocale, ref, value, max = 100, variant = 'default', size = 'md', showLabel = false, label, className, children, ...rest }: ProgressProps) {
   const isIndeterminate = value === undefined;
   const percentage = isIndeterminate || max <= 0 ? 0 : Math.min(100, Math.max(0, (value / max) * 100));
 
@@ -25,7 +32,7 @@ export function Progress({ ref, value, max = 100, variant = 'default', size = 'm
   // bare number, so the bar needs a name from the visible label or a fallback.
   const labelId = useId();
   const hasVisibleLabel = showLabel && !isIndeterminate && children != null;
-  const ariaLabel = label ?? (hasVisibleLabel ? undefined : 'Progress');
+  const ariaLabel = label ?? (hasVisibleLabel ? undefined : t('common.progress', locale));
   const ariaLabelledBy = !label && hasVisibleLabel ? labelId : undefined;
 
   return (

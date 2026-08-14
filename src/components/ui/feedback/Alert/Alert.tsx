@@ -1,8 +1,15 @@
 import { type HTMLAttributes, type Ref, type ReactNode, useState } from 'react';
 import { cn } from '@/lib/cn';
 import { alertVariants, alertIconColors, alertAccentColors, type AlertVariants } from './alert.variants';
+import { t, defaultLocale, type Locale } from '@/i18n';
 
 interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ref' | 'title'> {
+  /**
+   * Locale for the component's own screen-reader labels. A React island is
+   * rendered in isolation and cannot see the page's locale, so a multi-locale
+   * site passes it in; a single-locale site needs nothing.
+   */
+  locale?: Locale;
   ref?: Ref<HTMLDivElement>;
   variant?: NonNullable<AlertVariants['variant']>;
   title?: string;
@@ -18,7 +25,7 @@ const iconPaths: Record<string, string> = {
   error: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM15 9l-6 6M9 9l6 6',
 };
 
-export function Alert({ ref, variant = 'info', title, dismissible = false, onDismiss, className, children, ...rest }: AlertProps) {
+export function Alert({ locale = defaultLocale, ref, variant = 'info', title, dismissible = false, onDismiss, className, children, ...rest }: AlertProps) {
   const [dismissed, setDismissed] = useState(false);
   const [hiding, setHiding] = useState(false);
 
@@ -65,7 +72,7 @@ export function Alert({ ref, variant = 'info', title, dismissible = false, onDis
         <button
           type="button"
           className="shrink-0 p-1 -mr-1 -mt-1 rounded-md text-foreground-muted hover:text-foreground hover:bg-secondary transition-colors"
-          aria-label="Dismiss"
+          aria-label={t('common.dismiss', locale)}
           onClick={handleDismiss}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">

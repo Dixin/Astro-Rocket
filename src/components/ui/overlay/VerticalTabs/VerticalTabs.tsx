@@ -2,6 +2,7 @@ import { useState, useId, useCallback, useRef, useEffect, Children, isValidEleme
 import { cn } from '@/lib/cn';
 import { ChevronDown } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { t, defaultLocale, type Locale } from '@/i18n';
 
 export interface VerticalTab {
   id: string;
@@ -11,6 +12,12 @@ export interface VerticalTab {
 }
 
 interface VerticalTabsProps {
+  /**
+   * Locale for the component's own screen-reader labels. A React island is
+   * rendered in isolation and cannot see the page's locale, so a multi-locale
+   * site passes it in; a single-locale site needs nothing.
+   */
+  locale?: Locale;
   /** Array of tab definitions */
   tabs: VerticalTab[];
   /** Default selected tab ID (uncontrolled mode) */
@@ -40,7 +47,7 @@ interface VerticalTabsProps {
  *   <div data-tab-content="b">Content B</div>
  * </VerticalTabs>
  */
-export function VerticalTabs({
+export function VerticalTabs({ locale = defaultLocale,
   tabs,
   defaultValue,
   value,
@@ -464,7 +471,7 @@ export function VerticalTabs({
           className="hidden lg:flex lg:col-span-4 flex-col gap-1"
           role="tablist"
           aria-orientation="vertical"
-          aria-label="Vertical tabs"
+          aria-label={t('common.verticalTabs', locale)}
         >
           {tabs.map((tab, index) => {
             const isActive = tab.id === activeTabId;

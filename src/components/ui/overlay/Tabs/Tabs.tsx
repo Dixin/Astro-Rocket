@@ -11,6 +11,7 @@ import {
   type KeyboardEvent,
 } from 'react';
 import { cn } from '@/lib/cn';
+import { t, defaultLocale, type Locale } from '@/i18n';
 
 export interface Tab {
   id: string;
@@ -18,6 +19,12 @@ export interface Tab {
 }
 
 interface TabsProps {
+  /**
+   * Locale for the component's own screen-reader labels. A React island is
+   * rendered in isolation and cannot see the page's locale, so a multi-locale
+   * site passes it in; a single-locale site needs nothing.
+   */
+  locale?: Locale;
   /** Array of tab definitions */
   tabs: Tab[];
   /** Default selected tab ID (uncontrolled mode) */
@@ -44,7 +51,7 @@ interface TabsProps {
  *   <div data-tab-content="tab2">Content for tab 2</div>
  * </Tabs>
  */
-export function Tabs({
+export function Tabs({ locale = defaultLocale,
   tabs,
   defaultValue,
   value,
@@ -134,7 +141,7 @@ export function Tabs({
         ref={tablistRef}
         className="flex border-b border-border"
         role="tablist"
-        aria-label="Tabs"
+        aria-label={t('common.tabs', locale)}
       >
         {tabs.map((tab, index) => {
           const isActive = tab.id === activeTabId;

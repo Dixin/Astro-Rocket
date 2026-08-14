@@ -5,8 +5,15 @@
 import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/cn';
 import { paginationItemVariants } from './pagination.variants';
+import { t, defaultLocale, type Locale } from '@/i18n';
 
 interface PaginationProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Locale for the component's own screen-reader labels. A React island is
+   * rendered in isolation and cannot see the page's locale, so a multi-locale
+   * site passes it in; a single-locale site needs nothing.
+   */
+  locale?: Locale;
   /** Current active page (1-indexed) */
   currentPage: number;
   /** Total number of pages */
@@ -63,7 +70,7 @@ function getPageRange(current: number, total: number, max: number): (number | '.
   return pages;
 }
 
-export function Pagination({
+export function Pagination({ locale = defaultLocale,
   currentPage,
   totalPages,
   onPageChange,
@@ -77,13 +84,13 @@ export function Pagination({
   const hasNext = currentPage < totalPages;
 
   return (
-    <nav className={cn('flex items-center gap-1', className)} aria-label="Pagination" {...attrs}>
+    <nav className={cn('flex items-center gap-1', className)} aria-label={t('pagination.label', locale)} {...attrs}>
       {/* Previous */}
       {hasPrev ? (
         <button
           type="button"
           className={cn(paginationItemVariants({ variant: 'default', size }))}
-          aria-label="Previous page"
+          aria-label={t('pagination.previousPage', locale)}
           onClick={() => onPageChange(currentPage - 1)}
         >
           <svg
@@ -133,7 +140,7 @@ export function Pagination({
               'cursor-default hover:bg-transparent',
             )}
             role="separator"
-            aria-label="More pages"
+            aria-label={t('pagination.morePages', locale)}
           >
             <span aria-hidden="true">...</span>
           </span>
@@ -162,7 +169,7 @@ export function Pagination({
         <button
           type="button"
           className={cn(paginationItemVariants({ variant: 'default', size }))}
-          aria-label="Next page"
+          aria-label={t('pagination.nextPage', locale)}
           onClick={() => onPageChange(currentPage + 1)}
         >
           <svg

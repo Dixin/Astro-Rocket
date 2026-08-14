@@ -1,11 +1,20 @@
 ---
 import { cn } from '@/lib/cn';
+import { t, getLocaleFromPath } from '@/i18n';
 
 interface Props {
   class?: string;
 }
 
 const { class: className } = Astro.props;
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+// The script below rebuilds these on every click, so it needs the
+// translated templates rather than the rendered strings. Same approach as
+// ThemeModeDropdown: hand them over as data attributes and let the script
+// substitute {mode}.
+const labelTemplate = t('common.themeMode', locale, { mode: '{mode}' });
+const titleTemplate = t('common.themeModeTitle', locale, { mode: '{mode}' });
 ---
 
 <!-- 3-state colour-mode cycler. Click cycles: system → light → dark → system.
@@ -21,8 +30,10 @@ const { class: className } = Astro.props;
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
     className
   )}
-  aria-label="Theme: system"
-  title="Theme: system (click to cycle)"
+  aria-label={labelTemplate.replace('{mode}', 'system')}
+  title={titleTemplate.replace('{mode}', 'system')}
+  data-i18n-label={labelTemplate}
+  data-i18n-title={titleTemplate}
 >
   <!-- Monitor icon — shown when mode === 'system' -->
   <svg
@@ -109,8 +120,10 @@ const { class: className } = Astro.props;
   }
 
   function syncLabel(button: HTMLElement, mode: Mode): void {
-    button.setAttribute('aria-label', `Theme: ${mode}`);
-    button.setAttribute('title', `Theme: ${mode} (click to cycle)`);
+    const label = button.dataset.i18nLabel ?? 'Theme: {mode}';
+    const title = button.dataset.i18nTitle ?? 'Theme: {mode} (click to cycle)';
+    button.setAttribute('aria-label', label.replace('{mode}', mode));
+    button.setAttribute('title', title.replace('{mode}', mode));
   }
 
   function initThemeToggle(): void {
