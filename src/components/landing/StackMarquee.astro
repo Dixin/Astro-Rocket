@@ -21,6 +21,9 @@ import { getCollection } from 'astro:content';
 import { cn } from '@/lib/cn';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 export interface StackItem {
   /** Display name, e.g. "Astro". */
@@ -133,7 +136,7 @@ const rowConfigs = Array.from({ length: rowCount }, (_, r) => {
   data-pause={pauseOnHover ? 'true' : 'false'}
   data-logo-color={logoColor}
   style={`--card-width: ${cardWidth}; --row-gap: ${rowGap};`}
-  aria-label="Tech stack"
+  aria-label={t('common.techStack', locale)}
 >
   {
     rowConfigs.map((row) => (

@@ -3,6 +3,9 @@ import { cn } from '@/lib/cn';
 import JsonLd from './JsonLd.astro';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import siteConfig from '@/config/site.config';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface BreadcrumbItem {
   label: string;
@@ -27,7 +30,7 @@ const schema = createBreadcrumbSchema(schemaItems);
 
 <JsonLd schema={schema} />
 
-<nav aria-label="Breadcrumb" class={cn('text-sm', className)}>
+<nav aria-label={t('common.breadcrumb', locale)} class={cn('text-sm', className)}>
   <ol class="flex flex-wrap items-center gap-2">
     {
       items.map((item, index) => (

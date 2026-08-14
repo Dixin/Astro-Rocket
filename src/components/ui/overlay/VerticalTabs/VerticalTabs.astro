@@ -17,6 +17,9 @@
  */
 import { cn } from '@/lib/cn';
 import Icon from '../../primitives/Icon/Icon.astro';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface Tab {
   id: string;
@@ -333,7 +336,7 @@ const defaultTab = tabs.find(t => t.id === defaultValue);
       class="lg:col-span-4 flex flex-col gap-1"
       role="tablist"
       aria-orientation="vertical"
-      aria-label="Vertical tabs"
+      aria-label={t('common.verticalTabs', locale)}
     >
       {tabs.map((tab: Tab) => {
         const isActive = tab.id === defaultValue;

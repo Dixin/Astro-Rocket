@@ -7,6 +7,9 @@ import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import { paginationItemVariants } from './pagination.variants';
 import Icon from '../../primitives/Icon/Icon.astro';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface Props extends HTMLAttributes<'nav'> {
   /** Current active page (1-indexed) */
@@ -79,13 +82,13 @@ const prevUrl = currentPage > 1 ? `${baseUrl}${currentPage - 1}` : undefined;
 const nextUrl = currentPage < totalPages ? `${baseUrl}${currentPage + 1}` : undefined;
 ---
 
-<nav class={cn('flex items-center gap-1', className)} aria-label="Pagination" {...attrs}>
+<nav class={cn('flex items-center gap-1', className)} aria-label={t('pagination.label', locale)} {...attrs}>
   {/* Previous */}
   {prevUrl ? (
     <a
       href={prevUrl}
       class={cn(paginationItemVariants({ variant: 'default', size }))}
-      aria-label="Previous page"
+      aria-label={t('pagination.previousPage', locale)}
     >
       <Icon name="chevron-left" size="sm" />
     </a>
@@ -98,7 +101,7 @@ const nextUrl = currentPage < totalPages ? `${baseUrl}${currentPage + 1}` : unde
   {/* Page Numbers */}
   {pages.map((page) =>
     page === '...' ? (
-      <span class={cn(paginationItemVariants({ variant: 'default', size }), 'cursor-default hover:bg-transparent')} role="separator" aria-label="More pages">
+      <span class={cn(paginationItemVariants({ variant: 'default', size }), 'cursor-default hover:bg-transparent')} role="separator" aria-label={t('pagination.morePages', locale)}>
         <span aria-hidden="true">...</span>
       </span>
     ) : page === currentPage ? (
@@ -123,7 +126,7 @@ const nextUrl = currentPage < totalPages ? `${baseUrl}${currentPage + 1}` : unde
     <a
       href={nextUrl}
       class={cn(paginationItemVariants({ variant: 'default', size }))}
-      aria-label="Next page"
+      aria-label={t('pagination.nextPage', locale)}
     >
       <Icon name="chevron-right" size="sm" />
     </a>

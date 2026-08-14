@@ -12,6 +12,9 @@
  */
 import { Image, getImage } from 'astro:assets';
 import { isVideoSlide, type GallerySlide } from '@/lib/gallery';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface Props {
   slides: GallerySlide[];
@@ -99,7 +102,7 @@ const posters = await Promise.all(
         type="button"
         class="carousel-nav inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-strong bg-background text-foreground shadow-sm transition-colors hover:border-brand-500 hover:bg-background-secondary hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         data-carousel-prev
-        aria-label="Previous slide"
+        aria-label={t('projects.carouselPreviousSlide', locale)}
         aria-controls={carouselId}
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -111,7 +114,7 @@ const posters = await Promise.all(
         <div
           class="flex items-center gap-2"
           role="tablist"
-          aria-label="Choose slide"
+          aria-label={t('projects.carouselChooseSlide', locale)}
           data-carousel-dots
         >
           {slides.map((_, i) => (
@@ -140,7 +143,7 @@ const posters = await Promise.all(
         type="button"
         class="carousel-nav inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-strong bg-background text-foreground shadow-sm transition-colors hover:border-brand-500 hover:bg-background-secondary hover:text-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         data-carousel-next
-        aria-label="Next slide"
+        aria-label={t('projects.carouselNextSlide', locale)}
         aria-controls={carouselId}
       >
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
