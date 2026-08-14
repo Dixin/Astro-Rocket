@@ -7,6 +7,9 @@ import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import Icon from '../../primitives/Icon/Icon.astro';
 import { alertVariants, alertIconColors, alertAccentColors } from './alert.variants';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface Props extends HTMLAttributes<'div'> {
   variant?: 'info' | 'success' | 'warning' | 'error';
@@ -62,7 +65,7 @@ const icons: Record<string, 'info' | 'check-circle' | 'alert-triangle' | 'x-circ
     <button
       type="button"
       class="shrink-0 p-1 -mr-1 -mt-1 rounded-md text-foreground-muted hover:text-foreground hover:bg-secondary transition-colors"
-      aria-label="Dismiss"
+      aria-label={t('common.dismiss', locale)}
       data-dismiss-alert
     >
       <Icon name="x" class="w-4 h-4" />

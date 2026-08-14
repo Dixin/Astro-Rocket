@@ -1,5 +1,8 @@
 ---
 import { cn } from '@/lib/cn';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface Props {
   code: string;
@@ -39,7 +42,7 @@ const codeId = `code-${Math.random().toString(36).slice(2, 9)}`;
       type="button"
       class="copy-button flex items-center gap-1.5 rounded px-2 py-0.5 text-xs font-medium text-foreground-muted transition-colors hover:bg-secondary hover:text-foreground focus:outline-none"
       data-code-id={codeId}
-      aria-label="Copy code to clipboard"
+      aria-label={t('common.copyCode', locale)}
     >
       <svg class="copy-icon h-3 w-3" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>

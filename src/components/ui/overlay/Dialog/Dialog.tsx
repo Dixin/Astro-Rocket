@@ -6,6 +6,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '@/lib/cn';
+import { t, defaultLocale, type Locale } from '@/i18n';
 
 const sizes = {
   sm: 'max-w-sm',
@@ -15,6 +16,12 @@ const sizes = {
 } as const;
 
 interface DialogProps {
+  /**
+   * Locale for the component's own screen-reader labels. A React island is
+   * rendered in isolation and cannot see the page's locale, so a multi-locale
+   * site passes it in; a single-locale site needs nothing.
+   */
+  locale?: Locale;
   open: boolean;
   onClose: () => void;
   title?: string;
@@ -28,7 +35,7 @@ interface DialogProps {
 const FOCUSABLE_SELECTOR =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export function Dialog({
+export function Dialog({ locale = defaultLocale,
   open,
   onClose,
   title,
@@ -149,7 +156,7 @@ export function Dialog({
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md'
             )}
             onClick={onClose}
-            aria-label="Close dialog"
+            aria-label={t('common.closeDialog', locale)}
           >
             <svg
               className="w-5 h-5"

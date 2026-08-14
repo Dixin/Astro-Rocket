@@ -4,7 +4,7 @@
  * (`/projects/tag/<slug>`). Pure HTML — no JS. Mirrors the blog `TagList`
  * so blog and project tags look and behave identically.
  */
-import { defaultLocale } from '@/i18n';
+import { defaultLocale, t } from '@/i18n';
 import { getProjectTagUrl } from '@/lib/projects';
 
 interface Props {
@@ -24,7 +24,7 @@ const { tags, active, locale = defaultLocale, class: extraClass } = Astro.props;
 ---
 
 {tags.length > 0 && (
-  <ul class:list={['flex flex-wrap items-center gap-2', extraClass]} aria-label="Browse by tag">
+  <ul class:list={['flex flex-wrap items-center gap-2', extraClass]} aria-label={t('common.browseByTag', locale)}>
     {tags.map((tag) => {
       const isActive = active === tag;
       return (

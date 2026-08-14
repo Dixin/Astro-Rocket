@@ -12,6 +12,7 @@ import { PUBLIC_GOOGLE_MAPS_API_KEY, PUBLIC_CONSENT_ENABLED } from 'astro:env/cl
 import siteConfig from '@/config/site.config';
 import { cn } from '@/lib/cn';
 import { googleMapVariants } from './googleMap.variants';
+import { t, getLocaleFromPath } from '@/i18n';
 
 interface Props extends HTMLAttributes<'div'> {
   lat?: number;
@@ -37,10 +38,10 @@ const {
   mode = 'place',
   mapType = 'roadmap',
   consentCategory = 'marketing',
-  ariaLabel = 'Google Maps',
-  placeholderTitle = 'Map',
-  placeholderDescription = 'Accept cookies to load the interactive map.',
-  externalLinkText = 'View on Google Maps',
+  ariaLabel = t('common.googleMaps', getLocaleFromPath(Astro.url.pathname)),
+  placeholderTitle = t('common.map', getLocaleFromPath(Astro.url.pathname)),
+  placeholderDescription = t('common.mapConsentPrompt', getLocaleFromPath(Astro.url.pathname)),
+  externalLinkText = t('common.viewOnGoogleMaps', getLocaleFromPath(Astro.url.pathname)),
   class: className,
   ...rest
 } = Astro.props;

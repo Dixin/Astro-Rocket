@@ -10,6 +10,9 @@
  * </Tabs>
  */
 import { cn } from '@/lib/cn';
+import { t, getLocaleFromPath } from '@/i18n';
+
+const locale = getLocaleFromPath(Astro.url.pathname);
 
 interface Tab {
   id: string;
@@ -27,7 +30,7 @@ const { tabs, defaultValue = tabs[0]?.id, class: className } = Astro.props;
 
 <div class={cn('w-full', className)} data-tabs data-default={defaultValue}>
   <!-- Tab List -->
-  <div class="flex border-b border-border" role="tablist" aria-label="Tabs">
+  <div class="flex border-b border-border" role="tablist" aria-label={t('common.tabs', locale)}>
     {tabs.map((tab) => (
       <button
         type="button"

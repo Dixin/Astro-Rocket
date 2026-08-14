@@ -6,6 +6,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import { progressTrackVariants, progressBarVariants } from './progress.variants';
+import { t, getLocaleFromPath } from '@/i18n';
 
 interface Props extends HTMLAttributes<'div'> {
   /** Progress value between 0 and 100. Omit for indeterminate mode. */
@@ -43,7 +44,7 @@ const percentage = isIndeterminate || max <= 0 ? 0 : Math.min(100, Math.max(0, (
 // what is on screen, and fall back to a generic name when there is neither.
 const hasVisibleLabel = showLabel && !isIndeterminate && Astro.slots.has('default');
 const labelId = hasVisibleLabel ? `progress-label-${Math.random().toString(36).slice(2, 9)}` : undefined;
-const ariaLabel = label ?? (hasVisibleLabel ? undefined : 'Progress');
+const ariaLabel = label ?? (hasVisibleLabel ? undefined : t('common.progress', getLocaleFromPath(Astro.url.pathname)));
 const ariaLabelledBy = !label && hasVisibleLabel ? labelId : undefined;
 ---
 
