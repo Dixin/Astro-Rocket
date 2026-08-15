@@ -124,7 +124,7 @@ importers:
         specifier: ^1.3.0
         version: 1.4.0
       playwright:
-        specifier: ^1.61.1
+        specifier: ^1.62.1
         version: 1.62.1
       prettier:
         specifier: ^3.4.0
@@ -147,6 +147,9 @@ importers:
       vitest:
         specifier: ^3.2.0
         version: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.7)(jiti@2.7.0)(lightningcss@1.32.0)(supports-color@10.2.2)(yaml@2.9.0)
+      zhconvert.ts:
+        specifier: ^1.0.0
+        version: 1.0.0
       zod:
         specifier: ^4.0.0
         version: 4.3.6
@@ -398,6 +401,9 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
+  '@beenotung/tslib@24.26.0':
+    resolution: {integrity: sha512-hXWCS8J2uu4C0LM4JVdjJvPkpzBnpz8J8otYAm5436Tq9De4/VKw8qoU/mczA7vqm7RekSmSTox6M9YBUM/mBQ==}
+
   '@bruits/satteri-darwin-arm64@0.9.1':
     resolution: {integrity: sha512-NE4qC2sRd0+R+oPMsKcUikIvWTGpAV16fSXNBoMSW7nK7Pd9e/ZGB7M8knep83pFmGmOb/5NbGKiVIh3oLbljw==}
     cpu: [arm64]
@@ -498,6 +504,11 @@ packages:
   '@dependents/detective-less@5.0.1':
     resolution: {integrity: sha512-Y6+WUMsTFWE5jb20IFP4YGa5IrGY/+a/FbOSjDF/wz9gepU2hwCYSXRHP/vPwBvwcY3SVMASt4yXxbXNXigmZQ==}
     engines: {node: '>=18'}
+
+  '@e965/xlsx@0.20.3':
+    resolution: {integrity: sha512-703RN/3OdsRD5mtse2HBX7Um7xwaP9tlswEG6svOtjqokXoX7rJdQj7DyabD2I+xk22RgaIIU+R6BHgkpZGB/w==}
+    engines: {node: '>=0.8'}
+    hasBin: true
 
   '@electric-sql/pglite@0.3.16':
     resolution: {integrity: sha512-mZkZfOd9OqTMHsK+1cje8OSzfAQcpD7JmILXTl5ahdempjUDdmg4euf1biDex5/LfQIDJ3gvCu6qDgdnDxfJmA==}
@@ -2702,6 +2713,9 @@ packages:
   caniuse-lite@1.0.30001766:
     resolution: {integrity: sha512-4C0lfJ0/YPjJQHagaE9x2Elb69CIqEPZeG0anQt9SIvIoOH4a4uaRl73IavyO+0qZh6MDLH//DrXThEYKHkmYA==}
 
+  cast.ts@1.20.0:
+    resolution: {integrity: sha512-1hDjKZEKcFF3A5DgMZ3ETyGaZoZjG57t0KSVs9/3+bA1weWMJ/srqiWVynWIsc0ToOuyeqhogdjaVgUppZRCMg==}
+
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
 
@@ -3633,6 +3647,9 @@ packages:
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
 
+  heic2any@0.0.4:
+    resolution: {integrity: sha512-3lLnZiDELfabVH87htnRolZ2iehX9zwpRyGNz22GKXIu0fznlblf0/ftppXKNqS26dqFSeqfIBhAmAj/uSp0cA==}
+
   hosted-git-info@7.0.2:
     resolution: {integrity: sha512-puUZAUKT5m8Zzvs72XWy3HtvVbTWljRE66cP60bxJzAqf2DgICo7lYTY2IHUmLnNpjYvw5bvmoHvPc0QO2a62w==}
     engines: {node: ^16.14.0 || >=18.0.0}
@@ -4503,6 +4520,10 @@ packages:
   node-gyp-build@4.8.4:
     resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
     hasBin: true
+
+  node-localstorage@3.0.5:
+    resolution: {integrity: sha512-GCwtK33iwVXboZWYcqQHu3aRvXEBwmPkAMRBLeaX86ufhqslyUkLGsi4aW3INEfdQYpUB5M9qtYf3eHvAk2VBg==}
+    engines: {node: '>=0.12'}
 
   node-mock-http@1.0.4:
     resolution: {integrity: sha512-8DY+kFsDkNXy1sJglUfuODx1/opAGJGyrTuFqEoN90oRc2Vk0ZbD4K2qmKXBBEhZQzdKHIVfEJpDU8Ak2NJEvQ==}
@@ -5419,6 +5440,9 @@ packages:
   text-hex@1.0.0:
     resolution: {integrity: sha512-uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg==}
 
+  timezone-date.ts@2.1.1:
+    resolution: {integrity: sha512-oWtFipuyI2S8NnDoVilpb2ZudQz8pBknjHbUstok+pM4bo7aRBg7HFMGLVTqTkPincXk8Oi6jEdgL6R9NuCQVw==}
+
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
 
@@ -6036,6 +6060,10 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
+  write-file-atomic@5.0.1:
+    resolution: {integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
   ws@8.21.0:
     resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
@@ -6109,6 +6137,9 @@ packages:
 
   youch@4.1.0-beta.10:
     resolution: {integrity: sha512-rLfVLB4FgQneDr0dv1oddCVZmKjcJ6yX6mS4pU82Mq/Dt9a3cLZQ62pDBL4AUO+uVrCvtWz3ZFUL2HFAFJ/BXQ==}
+
+  zhconvert.ts@1.0.0:
+    resolution: {integrity: sha512-Ben5nF90GxbvAsKC1u7jOJ4kQfWB5LhJTbjq2vG76AKfe75+k+Y0qxJktxOCS4zqN1U2sC37ECD8eoVq8hN9kw==}
 
   zip-stream@6.0.1:
     resolution: {integrity: sha512-zK7YHHz4ZXpW89AHXUPbQVGKI7uvkd3hzusTdotCg1UxyaVtg0zFJSTfW/Dq5f7OBBVnq6cZIaC8Ti4hb6dtCA==}
@@ -6572,6 +6603,15 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
+  '@beenotung/tslib@24.26.0':
+    dependencies:
+      node-localstorage: 3.0.5
+      timezone-date.ts: 2.1.1
+      tslib: 2.8.1
+    optionalDependencies:
+      '@e965/xlsx': 0.20.3
+      heic2any: 0.0.4
+
   '@bruits/satteri-darwin-arm64@0.9.1':
     optional: true
 
@@ -6656,6 +6696,9 @@ snapshots:
     dependencies:
       gonzales-pe: 4.3.0
       node-source-walk: 7.0.1
+
+  '@e965/xlsx@0.20.3':
+    optional: true
 
   '@electric-sql/pglite@0.3.16': {}
 
@@ -8871,6 +8914,8 @@ snapshots:
 
   caniuse-lite@1.0.30001766: {}
 
+  cast.ts@1.20.0: {}
+
   ccount@2.0.1: {}
 
   chai@5.3.3:
@@ -10055,6 +10100,9 @@ snapshots:
       property-information: 7.1.0
       space-separated-tokens: 2.0.2
 
+  heic2any@0.0.4:
+    optional: true
+
   hosted-git-info@7.0.2:
     dependencies:
       lru-cache: 10.4.3
@@ -11147,6 +11195,10 @@ snapshots:
 
   node-gyp-build@4.8.4: {}
 
+  node-localstorage@3.0.5:
+    dependencies:
+      write-file-atomic: 5.0.1
+
   node-mock-http@1.0.4: {}
 
   node-releases@2.0.27: {}
@@ -12229,6 +12281,8 @@ snapshots:
 
   text-hex@1.0.0: {}
 
+  timezone-date.ts@2.1.1: {}
+
   tiny-inflate@1.0.3: {}
 
   tinybench@2.9.0: {}
@@ -12844,6 +12898,11 @@ snapshots:
 
   wrappy@1.0.2: {}
 
+  write-file-atomic@5.0.1:
+    dependencies:
+      imurmurhash: 0.1.4
+      signal-exit: 4.1.0
+
   ws@8.21.0: {}
 
   xss@1.0.15:
@@ -12912,6 +12971,11 @@ snapshots:
       '@speed-highlight/core': 1.2.17
       cookie: 1.1.1
       youch-core: 0.3.3
+
+  zhconvert.ts@1.0.0:
+    dependencies:
+      '@beenotung/tslib': 24.26.0
+      cast.ts: 1.20.0
 
   zip-stream@6.0.1:
     dependencies:

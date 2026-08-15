@@ -70,6 +70,15 @@ const contents = defineCollection({
           })
         )
         .optional(),
+      sources: z
+        .array(
+          z.object({
+            url: z.string(),
+            text: z.string(),
+            icon: z.string(),
+          })
+        )
+        .optional(),
       /**
        * Optional gallery — when provided, renders a swipeable carousel in the
        * hero in place of the single `image`. A slide is either an image

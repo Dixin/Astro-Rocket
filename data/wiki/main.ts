@@ -7,10 +7,9 @@ const rawHtmlFiles = await htmlDownload.downloadHtmlsAndImages(false, false);
 const trimmedHtmlFiles = await htmlTrim.trimAllHtmlFiles(
     rawHtmlFiles.map(({ file }) => file),
     htmlTrim.defaultAuthor,
-    new Date(),
-    true
+    false
 );
 await markdown.convertAllHtmlFiles(
     trimmedHtmlFiles.map(({ file }) => file),
-    true
+    false
 );

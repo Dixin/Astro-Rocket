@@ -18,6 +18,14 @@ const markdownImageDirectory = `../../../../assets/${defaultLocale}/`;
 export const LinkTagName = 'ContentLink';
 const LinkIdPrefix = `${defaultLocale}/`;
 export const defaultAuthor = 'Beyond.ms';
+const sourceText: Record<string, string> = {
+    en: 'Wikipedia',
+    'zh-CN': '维基百科',
+    'zh-SG': '维基百科',
+    'zh-HK': '維基百科',
+    'zh-MO': '維基百科',
+    'zh-TW': '維基百科',
+};
 
 const mapId = (id: string) => (id in idMapping ? idMapping[id] : id);
 export const urlPathToId = (urlPath: string): string =>
@@ -96,7 +104,7 @@ const trimHtmlContent = async (
     html: string;
     metadata: {
         title: string;
-        sourceUrl: string;
+        sources: { url: string; text: string; icon: string }[];
         uid: string;
         description: string;
         publishedAt: Date;
@@ -179,7 +187,7 @@ const trimHtmlContent = async (
     // Images.
     $content.find('img').each((_index, image) => {
         const $image = $(image);
-        const source = $image.attr('src') || '';
+        const source = ($image.attr('src') || '').split('?')[0];
         if (imagesToSkip.some((skip) => source.endsWith(skip))) {
             $image.remove();
             return;
@@ -421,7 +429,7 @@ const trimHtmlContent = async (
     }
     const metadata: {
         title: string;
-        sourceUrl: string;
+        sources: { url: string; text: string; icon: string }[];
         uid: string;
         description: string;
         publishedAt: Date;
@@ -433,7 +441,6 @@ const trimHtmlContent = async (
         imageAlt: string | undefined;
     } = {
         title,
-        sourceUrl,
         uid: id,
         description: $content
             .find('h1, h2, h3, h4, h5, h6, h7, h8, h9')
@@ -447,6 +454,7 @@ const trimHtmlContent = async (
         featured: featuredIds.includes(id),
         image: imageSource,
         imageAlt: $image.length > 0 ? $image.attr('alt') || title : undefined,
+        sources: [{ url: sourceUrl, text: sourceText[locale], icon: 'book-open-text' }],
     };
     const contentText = $content.text().toLowerCase() || '';
     tags[locale]
@@ -457,7 +465,7 @@ const trimHtmlContent = async (
 
     const contentHtml = $content.html()!.replaceAll('※', '');
     return {
-        html: `<style class="frontmatter">${JSON.stringify(metadata)}</style>${contentHtml}`,
+        html: `<style class="frontmatter">${JSON.stringify(metadata)}</style>\n${contentHtml}`,
         metadata,
     };
 };
@@ -711,7 +719,6 @@ export const trimHtmlFile = async (
     trimmedHtmlFile: string,
     id: string,
     author: string,
-    publishedAt: Date,
     overwrite: boolean = false
 ): Promise<{ file: string; isSkipped: boolean }> => {
     if (!overwrite && (await exists(trimmedHtmlFile))) {
@@ -719,6 +726,7 @@ export const trimHtmlFile = async (
     }
 
     const rawHtmlContent = await fs.readFile(rawHtmlFile, { encoding: 'utf8' });
+    const publishedAt = (await fs.stat(rawHtmlFile)).mtime;
     const parsedRawHtmlFile = path.parse(rawHtmlFile);
     const locale = parsedRawHtmlFile.dir.split(path.sep).pop()!;
     const language = getLanguageFromLocale(locale);
@@ -826,7 +834,6 @@ function splitTable($: cheerio.CheerioAPI, $table: ReturnType<ReturnType<typeof 
 export const trimAllHtmlFiles = async (
     rawHtmlFiles: string[] = [],
     author: string,
-    publishedAt: Date,
     overwrite = false
 ) => {
     if (rawHtmlFiles.length === 0) {
@@ -847,7 +854,7 @@ export const trimAllHtmlFiles = async (
         }
         const id = urlPathToId(fileNameToUrlPath(rawHtmlFileName));
         trimedHtmlFiles.push(
-            await trimHtmlFile(rawHtmlFile, trimmedHtmlFilePath, id, author, publishedAt, overwrite)
+            await trimHtmlFile(rawHtmlFile, trimmedHtmlFilePath, id, author, overwrite)
         );
     }
 
