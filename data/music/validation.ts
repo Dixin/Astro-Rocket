@@ -61,13 +61,9 @@ export const validateMusicFiles = async () => {
     }
 
     const uid = fileName
-      .replaceAll('_', '-')
-      .replaceAll('&', '')
-      .replaceAll('!', '')
-      .replaceAll("'", '')
-      .replaceAll('・', '-')
+      .replaceAll(/[_&\+・～]/g, '-')
+      .replaceAll(/[!']/g, '')
       .replaceAll(/[\-]{2,}/g, '-')
-      .replaceAll('～', '-')
       .replace(/[\-]+$/, '')
       .toLowerCase();
     if (uid !== data.uid) {
