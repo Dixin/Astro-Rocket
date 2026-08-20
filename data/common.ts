@@ -95,6 +95,20 @@ export const readFiles = async (
   return files.sort((a, b) => a.localeCompare(b));
 };
 
+export const readDirectories = async (directory: string, isRecursive = true): Promise<string[]> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  const directories: string[] = [];
+  for (const entry of entries) {
+    const fullPath = path.join(directory, entry.name);
+    if (isRecursive && entry.isDirectory()) {
+      directories.push(...(await readDirectories(fullPath, isRecursive)));
+    } else if (entry.isDirectory()) {
+      directories.push(fullPath);
+    }
+  }
+  return directories.sort((a, b) => a.localeCompare(b));
+};
+
 export const downloadFile = async (url: string, filePath: string): Promise<void> => {
   const response = await fetch(url, {
     headers: {
@@ -186,9 +200,9 @@ export const downloadHtmlsAndImages = async (
      */
     partitionKey?: string;
   }>,
-  getHtmlFilePath: (url: string) => string | undefined,
+  getHtmlFilePath: (url: string) => Promise<string | undefined>,
   getHtml?: (page: Page) => Promise<string>,
-  getImageFilePath?: (url: string) => string | undefined,
+  getMediaFilePath?: (mediaUrl: string, mediaType: string, htmlUrl: string) => Promise<string | undefined>,
   overwriteHtml: boolean = false,
   overwriteImages: boolean = false,
   loadMedia: boolean = false,
@@ -201,16 +215,13 @@ export const downloadHtmlsAndImages = async (
   });
   context.addCookies(cookies);
   const page = await context.newPage();
+  const mediaRegex = /\.(jpg|jpeg|png|gif|webp|mp4|mov)$/i;
 
   if (!loadMedia) {
     await page.route('**/*', async (route) => {
       const request = route.request();
       const resourceType = request.resourceType().toLowerCase();
-      if (
-        resourceType === 'image' ||
-        resourceType === 'media' ||
-        /\.(jpg|jpeg|png|gif|webp|mp4|mov)$/i.test(request.url())
-      ) {
+      if (resourceType === 'image' || resourceType === 'media' || mediaRegex.test(request.url())) {
         await route.abort();
       } else {
         await route.continue();
@@ -218,12 +229,18 @@ export const downloadHtmlsAndImages = async (
     });
   }
 
-  if (getImageFilePath) {
+  let htmlUrl: string;
+  if (getMediaFilePath) {
     page.on('response', async (response) => {
-      if (response.request().resourceType() === 'image' && response.ok()) {
+      const request = response.request();
+      const resourceType = request.resourceType().toLowerCase();
+      const mediaUrl = response.url();
+      if (
+        (resourceType === 'image' || resourceType === 'media' || mediaRegex.test(request.url())) &&
+        response.ok()
+      ) {
         try {
-          const url = response.url();
-          const imageFilePath = getImageFilePath(url);
+          const imageFilePath = await getMediaFilePath(mediaUrl, resourceType, htmlUrl);
           if (!imageFilePath) {
             return;
           }
@@ -236,36 +253,37 @@ export const downloadHtmlsAndImages = async (
           await fs.writeFile(imageFilePath, buffer);
           console.warn(`Downloaded image: ${imageFilePath}`);
         } catch (error) {
-          console.error(`Failed to download image from ${response.url()}:`, error);
+          console.error(`Failed to download image from ${mediaUrl}:`, error);
         }
       }
     });
   }
 
-  const htmlFiles: { file: string; isSkipped: boolean }[] = [];
-  for (const url of urls) {
+  const htmlFiles: { url: string; file: string; isSkipped: boolean }[] = [];
+  await urls.forEachAsync(async (url) => {
+    htmlUrl = url;
     try {
-      const htmlFilePath = getHtmlFilePath(url);
+      const htmlFilePath = await getHtmlFilePath(url);
       if (!htmlFilePath) {
-        continue;
+        return;
       }
       if (!overwriteHtml && (await exists(htmlFilePath))) {
         console.warn(`File already exists, skipping: ${htmlFilePath}`);
-        htmlFiles.push({ file: htmlFilePath, isSkipped: true });
-        continue;
+        htmlFiles.push({ url, file: htmlFilePath, isSkipped: true });
+        return;
       }
 
       await page.goto(url, { waitUntil: 'networkidle' });
       const htmlContent = getHtml ? await getHtml(page) : await page.content();
       await fs.writeFile(htmlFilePath, htmlContent, { encoding: 'utf8' });
       console.warn(`Downloaded and saved HTML for ${url} to ${htmlFilePath}`);
-      htmlFiles.push({ file: htmlFilePath, isSkipped: false });
+      htmlFiles.push({ url, file: htmlFilePath, isSkipped: false });
     } catch (error) {
       console.error(`Failed to download ${url}:`, error);
     }
 
     await setTimeout(wait); // Wait for the specified time to ensure all images are loaded
-  }
+  });
 
   await browser.close();
 

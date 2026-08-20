@@ -1,5 +1,4 @@
 import cookies from './netease-cookies.json' with { type: 'json' };
-import { chromium } from 'playwright';
 import { downloadHtmlsAndImages, readFiles, toFileName } from '../common.ts';
 import * as cheerio from 'cheerio';
 import * as fs from 'fs/promises';
@@ -36,7 +35,7 @@ export const downloadNeteaseAlbumHtmlFiles = async () => {
   await downloadHtmlsAndImages(
     urls,
     cookies,
-    (url) => path.join(neteaseAlbumRawHtmlDirectory, `${url.split('id=')[1]}.html`),
+    async (url) => path.join(neteaseAlbumRawHtmlDirectory, `${url.split('id=')[1]}.html`),
     async (page) => {
       const frame = page.frame({ name: 'contentFrame' });
       if (!frame) {
@@ -65,7 +64,7 @@ export const downloadNeteaseSongHtmlFiles = async () => {
   const songUrls: string[] = [];
   await albumFiles.forEachAsync(async (file) => {
     const albumHtml = await fs.readFile(file, { encoding: 'utf8' });
-    if(!albumHtml.endsWith('</html>')) {
+    if (!albumHtml.endsWith('</html>')) {
       console.error(`Album HTML file ${file} is not complete. Skipping this file.`);
       return;
     }
@@ -79,21 +78,24 @@ export const downloadNeteaseSongHtmlFiles = async () => {
     const $json = $('script[type="application/ld+json"]');
     const albumJson = JSON.parse($json.eq(0).html()!);
     const songsJson = JSON.parse($json.eq(1).html()!);
-    songsJson.track.itemListElement.forEach((item: { url: string; name: string; position: number }) => {
-      const songId = item.url.split('id=')[1];
-      if (existingSongIds.includes(songId)) {
-        return;
+    songsJson.track.itemListElement.forEach(
+      (item: { url: string; name: string; position: number }) => {
+        const songId = item.url.split('id=')[1];
+        if (existingSongIds.includes(songId)) {
+          return;
+        }
+        songs[songId] = {
+          albumDate: songsJson.datePublished.substring(0, 10),
+          albumId: albumJson['@id'].split('id=')[1],
+          albumTitle: albumJson.title.replaceAll('^', '-'),
+          songId,
+          songTitle: item.name.replaceAll('^', '-'),
+          songTrackNumber:
+            item.position < 10 ? `0${item.position.toString(10)}` : item.position.toString(10),
+        };
+        songUrls.push(`https://music.163.com/#/song?id=${songId}`);
       }
-      songs[songId] = {
-        albumDate: songsJson.datePublished.substring(0, 10),
-        albumId: albumJson['@id'].split('id=')[1],
-        albumTitle: albumJson.title.replaceAll('^', '-'),
-        songId,
-        songTitle: item.name.replaceAll('^', '-'),
-        songTrackNumber: item.position < 10 ? `0${item.position.toString(10)}` : item.position.toString(10),
-      };
-      songUrls.push(`https://music.163.com/#/song?id=${songId}`);
-    });
+    );
   });
 
   console.log(`Found ${songUrls.length} new songs to download.`);
@@ -104,7 +106,12 @@ export const downloadNeteaseSongHtmlFiles = async () => {
     (url) => {
       const songId = url.split('id=')[1];
       const song = songs[songId];
-      return path.join(neteaseSongRawHtmlDirectory, toFileName(`${song.albumDate}^${song.albumTitle}^${song.albumId}^${song.songTrackNumber}^${song.songTitle}^${songId}.html`));
+      return path.join(
+        neteaseSongRawHtmlDirectory,
+        toFileName(
+          `${song.albumDate}^${song.albumTitle}^${song.albumId}^${song.songTrackNumber}^${song.songTitle}^${songId}.html`
+        )
+      );
     },
     async (page) => {
       const frame = page.frame({ name: 'contentFrame' });
