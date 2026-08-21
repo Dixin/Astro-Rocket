@@ -9,50 +9,35 @@ import newsUrls from './google-urls.json' with { type: 'json' };
 const newsRootDirectory = path.join(dataRootDirectory, 'news');
 const newsUrlDirectory = path.join(newsRootDirectory, 'url');
 const urlsFile = path.join(newsRootDirectory, 'google-urls.json');
+
 const newsGoogleRssUrls = {
-  beyond: {
-    en: 'https://news.google.com/rss/search?q=beyond+band+hongkong&hl=en-US&gl=US&ceid=US:en',
-    'zh-CN':
-      'https://news.google.com/rss/search?q=beyond%E4%B9%90%E9%98%9F&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
-    'zh-HK':
-      'https://news.google.com/rss/search?q=beyond%E6%A8%82%E9%9A%8A&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
-    'zh-TW':
-      'https://news.google.com/rss/search?q=beyond%E6%A8%82%E9%9A%8A&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+  en: {
+    'Beyond': 'https://news.google.com/rss/search?q=beyond+band+hongkong&hl=en-US&gl=US&ceid=US:en',
+    'Wong Ka Kui': 'https://news.google.com/rss/search?q=Wong+Ka+Kui&hl=en-US&gl=US&ceid=US:en',
+    'Wong Ka Keung': 'https://news.google.com/rss/search?q=Wong+Ka+Keung&hl=en-US&gl=US&ceid=US:en',
+    'Paul Wong': 'https://news.google.com/rss/search?q=Paul+Wong+Hongkong&hl=en-US&gl=US&ceid=US:en',
+    'Yip Sai Wing': 'https://news.google.com/rss/search?q=Yip+Sai+Wing&hl=en-US&gl=US&ceid=US:en'
   },
-  黄家驹: {
-    en: 'https://news.google.com/rss/search?q=Wong+Ka+Kui&hl=en-US&gl=US&ceid=US:en',
-    'zh-CN':
-      'https://news.google.com/rss/search?q=%E9%BB%84%E5%AE%B6%E9%A9%B9&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
-    'zh-HK':
-      'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E9%A7%92&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
-    'zh-TW':
-      'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E9%A7%92&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+  'zh-CN':{
+    'Beyond': 'https://news.google.com/rss/search?q=beyond%E4%B9%90%E9%98%9F&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
+    '黄家驹': 'https://news.google.com/rss/search?q=%E9%BB%84%E5%AE%B6%E9%A9%B9&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
+    '黄家强': 'https://news.google.com/rss/search?q=%E9%BB%84%E5%AE%B6%E5%BC%BA&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
+    '黄贯中': 'https://news.google.com/rss/search?q=%E9%BB%84%E8%B4%AF%E4%B8%AD&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
+    '叶世荣': 'https://news.google.com/rss/search?q=%E5%8F%B6%E4%B8%96%E8%8D%A3&hl=zh-CN&gl=CN&ceid=CN:zh-Hans'
   },
-  黄家强: {
-    en: 'https://news.google.com/rss/search?q=Wong+Ka+Keung&hl=en-US&gl=US&ceid=US:en',
-    'zh-CN':
-      'https://news.google.com/rss/search?q=%E9%BB%84%E5%AE%B6%E5%BC%BA&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
-    'zh-HK':
-      'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E5%BC%B7&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
-    'zh-TW':
-      'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E5%BC%B7&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+  'zh-HK':{
+    'Beyond': 'https://news.google.com/rss/search?q=beyond%E6%A8%82%E9%9A%8A&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
+    '黃家駒': 'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E9%A7%92&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
+    '黃家強': 'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E5%BC%B7&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
+    '黃貫中': 'https://news.google.com/rss/search?q=%E9%BB%83%E8%B2%AB%E4%B8%AD&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
+    '葉世榮': 'https://news.google.com/rss/search?q=%E8%91%89%E4%B8%96%E6%A6%AE&hl=zh-HK&gl=HK&ceid=HK:zh-Hant'
   },
-  黄贯中: {
-    en: 'https://news.google.com/rss/search?q=Paul+Wong+Hongkong&hl=en-US&gl=US&ceid=US:en',
-    'zh-CN':
-      'https://news.google.com/rss/search?q=%E9%BB%84%E8%B4%AF%E4%B8%AD&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
-    'zh-HK':
-      'https://news.google.com/rss/search?q=%E9%BB%83%E8%B2%AB%E4%B8%AD&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
-    'zh-TW':
-      'https://news.google.com/rss/search?q=%E9%BB%83%E8%B2%AB%E4%B8%AD&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
-  },
-  叶世荣: {
-    'zh-CN':
-      'https://news.google.com/rss/search?q=%E5%8F%B6%E4%B8%96%E8%8D%A3&hl=zh-CN&gl=CN&ceid=CN:zh-Hans',
-    'zh-HK':
-      'https://news.google.com/rss/search?q=%E8%91%89%E4%B8%96%E6%A6%AE&hl=zh-HK&gl=HK&ceid=HK:zh-Hant',
-    'zh-TW':
-      'https://news.google.com/rss/search?q=%E8%91%89%E4%B8%96%E6%A6%AE&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+  'zh-TW':{
+    'Beyond': 'https://news.google.com/rss/search?q=beyond%E6%A8%82%E9%9A%8A&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    '黃家駒': 'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E9%A7%92&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    '黃家強': 'https://news.google.com/rss/search?q=%E9%BB%83%E5%AE%B6%E5%BC%B7&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    '黃貫中': 'https://news.google.com/rss/search?q=%E9%BB%83%E8%B2%AB%E4%B8%AD&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    '葉世榮': 'https://news.google.com/rss/search?q=%E8%91%89%E4%B8%96%E6%A6%AE&hl=zh-TW&gl=TW&ceid=TW:zh-Hant'
   },
 };
 
