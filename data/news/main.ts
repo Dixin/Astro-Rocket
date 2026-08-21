@@ -10,3 +10,4 @@ import * as googleDownload from './google-download.ts';
 // await hk01Urls.getTagUrls();
 // await googleUrls.printUrls();
 // await chinaNewsUrls.getUrls(true);
+await googleUrls.getUrls();
