@@ -4,7 +4,7 @@ export function getContentDirectoryNames(): string[] {
   return Array.from(contentDirectoryNames);
 }
 
-export const cachedContentDirectoryNames = ['blog', 'events', 'news', 'projects'];
+export const cachedContentDirectoryNames = ['blog', 'live', 'music', 'news', 'wiki'];
 
 export const getContentDirectoryNameFromId = (id: string) => {
     const index = id.indexOf('/');
