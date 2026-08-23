@@ -21,6 +21,7 @@ import {
   getProjectsBaseUrl,
   getProjectTranslations,
 } from '@/lib/projects';
+import { cn } from '@/lib/cn';
 
 interface Props {
   title: string;
@@ -190,7 +191,7 @@ const languageAlternates = Object.fromEntries(
           </div>
 
           <footer class="border-border mt-12 border-t pt-8 flex justify-center" data-reveal>
-            <Button href={projectsHref} variant="brand-outline" size="sm">
+            <Button href={projectsHref} size="sm">
               <Icon name="arrow-left" size="sm" />
               {t('projects.backToProjects', locale)}
             </Button>
@@ -230,7 +231,7 @@ const languageAlternates = Object.fromEntries(
     <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
       <!-- Mobile: flat section, no glitch band -->
       <div class="glitch:hidden mx-auto max-w-2xl px-6 text-center" data-reveal>
-        <Badge variant="brand" pill class="mb-6">
+        <Badge variant="default" pill class="mb-6">
           <Icon name="message-circle" size="sm" />
           {t('projects.ctaBadge', locale)}
         </Badge>
@@ -241,11 +242,11 @@ const languageAlternates = Object.fromEntries(
           {t('projects.closingLead', locale)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" href={contactUrl} class="cta-btn-brand">
+          <Button size="lg" href={contactUrl}>
             {t('projects.ctaPrimary', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button size="lg" variant="brand-outline" href={projectsHref}>
+          <Button size="lg" href={projectsHref}>
             {t('projects.allProjects', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -261,11 +262,11 @@ const languageAlternates = Object.fromEntries(
           {t('projects.closingLead', locale)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" href={contactUrl} class="hero-btn-brand">
+          <Button size="lg" href={contactUrl}>
             {t('projects.ctaPrimary', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button size="lg" variant="outline" href={projectsHref}>
+          <Button size="lg" href={projectsHref}>
             {t('projects.allProjects', locale)}
             <Icon name="arrow-right" size="sm" />
           </Button>

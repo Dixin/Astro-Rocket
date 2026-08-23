@@ -11,6 +11,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 import { defaultLocale } from '@/i18n';
 import { getProjectUrl } from '@/lib/projects';
+import {  cn } from '@/lib/cn';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -31,14 +33,15 @@ interface Props {
 
 const { project, index = 0, locale = defaultLocale, reveal = true } = Astro.props;
 const { data } = project;
+const href = data.placeholder ? undefined : getProjectUrl(project.id, locale);
 ---
 
 <Card
   variant="elevated"
   hover
   padding="none"
-  href={data.placeholder ? undefined : getProjectUrl(project.id, locale)}
-  class="group flex flex-col"
+  href={href}
+  class={cn('group flex flex-col', href ? '' : 'border-foreground-muted')}
   data-reveal={reveal || undefined}
   data-reveal-delay={reveal ? index % 2 || undefined : undefined}
 >
@@ -62,7 +65,7 @@ const { data } = project;
       ) : (
         <span />
       )}
-      <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0" />
+      <Icon name="arrow-up-right" size="sm" class={cn('text-foreground-muted shrink-0', href ? 'group-hover:text-brand-500 transition-colors' : '')} />
     </div>
 
     <!--
@@ -75,7 +78,7 @@ const { data } = project;
       corner it has nothing to balance against and towers over the title.
     -->
     <div class="mb-3 flex flex-col items-center gap-2 text-center">
-      <Icon name={data.icon ?? 'layers'} class="w-10 h-10 text-brand-500 shrink-0" />
+      <Icon name={data.icon ?? 'layers'} class={cn('w-10 h-10 text-brand-500 shrink-0', href ? 'text-brand-500' : 'text-foreground')} />
       <h3 class="font-display text-lg font-bold text-foreground">{data.title}</h3>
     </div>
 
@@ -84,9 +87,7 @@ const { data } = project;
     {data.tags && data.tags.length > 0 && (
       <div class="flex flex-wrap justify-center gap-1.5">
         {data.tags.map((tag) => (
-          <span class="inline-flex items-center rounded-full bg-transparent px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:text-brand-400 ring-1 ring-inset ring-brand-500/40 transition-colors group-hover:ring-brand-500/80">
-            #{tag}
-          </span>
+          <Badge variant="default">#{tag}</Badge>
         ))}
       </div>
     )}

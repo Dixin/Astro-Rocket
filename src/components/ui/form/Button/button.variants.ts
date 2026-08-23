@@ -25,7 +25,7 @@ export const buttonVariants = cva(
         // light, 6.1:1+ dark at rest, above 4.5:1 on the hover wash —
         // brand-600 would dip under on tinted fills).
         'brand-outline':
-          'bg-transparent text-brand-700 border border-brand-500/40 hover:bg-brand-500/10 hover:border-brand-500/80 active:scale-[0.98] dark:text-brand-400',
+          'btn-brand border border-brand-500 bg-brand-700/10 text-brand-500 hover:bg-secondary/70 hover:border-brand-300 hover:text-brand-300 active:scale-[0.98] py-1',
         ghost:
           'text-foreground-secondary hover:text-foreground hover:bg-secondary active:scale-[0.98]',
         link: 'text-foreground-secondary hover:text-foreground underline-offset-4 hover:underline',
