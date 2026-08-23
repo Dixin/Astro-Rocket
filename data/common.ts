@@ -56,7 +56,7 @@ if (!Array.prototype.mapAsync) {
 
 export const toFileName = (name: string): string => {
   return name
-    .replace(/[<>:"/\\|?*\x00-\x1F]/g, '-')
+    .replace(/[<>:"/\\|?*]/g, '-')
     .replace(/\s+/g, ' ')
     .trim();
 };

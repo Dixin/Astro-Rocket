@@ -61,10 +61,10 @@ export const validateMusicFiles = async () => {
     }
 
     const uid = fileName
-      .replaceAll(/[_&\+・～]/g, '-')
+      .replaceAll(/[_&+・～]/g, '-')
       .replaceAll(/[!']/g, '')
-      .replaceAll(/[\-]{2,}/g, '-')
-      .replace(/[\-]+$/, '')
+      .replaceAll(/[-]{2,}/g, '-')
+      .replace(/[-]+$/, '')
       .toLowerCase();
     if (uid !== data.uid) {
       console.error(`File ${file} has mismatched uid: ${uid} vs ${data.uid}`);
