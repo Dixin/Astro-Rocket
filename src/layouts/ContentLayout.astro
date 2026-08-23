@@ -14,7 +14,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import { createContentSchema, createFAQSchema } from '@/lib/schema';
 import { getContentOgPath, getDefaultOgPath, isShareableImage } from '@/lib/og/svg';
-import { t, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
+import { tContent as t, t as t0, getLocaleFromPath, localizedPath, getLocales } from '@/i18n';
 import { getContentSlug, getContentBaseUrl } from '@/lib/contents';
 import { getContentTranslations } from '@/lib/content-links';
 import ContentCta from '@/components/contents/ContentCta.astro';
@@ -123,7 +123,7 @@ const ogImage =
 const ogImageAlt = ogImage === image?.src ? imageAlt || title : title;
 
 const breadcrumbs = [
-  { label: t('common.home', locale), href: localizedPath('/', locale) },
+  { label: t0('common.home', locale), href: localizedPath('/', locale) },
   { label: t(`${i18nKey}.title`, locale), href: getContentBaseUrl(contentUrlPath, locale) },
   { label: title },
 ];

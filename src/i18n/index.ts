@@ -161,3 +161,72 @@ export function getLocaleFromPath(path: string): Locale {
   const first = normalized.split('/').filter(Boolean)[0];
   return first && i18nConfig.locales.includes(first) ? first : defaultLocale;
 }
+
+export type ContentI18n = {
+  title: string;
+  description: string;
+  readingTime: string;
+  publishedOn: string;
+  updatedOn: string;
+  writtenBy: string;
+  tagsLabel: string;
+  featured: string;
+  draft: string;
+  noContentsFound: string;
+  tableOfContents: string;
+  shareThisContent: string;
+  relatedContents: string;
+  share: string;
+  shareOn: string;
+  copyLink: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroBadge: string;
+  heroDescription: string;
+  allContents: string;
+  noContents: string;
+  pageMetaTitle: string;
+  pageMetaDescription: string;
+  pageBadge: string;
+  newestContents: string;
+  tagMetaTitle: string;
+  tagMetaDescription: string;
+  tagBadge: string;
+  tagCountOne: string;
+  tagCountOther: string;
+  tagEmpty: string;
+  tagBackToAll: string;
+  onThisPage: string;
+  tocShow: string;
+  tocHide: string;
+  backToContents: string;
+  updated: string;
+  rssFeed: string;
+  cta: {
+    heading: string;
+    description: string;
+    button: string;
+  };
+};
+
+const defaultContentKey = 'contents';
+const keySeparator = '.';
+
+export function tContent(key: string, locale: Locale = defaultLocale, vars?: Record<string, string | number>): string {
+  const dict = dictionaries[locale] ?? dictionaries[defaultLocale];
+  const fallback = dictionaries[defaultLocale];
+  const index = key.indexOf(keySeparator);
+  if (index <= 0) {
+    throw new Error(`Invalid key "${key}". The key must be in the format "{i18nKey}${keySeparator}{key}".`);
+  }
+  const fallbackKey = `${defaultContentKey}${keySeparator}${key.substring(index + keySeparator.length)}`;
+  const value = asString(getNestedValue(dict, key)) ?? asString(getNestedValue(dict, fallbackKey)) ?? asString(getNestedValue(fallback, key)) ?? asString(getNestedValue(fallback, fallbackKey)) ?? key;
+  return interpolate(value, vars);
+}
+
+export const tContentData = (i18nKey: string, locale: string = defaultLocale): ContentI18n => {
+  const dict = dictionaries[locale] ?? dictionaries[defaultLocale];
+  const fallback = dictionaries[defaultLocale];
+  const value = getNestedValue(dict, i18nKey) ?? getNestedValue(dict, defaultContentKey) ?? getNestedValue(fallback, i18nKey) ?? getNestedValue(fallback, defaultContentKey);
+  return value as ContentI18n;
+};
