@@ -21,7 +21,7 @@ Report it privately in one of two ways:
 1. **GitHub Security Advisories** — preferred. Go to the repository's
    **Security** tab and choose **Report a vulnerability**. This keeps the
    report private and creates a place to discuss the fix.
-2. **Email** — `hello@hansmartens.dev`, if you would rather not use GitHub.
+2. **Email** — `dixin@outlook.com`, if you would rather not use GitHub.
 
 Useful things to include, as far as you can:
 

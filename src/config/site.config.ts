@@ -265,28 +265,28 @@ const siteConfig: SiteConfig = {
   // Point this at a file in `public/` to use your own — it has to be a raster
   // (PNG or JPEG): social platforms don't render SVG share images.
   ogImage: '/og/default.png',
-  author: 'Hans Martens',
-  email: 'hello@hansmartens.dev',
+  author: 'Beyond.ms',
+  email: 'dixin@outlook.com',
   address: {
     street: '',
-    city: 'Amsterdam',
-    state: '',
+    city: 'Seattle',
+    state: 'WA',
     zip: '',
-    country: 'the Netherlands',
+    country: 'United States',
   },
   socialLinks: [
-    'https://github.com/hansmartensdev',
-    'https://x.com/hansmartens_dev',
-    'https://www.linkedin.com/in/hansmartensdev',
-    'https://bsky.app/profile/hansmartensdev.bsky.social',
+    'https://github.com/Dixin',
+    'https://x.com/dixinyan',
+    'https://www.linkedin.com/in/dixin',
+    'https://CodingOnWheels.com',
   ],
   header: {
     // Flip to `true` to show the social icons (incl. GitHub) in the header.
     showSocialLinks: false,
   },
   twitter: {
-    site: 'https://x.com/hansmartens_dev',
-    creator: '@hansmartens_dev',
+    site: 'https://x.com/dixinyan',
+    creator: '@dixinyan',
   },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
@@ -302,8 +302,8 @@ const siteConfig: SiteConfig = {
       enabled: true,
       layout: 'auto',
       sidebarPosition: 'right',
-      minHeadings: 3,
-      maxDepth: 3,
+      minHeadings: 4,
+      maxDepth: 4,
     },
     comments: {
       enabled: false,
@@ -361,7 +361,7 @@ const siteConfig: SiteConfig = {
   i18n: i18nConfig,
   branding: {
     logo: {
-      alt: 'Astro Rocket',
+      alt: 'Beyond.ms',
       // image: '/logo.svg', // Optional: set to a file in public/ to use a custom logo image instead of the letter monogram.
       imageUrl: '/favicon.svg',
     },

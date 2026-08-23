@@ -10,10 +10,10 @@
   <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-7.2-bc52ee?logo=astro&logoColor=white" alt="Astro" /></a>
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.3-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket/actions/workflows/deploy.yml"><img src="https://github.com/hansmartensdev/astro-rocket/actions/workflows/deploy.yml/badge.svg" alt="Build, lint, type check and tests" /></a>
+  <a href="https://github.com/Dixin/astro-rocket/actions/workflows/deploy.yml"><img src="https://github.com/Dixin/astro-rocket/actions/workflows/deploy.yml/badge.svg" alt="Build, lint, type check and tests" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://img.shields.io/github/stars/hansmartensdev/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
-  <a href="https://github.com/hansmartensdev/astro-rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=hansmartensdev.astro-rocket" alt="Visitors" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://img.shields.io/github/stars/Dixin/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
+  <a href="https://github.com/Dixin/Astro-Rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=Dixin.astro-rocket" alt="Visitors" /></a>
 </p>
 
 <p align="center">
@@ -66,7 +66,7 @@ Content is Markdown in `src/content/`, the rest is `site.config.ts`, and it depl
 
 Use all of it or only the parts you need. The site you build on it is yours.
 
-**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
+**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Beyond.ms](https://Beyond.ms)**
 
 > **Origins & credits.** Astro Rocket began as a fork of [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com). Velocity's design system and component library are the foundation this theme was built on, and the credit for that work belongs to the Southwell Media team. Astro Rocket has developed on its own since then.
 
@@ -116,7 +116,7 @@ Use all of it or only the parts you need. The site you build on it is yours.
 
 ```bash
 # Clone the repository
-git clone https://github.com/hansmartensdev/astro-rocket.git my-project
+git clone https://github.com/Dixin/Astro-Rocket.git my-project
 cd my-project
 
 # Install dependencies
@@ -1047,7 +1047,7 @@ Astro Rocket builds to a **static site** — plain HTML, CSS, and JavaScript wit
 
 **About `pnpm audit`.** An audit will report advisories in the dependency tree. Almost all of them come from the **build-time tooling of the deploy adapters** — Netlify and Cloudflare each bring a large local-development toolchain. That code runs only during `astro build` on your own machine; it is never part of the deployed site and never reaches a visitor.
 
-**Reporting a security issue.** If you find a real vulnerability in the theme itself, please report it privately — open a [GitHub security advisory](https://github.com/hansmartensdev/Astro-Rocket/security/advisories/new) or email hello@hansmartens.dev — rather than a public issue, so it can be fixed before it's widely known.
+**Reporting a security issue.** If you find a real vulnerability in the theme itself, please report it privately — open a [GitHub security advisory](https://github.com/Dixin/Astro-Rocket/security/advisories/new) or email dixin@outlook.com — rather than a public issue, so it can be fixed before it's widely known.
 
 ---
 
@@ -1073,12 +1073,12 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Links
 
-- [Astro Rocket on GitHub](https://github.com/hansmartensdev/astro-rocket)
+- [Astro Rocket on GitHub](https://github.com/Dixin/astro-rocket)
 - [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com) — the theme Astro Rocket was originally forked from
 - [Astro Documentation](https://docs.astro.build)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
 
 ---
 
-**Astro Rocket** is designed and maintained by [Hans Martens](https://hansmartens.dev).
+**Astro Rocket** is designed and maintained by [Beyond.ms](https://beyond.ms).
 Originally forked from [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com) — credit to them for the solid base it grew from.

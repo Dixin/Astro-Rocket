@@ -1,0 +1,35 @@
+{
+    "list-marker-space": {
+        "ol_multi": 2,
+        "ol_single": 2,
+        "ul_multi": 3,
+        "ul_single": 3
+    },
+    "ul-indent": {
+        "indent": 4
+    },
+    "ol-indent": {
+        "indent": 4
+    },
+    "MD013": {
+        "line_length": 8000
+    },
+    "MD024": {
+        "siblings_only": true
+    },
+    "MD033": {
+        "table_allowed_elements": [
+            "br",
+            "ContentLink"
+        ],
+        "allowed_elements": [
+            "ContentLink"
+        ]
+    },
+    "MD034": false,
+    "MD036": false,
+    "MD041": {
+        "level": 2
+    },
+    "MD053": false
+}
