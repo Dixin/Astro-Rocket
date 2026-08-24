@@ -19,7 +19,7 @@ export const getContentDirectoryNameFromId = (id: string) => {
 };
 
 const getContentDirectoryNameFromPath = (path: string) => {
-  if(!path.startsWith('/src/content/contents/') || path.split('/').length < 5) {
+  if (!path.startsWith('/src/content/contents/') || path.split('/').length < 5) {
     throw new Error(`Unexpected content file path: ${path}. Expected to be under /src/content/contents/`);
   }
   const segments = path.split('/');

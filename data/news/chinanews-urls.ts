@@ -4,7 +4,7 @@ import { exists, dataRootDirectory, readFiles, downloadString, decodeHtml } from
 import { chromium } from 'playwright';
 import { setTimeout } from 'timers/promises';
 import * as cheerio from 'cheerio';
-//import newsUrls from './chinanews-urls.json' with { type: 'json' };
+import newsUrls from './chinanews-urls.json' with { type: 'json' };
 
 const currentDirectory = import.meta.dirname;
 const urlsHtmlFile = path.join(currentDirectory, 'chinanews-urls.html');
@@ -78,4 +78,23 @@ export const getUrls = async (overwrite: boolean = false) => {
 
   await fs.writeFile(urlsJsonFile, JSON.stringify(urls, null, 2), { encoding: 'utf8' });
   return urls;
+};
+
+export const printUrls = () => {
+  const guids = new Set<string>();
+  const entries = Object.entries(newsUrls).sort(([_link1, item1], [_link2, item2]) => item2.pubDate.localeCompare(item1.pubDate));
+  for (const [link, item] of entries) {
+    if (guids.has(item.guid)) {
+      console.error(`Duplicate guid: ${item.guid} for link: ${link}`);
+    }
+    guids.add(item.guid);
+    console.warn(`${item.pubDate} - ${link} - ${item.title} - ${item.tags.join(', ')}`);
+  }
+
+  console.warn(`Total URLs: ${entries.length}, Unique GUIDs: ${guids.size}`);
+  
+};
+
+export const downloadHtmlFiles = async () => {
+
 };

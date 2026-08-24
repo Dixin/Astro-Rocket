@@ -1,11 +1,7 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exists, dataRootDirectory, readFiles, downloadString, decodeHtml } from '../common.ts';
-import { chromium } from 'playwright';
-import { setTimeout } from 'timers/promises';
+import { exists, decodeHtml } from '../common.ts';
 import * as cheerio from 'cheerio';
-import newsUrls from './hk01-urls.json' with { type: 'json' };
-import tagUrls from './hk01-tags.json' with { type: 'json' };
 
 const currentDirectory = import.meta.dirname;
 const urlsHtmlFile = path.join(currentDirectory, 'hk01-urls.html');
