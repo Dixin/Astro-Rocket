@@ -1,8 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exists, readFiles } from '../common.ts';
-import { chromium } from 'playwright';
-import { setTimeout } from 'timers/promises';
+import { readFiles } from '../common.ts';
 import matter from 'gray-matter';
 
 export const currentDataRootDirectory = import.meta.dirname;

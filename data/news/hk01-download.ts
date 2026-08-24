@@ -32,22 +32,22 @@ type NewsUrlItem = {
 };
 
 const getHtmlFilePath = (news: NewsUrlItem) => {
-  const name = toFileName(news.link.split('/').pop()!);
-  if (!name) {
+  const uid = toFileName(news.link.split('/').pop()!.toLowerCase());
+  if (!uid) {
     throw new Error(`Invalid link: ${news.link}`);
   }
   return path.join(
     rawHtmlDirectory,
-    `${news.pubDate.replaceAll('-', '')}-hk01-${news.guid.split('/').at(-1)}-${name}.html`
+    `${news.pubDate.replaceAll('-', '')}-hk01-${news.guid.split('/').at(-1)}-${uid}.html`
   );
 };
 
 export const downloadHtmlFiles = async (overwrite = false) => {
   const mergedUrls: Record<string, NewsUrlItem> = {};
   const urls: string[] = [];
-  const files = new Set<String>();
+  const files = new Set<string>();
 
-  Object.entries(newsUrls as Record<string, NewsUrlItem>).forEach(([shorLink, item]) => {
+  Object.entries(newsUrls as Record<string, NewsUrlItem>).forEach(([_shorLink, item]) => {
     if (item.link in mergedUrls) {
       throw new Error(`Duplicate link found: ${item.link}`);
     }
@@ -59,7 +59,7 @@ export const downloadHtmlFiles = async (overwrite = false) => {
     mergedUrls[item.link] = item;
     urls.push(item.link);
   });
-  Object.entries(additionalNewsUrls as Record<string, NewsUrlItem>).forEach(([shorLink, item]) => {
+  Object.entries(additionalNewsUrls as Record<string, NewsUrlItem>).forEach(([_shorLink, item]) => {
     if (item.link in mergedUrls) {
       throw new Error(`Duplicate link found: ${item.link}`);
     }
@@ -86,9 +86,9 @@ export const downloadHtmlFiles = async (overwrite = false) => {
 
 export const convertToMarkdown = async (overwrite = false) => {
   const mergedUrls: Record<string, NewsUrlItem> = {};
-  const files = new Set<String>();
+  const files = new Set<string>();
 
-  Object.entries(newsUrls as Record<string, NewsUrlItem>).forEach(([shorLink, item]) => {
+  Object.entries(newsUrls as Record<string, NewsUrlItem>).forEach(([_shorLink, item]) => {
     if (item.link in mergedUrls) {
       throw new Error(`Duplicate link found: ${item.link}`);
     }
@@ -99,7 +99,7 @@ export const convertToMarkdown = async (overwrite = false) => {
     files.add(item.description);
     mergedUrls[item.link] = item;
   });
-  Object.entries(additionalNewsUrls as Record<string, NewsUrlItem>).forEach(([shorLink, item]) => {
+  Object.entries(additionalNewsUrls as Record<string, NewsUrlItem>).forEach(([_shorLink, item]) => {
     if (item.link in mergedUrls) {
       throw new Error(`Duplicate link found: ${item.link}`);
     }
@@ -113,7 +113,7 @@ export const convertToMarkdown = async (overwrite = false) => {
 
   const urls = Object.entries(mergedUrls)
     .sort(([_linkA, itemA], [_linkB, itemB]) => itemA.pubDate.localeCompare(itemB.pubDate))
-    .map(([link, item]) => link);
+    .map(([link, _item]) => link);
   const imagesMapping: Record<string, string> = {};
 
   await urls.forEachAsync(async (url) => {

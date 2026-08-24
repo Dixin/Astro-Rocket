@@ -28,7 +28,7 @@ export const downloadNeteaseAlbumHtmlFiles = async () => {
     .distinct()
     .filter((id) => !existingAlbumIds.includes(id));
 
-  console.log(`Found ${albumIds.length} new albums to download.`);
+  console.warn(`Found ${albumIds.length} new albums to download.`);
 
   const urls = albumIds.map((id) => `https://music.163.com/#/album?id=${id}`);
 
@@ -98,7 +98,7 @@ export const downloadNeteaseSongHtmlFiles = async () => {
     );
   });
 
-  console.log(`Found ${songUrls.length} new songs to download.`);
+  console.warn(`Found ${songUrls.length} new songs to download.`);
 
   await downloadHtmlsAndImages(
     songUrls,

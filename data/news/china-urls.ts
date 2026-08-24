@@ -1,14 +1,12 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exists, dataRootDirectory, readFiles, downloadString, decodeHtml } from '../common.ts';
-import { chromium } from 'playwright';
-import { setTimeout } from 'timers/promises';
+import { exists, decodeHtml } from '../common.ts';
 import * as cheerio from 'cheerio';
-import newsUrls from './chinanews-urls.json' with { type: 'json' };
+import newsUrls from './china-urls.json' with { type: 'json' };
 
 const currentDirectory = import.meta.dirname;
-const urlsHtmlFile = path.join(currentDirectory, 'chinanews-urls.html');
-const urlsJsonFile = path.join(currentDirectory, 'chinanews-urls.json');
+const urlsHtmlFile = path.join(currentDirectory, 'china-urls.html');
+const urlsJsonFile = path.join(currentDirectory, 'china-urls.json');
 
 type NewsUrlItem = {
   title: string;
@@ -82,19 +80,19 @@ export const getUrls = async (overwrite: boolean = false) => {
 
 export const printUrls = () => {
   const guids = new Set<string>();
-  const entries = Object.entries(newsUrls).sort(([_link1, item1], [_link2, item2]) => item2.pubDate.localeCompare(item1.pubDate));
+  const entries = Object.entries(newsUrls as Record<string, NewsUrlItem>).sort(
+    ([_link1, item1], [_link2, item2]) => item2.pubDate.localeCompare(item1.pubDate)
+  );
   for (const [link, item] of entries) {
     if (guids.has(item.guid)) {
       console.error(`Duplicate guid: ${item.guid} for link: ${link}`);
     }
-    guids.add(item.guid);
-    console.warn(`${item.pubDate} - ${link} - ${item.title} - ${item.tags.join(', ')}`);
+    guids.add(item.guid.substring(4));
+    // console.warn(`${item.pubDate} - ${link} - ${item.title} - ${item.tags.join(', ')}`);
+    if (!item.guid.startsWith('4-8-')) {
+      console.warn(item.guid);
+    }
   }
 
   console.warn(`Total URLs: ${entries.length}, Unique GUIDs: ${guids.size}`);
-  
-};
-
-export const downloadHtmlFiles = async () => {
-
 };

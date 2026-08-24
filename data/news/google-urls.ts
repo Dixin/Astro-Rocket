@@ -1,8 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exists, dataRootDirectory, readFiles, downloadString, decodeHtml } from '../common.ts';
-import { chromium } from 'playwright';
-import { setTimeout } from 'timers/promises';
+import { exists, dataRootDirectory, downloadString, decodeHtml } from '../common.ts';
 import * as cheerio from 'cheerio';
 import newsUrls from './google-urls.json' with { type: 'json' };
 
@@ -166,25 +164,17 @@ export const writeUrls = async (overwrite: boolean = false) => {
   // }
 
   const urls = await getUrls(overwrite);
-  let totalCount = 0;
-  Object.entries(urls).forEach(([keyword, urlsByLocale]) => {
-    for (const [locale, items] of Object.entries(urlsByLocale)) {
-      totalCount += items.length;
-    }
-  });
   const itemSet = new Set<string>();
-  Object.entries(urls).forEach(([keyword, urlsByLocale]) => {
-    for (const [locale, items] of Object.entries(urlsByLocale)) {
-      for (const item of items) {
+  Object.entries(urls).forEach(([_keyword, urlsByLocale]) => {
+    for (const [_locale, item] of Object.entries(urlsByLocale)) {
         const itemKey = item.guid;
         if (!itemSet.has(itemKey)) {
           itemSet.add(itemKey);
         }
-      }
     }
   });
   const uniqueCount = itemSet.size;
-  console.log(`Total items: ${totalCount}, Unique items: ${uniqueCount}`);
+  console.warn(`Unique items: ${uniqueCount}`);
 };
 
 export const printUrls = () => {
@@ -204,7 +194,6 @@ export const printUrls = () => {
 
 export const updateUrls = async () => {
   const urlsByLocale: Record<string, Record<string, NewsUrlItem>> = {};
-  const guids = new Set<string>();
   for (const [keyword, localeUrls] of Object.entries(
     newsUrls as Record<string, Record<string, GoogleNewsUrlItem[]>>
   )) {

@@ -1,8 +1,18 @@
 import newsUrls from './google-urls.json' with { type: 'json' };
 import { downloadHtmlsAndImages, exists, readFiles, toFileName } from '../common.ts';
-import * as cheerio from 'cheerio';
 import * as fs from 'fs/promises';
 import * as path from 'path';
+
+type NewsUrlItem = {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+  sourceName: string;
+  sourceUrl: string;
+  guid: string;
+  tags: string[];
+};
 
 export const currentDataRootDirectory = import.meta.dirname;
 const rawHtmlDirectory = path.join(currentDataRootDirectory, 'google-raw');
@@ -12,10 +22,10 @@ export const downloadHtmlFiles = async () => {
   const urlInfo: Record<
     string,
     {
-      keyword: string;
+      tags: string[];
       locale: string;
       guid: string;
-      news: any;
+      news: NewsUrlItem;
       directory: string;
       htmlFile: string;
       directoryName: string;
@@ -39,21 +49,21 @@ export const downloadHtmlFiles = async () => {
         newsDirectoryName.substring(0, newsDirectoryName.lastIndexOf('^'))
       )
   );
-  for (const [keyword, newsByLocale] of Object.entries(newsUrls)) {
-    for (const [locale, newsList] of Object.entries(newsByLocale)) {
-      for (const news of newsList) {
-        const guid = `${news.pubDate.substring(0, 10)}^${news.guid.substring(4, 9)}^${news.guid.slice(-5)}`;
-        if (guids.has(guid)) {
-          continue;
-        }
-        guids.add(guid);
-        urls.push(news.link);
-        const directoryName = `${guid}^${toFileName(news.title.replaceAll('^', '-')).substring(0, 100)}`;
-        const directory = path.join(rawHtmlDirectory, locale, directoryName);
-        // await fs.mkdir(directory, { recursive: true });
-        const htmlFile = path.join(directory, 'index.html');
-        urlInfo[news.link] = { keyword, locale, guid, news, directoryName, directory, htmlFile };
+  for (const [locale, newsOfLocale] of Object.entries(
+    newsUrls as Record<string, Record<string, NewsUrlItem>>
+  )) {
+    for (const [_guid, news] of Object.entries(newsOfLocale)) {
+      const guid = `${news.pubDate.substring(0, 10)}^${news.guid.substring(4, 9)}^${news.guid.slice(-5)}`;
+      if (guids.has(guid)) {
+        continue;
       }
+      guids.add(guid);
+      urls.push(news.link);
+      const directoryName = `${guid}^${toFileName(news.title.replaceAll('^', '-')).substring(0, 100)}`;
+      const directory = path.join(rawHtmlDirectory, locale, directoryName);
+      // await fs.mkdir(directory, { recursive: true });
+      const htmlFile = path.join(directory, 'index.html');
+      urlInfo[news.link] = { tags: news.tags, locale, guid, news, directoryName, directory, htmlFile };
     }
   }
 
