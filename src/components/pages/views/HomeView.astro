@@ -154,8 +154,16 @@ const basedInDisplay = `${city ?? 'Your City'}${country ? `, ${country}` : ''}`;
   <!-- Hero -->
   <!-- data-header-flip-anchor: the floating header keeps its over-the-hero
        look until this section is nearly out from under it. See the flip
-       threshold in Header.astro. -->
-  <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight data-header-flip-anchor>
+       threshold in Header.astro.
+
+       data-bar-color: Safari on iOS floats a translucent toolbar over the foot
+       of the screen and tints it from the BODY's background. This hero is dark
+       in both colour modes while the body under it is white in light mode,
+       which draws a white strip across the foot of it. The theme script paints
+       the body this colour while the hero covers that edge, and clears it
+       after. Same value as --bar-color in global.css, which ends the hero's
+       gradient. See `paintBody` in BaseLayout.astro. -->
+  <Hero layout="centered" size="xl" class="hero-dark-gradient" fullHeight data-header-flip-anchor data-bar-color="#000">
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">{hero.badge}</Badge>
 
     {/* 12.6vw fills the mobile column (~95-98% at 320-390px), sized to the
