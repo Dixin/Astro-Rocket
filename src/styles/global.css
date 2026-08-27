@@ -340,13 +340,18 @@
 
   /* Hero gradient — dark mode */
   .dark .hero-dark-gradient {
-    background: linear-gradient(to bottom, var(--color-brand-500) 0%, #000 100%);
+    background: linear-gradient(to bottom, var(--color-brand-500) 0%, var(--bar-color) 100%);
   }
 
+  /* The end stop is named because it is also the colour Safari needs under the
+     toolbar it floats over the foot of the screen. One source of truth: change
+     it here and the browser chrome follows. See `paintBody` in BaseLayout, and
+     `data-bar-color` on the hero in HomeView. */
   .hero-dark-gradient {
     position: relative;
     isolation: isolate;
-    background: linear-gradient(to bottom, var(--color-brand-500) 0%, #000 100%);
+    --bar-color: #000;
+    background: linear-gradient(to bottom, var(--color-brand-500) 0%, var(--bar-color) 100%);
   }
   /* The hero panel stays dark in light mode, so its text needs the same
      hierarchy the panel has in dark mode: a near-white heading (91%

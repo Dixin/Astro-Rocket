@@ -186,7 +186,87 @@ if (commentsConfig?.enabled) {
           applyColorTheme(el);
         }
 
+        /**
+         * The bottom edge of what the reader can actually see, in the same
+         * coordinates as getBoundingClientRect.
+         *
+         * `innerHeight` is the layout viewport, and on iOS that runs behind
+         * the browser chrome. `visualViewport` is the visible figure, and it
+         * changes as the toolbar collapses under a scroll. The two are
+         * identical in a desktop browser, so nothing there shows the
+         * difference.
+         */
+        function viewportBottom() {
+          const vv = window.visualViewport;
+          if (vv && vv.height) return vv.offsetTop + vv.height;
+          return window.innerHeight || document.documentElement.clientHeight;
+        }
+
+        /**
+         * The colour an opted-in section wants under Safari's bottom toolbar,
+         * or null when none applies.
+         *
+         * Safari on iOS floats that toolbar over the page and tints it from
+         * the BODY's background. A section that is darker than the body — the
+         * home page's hero, which is a dark gradient in both colour modes —
+         * therefore gets a strip of the body's colour drawn across its foot,
+         * white in light mode.
+         *
+         * The section opts in by carrying the colour as the VALUE of
+         * `data-bar-color`. Read with getAttribute rather than resolved from
+         * the cascade: `getComputedStyle` for a custom property is reliable in
+         * Chromium and is not on iOS Safari, and a version of this that read it
+         * that way fell back to the body's colour on the device — which is the
+         * colour the strip is made of.
+         *
+         * Only while the bottom edge of the screen is inside the section.
+         * Scroll it up past that edge and what sits under the toolbar is
+         * whatever follows, so the body goes back to its own colour.
+         */
+        function sectionColor() {
+          const el = document.querySelector('[data-bar-color]');
+          if (!el) return null;
+
+          const rect = el.getBoundingClientRect();
+          const edge = viewportBottom();
+          if (!(rect.height > 0 && rect.top <= edge && rect.bottom >= edge)) return null;
+
+          return (el.getAttribute('data-bar-color') || '').trim() || null;
+        }
+
+        /**
+         * Paint the body that colour.
+         *
+         * Invisible on the page: it only applies while the section covers the
+         * bottom edge of the screen, and the section is painted over the body
+         * for every pixel the reader can see. Cleared the moment that stops
+         * being true.
+         *
+         * It has to be the body. `<meta name="theme-color">` does not reach
+         * this surface, and neither does a background on <html> or a
+         * `color-scheme` declaration — all three were tried on the device and
+         * left the strip where it was.
+         */
+        function paintBody(color) {
+          if (!document.body) return;
+          if (!document.querySelector('[data-bar-color]')) return;
+
+          const want = color || '';
+          if (document.body.style.backgroundColor !== want) {
+            document.body.style.backgroundColor = want;
+          }
+        }
+
+        function syncBar() {
+          paintBody(sectionColor());
+        }
+
         applyTheme(document.documentElement);
+        syncBar();
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', syncBar, { once: true });
+        }
 
         if (!window.__themeListenersInit) {
           window.__themeListenersInit = true;
@@ -205,7 +285,33 @@ if (commentsConfig?.enabled) {
           });
           document.addEventListener('astro:after-swap', function () {
             applyTheme(document.documentElement);
+            syncBar();
           });
+
+          // A section that covers the bottom edge stops covering it as soon as
+          // the page moves, so this has to follow the scroll — otherwise the
+          // body would stay painted over the page below it. One update per
+          // frame at most; the work is a querySelector and a rect.
+          //
+          // iOS collapses and expands its toolbar as you scroll, which moves
+          // the visible bottom edge without firing a window resize, so
+          // visualViewport is listened to as well.
+          let queued = false;
+          function onScroll() {
+            if (queued) return;
+            queued = true;
+            requestAnimationFrame(function () {
+              queued = false;
+              syncBar();
+            });
+          }
+          window.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('resize', onScroll, { passive: true });
+          window.addEventListener('orientationchange', onScroll, { passive: true });
+          if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', onScroll);
+            window.visualViewport.addEventListener('scroll', onScroll);
+          }
         }
       })();
     </script>
