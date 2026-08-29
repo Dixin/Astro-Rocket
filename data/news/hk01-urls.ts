@@ -29,7 +29,7 @@ export const getUrls = async (overwrite: boolean = false) => {
   }
 
   const urls: Record<string, NewsUrlItem> = {};
-  const html = await fs.readFile(urlsHtmlFile, 'utf8');
+  const html = await fs.readFile(urlsHtmlFile, { encoding: 'utf8' });
   const guids = new Set<string>();
   const $: cheerio.CheerioAPI = cheerio.load(html, {
     xml: {

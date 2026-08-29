@@ -11,7 +11,7 @@ svgSlug: "astro-rocket-configuration-guide"
 imageAlt: "Feature overview graphic for Astro Rocket on a dark background"
 uid: "markdown-test"
 ---
-
+import Alert from '@/components/ui/feedback/Alert/Alert.astro';
 
 Astro Rocket inherits a complete UI component library from [Velocity](https://github.com/southwellmedia/velocity) by Southwell Media. That means 57 production-ready components are available the moment you install the theme — no npm packages to install, no extra setup. Every component is already styled with the design system's color tokens, so they adapt automatically when you switch themes or toggle dark mode.
 
@@ -77,9 +77,6 @@ Task
 
 test
 
----
-import Alert from '@/components/ui/feedback/Alert/Alert.astro';
-
 <Alert variant="info" title="Tip">
   Use keyboard shortcuts to navigate faster. Press <kbd class="px-1.5 py-0.5 text-xs font-mono bg-background-secondary rounded border border-border">⌘K</kbd> to open the command palette.
 </Alert>
@@ -92,12 +89,11 @@ import Alert from '@/components/ui/feedback/Alert/Alert.astro';
 <Alert variant="error" title="Build failed" dismissible>
   Error in <code class="text-xs font-mono">src/components/Button.tsx</code> — missing required prop "variant"
 </Alert>
----
 
 ```astro
 ---
 import '@/styles/global.css';
-//import '@primer/css/index.scss'; 
+//import '@primer/css/index.scss';
 import 'remark-github-alerts/styles/github-colors-dark-class.css';
 import outfitFont from '@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url';
 import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
