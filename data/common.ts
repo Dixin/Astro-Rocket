@@ -2,6 +2,7 @@ import path from 'path';
 import * as fs from 'fs/promises';
 import { chromium, type Page } from 'playwright';
 import { setTimeout } from 'timers/promises';
+import * as Iconv from 'iconv-lite';
 
 declare global {
   interface Array<T> {
@@ -59,6 +60,22 @@ export const toFileName = (name: string): string => {
     .replace(/[<>:"/\\|?*]/g, '-')
     .replace(/\s+/g, ' ')
     .trim();
+};
+
+export const uidRegex = /^[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+(?:-[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+)*$/u;
+
+export const toUid = (title: string): string => {
+  const uid = title
+    .toLowerCase()
+    .replaceAll(/[_!&,<>:"/|?*+\\.[\](){}【】（）“”‘’、，。·￥…—·・～？！：﹕；《》×∽]|\s+/g, '-')
+    .replaceAll(/[']/g, '')
+    .replaceAll(/[-]{2,}/g, '-')
+    .replace(/[-]+$/, '')
+    .replace(/^[-]+/, '');
+  if (!uid || !uidRegex.test(uid)) {
+    throw new Error(`Invalid title to uid: ${title} => ${uid}`);
+  }
+  return uid;
 };
 
 export const dataRootDirectory = import.meta.dirname;
@@ -288,4 +305,24 @@ export const downloadHtmlsAndImages = async (
   await browser.close();
 
   return htmlFiles;
+};
+
+export const convertEncoding = (content: Buffer, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Buffer => {
+  const decodedContent = Iconv.decode(content, fromEncoding);
+  const encodedContent = Iconv.encode(decodedContent, toEncoding);
+  return encodedContent;
+};
+
+export const convertFileEncoding = async (filePath: string, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Promise<void> => {
+  const content = await fs.readFile(filePath);
+  const convertedContent = convertEncoding(content, fromEncoding, toEncoding);
+  await fs.rename(filePath, `${filePath}.bak`); // Backup the original file
+  await fs.writeFile(filePath, convertedContent);
+};
+
+export const convertDirectoryEncoding = async (directory: string, extension?: string, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Promise<void> => {
+  const files = await readFiles(directory, true, extension);
+  for (const file of files) {
+    await convertFileEncoding(file, fromEncoding, toEncoding);
+  }
 };
