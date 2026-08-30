@@ -1,7 +1,7 @@
 // import * as chinaUrls from './china-urls.ts';
 // import path from 'path/win32';
 // import { convertDirectoryEncoding } from '../common.ts';
-import * as chinaDownload from './china-download.ts';
+// import * as chinaDownload from './china-download.ts';
 // import * as hk01Urls from './hk01-urls.ts';
 // import * as hk01Download from './hk01-download.ts';
 // import * as googleUrls from './google-urls.ts';
@@ -26,4 +26,4 @@ import * as chinaDownload from './china-download.ts';
 
 // await convertDirectoryEncoding(path.join(import.meta.dirname, "china-raw2"), '.html', 'gb2312', 'utf8');
 
-await chinaDownload.downloadImages();
+// await chinaDownload.updateMarkdownMetadataImages();

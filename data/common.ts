@@ -1,8 +1,10 @@
 import path from 'path';
 import * as fs from 'fs/promises';
+import * as fsSync from 'fs';
 import { chromium, type Page } from 'playwright';
 import { setTimeout } from 'timers/promises';
-import * as Iconv from 'iconv-lite';
+import fetchSync from 'sync-fetch';
+//import * as Iconv from 'iconv-lite';
 
 declare global {
   interface Array<T> {
@@ -62,7 +64,8 @@ export const toFileName = (name: string): string => {
     .trim();
 };
 
-export const uidRegex = /^[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+(?:-[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+)*$/u;
+export const uidRegex =
+  /^[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+(?:-[a-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+)*$/u;
 
 export const toUid = (title: string): string => {
   const uid = title
@@ -138,6 +141,22 @@ export const downloadFile = async (url: string, filePath: string): Promise<void>
   }
   const fileData = await response.arrayBuffer();
   await fs.writeFile(filePath, Buffer.from(fileData));
+};
+
+export const downloadFileSync = (url: string, filePath: string): void => {
+  const response = fetchSync(url, {
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(
+      `Failed to download file from ${url}: ${response.status} ${response.statusText}`
+    );
+  }
+  const fileData = response.arrayBuffer();
+  fsSync.writeFileSync(filePath, Buffer.from(fileData));
 };
 
 export const downloadString = async (url: string): Promise<string> => {
@@ -219,7 +238,11 @@ export const downloadHtmlsAndImages = async (
   }>,
   getHtmlFilePath: (url: string) => Promise<string | undefined>,
   getHtml?: (page: Page) => Promise<string>,
-  getMediaFilePath?: (mediaUrl: string, mediaType: string, htmlUrl: string) => Promise<string | undefined>,
+  getMediaFilePath?: (
+    mediaUrl: string,
+    mediaType: string,
+    htmlUrl: string
+  ) => Promise<string | undefined>,
   overwriteHtml: boolean = false,
   overwriteImages: boolean = false,
   loadMedia: boolean = false,
@@ -307,22 +330,22 @@ export const downloadHtmlsAndImages = async (
   return htmlFiles;
 };
 
-export const convertEncoding = (content: Buffer, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Buffer => {
-  const decodedContent = Iconv.decode(content, fromEncoding);
-  const encodedContent = Iconv.encode(decodedContent, toEncoding);
-  return encodedContent;
-};
+// export const convertEncoding = (content: Buffer, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Buffer => {
+//   const decodedContent = Iconv.decode(content, fromEncoding);
+//   const encodedContent = Iconv.encode(decodedContent, toEncoding);
+//   return encodedContent;
+// };
 
-export const convertFileEncoding = async (filePath: string, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Promise<void> => {
-  const content = await fs.readFile(filePath);
-  const convertedContent = convertEncoding(content, fromEncoding, toEncoding);
-  await fs.rename(filePath, `${filePath}.bak`); // Backup the original file
-  await fs.writeFile(filePath, convertedContent);
-};
+// export const convertFileEncoding = async (filePath: string, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Promise<void> => {
+//   const content = await fs.readFile(filePath);
+//   const convertedContent = convertEncoding(content, fromEncoding, toEncoding);
+//   await fs.rename(filePath, `${filePath}.bak`); // Backup the original file
+//   await fs.writeFile(filePath, convertedContent);
+// };
 
-export const convertDirectoryEncoding = async (directory: string, extension?: string, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Promise<void> => {
-  const files = await readFiles(directory, true, extension);
-  for (const file of files) {
-    await convertFileEncoding(file, fromEncoding, toEncoding);
-  }
-};
+// export const convertDirectoryEncoding = async (directory: string, extension?: string, fromEncoding: string = 'gb2312', toEncoding: string = 'utf8'): Promise<void> => {
+//   const files = await readFiles(directory, true, extension);
+//   for (const file of files) {
+//     await convertFileEncoding(file, fromEncoding, toEncoding);
+//   }
+// };

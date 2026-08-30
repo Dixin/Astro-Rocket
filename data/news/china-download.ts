@@ -1,8 +1,9 @@
 import * as fs from 'fs/promises';
+import * as fsSync from 'fs';
 import * as path from 'path';
-import { exists, toUid, toFileName, downloadFile, readFiles } from '../common.ts';
+import { exists, toUid, downloadFile, readFiles, downloadFileSync } from '../common.ts';
 import matter from 'gray-matter';
-import { setTimeout } from 'timers/promises';
+// import { setTimeout } from 'timers/promises';
 import newsUrls from './china-urls.json' with { type: 'json' };
 import * as cheerio from 'cheerio';
 import * as htmlToMarkdown from '@xberg-io/html-to-markdown';
@@ -19,6 +20,7 @@ const markdownDirectory = path.resolve(
 );
 const imageDirectory = path.resolve(currentDirectory, '../../src/assets/news/china');
 const markdownImageDirectory = '../../../../../assets/news/china/';
+// const tagImageDirectory = '../../../../../assets/tags/';
 
 type NewsUrlItem = {
   title: string;
@@ -74,7 +76,7 @@ export const downloadHtmlFiles = async (overwrite = false) => {
   }
 
   await entries.forEachAsync(async ([url, news]) => {
-    const { uid, raw: rawHtmlFilePath } = getFile(news);
+    const { raw: rawHtmlFilePath } = getFile(news);
     if (!overwrite && (await exists(rawHtmlFilePath))) {
       // console.warn(`File already exists, skipping: ${rawHtmlFilePath}`);
       return;
@@ -85,7 +87,7 @@ export const downloadHtmlFiles = async (overwrite = false) => {
   });
 };
 
-export const convertHtmlFiles = async (overwrite = false) => {
+export const convertHtmlFiles = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -114,7 +116,7 @@ export const convertHtmlFiles = async (overwrite = false) => {
   }
 
   await entries.forEachAsync(async ([_url, news]) => {
-    const { uid, raw, trimmed, markdown } = getFile(news);
+    const { uid, raw, markdown } = getFile(news);
     // const buffer = fs2.readFileSync(raw);
     // const decodedString = Iconv.decode(buffer, 'gb2312');
 
@@ -330,10 +332,10 @@ export const downloadPaginationHtmlFiles = async (overwrite = false) => {
   }
 
   await entries.forEachAsync(async ([_url, news]) => {
-    const { uid, raw, trimmed, markdown } = getFile(news);
+    const { uid, markdown } = getFile(news);
 
     const markdownFileContent = await fs.readFile(markdown, { encoding: 'utf8' });
-    const { content: existingMarkdown, data: existingData } = matter(markdownFileContent, {
+    const { content: existingMarkdown, data: _existingData } = matter(markdownFileContent, {
       excerpt: false,
     });
     const existingMarkdownLines = existingMarkdown
@@ -369,7 +371,7 @@ export const downloadPaginationHtmlFiles = async (overwrite = false) => {
   });
 };
 
-export const convertPaginationHtmlFiles = async (overwrite = false) => {
+export const convertPaginationHtmlFiles = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -407,7 +409,7 @@ export const convertPaginationHtmlFiles = async (overwrite = false) => {
   ).filter((file) => path.parse(file).name.includes('^'));
   await rawHtmlFiles.forEachAsync(async (raw) => {
     const name = path.parse(raw).name;
-    const [uid, index] = name.split('^');
+    const [uid, _index] = name.split('^');
     const news = uidToNewsMap.get(uid);
     if (!news) {
       throw new Error(`No news found for uid: ${uid}`);
@@ -589,7 +591,7 @@ export const convertPaginationHtmlFiles = async (overwrite = false) => {
   });
 };
 
-export const convertPaginationHtmlFiles2 = async (overwrite = false) => {
+export const convertPaginationHtmlFiles2 = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -627,7 +629,7 @@ export const convertPaginationHtmlFiles2 = async (overwrite = false) => {
   ).filter((file) => path.parse(file).name.includes('^'));
   await markdownFiles.forEachAsync(async (markdownFile) => {
     const markdownContent = await fs.readFile(markdownFile, { encoding: 'utf8' });
-    const { content: existingMarkdown, data: existingData } = matter(markdownContent, {
+    const { content: existingMarkdown, data: _existingData } = matter(markdownContent, {
       excerpt: false,
     });
     const existingMarkdownLines = existingMarkdown.split('\n');
@@ -656,7 +658,7 @@ export const convertPaginationHtmlFiles2 = async (overwrite = false) => {
   });
 };
 
-export const convertPaginationHtmlFiles3 = async (overwrite = false) => {
+export const convertPaginationHtmlFiles3 = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -713,7 +715,7 @@ export const convertPaginationHtmlFiles3 = async (overwrite = false) => {
   });
 };
 
-export const convertPaginationHtmlFiles4 = async (overwrite = false) => {
+export const convertPaginationHtmlFiles4 = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -759,7 +761,7 @@ export const convertPaginationHtmlFiles4 = async (overwrite = false) => {
   });
 };
 
-export const convertPaginationHtmlFiles5 = async (overwrite = false) => {
+export const convertPaginationHtmlFiles5 = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -799,7 +801,7 @@ export const convertPaginationHtmlFiles5 = async (overwrite = false) => {
       return;
     }
     const markdownContent = await fs.readFile(markdownFile, { encoding: 'utf8' });
-    const { content: existingMarkdown, data: existingData } = matter(markdownContent, {
+    const { content: existingMarkdown, data: _existingData } = matter(markdownContent, {
       excerpt: false,
     });
 
@@ -986,7 +988,7 @@ export const convertPaginationHtmlFiles5 = async (overwrite = false) => {
   });
 };
 
-export const convertPaginationHtmlFiles6 = async (overwrite = false) => {
+export const convertPaginationHtmlFiles6 = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -1026,7 +1028,7 @@ export const convertPaginationHtmlFiles6 = async (overwrite = false) => {
       return;
     }
     const markdownContent = await fs.readFile(markdownFile, { encoding: 'utf8' });
-    const { content: existingMarkdown, data: existingData } = matter(markdownContent, {
+    const { content: existingMarkdown, data: _existingData } = matter(markdownContent, {
       excerpt: false,
     });
 
@@ -1179,7 +1181,7 @@ export const convertPaginationHtmlFiles6 = async (overwrite = false) => {
   });
 };
 
-export const syncUrlsToMarkdowns = async (overwrite = false) => {
+export const syncUrlsToMarkdowns = async () => {
   const uids = new Set<string>();
   const guids = new Set<string>();
 
@@ -1292,6 +1294,11 @@ export const downloadImages = async (overwrite = false) => {
   const imagesMapping: Record<string, string> = {};
   const markdownFiles = await readFiles(markdownDirectory, true, '.mdx');
   await markdownFiles.forEachAsync(async (markdownFile) => {
+    const updatedMarkdownFile = markdownFile.replace('\\china\\', '\\china2\\');
+    if (!overwrite && (await exists(updatedMarkdownFile))) {
+      return;
+    }
+
     const mdxContent = (await fs.readFile(markdownFile, { encoding: 'utf8' })).trim();
     const { content: existingMarkdown, data: existingData } = matter(mdxContent, {
       excerpt: false,
@@ -1352,24 +1359,21 @@ export const downloadImages = async (overwrite = false) => {
         const newImageFileName = `${news.uid}${indexSuffix}${formattedImageExtension}`;
         const newImageFilePath = path.resolve(imageDirectory, newImageFileName);
 
-        let isDownloadError = false;
-        (async () => {
-          if (overwrite || !(await exists(newImageFilePath))) {
-            try {
-              await downloadFile(imageUrl, newImageFilePath);
-              console.warn(`Downloaded image ${imageUrl} to ${newImageFilePath}`);
-            } catch (error) {
+        if (overwrite || !fsSync.existsSync(newImageFilePath)) {
+          try {
+            downloadFileSync(imageUrl, newImageFilePath);
+            console.warn(`Downloaded image ${imageUrl} to ${newImageFilePath}`);
+          } catch (error) {
+            if (error instanceof Error && error.message.includes(': 404')) {
+              console.warn(`404: ${imageUrl}`);
+            } else {
               console.error(`Failed to download image ${imageUrl} to ${newImageFilePath}:`, error);
-              isDownloadError = true;
             }
+            return match;
           }
-        })();
-
-        if (isDownloadError) {
-          return match;
         }
 
-        const markdownImageFilePath = path.join(markdownImageDirectory, newImageFileName);
+        const markdownImageFilePath = `${markdownImageDirectory}${newImageFileName}`;
         imagesMapping[imageUrl] = markdownImageFilePath;
         isUpdated = true;
         return `![${altText}](${markdownImageFilePath})`;
@@ -1381,8 +1385,127 @@ export const downloadImages = async (overwrite = false) => {
     }
 
     await fs.writeFile(
-      markdownFile,
+      updatedMarkdownFile,
       matter.stringify(updatedMarkdown.trim(), existingData, { excerpt: false }),
+      { encoding: 'utf8' }
+    );
+  });
+};
+
+export const updateMarkdownMetadataImages = async () => {
+  const uids = new Set<string>();
+  const guids = new Set<string>();
+
+  const entries = Object.entries(newsUrls as Record<string, NewsUrlItem>).sort(
+    ([_link1, item1], [_link2, item2]) => item1.pubDate.localeCompare(item2.pubDate)
+  );
+
+  for (const [url, news] of entries) {
+    if (!news.guid.startsWith('4-8-')) {
+      throw new Error(`Invalid guid: ${news.guid} for url: ${url}`);
+    }
+    const guid = news.guid.substring(4);
+    if (guids.has(guid)) {
+      throw new Error(`Duplicate guid: ${guid} for url: ${url}`);
+    }
+    guids.add(guid);
+
+    if (news.title.includes('图')) {
+      console.warn(`News title contains '图': ${news.title} for url: ${url}`);
+    }
+
+    const { uid, raw: _filePath } = getFile(news);
+    if (uids.has(uid)) {
+      throw new Error(`Duplicate uid: ${uid} for url: ${url}`);
+    }
+    if (uid !== news.uid) {
+      throw new Error(`UID mismatch: ${uid} for url: ${url}, expected: ${news.uid}`);
+    }
+    uids.add(uid);
+  }
+
+  const uidToNewsMap: Record<string, NewsUrlItem> = {};
+  entries.forEach(([_url, news]) => {
+    const { uid } = getFile(news);
+    if (news.uid !== uid) {
+      throw new Error(`UID mismatch: ${uid} for url: ${news.link}, expected: ${news.uid}`);
+    }
+    uidToNewsMap[uid] = news;
+  });
+  const markdownFiles = await readFiles(markdownDirectory, true, '.mdx');
+  await markdownFiles.forEachAsync(async (markdownFile) => {
+    const mdxContent = (await fs.readFile(markdownFile, { encoding: 'utf8' })).trim();
+    const { content: existingMarkdown, data: existingData } = matter(mdxContent, {
+      excerpt: false,
+    });
+
+    const news = uidToNewsMap[path.parse(markdownFile).name];
+    if (!news) {
+      throw new Error(`No news found for uid: ${existingData.uid}`);
+    }
+
+    if (news.uid !== existingData.uid) {
+      throw new Error(
+        `UID mismatch: ${existingData.uid} for url: ${news.link}, expected: ${news.uid}`
+      );
+    }
+
+    // const match = existingMarkdown.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+    // if (!match || match.length < 3) {
+    //   if (!existingData.tags || existingData.tags.length === 0) {
+    //     throw new Error(`No image found and no tags for ${markdownFile}`);
+    //   }
+
+    //   const guid = news.guid.substring(4);
+    //   const index = parseInt(guid.substring(guid.length - 1), 10);
+    //   const indexSuffix = index === 0 ? '' : `_${index.toString(10)}`;
+    //   const tagMapping: Record<string, string> = {
+    //     Beyond: 'beyond',
+    //     黄家驹: '黃家駒',
+    //     叶世荣: '葉世榮',
+    //     黄家强: '黃家強',
+    //     黄贯中: '黃貫中',
+    //   };
+    //   let fromTag: string | undefined = undefined;
+    //   let toTag: string | undefined = undefined;
+    //   for (const tag of Object.keys(tagMapping)) {
+    //     if (existingData.tags.includes(tag)) {
+    //       fromTag = tag;
+    //       toTag = tagMapping[tag];
+    //       break;
+    //     }
+    //   }
+    //   if (!toTag || !fromTag) {
+    //     throw new Error(`No image found and no matching tags for ${markdownFile}`);
+    //   }
+    //   existingData.image = `${tagImageDirectory}${toTag}${indexSuffix}.jpg`;
+    //   existingData.imageAlt = fromTag;
+    // } else {
+    //   const imageAlt = match[1].trim();
+    //   const imageUrl = match[2].trim();
+    //   if (!imageAlt || !imageUrl) {
+    //     throw new Error(`Invalid image markdown in ${markdownFile}: ${match[0]}`);
+    //   }
+    //   existingData.image = imageUrl;
+    //   existingData.imageAlt = imageAlt;
+    // }
+
+    let editor: string | undefined = undefined;
+    for (const meta of existingData.meta) {
+      if (meta.startsWith('编辑：')) {
+        editor = meta.replace('编辑：', '').trim();
+        break;
+      }
+    }
+    if (editor) {
+      existingData.author = `中新网|${editor}`;
+    } else {
+      existingData.author = `中新网`;
+    }
+
+    await fs.writeFile(
+      markdownFile.replace('\\china\\', '\\china2\\'),
+      matter.stringify(existingMarkdown.trim(), existingData, { excerpt: false }),
       { encoding: 'utf8' }
     );
   });
