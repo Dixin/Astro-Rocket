@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exists, toUid, downloadFile, readFiles, downloadFileSync } from '../common.ts';
+import { exists, toUid, fetchFile, readFiles, fetchFileSync } from '../common.ts';
 import newsUrls from './mp-urls.json' with { type: 'json' };
 import matter from 'gray-matter';
 import * as fsSync from 'fs';
@@ -63,7 +63,7 @@ export const downloadHtmlFiles = async (overwrite = false) => {
       return;
     }
 
-    await downloadFile(url, rawHtmlFilePath);
+    await fetchFile(url, rawHtmlFilePath);
     console.warn(`Downloaded ${url} to ${rawHtmlFilePath}`);
   });
 };
@@ -180,13 +180,18 @@ export const downloadImages = async (overwrite = false) => {
         const newImageFileName = `${existingData.uid}${indexSuffix}${formattedImageExtension}`;
         const newImageFilePath = path.resolve(imageDirectory, newImageFileName);
 
-        if (imageUrl.includes('-scaled.') || imageUrl.includes('-scale.') || overwrite || !fsSync.existsSync(newImageFilePath)) {
+        if (
+          imageUrl.includes('-scaled.') ||
+          imageUrl.includes('-scale.') ||
+          overwrite ||
+          !fsSync.existsSync(newImageFilePath)
+        ) {
           const trimmedImageUrl = imageUrl
             .replace('-scale.', '.')
             .replace('-scaled.', '.')
             .replace(/-[0-9]+x[0-9]+\./, '.');
           try {
-            downloadFileSync(trimmedImageUrl, newImageFilePath);
+            fetchFileSync(trimmedImageUrl, newImageFilePath);
             console.warn(`Downloaded image ${trimmedImageUrl} to ${newImageFilePath}`);
           } catch (error) {
             if (error instanceof Error && error.message.includes(': 404')) {

@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exists, dataRootDirectory, downloadString, decodeHtml } from '../common.ts';
+import { exists, dataRootDirectory, fetchString, decodeHtml } from '../common.ts';
 import * as cheerio from 'cheerio';
 import newsUrls from './google-urls.json' with { type: 'json' };
 
@@ -82,7 +82,7 @@ export const getUrls = async (overwrite: boolean = false) => {
       if (!overwrite && (await exists(rssFile))) {
         rss = await fs.readFile(rssFile, 'utf8');
       } else {
-        rss = await downloadString(rssUrl);
+        rss = await fetchString(rssUrl);
         await fs.writeFile(rssFile, rss, { encoding: 'utf8' });
       }
 
@@ -167,10 +167,10 @@ export const writeUrls = async (overwrite: boolean = false) => {
   const itemSet = new Set<string>();
   Object.entries(urls).forEach(([_keyword, urlsByLocale]) => {
     for (const [_locale, item] of Object.entries(urlsByLocale)) {
-        const itemKey = item.guid;
-        if (!itemSet.has(itemKey)) {
-          itemSet.add(itemKey);
-        }
+      const itemKey = item.guid;
+      if (!itemSet.has(itemKey)) {
+        itemSet.add(itemKey);
+      }
     }
   });
   const uniqueCount = itemSet.size;
@@ -190,6 +190,14 @@ export const printUrls = () => {
       console.warn(`  Source: ${sourceUrl}, Items: ${sourceItems!.length}`);
     }
   }
+
+  const items = Object.entries(newsUrls.en as Record<string, NewsUrlItem>)
+    .map(([_guid, item]) => item)
+    .filter((item) => item.sourceUrl.includes('scmp.com'))
+    .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+  items.forEach((item) => {
+    console.warn(`  ${new Date(item.pubDate).toISOString().substring(0, 10)} ${item.title}`);
+  });
 };
 
 export const updateUrls = async () => {

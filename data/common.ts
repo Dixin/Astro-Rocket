@@ -70,14 +70,17 @@ export const uidRegex =
 export const toUid = (title: string): string => {
   const uid = title
     .toLowerCase()
-    .replaceAll(/[_!&,<>:"/|│?*+\\.[\](){}【】（）“”‘’『』「」《》〈〉、，。·￥…—·・～？！：﹕；×∽｜\u3000]|\s+/g, '-')
+    .replaceAll(
+      /[_!&,<>:"/|│?*+^\\.[\](){}【】（）“”‘’『』「」《》〈〉、，。·￥…—·・～？！：﹕；×∽｜\u3000]|\s+/g,
+      '-'
+    )
     .replaceAll(/[']/g, '')
     .replaceAll(/[-]{2,}/g, '-')
     .replace(/[-]+$/, '')
     .replace(/^[-]+/, '');
   if (!uid || !uidRegex.test(uid)) {
     throw new Error(`Invalid title to uid: ${title} => ${uid}`);
-  } 
+  }
   return uid;
 };
 
@@ -129,7 +132,7 @@ export const readDirectories = async (directory: string, isRecursive = true): Pr
   return directories.sort((a, b) => a.localeCompare(b));
 };
 
-export const downloadFile = async (url: string, filePath: string): Promise<void> => {
+export const fetchFile = async (url: string, filePath: string): Promise<void> => {
   const response = await fetch(url, {
     headers: {
       'User-Agent':
@@ -143,7 +146,7 @@ export const downloadFile = async (url: string, filePath: string): Promise<void>
   await fs.writeFile(filePath, Buffer.from(fileData));
 };
 
-export const downloadFileSync = (url: string, filePath: string): void => {
+export const fetchFileSync = (url: string, filePath: string): void => {
   const response = fetchSync(url, {
     headers: {
       'User-Agent':
@@ -159,16 +162,21 @@ export const downloadFileSync = (url: string, filePath: string): void => {
   fsSync.writeFileSync(filePath, Buffer.from(fileData));
 };
 
-export const downloadString = async (url: string): Promise<string> => {
+export const fetchString = async (url: string, cookie?: string): Promise<string> => {
   const response = await fetch(url, {
     headers: {
       'User-Agent':
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+      ...(cookie ? { Cookie: cookie } : {}),
     },
+    redirect: 'follow',
   });
   if (!response.ok) {
     throw new Error(`Failed to download file from ${url}: ${response.statusText}`);
   }
+  // if (response.redirected) {
+  //   console.warn(`Redirected to ${response.url} from ${url}`);
+  // }
   return await response.text();
 };
 
