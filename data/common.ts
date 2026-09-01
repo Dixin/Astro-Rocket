@@ -70,14 +70,14 @@ export const uidRegex =
 export const toUid = (title: string): string => {
   const uid = title
     .toLowerCase()
-    .replaceAll(/[_!&,<>:"/|?*+\\.[\](){}【】（）“”‘’、，。·￥…—·・～？！：﹕；《》×∽]|\s+/g, '-')
+    .replaceAll(/[_!&,<>:"/|│?*+\\.[\](){}【】（）“”‘’『』「」《》〈〉、，。·￥…—·・～？！：﹕；×∽｜\u3000]|\s+/g, '-')
     .replaceAll(/[']/g, '')
     .replaceAll(/[-]{2,}/g, '-')
     .replace(/[-]+$/, '')
     .replace(/^[-]+/, '');
   if (!uid || !uidRegex.test(uid)) {
     throw new Error(`Invalid title to uid: ${title} => ${uid}`);
-  }
+  } 
   return uid;
 };
 

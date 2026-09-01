@@ -203,7 +203,7 @@ export const updateUrls = async () => {
       }
       const urlsOfLocale = urlsByLocale[locale];
       for (const item of items) {
-        const mappedKeyword = mapKeywaord(keyword, locale);
+        const mappedKeyword = mapKeyword(keyword, locale);
         if (item.guid in urlsOfLocale) {
           const existingItem = urlsOfLocale[item.guid];
           if (!existingItem.tags.includes(mappedKeyword)) {
@@ -224,7 +224,7 @@ export const updateUrls = async () => {
   await fs.writeFile(urlsFile, JSON.stringify(urlsByLocale, null, 2), { encoding: 'utf8' });
 };
 
-const mapKeywaord = (keyword: string, locale: string): string => {
+const mapKeyword = (keyword: string, locale: string): string => {
   switch (keyword.toLowerCase()) {
     case 'beyond':
       return 'Beyond';

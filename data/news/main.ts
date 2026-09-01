@@ -6,13 +6,15 @@
 // import * as hk01Download from './hk01-download.ts';
 // import * as googleUrls from './google-urls.ts';
 // import * as googleDownload from './google-download.ts';
+// import * as mpUrls from './mp-urls.ts';
+// import * as mpDownload from './mp-download.ts';
+// import * as mpMarkdown from './mp-markdown.ts';
 
 // await googleUrls.writeUrls(true);
 // await googleDownload.downloadHtmlFiles();
 // googleUrls.printUrls();
 // await hk01Urls.getUrls(true);
 // await hk01Urls.getTagUrls();
-// await googleUrls.printUrls();
 // await chinaUrls.getUrls(true);
 // await googleUrls.getUrls();
 // await chinaUrls.printUrls();
@@ -23,7 +25,10 @@
 // await chinaDownload.trimHtmlFiles();
 // await chinaDownload.downloadPaginationHtmlFiles();
 // await chinaDownload.convertPaginationHtmlFiles7();
-
 // await convertDirectoryEncoding(path.join(import.meta.dirname, "china-raw2"), '.html', 'gb2312', 'utf8');
-
 // await chinaDownload.updateMarkdownMetadataImages();
+// await mpUrls.getUrls();
+// await mpUrls.updateUrls(true);
+// await mpMarkdown.convertHtmlFiles(true);
+// await mpDownload.downloadImages();
+// await mpMarkdown.updateMarkdownFiles();
