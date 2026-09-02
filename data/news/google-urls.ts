@@ -202,25 +202,19 @@ export const printUrls = () => {
 
 export const updateUrls = async () => {
   const urlsByLocale: Record<string, Record<string, NewsUrlItem>> = {};
-  for (const [keyword, localeUrls] of Object.entries(
-    newsUrls as Record<string, Record<string, GoogleNewsUrlItem[]>>
+  for (const [locale, urlsOfLocale] of Object.entries(
+    newsUrls as Record<string, Record<string, NewsUrlItem>>
   )) {
-    for (const [locale, items] of Object.entries(localeUrls)) {
-      if (!(locale in urlsByLocale)) {
-        urlsByLocale[locale] = {};
-      }
-      const urlsOfLocale = urlsByLocale[locale];
-      for (const item of items) {
-        const mappedKeyword = mapKeyword(keyword, locale);
-        if (item.guid in urlsOfLocale) {
-          const existingItem = urlsOfLocale[item.guid];
-          if (!existingItem.tags.includes(mappedKeyword)) {
-            existingItem.tags.push(mappedKeyword);
-          }
-        } else {
-          urlsOfLocale[item.guid] = { ...item, tags: [mappedKeyword] };
-        }
-      }
+    const items = Object.entries(urlsOfLocale)
+      .map(([_guid, item]) => item)
+      .sort((a, b) => {
+        const order = new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
+        return order !== 0 ? order : a.title.localeCompare(b.title);
+      });
+
+    urlsByLocale[locale] = {};
+    for (const item of items) {
+      urlsByLocale[locale][item.guid] = item;
     }
   }
 

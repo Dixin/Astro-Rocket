@@ -14,6 +14,7 @@
 // await convertDirectoryEncoding(path.join(import.meta.dirname, "china-raw2"), '.html', 'gb2312', 'utf8');
 // await googleUrls.getUrls();
 // await googleUrls.writeUrls(true);
+// await googleUrls.updateUrls();
 // await googleDownload.downloadHtmlFiles();
 // googleUrls.printUrls();
 // await googleDownload.downloadImages();
