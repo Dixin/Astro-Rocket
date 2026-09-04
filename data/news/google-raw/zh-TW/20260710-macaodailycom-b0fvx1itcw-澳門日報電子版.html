@@ -1,0 +1,390 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>澳門日報電子版</title>
+<meta name="description" content="澳門日報版權所有 澳門日報電子報由澳門日報出版社出版" />
+<link href="../../../tplimg/global.css" type="text/css" rel="stylesheet">
+<link href="../../../tplimg/calendar.css" rel="stylesheet" type="text/css">
+<SCRIPT language=Javascript src="../../../tplimg/prototype.js"></SCRIPT>
+<SCRIPT language=Javascript src="../../../tplimg/range2.js"></SCRIPT>
+<SCRIPT language=Javascript src="../../../tplimg/mp.js"></SCRIPT>
+<SCRIPT language=Javascript src="../../../tplimg/calendar2.js"></SCRIPT>
+<SCRIPT language=Javascript src="../../../tplimg/jquery-1.3.2.min.js"></SCRIPT>
+<SCRIPT language=Javascript src="../../../tplimg/ScrollPic.js"></SCRIPT>
+<SCRIPT language=Javascript src="../../../tplimg/thickbox.js"></SCRIPT>
+<link href="../../../tplimg/thickbox.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-26059557-1']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
+
+<style type="text/css">
+<!--
+.STYLE1 {
+	font-family: "宋体";
+	font-size: 12px;
+}
+.STYLE8 {font-size: 14px}
+.STYLE9 {font-family: "宋体"}
+.STYLE10 {font-family: Arial, Helvetica, sans-serif}
+.STYLE11 {font-weight: bold; font-size: 14px;}
+.STYLE21 {
+	color: #B8000F;
+	font-size: 12px;
+	font-family: "宋体";
+}
+.style24 {color: #990000}
+-->
+</style>
+ <style type="text/css">
+ }
+ .thumbnail{
+ position: relative;
+ z-index: 0;
+ }
+ 
+ .thumbnail:hover{
+ background-color: transparent;
+ z-index: 50;
+ }
+ 
+ .thumbnail span{ /*CSS for enlarged image*/
+ position: absolute;
+ background-color: lightyellow;
+ padding: 5px;
+ left: -1000px;
+ border: 1px dashed gray;
+ visibility: hidden;
+ color: black;
+ text-decoration: none;
+ }
+ 
+ .thumbnail span img{ /*CSS for enlarged image*/
+ border-width: 0;
+ padding: 2px;
+ }
+ 
+ .thumbnail:hover span{ /*CSS for enlarged image on hover*/
+ visibility: visible;
+ top: 0;
+ left: -300px; /*控制原图出现的位置 position where enlarged image should offset horizontally */
+ </style>
+</head>
+<script language="javascript">
+<!--
+var lastMenu = null;
+var currd ;
+function overMenu()
+{
+ var e = window.event.srcElement;
+
+ with(e.style)
+ {
+ cursor = "hand";
+ //color = "blue";
+ }
+}
+function outMenu()
+{
+ var e = window.event.srcElement;
+ with(e.style)
+ {
+ cursor = "default";
+ //color = "black";
+ }
+}
+
+function getFirstPage(){
+ if(window.document.all.pageLink.length>1)
+ window.location=window.document.all.pageLink[0].href;
+ if(window.document.all.pageLink.length=1) window.location=window.document.all.pageLink.href;
+} 
+
+function expandMenu(mnu)
+{
+ var mnuid = mnu.id;
+ var subid = "sub" + mnuid.substr(3);
+ var obj = document.all[subid];
+ var i = 0, c = 0;
+
+// if(lastMenu != null)
+// {
+// if(lastMenu != obj)
+// {
+// c = lastMenu.length;
+// if(c != null)
+// {
+// for(i=0; i<lastMenu.length; i++)
+// {
+//
+// lastMenu[i].style.display = "none";
+// }
+// }
+// else
+// {
+// lastMenu.style.display = "none";
+// }
+// }
+// }
+
+ if(obj != null)
+ {
+ c = obj.length;
+ if(c != null)
+ {
+ for(i=0; i<obj.length; i++)
+ {
+ if(obj[i].style.display == "none")
+ {
+ obj[i].style.display = "block";
+ }
+ else
+ {
+ obj[i].style.display = "none";
+ }
+ }
+ }
+ else
+ {
+ if(obj.style.display == "none")
+ {
+ obj.style.display = "block";
+ }
+ else
+ {
+ obj.style.display = "none";
+ }
+ }
+ lastMenu = obj;
+ }
+}
+
+
+var rangeDeltaX = 15;
+var rangeDeltaY = -15;
+
+//-->
+</script>
+
+ <SCRIPT id=oMapScript event=onmouseover() for=pagepicmap>
+ rangeDeltaX = 15;
+ rangeDeltaY = -13;
+ drawLine(event.srcElement);
+ </SCRIPT>
+
+
+<SPAN id=leveldiv title=点击查看内容 style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; Z-INDEX: 100; LEFT: 233px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 210px; CURSOR: hand; POSITION: absolute; TOP: 123px; HEIGHT: 34px; BORDER-RIGHT-WIDTH: 0px"></SPAN>
+
+<body leftmargin="0" marginwidth="0" marginheight="0">
+<div align="center">
+<table width="1005" height="742" border="0" cellpadding="0" cellspacing="0" id="table11" style="border-collapse: collapse">
+	<tr>
+		<td width="440" height="722" valign="top">
+		<table id="table12" width="440" height="631" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td rowspan="2">
+			<img src="../../../tplimg/amrb_01.jpg" alt="top" width="30" height="620" align="top"></td>
+		<td>
+			<img src="../../../tplimg/amrb_02.jpg" alt="top" width="398" height="22" align="top"></td>
+		<td rowspan="2">
+			<img src="../../../tplimg/amrb_03.jpg" alt="top" width="12" height="620" align="texttop"></td>
+	</tr>
+	<tr>
+		<td width="398" height="598" background=#ffffff>
+			<MAP NAME="pagepicmap"><Area coords="2,15,145,15,145,91,149,91,149,15,310,15,310,304,246,304,246,336,91,336,91,244,89,244,89,258,2,258,2,151,48,151,48,104,2,104" shape="polygon" href="content_1919978.htm"><Area coords="86,340,395,340,395,514,86,514" shape="polygon" href="content_1919979.htm"><Area coords="304,17,381,17,381,316,304,316" shape="polygon" href="content_1919980.htm"><Area coords="110,505,379,505,379,597,110,597" shape="polygon" href="content_1919981.htm"><Area coords="10,252,96,252,96,414,10,414" shape="polygon" href="content_1919982.htm"><Area coords="10,425,96,425,96,596,10,596" shape="polygon" href="content_1919984.htm"></MAP><img src=../../../page/1/2026-07-10/C03/82861783618902502.jpg border=0 USEMAP=#PagePicMap> </td></tr>
+	<tr>
+		<td colspan="3" align="center" valign="top">
+			<img src="../../../tplimg/amrb_05.jpg" alt="" width="439" height="11" align="top">
+			
+		<table width="97%" height="75" border="0" cellpadding="0" cellspacing="0" id="table22" style="border-collapse: collapse">
+			<tr>
+				<td width="177" align="left" class=px12>第C03版：<STRONG>藝海</STRONG> </td>
+ <td width="131" nowrap class=px12 
+ style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px"><a class=preart href="node_51.htm">上一版<span style='font-size:12px;font-family:webdings'>3</span></a>&nbsp;&nbsp;<a class=preart href="node_53.htm"><span style='font-size:12px;font-family:webdings'>4</span>下一版</a>&nbsp;&nbsp;</td>
+ <td width=119 align="left" valign=center nowrap class=px12 style="PADDING-RIGHT: 5px"></td>
+			</tr>
+			<tr bgcolor="#CCFF99">
+			 <td height="21" colspan="3" align="left" class=px12><span class="default">&nbsp;&nbsp;<img border="0" src="../../../tplimg/icon1.jpg" width="10" height="9" /></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="deepgreen">本版標題導航</span></td>
+			 </tr>
+			<tr>
+			 <td height="25" colspan="3" align="left" class=px12><TABLE cellSpacing=0 cellPadding=1 border=0> <TBODY> <tr> <TD class=default valign="top"> <img src="../../../tplimg/checkbox.gif" width="10" height="10"> </TD> <td class=default valign="top"> <a href=content_1919978.htm><div style="display:inline" id=mp1919978>Sketch推新MV《捉緊剎那》</div></a> </td> </TR><tr> <TD class=default valign="top"> <img src="../../../tplimg/checkbox.gif" width="10" height="10"> </TD> <td class=default valign="top"> <a href=content_1919979.htm><div style="display:inline" id=mp1919979>振華聲粵藝會新編《雲鬢蓮心》</div></a> </td> </TR><tr> <TD class=default valign="top"> <img src="../../../tplimg/checkbox.gif" width="10" height="10"> </TD> <td class=default valign="top"> <a href=content_1919980.htm><div style="display:inline" id=mp1919980>與中山音樂愛好者結緣</div></a> </td> </TR><tr> <TD class=default valign="top"> <img src="../../../tplimg/checkbox.gif" width="10" height="10"> </TD> <td class=default valign="top"> <a href=content_1919981.htm><div style="display:inline" id=mp1919981>第廿三屆《澳廣視至愛新聽力》歌曲巡禮八</div></a> </td> </TR><tr> <TD class=default valign="top"> <img src="../../../tplimg/checkbox.gif" width="10" height="10"> </TD> <td class=default valign="top"> <a href=content_1919982.htm><div style="display:inline" id=mp1919982>澳門泉新曲藝會永樂響鑼</div></a> </td> </TR><tr> <TD class=default valign="top"> <img src="../../../tplimg/checkbox.gif" width="10" height="10"> </TD> <td class=default valign="top"> <a href=content_1919984.htm><div style="display:inline" id=mp1919984>黃家駒紀錄片上映</div></a> </td> </TR> </TBODY> </TABLE> </td>
+			 </tr>
+			</table>
+		</td>
+	</tr>
+</table>
+	 <td valign="top" width="591">
+		<table width="565" height="231" border="0" cellpadding="0" cellspacing="0" id="table13" style="border-collapse: collapse">
+			<tr>
+				<td height="62" colspan="2">
+				<img border="0" src="../../../tplimg/logo1.jpg" width="560" height="85" align="left"></td>
+			</tr>
+			<tr>
+				<td height="2" colspan="0"></td>
+			</tr>
+			<tr>
+				<td height="25" align=left class=greennav background="../../../tplimg/bkg-01.jpg" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;
+				<!--設為首頁開始-->
+				 <a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.macaodaily.com')" class=date> <span style="font-size: 9pt"><font color="#297129">[ 設為首頁 ]</font></span></a> <span class="STYLE11">
+				 <!--設為首頁結束-->
+ |
+ <!--加入鏈接開始-->
+ <script language="JavaScript">
+ </script>
+ </span>
+ <script language="JavaScript"> function bookmarkit(){window.external.addFavorite('http://www.macaodaily.com','澳門日報數字報')}
+if (document.all)document.write('<a href="#" onClick="bookmarkit()"><span style="font-size: 9pt"><font color="#297129">[ 加入收藏 ]</font></span></a>')</script>
+ <!--加入鏈接結束-->|
+				<a href="http://www.macaodaily.com">[ 返回主頁 ]</a> |
+ </td>
+			</tr>
+			<tr valign="middle">
+			 <td height=21 align=middle colspan="2"><table height="21" cellspacing="0" cellpadding="0" width="561" border="0">
+ <tr align="left">
+ <td width="69"><span class="prenext px12"><strong>今日日期：</strong></span></td>
+ <td width="143"><script language=JavaScript>
+ today=new Date();
+ function initArray(){
+ this.length=initArray.arguments.length
+ for(var i=0;i<this.length;i++)
+ this[i+1]=initArray.arguments[i] }
+ var d=new initArray(
+ "星期日",
+ "星期一",
+ "星期二",
+ "星期三",
+ "星期四",
+ "星期五",
+ "星期六");
+document.write(
+ "<font color=#000000 style='font-size:9pt;font-family: 宋体'> ",
+ today.getFullYear(),"年",
+ today.getMonth()+1,"月",
+ today.getDate(),"日",
+ d[today.getDay()+1],
+ "</font>" ); 
+ </script></td>
+ <td width="16">&nbsp;</td>
+ <td width="62" valign="center">&nbsp;</td>
+ <td width="168" height="22" align="left" valign="center">
+</td> 
+ <td width="17" height="21" valign="center"><img src="../../../tplimg/checkbox01.gif" width="13" height="13"></td>
+ <td width="66" valign="center" class="px12"><a href="node_52.htm">版面導航</a></td>
+ </tr>
+ </table></td>
+		 </tr>
+			<tr valign="middle">
+				<td height=78 align=middle colspan="2">
+				<!-- 广告位：內容頁頂部adv_21 560*68 -->
+<iframe src="../../../other-adv/adv21.htm" frameborder=0 width="560" scrolling=no height="86"></iframe></td>
+			</tr>
+			<tr valign="middle">
+				<tr valign="middle">
+				<td width="108" height="25"><span class="STYLE11"><strong> 當前報紙日期：</strong></span></td>
+				<td width="457" height="25">
+				<table width="458" border="0" cellpadding="0" cellspacing="0" id="table23">
+				<tr><td width="458" height=25><span class="STYLE11">
+				 2026
+ <span class="STYLE11">年</strong></span><span class="STYLE11"><strong>7月</strong></span><span class="STYLE11"><strong>10日　星期</strong></span><span class="STYLE11"><strong><font class=weekday>五</font>
+ </strong></span> </td>
+			 </table>			 </td>
+			</tr>
+		</table>
+<table width="560" height="250" border="0" cellpadding="0" cellspacing="0" id="table15" style="border-collapse: collapse">
+				<tr>
+				 <td width="244" height="246" valign="top">
+				 <table height="31" cellspacing="0" cellpadding="0" width="560" border="0">
+ <tr>
+ <td height="31">&nbsp;</td>
+ </tr>
+ </table>
+				 <table width="560" border="0" cellpadding="5" cellspacing="0" bordercolor="#FFCC99">
+ <tr align="right" bgcolor="#e8e8e8">
+ <td width="114" height="22" align="left" valign="center"><table width=100% border=0><tr><td nowrap width=50% class=px12><a class=preart href="content_1919982.htm"><FONT face=Webdings>3</FONT>上一篇</a>&nbsp;&nbsp;</td></tr></table></td>
+ <td width="218" align="middle" valign="center">&nbsp;</td>
+ <td width="199" align="right" valign="center"><span class="px12">
+ <script language=JavaScript type=text/javascript>
+function zoomIn() {
+ newZoom= parseInt(ozoom.style.zoom)+10+'%'
+ ozoom.style.zoom =newZoom;
+ } 
+function zoomOut() {
+ newZoom= parseInt(ozoom.style.zoom)-10+'%'
+ ozoom.style.zoom =newZoom;
+ } 
+ </script>
+ </span><span class="STYLE21"><a onClick="zoomIn();" href="javascript:">放大<img height="16" src="../../../tplimg/zoomin.gif" width="16" align="absMiddle" border="0"></a>&nbsp;<a onClick="zoomOut();" href="javascript:">縮小<img height="16" src="../../../tplimg/zoomout.gif" width="16" align="absMiddle" border="0"></a>&nbsp;<a onClick="ozoom.style.zoom='100%';" href="javascript:">默认<img height="16" src="../../../tplimg/zoomact.gif" width="16" align="absMiddle" border="0"></a></span><span class="px12">&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ </tr>
+ <tr>
+ <td height="2"></td>
+ </tr>
+ </table>
+				 <table width="101%" cellpadding="0" cellspacing="0">
+ <tr>
+ <td> <table cellspacing=0 cellpadding=5 width=572 border=0> <tbody> <tr valign=top> <td style="padding-left: 6px;padding-top:10px;padding-bottom:10px;" align=center width=572> <span style="font-size:14px;line-height:23px;"></span><br> <strong style="font-size:23px;font-family:黑体;line-height:30px;"> 黃家駒紀錄片上映 </strong><br> <span style="font-size:14px;line-height:30px;"></span><br> <span style="font-size:12px;">司徒文進</span></td></tr> </tbody></table> </td>
+ </tr>
+ <tr>
+ <td><table align=center><tr><td><table bgcolor=#efefef><tr><td><TABLE><TBODY><TR><TD align="center"><A HREF="../../../res/1/20260710/85521783618903596.jpg" title="澳門日報版權所有" class="thickbox"><IMG src="../../../res/1/20260710/57891783618903596.jpg" style="border:0"></A><BR><BR></TD></TR>
+ <TR><TD width="460"><font size=2> 黃家駒首部個人紀錄片《真的相識過》
+</font></TD></TR></TBODY></TABLE></td></tr></table>
+</td></tr></table>
+ </td>
+ </tr>
+ <tr>
+ <td> <table cellspacing=0 cellpadding=0 width="572" border=0> <tbody> <tr> <td style="PADDING:0px 30px 0px 10px; FONT-SIZE: 14px; LINE-HEIGHT: 21px" align=left> <div id=ozoom style="ZOOM: 100%"> <founder-content><P>&nbsp;&nbsp;&nbsp;&nbsp;黃家駒紀錄片上映</P><P></P><P>&nbsp;&nbsp;&nbsp;&nbsp;若問人生最愛樂隊，筆者定毫不猶豫地告訴你，由始至終，最愛都是粵語經典樂隊BEYOND。今年是BEYOND靈魂人物，主創、主唱兼結他手黃家駒逝世三十三周年，每年的六月三十日，也是全球BEYOND迷心碎的一天：九三年的六月廿四日，家駒於日本錄影電視節目時不慎由高處跌倒，六日後與世長辭。</P><P>&nbsp;&nbsp;&nbsp;&nbsp;今年家駒的紀錄片《真的認識過》上映，片內不少家駒身邊人物分享當年點滴，連帶不少珍貴錄像，令筆者再次變回年少的小歌迷。當年尚是兒童的筆者，辛辛苦苦以積蓄購入BEYOND的卡式錄音帶及CD唱片，無時無刻細聽BEYOND歌曲已是筆者成長印記，直到家駒走後也一直支持剩下三子，至今仍不時翻聽他們的經典樂曲。</P><P>&nbsp;&nbsp;&nbsp;&nbsp;很想親口和家駒說聲真的愛你，遙望大地憶起早班火車，雖人生滿是灰色軌跡，但你教會了我縱然冷雨夜歲月無聲也不再猶豫，即使無語問蒼天，也要海闊天空，活着便精彩。你更教會我，縱使是緣是情是童真，還是意外，比當初已改變，牽強地相處，惟人生雖短暫，也無悔共你穿梭天邊與海岸，因為，我與你也彼此真的相識過。謝謝你，黃家駒，感謝你在我生命出現，感恩認識過。</P><P></P><P>&nbsp;&nbsp;&nbsp;&nbsp;司徒文進</P><P></P></founder-content></div></td></tr> <INPUT type=checkbox value=0 name=titlecheckbox sourceid="" style="display:none"> </tbody> </table> 
+ </td>
+ </tr>
+ <tr>
+ <td>
+ </td>
+ </tr>
+ </table>
+		<table width="559" border="0" cellpadding="6" cellspacing="0" bgcolor="#CCCCCC">
+ <tr bgcolor="#e8e8e8">
+ <td align="left" width="559"><a class=preart href="content_1919982.htm"><FONT face=Webdings>3</FONT>上一篇</a>&nbsp;&nbsp;</td>
+ </tr>
+ </table>
+	 </table>
+</td>
+	</tr>
+	<tr>
+		<td width="440" height="19" valign="top">
+		　	 <td valign="top" width="591">
+
+			 </td>
+	</tr>
+ </table>
+		<table width="1005" border="0" cellpadding="0" cellspacing="0" id="table6" style="border-collapse: collapse">
+ <tr>
+ <td width="1008" align="center" valign="middle" bgcolor="#E8E8D7">
+			<!-- 广告位：內容頁底部通欄adv_22 999*63 -->
+
+ 
+ </tr>
+ <tr>
+ <td height="96" align=center valign="middle" bgcolor="#FF6600"><iframe src="../../../other-adv/foot.htm" frameborder=0 width="990" scrolling=no height="86"></iframe></td>
+ </tr>
+ </table>
+		</table>
+<p>&nbsp;</tr></td><td>　</td>
+	</tr>
+</table>
+
+</div>
+</p>
+
+</body>
+
+</html><!--enpproperty <founder-date>2026-07-10</founder-date><founder-author>司徒文進</founder-author><founder-title>黃家駒紀錄片上映</founder-title><founder-nodename></founder-nodename><founder-keyword></founder-keyword><founder-ip></founder-ip><founder-ChannelID>1</founder-ChannelID><founder-imp>0</founder-imp><founder-subtitle></founder-subtitle><founder-type>1</founder-type><founder-introtitle></founder-introtitle><founder-pagepicurl>macaodaily/page/1/2026-07-10/C03/94121783618902502.jpg</founder-pagepicurl><founder-pagenum>C03</founder-pagenum><founder-papername>澳门日报欢迎你－澳门日报</founder-papername><founder-nodeid>52</founder-nodeid><founder-paperhead>macaodaily/logo/</founder-paperhead> /enpproperty-->

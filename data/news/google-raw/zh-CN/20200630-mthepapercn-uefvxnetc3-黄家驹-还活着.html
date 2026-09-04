@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黄家驹，还活着</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script>
+        window.parent.postMessage({
+            event: 'headComplete',
+            time: Date.now()
+        }, '*');
+    </script>
+</head>
+<body class="font-size-1" ontouchstart>
+<!-- // 此段js务必保留 -->
+<script type="text/javascript">
+    (function () {
+        var getQueryString = function (name, type) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = type === 1 ? window.location.search.substr(1)
+                .match(reg) : window.location.hash.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }
+            return null;
+        };
+        var fsize = getQueryString('fontSize', 1) || 'font-size-1';
+        var sdkver = getQueryString('sdkver', 1);
+        var version = getQueryString('verision', 2);
+        version = version && version.slice(0, 8);
+        window.BAIDU_VERSION = sdkver || version;
+        window.BAIDU_VERSION = window.BAIDU_VERSION ? '_' + window.BAIDU_VERSION : '';
+        document.body.className = fsize;
+        var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+        link.href =
+            "https://gss0.bdstatic.com/5bd1bjqh_Q23odCf/static/thirdparty/js/wrap/third" + window.BAIDU_VERSION + ".css";
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        window.addEventListener('message', function (e) {
+            if (e.data.event === 'postFontSize') {
+                document.body.className = e.data.data.fontSize;
+                document.body.style.visibility = 'visible';
+            }
+        });
+        link.onload = function () {
+            window.parent.postMessage({
+                event: 'getFontSize',
+                time: Date.now()
+            }, '*');
+            setTimeout(function () {
+                document.body.style.visibility = 'visible';
+            }, 200);
+        };
+        link.onerror = function () {
+            document.body.style.visibility = 'visible';
+        };
+        head.appendChild(link);
+    }());
+</script>
+<div id="container" class="container">
+    <div class="header">
+        <div id="title" class="titleFont">黄家驹，还活着</div>
+        <div class="info link" data-href="https://m.thepaper.cn">
+            <img src="https://file.thepaper.cn/wap/v6/img/logo_wap_v3.png" data-href="https://m.thepaper.cn"/>
+            <span data-href="https://m.thepaper.cn">
+                湃客：最人物&nbsp;2020-06-30 17:46
+            </span>
+        </div>
+    </div>
+    <article>
+            <div>原创 最人物出品 最人物</div><div><p class="contentImage"><img data-index="0" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/264.jpg" data-width="260px" data-height="195px"></p></div><div>黄家驹从未离去。<p class="contentFont">后来，在一场又一场宏大的追忆中，他的形象变得越发清晰。</p><p class="contentFont">他不爱哭，弟弟黄家强说，记忆里哥哥从没哭过；他很爱唠叨，因此被人称为“黄伯”，最爱做的事情，就是给粉丝讲道理；</p><p class="contentFont">他极其念旧，一件红夹克，一穿就是10年；他不喜欢被说“有型”，因为比起外表，他更希望别人喜欢他的音乐。</p><p class="contentFont">曾经他说：“我背上吉他，就像背上一把宝剑。”</p><p class="contentFont">后来的他，与他的“宝剑”一起，永远留在了光辉岁月中。</p></div><div><p class="contentImage"><img data-index="1" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/283.jpg" data-width="260px" data-height="195px"></p></div><div>已经27年了。<p class="contentFont">27年前的6月30号，日本东京连下了3天大雨，整个城市被浸泡在一团浓厚的水雾之中。</p><p class="contentFont">下午4点，东京女子医科大学医院内传出噩耗，中国香港歌手黄家驹因头部遭受重伤，不治身亡，享年31岁。</p></div><div><p class="contentImage"><img data-index="2" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/285.jpg" data-width="260px" data-height="195px"></p></div><div>在此之前，黄家驹昏迷了整整6天。<p class="contentFont">这6天里，家人和朋友不断来到他的病房，试图通过聊天唤醒他的意识；歌迷们在医院门口的便利店里蹲着，叠着千纸鹤为他祈福；香港的电视台每隔几小时就会播报他的最新情况，祈祷病情出现转机。</p><p class="contentFont">然而奇迹没有发生。</p><p class="contentFont">黄家驹出事那天，是中国的端午节，可是他却再也没能与家人团聚。</p><p class="contentFont">他的一生，被定格在了1993年6月的最后一天。</p><p class="contentFont">1991年，年轻的黄家驹，永远的Beyond</p></div><div><p class="contentImage"><img data-index="3" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/287.jpg" data-width="260px" data-height="195px"></p></div><div>也是六月。<p class="contentFont">58年前的6月10日，黄家驹出生在一个香港的普通家庭中，作为家中第4个孩子，他有两个姐姐，一个哥哥，以及一个弟弟。</p><p class="contentFont">这家人并不富裕，九龙深水埗一间30平米的小屋，这一家七口一住就是十几年。</p></div><div><p class="contentImage"><img data-index="4" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/292.jpg" data-width="260px" data-height="195px"></p></div><div>黄家驹（左一）与弟弟黄家强（一排左三）<p class="contentFont">在离家不远处，黄家驹的父母开了一间五金店，两人常常忙起来就无暇顾及其他，每当此时，黄家驹就会自觉承担起照看弟弟的责任。</p><p class="contentFont">这也就是为什么，黄家强与黄家驹格外亲近。</p><p class="contentFont">在弟弟黄家强的口中，哥哥是一个很顽皮的孩子，每次做错事，黄家驹都会被父亲抓住，用木棍教训，可是他从来不出声：“无论多疼，他始终一声不吭”。</p><p class="contentFont">“他真的很倔。”</p></div><div><p class="contentImage"><img data-index="5" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/294.jpg" data-width="260px" data-height="195px"></p></div><div>黄家强（左）与黄家驹（右）<p class="contentFont">因为家中条件不好，中学毕业后，黄家驹没有继续学业，而是选择进入社会，挣钱养家。</p><p class="contentFont">那些年，黄家驹戴着厚厚的眼镜，梳着五五分的头型，在人群中十分不起眼。</p><p class="contentFont">十几岁的他，并没有什么梦想，对他来说，评判工作好坏的唯一标准，只有工资高低。</p><p class="contentFont">彼时没有人能想到，这个普普通通的青年，日后竟会成为叱咤歌坛的摇滚巨星。</p></div><div><p class="contentImage"><img data-index="6" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/295.jpg" data-width="260px" data-height="195px"></p></div><div>少年时期的黄家驹<p class="contentFont">一切故事的起点，都源于一个垃圾堆。</p><p class="contentFont">一次，黄家驹从家门口的垃圾堆中，捡到一把破旧的木吉他，他本想转手送给玩音乐的朋友，可由于这把吉他实在太破了，他只好自己留下。</p><p class="contentFont">这是黄家驹的第一把吉他，亦是他人生的转折点。</p><p class="contentFont">这把没人要的吉他，被黄家驹放在了屋里的角落，闲来无事时，他总会拨弄两下，一来二去之间，他学会了弹吉他。</p><p class="contentFont">以此为契机，黄家驹第一次加入了乐队。可是由于没有基础且不懂乐理，他被队内的电吉他手赶了出来，并被骂琴艺太差，根本不配玩音乐。</p><p class="contentFont">这件事情让他极为受挫，倔强的他暗下决心：“我一定要把吉他弹得比他更出色！”</p></div><div><p class="contentImage"><img data-index="7" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/297.jpg" data-width="260px" data-height="195px"></p></div><div>憋着一口气，回到家中，黄家驹开始利用一切空余时间练习吉他。那些日子，他的桌前总是摆着一盆温水，每次弹到手痛时，他总会将手泡到水中舒缓一下，继续练习。<p class="contentFont">就这样，黄家驹练出了一手弹吉他的绝技，很快，他迎来了人生中的第二把吉他。</p><p class="contentFont">1983年，香港《结他》杂志举办“山叶吉他比赛”，要求参赛者以乐队的形式参加比赛，21岁的黄家驹跃跃欲试，但苦于没有队友。</p><p class="contentFont">在这个时候，他认识的一位乐器店老板，给他介绍了一位会打鼓的年轻人——叶世荣，后来叶世荣又联合另外两个朋友邓炜谦和李荣潮，组成了参赛乐队。</p></div><div><p class="contentImage"><img data-index="8" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/298.jpg" data-width="260px" data-height="195px"></p></div><div>黄家驹（左）与叶世荣（右）<p class="contentFont">在当时，比赛队伍大多是翻唱，鲜有乐队具有原创能力，而黄家驹却坚持要做创作型乐队。</p><p class="contentFont">年少气盛，他给乐队取名“Beyond”，翻译过来就是“超越”的意思，代表着他们想要超越一切乐队的决心。</p><p class="contentFont">他们确实也做到了。</p><p class="contentFont">在这次比赛中，这支年轻的队伍凭借两首原创歌曲《大厦》与《脑部侵袭》，夺下了比赛冠军，而这两首歌曲都是出自彼时21岁的黄家驹之手。</p><p class="contentFont">比赛结束的第二天，在《结他》杂志的第一版上，刊登了Beyond乐队获得冠军的新闻，新闻题目是《一个新乐队起航了——Beyond》。</p><p class="contentFont">当时的文章这样评价Beyond乐队：“他们的岁数在19到22岁不等，全部在职，却又都长着一副学生模样。”</p><p class="contentFont">以此为起点，黄家驹带着乐队，开始陆陆续续参加各种地下演出，并且不断学习乐理知识，这期间，乐队不断摸索重组，有人离开也有人加入。</p><p class="contentFont">直到1985年，才形成了大众印象中的Beyond乐队。也就是黄贯中、黄家强（黄家驹的弟弟）、黄家驹以及叶世荣的经典组合。</p></div><div><p class="contentImage"><img data-index="9" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/299.jpg" data-width="260px" data-height="195px"></p></div><div>从左至右：黄贯中、叶世荣、黄家强、黄家驹</div><div><p class="contentImage"><img data-index="10" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/300.jpg" data-width="260px" data-height="195px"></p></div><div>如今当我们再回望黄家驹的歌曲时，会发现“唏嘘”二字，在他的歌词中频繁出现。<p class="contentFont">上世纪80年代的香港乐坛，掀起了一股“都市情歌”风潮，当时的歌曲市场上流行的，全都是谭咏麟的《雨夜的浪漫》、邓丽君的《我只在乎你》这一类的情歌。</p><p class="contentFont">而穿着皮裤、留着长发、不愿向世俗低头的Beyond，与大环境格格不入。</p><p class="contentFont">也正因此，Beyond在音乐道路上走得并不顺利。</p></div><div><p class="contentImage"><img data-index="11" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/302.jpg" data-width="260px" data-height="195px"></p></div><div>Beyond乐队<p class="contentFont">比赛冠军的头衔，并没有加持他们日后的道路，在接下来的几年，他们一直默默无闻，甚至没有公司愿意签下这支乐队。</p><p class="contentFont">另一方面，在父母眼中，搞乐队显然是一份不稳定的工作，而黄家驹不仅自己“不务正业”，还带着弟弟黄家强一起，终日泡在乐队之中。</p></div><div><p class="contentImage"><img data-index="12" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/303.jpg" data-width="260px" data-height="195px"></p></div><div>从左至右：黄家强、黄家驹父母、黄家驹<p class="contentFont">生活与家庭的双重压力袭来，让黄家驹偶尔有些疲倦，那几年，唯一能让他喘口气的地方，是那间被Beyond称为“二楼后座”的地方。</p><p class="contentFont">这间位于香港普通大楼里的小屋子，是他们的练习室。</p><p class="contentFont">在这间小屋中，黄家驹写下了许多流传至今的经典歌曲，Beyond也终于拥有了专属训练场所。</p></div><div><p class="contentImage"><img data-index="13" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/304.jpg" data-width="260px" data-height="195px"></p></div><div>Beyond乐队在“二楼后座”<p class="contentFont">1985年，储备了许多歌曲的黄家驹，决定不再原地等待机会，他做了一个决定——自费开演唱会。</p><p class="contentFont">为了凑钱，他开始疯狂打工，从水电工、办公室助理、再到建筑工人，最多的时候，他一天打了5份工。</p><p class="contentFont">终于，在大家的努力下，Beyond筹够了钱，在香港坚道明爱中心租借了一个舞台，办了他们第一场演唱会——“永远等待”。</p></div><div><p class="contentImage"><img data-index="14" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/305.jpg" data-width="260px" data-height="195px"></p></div><div>“永远等待”演唱会的门票（1985）<p class="contentFont">演唱会前，黄家驹跑了许多家唱片公司，邀请他们来听Beyond第一场演唱会，然而，当幕布拉开，台下的座位只被填满一半。</p><p class="contentFont">而当演唱会进行到一半时，又有一大半人离开，最终，这场演唱会不仅没赚到钱，还亏了6000块钱。</p><p class="contentFont">黄家驹不甘心，决定再自费为乐队出一张专辑。</p><p class="contentFont">对于当时的Beyond来说，这张专辑被他们视为“最后一搏”：这四个男孩决定如果再不成功，就彻底与自己的乐队梦想告别，回归普通生活。</p><p class="contentFont">1985年，《再见理想》推出。在这张专辑中，Beyond投入了大量心血，并通过歌曲表达出了长久以来积攒在他们心中的苦闷与不甘。</p><p class="contentFont">故事没有发生反转，这张“非主流”的音乐专辑，依然没有引起太大反响。</p></div><div><p class="contentImage"><img data-index="15" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/311.jpg" data-width="260px" data-height="195px"></p></div><div>《再见理想》专辑封面（1985）<p class="contentFont">接二连三的打击，让黄家驹心灰意冷。</p><p class="contentFont">正当他们打算就此结束自己的音乐生涯时，有人敲响了二楼后座的大门。</p></div><div><p class="contentImage"><img data-index="16" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/313.jpg" data-width="260px" data-height="195px"></p></div><div>至今，陈健添都记得第一次见到黄家驹时的样子。<p class="contentFont">在二楼后座那间闭仄的小屋内，黄家驹穿着一件红色夹克坐在角落，不断擦拭着手中的吉他。</p></div><div><p class="contentImage"><img data-index="17" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/315.jpg" data-width="260px" data-height="195px"></p></div><div>陈健添，这位后来发掘出王菲与黑豹乐队的“星探级”老板，在听完Beyond的新专辑后，当即决定签下他们，并担任这支乐队的经纪人。<p class="contentFont">签约后，Beyond开始了第二张专辑的制作，看起来一切似乎有了新的希望，可是，比希望先到的，是又一次失望。</p><p class="contentFont">1987到1988年，Beyond连发两张商业大碟：《亚拉伯跳舞女郎》与《现代舞台》，但结果依然石沉大海，没有激起任何水花。</p></div><div><p class="contentImage"><img data-index="18" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/319.jpg" data-width="260px" data-height="195px"></p></div><div>《亚拉伯跳舞女郎》封面（1987）<p class="contentFont">这一年，Beyond已经出道5年，黄家驹也26岁了。</p><p class="contentFont">公司发出最后通牒，如果第三张专辑还不成功，就要解散乐队。</p><p class="contentFont">对于Beyond来说，那是一段极为煎熬的日子，专辑卖不出去，也就意味着没有收入，为了生活，他们不得不去酒吧演出。</p><p class="contentFont">最困难时，他们甚至需要卖掉自己的部分乐器，以维持基本生活支出。</p><p class="contentFont">也就是在这时，与黄家驹相恋四年的女朋友提出，让他放弃音乐，不然就与他分手。</p><p class="contentFont">在爱情与音乐之间，黄家驹决定舍弃爱情。悲伤之下，他制作出《喜欢你》这首歌，把所有对女友的愧疚写入歌中，来纪念这段感情。</p><p class="contentFont">失去爱情，事业不顺。眼看弟弟脸上的笑容一日比一日减少，姐姐黄小琼找到黄家驹，直言不讳地指出他的歌曲很吵，她说：</p><p class="contentFont">“你就不能做一些随口就能唱的歌吗，被听到的前提，是你要先红。”</p><p class="contentFont">黄家驹又何尝不明白这个道理，他答道：“好吧，原来你们喜欢听这样的歌，我这里有的是，要多少有多少。”</p><p class="contentFont">从此后，他开始努力寻找作品中的平衡点，终于，命运之门在1988年向黄家驹打开了。</p></div><div><p class="contentImage"><img data-index="19" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/320.jpg" data-width="260px" data-height="195px"></p></div><div>80年代中后期，随着四大天王的崛起，以及张国荣与谭咏麟的“歌王争霸”，香港歌坛仍是偶像派与情歌的天下。<p class="contentFont">就是在这样的时代背景下，Beyond的《大地》横空出世，成为了一首划时代的作品。</p><p class="contentFont">在1988年的“十大劲歌金曲颁奖典礼”上，歌曲《大地》一炮而红，在拿下十大金曲奖的同时，开启了香港的“非情歌时代”。</p><p class="contentFont">与此同时，Beyond成为第一支在大陆开演唱会的香港乐队。</p><p class="contentFont">10月，他们登上了北京体育馆的舞台，黄家驹还演唱了一首崔健的《一无所有》。</p></div><div><p class="contentImage"><img data-index="20" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/321.jpg" data-width="260px" data-height="195px"></p></div><div>Beyond乐队在北京演出（1988）<p class="contentFont">此后，Beyond迎来了自己的黄金时代。</p><p class="contentFont">1989年，他们推出新专辑《Beyond IV》，专辑中收录的《真的爱你》，是黄家驹写给妈妈的歌曲，以感谢妈妈多年来的照顾与支持。</p><p class="contentFont">这首歌获得了第12届十大中文金曲奖、以及第7届十大劲歌金曲奖；</p></div><div><p class="contentImage"><img data-index="21" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/323.jpg" data-width="260px" data-height="195px"></p></div><div>黄家驹与母亲<p class="contentFont">第二年，他们又凭借专辑《命运派对》，拿下白金唱片奖。</p><p class="contentFont">专辑中的《光辉岁月》与《俾面派对》分别获第8届十大劲歌金曲奖和第13届十大中文金曲奖。</p><p class="contentFont">1991年，Beyond发行专辑《犹豫》，其中收录的歌曲《Amani》获第14届十大中文金曲奖。</p></div><div><p class="contentImage"><img data-index="22" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/324.jpg" data-width="260px" data-height="195px"></p></div><div>Beyond专辑磁带<p class="contentFont">回头看来，Beyond的歌曲主题很少局限于爱情，而大多聚焦于亲情、社会与家国。</p><p class="contentFont">据统计，1984年到1993年间，在香港颁奖礼上，总共颁出138首年度金曲奖，这其中，情歌超过百首，而关注社会理念的歌曲，仅有5首，其中4首出自Beyond。</p></div><div><p class="contentImage"><img data-index="23" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/325.jpg" data-width="260px" data-height="195px"></p></div><div>《Beyond IV》专辑封面（1989）<p class="contentFont">但是随着爆红，Beyond又开始面对新的问题。</p><p class="contentFont">在当时的香港娱乐圈，无论歌手还是演员，一旦成名，总是不可避免地要出席各种聚会以及综艺活动，Beyond也未能幸免。</p></div><div><p class="contentImage"><img data-index="24" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/326.jpg" data-width="260px" data-height="195px"></p></div><div>在公司的安排下，他们开始在各种综艺节目中频频露面，甚至还开始出演电影和电视剧。<p class="contentFont">真正留给他们创作歌曲的时间，开始变得少之又少，这些让黄家驹十分痛苦与迷茫。</p><p class="contentFont">二楼后座那种单纯的创作环境，似乎离他越来越远。</p></div><div><p class="contentImage"><img data-index="25" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/328.jpg" data-width="260px" data-height="195px"></p></div><div>有人说，90年代初以黄家驹为核心的Beyond乐队，是一个绝对的理想主义时期。<p class="contentFont">这也恰好解释了，在当时，当所有人都以为Beyond会向大环境低头，转型成为一支偶像乐队时，黄家驹却率领整个乐队，站在了香港娱乐圈的对面。</p><p class="contentFont">1990年，Beyond推出单曲《俾面派对》，歌名的意思是：给个面子参加派对，在歌曲中，黄家驹唱到：“来让我去告诉你，派对永无真意义。”</p><p class="contentFont">后来，他又在一次采访中直言：“香港没有乐坛，只有娱乐圈。”</p><p class="contentFont">“现在的流行乐坛，价值观严重扭曲，因为歌手往往要出席不同的社交应酬、拍电影、出席游戏节目等等，一切与音乐无关的工作及活动，可说是毫无意义。”</p><p class="contentFont">黄家驹的一系列反抗，震惊了整个香港娱乐圈。</p></div><div><p class="contentImage"><img data-index="26" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/330.jpg" data-width="260px" data-height="195px"></p></div><div>青年时期的黄家驹<p class="contentFont">回头看来，在香港娱乐圈里，黄家驹始终是一个独特的存在：</p><p class="contentFont">他不喜欢被说“有型”，因为害怕别人会因为自己的外貌，而忽视了自己的歌曲。</p><p class="contentFont">他不喜欢演唱会“太闹”，于是常常在演唱会中途停下来，教导歌迷们不要过于激动，更不要损坏公共器材。</p><p class="contentFont">他甚至在一次访问非洲后，资助了6个非洲孤儿，不管多忙，他都会打电话联系这些孩子们，询问他们近况。</p></div><div><p class="contentImage"><img data-index="27" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/331.jpg" data-width="260px" data-height="195px"></p></div><div>访问非洲的黄家驹<p class="contentFont">而他那首后来被广为传唱的《光辉岁月》，则是在听过黑人领袖曼德拉的故事后，为他写下的歌曲。</p><p class="contentFont">在歌中，他唱：“可否不分肤色的界限，愿这土地里，不分你我高低。"</p></div><div><p class="contentImage"><img data-index="28" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/332.jpg" data-width="260px" data-height="195px"></p></div><div>1991年，Beyond连办5场演唱会，演唱会上，黄家驹在演唱《再见理想》之前说：<p class="contentFont">“我们Beyond在这几年间，经历了许多事情，从没机会到有机会，一路在改变，我们Beyond会永远做乐队直到手指头不会弹了为止，永远坚持我们乐队的信念。”</p><p class="contentFont">演唱会之后，为了得到更好的发展，29岁的黄家驹带着乐队背井离乡，去往日本，开启了一段全新的音乐之旅。</p><p class="contentFont">初到日本时，在富士山下，黄家驹与Beyond确实度过了一段只有音乐的日子。</p><p class="contentFont">那两年，在日本录歌，回香港宣传成为了乐队的常态，往返两地的生活虽然辛苦，但是黄家驹终于开始拥有大片的创作时间。</p><p class="contentFont">《海阔天空》这首歌，就是在这一时期被创作出来的，这首歌后来被收录在专辑《乐与怒》中，这是黄家驹生前最后一张专辑。</p></div><div><p class="contentImage"><img data-index="29" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/334.jpg" data-width="260px" data-height="195px"></p></div><div>1993年5月28日，黄家驹去世前一个月，Beyond在马来西亚举办了一场不插电演唱会。<p class="contentFont">最后一首歌，黄家驹选择了《海阔天空》，唱到一半，他停下来，对台下的歌迷分别介绍每一位队员，最后他说：</p><p class="contentFont">“最重要最重要就是多谢今晚到来的每一位朋友，你们真棒！所以我们会再开个更加大力、更加精彩的演唱会，1994年后见，再见。”</p></div><div><p class="contentImage"><img data-index="30" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/336.jpg" data-width="260px" data-height="195px"></p></div><div>黄家驹最后一次在演唱会上唱《海阔天空》（1993）<p class="contentFont">黄家驹没有履行自己的承诺。</p><p class="contentFont">一个月后，他在日本富士电视台录制一档综艺节目，期间失足从3米高台上意外摔落，导致脑部受伤，在经历长达6天的抢救后，1993年6月30日，黄家驹不治身亡。</p><p class="contentFont">终年31岁。</p><p class="contentFont">出事的前两天，黄家驹还曾和弟弟黄家强抱怨，日本的叉烧肉不如家中的好吃：“不过好在，我们快回家了。”</p><p class="contentFont">按照计划，Beyond本来打算在这一年的年末，回到香港发展。</p><p class="contentFont">然而，在这个6月，一切都破灭了，Beyond永远无法四个人一同回家了。</p></div><div><p class="contentImage"><img data-index="31" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/337.jpg" data-width="260px" data-height="195px"></p></div><div>曾经，黄家驹离开香港远赴日本时，和舍不得他的歌迷说：“无论我走到多远，最后我都会回到这里。”<p class="contentFont">这一次，黄家驹没有食言，1993年7月5日这天，他回家了。</p><p class="contentFont">在香港殡仪馆里，家人为他举行了告别仪式，许多他生前的好友与亲人都前来，送黄家驹最后一程。殡仪馆外，歌迷们一遍又一遍地唱着《光辉岁月》，用歌声送别偶像。</p><p class="contentFont">在第二天的香港报纸上，黄家驹的新闻占据了头版，题目只有简单5个字：</p><p class="contentFont">“安息吧，家驹”。</p><p class="contentFont">一个时代落幕了。</p></div><div><p class="contentImage"><img data-index="32" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/339.jpg" data-width="260px" data-height="195px"></p></div><div>后来的每年6月，人们都会想起黄家驹：10号和30号，一头一尾，一个生日，一个忌日。<p class="contentFont">如果他还在世，应是58岁了。</p><p class="contentFont">今年，在他生日当天，Beyond其余三位成员，都准时在社交平台上现身，祝黄家驹生日快乐。</p></div><div><p class="contentImage"><img data-index="33" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/341.jpg" data-width="260px" data-height="195px"></p></div><div><p class="contentImage"><img data-index="34" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/343.jpg" data-width="260px" data-height="195px"></p></div><div><p class="contentImage"><img data-index="35" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/345.jpg" data-width="260px" data-height="195px"></p></div><div>一晃28年过去，曾经的少年都已步入人生下半场，只有黄家驹被永远留在了昨天。</div><div><p class="contentImage"><img data-index="36" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/346.jpg" data-width="260px" data-height="195px"></p></div><div>黄贯中、叶世荣、黄家强、黄家驹在“二楼后座”<p class="contentFont">后来，黄家强每次唱起《海阔天空》中那句：“哪怕有一天会跌倒”，都会失声痛哭。</p><p class="contentFont">黄贯中无法再踏入二楼后座，因为每当走入那间练习室，就会看到黄家驹留下的烟灰缸与旧吉他。而叶世荣则是每每在采访中谈起黄家驹，就会眼含泪光。</p><p class="contentFont">失去了黄家驹的Beyond，在继续前行12年后，于2005年宣布解散，各自发展。</p></div><div><p class="contentImage"><img data-index="37" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/348.jpg" data-width="260px" data-height="195px"></p></div><div>Beyond告别演唱会上：叶世荣、黄家强、黄贯中<p class="contentFont">Beyond似乎正一步步退出大众视野，但是却又正以另一种形态存在于大家的记忆之中。</p><p class="contentFont">2013年，Beyond的吉他手黄贯中作为竞演歌手，登上《我是歌手》舞台。</p><p class="contentFont">演唱前，他说：“这是一首Beyond歌，大家不认识我没有关系，但是当这首歌的前奏响起，他们马上会想起那个时代。”</p><p class="contentFont">那是属于黄家驹的时代。而这一年，黄家驹去世20年了。</p><p class="contentFont">黄家驹去世后，《海阔天空》再次响起，全场泪下……</p><p class="contentFont">毋庸置疑，“黄家驹”三个字，代表着香港摇滚乐坛的黄金时代。</p><p class="contentFont">罗大佑说：“香港没有真正的音乐人，除了黄家驹。这样的人降临在人世间本来就是奇迹，上帝不会再派一个音乐天使下凡了。”</p><p class="contentFont">王菲说：“好单纯的家驹，他们的音乐是我觉得世界上最纯洁的音乐。”</p></div><div><p class="contentImage"><img data-index="38" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/350.jpg" data-width="260px" data-height="195px"></p></div><div>王菲（第一排右二）和黄家驹（第一排右三）<p class="contentFont">黄家驹去世27年了，这些年来，人们一直说着“再见家驹”，可是却又没人能与他真的再见。</p><p class="contentFont">他的那些歌曲，至今仍被视为殿堂级的音乐，被不断传唱。</p><p class="contentFont">有人说黄家驹之后，香港再无摇滚。倒不如说，纵使摇滚乐可延续，但是属于黄家驹的那份坚持与热爱，以及对于音乐近乎理想主义的追求，恐再难得。</p><p class="contentFont">死亡从来都不是终点，遗忘才是，黄家驹似乎从没有离开过，人们没有将他忘记，时代也从未将他封存。</p><p class="contentFont">时间过去，他和他的光辉岁月，历久弥新。</p></div><div><p class="contentImage"><img data-index="39" src="https://imagepphcloud.thepaper.cn/pph/image/75/87/352.jpg" data-width="260px" data-height="195px"></p></div><div>家驹，现在是2020年的夏天了，如果你还在，如今58岁的你，会是什么样子？<p class="contentFont">在另一个世界的这些年，你是否梦到过你曾来过的这个世界？</p><p class="contentFont">27年了，家驹，你，还好吗？</p></div><div></div>
+    </article>
+</div>
+<!-- 我是分割线－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+<script type="text/javascript">
+    // 此段js务必保留
+    (function () {
+        var domHeight = document.body.clientHeight;
+        window.parent.postMessage({
+            event: 'iFrameComplete',
+            height: domHeight,
+            time: Date.now()
+        }, '*');
+        var thirdJs = document.createElement("script");
+        thirdJs.src =
+            "https://gss0.bdstatic.com/5bd1bjqh_Q23odCf/static/thirdparty/js/wrap/third" + window.BAIDU_VERSION + ".js";
+        document.body.appendChild(thirdJs);
+        thirdJs.onload = function () {
+            window.parent.postMessage({
+                event: 'thirdJsLoaded',
+                time: Date.now()
+            }, '*');
+        };
+    }());
+</script>
+<script>
+    // 此段js务必保留
+    window.parent.postMessage({
+        event: 'bodyComplete',
+        time: Date.now()
+    }, '*');
+</script>
+<!-- 百度统计js -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d07e4d64d5cde19b5351e7032beaef1a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script src="//img.thepaper.cn/thepaper/third/thepaper_log.js"></script>
+</body>
+</html>

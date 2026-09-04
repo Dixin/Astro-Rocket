@@ -1,0 +1,847 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes" />
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-rim-auto-match" content="none" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title>佛山+客户端</title>
+    <link href="./css/news/index.css?v=2.0.29" type="text/css" rel="stylesheet" />
+    <link href="./css/tool.css?v=2.0.16" type="text/css" rel="stylesheet" />
+    <link href="./plugins/video/css/video-js.css" rel="stylesheet" type="text/css" />
+    <link href="./css/swiper-bundle.min.css" type="text/css" rel="stylesheet" />
+    <link href="./font/font.css?v=1.0.3" type="text/css" rel="stylesheet" />
+    <style>
+      .image_warp img {
+        width: 100%;
+      }
+
+      .article_content {
+        margin-bottom: 30px;
+        color: #454545;
+        /* padding: 20px 30px 0 30px; */
+        line-height: 40px;
+      }
+
+      .readall_box {
+        position: relative;
+        z-index: 9999;
+        padding: 0 0 25px;
+        margin-top: -200px;
+        text-align: center;
+      }
+
+      .readall_box .read_more_mask {
+        height: 200px;
+        background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        background: -webkit-gradient(linear, 0 top, 0 bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      }
+
+      .read_more_btn {
+        cursor: pointer;
+        font-size: 16px;
+        color: #de686d;
+        background: #fff;
+        border-radius: 4px;
+        border: 1px solid #de686d;
+        line-height: 30px;
+        padding: 5px 10px;
+      }
+
+      .read_more_btn:hover {
+        background: #de686d;
+        color: #fff;
+      }
+
+      .c-comment {
+        display: none;
+      }
+
+      .logo {
+        max-width: 30px;
+        height: "30px";
+      }
+
+      .logofont {
+        font-size: 14px;
+        /* display: inline-block; */
+      }
+
+      .logotext {
+        margin-left: 5px;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: top;
+      }
+
+      .shadow {
+        /* margin-bottom:0.2em;
+	margin-left:2.5em; */
+        margin: 0 auto;
+        width: 1.3em;
+        height: 0.3em;
+        -webkit-box-shadow: #fd9e9e 0px 0px 20px;
+        -moz-box-shadow: #fd9e9e 0px 0px 20px;
+        box-shadow: #fd9e9e 0px 0px 20px;
+        border-radius: 0.5em;
+        position: relative;
+      }
+
+      .key {
+        display: inline-block;
+        border-radius: 0.2em;
+        border: 0.1px;
+        margin: 2px 8px;
+        background: #e2e2e2;
+        color: #666;
+        padding: 5px 7px;
+      }
+
+      .lovelogo {
+        background: #fbbbb9;
+      }
+
+      #downloadApp {
+        position: fixed;
+        bottom: 0px;
+        z-index: 5;
+        background-position: center;
+        width: 100%;
+        display: none;
+      }
+
+      #footdownloadapp {
+        margin-bottom: 48px;
+        display: none;
+      }
+
+      #downloadApp img {
+        /* height:50px */
+      }
+    </style>
+    <!-- <script type="text/javascript">
+	var basePath = "${ctx }";
+</script> -->
+    <script src="https://content.foshanplus.com/fs-web-1/extra-project/dist/qt.min.js?v=1.0.6"></script>
+  </head>
+
+  <body>
+    <div id="app" style="display: none">
+      <input type="hidden" id="newsid" :value="news.id" />
+      <input type="hidden" id="memberid" :value="memberid" />
+      <input type="hidden" id="device" :value="device" />
+      <!-- ai 摘要 -->
+      <div id="aiSummary"></div>
+      <!-- 订阅内容 -->
+      <div class="subscribe-wrap" style="width: 6.86rem" v-if="categoryList.length > 0">
+        <div class="subscribe-item" v-for="(category,index) in categoryList" :key="index">
+          <img class="head-pic" style="width: 0.6rem; height: 0.6rem; border-radius: 0.3rem" :src="category.categoryExt.imgpath" alt="" @click="pushCategory(category.id)" />
+          <p class="name" @click="pushCategory(category.id)">{{category.name}}</p>
+          <img v-if="category.isMemberSubscribe" class="dingyue-btn" src="img/news/dingyued.png?v=1.0" alt="" @click="dingyueCategory(category,0)" />
+          <img v-else class="dingyue-btn" src="img/news/dingyue.png" alt="" @click="dingyueCategory(category,1)" />
+        </div>
+      </div>
+
+      <div class="wrapper" id="content" style="margin-top: 0">
+        <div id="htmlIntroduction">
+          <div class="introduction" v-if="news.leadRead"><span class="red">导语：</span>{{news.leadRead}}</div>
+        </div>
+        <div id="htmlMedias" class="htmlMedias">
+          <div class="audio_warp" v-for="audio in news.listaudio">
+            <audio :src="audio.filePath" controls></audio>
+            <p>{{audio.summary }}</p>
+          </div>
+
+          <div class="image_warp" v-for="pic in news.listpic" v-if="news.newsPubExt.type != 0">
+            <p style="text-align: center">
+              <!-- <img src="${config.picServerPath }${pic.filePath}/M_${pic.fileName}" /> -->
+              <img :src="pic.filePath" />
+            </p>
+            <p>{{pic.summary}}</p>
+          </div>
+        </div>
+        <div class="article_content">
+          <!-- 顶部广告 -->
+          <!-- <div class="top-advertisement">
+          <div class="top-adItem" v-for="item in headAds">
+            <img class="top-adImg" :src="item.imgpath" @click="toOpenAdvertisement(item)">
+            <p class="advertisement-desc" style="bottom: 2px;">查看详情></p>
+            <div class="close" v-on:click="headAds = []"></div>
+          </div>
+        </div> -->
+
+          <div class="top-advertisement" v-show="headAdsClose==1" v-if="headAds && headAds.length > 0">
+            <div class="top-adItem swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(item,index) in headAds" :key="'head'+index">
+                  <img class="top-adImg" :src="item.imgpath" @click="openURLFunc(item.url)" />
+                  <p class="advertisement-desc" style="bottom: 2px" v-show="item.url && item.url.length > 0">查看详情></p>
+                  <div class="close" v-on:click="headAdsClose = 0"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 投票 顶部 -->
+          <div id="voteWrap" v-if="news.newsvote && news.newsvote.position == 'DATA_TOP'">
+            <div class="vote">
+              <!-- <img class="voteIcon" src="./img/news/vote_one.png" v-if="news.newsvote.type==1">
+        <img class="voteIcon" src="./img/news/vote_one.png" v-else> -->
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  <!-- <p :for="item.id" class="labelInfo">{{item.body}}</p> -->
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"></i>
+                    {{item.body}}
+                  </label>
+                  <!-- 显示投票 -->
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      <p :style="'width: ' + (item.count / sumVoteCount * 100 || 0) + '%'"></p>
+                    </div>
+                    <!-- <div class="vote-progress-label">{{item.count}}票</div> -->
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              <!-- <ul v-if="news.newsvote.isvoteflag==0">
+          <li class="voteResultItem" v-for="item in news.newsvote.listVoteItem">						
+            <p>{{item.body}} {{selectVote.length>0?selectVote.indexOf(item.id)>-1?"(已选)":"":selectVote==item.id?"(已选)":""}}</p>
+            <div class="result">
+              <div class="progress">
+                <p class="progressBar" :style="'width:' +(((item.count/sumVoteCount)*100).toFixed(2))+'%'"></p>
+              </div>
+              <div class="voteCount">{{item.count}}票 {{((item.count/sumVoteCount)*100).toFixed(2)}}%</div>                        	
+            </div>
+          </li>
+        </ul> -->
+              <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()" v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">投票</button>
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+          <div class="detail" id="htmlDetail" v-html="htmlbody"></div>
+          <!-- 投票 底部 -->
+          <div id="voteWrap" v-if="news.newsvote && (news.newsvote.position == 'DATA_BOTTOM' || news.newsvote.position == '')">
+            <div class="vote">
+              <!-- <img class="voteIcon" src="./img/news/vote_one.png" v-if="news.newsvote.type==1">
+          <img class="voteIcon" src="./img/news/vote_one.png" v-else> -->
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  <!-- <p :for="item.id" class="labelInfo">{{item.body}}</p> -->
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"></i>
+                    {{item.body}}
+                  </label>
+                  <!-- 显示投票 -->
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      <p :style="'width: ' + (item.count / sumVoteCount * 100 || 0) + '%'"></p>
+                    </div>
+                    <!-- <div class="vote-progress-label">{{item.count}}票</div> -->
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              <!-- <ul v-if="news.newsvote.isvoteflag==0">
+            <li class="voteResultItem" v-for="item in news.newsvote.listVoteItem">						
+              <p>{{item.body}} {{selectVote.length>0?selectVote.indexOf(item.id)>-1?"(已选)":"":selectVote==item.id?"(已选)":""}}</p>
+              <div class="result">
+                <div class="progress">
+                  <p class="progressBar" :style="'width:' +(((item.count/sumVoteCount)*100).toFixed(2))+'%'"></p>
+                </div>
+                <div class="voteCount">{{item.count}}票 {{((item.count/sumVoteCount)*100).toFixed(2)}}%</div>                        	
+              </div>
+            </li>
+          </ul> -->
+              <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()" v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">投票</button>
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+
+          <!-- 			<div class="shadow" :class="islove?'lovelogo':''" id="love" v-on:click="love()" islove="n" v-if="device != null">
+				<div style="width: 1em;margin: 0px auto;">
+					<img src="./img/news/baixin.png" style="margin-top: 5px;vertical-align: middle;position: absolute;" id="loveimg" v-if="!islove">
+					<img src="./img/news/xin.png" style="margin-top: 5px;vertical-align: middle;position: absolute;" id="loveimg" v-if="islove">
+					<span class="logotext" style="color:#f54242;font-size:12px;margin-left: 2.21em;">
+						<span id="lovecount">{{news.newsPubExt.lovecount}}</span>人喜欢
+					</span>
+				</div>
+			</div>
+ -->
+          <!-- <div class="author">
+          <span v-if="news.editor != null && news.editor != ''">编辑 {{news.editor}}</span>
+        </div> -->
+        </div>
+        <!-- 是否原创 -->
+        <p v-if="news.newsPubExt.original == 1" class="original-tips">*佛山+客户端原创，未经授权不得转载</p>
+        <!-- 热度值 -->
+        <div class="heatView">
+          <span v-show="news.newsPubExt.heatCount > 0 & news.newsPubExt.heatCount <100000">{{news.newsPubExt.heatCount}}</span>
+          <span v-show="news.newsPubExt.heatCount > 100000">10万+</span>
+
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <50000 && news.newsPubExt.heatCount >=10000" src="./img/news/small-heat.png" alt="" />
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <100000 && news.newsPubExt.heatCount >=50000" src="./img/news/mid-heat.png" alt="" />
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount > 100000" src="./img/news/big-heat.png" alt="" />
+        </div>
+        <!-- 查看全文 -->
+        <!-- <div class="readall_box">
+        <div class="read_more_mask"></div>
+        <a class="read_more_btn" target="_self">阅读全文</a>
+      </div> -->
+        <!-- 		<div id="keyword" style="font-size:14px;margin-bottom:20px" v-if="news.newsPubExt.keywords">
+			<span class='key' v-on:click='searchByTag(item)' v-for="item in news.newsPubExt.keywords.split(',')">{{item.replace(/\s+/g,"")}}</span>		
+		</div>
+ -->
+
+        <!-- <div class="author" style="margin-top: 10px;">
+        <span v-if="(String(news.source).indexOf('佛山日报') != -1 && String(news.source).indexOf('佛山日报综合') == -1) 
+				|| String(news.source).indexOf('佛山+') != -1 || String(news.source).indexOf('今日高明') != -1
+				|| String(news.source).indexOf('今日三水') != -1 || String(news.source).indexOf('今日禅城') != -1">
+          版权声明：未经允许严禁转载
+        </span>
+      </div> -->
+
+        <!-- 记者 -->
+        <!-- <div class="reporter" v-if="news.authorList && news.authorList.length>0">
+        <h5 class="reporter-block-title model_head" style="margin-top: 30px;">本文记者</h5>
+        <ul class="reporter-list">
+          <li class="reporter-one" v-for="item in news.authorList" @click="showAuthor(item.id)">
+            <img class="reporter-img" :src="item.faceImgPath" />
+            <h5 class="reporter-name">{{item.name}}<span class="reporter-source">{{item.belong}}</span></h5>
+            <p class="reporter-detail">{{item.personalSignature}}</p>
+            <button class="reporter-sub reporter-sub-active" v-if="!item.subscriptioned">+订阅</button>
+            <button class="reporter-sub" v-if="item.subscriptioned">已订阅</button>
+          </li>
+        </ul>
+      </div> -->
+        <div id="disclaimer" v-if="isSubscription(news)">
+          <img src="./img/news/disclaimer.png" alt="免责声明" />
+        </div>
+        <!-- <div id="copyright" v-else-if="isCreater(news) == 1">
+          <img src="./img/news/copyright.png" alt="版权声明" />
+          <p></p>
+        </div> -->
+        <div id="original-url" v-if="isOriginalUrl(news)" @click="copyOriginalUrl(news)">
+          <!-- 原文链接: <a :href="news.newsPubExt.originalUrl">{{ news.newsPubExt.originalUrl}}</a> -->
+          点击复制原文链接
+        </div>
+
+        <!-- 推荐此条新闻 -->
+        <!-- <div class="love" id="love">
+        <div class="loving" style="height: 128px;position: relative;margin-bottom: 15px;"></div>
+        <div class="loving" v-if="islove && isloveing"><img :src="'./img/button/love.gif?v='+timestamp" /></div>
+        <div class="love_icon" v-show="islove && !isloveing" onclick="love(true)"><img src="./img/button/loved.png" />
+        </div>
+        <div class="unlove" v-show="!islove">
+          <div class="unlove_icon" onclick="love()"></div>
+          <p class="love_tip">推荐此条新闻</p>
+        </div>
+      </div> -->
+
+        <!-- 评论 -->
+        <!-- <div class="review_warp" id="review">
+			<div class="model_head">
+				<span class="review_icon"></span><span>评论</span>
+			</div>
+			<div class="review_items" v-for="item in news.listreview">
+				<div class="photo">
+					<img :src="item.userphoto"/>
+				</div>
+				<div class="body" v-on:click="reply(item.id,item.username,0)">
+					<p class="nickname">{{item.username}}</p>
+					<p class="review">{{item.body}}</p>
+				</div>
+				<div class="like">
+					<img src="./img/news/like.png" :item-id="item.id" support-flag="true" v-if="item.supported"/>
+					<img src="./img/news/dislike.png" :item-id="item.id" support-flag="false" v-on:click="supportEven(item)" v-if="!item.supported"/>
+				</div>
+				<div class="model_time">{{item.createtime}}</div>
+				<div class="review_items" v-for="childen in item.listchild">
+					<div style="margin-top:10px;margin-left:0.4em">
+						<div class="photo">
+							<img :src="childen.userphoto" />
+						</div>
+						<div class="body" v-on:click="reply(childen.id,childen.username,0)">
+							<p class="nickname">{{childen.username }}</p>
+							<p class="review">{{childen.body }}</p>
+						</div>
+						<div class="like">
+						<img src="./img/news/like.png" :item-id="childen.id" support-flag="true"  v-if="childen.supported"/>
+						<img src="./img/news/dislike.png" :item-id="childen.id" support-flag="false" v-on:click="supportEven(item)" v-if="!childen.supported"/>
+						</div>
+						<div class="model_time">{{childen.createtime}}</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+        <!-- 最后一条评论的id 用于向下加载-->
+        <!-- <input id="reviewId" type="hidden" :value="lastReviewId" />
+		<div id="load_review" v-if="device != null">
+			<a id="noReview" class="load_review_button" v-if="news.listreview && news.listreview.length<=0">暂无评论</a> 
+			<a id="loadReview" class="load_review_button" v-if="news.listreview && news.listreview.length>0" v-on:click="showMoreReview(0)">查看全部评论</a> 
+			<a id="loadingReview" class="load_review_button">加载中...</a> 
+			<a id="noMoreReview" class="load_review_button">没有更多</a>
+		</div> -->
+        <!-- <div id="pre_text" class="pre_text">
+        <div class="pre_loading"></div>
+      </div> -->
+      </div>
+      <!-- 记者和编辑 -->
+      <div class="editor wrapper" v-if="news.authorList&&news.authorList.length > 0">
+        <span style="color: white; font-size: 16px; position: absolute">{{news.newsPubExt.clickcount}} </span>
+        <p class="module_head">本文采制</p>
+        <!-- <p class="module_head" v-if="isCreater(news)">本文创作者</p>
+        <p class="module_head" v-else>本文编辑</p> -->
+
+        <div class="editor-list" id="editor-list">
+          <div class="editor-item" v-for="(item,index) in news.authorList" :key="item.id" @click="showAuthor(item)">
+            <div class="editor-itemBg"></div>
+            <img class="editor-img lazyload-img" src="./img/news/author_img.png" :data-url="item.faceImgPath" />
+            <div class="btn_fact" v-if="item.memberId || item.memberId.length > 0" @click="findJournalist($event,item)">爆料</div>
+            <p class="editor-name">{{item.name}}</p>
+            <!-- 2026年9月1日 暂时隐藏身份 -->
+            <p class="editor-source">{{item.belong}}{{item.type==1?'':''}}</p>
+
+            <p class="editor-detail">{{item.personalSignature}}</p>
+          </div>
+        </div>
+        <div class="page-control" v-if="news.authorList&&news.authorList.length > 2">
+          <p class="control-point"></p>
+        </div>
+      </div>
+      <!-- 推荐此条新闻 -->
+      <!-- <div class="love" id="love">
+      <span style="color: white;font-size: 16px;position: absolute;">{{news.newsPubExt.clickcount}}</span>
+      <div class="loving" style="height: 128px;position: relative;margin-bottom: 24px;"></div>
+      <div class="loving" v-if="islove && isloveing"><img :src="'./img/button/love.gif?v='+timestamp" /></div>
+      <div class="love_icon" v-show="islove && !isloveing" onclick="love(true)"><img src="./img/button/loved.png" />
+      </div>
+      <div class="unlove" v-show="!islove">
+        <div class="unlove_icon" onclick="love()"></div>
+        <p class="love_tip">推荐此条新闻</p>
+      </div>
+    </div> -->
+      <!-- 底部广告 -->
+      <!-- <div class="review_warp" v-if="footerAds&&footerAds.length > 0">
+      <div class="wrapper">
+        <div class="advertisement-item" v-for="item in footerAds">
+          <p class="advertisement-title">{{item.title}}</p>
+          <img class="advertisement-img" :src="item.imgpath" @click="toOpenAdvertisement(item)">
+          <p class="advertisement-info">广告<span>{{item.source}}</span></p>
+          <p class="advertisement-desc">查看详情></p>
+          <div class="advertisement-close" v-on:click="footerAds = []"></div>
+        </div>
+      </div>
+    </div> -->
+
+      <!-- 
+    <div class="review_warp" v-show="footerAdsClose==1">
+      <div class="wrapper">
+        <div class="advertisement-item">
+          <div class="swiper" >
+            <div class="swiper-wrapper" v-for="item in ads" id="advertisement_list">
+              <div class="swiper-slide" v-if="item.type==5">
+                <p class="advertisement-title">{{item.title}}</p>
+                <img class="advertisement-img" :src="item.imgpath" @click="openURLFunc(item.url)">
+                <p class="advertisement-info">广告<span>{{item.source}}</span></p>
+                <p class="advertisement-desc">查看详情></p>
+                <div class="advertisement-close" @click="footerAdsClose = 0"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+      <div class="review_warp" v-if="footerAds&&footerAds.length>0">
+        <div class="wrapper">
+          <div class="advertisement-item">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper" id="advertisement_list">
+                <div class="swiper-slide" v-for="(item,index) in footerAds" :key="'foot'+index">
+                  <p class="advertisement-title">{{item.title}}</p>
+                  <img class="advertisement-img" :src="item.imgpath" @click="openURLFunc(item.url,true)" />
+                  <p class="advertisement-info">广告<span>{{item.source}}</span></p>
+                  <p class="advertisement-desc">查看详情></p>
+                  <div class="advertisement-close" @click="footerAds = []"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 评论 -->
+      <div class="review_warp" id="review">
+        <div class="wrapper">
+          <p class="module_head">热门评论</p>
+          <div class="review_items" v-for="(item, index) in news.listreview" v-if="index < 2" :key="index">
+            <div class="photo">
+              <img :src="item.userphoto?item.userphoto:'./img/news/personal.png'" />
+            </div>
+            <div class="body">
+              <span class="nickname">{{item.username}}</span>
+              <span class="topFlag" v-if="item.sno==1">置顶</span>
+              <div class="model_time">{{item.createtime}}</div>
+              <p class="review" @click="reply(item.id,item.username,0)">{{item.body}}</p>
+            </div>
+            <div class="like">
+              <div class="love_review" v-if="item.supported == true">
+                <img src="./img/button/love_review@2x.png" />
+                <span>{{item.support}}</span>
+              </div>
+              <div class="unlove_review" @click="supportEven(item)" v-else>
+                <img src="./img/button/unlove_review@2x.png" />
+                <span>{{item.support}}</span>
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="review_child" v-if="item.listchild && item.listchild.length > 0">
+              <div class="review_child_items" v-for="(childen, index) in item.listchild" v-if="index < 2">
+                <div class="body" v-on:click="reply(childen.id,childen.username,0)">
+                  <p class="nickname">{{childen.username }}：</p>
+                  <p class="review">{{childen.body }}</p>
+                </div>
+              </div>
+              <div class="review_child_more" v-if="item.listchild.length > 2" @click="showMoreReview(0)">共{{item.listchild.length}}条回复，点击查看 ></div>
+            </div>
+          </div>
+          <div class="more-review" v-if="news.listreview && news.listreview.length > 0" v-on:click="showMoreReview(0)">查看更多评论<span class="more-review-icon"></span></div>
+          <div class="review_no" v-if="!news.listreview || news.listreview.length <= 0">
+            <div class="review_no_icon"></div>
+            <p class="review_no_tip">抢先发表观点更易上热评哦～</p>
+          </div>
+        </div>
+      </div>
+      <!-- 推荐新闻 -->
+
+      <div id="recommandList"></div>
+      <div style="width: 100%; height: 30px"></div>
+    </div>
+    <script src="./js/jquery-2.1.1.min.js"></script>
+    <script src="./js/vue@2.6.7.js"></script>
+    <script src="./js/vue-resource@1.5.1.js"></script>
+    <script type="text/javascript" src="./js/util/md5.js"></script>
+    <script type="text/javascript" src="./js/vapp.js?ver=2.6.6"></script>
+    <script type="text/javascript" src="./js/news/news.js?v=1.0.18"></script>
+    <script type="text/javascript" src="./js/news/authInfo.js?v=1.0.4"></script>
+    <script type="text/javascript" src="./js/news/author.js?v=1.0.3"></script>
+    <!-- <script src="./plugins/video/js/video.min.js"></script> -->
+    <script type="text/javascript" src="./js/util/time.js"></script>
+    <script type="text/javascript" src="./plugins/template.js"></script>
+    <script type="text/javascript" src="./plugins/layer/layer.js"></script>
+    <script type="text/javascript" src="./js/news/pageInit.js"></script>
+    <!-- <script type="text/javascript" src="./js/news/appInterface.js"></script> -->
+    <!-- <script type="text/javascript" src="./js/news/common.js"></script> -->
+    <script src="./js/jweixin-1.6.0.js"></script>
+    <script type="text/javascript" src="./js/news/weixin.js?v=1.0.1"></script>
+    <script src="https://content.foshanplus.com/fs-web-1/extra-project/dist/poc.min.js?v=1.0.2"></script>
+    <script src="./js/qt/index.js?v=1.0.4"></script>
+    <script type="text/javascript" src="./js/util/swiper-bundle.min.js"></script>
+    <!-- <script type="text/javascript" src="./js/util/vconsole.min.js"></script> -->
+    <script type="text/javascript">
+      // var vConsole = new VConsole();
+
+      var faceimage = "https://content.foshanplus.com/foshanlogo.png",
+        newsdesc = "",
+        newstitle = "";
+      vapp.getUserInfo();
+      var newsId = vapp.getQueryString("newsId");
+
+      window.onload = function () {
+        if (!newsId) newsId = 122379;
+        if (newsId == 192306) {
+          faceimage = "http://fsnewsres.foshanplus.com/news/7eca9bd34eff466db24a7dd49f568803.png";
+        }
+
+        if (newsId == 533788) {
+          window.location.href = "http://app.cntv.cn/special/cportal/newlive/index.html?id=Livepwrdps5XaT47K6U7KMCd200709&a=1#";
+        }
+
+        if (newsId == 537677 || newsId == 537686) {
+          window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=Livepwrdps5XaT47K6U7KMCd200709&a=1#";
+        }
+
+        if (newsId == 539342) {
+          window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=LiveMnAT0gBxqrJZNmLN7ztx201022&a=1#";
+        }
+
+        if (newsId == 540892) {
+          window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=Livepwrdps5XaT47K6U7KMCd200709&a=1#";
+        }
+        if (newsId == 571734) {
+          window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=LiveCfHvS9CNMWIJSi9qFgYC210225&a=1#";
+        }
+        if (newsId == 571765) {
+          window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=LiveCfHvS9CNMWIJSi9qFgYC210225&a=1#";
+        }
+
+        getNewsDetails(true, newsId);
+        setTimeout(() => {
+          getNewsDetails(false, newsId);
+        }, 500);
+        vapp.getCategoryByNewsId(newsId, (data) => {
+          Vue.set(vapp, "categoryList", data);
+        });
+      };
+
+      function getNewsDetails(isGetHtmlBody, newsId) {
+        vapp.getNewsDetail(false, true, isGetHtmlBody, newsId, null, (response, newsVerifyCode, randomNum, curDate) => {
+          // 获取分享内容 增加阅读量
+          if (isGetHtmlBody) {
+            vapp.getSign(newsId, newsVerifyCode, curDate, randomNum, 1, (res) => {
+              initSign(res);
+            });
+          }
+          response.data.htmlbody = dealHtmlAudio(response.data.htmlbody);
+          initData(isGetHtmlBody, response);
+        });
+      }
+
+      function initData(isGetHtmlBody, response) {
+        var now = new Date().getTime();
+        setNewsHtmlBody(response.data.htmlbody);
+        Vue.set(vapp, "news", response.data);
+
+        vapp.$nextTick(function () {
+          if (isGetHtmlBody) {
+            interceptLink();
+            // pocInitPlayVideo(response.data);
+            qtInfoPage(response.data);
+          } else {
+            initLazyAuthorImgs();
+            setupAuthorScroll(response.data);
+            replaceVoteWrap();
+            // 加载推荐列表组件
+            setRecommandListPage();
+          }
+          // htmlDetail中video标签添加AI生成内容水印
+          wrapVideoWithAIWrapper();
+        });
+        document.title = response.data.title;
+        if (vapp.news.newsPubExt && vapp.news.newsPubExt != null && vapp.news.newsPubExt.type == 7 && vapp.news.newsPubExt.url != "") {
+          window.location.href = vapp.news.newsPubExt.url;
+        } else if (
+          // 专题
+          vapp.news.newsPubExt &&
+          vapp.news.newsPubExt != null &&
+          vapp.news.newsPubExt.type == 22
+        ) {
+          window.location.href = "./topicNews.html?newsId=" + newsId;
+        }
+        if (response.recommend) {
+          // 评论
+          for (var i = 0; i < response.recommend.length; i++) {
+            // console.log(response.topic.topicCards[i].topicCardNews[j])
+            var publishtime = new Date(response.recommend[i].publishtime);
+            var resultTime = now - publishtime.getTime();
+            var leave1 = resultTime % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
+            var hours = Math.floor(leave1 / (3600 * 1000));
+            var days = Math.floor(resultTime / (24 * 3600 * 1000));
+            var month = publishtime.getMonth() + 1;
+            if (month < 10) {
+              month = "0" + month;
+            }
+            if (days >= 1) {
+              response.recommend[i].publishtime = month + "-" + publishtime.getDate();
+            } else if (days >= 365) {
+              response.recommend[i].publishtime = publishtime.getFullYear() + "-" + month + "-" + publishtime.getDate();
+            } else {
+              if (hours < 1) {
+                var leave2 = leave1 % (3600 * 1000); //计算小时数后剩余的毫秒数
+                var minutes = Math.floor(leave2 / (60 * 1000));
+                response.recommend[i].publishtime = minutes + "分钟前";
+                if (minutes < 1) {
+                  response.recommend[i].publishtime = "刚刚";
+                }
+              } else if (hours <= 24) {
+                response.recommend[i].publishtime = hours + "小时前";
+              }
+            }
+          }
+          Vue.set(vapp, "recommend", response.recommend);
+        }
+        if (response.ads != undefined) {
+          let headAds = [...response.ads].filter((item) => {
+            return item.type == 4;
+          });
+          let footerAds = [...response.ads].filter((item) => {
+            return item.type == 5;
+          });
+          Vue.set(vapp, "ads", response.ads);
+          Vue.set(vapp, "headAds", headAds);
+          Vue.set(vapp, "footerAds", footerAds);
+        }
+
+        vapp.$nextTick(function () {
+          vapp.islove = response.data.supported;
+          const newsvote = response.data.newsvote;
+
+          if (newsvote != null) {
+            // 计算百分比
+            (newsvote.listVoteItem || []).forEach((i) => (vapp.sumVoteCount += i.count));
+            if (newsvote.type == 1 && newsvote.voteitemids.length > 0) {
+              // 单选
+              Vue.set(vapp, "selectVote", newsvote.voteitemids[0]);
+            } else {
+              Vue.set(vapp, "selectVote", newsvote.voteitemids);
+            }
+          }
+
+          // 初始化图片点击放大插件viewer
+          var imgDomList = $("#htmlDetail img");
+          var imgUrls = [];
+          imgDomList = imgDomList.filter((index, element) => {
+            return element.parentElement.tagName != "A";
+          });
+          for (var i = 0; i < imgDomList.length; i++) {
+            imgUrls.push(imgDomList.eq(i).attr("src"));
+            imgDomList.eq(i).attr("img-index", i);
+            imgDomList.eq(i).bind("click", function () {
+              var index = $(this).attr("img-index");
+              vapp.showImg(index);
+            });
+          }
+          vapp.setImgs(imgUrls);
+
+          //faceimage=vapp.news.newsPubExt.sharelogo;
+          newsdesc = vapp.news.digest;
+          newstitle = vapp.news.title;
+          // $.getScript('./plugins/video/js/video.min.js',function(){});
+          if (vapp.device == null && (!window.ZMBridge || !window.webkit)) {
+            $("#downloadApp").show();
+            $("#footdownloadapp").show();
+          }
+          var swiper = new Swiper(".mySwiper", {
+            // loop: true,
+            freeMode: false,
+            autoplay: true,
+            pagination: {
+              el: ".swiper-pagination",
+              type: "bullets",
+            },
+          });
+        });
+      }
+
+      function love(isPost) {
+        var $this = vapp;
+        $this.islove = true;
+        if ($this.islove) {
+          $this.isloveing = true;
+          $this.timestamp = new Date().getTime();
+          $isloveingTimgout = setTimeout(function () {
+            $this.isloveing = false;
+          }, 1000);
+        } else {
+          $this.isloveing = false;
+          clearTimeout($isloveingTimgout);
+        }
+        if (isPost) {
+          return;
+        }
+        vapp.post(
+          "/updateNewsLoveCount",
+          {
+            newsid: vapp.news.id,
+            UID: vapp.UID,
+          },
+          function (response) {
+            // alert("点赞结束："+response.ret);
+            if (response.ret == 1) {
+              if (response.msg === "点赞成功") {
+                $this.islove = true;
+                $this.news.newsPubExt.lovecount += 1;
+              } else {
+                $this.islove = false;
+                $this.news.newsPubExt.lovecount -= 1;
+              }
+            } else {
+              $this.islove = !$this.islove;
+              if ($this.islove) {
+              } else {
+                $this.isloveing = false;
+                clearTimeout($isloveingTimgout);
+              }
+              layer.msg(response.msg);
+            }
+          },
+          true,
+          true,
+        );
+      }
+
+      $("#target").on({
+        touchstart: function (e) {
+          // 长按事件触发
+          timeOutEvent = setTimeout(function () {
+            timeOutEvent = 0;
+            alert("你长按了");
+          }, 400);
+          //长按400毫秒
+          // e.preventDefault();
+        },
+        touchmove: function () {
+          clearTimeout(timeOutEvent);
+          timeOutEvent = 0;
+        },
+        touchend: function () {
+          clearTimeout(timeOutEvent);
+          if (timeOutEvent != 0) {
+            // 点击事件
+            // location.href = '/a/live-rooms.html';
+            alert("你点击了");
+          }
+          return false;
+        },
+      });
+    </script>
+    <script>
+      setTimeout(() => {
+        (function () {
+          var el = document.createElement("script");
+          el.type = "text/javascript";
+          el.charset = "utf-8";
+          el.async = true;
+          var ref = document.getElementsByTagName("script")[0];
+          ref.parentNode.insertBefore(el, ref);
+          el.src = "https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280";
+        })();
+      }, 500);
+    </script>
+    <!-- 监控方法 -->
+    <script>
+      !(function (c, b, d, a) {
+        c[a] || (c[a] = {});
+        c[a].config = {
+          pid: "bmsir0hov3@da6da9a595cfbc6",
+          appType: "web",
+          imgUrl: "https://arms-retcode.aliyuncs.com/r.png?",
+          sendResource: true,
+          enableLinkTrace: true,
+          behavior: true,
+          enableConsole: true,
+        };
+        with (b) with (body) with (insertBefore(createElement("script"), firstChild)) setAttribute("crossorigin", "", (src = d));
+      })(window, document, "https://sdk.rum.aliyuncs.com/v1/bl.js", "__bl");
+    </script>
+  </body>
+</html>

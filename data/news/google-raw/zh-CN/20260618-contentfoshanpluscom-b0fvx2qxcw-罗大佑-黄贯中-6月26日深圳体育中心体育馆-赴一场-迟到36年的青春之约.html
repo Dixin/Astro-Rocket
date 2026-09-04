@@ -1,0 +1,1460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,viewport-fit=cover" />
+
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-rim-auto-match" content="none" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="keywords" content="佛山+,佛山Plus,foshanplus,foshanPlus,FoshanPlus,佛山新闻,佛山新闻客户端,佛山新闻App,佛山最新资讯,佛山资讯,佛山信息,佛山最优惠,佛山优惠信息" />
+    <meta name="description" content="" />
+    <title>佛山+客户端</title>
+    <link href="./css/nversion/index.css" type="text/css" rel="stylesheet" />
+    <link href="./css/news/index.css?v=2.0.31" type="text/css" rel="stylesheet" />
+    <link href="./css/swiper-bundle.min.css" type="text/css" rel="stylesheet" />
+    <link href="./css/tool.css?v=2.0.16" type="text/css" rel="stylesheet" />
+    <link href="./plugins/pswp/photoswipe.css" type="text/css" rel="stylesheet" />
+    <link href="./plugins/pswp/default-skin/default-skin.css" type="text/css" rel="stylesheet" />
+    <link href="./plugins/video/css/video-js.css" rel="stylesheet" type="text/css" />
+    <link href="./font/font.css?v=1.0.3" type="text/css" rel="stylesheet" />
+    <style>
+      .image_warp img {
+        width: 100%;
+      }
+
+      .article_content {
+        margin-bottom: 30px;
+      }
+
+      .readall_box {
+        position: relative;
+        z-index: 9999;
+        padding: 0 0 25px;
+        margin-top: -200px;
+        text-align: center;
+      }
+
+      .readall_box .read_more_mask {
+        height: 200px;
+        background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        background: -webkit-gradient(linear, 0 top, 0 bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      }
+
+      .read_more_btn {
+        cursor: pointer;
+        font-size: 16px;
+        color: #de686d;
+        background: #fff;
+        border-radius: 4px;
+        border: 1px solid #de686d;
+        line-height: 30px;
+        padding: 5px 10px;
+      }
+
+      .read_more_btn:hover {
+        background: #de686d;
+        color: #fff;
+      }
+
+      .c-comment {
+        display: none;
+      }
+
+      .logo {
+        max-width: 30px;
+        height: "30px";
+      }
+
+      .logofont {
+        font-size: 14px;
+        /* display: inline-block; */
+      }
+
+      .logotext {
+        margin-left: 5px;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: top;
+      }
+
+      .shadow {
+        /* margin-bottom:0.2em;
+	margin-left:2.5em; */
+        margin: 0 auto;
+        width: 1.3em;
+        height: 0.3em;
+        -webkit-box-shadow: #fd9e9e 0px 0px 20px;
+        -moz-box-shadow: #fd9e9e 0px 0px 20px;
+        box-shadow: #fd9e9e 0px 0px 20px;
+        border-radius: 0.5em;
+        position: relative;
+      }
+
+      .key {
+        display: inline-block;
+        border-radius: 0.2em;
+        border: 0.1px;
+        margin: 2px 8px;
+        background: #e2e2e2;
+        color: #666;
+        padding: 5px 7px;
+      }
+
+      .lovelogo {
+        background: #fbbbb9;
+      }
+
+      #footdownloadapp {
+        margin-bottom: 48px;
+        display: none;
+      }
+
+      #topContent {
+        margin-top: 0 !important;
+      }
+      .bindPhone {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2008;
+      }
+    </style>
+    <!-- <script type="text/javascript">
+	var basePath = "${ctx }";
+</script> -->
+    <!-- poc埋点 -->
+    <script src="https://content.foshanplus.com/fs-web-1/extra-project/dist/poc.min.js?v=1.0.4"></script>
+    <!-- qt埋点 -->
+    <script src="https://content.foshanplus.com/fs-web-1/extra-project/dist/qt.min.js?v=1.0.7"></script>
+  </head>
+
+  <body>
+    <!-- 第三方浏览器二次分享截取图片使用 -->
+    <img src="https://fsnewsres.foshanplus.com/picture/logo_512.png" width="0px" height="0px" />
+    <div id="app" style="display: none">
+      <input type="hidden" id="newsid" :value="news.id" />
+      <input type="hidden" id="memberid" :value="memberid" />
+      <input type="hidden" id="device" :value="device" />
+      <!-- 推荐下载app -->
+      <!-- 头部新闻 单个 -->
+      <!-- <div class="top-tip" id="downloadApp" v-if="device==null&&!news.newsPubExt.onlyShowHtmlBody">
+      <div class="top-tip-img"></div>
+      <h5 class="top-tip-title">打开佛山+APP</h5>
+      <p class="top-tip-detail">用智慧传递佛山价值</p>
+      <a class="top-tip-btn" style="background-image:url('./img/button/open_app@2x.png');"
+        v-on:click="toOpenApp(news,0)"></a>
+    </div> -->
+      <div class="top-tip swiper mySwiper" id="downloadApp" v-if="device==null&&!news.newsPubExt.onlyShowHtmlBody&&!isInMp&&!isApp">
+        <div class="swiper-wrapper" id="swiperItemAdd" v-if="!isInMp && !isApp">
+          <div class="swiper-slide app-title">
+            <!-- <div class="top-tip-img"></div>
+            <h5 class="top-tip-title">打开佛山+</h5>
+            <p class="top-tip-detail">新传播 | 新连接 | 新生态</p> -->
+            <template v-if="!isWeixin">
+              <a class="top-tip-btn" style="background-image: url(&quot;https://static.fscm.tech/foshanplus-news/icon_app.png&quot;)" onclick="openNewsApp()"></a>
+            </template>
+
+            <template v-if="isWeixin">
+              <!-- 隐藏小程序入口0808 -->
+              <!-- <div class="top-tip-btn-2">
+                  <div
+                    style="
+                      background-image: url('https://static.fscm.tech/foshanplus-news/icon_weapp.png');
+                      width: 100%;
+                      height: 100%;
+                      background-repeat: no-repeat;
+                      background-size: 100% auto;
+                      background-position: center;
+                    "
+                    username="gh_c0321ea144e0"
+                    path="packageNews/pages/index/index"
+                    v-wx-weapp
+                  ></div>
+                </div> -->
+              <!-- 跳转App-安卓微信 -->
+              <div v-if="isAndroid" class="top-tip-btn" style="background-image: url(&quot;https://static.fscm.tech/foshanplus-news/icon_app.png&quot;); z-index: 1601" appid="wx27352935c18b925d" elId="launchAppTip" :extInfo="launchAppInfo" v-wx-app></div>
+              <!-- <div v-if="isAndroid" class="top-tip-btn" style="background-image:url('https://static.fscm.tech/foshanplus-news/icon_app.png');z-index: 1601;">
+                  <wx-open-launch-app id="launch-app" appid="wx27352935c18b925d" :extinfo="launchAppInfo" @ready="launchAppReady" @error="launchAppError">
+                    <script type="text/wxtag-template"><button style="width:60px;height:32px;opacity:0">App内查看</button></script>
+                  </wx-open-launch-app>
+                </div> -->
+              <!-- 不是app才有0820 -->
+              <!-- 跳转App-其它 -->
+              <a v-else class="top-tip-btn" style="background-image: url(&quot;https://static.fscm.tech/foshanplus-news/icon_app.png&quot;)" onclick="openNewsApp()"></a>
+            </template>
+          </div>
+
+          <!-- 轮播广告新增 -->
+          <div v-for="(item,index) in ads" :key="'ad'+index" v-show="item.type==13" class="swiper-slide ads" :data-item="item">
+            <img class="top-tip-img" :src="item.imgpath" />
+            <h5 class="top-tip-title">{{item.title}}</h5>
+            <p class="top-tip-detail">{{item.summary}}</p>
+            <a class="top-tip-btn" style="background-image: url(&quot;https://static.fscm.tech/foshanplus-news/open.png&quot;)" @click="pushWebItem(item.url)"></a>
+          </div>
+        </div>
+        <!-- <div class="swiper-pagination"></div> -->
+      </div>
+      <div :class="['wrapper',(device==null&&!news.newsPubExt.onlyShowHtmlBody&&!isInMp)?'':'topContent']" id="content">
+        <header class="head" id="htmlHeader" v-if="!news.newsPubExt.onlyShowHtmlBody">
+          <h1 class="title">{{news.title}}</h1>
+          <!-- <h1 class="title" v-html="news.title"></h1> -->
+          <!-- 来源 -->
+          <div class="info clearfix">
+            <div v-if="!newsSource">
+              <img class="source-icon" :src="sourceLogo(news.source)" alt="" v-if="sourceLogo(news.source).length > 0" />
+              <span class="left">{{news.source}}&nbsp;&nbsp;&nbsp;{{handlePublishTime(news.publishtime)}}</span>
+            </div>
+            <div v-if="newsSource">
+              <div class="subscription" v-if="newsSource.sourceImgPath">
+                <table>
+                  <tr>
+                    <td rowspan="2" class="photo"></td>
+                    <td><span class="name" width="*">{{news.source}}</span></td>
+                    <td rowspan="2" class="follow"></td>
+                  </tr>
+                  <tr>
+                    <td><span class="left">{{news.publishtime}}</span></td>
+                  </tr>
+                </table>
+                <!-- <img
+					src="${config.picServerPath }${newsSource.sourceImgPath}/S_${newsSource.sourceImgName}" /> -->
+              </div>
+              <div v-if="!newsSource.sourceImgPath">
+                <span class="left source">{{news.source}}</span>
+                <span class="left time">{{news.publishtime}}</span>
+              </div>
+            </div>
+          </div>
+          <!-- 党员标识，用于飞鸿传书项目 -->
+          <div id="dangWrap" class="dang-wrap">
+            <img class="dang-wrap-bg" src="./img/news/dang_bg.png" alt="" />
+            <div class="dang-wrap-content">
+              <img class="dang-wrap-icon" src="./img/news/dang.png" alt="" />
+              <img class="dang-wrap-photo" src="" alt="" />
+              <span class="dang-wrap-name">罗维森</span>
+              <span class="dang-wrap-share">分享了这篇文章</span>
+            </div>
+          </div>
+          <!-- ai 摘要 -->
+          <div id="aiSummary"></div>
+          <!-- 订阅内容 -->
+          <div class="subscribe-wrap" v-if="categoryList.length > 0">
+            <div class="subscribe-item" v-for="(category,index) in categoryList" :key="index">
+              <img class="head-pic" :src="category.categoryExt.imgpath" alt="" @click="openCategory(category.id)" />
+              <p class="name" @click="openCategory(category.id)">{{category.name}}</p>
+
+              <template v-if="isApp || isInMp">
+                <img v-if="category.isMemberSubscribe" class="dingyue-btn" src="img/news/dingyued.png?v=1.0" alt="" @click="dingyueCategory(category,0)" />
+                <img v-else class="dingyue-btn" src="img/news/dingyue.png" alt="" @click="dingyueCategory(category,1)" />
+              </template>
+
+              <template v-else-if="isWeixin">
+                <!-- 跳转App-安卓微信 -->
+                <div
+                  v-if="isAndroid"
+                  class="dingyue-btn"
+                  style="background-image: url(&quot;https://fsnewsres.foshanplus.com/h5/fsph51106/dingyue.png&quot;); z-index: 2000; width: 100px; height: 30px; position: relative; display: block; background-repeat: no-repeat; background-size: contain"
+                  appid="wx27352935c18b925d"
+                  elId="launchAppTip"
+                  :extInfo="launchAppInfo"
+                  v-wx-app
+                ></div>
+                <!-- 跳转App-苹果微信 -->
+                <a
+                  v-else
+                  class="dingyue-btn"
+                  style="background-image: url(&quot;https://fsnewsres.foshanplus.com/h5/fsph51106/dingyue.png&quot;); z-index: 1601; width: 100px; height: 30px; position: relative; display: block; background-repeat: no-repeat; background-size: contain"
+                  onclick="openNewsApp()"
+                ></a>
+              </template>
+
+              <a
+                v-else
+                class="dingyue-btn"
+                style="z-index: 1601; width: 90px; height: 40px; line-height: 32px; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url(&quot;https://static.fscm.tech/foshanplus-news/dingyue.png&quot;)"
+                onclick="openNewsApp()"
+              ></a>
+            </div>
+          </div>
+        </header>
+        <div id="htmlIntroduction">
+          <div class="introduction" v-if="news.leadRead"><span class="red">导语：</span>{{news.leadRead}}</div>
+        </div>
+        <div id="htmlMedias" class="htmlMedias">
+          <div v-if="isFinish && news.newsPubExt.detailHiddenFiles == 0&&news.listvideo!=null && news.listvideo.length>0">
+            <div class="video_warp" v-for="(video,index) in news.listvideo" :key="'video'+index">
+              <div class="video_container">
+                <!-- 不在app且还没点继续播放 -->
+                <template v-if="!isApp && !isInMp">
+                  <div class="video_mask-0820" @click="showVDialog(index)" :id="`comDialogMask${index}`">
+                    <div class="comDialog" :id="`comDialog${index}`">
+                      <div class="comDialog-title">打开佛山+APP，观看高清视频</div>
+                      <div class="comDialog-buttons">
+                        <div class="c-button" @click="continuePlay(index, video)">继续播放</div>
+                        <!-- <div class="c-button" @click="comJump()">高清播放</div> -->
+                        <template v-if="isWeixin">
+                          <!-- 跳转App-安卓微信 -->
+                          <div v-if="isAndroid" class="c-button" style="z-index: 1601; position: relative; width: 100px; height: 50px" appid="wx27352935c18b925d" elId="launchAppTipplay" :extInfo="launchAppInfo" v-wx-app>高清播放</div>
+
+                          <!-- 跳转App-苹果微信 -->
+                          <a v-else class="c-button" style="z-index: 1601; position: relative; display: flex; align-items: center; justify-content: center" onclick="openNewsApp()">高清播放</a>
+                        </template>
+
+                        <div v-else class="c-button" @click="comJump()">高清播放</div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                <div style="position: relative">
+                  <video
+                    :id="`videoPlayer${index}`"
+                    v-show="video.sno == 1"
+                    :class="['video-js','video_' + video.id,'vjs-default-skin','vjs-big-play-centered',(video.height>0&&video.width / video.height < 1)?'video_height_screen':'video_width_screen']"
+                    preload="auto"
+                    controls
+                    preload="none"
+                    :poster="video.videothumbpath"
+                    data-setup="{}"
+                    webkit-playsinline="true"
+                    playsinline="true"
+                  >
+                    <source :src="video.filePath" />
+                  </video>
+                  <div class="video-ai-label" v-if="video.dataLabel && video.sno == 1"><img class="video-ai-icon" src="./img/news/info.png" />作者提示：{{video.dataLabel}}</div>
+                </div>
+                <div class="poster_warp" v-show="video.sno != 1">
+                  <div class="poster_img_wrap">
+                    <img :class="['poster_img',(video.height>0&&video.width / video.height < 1)?'video_height_screen':'video_width_screen']" :src="video.videothumbpath" v-if="video.videothumbpath" />
+                    <img :class="['poster_img',(video.height>0&&video.width / video.height < 1)?'video_height_screen':'video_width_screen']" src="https://fsnewsres.foshanplus.com/picture/videothumbpath.jpg" v-else />
+                    <div class="video-ai-label" v-if="video.dataLabel"><img class="video-ai-icon" src="./img/news/info.png" />作者提示：{{video.dataLabel}}</div>
+                  </div>
+                  <img src="./img/news/video-play.png" class="video-playbtn" />
+                  <div class="poster_btn" v-on:click="playVideo(video)"></div>
+                </div>
+              </div>
+              <p>{{video.summary}}</p>
+            </div>
+          </div>
+
+          <div class="audio_warp" v-for="audio in news.listaudio">
+            <audio :src="audio.filePath" controls></audio>
+            <p>{{audio.summary }}</p>
+          </div>
+
+          <div class="image_warp" v-for="(pic,index) in news.listpic" :key="index" v-show="news.newsPubExt.type == 1">
+            <!-- <div class="image_warp" v-for="pic in news.listpic" v-if="news.newsPubExt.type != 0"> -->
+            <p style="text-align: center">
+              <!-- <img src="${config.picServerPath }${pic.filePath}/M_${pic.fileName}" /> -->
+              <img :src="pic.filePath" />
+            </p>
+            <p>{{pic.summary}}</p>
+          </div>
+        </div>
+        <!-- <div class="custom-audio play">
+          <div class="audio-phonograph-box">
+            <img class="phonograph-cover" src="https://fsnewsres.foshanplus.com/news/b27e79a556a849f49397265334a43124.jpeg"/>
+            <div class="phonograph-icon"></div>
+          </div>
+          <div class="audio-bg"></div>
+          <div class="audio-progress">
+            <div class="progress-dot"></div>
+            <div class="progress-line"></div>
+            <div class="progress-time">
+              <div class="progress-current">00:00</div>
+              <div class="progress-end">08:09</div>
+            </div>
+          </div>
+          <div class="audio-status-btn"></div>
+        </div> -->
+        <!-- 文章内容 -->
+        <div class="article_content">
+          <div class="top-advertisement" v-show="headAdsClose==1" v-if="headAds.length > 0">
+            <div class="top-adItem swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide ads" v-for="(item,index) in headAds" :key="'head'+index">
+                  <template v-if="!item.weapp_url">
+                    <img class="top-adImg" :src="item.imgpath" @click="openURLFunc(item.url)" />
+                  </template>
+                  <template v-if="item.weapp_url">
+                    <div class="top-adImg">
+                      <div :style="{width:'100%',height:'100%',background: item.imgpath,backgroundSize: '100% 100%'}" :username="item.weapp_username" :path="item.weapp_path" v-wx-weapp></div>
+                    </div>
+                  </template>
+                  <p class="advertisement-desc" style="bottom: 2px" v-show="item.url && item.url.length > 0">查看详情></p>
+                  <div class="close" v-on:click="headAdsClose = 0"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 投票部分 顶部 -->
+          <div id="voteWrap" v-if="news.newsvote && news.newsvote.position == 'DATA_TOP'">
+            <div class="vote">
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  <!-- <p :for="item.id" class="labelInfo">{{item.body}}</p> -->
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"></i>
+                    {{item.body}}
+                  </label>
+                  <!-- 显示投票 -->
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      <p :style="'width: ' + (item.count / sumVoteCount * 100 || 0) + '%'"></p>
+                    </div>
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              <template v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">
+                <!-- app 小程序 -->
+                <template v-if="isApp || isInMp">
+                  <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                </template>
+                <!-- 微信 -->
+                <button v-else-if="isWeixin" type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                <button v-else type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="comJump()">投票</button>
+              </template>
+
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+          <div class="detail" id="htmlDetail" v-html="news.htmlbody"></div>
+
+          <!-- 投票部分 底部 -->
+          <div id="voteWrap" v-if="news.newsvote && (news.newsvote.position == 'DATA_BOTTOM' || news.newsvote.position == '')">
+            <div class="vote">
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  <!-- <p :for="item.id" class="labelInfo">{{item.body}}</p> -->
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" />
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"></i>
+                    {{item.body}}
+                  </label>
+                  <!-- 显示投票 -->
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      <p :style="'width: ' + (item.count / sumVoteCount * 100 || 0) + '%'"></p>
+                    </div>
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              <template v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">
+                <!-- app 小程序 -->
+                <template v-if="isApp || isInMp">
+                  <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                </template>
+                <!-- 微信 -->
+                <button v-else-if="isWeixin" type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                <button v-else type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="comJump()">投票</button>
+              </template>
+
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+        </div>
+        <!-- 是否原创 -->
+        <p v-if="news.newsPubExt.original == 1" class="original-tips">*佛山+客户端原创，未经授权不得转载</p>
+        <!-- 热度值 -->
+        <div class="heatView">
+          <span v-show="news.newsPubExt.heatCount > 0 & news.newsPubExt.heatCount <100000">{{news.newsPubExt.heatCount}}</span>
+          <span v-show="news.newsPubExt.heatCount > 100000">10万+</span>
+
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <50000 && news.newsPubExt.heatCount >=10000" src="./img/news/small-heat.png" alt="" />
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <100000 && news.newsPubExt.heatCount >=50000" src="./img/news/mid-heat.png" alt="" />
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount > 100000" src="./img/news/big-heat.png" alt="" />
+        </div>
+
+        <div id="disclaimer" v-if="isSubscription(news)">
+          <img src="./img/news/disclaimer.png" alt="免责声明" />
+        </div>
+        <div id="original-url" v-if="isOriginalUrl(news)" @click="copyOriginalUrl(news)">点击复制原文链接</div>
+      </div>
+      <!-- 记者和编辑 -->
+      <div class="editor wrapper" v-if="news.authorList&&news.authorList.length > 0">
+        <span style="color: white; font-size: 16px; position: absolute">{{news.newsPubExt.clickcount}}</span>
+        <p class="module_head">本文采制</p>
+        <!-- <p class="module_head" v-if="isCreater(news)">本文创作者</p>
+        <p class="module_head" v-else>本文编辑</p> -->
+
+        <div class="editor-list" id="editor-list">
+          <div class="editor-item" v-for="(item,index) in news.authorList" :key="index" @click="toOpenApp(news,0)">
+            <div class="editor-itemBg"></div>
+            <img class="editor-img lazyload-img" src="./img/news/author_img.png" :data-url="item.faceImgPath" />
+            <div class="btn_fact" v-if="item.memberId || item.memberId.length > 0" @click="findJournalist($event,item)">爆料</div>
+            <p class="editor-name">{{item.name}}</p>
+            <!-- 2026年9月1日 暂时隐藏身份 -->
+            <p class="editor-source">{{item.type==1?' ':''}}</p>
+            <p class="editor-detail">{{item.personalSignature}}</p>
+          </div>
+        </div>
+        <div class="page-control" v-if="news.authorList&&news.authorList.length > 2">
+          <p class="control-point"></p>
+        </div>
+      </div>
+
+      <div class="review_warp" v-if="footerAds&&footerAds.length>0">
+        <div class="wrapper">
+          <div class="advertisement-item">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper" id="advertisement_list">
+                <div class="swiper-slide ads" v-for="(item,index) in footerAds" :key="'foot'+index" :data-item="JSON.stringify(item)">
+                  <p class="advertisement-title">{{item.title}}</p>
+                  <template v-if="!item.weapp_url">
+                    <img class="advertisement-img" :src="item.imgpath" @click="openURLFunc(item.url)" />
+                  </template>
+                  <template v-if="item.weapp_url">
+                    <div class="advertisement-img">
+                      <div :style="{background:item.imgpath,width:'100%',height:'100%',backgroundSize:'100% 100%'}" :username="item.weapp_username" :path="item.weapp_path" v-wx-weapp></div>
+                    </div>
+                  </template>
+                  <p class="advertisement-info">广告<span>{{item.source}}</span></p>
+                  <p class="advertisement-desc">查看详情></p>
+                  <div class="advertisement-close" @click="footerAds = []"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 评论 -->
+      <div class="review_warp" id="review" v-show="!news.newsPubExt.onlyShowHtmlBody">
+        <div class="wrapper" v-if="news.listreview !==undefined && news.listreview != null  && news.listreview.length > 0">
+          <p class="module_head">热门评论</p>
+          <template v-if="isApp || isInMp">
+            <div class="review_items" v-for="(item, index) in news.listreview" v-if="index < 7" :key="item.id">
+              <div class="photo">
+                <img :src="item.userphoto?item.userphoto:'./img/news/personal.png'" />
+              </div>
+              <div class="body" v-on:click="reply(item.id,item.username,0)">
+                <span class="nickname">{{item.username}}</span>
+                <span class="topFlag" v-if="item.sno==1">置顶</span>
+                <div class="model_time">{{handlePublishTime(item.createtime)}}</div>
+                <p class="review">{{item.body}}</p>
+              </div>
+              <div class="like" style="display: none">
+                <!-- 当前用户已对该评论点赞 -->
+                <!-- <img src="./img/news/like.png" :item-id="item.id" support-flag="true" v-if="item.supported" /> -->
+                <!-- <img src="./img/news/dislike.png" :item-id="item.id" support-flag="false" v-on:click="supportEven(item)" v-if="!item.supported" /> -->
+                <div class="love_review" :item-id="item.id" support-flag="true" v-if="item.supported">
+                  <img src="./img/button/love_review@2x.png" />
+                  <span>{{item.support}}</span>
+                </div>
+                <div class="unlove_review" :item-id="item.id" support-flag="false" v-on:click="supportEven(item)" v-if="!item.supported">
+                  <img src="./img/button/unlove_review@2x.png" />
+                  <span>{{item.support}}</span>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="review_child" v-if="item.listchild && item.listchild.length > 0">
+                <div class="review_child_items" v-for="(childen, index) in item.listchild" :key="index" v-show="index < 4">
+                  <div class="body">
+                    <p class="nickname">{{childen.username }}：</p>
+                    <p class="review">{{childen.body }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <template v-if="news.listreview && news.listreview.length > 0">
+              <div
+                v-if="isAndroid"
+                class="more-review-btn"
+                style="background-image: url(&quot;./img/news/moreComment.png&quot;); background-size: 100% 100%; height: 0.8rem; position: relative"
+                elId="launchAppComment"
+                appid="wx27352935c18b925d"
+                :extInfo="launchAppInfo"
+                v-wx-app
+              ></div>
+              <img v-else class="more-review-btn" src="./img/news/moreComment.png" alt="" v-on:click="toOpenApp(news,0)" />
+            </template>
+            <img class="review_no_logo" v-if="!news.listreview || news.listreview.length <= 0" src="./img/news/review_no.png" alt="" />
+          </template>
+          <template v-else>
+            <div class="review_items" v-for="(item, index) in news.listreview" v-if="index < 7" :key="item.id">
+              <div class="photo">
+                <img :src="item.userphoto?item.userphoto:'./img/news/personal.png'" />
+              </div>
+              <div class="body">
+                <div class="nickname-box">
+                  <span class="nickname">{{item.username}}</span>
+                  <div class="offcial" v-if="item.userid == 2">官方</div>
+                </div>
+                <span class="topFlag" v-if="item.sno==1">置顶</span>
+                <div class="model_time">{{handlePublishTime(item.createtime)}}</div>
+                <p class="review">{{item.body}}</p>
+              </div>
+              <div class="like" style="display: none">
+                <!-- 当前用户已对该评论点赞 -->
+                <!-- <img src="./img/news/like.png" :item-id="item.id" support-flag="true" v-if="item.supported" /> -->
+                <!-- <img src="./img/news/dislike.png" :item-id="item.id" support-flag="false" v-on:click="supportEven(item)" v-if="!item.supported" /> -->
+                <div class="love_review" :item-id="item.id" support-flag="true">
+                  <img src="./img/button/love_review@2x.png" />
+                  <span>{{item.support}}</span>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="review_child" v-if="item.listchild && item.listchild.length > 0">
+                <div class="review_child_items" v-for="(childen, index) in item.listchild" :key="index" v-show="index < 4">
+                  <div class="body">
+                    <p class="nickname">{{childen.username }}：</p>
+                    <p class="review">{{childen.body }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="review_mask-0820"></div>
+            <div v-if="isWeixin && !isAndroid" class="review-button-0820" @click="comJump()">
+              <img src="./img/button/auto-hide-button.png" style="width: 100%" />
+            </div>
+
+            <div
+              v-else-if="isWeixin && isAndroid"
+              class="review-button-0820"
+              style="
+                background-image: url(&quot;https://fsnewsres.foshanplus.com/h5/fsph51106/auto-hide-button.png&quot;);
+                z-index: 2000;
+                width: 80vw;
+                height: 40px;
+                position: relative;
+                display: block;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+              "
+              appid="wx27352935c18b925d"
+              elId="launchAppTip"
+              :extInfo="launchAppInfo"
+              v-wx-app
+            ></div>
+
+            <div v-else class="review-button-0820" @click="comJump()">
+              <img src="./img/button/auto-hide-button.png" style="width: 100%" />
+            </div>
+          </template>
+        </div>
+      </div>
+      <!-- 更多精选频道 -->
+      <div v-if="!isApp && !isInMp" class="moreRec_warp" :style="{ 'border-top': !(news.listreview !==undefined && news.listreview != null  && news.listreview.length > 0) ? '' : '8px solid #f7f7f8' }">
+        <template v-if="moreRecList.length != 0">
+          <p class="module_head">更多精选频道</p>
+          <div class="moreRec_items">
+            <div class="moreRec_item" v-for="(item, index) in moreRecList" @click="comJumpOtherChannel(item.dataId)" :style="{'fontSize' : item.name.length >= 7 ? '10px' : '13px'}">
+              <template v-if="item.name.length >= 8"> {{item.name.slice(0, 6)}}... </template>
+              <template v-else> {{item.name.slice(0, 7)}} </template>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- 推荐新闻 -->
+      <div id="recommandList"></div>
+
+      <!-- <div class="wrapper" v-show="!news.newsPubExt.onlyShowHtmlBody">
+      <div class="open_app_btn" v-on:click="toDownApp()">打开APP阅读更多精彩内容</div>
+    </div> -->
+      <!-- 滚动才出现的东西 -->
+      <div v-if="!isApp && !isInMp" v-show="isScrolling" class="auto_hide_bar">
+        <!-- {{isInMp}} -->
+        <img v-if="isWeixin && !isAndroid" id="auto_hide_bar-button" class="auto_hide_bar-button-0820" src="./img/button/auto-bottom.png" @click="comJump()" />
+
+        <div
+          v-else-if="isWeixin && isAndroid"
+          v-show="isScrolling"
+          id="auto_hide_bar-button"
+          class="auto_hide_bar-button-0820"
+          style="background-image: url(&quot;https://fsnewsres.foshanplus.com/h5/fsph51106/auto-bottom.png&quot;); z-index: 2000; width: 80vw; height: 35px; position: relative; display: block; background-repeat: no-repeat; background-size: contain; background-position: center"
+          appid="wx27352935c18b925d"
+          elId="launchAppTip"
+          :extInfo="launchAppInfo"
+          v-wx-app
+        ></div>
+
+        <img v-else id="auto_hide_bar-button" class="auto_hide_bar-button-0820" src="./img/button/auto-bottom.png" @click="comJump()" />
+      </div>
+
+      <!-- 底部评论 -->
+      <div class="wxMiniHidden">
+        <div class="bottom_review_view" id="bottom_review_view" style="z-index: 2006">
+          <div id="send_comment_view">
+            <label for="send_comment_content">
+              <img src="./img/news/comment_icon.png" alt="" />
+            </label>
+            <input id="send_comment_content" placeholder="我来说两句" />
+          </div>
+          <div id="noSend_view">
+            <a href="#review" id="commentCount_btn">
+              <img src="./img/news/commentCount.png" alt="" />
+              <span>{{news.newsPubExt.reviewcount}}</span>
+            </a>
+            <div v-if="news.newsPubExt.loveLogoState">
+              <!-- 已点赞 -->
+              <a href="javascript:;" id="like_btn" v-if="islove" style="color: #f53737">
+                <img src="./img/news/likedCount.png" alt="" />
+                <span>{{news.newsPubExt.lovecount}}</span>
+              </a>
+              <!-- 点赞 -->
+              <a href="javascript:;" id="like_btn" v-else onclick="love()">
+                <img src="./img/news/likeCount.png" alt="" />
+                <span>{{news.newsPubExt.lovecount}}</span>
+              </a>
+            </div>
+          </div>
+          <a id="send_btn" href="javascript:;" style="display: none" onclick="sendCommentAction()">
+            <img src="./img/news/comment_loading.png" alt="" />
+            <span>发送</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 阴影 -->
+      <div id="send_comment_mask" onclick="closeInput()" style="display: none"></div>
+      <div id="bindPhone"></div>
+    </div>
+    <!-- 打开放大的图片 -->
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+      <div class="pswp__bg"></div>
+      <!-- Slides wrapper with overflow:hidden. -->
+      <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <!--  Controls are self-explanatory. Order can be changed. -->
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery-2.1.1.min.js"></script>
+    <script src="./js/vue@2.6.7.js"></script>
+    <script src="./js/vue-resource@1.5.1.js"></script>
+    <script type="text/javascript" src="./js/util/md5.js"></script>
+    <script type="text/javascript" src="./js/vapp.js?ver=2.6.8"></script>
+    <script type="text/javascript" src="./js/news/news.js?v=1.1.26"></script>
+    <script src="./js/news/videoPlayer.js?v=1.0.1"></script>
+    <script type="text/javascript" src="./js/news/author.js?v=1.0.8"></script>
+    <!-- <script src="./plugins/video/js/video.min.js"></script> -->
+    <script type="text/javascript" src="./js/util/time.js"></script>
+    <script type="text/javascript" src="./plugins/template.js"></script>
+    <script type="text/javascript" src="./plugins/layer/layer.js"></script>
+    <script type="text/javascript" src="./js/news/pageInit.js"></script>
+    <!-- <script type="text/javascript" src="./js/news/appInterface.js"></script> -->
+    <!-- <script type="text/javascript" src="./js/news/common.js"></script> -->
+    <script src="./js/jweixin-1.6.0.js"></script>
+    <script type="text/javascript" src="./js/news/weixin.js?v=1.0.19"></script>
+    <!-- 省宣平台埋点-->
+    <script src="./zmy-data-collection-3.0.0.min.js"></script>
+    <script src="./zmy.js"></script>
+    <script type="text/javascript" src="./js/util/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="./plugins/pswp/photoswipe.min.js"></script>
+    <script type="text/javascript" src="./plugins/pswp/photoswipe-ui-default.min.js"></script>
+    <script type="text/javascript" src="./js/news/authInfo.js?v=1.0.6"></script>
+    <script type="text/javascript" src="./js/news/exif.min.js"></script>
+    <script type="text/javascript" src="./js/util/vconsole.min.js"></script>
+    <script src="./js/qt/index.js?v=1.0.6"></script>
+    <script type="text/javascript">
+      // 显示vconsole
+      if (location.search && location.search.indexOf("vconsole=1") != -1) {
+        new VConsole();
+      }
+
+      // 打开新闻
+      function openNewsApp(news) {
+        qtNewsDownload(news ?? vapp.news);
+        vapp.toOpenApp(news ?? vapp.news, 0);
+      }
+
+      // 打开频道
+      function openNewsChannel(id) {
+        vapp.toOpenAppChannel(id);
+      }
+
+      getUserCode();
+
+      var regex = /news\/(\d+)\.html/;
+      var newsId = vapp.getQueryString("newsId");
+      if (!newsId) {
+        var match = window.location.href.match(regex);
+        if (match && match[1]) {
+          newsId = match[1];
+        }
+      }
+      vapp.device = vapp.getQueryString("fs_device") ? vapp.getQueryString("fs_device") : null;
+      // alert(vapp.device);
+      var faceimage = "",
+        newsdesc = "",
+        newstitle = "",
+        shareLink = null;
+      if (!newsId) newsId = 122379;
+      if (newsId == 192306) {
+        faceimage = "http://fsnewsres.foshanplus.com/news/7eca9bd34eff466db24a7dd49f568803.png";
+      }
+      //   if(newsId == 419492) {
+      //     window.location.href = "http://file910a50777a97.aiwall.com/v3/idea/v9GbD9QU"
+      //   }
+      if (newsId == 533788) {
+        window.location.href = "http://app.cntv.cn/special/cportal/newlive/index.html?id=Livepwrdps5XaT47K6U7KMCd200709&a=1#";
+      }
+      if (newsId == 537677 || newsId == 537686) {
+        window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=Livepwrdps5XaT47K6U7KMCd200709&a=1#";
+      }
+      if (newsId == 539342) {
+        window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=LiveMnAT0gBxqrJZNmLN7ztx201022&a=1#";
+      }
+      if (newsId == 571734) {
+        window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=LiveCfHvS9CNMWIJSi9qFgYC210225&a=1#";
+      }
+      if (newsId == 571765) {
+        window.location.href = "http://app.cctv.com/special/cportal/newlive/index.html?id=LiveCfHvS9CNMWIJSi9qFgYC210225&a=1#";
+      }
+
+      var isPreview = vapp.getQueryString("isPreview");
+      // type: personal-个人稿库; transfer-公共稿库、待编稿库、待审稿库; editing-修改待提交稿库、在编稿件审核列表
+      var type = vapp.getQueryString("type");
+      // 首先加载文章页
+      getNewsDetails(true);
+      setTimeout(() => {
+        getNewsDetails(false);
+      }, 500);
+
+      getNewsDetailRecs();
+
+      // 监听是否加载绑定手机组件
+      watchBindPhone();
+
+      vapp.getCategoryByNewsId(newsId, (data) => {
+        Vue.set(vapp, "categoryList", data);
+      });
+
+      function getNewsDetailRecs() {
+        vapp.getNewsDetailRec();
+      }
+
+      function getNewsDetails(isGetHtmlBody) {
+        vapp.getNewsDetail(isPreview, false, isGetHtmlBody, newsId, type, (response, newsVerifyCode, randomNum, curDate) => {
+          // 获取分享内容 增加阅读量
+          let resNews = response.data;
+          if (isGetHtmlBody && vapp.news.id) {
+            return;
+          }
+          if (isGetHtmlBody) {
+            // 第一次getsign
+            vapp.getSign(newsId, newsVerifyCode, curDate, randomNum, 0, (res) => {
+              initSign(res);
+            });
+            setHeadMeta(resNews);
+          }
+          // [埋点]，获取稿件所在频道
+          let _poc_event_params = {
+            categoryIds: response.data.categoryIds,
+          };
+          qaplus.event.record("predefine_pageview", 19999, _poc_event_params);
+          pocplus.event.record("predefine_pageview", _poc_event_params);
+
+          // vapp.get(url+"?newsid="+newsId+"&UID="+encodeURIComponent(vapp.UID),function(response){
+          var now = new Date().getTime();
+          resNews.htmlbody = dealHtmlAudio(resNews.htmlbody);
+          Vue.set(vapp, "news", resNews);
+
+          vapp.$nextTick(function () {
+            // 微信小程序环境 隐藏视频
+            wxReviewHiddenVideo();
+            fs_setfontsize(1);
+            initCommentInput();
+            interceptLink();
+            if (isGetHtmlBody) {
+              // 埋点上报
+              qtInfoPage(resNews);
+              zmy_data_collection();
+            } else {
+              Vue.set(vapp, "isFinish", true);
+              initLazyAuthorImgs();
+              setupAuthorScroll(resNews);
+              replaceVoteWrap();
+              // // 加载推荐列表组件
+              setRecommandListPage();
+            }
+            // htmlDetail中video标签添加AI生成内容水印
+            wrapVideoWithAIWrapper();
+          });
+          if (!resNews) {
+            return;
+          }
+          var code = vapp.getQueryString("code");
+          if (resNews.newsvote || code) {
+            // 有投票
+            authInfo.getUserInfo((token) => {
+              vapp.token = token;
+            });
+          }
+          document.title = resNews.title;
+          if (vapp.news.newsPubExt && vapp.news.newsPubExt != null && vapp.news.newsPubExt.type == 7 && vapp.news.newsPubExt.url != "") {
+            // console.log('newsPubExt', getRedirectUrl(vapp.news.newsPubExt.url));
+            window.location.href = getRedirectUrl(vapp.news.newsPubExt.url);
+          } else if (vapp.news.newsPubExt && vapp.news.newsPubExt != null && vapp.news.newsPubExt.type == 8 && vapp.news.newsPubExt.liveId != null) {
+            vapp.get("/getLiveUrlById?liveId=" + vapp.news.newsPubExt.liveId, function (response) {
+              if (response && response.liveUrl != null && response.liveUrl.url != "") {
+                // console.log('liveUrl', getRedirectUrl(response.liveUrl.url));
+                window.location.href = getRedirectUrl(response.liveUrl.url);
+              }
+            });
+          } else if (vapp.news.newsPubExt && vapp.news.newsPubExt != null && vapp.news.newsPubExt.type == 22) {
+            window.location.href = "./topicNews.html?newsId=" + newsId;
+          }
+          if (response.recommend) {
+            // 用户评论
+            for (var i = 0; i < response.recommend.length; i++) {
+              // console.log(response.topic.topicCards[i].topicCardNews[j])
+              var publishtime = new Date(response.recommend[i].publishtime);
+              var resultTime = now - publishtime.getTime();
+              var leave1 = resultTime % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
+              var hours = Math.floor(leave1 / (3600 * 1000));
+              var days = Math.floor(resultTime / (24 * 3600 * 1000));
+              var month = publishtime.getMonth() + 1;
+              if (month < 10) {
+                month = "0" + month;
+              }
+              if (days >= 1) {
+                response.recommend[i].publishtime = month + "-" + publishtime.getDate();
+              } else if (days >= 365) {
+                response.recommend[i].publishtime = publishtime.getFullYear() + "-" + month + "-" + publishtime.getDate();
+              } else {
+                if (hours < 1) {
+                  var leave2 = leave1 % (3600 * 1000); //计算小时数后剩余的毫秒数
+                  var minutes = Math.floor(leave2 / (60 * 1000));
+                  response.recommend[i].publishtime = minutes + "分钟前";
+                  if (minutes < 1) {
+                    response.recommend[i].publishtime = "刚刚";
+                  }
+                } else if (hours <= 24) {
+                  response.recommend[i].publishtime = hours + "小时前";
+                }
+              }
+              Vue.set(vapp, "recommend", response.recommend);
+            }
+          }
+
+          if (response.ads != undefined) {
+            let headAds = [...response.ads].filter((item) => {
+              return item.type == 4;
+            });
+            let footerAds = [...response.ads].filter((item) => {
+              return item.type == 5;
+            });
+            // response.ads = adUrlType(response.ads);
+            // headAds = adUrlType(headAds);
+            // footerAds = adUrlType(footerAds);
+            Vue.set(vapp, "ads", response.ads);
+            Vue.set(vapp, "headAds", headAds);
+            Vue.set(vapp, "footerAds", footerAds);
+            Vue.set(vapp, "launchAppInfo", vapp.getAppSearch(vapp.news));
+          }
+          Vue.nextTick(function () {
+            var swiper = new Swiper(".mySwiper", {
+              // loop: true,
+              observer: true,
+              observeParents: true,
+              freeMode: false,
+              autoplay: true,
+              pagination: {
+                el: ".swiper-pagination",
+                type: "bullets",
+              },
+            });
+
+            if (!isGetHtmlBody) {
+              var imglist = document.getElementsByTagName("img");
+              for (let index = 0; index < imglist.length; index++) {
+                const img = imglist[index];
+                var src = img.src;
+                EXIF.getData(img, function () {
+                  var Orientation = EXIF.getTag(this, "Orientation");
+                  if ((Orientation == undefined || Orientation != 1) && src.indexOf(".mp4") != -1) {
+                    img.src = img.src + "?x-oss-process=image/auto-orient,1";
+                  }
+                });
+              }
+            }
+
+            if (isGetHtmlBody) {
+              initImgBrewer();
+            }
+          });
+          vapp.$nextTick(function () {
+            vapp.islove = resNews.supported;
+            $("#app").show();
+            const newsvote = resNews.newsvote;
+            if (newsvote != null) {
+              // 计算百分比
+              (newsvote.listVoteItem || []).forEach((i) => (vapp.sumVoteCount += i.count));
+              if (newsvote.type == 1 && newsvote.voteitemids.length > 0) {
+                // 单选
+                Vue.set(vapp, "selectVote", newsvote.voteitemids[0]);
+              } else {
+                Vue.set(vapp, "selectVote", newsvote.voteitemids);
+              }
+            }
+            const sharelogo = vapp.news.newsPubExt.sharelogo;
+            if (sharelogo && sharelogo.length > 0) {
+              faceimage = sharelogo;
+            }
+            newsdesc = vapp.news.digest;
+            newstitle = vapp.news.title;
+            if (newsId == 479137) {
+              // 二次分享跳转下载页
+              newstitle = "佛山+客户端";
+              newsdesc = "在这里打开佛山窗口";
+              shareLink = "https://content.foshanplus.com/download.html";
+            }
+            // $.getScript('./plugins/video/js/video.min.js',function(){});
+            if (vapp.device == null && (!window.ZMBridge || !window.webkit)) {
+              $("#downloadApp").show();
+              $("#footdownloadapp").show();
+            }
+          });
+        });
+      }
+
+      function initImgBrewer() {
+        // 初始化图片点击放大插件viewer
+        var imgDomList = $("#htmlDetail img");
+        var atlasList = $(".image_warp img");
+        for (var i = 0; i < imgDomList.length; i++) {
+          imgDomList.eq(i).bind("click", function (event) {
+            if (event.target.parentElement.tagName == "A") return;
+            var pswpElement = document.querySelectorAll(".pswp")[0];
+            // build items array
+            var items = [];
+            for (var imgDomListI = 0; imgDomListI < imgDomList.length; imgDomListI++) {
+              items.push({
+                src: imgDomList.eq(imgDomListI).attr("src"),
+                w: "" + imgDomList[imgDomListI].naturalWidth,
+                h: "" + imgDomList[imgDomListI].naturalHeight,
+              });
+              imgDomList.eq(imgDomListI).attr("img-index", imgDomListI);
+            }
+            var index = $(this).attr("img-index");
+            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+              index: Number(index),
+            });
+            gallery.init();
+          });
+        }
+        for (var i = 0; i < atlasList.length; i++) {
+          atlasList.eq(i).bind("click", function () {
+            var pswpElement = document.querySelectorAll(".pswp")[0];
+            // build items array
+            var items = [];
+            for (var imgDomListI = 0; imgDomListI < atlasList.length; imgDomListI++) {
+              items.push({
+                src: atlasList.eq(imgDomListI).attr("src"),
+                w: "" + atlasList[imgDomListI].naturalWidth,
+                h: "" + atlasList[imgDomListI].naturalHeight,
+              });
+              atlasList.eq(imgDomListI).attr("img-index", imgDomListI);
+            }
+            var index = $(this).attr("img-index");
+            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+              index: Number(index),
+            });
+            gallery.init();
+          });
+        }
+      }
+
+      // 点赞
+      function love(isPost) {
+        authInfo.getUserInfo((token) => {
+          var $this = vapp;
+          var $isloveingTimgout = null;
+
+          $this.islove = true;
+          if ($this.islove) {
+            $this.isloveing = true;
+            $this.timestamp = new Date().getTime();
+            $isloveingTimgout = setTimeout(function () {
+              $this.isloveing = false;
+            }, 1000);
+          } else {
+            $this.isloveing = false;
+            clearTimeout($isloveingTimgout);
+          }
+
+          if (isPost) {
+            return;
+          }
+
+          vapp.post(
+            "/updateNewsLoveCount",
+            {
+              newsid: vapp.news.id,
+              UID: vapp.UID,
+            },
+            function (response) {
+              if (response.ret == 1) {
+                qtLikeFinish($this.news);
+                layer.msg("点赞成功");
+                if (response.msg === "点赞成功") {
+                  $this.islove = true;
+                  $this.news.newsPubExt.lovecount += 1;
+                  // [埋点] 稿件点赞
+                  let _poc_event_params = {
+                    content_id: vapp.news.id,
+                    content_name: vapp.news.title,
+                  };
+                  qaplus.event.record("thumb_up_clk", 2101, _poc_event_params);
+                  pocplus.event.record("fsplusmp_news_like", _poc_event_params);
+                  ZMYDataCollection.likeArticle({
+                    article_id: vapp.news.id,
+                    device_id: vapp.UID,
+                    platform: ZMYDataCollection.platform,
+                    user_id: ZMYDataCollection.user_id,
+                  });
+                } else {
+                  $this.islove = false;
+                  $this.news.newsPubExt.lovecount -= 1;
+                }
+              } else {
+                $this.islove = !$this.islove;
+                if ($this.islove) {
+                } else {
+                  $this.isloveing = false;
+                  clearTimeout($isloveingTimgout);
+                }
+                layer.msg(response.msg);
+              }
+            },
+            true,
+            false,
+          );
+        });
+      }
+
+      vapp.isWeixin = (() => {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+          if (ua.match(/MacWechat|WindowsWechat/i)) {
+            return false;
+          }
+          return true;
+        } else {
+          return false;
+        }
+      })();
+      vapp.isInMp = (() => {
+        return window.__wxjs_environment === "miniprogram";
+      })();
+      // vapp.launchAppInfo = vapp.getAppSearch(vapp.news);
+      Vue.directive("wx-weapp", {
+        inserted: (targetEl) => {
+          if (!targetEl.style.position) {
+            targetEl.style.position = "relative";
+          }
+          let username = targetEl.attributes.username.nodeValue;
+          let path = targetEl.attributes.path.nodeValue;
+          let div = document.createElement("div");
+          div.id = "launch-wxapp";
+          div.style.position = "absolute";
+          div.style.top = "0";
+          div.style.bottom = "0";
+          div.style.left = "0";
+          div.style.right = "0";
+          div.style.zIndex = "1600";
+          div.style.overflow = "hidden";
+          div.style.background = "transparent";
+          div.innerHTML = `
+                      <wx-open-launch-weapp username="${username}" path="${path}">
+                          <template>
+                              <div style="background: transparent; padding:5000px"></div>
+                          </template>
+                      </wx-open-launch-weapp>
+                  `;
+          targetEl.appendChild(div);
+        },
+        update: (targetEl) => {
+          if (!targetEl.style.position) {
+            targetEl.style.position = "relative";
+          }
+          let username = targetEl.attributes.username.nodeValue;
+          let path = targetEl.attributes.path.nodeValue;
+          try {
+            let old_btn = targetEl.querySelector("#launch-wxapp");
+            old_btn.remove();
+          } catch (error) {
+            console.log(error);
+          }
+          let div = document.createElement("div");
+          div.id = "launch-wxapp";
+          div.style.position = "absolute";
+          div.style.top = "0";
+          div.style.bottom = "0";
+          div.style.left = "0";
+          div.style.right = "0";
+          div.style.zIndex = "1600";
+          div.style.overflow = "hidden";
+          div.style.background = "transparent";
+          div.innerHTML = `
+                      <wx-open-launch-weapp username="${username}" path="${path}">
+                          <template>
+                              <div style="background: transparent; padding:5000px"></div>
+                          </template>
+                      </wx-open-launch-weapp>
+                  `;
+          targetEl.appendChild(div);
+        },
+      });
+      Vue.directive("wx-app", {
+        inserted: (targetEl) => {
+          let elId = targetEl.attributes.elId ? targetEl.attributes.elId.nodeValue : "launch-app";
+          let appid = targetEl.attributes.appid ? targetEl.attributes.appid.nodeValue : "";
+          let extInfo = targetEl.attributes.extInfo ? targetEl.attributes.extInfo.nodeValue : "";
+
+          try {
+            let old_btn = targetEl.querySelector(`#${elId}Container`);
+            old_btn && old_btn.remove();
+          } catch (error) {
+            console.log(error);
+          }
+
+          // console.log('targetEl.offsetWidth', targetEl.offsetWidth, targetEl.offsetHeight)
+          let div = document.createElement("div");
+          div.id = `${elId}Container`;
+          div.style.position = "absolute";
+          div.style.top = "0";
+          div.style.bottom = "0";
+          div.style.left = "0";
+          div.style.right = "0";
+          div.style.zIndex = "1600";
+          div.style.overflow = "hidden";
+          div.style.background = "transparent";
+          div.innerHTML = `
+                  <wx-open-launch-app id="${elId}" appid="${appid}" extinfo="${extInfo}">
+                    <template><button style="width:${targetEl.offsetWidth || 100}px;height:${targetEl.offsetHeight || 50}px;overflow:hidden;opacity:0;">App内查看</button></template>
+                  </wx-open-launch-app>
+                `;
+          targetEl.appendChild(div);
+
+          let btn = document.getElementById(elId);
+          btn.addEventListener("launch", function (e) {
+            console.log("success", e.detail);
+          });
+          btn.addEventListener("error", function (e) {
+            console.log("fail", e.detail);
+            vapp.toOpenApp(vapp.news, 0);
+          });
+        },
+        update: (targetEl) => {
+          let elId = targetEl.attributes.elId ? targetEl.attributes.elId.nodeValue : "launch-app";
+          let appid = targetEl.attributes.appid ? targetEl.attributes.appid.nodeValue : "";
+          let extInfo = targetEl.attributes.extInfo ? targetEl.attributes.extInfo.nodeValue : "";
+
+          try {
+            let old_btn = targetEl.querySelector(`#${elId}Container`);
+            old_btn && old_btn.remove();
+          } catch (error) {
+            console.log(error);
+          }
+
+          // console.log('targetEl.offsetWidth', targetEl.offsetWidth, targetEl.offsetHeight)
+          let div = document.createElement("div");
+          div.id = `${elId}Container`;
+          div.style.position = "absolute";
+          div.style.top = "0";
+          div.style.bottom = "0";
+          div.style.left = "0";
+          div.style.right = "0";
+          div.style.zIndex = "1600";
+          div.style.overflow = "hidden";
+          div.style.background = "transparent";
+          div.innerHTML = `
+                  <wx-open-launch-app id="${elId}" appid="${appid}" extinfo="${extInfo}">
+                    <template><button style="width:${targetEl.offsetWidth || 100}px;height:${targetEl.offsetHeight || 50}px;overflow:hidden;opacity:0;">App内查看</button></template>
+                  </wx-open-launch-app>
+                `;
+          targetEl.appendChild(div);
+
+          let btn = document.getElementById(elId);
+          btn.addEventListener("launch", function (e) {
+            console.log("success", e.detail);
+          });
+          btn.addEventListener("error", function (e) {
+            console.log("fail", e.detail);
+            vapp.toOpenApp(vapp.news, 0);
+          });
+        },
+      });
+
+      function zmy_data_collection() {
+        const data = {
+          article_id: vapp.news.id,
+          device_id: vapp.UID,
+          platform: ZMYDataCollection.platform,
+          user_id: ZMYDataCollection.user_id,
+        };
+
+        ZMYDataCollection.openArticle(data);
+      }
+    </script>
+    <script>
+      (function () {
+        var bp = document.createElement("script");
+        var curProtocol = window.location.protocol.split(":")[0];
+        if (curProtocol === "https") {
+          bp.src = "https://zz.bdstatic.com/linksubmit/push.js";
+        } else {
+          bp.src = "http://push.zhanzhang.baidu.com/push.js";
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+    <script>
+      setTimeout(() => {
+        (function () {
+          var el = document.createElement("script");
+          el.type = "text/javascript";
+          el.charset = "utf-8";
+          el.async = true;
+          var ref = document.getElementsByTagName("script")[0];
+          ref.parentNode.insertBefore(el, ref);
+          el.src = "https://v1.cnzz.com/z_stat.php?id=1278597280&web_id=1278597280";
+        })();
+      }, 500);
+    </script>
+    <script>
+      // 埋点
+      setTimeout(() => {
+        qaplus.event.setMetaInfo(localStorage.getItem("_user_id"));
+        pocplus.event.config("user_unique_id", localStorage.getItem("_user_id"));
+        // 广告
+        var intersectionObserver = new IntersectionObserver((entries) => {
+          // 如果 intersectionRatio 为 0，则目标在视野外，
+          // 我们不需要做任何事情。
+          if (entries[0].intersectionRatio <= 0) return;
+          try {
+            let item = JSON.parse(entries[0].target.dataset.item);
+            // [埋点] 稿件广告位曝光
+            let _poc_event_params = {
+              banner_id: item.id,
+              banner_name: item.title,
+              banner_url: item.url,
+            };
+            qaplus.event.record("ad_exp", 2201, _poc_event_params);
+            pocplus.event.record("fsplusmp_news_banner_show", _poc_event_params);
+          } catch (error) {}
+        });
+        // 开始监听
+        var ads = document.querySelectorAll(".ads");
+        ads.forEach((el) => {
+          intersectionObserver.observe(el);
+        });
+
+        // 视频
+        var videoDom = document.querySelector("video");
+        var video_play_time = 0; // 播放时长可以超过视频的总时长（如果是重复观看就会这样了）
+        if (videoDom) {
+          videoDom.addEventListener("play", function () {
+            console.log("开始播放");
+          });
+          videoDom.addEventListener("pause", function () {
+            console.log("暂停播放");
+          });
+          videoDom.addEventListener("timeupdate", function () {
+            video_play_time += 0.25;
+            console.log("视频累计播放", video_play_time);
+          });
+          videoDom.addEventListener("ended", function () {
+            console.log("播放至结束");
+            // [埋点] 稿件广告位曝光
+            let _poc_event_params = {
+              content_id: vapp.news.id,
+              content_name: vapp.news.title,
+              play_duration: video_play_time,
+              total_duration: videoDom.duration,
+            };
+            qaplus.event.record("video_play", 19999, _poc_event_params);
+            pocplus.event.record("fsplusmp_news_video_playend", _poc_event_params);
+          });
+        }
+        window.addEventListener("beforeunload", function (event) {
+          if (videoDom && video_play_time > 0) {
+            // [埋点] 稿件广告位曝光
+            let _poc_event_params = {
+              content_id: vapp.news.id,
+              content_name: vapp.news.title,
+              play_duration: video_play_time,
+              total_duration: videoDom.duration,
+            };
+            qaplus.event.record("video_play", 19999, _poc_event_params);
+            pocplus.event.record("fsplusmp_news_video_playend", _poc_event_params);
+          }
+        });
+      }, 1000);
+    </script>
+    <!-- 监控方法 -->
+    <script>
+      !(function (c, b, d, a) {
+        c[a] || (c[a] = {});
+        c[a].config = {
+          pid: "bmsir0hov3@da6da9a595cfbc6",
+          appType: "web",
+          imgUrl: "https://arms-retcode.aliyuncs.com/r.png?",
+          sendResource: true,
+          enableLinkTrace: true,
+          behavior: true,
+          enableConsole: true,
+        };
+        with (b) with (body) with (insertBefore(createElement("script"), firstChild)) setAttribute("crossorigin", "", (src = d));
+      })(window, document, "https://sdk.rum.aliyuncs.com/v1/bl.js", "__bl");
+    </script>
+  </body>
+</html>
