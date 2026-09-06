@@ -1,0 +1,946 @@
+<div class="header-container">
+		<div class="header">
+  <div class="login_section">
+	
+	<div class="login_window">
+		<div style="text-align:right;">
+			<img src="https://www.jfdaily.com/images/close.gif" style="margin:4px 4px 0 0;cursor:pointer;" onclick="hideLoginWindow();">
+		</img></div>
+		
+						用户名：
+					
+
+						<input id="username" name="username" type="text" onkeypress="procenter(event,dologin)" value="您的手机号码" onfocus="javascript:if(this.value=='您的手机号码')this.value='';" maxlength="50" class="input-text">
+					</input>
+
+						密&nbsp;&nbsp;&nbsp;码：
+					
+
+						<input id="passwd" name="passwd" type="password" onkeypress="procenter(event,dologin)" maxlength="16" value="" class="input-text">
+					</input>
+
+						验证码：
+					
+
+						<input id="verify" name="verify" onkeypress="procenter(event,dologin)" type="text" maxlength="5" class="input-text" style="width:59px;"/>
+          				
+          				<span style="font-size:12px;color:#878787;cursor:pointer" onclick="javascript:freshImgCode();">看不清</span>
+      				
+
+					
+
+						<input type="button" name="btnlogin" value="登 录" id="btnlogin" onclick="javascript:dologin();">
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" name="btnregister" value="注 册" id="btnregister" onclick="javascript:jumpRegister();">
+					</input></input>
+
+					
+
+						
+							忘记密码？
+						
+					
+	</div>
+</div>
+
+
+  
+  <div class="top">
+    <div class="left">
+    	
+    	
+    	<div id="searchbox" style="display:none;">
+	    	<span class="search">
+				<div class="inputcontainer">
+					<input type="text" name="keywords" maxlength="40" class="searchinput" id="keywords" placeholder="输入您搜索的内容"/>
+				</div>
+				
+			</span>
+			<select class="search-select">
+				<option value="1">模糊搜索</option>
+				<option value="2">作者搜索</option>
+				<option value="3">标题搜索</option>
+				<option value="4">正文搜索</option>
+				<option value="5">摘要搜索</option>
+			</select>
+		</div>
+		
+    	
+    		<img src="https://www.jfdaily.com/images/search_btn.png" style="vertical-align: middle;height:22px;"/>
+		
+	</div>
+	
+    <div class="right">
+    	查看新版>>
+    	
+	    <span class="login-info">
+	       	登录
+	       	注册
+	    </span>
+	    
+    	
+    </div>
+    
+  </div>
+
+  <div class="menu-box">
+    <div style="float:left;position:relative;top:3px;">
+    	<img src="https://www.jfdaily.com/images/logoblack2.png" style="width:130px;"/>
+	</div>
+	<div class="menu">
+	  	<ul id="nav" class="section-list">
+	        <li class="section-li">
+	        	
+	        		<span class="section">首页 </span>
+        		
+        	</li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">视频</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					在场
+	      					</li>
+		      				<li class="subsection-li">
+		      					观观观察局
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇视讯
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇艺术
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇大家聊
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇馆长说
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇青年营
+	      					</li>
+		      				<li class="subsection-li">
+		      					潮探007
+	      					</li>
+		      				<li class="subsection-li">
+		      					冲呀花花采访团
+	      					</li>
+		      				<li class="subsection-li">
+		      					魔都三棱镜
+	      					</li>
+		      				<li class="subsection-li">
+		      					汇演
+	      					</li>
+		      				<li class="subsection-li">
+		      					艺见
+	      					</li>
+		      				<li class="subsection-li">
+		      					许蜜桃
+	      					</li>
+		      				<li class="subsection-li">
+		      					我不是唐亿森
+	      					</li>
+		      				<li class="subsection-li">
+		      					速瞰天下
+	      					</li>
+		      				<li class="subsection-li">
+		      					书人茶话
+	      					</li>
+		      				<li class="subsection-li">
+		      					顾问天下
+	      					</li>
+		      				<li class="subsection-li">
+		      					上海时刻
+	      					</li>
+		      				<li class="subsection-li">
+		      					晏秋秋
+	      					</li>
+		      				<li class="subsection-li">
+		      					江江三人行
+	      					</li>
+		      				<li class="subsection-li">
+		      					饭小兔的美学洞窟
+	      					</li>
+		      				<li class="subsection-li">
+		      					Biu比由
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇科代表
+	      					</li>
+		      				<li class="subsection-li">
+		      					解放日报谢飞君
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇讲述
+	      					</li>
+		      				<li class="subsection-li">
+		      					新聚场
+	      					</li>
+		      				<li class="subsection-li">
+		      					沪上养老攻略
+	      					</li>
+		      				<li class="subsection-li">
+		      					教育鹏友圈
+	      					</li>
+		      				<li class="subsection-li">
+		      					Gloria in Shanghai
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">政情</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					@康平路
+	      					</li>
+		      				<li class="subsection-li">
+		      					直通200号
+	      					</li>
+		      				<li class="subsection-li">
+		      					伴公汀
+	      					</li>
+		      				<li class="subsection-li">
+		      					上海一周
+	      					</li>
+		      				<li class="subsection-li">
+		      					反腐记
+	      					</li>
+		      				<li class="subsection-li">
+		      					抗战·上海寻迹
+	      					</li>
+		      				<li class="subsection-li">
+		      					交汇点
+	      					</li>
+		      				<li class="subsection-li">
+		      					市政厅
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">经济</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					财经连线
+	      					</li>
+		      				<li class="subsection-li">
+		      					产业观察
+	      					</li>
+		      				<li class="subsection-li">
+		      					金融区块链
+	      					</li>
+		      				<li class="subsection-li">
+		      					流量研究所
+	      					</li>
+		      				<li class="subsection-li">
+		      					市场解码
+	      					</li>
+		      				<li class="subsection-li">
+		      					任我行
+	      					</li>
+		      				<li class="subsection-li">
+		      					产经
+	      					</li>
+		      				<li class="subsection-li">
+		      					市场
+	      					</li>
+		      				<li class="subsection-li">
+		      					城生活
+	      					</li>
+		      				<li class="subsection-li">
+		      					财经
+	      					</li>
+		      				<li class="subsection-li">
+		      					城事更新
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">文化</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					文旅乐游
+	      					</li>
+		      				<li class="subsection-li">
+		      					文化观澜
+	      					</li>
+		      				<li class="subsection-li">
+		      					文艺清单
+	      					</li>
+		      				<li class="subsection-li">
+		      					文化视点
+	      					</li>
+		      				<li class="subsection-li">
+		      					独家探班
+	      					</li>
+		      				<li class="subsection-li">
+		      					观众席
+	      					</li>
+		      				<li class="subsection-li">
+		      					片场视听
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇人文之城
+	      					</li>
+		      				<li class="subsection-li">
+		      					台前幕后
+	      					</li>
+		      				<li class="subsection-li">
+		      					文化生活
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">副刊</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					新民艺评
+	      					</li>
+		      				<li class="subsection-li">
+		      					朝花时文
+	      					</li>
+		      				<li class="subsection-li">
+		      					海上记忆
+	      					</li>
+		      				<li class="subsection-li">
+		      					上书房
+	      					</li>
+		      				<li class="subsection-li">
+		      					笔会
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇文艺评论
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇文艺百家
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇读书
+	      					</li>
+		      				<li class="subsection-li">
+		      					夜光杯
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">民生</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					民声直通车
+	      					</li>
+		      				<li class="subsection-li">
+		      					上海辟谣平台
+	      					</li>
+		      				<li class="subsection-li">
+		      					人民建议
+	      					</li>
+		      				<li class="subsection-li">
+		      					读者
+	      					</li>
+		      				<li class="subsection-li">
+		      					城市的味道
+	      					</li>
+		      				<li class="subsection-li">
+		      					帮侬忙
+	      					</li>
+		      				<li class="subsection-li">
+		      					上海滩
+	      					</li>
+		      				<li class="subsection-li">
+		      					民生调查
+	      					</li>
+		      				<li class="subsection-li">
+		      					侬好上海
+	      					</li>
+		      				<li class="subsection-li">
+		      					谈天
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇集结号
+	      					</li>
+		      				<li class="subsection-li">
+		      					汇帮忙
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">区情</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					浦江眼
+	      					</li>
+		      				<li class="subsection-li">
+		      					前沿风
+	      					</li>
+		      				<li class="subsection-li">
+		      					郊野笔记
+	      					</li>
+		      				<li class="subsection-li">
+		      					上海屋檐下
+	      					</li>
+		      				<li class="subsection-li">
+		      					海上755
+	      					</li>
+		      				<li class="subsection-li">
+		      					区域
+	      					</li>
+		      				<li class="subsection-li">
+		      					Yeah！上海
+	      					</li>
+		      				<li class="subsection-li">
+		      					十六区
+	      					</li>
+		      				<li class="subsection-li">
+		      					郊野大地	
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">评论</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					观见
+	      					</li>
+		      				<li class="subsection-li">
+		      					时评
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇时评
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇微言
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民眼
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">思想</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					上观学习
+	      					</li>
+		      				<li class="subsection-li">
+		      					思想汇
+	      					</li>
+		      				<li class="subsection-li">
+		      					学林
+	      					</li>
+		      				<li class="subsection-li">
+		      					论苑
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇智库
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇学人
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇讲堂
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">深度</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					纵深
+	      					</li>
+		      				<li class="subsection-li">
+		      					原点
+	      					</li>
+		      				<li class="subsection-li">
+		      					申观察
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民周刊
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">科创</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					创新之城
+	      					</li>
+		      				<li class="subsection-li">
+		      					科创前沿
+	      					</li>
+		      				<li class="subsection-li">
+		      					科学新知
+	      					</li>
+		      				<li class="subsection-li">
+		      					科科哒
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">教卫</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					教育在线
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇教育
+	      					</li>
+		      				<li class="subsection-li">
+		      					教育星球
+	      					</li>
+		      				<li class="subsection-li">
+		      					学堂有名堂
+	      					</li>
+		      				<li class="subsection-li">
+		      					医声医事
+	      					</li>
+		      				<li class="subsection-li">
+		      					哎哟不怕
+	      					</li>
+		      				<li class="subsection-li">
+		      					健康生活
+	      					</li>
+		      				<li class="subsection-li">
+		      					第医线
+	      					</li>
+		      				<li class="subsection-li">
+		      					康健园
+	      					</li>
+		      				<li class="subsection-li">
+		      					医本正经聊天室
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">体育</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					运动+
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇体育
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民体育
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民场外音
+	      					</li>
+		      				<li class="subsection-li">
+		      					厉苒苒
+	      					</li>
+		      				<li class="subsection-li">
+		      					东方体育日报
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">社会</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					说法
+	      					</li>
+		      				<li class="subsection-li">
+		      					案页
+	      					</li>
+		      				<li class="subsection-li">
+		      					十二公民
+	      					</li>
+		      				<li class="subsection-li">
+		      					新瞰点
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民法谭
+	      					</li>
+		      				<li class="subsection-li">
+		      					新音频
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">长三角</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					华东局
+	      					</li>
+		      				<li class="subsection-li">
+		      					江南
+	      					</li>
+		      				<li class="subsection-li">
+		      					城市志
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">要闻</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					时政要闻
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">国内</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					港澳台
+	      					</li>
+		      				<li class="subsection-li">
+		      					北京来信
+	      					</li>
+		      				<li class="subsection-li">
+		      					山海情
+	      					</li>
+		      				<li class="subsection-li">
+		      					风物
+	      					</li>
+		      				<li class="subsection-li">
+		      					京华传真
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">国际</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					世界观
+	      					</li>
+		      				<li class="subsection-li">
+		      					大局观
+	      					</li>
+		      				<li class="subsection-li">
+		      					海外惊奇
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇环球
+	      					</li>
+		      				<li class="subsection-li">
+		      					国际视点
+	      					</li>
+		      				<li class="subsection-li">
+		      					深海区
+	      					</li>
+		      				<li class="subsection-li">
+		      					侨梁
+	      					</li>
+		      				<li class="subsection-li">
+		      					浩峰说
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">天下</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					早读
+	      					</li>
+		      				<li class="subsection-li">
+		      					纵览
+	      					</li>
+		      				<li class="subsection-li">
+		      					时事
+	      					</li>
+		      				<li class="subsection-li">
+		      					话媒堂
+	      					</li>
+		      				<li class="subsection-li">
+		      					上官河
+	      					</li>
+		      				<li class="subsection-li">
+		      					汇闻
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民早报
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">视觉</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					图数图说
+	      					</li>
+		      				<li class="subsection-li">
+		      					见识录
+	      					</li>
+		      				<li class="subsection-li">
+		      					大视界
+	      					</li>
+		      				<li class="subsection-li">
+		      					上观智库
+	      					</li>
+		      				<li class="subsection-li">
+		      					文汇视觉
+	      					</li>
+		      				<li class="subsection-li">
+		      					图个明白
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民印象
+	      					</li>
+		      				<li class="subsection-li">
+		      					直播	
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">文学报</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					新批评
+	      					</li>
+		      				<li class="subsection-li">
+		      					文学现场
+	      					</li>
+		      				<li class="subsection-li">
+		      					世界文学
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">品牌</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					健面谈
+	      					</li>
+		      				<li class="subsection-li">
+		      					文创+
+	      					</li>
+		      				<li class="subsection-li">
+		      					大区势
+	      					</li>
+		      				<li class="subsection-li">
+		      					企示录
+	      					</li>
+		      				<li class="subsection-li">
+		      					一起来
+	      					</li>
+		      				<li class="subsection-li">
+		      					科创上海
+	      					</li>
+		      				<li class="subsection-li">
+		      					微观上海
+	      					</li>
+		      				<li class="subsection-li">
+		      					车天下
+	      					</li>
+		      				<li class="subsection-li">
+		      					品牌汇
+	      					</li>
+		      				<li class="subsection-li">
+		      					教育汇
+	      					</li>
+		      				<li class="subsection-li">
+		      					文旅在线
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">新民汇</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					新民亲选
+	      					</li>
+		      				<li class="subsection-li">
+		      					援疆风采
+	      					</li>
+		      				<li class="subsection-li">
+		      					喀什风情
+	      					</li>
+		      				<li class="subsection-li">
+		      					爱我国防
+	      					</li>
+		      				<li class="subsection-li">
+		      					新民小记者
+	      					</li>
+		      				<li class="subsection-li">
+		      					万象
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">世赛</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					赛事动态
+	      					</li>
+		      				<li class="subsection-li">
+		      					赛项百科
+	      					</li>
+		      				<li class="subsection-li">
+		      					人物故事
+	      					</li>
+		      				<li class="subsection-li">
+		      					技能视界
+	      					</li>
+		      				<li class="subsection-li">
+		      					观点评论
+	      					</li>
+		      				<li class="subsection-li">
+		      					走进世赛
+	      					</li>
+		    	</ul> 
+		    </li>
+		    <li class="section-li">
+		    	
+		    		<span class="section">党建</span>
+	    		
+		    	
+		    	<ul class="sub-section-list">
+		      				<li class="subsection-li">
+		      					党建观澜
+	      					</li>
+		      				<li class="subsection-li">
+		      					党务通
+	      					</li>
+		      				<li class="subsection-li">
+		      					大讲堂
+	      					</li>
+		      				<li class="subsection-li">
+		      					上党课
+	      					</li>
+		      				<li class="subsection-li">
+		      					一鉴三廉
+	      					</li>
+		      				<li class="subsection-li">
+		      					红色印记
+	      					</li>
+		    	</ul> 
+		    </li>
+			<li class="section-li">
+				
+					<span class="section">专题 </span>
+				
+		    </li>
+		    <li class="section-li">
+				
+					<span class="section">直播 </span>
+				
+		    </li>
+		    <li class="section-li">
+				
+					<span class="section" style="margin-top: -12px;">上观号</span>
+				
+		    </li>
+	    </ul>
+	</div>
+	<div style="position:relative;float:right;" id="epaper_btn">
+	 	<span class="red-btn">电子报</span>
+	 	
+	 	
+	 	<ul class="epaper-ul">
+    	 	<li>解放日报</li>
+	        <li>文汇报</li>
+	        <li>新民晚报</li>
+	        <li>上海日报</li>
+	        <li>新闻晨报</li>
+	        <li>上海法治报</li>
+	        <li>社区晨报</li>
+	        <li>东方体育日报</li>
+	        <li>文学报</li>
+	        <li>浦东时报</li>
+	        <li>新民周刊</li>
+	        <li>上海宣传通讯</li>
+    	</ul>
+ 	</div>
+  </div>
+  
+  
+		</div>
+	</div>
+
+	
+	<div style="width:100%; height:39px; background-color:#ededed; border-bottom:1px #bfbfbf solid;">
+	  <div class="weizhi">
+	  	我的位置：
+	  	上观号 &gt; 
+	  	 &gt; 
+	  	<font color="#cd0009">文章详情</font>
+	  </div>
+	</div>
+	
+<div class="center">
+  <div style="text-align: center;margin: 24px 15px;">
+    <h1>致敬经典港乐，极光乐队演绎Beyond金曲唱响云间剧院</h1>
+      
+      <div class="subtitle">
+      	<div id="source">
+	      	转自：    	
+	      	2026-07-19 12:27:19
+      	</div>
+  	  </div>
+      
+    </div> 
+    
+    <div class="newscontents"><p>7月17日晚，极光乐队致敬Beyond全国巡回演唱会在松江云间剧院上演，千余名乐迷齐聚现场，在原汁原味的摇滚旋律中，重温属于一代人的粤语摇滚黄金岁月。</p><p style="text-align:center;"><video src="https://sghmedia.shobserver.cn/video/sgh/20260719/GjyQgKpeHP/8c7c036d1ffa4e159c20d2fc6edabbbc.mov" poster="https://media.sjmedia.net/upload/news/image/2026/07/19/9690ac84bace42dfa13925fa0e0a0fdb.jpg?h=1080&w=608" controls="controls" data-catch-result="success"/></p><p>作为中国香港著名的摇滚乐队，Beyond的作品早已超越流行音乐本身，蕴藏着理想、温情与博爱等丰富精神内涵。本次演出的极光乐队组建于2017年，是国内为数不多获得Beyond御用填词人刘卓辉认可的致敬乐队。主唱皮特·阿博声线贴近黄家驹，乐队完整还原原版编曲，搭配标准深情的粤语演绎，收获业内广泛好评。</p><p style="text-align:center;"><img src="https://sghimages.shobserver.cn/img/sgh/20260719/8nIt1GLeYE/60acab0ec053467aabe165ec56a7adbc.jpg" style="max-width:600px;"/></p><p>演唱《光辉岁月》</p><p>当晚开演前，云间剧院场内已是座无虚席。不少观众提前到场，和同行亲友闲聊年少抄写歌词、循环卡带的青春回忆。全场灯光暗下，现场响起此起彼伏的欢呼，所有人静静等候演出开启。整场演出串联三十余首经典曲目，编排流畅，情绪层层递进。激昂的《长城》《光辉岁月》奏响，强劲鼓点与标志性吉他独奏瞬间点燃全场，观众跟着旋律挥手、拍手合唱，热烈的声浪填满整个剧场；待到婉转舒缓的《喜欢你》《情人》响起，现场氛围慢慢沉静，观众轻声跟唱，满是怀旧温情。</p><p style="text-align:center;"><img src="https://sghimages.shobserver.cn/img/sgh/20260719/V6FpTNQ68L/ad3ec49bb0c346fb8284d286eb913582.jpg" style="max-width:600px;"/></p><p>台下观众热情互动</p><p>一曲唱罢，主唱皮特·阿博动情说道：“今天虽然我们站在台上，但这是大家的舞台。”简短话语拉近了乐队与观众的距离。当《真的爱你》《海阔天空》等家喻户晓的金曲响起，全场观众纷纷起身，上千人齐声合唱，心底沉淀多年的感动尽数释放。</p><p style="text-align:center;"><img src="https://sghimages.shobserver.cn/img/sgh/20260719/fwm04sH1NI/e54d319d7e164040a3e4c1857517c978.jpg" style="max-width:600px;"/></p><p>主唱皮特·阿博</p><p>据了解，极光乐队巡演足迹遍布全国五十余座城市，演出场次超百场，累计观演人次突破十万。2023年，乐队曾前往马来西亚举办海外专场演出，是国内首支走出国门传播Beyond摇滚文化的致敬乐队。</p><p>散场后，不少观众仍意犹未尽，热聊着当晚的感受。“平时很少有时间专门听歌，今晚跟着唱了两个小时，忽然觉得自己又年轻了一回。”观众胡女士说。同行友人也表示，Beyond的歌曲永不过时，无论时隔多久，旋律一响还是能跟着唱，这就是经典的魅力。</p><p>■记者 贾丽 文图 视频</p><p>■编辑 贾丽</p><p>■栏目责编 彭璐 ■栏目主编  颜瑾</p></div>
+		
+  </div>

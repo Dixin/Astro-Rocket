@@ -1,0 +1,642 @@
+<center>
+
+
+
+
+
+
+
+<form id="quicksearch_form" action="https://www.blu-ray.com/search/" method="GET">
+
+<input type="hidden" name="quicksearch" value="1">
+<input type="hidden" name="quicksearch_country" id="quicksearch_country">
+<input type="hidden" name="quicksearch_keyword" id="quicksearch_keyword" value="">
+<input type="hidden" name="section" id="section" value="bluraymovies">
+</input></input></input></input></form>
+
+		
+<b>Movies</b>
+<b>Blu-ray</b>
+<b>4K</b>
+<b>3D</b>
+<b>DVD</b>
+<b>Digital</b>
+<b>MA</b>
+<b>iTunes</b>
+<b>Prime</b>
+<b>Games</b>
+<b>People</b>
+<b>Forum</b>
+		<input id="quicksearchcountry" name="quicksearchcountry" type="hidden" value="US">
+		<br>
+		<input id="search" name="keyword" type="text" autocomplete="off" tabindex="1" style="z-index: 2; position: relative; width: 481px; height: 21px; margin: 0px; border: 0px; border-bottom: 1px solid #7f9db9; font-family: verdana; font-size: 12px; line-height: 22px; color: #aaa; padding-left: 25px; outline-width: 0px" title="Search for Movies, TV Shows and Box Sets" onfocus="if(this.value == this.defaultValue) { this.value = ''; this.style.color = '#000' }" onblur="if(this.value == '') { this.value = this.defaultValue; this.style.color = '#aaa' }" value="Search for Movies, TV Shows and Box Sets">
+		<div style="z-index: 3; position: relative; cursor: pointer" onclick="getSearchOption()">
+		<div id="search_button" style="position: absolute; top: -18px; left: 7px; font: bold 19px impact; color: #aaccee"><img src="https://images.static-bluray.com/search.gif" width="12" height="12"/></div>
+		</div>
+
+		<div style="z-index: 3; position: relative; cursor: pointer" onclick="var reset = $('#search'); reset.val(''); reset.trigger('focus'); maxpos = 0; $('#search_clear').css('display', 'none')">
+		<div id="search_clear" style="position: absolute; top: -24px; left: 452px; font: bold 19px impact; color: #aaccee; display: none">&times;</div>
+		</div>
+
+		<div id="search_locale" style="z-index: 3; position: relative">
+			<div style="z-index: 3; width: 35px; height: 16px; position: absolute; top: -20px; left: 470px;">
+				<div style="position: absolute; width: 35px; height: 19px; font-size: 9px; color: #ccc;">
+
+&#9660;<img id="countryflag" src="https://images.static-bluray.com/flags/US.png" width="18" height="12" style="vertical-align: text-top; margin: 1px 2px 0px 3px">
+				</img></div>
+
+				<div id="search_locale_list" style="z-index: 3; display: none; position: absolute; width: 125px; top: 20px; left: -101px; padding: 5px 5px 5px 5px; border: 1px solid #ddd; background-color: #fff; box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25)">
+				<ul style="list-style-type: none; width: 125px; margin: 0px; padding: 0px; cursor: pointer">
+<li id="country_all" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'all', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('all'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/global-transparent.png'; document.getElementById('search_locale_list').style.display = 'none'" class="hover"><noscript><img src="https://images.static-bluray.com/flags/global-transparent.png" width="18" height="13" border="0" style="vertical-align: text-bottom"/></noscript><img id="load73987282251778" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="13" border="0" style="vertical-align: text-bottom"> All countries</img></li>
+<li id="country_us" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'us', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('US'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/US.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/US.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load39054768229087" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> United States</img></li>
+<li id="country_uk" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'uk', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('UK'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/UK.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/UK.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load64090225930796" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> United Kingdom</img></li>
+<li id="country_ca" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ca', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CA'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CA.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CA.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load81988215148313" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Canada</img></li>
+<li id="country_au" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'au', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('AU'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/AU.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/AU.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load84614791446555" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Australia</img></li>
+<li id="country_de" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'de', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('DE'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/DE.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/DE.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load49192412216175" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Germany</img></li>
+<li id="country_fr" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'fr', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('FR'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/FR.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/FR.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load14441541655957" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> France</img></li>
+<li id="country_es" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'es', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('ES'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/ES.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/ES.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load78286778600374" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Spain</img></li>
+<li id="country_it" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'it', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('IT'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/IT.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/IT.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load94225247368088" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Italy</img></li>
+<li id="country_ar" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ar', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('AR'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/AR.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/AR.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load23069848680972" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Argentina</img></li>
+<li id="country_at" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'at', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('AT'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/AT.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/AT.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load85755372425962" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Austria</img></li>
+<li id="country_be" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'be', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('BE'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/BE.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/BE.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load49651736228126" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Belgium</img></li>
+<li id="country_br" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'br', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('BR'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/BR.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/BR.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load32901283512206" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Brazil</img></li>
+<li id="country_bg" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'bg', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('BG'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/BG.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/BG.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load91347843522733" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Bulgaria</img></li>
+<li id="country_cl" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'cl', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CL'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CL.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CL.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load29849264790743" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Chile</img></li>
+<li id="country_cn" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'cn', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CN'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CN.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CN.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load79508629383655" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> China</img></li>
+<li id="country_co" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'co', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CO'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CO.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CO.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load60425221856339" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Colombia</img></li>
+<li id="country_cy" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'cy', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CY'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CY.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CY.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load76127432451544" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Cyprus</img></li>
+<li id="country_cz" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'cz', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CZ'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CZ.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CZ.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load67871365811564" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Czech Republic</img></li>
+<li id="country_ee" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ee', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('EE'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/EE.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/EE.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load65998585248615" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Estonia</img></li>
+<li id="country_dk" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'dk', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('DK'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/DK.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/DK.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load62581201519100" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Denmark</img></li>
+<li id="country_fi" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'fi', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('FI'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/FI.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/FI.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load64647906702274" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Finland</img></li>
+<li id="country_gr" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'gr', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('GR'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/GR.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/GR.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load21750584293468" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Greece</img></li>
+<li id="country_hk" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'hk', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('HK'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/HK.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/HK.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load53026491597582" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Hong Kong</img></li>
+<li id="country_hu" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'hu', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('HU'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/HU.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/HU.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load16615566609634" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Hungary</img></li>
+<li id="country_is" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'is', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('IS'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/IS.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/IS.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load92785549237094" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Iceland</img></li>
+<li id="country_id" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'id', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('ID'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/ID.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/ID.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load80355974243727" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Indonesia</img></li>
+<li id="country_ie" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ie', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('IE'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/IE.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/IE.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load54652201325726" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Ireland</img></li>
+<li id="country_il" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'il', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('IL'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/IL.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/IL.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load67559344600005" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Israel</img></li>
+<li id="country_in" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'in', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('IN'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/IN.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/IN.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load38484598740860" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> India</img></li>
+<li id="country_jp" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'jp', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('JP'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/JP.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/JP.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load83907491799322" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Japan</img></li>
+<li id="country_lv" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'lv', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('LV'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/LV.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/LV.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load81245164433271" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Latvia</img></li>
+<li id="country_lt" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'lt', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('LT'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/LT.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/LT.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load26556615737259" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Lithuania</img></li>
+<li id="country_my" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'my', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('MY'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/MY.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/MY.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load58848168442797" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Malaysia</img></li>
+<li id="country_mx" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'mx', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('MX'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/MX.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/MX.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load15488242484675" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Mexico</img></li>
+<li id="country_nl" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'nl', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('NL'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/NL.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/NL.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load36914126806944" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Netherlands</img></li>
+<li id="country_nz" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'nz', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('NZ'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/NZ.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/NZ.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load30037769156203" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> New Zealand</img></li>
+<li id="country_no" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'no', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('NO'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/NO.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/NO.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load35092194178834" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Norway</img></li>
+<li id="country_ph" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ph', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('PH'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/PH.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/PH.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load34496717811869" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Philippines</img></li>
+<li id="country_pl" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'pl', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('PL'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/PL.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/PL.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load47764164111227" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Poland</img></li>
+<li id="country_pt" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'pt', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('PT'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/PT.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/PT.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load44215034054970" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Portugal</img></li>
+<li id="country_ro" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ro', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('RO'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/RO.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/RO.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load33483222457101" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Romania</img></li>
+<li id="country_ru" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ru', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('RU'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/RU.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/RU.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load72986987813543" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Russia</img></li>
+<li id="country_sg" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'sg', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('SG'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/SG.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/SG.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load27828274054633" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Singapore</img></li>
+<li id="country_za" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'za', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('ZA'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/ZA.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/ZA.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load24135485631287" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> South Africa</img></li>
+<li id="country_kr" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'kr', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('KR'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/KR.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/KR.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load27954949804297" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> South Korea</img></li>
+<li id="country_se" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'se', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('SE'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/SE.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/SE.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load64306099920010" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Sweden</img></li>
+<li id="country_ch" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ch', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('CH'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/CH.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/CH.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load42375698086270" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Switzerland</img></li>
+<li id="country_tw" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'tw', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('TW'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/TW.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/TW.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load56572699122385" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Taiwan</img></li>
+<li id="country_th" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'th', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('TH'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/TH.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/TH.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load65290686206093" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Thailand</img></li>
+<li id="country_tr" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'tr', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('TR'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/TR.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/TR.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load16070619220480" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Turkey</img></li>
+<li id="country_ua" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ua', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('UA'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/UA.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/UA.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load30130383610837" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> Ukraine</img></li>
+<li id="country_ae" style="display: block; padding: 1px 0px" onclick="setcookie('country', 'ae', 30*24*60*60, '/', '.blu-ray.com'); var quicksearchcountry = $('#quicksearchcountry'); quicksearchcountry.val('AE'); maxpos = 0; search.trigger('focus').val(search.val()); document.getElementById('countryflag').src = 'https://images.static-bluray.com/flags/AE.png'; document.getElementById('search_locale_list').style.display = 'none';" class="hover"><noscript><img src="https://images.static-bluray.com/flags/AE.png" width="18" height="12" border="0" style="vertical-align: text-bottom"/></noscript><img id="load83766845522257" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="18" height="12" border="0" style="vertical-align: text-bottom"> United Arab Emirates</img></li>
+				</ul>
+				</div>
+			</div>
+		</div>
+
+		<div style="position: relative; z-index: 2"/>
+		<div style="position: relative; z-index: 1"><div id="search_preview" style="display: none; position: absolute; top: 0px; left: -172px; left: -174px; width: 174px; width: 177px; background-color: white; box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.35); -moz-box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.35); -webkit-box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.35);; border: 0px solid #ccc; border-left: 0px solid #ccc; border-top-left-radius: 9px; -moz-border-radius-topleft: 9px; border-bottom-left-radius: 9px; -moz-border-radius-bottomleft: 9px; border-bottom: 0px solid #ccc"><center><img id="previewthumb" src="https://images.static-bluray.com/transparent.gif" width="1" height="1" style="cursor: hand; cursor: pointer; margin: 8px 9px 4px 9px; margin: 10px 10px 5px 10px; background-color: #eff4f8;"/></center><center style="margin-bottom: 7px"><div id="previewtitle" style="font-size: 13px; padding: 0px 8px 5px 8px"> 
+<div style="margin-bottom: 5px"><div id="addcollection" class="button" style="display: none">Add to collection</div><div id="removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="dvd_addcollection" class="button" style="display: none">Add to collection</div><div id="dvd_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="dvd_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="dvd_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="uv_addcollection" class="button" style="display: none">Add to collection</div><div id="uv_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="uv_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="uv_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="ma_addcollection" class="button" style="display: none">Add to collection</div><div id="ma_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="ma_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="ma_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="aiv_addcollection" class="button" style="display: none">Add to collection</div><div id="aiv_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="aiv_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="aiv_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="itunes_addcollection" class="button" style="display: none">Add to collection</div><div id="itunes_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="itunes_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="itunes_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="theatrical_addcollection" class="button" style="display: none">Add to collection</div><div id="theatrical_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="theatrical_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="theatrical_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+<div style="margin-bottom: 5px"><div id="games_addcollection" class="button" style="display: none">Add to collection</div><div id="games_removecollection" class="button" style="display: none; margin-bottom: 5px">Remove from collection</div></div>
+<div id="games_addwishlist" class="button" style="display: none; margin-bottom: 5px">Add to wishlist</div><div id="games_removewishlist" class="button" style="display: none; margin-bottom: 5px">Remove from wishlist</div>
+		
+	</div></center></div></div></input></br></input>
+
+
+
+United States&nbsp;<img src="https://images.static-bluray.com/flags/US.png" border="0" width="18" height="12" style="vertical-align: middle;"/><div id="loginformarea" style="display:none;">
+				<form id="loginform" action="https://forum.blu-ray.com/login.php" method="post">
+				<input type="text" class="bginput" style="font-family: verdana, arial, sans-serif; font-size: 11px; border: 1px solid #c5c7cf; color: #666" size="10" name="vb_login_username" id="navbar_username_top" accesskey="u" tabindex="11" title="Username" onfocus="if(this.value == this.defaultValue) { this.value = ''; this.style.color = '#000' }" onblur="if(this.value == '') { this.value = this.defaultValue; this.style.color = '#666' }" value="Username"/>
+<input type="password" style="font-family: verdana, arial, sans-serif; font-size: 11px; border: 1px solid #c5c7cf; color: #666" size="10" name="vb_login_password" accesskey="p" tabindex="12" title="Password" onfocus="if(this.value == this.defaultValue) { this.value = ''; this.style.color = '#000' }" onblur="if(this.value == '') { this.value = this.defaultValue; this.style.color = '#666' }" value="Password"/>
+<div class="submit"><input type="submit" value="Login" tabindex="14" style="padding: 2px 8px" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s"/></div>
+
+						
+							
+
+								<div style="position: absolute; clip: rect(0px 10px 10px 0px)">
+									<input type="checkbox" name="cookieuser" value="1" tabindex="13" id="cb_cookieuser_navbar_top" accesskey="c" style="position: relative; top: -4px; left: -6px; bottom: 0px;"/>
+								</div>
+							
+
+								<div style="font: 9px/9px small fonts; color: #144766">
+								<label for="cb_cookieuser_navbar_top" style="cursor: hand; cursor: pointer">Remember</label> &nbsp;|&nbsp;
+		<div onclick="$.getJSON('https://www.blu-ray.com/products/ajax.php?action=humanverify', function(data) { document.getElementById('humanverify[input]').value = data.input; document.getElementById('humanverify[hash]').value = data.hash; }); { window.onkeydown = function(event) { if(event.keyCode === 27) { document.getElementById('signup_overlay').style.display = 'none'; document.getElementById('signup_lightbox').className = 'signup-lightbox'; }}; document.getElementById('signup_overlay').style.display = 'block'; document.getElementById('signup_lightbox').className = 'signup-lightbox rotatein';
+		$('#email').trigger('touchstart'); $('#email').on('touchstart', function() { $(this).trigger('focus'); }); }" style="cursor: pointer; display:inline">
+New member</div>								&nbsp;|&nbsp;
+								Lost password
+								</div>
+							
+					
+				<input type="hidden" name="s" value=""/>
+				<input type="hidden" name="do" value="login"/>
+				</form>
+</div>
+<div id="loginareabutton"><div onclick="document.getElementById('loginformarea').style.display = 'block'; document.getElementById('loginareabutton').style.display = 'none';" style="margin-left:0px; margin-top:5px; display:inline-block;"><div style="display: inline-block; width: 70px; text-align: center; background-color: #529edc; background-color: #2385c9; color: #fff; border-radius: 8px; padding: 4px 15px; font-size: 16px; font-weight: bold; font-size: 14px; text-transform: uppercase; border: 1px solid rgba(255, 255, 255, 0.3); cursor:pointer; cursor:hand;">Login</div>
+</div>
+		<div onclick="$.getJSON('https://www.blu-ray.com/products/ajax.php?action=humanverify', function(data) { document.getElementById('humanverify[input]').value = data.input; document.getElementById('humanverify[hash]').value = data.hash; }); { window.onkeydown = function(event) { if(event.keyCode === 27) { document.getElementById('signup_overlay').style.display = 'none'; document.getElementById('signup_lightbox').className = 'signup-lightbox'; }}; document.getElementById('signup_overlay').style.display = 'block'; document.getElementById('signup_lightbox').className = 'signup-lightbox rotatein';
+		$('#email').trigger('touchstart'); $('#email').on('touchstart', function() { $(this).trigger('focus'); }); }" style="cursor: pointer; display:inline">
+<div style="display: inline-block; width: 70px; text-align: center; background-color: #529edc; background-color: #2385c9; color: #fff; border-radius: 8px; padding: 4px 15px; font-size: 16px; font-weight: bold; font-size: 14px; text-transform: uppercase; border: 1px solid rgba(255, 255, 255, 0.3); cursor:pointer; cursor:hand;">Join</div></div></div>
+		
+
+<img src="https://www.blu-ray.com/images/icons/moon.png" width="25" height="25" title="Dark mode"/>			<br>
+		</br>
+
+			
+					Home&nbsp;&nbsp;
+News&nbsp;&nbsp;
+Movies&nbsp;&nbsp;
+Blu-ray&nbsp;&nbsp;
+4K&nbsp;Movies&nbsp;&nbsp;
+3D&nbsp;Movies&nbsp;&nbsp;
+DVD&nbsp;&nbsp;
+Digital&nbsp;&nbsp;
+MA&nbsp;&nbsp;
+iTunes&nbsp;&nbsp;
+Prime&nbsp;&nbsp;
+Home&nbsp;Theater&nbsp;&nbsp;
+Players&nbsp;&nbsp;
+
+							<ul id="menu" style="margin: 0px; padding: 0px">
+								<li style="font: 12px/28px verdana">Games&nbsp;
+									<ul id="videogames">
+										<li style="line-height: 25px">
+											PS5
+											PS4
+											PS3
+											PS Vita
+											Xbox SX
+											Xbox 360
+											Xbox One
+											Wii U
+											Wii
+											DS
+											3DS
+											Switch
+											Switch 2
+											PC
+											Steam
+										</li>
+									</ul>
+								</li>
+							</ul>
+						
+Community&nbsp;&nbsp;
+Forum&nbsp;&nbsp;
+Deals
+				
+
+		<div onclick="$.getJSON('https://www.blu-ray.com/products/ajax.php?action=humanverify', function(data) { document.getElementById('humanverify[input]').value = data.input; document.getElementById('humanverify[hash]').value = data.hash; }); { window.onkeydown = function(event) { if(event.keyCode === 27) { document.getElementById('signup_overlay').style.display = 'none'; document.getElementById('signup_lightbox').className = 'signup-lightbox'; }}; document.getElementById('signup_overlay').style.display = 'block'; document.getElementById('signup_lightbox').className = 'signup-lightbox rotatein';
+		$('#email').trigger('touchstart'); $('#email').on('touchstart', function() { $(this).trigger('focus'); }); }" style="cursor: pointer; display:inline">
+My&nbsp;Blu&#8209;ray.com</div>
+		
+<div id="ftcmessage" style="box-sizing: border-box; height: 25px; width: 1262px; background-image: linear-gradient(#eff4f8 50%, #fff 100%); color: #000; padding: 5px 0px 3px 0px; font-family: verdana; font-size: 12px; letter-spacing: 0.2px">As an Amazon associate we earn from qualifying purchases. Thanks for your support! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div style="float: right; cursor: pointer; padding: 0px 5px; font-size: 15px; font-weight: bold" onclick="document.querySelector('#ftcmessage').style.display = 'none'; setcookie('ftcmessage', 0, 365*24*60*60, '/', '.blu-ray.com')">&times;</div></div>
+		
+			
+
+<font style="font-size: 8px"><br/></font>
+<h3 class="black">Best Blu-ray Movie Deals <img src="https://images.static-bluray.com/flags/US.png" width="18" height="12" border="0"/></h3>
+			
+
+<font style="font-size: 8px"><br/></font>
+Best Blu-ray Movie Deals, See All the Deals &raquo;
+			
+
+<b>Top deals</b> <font style="color: #aaa">|</font>
+New deals <font style="color: #aaa"/>
+&nbsp;<select id="dealcovers" class="transparent" title="12 covers" onchange="setcookie('dealcovers', this.value, 90*24*60*60, '/', '.blu-ray.com'); window.location.reload()" style="border: 1px solid #cccccc; margin: 5px 0px 1px 0px;"><option value="12" selected="">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option></select>
+<select class="transparent" id="deallink" title="Link to Amazon" onclick="" onchange="setcookie('deallink', this.value, 90*24*60*60, '/', '.blu-ray.com'); window.location.reload()" style="border: 1px solid #cccccc; margin: 5px 0px 1px 0px;"><option value="direct">Amazon</option><option value="bluray">Blu-ray.com</option></select>
+<br>
+&nbsp;<noscript><img src="https://images.static-bluray.com/flags/ALL.png" border="0" width="18" height="12" alt="All countries" title="All countries" style="vertical-align: text-bottom;"/></noscript><img id="load67896711826355" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="All countries" title="All countries" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/US.png" border="0" width="18" height="12" alt="United States" title="United States" style="vertical-align: text-bottom;"/></noscript><img id="load33341271566088" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="United States" title="United States" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/UK.png" border="0" width="18" height="12" alt="United Kingdom" title="United Kingdom" style="vertical-align: text-bottom;"/></noscript><img id="load49375836755631" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="United Kingdom" title="United Kingdom" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/CA.png" border="0" width="18" height="12" alt="Canada" title="Canada" style="vertical-align: text-bottom;"/></noscript><img id="load46210597285905" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Canada" title="Canada" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/DE.png" border="0" width="18" height="12" alt="Germany" title="Germany" style="vertical-align: text-bottom;"/></noscript><img id="load82127321919757" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Germany" title="Germany" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/FR.png" border="0" width="18" height="12" alt="France" title="France" style="vertical-align: text-bottom;"/></noscript><img id="load50994489995560" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="France" title="France" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/ES.png" border="0" width="18" height="12" alt="Spain" title="Spain" style="vertical-align: text-bottom;"/></noscript><img id="load49743916512997" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Spain" title="Spain" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/IT.png" border="0" width="18" height="12" alt="Italy" title="Italy" style="vertical-align: text-bottom;"/></noscript><img id="load56268486769885" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Italy" title="Italy" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/AU.png" border="0" width="18" height="12" alt="Australia" title="Australia" style="vertical-align: text-bottom;"/></noscript><img id="load63172942057457" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Australia" title="Australia" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/NL.png" border="0" width="18" height="12" alt="Netherlands" title="Netherlands" style="vertical-align: text-bottom;"/></noscript><img id="load66898959554863" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Netherlands" title="Netherlands" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/JP.png" border="0" width="18" height="12" alt="Japan" title="Japan" style="vertical-align: text-bottom;"/></noscript><img id="load91437282347164" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Japan" title="Japan" style="vertical-align: text-bottom;"/>
+<noscript><img src="https://images.static-bluray.com/flags/MX.png" border="0" width="18" height="12" alt="Mexico" title="Mexico" style="vertical-align: text-bottom;"/></noscript><img id="load86772495672796" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="18" height="12" alt="Mexico" title="Mexico" style="vertical-align: text-bottom;"/>
+<br>			</br></br>
+
+			
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/416756_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="89" height="120" title="Gone with the Wind 4K (Blu-ray)" alt="Gone with the Wind 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$29.96</b><div><font class="green">18 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/420037_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="Women in Prison Collection 4K (Blu-ray)" alt="Women in Prison Collection 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$124.96</b><div><font class="green">19 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/420067_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="The Chow Yun-Fat Collection: Volume One 4K (Blu-ray)" alt="The Chow Yun-Fat Collection: Volume One 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$149.99</b><div><font class="green">12 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/420069_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="88" height="120" title="The Transformers: The Movie 4K (Blu-ray)" alt="The Transformers: The Movie 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$39.99</b><div><font class="green">18 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/420068_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="84" height="120" title="The Family Man 4K (Blu-ray)" alt="The Family Man 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$36.99</b><div><font class="green">9 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/418900_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="The Right Stuff 4K (Blu-ray)" alt="The Right Stuff 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$34.99</b><div><font class="green">1 day ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/419638_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="88" height="120" title="Adventure Time: The Complete Collection (Blu-ray)" alt="Adventure Time: The Complete Collection (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$74.96</b><div><font class="green">18 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/413050_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="Harry Potter / Fantastic Beasts: 11-Film Collection 4K (Blu-ray)" alt="Harry Potter / Fantastic Beasts: 11-Film Collection 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$99.99</b><div>&nbsp;</div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/416538_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="My Neighbor Totoro (Blu-ray)" alt="My Neighbor Totoro (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$19.99</b><div><font class="green">17 hrs ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/414353_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="Wild at Heart 4K (Blu-ray)" alt="Wild at Heart 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$34.99</b><div><font class="green">1 day ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/418899_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="Marie Antoinette 4K (Blu-ray)" alt="Marie Antoinette 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$34.99</b><div><font class="green">1 day ago</font></div></br></img>
+
+<img class="cover" src="https://images.static-bluray.com/movies/covers/416618_small.jpg" onload="var src = this.src.replace('_small.jpg', '_medium.jpg'); if(src != this.src) { this.onload = null; this.src = src }" border="0" width="97" height="120" title="54 4K (Blu-ray)" alt="54 4K (Blu-ray)" style="-ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"><br><b class="brightred" style="font-size: 13px; font-weight: bold">$31.99</b><div>&nbsp;</div></br></img>
+
+		
+		
+
+		
+			<div id="signup_lightbox" style="padding: 22px" class="signup-lightbox">
+			<div style="position: absolute; top: 25px; right: 15px; color: #6f6f6f; font-family: verdana, tahoma; font-weight: bold; font-size: 45px; letter-spacing: -4px; line-height: 45px; text-shadow: 1px 1px rgba(255, 255, 255, 0.3); color: rgba(0, 0, 0, 0.4)">What's your nex<span style="margin-left: 2px">t</span> favori<span style="margin-left: 1px">t</span>e movie?<br>Join our movie c<span style="margin-left: 1px">o</span>mmuni<span style="margin-left: 1px">t</span><span style="margin-left: 2px">y</span> to f<span style="margin-left: 2px">i</span>nd out</br></div><br><br>
+			<img id="signup_lightbox_arrow" src="https://images.static-bluray.com/transparent.gif" style="width: 50px; position: absolute; right: 235px; top: 138px"/>
+			<form action="https://forum.blu-ray.com/register.php?do=addmember" name="register" method="POST" onsubmit="if(document.getElementById('checkrules').checked) { return validateForm(this, this.password); } else { alert('Please read the forum rules.'); return false; } " style="position: absolute; top: 175px; right: 25px">
+				<input name="s" type="hidden" value="">
+				<input id="securitytoken" name="securitytoken" type="hidden" value="guest">
+				<input name="do" type="hidden" value="addmember">
+				<input name="url" type="hidden" value="https://www.blu-ray.com/Ka-Kui-Wong/577426/?register=1">
+				<input name="agree" type="hidden" value="1">
+				<div style="position: relative"><input id="email" name="email" type="text" placeholder="Email" style="color: #000000; margin-bottom: 2px; padding: 3px; box-sizing: border-box" onfocus="checkEmail()" onblur="checkEmail(this.value)"><img id="emailvalid" src="https://images.static-bluray.com/transparent.gif" style="width: 16px; position: absolute; top: 3px; right: 5px; margin-left: 3px"/></input></div>
+				<input name="emailconfirm" type="hidden" value="">
+				<div style="position: relative"><input name="username" type="text" placeholder="Username" style="color: #000000; margin-bottom: 2px; padding: 3px; box-sizing: border-box" onfocus="checkUsername()" onblur="checkUsername(this.value)"><img id="usernamevalid" src="https://images.static-bluray.com/transparent.gif" style="width: 16px; position: absolute; top: 3px; right: 5px; margin-left: 3px"/></input></div>
+				<div style="position: relative"><input name="password" type="password" placeholder="Password" style="color: #000000; margin-bottom: 2px; padding: 3px; box-sizing: border-box" onfocus="checkPassword()" onblur="checkPassword(this.value)"><img id="passwordvalid" src="https://images.static-bluray.com/transparent.gif" style="width: 16px; position: absolute; top: 3px; right: 5px; margin-left: 3px"/></input></div>
+				<div style="position: relative; background-color:rgba(0, 0, 0, 0.75); color:#ccc; font-family:sans-serif; font-size:12px; width:190px; padding:5px;">
+				<label for="checkrules">I hereby confirm that I have read and understood the forum rules.</label> 
+				<input name="checkrules" type="checkbox" id="checkrules">
+				</input></div>
+				<input name="passwordconfirm" type="hidden" value="">
+				<input name="password_md5" type="hidden" value="">
+				<input name="passwordconfirm_md5" type="hidden" value="">
+				<input name="timezoneoffset" type="hidden" value="">
+				<input name="dst" type="hidden" value="2">
+				<input name="day" type="hidden" value="0">
+				<input name="month" type="hidden" value="0">
+				<input name="year" type="hidden" value="0">
+				<input name="referrername" type="hidden" value="">
+				<input name="options[adminemail]" type="hidden" value="1">
+				<input id="humanverify[input]" name="humanverify[input]" type="hidden" value="2">
+				<input id="humanverify[hash]" name="humanverify[hash]" type="hidden" value="3">
+				<input type="submit" name="signup" value="Sign up" style="margin-top: 2px; padding: 5px; background-color: #529ecc; border: 0px; color: #fff; width: 202px; height: auto; font-size: 17px; font-weight: bold; border-radius: 5px; box-sizing: border-box; -webkit-appearance: none">
+			</input></input></input></input></input></input></input></input></input></input></input></input></input></input></input></input></input></input></input></form>
+			<div style="position: absolute; bottom: 5px; right: 10px; color: #222b33; font-size: 9px; font-family: trebuchet ms; text-transform: uppercase">Image from: Life of Pi (2012)</div>
+		</br></br></div>
+		
+				<br>
+			</br>
+	</center>
+	<center>
+
+
+
+	
+				<br>
+			</br>
+
+
+Movie&nbsp;finder
+
+
+
+Release&nbsp;calendar
+
+
+
+New&nbsp;releases
+
+
+
+Coming&nbsp;soon
+
+
+
+Reviews
+
+
+
+User&nbsp;reviews
+
+
+
+Search
+
+<br>
+			<div class="backdrop" style="position: relative;" title="Ka-Kui Wong">
+				<div class="blackbox" style="bottom: 7px; min-height: 40px; padding-bottom: 8px; padding-left: 270px; padding-right: 10px">
+					<div style="display: inline-block; font-family: 'Oswald'; margin-bottom: -3px; margin-top: 0px; padding-top: 0px; font-size: 17px; text-transform: uppercase; color: rgba(255, 255, 255, 0.4);">
+ACTOR                                        </div>
+                                        <div style="position: relative;">
+                                                <h1 class="eurostile" style="display: inline-block font-weight: 400; word-spacing: 0px; text-transform: uppercase;">Ka-Kui Wong                                                <font class="oswald" style="display: inline-block; border-bottom: 1px solid rgba(255, 255, 255, 0.30)">1962 - 1993
+</font></h1>
+					</div>
+				</div>
+			</div>
+			<div style="position: relative; width: 1262px; height: 0px; left: -11px; margin-top: -10px; background-color: #000">
+				
+				<div style="position: absolute; bottom: 5px; left: 11px">
+
+				<div class="simple_overlay" id="gallery">
+					prev
+					next
+					
+					<img class="progress" src="https://images.static-bluray.com/jquery/loading.gif"/>
+				</div>
+
+				
+
+				
+						<input type="hidden" id="activethumb" name="activethumb" value="thumb0">
+						
+<meta itemprop="image" content="https://www.blu-ray.com/images/products/22/169765_1_front.jpg"/>
+<noscript><img id="productimage" name="productimage" class="" src="https://images.static-bluray.com/products/22/169765_1_front.jpg" width="250" height="375" border="0" title="Ka-Kui Wong" alt="Ka-Kui Wong"/></noscript><img id="productimage" name="productimage" class="" src="https://images.static-bluray.com/transparent.gif" loading="lazy" width="250" height="375" border="0" title="Ka-Kui Wong" alt="Ka-Kui Wong">						</img>
+					</input>
+				<div id="triggers" style="display: none">
+				
+
+						<center><img id="thumb0" onmouseover="changeImage('22', '169765_1', 'thumb0'); highlightThumb(0, 1); document.getElementById('productimage').width = '533'; document.getElementById('productimage').height = '800';" src="https://images.static-bluray.com/products/22/169765_1_mini.jpg" width="0" height="" border="0"/></center>
+					
+
+
+
+
+
+
+				</div>
+				</div>
+</div>			
+			
+Overview
+
+
+
+Movies
+
+
+
+4K Ultra HD
+
+
+
+Blu-ray
+
+
+
+DVD
+
+
+
+Digital
+
+
+
+iTunes
+
+
+
+MA
+
+
+
+Prime
+
+
+
+Screenshots
+
+
+
+Connections
+
+
+			
+			
+<br><div id="content_overview">			
+					
+							<div style="height: 24px; line-height: 16px; display: block; font-family: 'Eurostile'; border: 1px solid rgba(0, 0, 0, 0.15); text-transform: uppercase; font-size: 14px; padding: 0px 0px 0px 0px; text-indent: 4px; margin-bottom: 3px; background-color: #daeaf0; border-radius: 3px; width: 230px; overflow: visible; white-space: nowrap;" title="Movie appeal"><div style="position: relative; top: 5px;">Foreign</div></div><div style="height: 24px; line-height: 16px; display: block; font-family: 'Eurostile'; border: 1px solid rgba(0, 0, 0, 0.15); text-transform: uppercase; font-size: 14px; padding: 0px 0px 0px 0px; text-indent: 4px; margin-bottom: 3px; background-color: #daeaf0; border-radius: 3px; width: 43.7px; overflow: visible; white-space: nowrap;" title="Movie appeal"><div style="position: relative; top: 5px;">Comedy</div></div><div style="height: 24px; line-height: 16px; display: block; font-family: 'Eurostile'; border: 1px solid rgba(0, 0, 0, 0.15); text-transform: uppercase; font-size: 14px; padding: 0px 0px 0px 0px; text-indent: 4px; margin-bottom: 3px; background-color: #daeaf0; border-radius: 3px; width: 6.9px; overflow: visible; white-space: nowrap;" title="Movie appeal"><div style="position: relative; top: 5px;">Drama</div></div><div style="height: 24px; line-height: 16px; display: block; font-family: 'Eurostile'; border: 1px solid rgba(0, 0, 0, 0.15); text-transform: uppercase; font-size: 14px; padding: 0px 0px 0px 0px; text-indent: 4px; margin-bottom: 3px; background-color: #daeaf0; border-radius: 3px; width: 2.3px; overflow: visible; white-space: nowrap;" title="Movie appeal"><div style="position: relative; top: 5px;">Music</div></div>						
+
+						
+
+							<span class="subheading" style="color: #666666">
+								3 movies | 2 Blu-ray releases | 1 DVD releases
+							</span>
+							<br><br>
+							<br><div style="display: block">
+									<div onclick="$.getJSON('https://www.blu-ray.com/products/ajax.php?action=humanverify', function(data) { document.getElementById('humanverify[input]').value = data.input; document.getElementById('humanverify[hash]').value = data.hash; }); { window.onkeydown = function(event) { if(event.keyCode === 27) { document.getElementById('signup_overlay').style.display = 'none'; document.getElementById('signup_lightbox').className = 'signup-lightbox'; }}; document.getElementById('signup_overlay').style.display = 'block'; document.getElementById('signup_lightbox').className = 'signup-lightbox rotatein';
+		$('#email').trigger('touchstart'); $('#email').on('touchstart', function() { $(this).trigger('focus'); }); }" style="cursor: pointer; display:inline">
+<br><div class="button">Become a fan</div></br></div>							</div>
+
+
+						</br></br></br>
+
+						
+
+<h3>Average movie rating</h3><br>
+
+<div class="product_rating" title="">
+
+</div>
+<div id="ratingscore">6.9</div>
+&nbsp;/ 10
+<br><small>Based on 3 movies and 1 rating</small><br><br><h5>Highest rated</h5>: 6.9 / 10 Happy Ghost IV <font class="grey">(1990)</font><br>
+<h5>Lowest rated</h5>: 6.9 / 10 Happy Ghost IV <font class="grey">(1990)</font><br>
+<br><br><img src="https://images.static-bluray.com/sites/imdb.gif" width="16" height="16" border="0" style="vertical-align: text-top"/>&nbsp; &nbsp;imdb
+						</br></br></br></br></br></br></br></br>
+				
+<h2 class="oswald" style="text-transform: uppercase;">Filmography</h2><div style="display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; row-gap: 5px"><div><div style="display: inline-block; width: 204px; margin-bottom: px; margin-right: 0px;"><center><div class="figure" style="font-size: 12px"><img width="204" height="306" border="0" alt="Cageman (1992)" title="Cageman (1992)" src="https://images.static-bluray.com/products/20/71779_1_front.jpg" style="border-radius: 5px; -ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"/><div class="figurecaptiontop" style="color: #ddd; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 5px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px"><span class="fa fa-eye" style="float: right; color: #4c4; font-size: 13px; margin-bottom: 5px; margin-right: 10px;"> 1</span></div><div class="figurecaptionbottom" style="color: #ddd; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.15);"><div style="padding: 3px 20px 0px 20px; font-weight: bold; color: #fc3; color: #fff">Cageman</div><div style="margin-top: 1px; margin-bottom: 3px">1992</div></div></div></center></div></div><div><div style="display: inline-block; width: 204px; margin-bottom: px; margin-right: 0px;"><center><div class="figure" style="font-size: 12px"><img width="204" height="306" border="0" alt="Beyond's Diary (1991)" title="Beyond's Diary (1991)" src="https://images.static-bluray.com/products/20/141472_1_front.jpg" style="border-radius: 5px; -ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"/><div class="figurecaptiontop" style="color: #ddd; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 5px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px"><span class="fa fa-eye" style="float: right; color: #4c4; font-size: 13px; margin-bottom: 5px; margin-right: 10px;"> 1</span></div><div class="figurecaptionbottom" style="color: #ddd; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.15);"><div style="padding: 3px 20px 0px 20px; font-weight: bold; color: #fc3; color: #fff">Beyond's Diary</div><div style="margin-top: 1px; margin-bottom: 3px">1991</div></div></div></center></div></div><div><div style="display: inline-block; width: 204px; margin-bottom: px; margin-right: 0px;"><center><div class="figure" style="font-size: 12px"><img width="204" height="306" border="0" alt="Happy Ghost IV (1990)" title="Happy Ghost IV (1990)" src="https://images.static-bluray.com/products/20/48087_1_front.jpg" style="border-radius: 5px; -ms-interpolation-mode: bicubic; image-rendering: -webkit-optimize-contrast;"/><div class="figurecaptiontop" style="color: #ddd; border-top-left-radius: 5px; border-top-right-radius: 5px; padding-top: 5px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px"><span class="fa fa-star" style="float: left; color: #fc3; font-size: 13px; margin-bottom: 5px; margin-left: 10px"> 6.9</span><span class="fa fa-eye" style="float: right; color: #4c4; font-size: 13px; margin-bottom: 5px; margin-right: 10px;"> 1</span></div><div class="figurecaptionbottom" style="color: #ddd; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; padding-top: 5px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.15);"><div style="padding: 3px 20px 0px 20px; font-weight: bold; color: #fc3; color: #fff">Happy Ghost IV</div><div style="margin-top: 1px; margin-bottom: 3px">1990</div></div></div></center></div></div></div></div>
+
+<div id="collectablepopup" class="popup">
+	<div class="popup_ui">
+	<form id="collectableform">
+		
+				<div style="float: left; margin-right: 20px;">
+				<img class="coverimg" src="https://images.static-bluray.com/white.gif">
+				</img></div>
+				<div style="float: left;">
+					<div class="field">Select category (<small>Add custom category</small>)</div>
+					<select name="typeid_0" style="width:230px;"/> Go
+					
+				</div>
+			
+
+		
+		
+				<div class="field">Date added</div>
+				<input id="added_datetimepicker_0" name="added_datetimepicker_0" type="text" value="" autocomplete="off">
+				<span>(YYYY-MM-DD)</span>
+			</input>
+
+				<div id="watched_label" class="field" style="display:inline;">Watched</div>
+				<input type="checkbox" id="watched_0" name="watched_0" onclick="javascript: if(document.getElementById('divwatchedtimestamp_0').style.display == 'none') document.getElementById('divwatchedtimestamp_0').style.display = 'block'; else document.getElementById('divwatchedtimestamp_0').style.display = 'none';"/>
+				<div id="divwatchedtimestamp_0" style="display:none;">
+				<input id="watched_datetimepicker_0" name="watched_datetimepicker_0" type="text" value="">
+				<span>(YYYY-MM-DD)</span>
+				<div id="rewatched_label" class="field">Rewatched</div>
+				<input id="rewatched_datetimepicker_0" name="rewatched_datetimepicker_0" type="text" value="">
+				<span>(YYYY-MM-DD)</span>
+				<div id="watchedcount_label" class="field">Watched count</div>
+				<input id="watchedcount_0" name="watchedcount_0" type="text" value="">
+				</input></input></input></div>
+			
+
+				<div class="field">Seen in theater
+				<input type="checkbox" id="seenintheater_0" name="seenintheater_0"/>
+				</div>
+			
+
+				<div class="field">Comment</div>
+                                <textarea name="description_0" placeholder="Type your comment here..." rows="2" wrap="on" style="width:99%;"/>
+                                <br>
+			</br>
+
+				<div class="field">Retailer</div>
+				<select name="retailerid_0" style="width: 200px;"/>
+			
+
+				<div class="field">Price &amp; comment</div>
+				<input type="text" name="price_0" placeholder="Price" value="" style="width: 100px;margin-bottom:2px;">
+				<input type="text" name="pricecomment_0" placeholder="Comment the price..." value="" style="width: 99%; display: inline;">
+			</input></input>
+
+				<div class="field">Exclude from Collection Matcher/Recommendations
+					<input type="checkbox" name="exclude_0"/>
+				</div>
+			
+		<input type="hidden" name="collectionid_0" value=""/>
+		<input type="hidden" name="action" value="add"/>
+                <input type="hidden" name="ajax" value="1"/>
+                <input type="hidden" name="categoryid" value=""/>
+                <input type="hidden" name="productid" value=""/>
+                <input type="hidden" name="submit" value="1"/>
+                <input type="hidden" name="u" value=""/>
+		<div style="position: relative; width: 100%; margin-top: 10px;">
+			<div id="popupformbuttons" style="width: 100%; text-align: right;">
+				<div id="coll_addedit" class="default"><input type="submit" name="submit" value="Add to collection" style="-webkit-appearance: none"/></div>
+				<div id="coll_delete" class="button" style="display: none;">Delete from collection</div>
+				<div id="coll_cancel" class="button" onclick="$('#collectablepopup').hide(); return false;">Cancel</div>
+			</div>
+		</div>
+	</form>
+	
+	</div>
+</div>
+
+<div id="pricetrackpopup" class="popup">
+	<div class="popup_ui">
+	<form id="pricetrackform">
+		<div class="prtr_template" style="display:none">
+			
+					<img class="pricegraphimg" src="https://images.static-bluray.com/white.gif"> 
+				</img>
+<div class="field">Current price</div>
+<div class="field">My price</div>
+<div class="field">Price range (0 to disable)</div>
+<div class="field">Expire tracking in</div>
+
+<input type="text" id="myprice" name="price_" size="5"/>
+<input type="text" id="mypricerange" name="pricerange_" size="5" value="0"/>
+
+					<select id="myexpire" name="expire_" width="20%">
+					<option value="1">1 week</option>
+					<option value="2">1 month</option>
+					<option value="3">3 months</option>
+					<option value="4">6 months</option>
+					<option value="5">12 months</option>
+					<option value="6">3 years</option>
+					<option value="7">5 years</option>
+					<option value="8">10 years</option>
+					</select>
+				
+		</div>
+			
+			<div style="width:100%;text-align:right;">
+				
+				<select id="prtr_retailer_select" onchange="pricetrackChangeRetailer();">
+				</select>	
+			</div>
+			
+		<div id="prtr_retailers">
+		</div>
+		
+				<div class="field">
+                You will get a notification at the top of the site as soon as the current price equals or falls below your price. You can also optionally receive an email notification (sent only once),
+                this is specified in your Site&nbsp;preferences under "My price tracker".
+                <br><br>
+
+                You can also get an <b>instant mobile notification</b> with our iPhone- or Android app. The apps are synchronized with your account at Blu-ray.com, so you only need to install the app and login with your regular username and password.
+					<div class="appstorewidget">
+					<noscript><img src="https://images.static-bluray.com/androidapp.png" border="0" width="148" height="52"/></noscript><img id="load48932779566295" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="148" height="52"/>&nbsp;<noscript><img src="https://images.static-bluray.com/iphoneapp2.png" border="0" width="148" height="52"/></noscript><img id="load28951473269961" src="https://images.static-bluray.com/transparent.gif" loading="lazy" border="0" width="148" height="52"/><br><font style="font-size: 6px"><br/></font>
+					</br></div>
+				</br></br></div>
+			
+
+		<input type="hidden" name="action" value="add"/>
+		<input type="hidden" name="id" value=""/>
+		<input type="hidden" name="p" value=""/>
+		<input type="hidden" name="ajax" value="1"/>
+		<input type="hidden" name="submit" value="1"/>
+
+		<div style="position:relative;width:100%;margin-top:10px;">
+			<div id="pricetrackformbuttons" style="width:100%;text-align:right;">
+				<div id="prtr_addedit" class="default"><input type="submit" name="submit" value="Track"/></div>
+				<div id="prtr_delete" class="button" style="display:none;">Remove tracking</div>
+				<div id="prtr_cancel" class="button" onclick="$('#pricetrackpopup').hide(); return false;">Cancel</div>
+			</div>
+		</div>
+	</form>
+	
+	</div>
+</div>
+
+
+
+		</br></br>
+
+	
+	</center>
+
+	<center>
+
+
+	</center>
+
+		<center>
+		
+				<br><br><br>
+				<small>
+				This web site is not affiliated with the Blu-ray Disc Association.<br>
+				All trademarks are the property of the respective trademark owners.<br>
+				&copy; 2002-2026 Blu-ray.com. All rights reserved.<br>
+				Registration problems |
+				Business/Advertising Inquiries |
+				Privacy Policy |
+				Legal Notices
+				</br></br></br></small>
+				<br><br>
+			</br></br></br></br></br>
+		</center>

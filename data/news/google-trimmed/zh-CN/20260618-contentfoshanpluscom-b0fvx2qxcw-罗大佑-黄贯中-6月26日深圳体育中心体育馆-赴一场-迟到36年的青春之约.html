@@ -1,0 +1,548 @@
+<!-- 第三方浏览器二次分享截取图片使用 -->
+    <img src="https://fsnewsres.foshanplus.com/picture/logo_512.png" width="0px" height="0px"/>
+    <div id="app" style="display: none">
+      <input type="hidden" id="newsid" :value="news.id"/>
+      <input type="hidden" id="memberid" :value="memberid"/>
+      <input type="hidden" id="device" :value="device"/>
+      
+      
+      
+      <div class="top-tip swiper mySwiper" id="downloadApp" v-if="device==null&&!news.newsPubExt.onlyShowHtmlBody&&!isInMp&&!isApp">
+        <div class="swiper-wrapper" id="swiperItemAdd" v-if="!isInMp && !isApp">
+          <div class="swiper-slide app-title">
+            
+            <template v-if="!isWeixin">
+              
+            </template>
+
+            <template v-if="isWeixin">
+              
+              
+              
+              
+              
+              
+              
+              
+            </template>
+          </div>
+
+          
+          <div v-for="(item,index) in ads" :key="'ad'+index" v-show="item.type==13" class="swiper-slide ads" :data-item="item">
+            
+            <h5 class="top-tip-title">{{item.title}}</h5>
+            <p class="top-tip-detail">{{item.summary}}</p>
+            
+          </div>
+        </div>
+        
+      </div>
+      <div :class="['wrapper',(device==null&&!news.newsPubExt.onlyShowHtmlBody&&!isInMp)?'':'topContent']" id="content">
+        <header class="head" id="htmlHeader" v-if="!news.newsPubExt.onlyShowHtmlBody">
+          <h1 class="title">{{news.title}}</h1>
+          
+          
+          <div class="info clearfix">
+            <div v-if="!newsSource">
+              
+              <span class="left">{{news.source}}&nbsp;&nbsp;&nbsp;{{handlePublishTime(news.publishtime)}}</span>
+            </div>
+            <div v-if="newsSource">
+              <div class="subscription" v-if="newsSource.sourceImgPath">
+                
+<span class="name" width="*">{{news.source}}</span>
+
+<span class="left">{{news.publishtime}}</span>
+                
+              </div>
+              <div v-if="!newsSource.sourceImgPath">
+                <span class="left source">{{news.source}}</span>
+                <span class="left time">{{news.publishtime}}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div id="dangWrap" class="dang-wrap">
+            <img class="dang-wrap-bg" src="https://content.foshanplus.com/img/news/dang_bg.png" alt=""/>
+            <div class="dang-wrap-content">
+              <img class="dang-wrap-icon" src="https://content.foshanplus.com/img/news/dang.png" alt=""/>
+              
+              <span class="dang-wrap-name">罗维森</span>
+              <span class="dang-wrap-share">分享了这篇文章</span>
+            </div>
+          </div>
+          
+          
+          
+          <div class="subscribe-wrap" v-if="categoryList.length > 0">
+            <div class="subscribe-item" v-for="(category,index) in categoryList" :key="index">
+              
+              <p class="name" @click="openCategory(category.id)">{{category.name}}</p>
+
+              <template v-if="isApp || isInMp">
+                <img v-if="category.isMemberSubscribe" class="dingyue-btn" src="https://content.foshanplus.com/img/news/dingyued.png?v=1.0" alt="" @click="dingyueCategory(category,0)"/>
+                <img v-else="" class="dingyue-btn" src="https://content.foshanplus.com/img/news/dingyue.png" alt="" @click="dingyueCategory(category,1)"/>
+              </template>
+
+              <template v-else-if="isWeixin">
+                
+                
+                
+                
+              </template>
+
+              
+            </div>
+          </div>
+        </header>
+        <div id="htmlIntroduction">
+          <div class="introduction" v-if="news.leadRead"><span class="red">导语：</span>{{news.leadRead}}</div>
+        </div>
+        <div id="htmlMedias" class="htmlMedias">
+          <div v-if="isFinish && news.newsPubExt.detailHiddenFiles == 0&&news.listvideo!=null && news.listvideo.length>0">
+            <div class="video_warp" v-for="(video,index) in news.listvideo" :key="'video'+index">
+              <div class="video_container">
+                
+                <template v-if="!isApp && !isInMp">
+                  <div class="video_mask-0820" @click="showVDialog(index)" :id="`comDialogMask${index}`">
+                    <div class="comDialog" :id="`comDialog${index}`">
+                      <div class="comDialog-title">打开佛山+APP，观看高清视频</div>
+                      <div class="comDialog-buttons">
+                        <div class="c-button" @click="continuePlay(index, video)">继续播放</div>
+                        
+                        <template v-if="isWeixin">
+                          
+                          <div v-if="isAndroid" class="c-button" style="z-index: 1601; position: relative; width: 100px; height: 50px" appid="wx27352935c18b925d" elId="launchAppTipplay" :extInfo="launchAppInfo" v-wx-app="">高清播放</div>
+
+                          
+                          高清播放
+                        </template>
+
+                        <div v-else="" class="c-button" @click="comJump()">高清播放</div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                <div style="position: relative">
+                  <video :id="`videoPlayer${index}`" v-show="video.sno == 1" :class="['video-js','video_' + video.id,'vjs-default-skin','vjs-big-play-centered',(video.height>0&&video.width / video.height < 1)?'video_height_screen':'video_width_screen']" preload="auto" controls="" :poster="video.videothumbpath" data-setup="{}" webkit-playsinline="true" playsinline="true">
+                    <source :src="video.filePath"/>
+                  </video>
+                  <div class="video-ai-label" v-if="video.dataLabel && video.sno == 1"><img class="video-ai-icon" src="https://content.foshanplus.com/img/news/info.png"/>作者提示：{{video.dataLabel}}</div>
+                </div>
+                <div class="poster_warp" v-show="video.sno != 1">
+                  <div class="poster_img_wrap">
+                    
+                    <img :class="['poster_img',(video.height>0&&video.width / video.height < 1)?'video_height_screen':'video_width_screen']" src="https://fsnewsres.foshanplus.com/picture/videothumbpath.jpg" v-else=""/>
+                    <div class="video-ai-label" v-if="video.dataLabel"><img class="video-ai-icon" src="https://content.foshanplus.com/img/news/info.png"/>作者提示：{{video.dataLabel}}</div>
+                  </div>
+                  <img src="https://content.foshanplus.com/img/news/video-play.png" class="video-playbtn"/>
+                  
+                </div>
+              </div>
+              <p>{{video.summary}}</p>
+            </div>
+          </div>
+
+          <div class="audio_warp" v-for="audio in news.listaudio">
+            <audio :src="audio.filePath" controls=""/>
+            <p>{{audio.summary }}</p>
+          </div>
+
+          <div class="image_warp" v-for="(pic,index) in news.listpic" :key="index" v-show="news.newsPubExt.type == 1">
+            
+            <p style="text-align: center">
+              
+              
+            </p>
+            <p>{{pic.summary}}</p>
+          </div>
+        </div>
+        
+        
+        <div class="article_content">
+          <div class="top-advertisement" v-show="headAdsClose==1" v-if="headAds.length > 0">
+            <div class="top-adItem swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide ads" v-for="(item,index) in headAds" :key="'head'+index">
+                  <template v-if="!item.weapp_url">
+                    
+                  </template>
+                  <template v-if="item.weapp_url">
+                    <div class="top-adImg">
+                      
+                    </div>
+                  </template>
+                  <p class="advertisement-desc" style="bottom: 2px" v-show="item.url && item.url.length > 0">查看详情></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div id="voteWrap" v-if="news.newsvote && news.newsvote.position == 'DATA_TOP'">
+            <div class="vote">
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else="" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"/>
+                    {{item.body}}
+                  </label>
+                  
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      
+                    </div>
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              <template v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">
+                
+                <template v-if="isApp || isInMp">
+                  <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                </template>
+                
+                <button v-else-if="isWeixin" type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                <button v-else="" type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="comJump()">投票</button>
+              </template>
+
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled="" v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+          
+
+          
+          <div id="voteWrap" v-if="news.newsvote && (news.newsvote.position == 'DATA_BOTTOM' || news.newsvote.position == '')">
+            <div class="vote">
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else="" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"/>
+                    {{item.body}}
+                  </label>
+                  
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      
+                    </div>
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              <template v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">
+                
+                <template v-if="isApp || isInMp">
+                  <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                </template>
+                
+                <button v-else-if="isWeixin" type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()">投票</button>
+                <button v-else="" type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="comJump()">投票</button>
+              </template>
+
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled="" v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+        </div>
+        
+        <p v-if="news.newsPubExt.original == 1" class="original-tips">*佛山+客户端原创，未经授权不得转载</p>
+        
+        <div class="heatView">
+          <span v-show="news.newsPubExt.heatCount > 0 & news.newsPubExt.heatCount <100000">{{news.newsPubExt.heatCount}}</span>
+          <span v-show="news.newsPubExt.heatCount > 100000">10万+</span>
+
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <50000 && news.newsPubExt.heatCount >=10000" src="https://content.foshanplus.com/img/news/small-heat.png" alt=""/>
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <100000 && news.newsPubExt.heatCount >=50000" src="https://content.foshanplus.com/img/news/mid-heat.png" alt=""/>
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount > 100000" src="https://content.foshanplus.com/img/news/big-heat.png" alt=""/>
+        </div>
+
+        <div id="disclaimer" v-if="isSubscription(news)">
+          <img src="https://content.foshanplus.com/img/news/disclaimer.png" alt="免责声明"/>
+        </div>
+        <div id="original-url" v-if="isOriginalUrl(news)" @click="copyOriginalUrl(news)">点击复制原文链接</div>
+      </div>
+      
+      <div class="editor wrapper" v-if="news.authorList&&news.authorList.length > 0">
+        <span style="color: white; font-size: 16px; position: absolute">{{news.newsPubExt.clickcount}}</span>
+        <p class="module_head">本文采制</p>
+        
+
+        <div class="editor-list" id="editor-list">
+          <div class="editor-item" v-for="(item,index) in news.authorList" :key="index" @click="toOpenApp(news,0)">
+            
+            <img class="editor-img lazyload-img" src="https://content.foshanplus.com/img/news/author_img.png" :data-url="item.faceImgPath"/>
+            <div class="btn_fact" v-if="item.memberId || item.memberId.length > 0" @click="findJournalist($event,item)">爆料</div>
+            <p class="editor-name">{{item.name}}</p>
+            
+            <p class="editor-source">{{item.type==1?' ':''}}</p>
+            <p class="editor-detail">{{item.personalSignature}}</p>
+          </div>
+        </div>
+        <div class="page-control" v-if="news.authorList&&news.authorList.length > 2">
+          
+        </div>
+      </div>
+
+      <div class="review_warp" v-if="footerAds&&footerAds.length>0">
+        <div class="wrapper">
+          <div class="advertisement-item">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper" id="advertisement_list">
+                <div class="swiper-slide ads" v-for="(item,index) in footerAds" :key="'foot'+index" :data-item="JSON.stringify(item)">
+                  <p class="advertisement-title">{{item.title}}</p>
+                  <template v-if="!item.weapp_url">
+                    
+                  </template>
+                  <template v-if="item.weapp_url">
+                    <div class="advertisement-img">
+                      
+                    </div>
+                  </template>
+                  <p class="advertisement-info">广告<span>{{item.source}}</span></p>
+                  <p class="advertisement-desc">查看详情></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="review_warp" id="review" v-show="!news.newsPubExt.onlyShowHtmlBody">
+        <div class="wrapper" v-if="news.listreview !==undefined && news.listreview != null  && news.listreview.length > 0">
+          <p class="module_head">热门评论</p>
+          <template v-if="isApp || isInMp">
+            <div class="review_items" v-for="(item, index) in news.listreview" v-if="index < 7" :key="item.id">
+              <div class="photo">
+                
+              </div>
+              <div class="body" v-on:click="reply(item.id,item.username,0)">
+                <span class="nickname">{{item.username}}</span>
+                <span class="topFlag" v-if="item.sno==1">置顶</span>
+                <div class="model_time">{{handlePublishTime(item.createtime)}}</div>
+                <p class="review">{{item.body}}</p>
+              </div>
+              <div class="like" style="display: none">
+                
+                
+                
+                <div class="love_review" :item-id="item.id" support-flag="true" v-if="item.supported">
+                  <img src="https://content.foshanplus.com/img/button/love_review@2x.png"/>
+                  <span>{{item.support}}</span>
+                </div>
+                <div class="unlove_review" :item-id="item.id" support-flag="false" v-on:click="supportEven(item)" v-if="!item.supported">
+                  <img src="https://content.foshanplus.com/img/button/unlove_review@2x.png"/>
+                  <span>{{item.support}}</span>
+                </div>
+              </div>
+              
+              <div class="review_child" v-if="item.listchild && item.listchild.length > 0">
+                <div class="review_child_items" v-for="(childen, index) in item.listchild" :key="index" v-show="index < 4">
+                  <div class="body">
+                    <p class="nickname">{{childen.username }}：</p>
+                    <p class="review">{{childen.body }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <template v-if="news.listreview && news.listreview.length > 0">
+              
+              <img v-else="" class="more-review-btn" src="https://content.foshanplus.com/img/news/moreComment.png" alt="" v-on:click="toOpenApp(news,0)"/>
+            </template>
+            <img class="review_no_logo" v-if="!news.listreview || news.listreview.length <= 0" src="https://content.foshanplus.com/img/news/review_no.png" alt=""/>
+          </template>
+          <template v-else="">
+            <div class="review_items" v-for="(item, index) in news.listreview" v-if="index < 7" :key="item.id">
+              <div class="photo">
+                
+              </div>
+              <div class="body">
+                <div class="nickname-box">
+                  <span class="nickname">{{item.username}}</span>
+                  <div class="offcial" v-if="item.userid == 2">官方</div>
+                </div>
+                <span class="topFlag" v-if="item.sno==1">置顶</span>
+                <div class="model_time">{{handlePublishTime(item.createtime)}}</div>
+                <p class="review">{{item.body}}</p>
+              </div>
+              <div class="like" style="display: none">
+                
+                
+                
+                <div class="love_review" :item-id="item.id" support-flag="true">
+                  <img src="https://content.foshanplus.com/img/button/love_review@2x.png"/>
+                  <span>{{item.support}}</span>
+                </div>
+              </div>
+              
+              <div class="review_child" v-if="item.listchild && item.listchild.length > 0">
+                <div class="review_child_items" v-for="(childen, index) in item.listchild" :key="index" v-show="index < 4">
+                  <div class="body">
+                    <p class="nickname">{{childen.username }}：</p>
+                    <p class="review">{{childen.body }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div v-if="isWeixin && !isAndroid" class="review-button-0820" @click="comJump()">
+              <img src="https://content.foshanplus.com/img/button/auto-hide-button.png" style="width: 100%"/>
+            </div>
+
+            
+
+            <div v-else="" class="review-button-0820" @click="comJump()">
+              <img src="https://content.foshanplus.com/img/button/auto-hide-button.png" style="width: 100%"/>
+            </div>
+          </template>
+        </div>
+      </div>
+      
+      <div v-if="!isApp && !isInMp" class="moreRec_warp" :style="{ 'border-top': !(news.listreview !==undefined && news.listreview != null  && news.listreview.length > 0) ? '' : '8px solid #f7f7f8' }">
+        <template v-if="moreRecList.length != 0">
+          <p class="module_head">更多精选频道</p>
+          <div class="moreRec_items">
+            <div class="moreRec_item" v-for="(item, index) in moreRecList" @click="comJumpOtherChannel(item.dataId)" :style="{'fontSize' : item.name.length >= 7 ? '10px' : '13px'}">
+              <template v-if="item.name.length >= 8"> {{item.name.slice(0, 6)}}... </template>
+              <template v-else=""> {{item.name.slice(0, 7)}} </template>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      
+      
+
+      
+      
+      <div v-if="!isApp && !isInMp" v-show="isScrolling" class="auto_hide_bar">
+        
+        <img v-if="isWeixin && !isAndroid" id="auto_hide_bar-button" class="auto_hide_bar-button-0820" src="https://content.foshanplus.com/img/button/auto-bottom.png" @click="comJump()"/>
+
+        
+
+        <img v-else="" id="auto_hide_bar-button" class="auto_hide_bar-button-0820" src="https://content.foshanplus.com/img/button/auto-bottom.png" @click="comJump()"/>
+      </div>
+
+      
+      <div class="wxMiniHidden">
+        <div class="bottom_review_view" id="bottom_review_view" style="z-index: 2006">
+          <div id="send_comment_view">
+            <label for="send_comment_content">
+              <img src="https://content.foshanplus.com/img/news/comment_icon.png" alt=""/>
+            </label>
+            <input id="send_comment_content" placeholder="我来说两句"/>
+          </div>
+          <div id="noSend_view">
+            
+              <img src="https://content.foshanplus.com/img/news/commentCount.png" alt=""/>
+              <span>{{news.newsPubExt.reviewcount}}</span>
+            
+            <div v-if="news.newsPubExt.loveLogoState">
+              
+              
+                <img src="https://content.foshanplus.com/img/news/likedCount.png" alt=""/>
+                <span>{{news.newsPubExt.lovecount}}</span>
+              
+              
+              
+                <img src="https://content.foshanplus.com/img/news/likeCount.png" alt=""/>
+                <span>{{news.newsPubExt.lovecount}}</span>
+              
+            </div>
+          </div>
+          
+            <img src="https://content.foshanplus.com/img/news/comment_loading.png" alt=""/>
+            <span>发送</span>
+          
+        </div>
+      </div>
+
+      
+      
+      
+    </div>
+    <!-- 打开放大的图片 -->
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      
+      
+      
+      <div class="pswp__scroll-wrap">
+        
+        <div class="pswp__container">
+          
+          
+          
+        </div>
+        
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            
+            
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"/>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            
+          </div>
+          <div class="pswp__caption">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- <script src="./plugins/video/js/video.min.js"></script> -->
+    
+    
+    
+    
+    <!-- <script type="text/javascript" src="./js/news/appInterface.js"></script> -->
+    <!-- <script type="text/javascript" src="./js/news/common.js"></script> -->
+    
+    
+    <!-- 省宣平台埋点-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- 监控方法 -->

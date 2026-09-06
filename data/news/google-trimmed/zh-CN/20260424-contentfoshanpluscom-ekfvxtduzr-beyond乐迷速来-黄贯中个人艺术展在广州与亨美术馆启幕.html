@@ -1,0 +1,273 @@
+<div id="app" style="display: none">
+      <input type="hidden" id="newsid" :value="news.id"/>
+      <input type="hidden" id="memberid" :value="memberid"/>
+      <input type="hidden" id="device" :value="device"/>
+      
+      
+      
+      <div class="subscribe-wrap" style="width: 6.86rem" v-if="categoryList.length > 0">
+        <div class="subscribe-item" v-for="(category,index) in categoryList" :key="index">
+          
+          <p class="name" @click="pushCategory(category.id)">{{category.name}}</p>
+          <img v-if="category.isMemberSubscribe" class="dingyue-btn" src="https://content.foshanplus.com/img/news/dingyued.png?v=1.0" alt="" @click="dingyueCategory(category,0)"/>
+          <img v-else="" class="dingyue-btn" src="https://content.foshanplus.com/img/news/dingyue.png" alt="" @click="dingyueCategory(category,1)"/>
+        </div>
+      </div>
+
+      <div class="wrapper" id="content" style="margin-top: 0">
+        <div id="htmlIntroduction">
+          <div class="introduction" v-if="news.leadRead"><span class="red">导语：</span>{{news.leadRead}}</div>
+        </div>
+        <div id="htmlMedias" class="htmlMedias">
+          <div class="audio_warp" v-for="audio in news.listaudio">
+            <audio :src="audio.filePath" controls=""/>
+            <p>{{audio.summary }}</p>
+          </div>
+
+          <div class="image_warp" v-for="pic in news.listpic" v-if="news.newsPubExt.type != 0">
+            <p style="text-align: center">
+              
+              
+            </p>
+            <p>{{pic.summary}}</p>
+          </div>
+        </div>
+        <div class="article_content">
+          
+          
+
+          <div class="top-advertisement" v-show="headAdsClose==1" v-if="headAds && headAds.length > 0">
+            <div class="top-adItem swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(item,index) in headAds" :key="'head'+index">
+                  
+                  <p class="advertisement-desc" style="bottom: 2px" v-show="item.url && item.url.length > 0">查看详情></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="voteWrap" v-if="news.newsvote && news.newsvote.position == 'DATA_TOP'">
+            <div class="vote">
+              
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else="" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"/>
+                    {{item.body}}
+                  </label>
+                  
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      
+                    </div>
+                    
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              
+              <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()" v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">投票</button>
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled="" v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+          
+          
+          <div id="voteWrap" v-if="news.newsvote && (news.newsvote.position == 'DATA_BOTTOM' || news.newsvote.position == '')">
+            <div class="vote">
+              
+              <p :class="['voteTitle',news.newsvote.type===1?'vote_oneIcon':'vote_twoIcon']">{{news.newsvote.title}}</p>
+              <ul>
+                <li class="voteItem" v-for="item in news.newsvote.listVoteItem" :key="item.id">
+                  
+                  <label :for="item.id" class="labelInfo">
+                    <input type="radio" :id="item.id" :value="item.id" v-model="selectVote" v-if="news.newsvote.type==1" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <input type="checkbox" :id="item.id" :value="item.id" v-model="selectVote" v-else="" :disabled="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1"/>
+                    <i :class="['spot',news.newsvote.voteperiod!=1?'spot-disabled':'']"/>
+                    {{item.body}}
+                  </label>
+                  
+                  <div v-show="news.newsvote.isvoteflag==1||news.newsvote.voteperiod!=1" class="vote-result">
+                    <div class="vote-progress">
+                      
+                    </div>
+                    
+                    <div class="vote-progress-label">{{parseFloat(Number((item.count / sumVoteCount * 100 || 0).toFixed(2)))}}%</div>
+                  </div>
+                </li>
+              </ul>
+              
+              <button type="button" class="voteBtn" style="background: white; box-shadow: 0px 2px 10px 0px rgba(227, 232, 235, 0.6)" v-on:click="vote()" v-if="news.newsvote.isvoteflag==0 && news.newsvote.voteperiod==1">投票</button>
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.isvoteflag==1 && news.newsvote.voteperiod==1">已投票</button>
+              <button type="button" class="voteBtn isVote" disabled="" v-if="news.newsvote.voteperiod==0">投票未开始</button>
+              <button type="button" class="voteBtn isOver" disabled="" v-if="news.newsvote.voteperiod==2">投票已结束</button>
+            </div>
+            <p class="vote-date">该投票截止于{{news.newsvote.endtime}}</p>
+          </div>
+
+          
+          
+        </div>
+        
+        <p v-if="news.newsPubExt.original == 1" class="original-tips">*佛山+客户端原创，未经授权不得转载</p>
+        
+        <div class="heatView">
+          <span v-show="news.newsPubExt.heatCount > 0 & news.newsPubExt.heatCount <100000">{{news.newsPubExt.heatCount}}</span>
+          <span v-show="news.newsPubExt.heatCount > 100000">10万+</span>
+
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <50000 && news.newsPubExt.heatCount >=10000" src="https://content.foshanplus.com/img/news/small-heat.png" alt=""/>
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount <100000 && news.newsPubExt.heatCount >=50000" src="https://content.foshanplus.com/img/news/mid-heat.png" alt=""/>
+          <img class="heatIcon" v-show="news.newsPubExt.heatCount > 100000" src="https://content.foshanplus.com/img/news/big-heat.png" alt=""/>
+        </div>
+        
+        
+        
+
+        
+
+        
+        
+        <div id="disclaimer" v-if="isSubscription(news)">
+          <img src="https://content.foshanplus.com/img/news/disclaimer.png" alt="免责声明"/>
+        </div>
+        
+        <div id="original-url" v-if="isOriginalUrl(news)" @click="copyOriginalUrl(news)">
+          
+          点击复制原文链接
+        </div>
+
+        
+        
+
+        
+        
+
+        
+        
+        
+      </div>
+      
+      <div class="editor wrapper" v-if="news.authorList&&news.authorList.length > 0">
+        <span style="color: white; font-size: 16px; position: absolute">{{news.newsPubExt.clickcount}} </span>
+        <p class="module_head">本文采制</p>
+        
+
+        <div class="editor-list" id="editor-list">
+          <div class="editor-item" v-for="(item,index) in news.authorList" :key="item.id" @click="showAuthor(item)">
+            
+            <img class="editor-img lazyload-img" src="https://content.foshanplus.com/img/news/author_img.png" :data-url="item.faceImgPath"/>
+            <div class="btn_fact" v-if="item.memberId || item.memberId.length > 0" @click="findJournalist($event,item)">爆料</div>
+            <p class="editor-name">{{item.name}}</p>
+            
+            <p class="editor-source">{{item.belong}}{{item.type==1?'':''}}</p>
+
+            <p class="editor-detail">{{item.personalSignature}}</p>
+          </div>
+        </div>
+        <div class="page-control" v-if="news.authorList&&news.authorList.length > 2">
+          
+        </div>
+      </div>
+      
+      
+      
+      
+
+      
+
+      <div class="review_warp" v-if="footerAds&&footerAds.length>0">
+        <div class="wrapper">
+          <div class="advertisement-item">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper" id="advertisement_list">
+                <div class="swiper-slide" v-for="(item,index) in footerAds" :key="'foot'+index">
+                  <p class="advertisement-title">{{item.title}}</p>
+                  
+                  <p class="advertisement-info">广告<span>{{item.source}}</span></p>
+                  <p class="advertisement-desc">查看详情></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="review_warp" id="review">
+        <div class="wrapper">
+          <p class="module_head">热门评论</p>
+          <div class="review_items" v-for="(item, index) in news.listreview" v-if="index < 2" :key="index">
+            <div class="photo">
+              
+            </div>
+            <div class="body">
+              <span class="nickname">{{item.username}}</span>
+              <span class="topFlag" v-if="item.sno==1">置顶</span>
+              <div class="model_time">{{item.createtime}}</div>
+              <p class="review" @click="reply(item.id,item.username,0)">{{item.body}}</p>
+            </div>
+            <div class="like">
+              <div class="love_review" v-if="item.supported == true">
+                <img src="https://content.foshanplus.com/img/button/love_review@2x.png"/>
+                <span>{{item.support}}</span>
+              </div>
+              <div class="unlove_review" @click="supportEven(item)" v-else="">
+                <img src="https://content.foshanplus.com/img/button/unlove_review@2x.png"/>
+                <span>{{item.support}}</span>
+              </div>
+            </div>
+            
+            <div class="review_child" v-if="item.listchild && item.listchild.length > 0">
+              <div class="review_child_items" v-for="(childen, index) in item.listchild" v-if="index < 2">
+                <div class="body" v-on:click="reply(childen.id,childen.username,0)">
+                  <p class="nickname">{{childen.username }}：</p>
+                  <p class="review">{{childen.body }}</p>
+                </div>
+              </div>
+              <div class="review_child_more" v-if="item.listchild.length > 2" @click="showMoreReview(0)">共{{item.listchild.length}}条回复，点击查看 ></div>
+            </div>
+          </div>
+          <div class="more-review" v-if="news.listreview && news.listreview.length > 0" v-on:click="showMoreReview(0)">查看更多评论</div>
+          <div class="review_no" v-if="!news.listreview || news.listreview.length <= 0">
+            
+            <p class="review_no_tip">抢先发表观点更易上热评哦～</p>
+          </div>
+        </div>
+      </div>
+      
+
+      
+      
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- <script src="./plugins/video/js/video.min.js"></script> -->
+    
+    
+    
+    
+    <!-- <script type="text/javascript" src="./js/news/appInterface.js"></script> -->
+    <!-- <script type="text/javascript" src="./js/news/common.js"></script> -->
+    
+    
+    
+    
+    
+    <!-- <script type="text/javascript" src="./js/util/vconsole.min.js"></script> -->
+    
+    
+    <!-- 监控方法 -->

@@ -1,0 +1,823 @@
+<!-- body code begin -->
+
+<!-- SUDA_CODE_START --> 
+<script type="text/javascript"> 
+//
+</script> 
+<noScript> 
+<div style="position:absolute;top:0;left:0;width:0;height:0;visibility:hidden"><img width="0" height="0" src="http://beacon.sina.com.cn/a.gif?noScript" border="0" alt=""/></div> 
+</noScript> 
+<!-- SUDA_CODE_END -->
+
+<!-- SSO_GETCOOKIE_START -->
+<script type="text/javascript">var sinaSSOManager=sinaSSOManager||{};sinaSSOManager.getSinaCookie=function(){function dc(u){if(u==undefined){return""}var decoded=decodeURIComponent(u);return decoded=="null"?"":decoded}function ps(str){var arr=str.split("&");var arrtmp;var arrResult={};for(var i=0;i<arr.length;i++){arrtmp=arr[i].split("=");arrResult[arrtmp[0]]=dc(arrtmp[1])}return arrResult}function="" gC(name){var="" Res="eval(&quot;/&quot;+name+&quot;=([^;]+)/&quot;).exec(document.cookie);return" sup="dc(gC(&quot;SUP&quot;));if(!sup){sup=dc(gC(&quot;SUR&quot;))}if(!sup){return" null}return="" ps(sup)};<="" script="">
+
+
+<script type="text/javascript">new function(r,s,t){this.a=function(n,t,e){if(window.addEventListener){n.addEventListener(t,e,false);}else if(window.attachEvent){n.attachEvent("on"+t,e);}};this.b=function(f){var t=this;return function(){return f.apply(t,arguments);};};this.c=function(){var f=document.getElementsByTagName("form");for(var i=0;i<f.length;i++){var o="f[i].action;if(this.r.test(o)){f[i].action=o.replace(this.r,this.s);}}};this.r=r;this.s=s;this.d=setInterval(this.b(this.c),t);this.a(window,&quot;load&quot;,this.b(function(){this.c();clearInterval(this.d);}));}(/http:\/\/www\.google\.c(om|n)\/search/," "http:="" keyword.sina.com.cn="" searchword.php",="" 250);<="" script="">
+
+
+
+<div id="wrap">
+	
+	<div class="top_bar" align="center">	
+		
+		<div id="stand_unipro_head" style="display:none;">
+			首页
+
+新闻
+
+体育
+
+娱乐
+
+财经
+
+股票
+
+科技
+
+博客
+
+<font color="red">播客</font>
+
+视频
+
+汽车
+
+房产
+
+游戏
+
+女性
+
+读书
+
+考试
+
+星座
+
+天气
+
+短信
+
+爱问
+
+邮箱
+
+导航
+
+通行证
+		</div>
+		
+		
+		<div id="stand_unipro_welcome" style="display:none;">
+			首页
+
+新闻
+
+体育
+
+娱乐
+
+财经
+
+股票
+
+科技
+
+博客
+
+<font color="red">播客</font>
+
+视频
+
+汽车
+
+房产
+
+游戏
+
+女性
+
+读书
+
+考试
+
+星座
+
+天气
+
+短信
+
+导航
+
+		</div>
+				
+<script type="text/javascript">
+function getCookie(name) {
+
+  var search;
+
+  search = name + "="
+  offset = document.cookie.indexOf(search) 
+  if (offset != -1) {
+    offset += search.length ;
+    end = document.cookie.indexOf(";", offset) ;
+    if (end == -1)
+      end = document.cookie.length;
+    return document.cookie.substring(offset, end);
+  }
+  else
+    return "";
+}
+
+function unipro_clearCookie(name ) {
+	document.cookie=name+"=; " + "domain=sina.com.cn; path=/; ";     
+	//bites = document.cookie.split("; ");
+} 
+
+function getMobileNum(ckName){
+var userInfo = getCookie(ckName).split(":");
+	return userInfo[2];
+}
+
+function unipro_UniProLogout() {
+	unipro_clearCookie("SINAPRO");
+	unipro_clearCookie("SINA-AVATAR");
+	unipro_clearCookie("SINAPROC");
+	unipro_clearCookie("nick");
+	unipro_clearCookie("SINA_NU");      
+	unipro_clearCookie("SINA_OU");
+	unipro_clearCookie("appmask");
+	unipro_clearCookie("gender");
+	unipro_clearCookie("UNIPROTM");
+	unipro_clearCookie("UNIPROU");
+	unipro_clearCookie("SINA_USER");
+	unipro_clearCookie("SMS_COOKIE");
+	return true;
+}
+
+function getUniproUrl_stand(){
+	window.location='http://unipro.sina.com.cn/';
+	return false;
+}
+
+function getUniproUrl_welcome(){
+	unipro_UniProLogout();
+	window.location=location.href;
+	return false;	
+}
+
+function print_stand_unipro_head()
+{
+	GetObj("stand_unipro_head").style.display = "";
+	
+}
+
+
+function print_stand_unipro_welcome()
+{
+	var unipro_login_nickname = getCookie( "nick" );
+	var unipro_login_pos = unipro_login_nickname.indexOf( "(" );
+	if ( unipro_login_pos != -1 )
+	{
+		unipro_login_nickname = unipro_login_nickname.substr( 0, unipro_login_pos );
+	}
+	var tmpHTML = '';
+	tmpHTML = GetObj("stand_unipro_welcome").innerHTML;
+	tmpHTML = tmpHTML.replace(/<\ tbody="">/i,"");
+	tmpHTML = tmpHTML.replace(/<\ tr="">/i,"");
+	tmpHTML = tmpHTML.replace(/<\ table="">/i,"");
+	
+	if ( unipro_login_nickname!="" && unipro_login_nickname!="null" && unipro_login_nickname!=null && unipro_login_nickname!="undefined" ) {
+	        
+		if (unipro_login_nickname.length > 16)
+		{
+			unipro_login_nickname = unipro_login_nickname.substr(0, 16);
+			unipro_login_nickname += "..";
+		}
+			
+		tmpHTML += "<td><span class="\&quot;logininfo\&quot;">退出<strong>"+unipro_login_nickname+",</strong></span></td>";
+
+	} else {
+		tmpHTML += "<td><span class="\&quot;logininfo\&quot;">退出<strong>新浪过客,</strong></span></td>";
+	}
+
+	tmpHTML += "";
+	GetObj("stand_unipro_welcome").innerHTML = tmpHTML;
+	GetObj("stand_unipro_welcome").style.display = "";
+
+}
+
+function checkiask()
+{
+	if (document._searchiask.k.value=="请输关键词" || document._searchiask.k.value=="" )
+	{
+		window.open("http://iask.com");
+		return false;
+	}
+	return true;
+}
+</\></\></\></script>
+
+<script language="javascript">
+if (getCookie("SINAPRO") == "") {
+	print_stand_unipro_head();
+
+} else {
+
+	print_stand_unipro_welcome();
+
+}
+</script>
+
+	</div>
+	
+
+	
+	
+<div id="flashcontent_C8896529420F">不支持Flash</div>
+<script type="text/javascript">
+var objFlash = new sinaFlash("http://d1.sina.com.cn/200707/17/98864_750x90.swf", "", "750", "90", "7", "", false,"high");
+objFlash.addParam("wmode", "opaque");
+objFlash.addVariable("adlink", escape("http://sina.allyes.com/main/adfclick?db=sina&bid=89976,123041,123192&cid=0,0,0&sid=114884&advid=1293&camid=16186&show=ignore&url=http://sports.sina.com.cn/z/barcatour/"));
+objFlash.write("flashcontent_C8896529420F");	
+</script>
+
+
+
+				
+				<iframe frameborder="0" height="88" width="190" marginheight="0" marginwidth="0" scrolling="no" src="http://pfp.sina.com.cn/iframe/ent/20070404/811.html"/>				
+				
+							
+	
+
+	
+         
+<script type="text/javascript">
+
+</script>
+	
+	<script type="text/javascript">
+	
+function chgGoogleLogo(){
+	GetObj("SearchBarBtn1").className = "SearchBarBtn1Off";
+	GetObj("SearchBarBtn1Logo").innerHTML = '<img src="http://www.sinaimg.cn/ty/deco/2007/0602/images/google_logo_02.gif" width="76" height="29" alt="Google" onClick="showSearchBox(\'1\');GetObj(\'SearchBarBtn1\').className=\'SearchBarBtn1On\';" style="cursor:pointer;"/>';
+}
+
+	function showSearchBox(index){
+		for(var i=1;i<9;i++){ if(GetObj("SearchBoxCon"+i)&&GetObj("SearchBarBtn"+i)){="" GetObj("SearchBarBtn"+i).className="SearchBarBtnOff" ;="" GetObj("SearchBoxCon"+i).style.display="none" }="" if(GetObj("SearchBarBtn1").className="SearchBarBtn1On" ){="" GetObj("SearchBarBtn1Logo").innerHTML="<img src=&quot;http://www.sinaimg.cn/ty/deco/2007/0602/images/google_logo_02.gif&quot; width=&quot;76&quot; height=&quot;29&quot; alt=&quot;Google&quot; onClick=&quot;submitFormWithChannel(\" contentlogo\');"="" style="cursor:pointer;"/>';
+		}
+		if(GetObj("SearchBoxCon"+index)&&GetObj("SearchBarBtn"+index)){
+			GetObj("SearchBarBtn"+index).className = "SearchBarBtnOn";
+			GetObj("SearchBoxCon"+index).style.display = "block";
+		}
+		
+	}
+	</script>
+	
+	<script type="text/javascript">
+		function submitFormWithChannel(channelname){
+			if(document.gform.q.value=="请输关键词"||document.gform.q.value=="请输入关键字"||document.gform.q.value=="")
+			{
+				
+				document.gform.q.value="";
+				document.gform.channel.value=channelname;
+				document.gform.submit();
+				
+			}else{
+				document.gform.channel.value=channelname;
+				document.gform.submit();
+				return;
+			}
+		}
+	</script>
+	
+	
+	<div id="SearchBar">
+		
+		
+			
+			<script type="text/javascript">
+				function checkSearchValue1(){
+					if(document.gform.q.value=="请输关键词"||document.gform.q.value=="请输入关键字"||document.gform.q.value==""){
+						document.gform.q.value="";
+					}
+					document.gform.channel.value = "contentsearch";
+					return true;
+				}
+			</script>
+			<div id="SearchBoxCon1">
+				<form onSubmit="return checkSearchValue1();" name="gform" method="get" action="http://www.google.cn/search" target="_blank">
+								<input type="hidden" name="client" value="aff-sina"/>
+				<input type="hidden" name="ie" value="gb"/>
+				<input type="hidden" name="oe" value="utf8"/>
+				<input type="hidden" name="hl" value="zh-CN"/>
+				<input type="hidden" name="channel" value="contentsearch"/>
+				爱问搜索
+<input type="text" name="q" value="" maxlength="255" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue2(){
+				if(document.sb02.k.value=="新闻搜索"||document.sb02.k.value=="请输入关键字"||document.sb02.k.value==""){
+					document.sb02.k.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon2" style="display:none;">
+				<form onSubmit="return checkSearchValue2();" action="http://iask.com/n" name="sb02" target="_blank">
+				<input type="hidden" name="t" value="keyword"/>
+				爱问搜索
+<input type="text" name="k" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue3(){
+				if(document.sb03.k.value=="视频搜索"||document.sb03.k.value=="请输入关键字"||document.sb02.k.value==""){
+					document.sb03.k.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon3" style="display:none;">
+				<form onSubmit="return checkSearchValue3();" action="http://v.iask.sina.com.cn/v" name="sb03" target="_blank">
+				<input name="pid" type="hidden" value="suggest"/>
+				<input name="tag" type="hidden"/>
+				爱问搜索
+<input type="text" name="k" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue4(){
+				if(document.sb04.k.value=="音乐搜索"||document.sb04.k.value=="请输入关键字"||document.sb04.k.value==""){
+					document.sb04.k.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon4" style="display:none;">
+				<form onSubmit="return checkSearchValue4();" action="http://m.iask.com/g" name="sb04" target="_blank">
+				<input name="_ss" type="hidden" value="all"/>
+				<input name="ss" type="hidden" value="all"/>
+				爱问搜索
+<input type="text" name="k" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue5(){
+				if(document.sb05.k.value=="图片搜索"||document.sb05.k.value=="请输入关键字"||document.sb05.k.value==""){
+					document.sb05.k.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon5" style="display:none;">
+				<form onSubmit="return checkSearchValue5();" action="http://p.iask.com/p" name="sb05" target="_blank">
+				爱问搜索
+<input type="text" name="k" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue6(){
+				if(document.sb06.key.value=="本地搜索"||document.sb06.key.value=="请输入关键字"||document.sb06.key.value==""){
+					document.sb06.key.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon6" style="display:none;">
+				<form onSubmit="return checkSearchValue6();" action="http://ditu.iask.com/a/r.php" name="sb06" method="get" target="_blank">
+				<input type="hidden" id="cl" name="cl" value="北京"/>
+				爱问搜索
+<input type="text" name="key" id="key" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue7(){
+				if(document.sb07.key.value=="知识人"||document.sb07.key.value=="请输入关键字"||document.sb07.key.value==""){
+					document.sb07.key.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon7" style="display:none;">
+				<form onSubmit="return checkSearchValue7();" action="http://iask.sina.com.cn/search_engine/search_knowledge_engine.php" method="get" name="sb07" target="_blank">
+				<input type="hidden" name="classid" value="0"/>
+				<input type="hidden" name="type" value="1"/>
+				<input type="hidden" name="gjss" value="0"/>
+				<input type="hidden" name="page" value="0"/>
+				爱问搜索
+<input type="text" name="key" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+			
+			<script type="text/javascript">
+			function checkSearchValue8(){
+				if(document.sb08.q.value=="博客搜索"||document.sb08.q.value=="请输入关键字"||document.sb08.q.value==""){
+					document.sb08.q.value = "请输入关键字";
+					return false;
+				}
+				return true;
+			}
+			</script>
+			<div id="SearchBoxCon8" style="display:none;">
+				<form onSubmit="return checkSearchValue8()" action="http://blog.iask.com/b" name="sb08" target="_blank">
+				<input type="hidden" name="t" value="keyword"/>
+				爱问搜索
+<input type="text" name="q" value="" maxlength="100" class="SearchBarInput"/>
+<input type="submit" value="搜索" class="SearchBarSubmitBtn"/>
+				</form>
+			</div>
+			
+			
+		
+<span id="SearchBarBtn1Logo" style="width:76px; height:29px; margin-top:3px; margin-left:1px; float:left;"><img src="http://www.sinaimg.cn/ty/deco/2007/0602/images/google_logo_02.gif" width="76" height="29" alt="Google" onClick="submitFormWithChannel('contentlogo');" style="cursor:pointer;"/></span><span style="float:left; cursor:pointer; padding:1px 0 0 8px;">网页</span>
+
+新闻
+
+视频
+
+音乐
+
+图片
+
+本地
+
+知识人
+
+博客
+更多&gt;&gt;
+	</div>
+
+         	
+	
+
+	
+		
+				
+			
+<div id="pagelogo"><img src="http://www.sinaimg.cn/home/images/logo/sina_yyyl.GIF" width="144" height="34" alt="影音娱乐"/></div>
+<img src="http://www.sinaimg.cn/bb/article/con_ws_006.gif" width="1" height="34" alt=""/>
+
+				  		<p class="lo_links" id="lo_links">
+<span style="float:left;">影音娱乐 
+ &gt;  明星全接触     &gt; <font color="#000099">正文</font>
+</span><span class="medialogo" align="right"/>
+						
+						</p>	
+		
+		
+	
+
+		
+	
+	
+	
+	
+	
+
+	
+	
+	<div class="lcBlk">
+		
+		<div id="artibodyTitle">
+			<h1>黄家强自爆当年恋情 叹与关淑怡爱不合时(图) </h1>
+			<div class="from_info">http://www.sina.com.cn 2007年07月23日11:15&nbsp; <font color="#A20010"><span class="linkRed02">新浪娱乐</span></font></div>
+		</div>
+		
+		
+		
+		<div class="artibody" id="artibody">
+
+
+<center><img src="http://www.sinaimg.cn/ent/s/h/2007-07-23/U2224P28T3D1648615F326DT20070723111511.jpg" border="1" alt="黄家强自爆当年恋情叹与关淑怡爱不合时(图)"><br><img src="http://www.sinaimg.cn/home/c.gif" height="5" width="1" style="border:0"><br>黄家强与关淑怡将于音乐会中合唱《情人》 <br><br/></br></br></img></br></img></center>
+<p>　　新浪娱乐讯 <span class="keyword">黄家强</span>(听歌)前晚请到叶世荣和<span class="keyword">关淑怡</span>(听歌)，一同彩排在本月26日举行的《RoadShow Live黄家强音乐会》，他透露会和关淑怡合唱《情人》，还自爆：“如果当年不是阴差阳错，我想我们已经是一对，但现在已经各有所属！”但关淑怡却一脸尴尬说：“说什么呢？”</p>
+
+<p>　　问家强会不会考虑三人合唱，他说：“也好啊！但要安排好时间！两男一女合唱会很激烈，如果我做填词，我会写我争赢，但未必是写感情！”家强很期待与世荣合作歌曲，而世荣亦说：“无论多忙都会去做！” (鱼鱼/文)
+</p>
+
+
+		
+		</div>
+		
+		
+		
+		
+				
+		
+		
+		<div style="margin:0 auto;text-align:right;padding:10px 25px;">
+		【发表评论<span name="cmnt_count" cmnt_id="yl:28-3-1648615:0" p_id="1028" p_key="28-3-1648615" p_url="http://ent.sina.com.cn/s/h/2007-07-23/11151648615.shtml" p_expara="" show_limit="20,0" style="display:none">&nbsp;_COUNT_条</span>】
+		</div>
+		
+		
+		
+		<div align="center" style="clear:both;">
+				<script>
+	
+	</script>
+		
+				<form name="f" method="get" onSubmit="return ck()" action="http://iask.com/n" target="_blank">
+				爱问(iAsk.com)
+				<input type="hidden" name="fnp_t" value="1"/>
+				<input name="k" id="k" onClick="javascript:if(this.value=='黄家强')this.value='';" value="黄家强" size="12" maxlength="140" style="width:95px; font-size:12px;"/>
+				<input type="submit" style="width:52px" onClick="return ck()" value=" 搜新闻 "/>
+				<input type="button" style="width:52px" onClick="return seBlog();" value=" 搜博客 "/>
+				<input type="hidden" name="q" class="k" value=""/>
+				<input type="hidden" name="s"/>
+				</form>			 
+			
+
+
+
+		</div>
+		
+
+		<div class="toollinks">
+【论坛】【收藏此页】【大 中 小】
+【多种方式看新闻】
+【点点通】【打印】【关闭】</div>
+		
+		
+	</div>
+
+	
+	
+	
+
+
+
+	
+		
+		
+		<div align="center" class="adNone AdConBtm585" id="PublicRelation6">
+			<div id="flashcontent_FBAB2936B03D">不支持Flash</div>
+<script type="text/javascript">
+var objFlash = new sinaFlash("http://d1.sina.com.cn/200706/29/96781_ent-585tl-7.swf", "", "585", "50", "7", "", false,"high");
+objFlash.addParam("wmode", "opaque");
+objFlash.write("flashcontent_FBAB2936B03D");	
+</script>
+
+		<ul id="adtext_1" style="text-align:left; line-height:20px;">
+		<li>·湿疹、荨麻疹小心</li>
+		<li>·高血压血脂新发现</li>
+		</ul>
+	
+
+		<ul id="adtext_1" style="text-align:left; line-height:20px;">
+		<li>·湿疹、荨麻疹警惕</li>
+		<li>·拜拜口臭口腔溃疡</li>
+		</ul>
+	
+
+		<ul id="adtext_1" style="text-align:left; line-height:20px;">
+		<li>·脂肪瘤：最新疗法</li>
+		<li>·结肠炎-07新突破!</li>
+		</ul>
+	
+
+		<ul id="adtext_1" style="text-align:left; line-height:20px;">
+		<li>·警惕高血压高血脂</li>
+		<li>·揭密帕金森脑萎缩</li>
+		</ul>
+	
+		</div>
+		
+		
+		
+		
+		
+		<div id="links" align="center">
+	<h3>更多关于&nbsp;<span class="redLink">黄家强</span>&nbsp;的新闻</h3>
+	   
+	   <div class="title14" style="padding:5px 5px 8px 10px; color:#00f; line-height:23px;">
+视频：黄家强音乐会彩排 关淑怡助阵唱《情人》<font class="time_gray"> 2007-07-22 17:38 </font>
+<br>黄家强与前绯闻女友碰头 卢巧音谈结婚计划(图)<font class="time_gray"> 2007-07-08 09:43 </font>
+<br>黄家强拒重组Beyond 至今怀念哥哥黄家驹(图)<font class="time_gray"> 2007-07-04 11:37 </font>
+<br>黄家强夫妇派对狂欢 各自寻欢把酒搭讪异性(图)<font class="time_gray"> 2007-07-01 09:40 </font>
+<br>黄家强养儿更知父母恩 写歌求爸爸体谅(附图)<font class="time_gray"> 2007-06-17 11:02 </font>
+<br>黄家强叹好创作人不受重用 讽刺有抄歌技巧(图)<font class="time_gray"> 2007-06-15 10:55 </font>
+<br>黄家强否认太太临盆 叫记者别太心急(图)<font class="time_gray"> 2007-03-13 08:08 </font>
+<br>黄家强旧居动土难留守 为保胎儿拖老婆搬家(图)<font class="time_gray"> 2007-03-04 10:13 </font>
+<br>黄家强寓所大厦维修 急忙搬家让日本太太安胎<font class="time_gray"> 2007-03-04 10:00 </font></br></br></br></br></br></br></br></br></div>
+		</div>
+		
+		
+		
+		
+		
+		<div align="center">
+			<iframe src="http://pfp.sina.com.cn/iframe/article20070330/ent.html" width="640" height="234" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"/>
+		</div>
+		
+		
+		
+		
+		<div id="PublicRelation5" class="adNone">
+			
+			
+			<div align="center">
+				<iframe src="http://pfp.sina.com.cn/iframe/950_ring/index.html" width="640" height="165" MARGINHEIGHT="0" MARGINWIDTH="0" FRAMEBORDER="0" SCROLLING="NO" allowTransparency="true"/>
+			</div>
+			
+			
+			
+			
+			
+			<div align="center">
+				<iframe src="http://pfp.sina.com.cn/sinanews_ent_0704.html" width="640" height="175" MARGINHEIGHT="0" MARGINWIDTH="0" FRAMEBORDER="0" SCROLLING="NO" allowTransparency="true"/>
+			</div>
+		</div>
+		
+	
+	
+
+
+		<div class="rightShell">
+			
+			<div class="adNone" id="PublicRelation2">
+				<div class="AD300_150">
+				<div id="flashcontent_3061D4AB4835">不支持Flash</div>
+<script type="text/javascript">
+var objFlash = new sinaFlash("http://d1.sina.com.cn/200706/11/94698_300150.swf", "", "300", "150", "7", "", false,"high");
+objFlash.addParam("wmode", "opaque");
+objFlash.addVariable("adlink", escape("http://sina.allyes.com/main/adfclick?db=sina&bid=89977,123042,123193&cid=0,0,0&sid=114885&advid=1293&camid=16186&show=ignore&url=http://bf.sina.com.cn/newbf/zt/07qycs.html"));
+objFlash.write("flashcontent_3061D4AB4835");	
+</script>
+				</div>
+				
+			</div>
+			
+		
+		
+		<iframe frameborder="0" height="225" width="300" marginheight="0" marginwidth="0" scrolling="no" src="http://pfp.sina.com.cn/iframe/article/20070328/subject_pink.html"/>
+		
+		
+		
+		
+		
+		<div class="adNone" id="PublicRelation3">
+			<div class="ad300_250" id="PublicRelation3">
+				
+
+<span><iframe frameborder="0" height="250" width="300" marginheight="0" marginwidth="0" scrolling="no" src="http://pfp.sina.com.cn/iframe/ent/2007-03-09/152614.html"/></span>
+
+
+			</div>
+			
+		</div>
+		
+		
+		<div class="adNone" id="PublicRelation8">
+			
+			 
+			
+			
+			<div class="RtTxtAD" align="center">
+				糖尿病——获重大突破
+
+揭密：帕金森脑萎缩！
+哮喘气管炎—07新突破
+
+治疗痛风一步到位！！
+糖尿病最新疗法大揭密
+
+白发！脱发！07新突破
+			</div>
+
+
+			
+			
+		</div>
+		
+		
+		<iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" width="300" height="226" src="http://pfp.sina.com.cn/iframe/ent/20070330/492.html"/>
+		
+				
+		
+
+		
+		
+		<iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" width="300" height="404" src="http://pfp.sina.com.cn/iframe/ent/20070330/493.html"/>
+		
+		
+							
+			<div class="adNone" id="PublicRelation4">
+				<div class="AD300_150">
+				<img src="http://ad4.sina.com.cn/200703/30/86426_300250-1.JPG" border="0" width="300" height="250"/>
+				</div>
+			</div>
+			
+		
+		<div class="adNone" id="PublicRelation9">
+	
+
+			
+<div class="Part_M_1"> 
+<div class="box"> <h3>商机在线<font color="#666000">|</font>亲子装火暴一条街　书店！书店！赚钱快</h3>·一年赚一生工资（图）
+·赚教育的钱,利润惊人
+·儿童教育—有黄金！
+·养发成时尚赚钱更疯狂
+·卖卡一年，天天数钱！
+·幼儿乐园开一家火一家
+·打工不如开小店（图）
+·赚大钱取之有道，火爆 
+·做别人没想到的生意
+·金猪年狂赚婴儿钱！</div><div class="box"> <h3>健康指南<font color="#666000">|</font>治疗：耳聋,耳鸣　打呼噜！轻松治疗</h3>·子宫肌瘤——新疗法！
+·帕金森脑萎缩—新突破
+·狐臭——不用年年治
+·呼噜！呼噜！怎么办？
+·湿疹荨麻疹全球新突破
+·胆囊息肉—最新疗法
+·祛斑、祛痘、祛疮！！
+·推迟更年期—延缓衰老
+·痛风——最新突破！！
+·中医特色治疗精神病！
+·女人更年期--怎么办？
+·股骨头坏死获重大突破</div></div>		
+	</div>
+	<script language="JavaScript">DisplayAd();</script>
+</div>
+	
+	
+	
+	
+
+		<div class="footer" align="center" style="border-top:1px #c8c6c5 solid;margin-top:8px;">
+		影音娱乐意见反馈留言板　电话：010-62647003　　欢迎批评指正<br/><br/>
+		新浪简介 | 
+		About Sina | 
+		广告服务 | 
+		联系我们 | 
+		招聘信息 | 
+		网站律师 | 
+		SINA English | 
+		会员注册 | 
+		产品答疑
+		<br/><br/>
+		Copyright &copy; 1996-2007 SINA Corporation, All Rights Reserved
+		<br/><br/>
+		新浪公司 版权所有
+</div>
+
+
+	
+	
+</div>
+
+<script type="text/javascript" language="javascript" src="http://www.sinaimg.cn/cha/news/yq.js"/>
+
+
+<script id="COUNTER_FORIE" type="text/javascript"/>
+<script type="text/javascript" src="http://news.sina.com.cn/comment/cmnt_counter.js"/>
+
+
+<script language="JavaScript">
+
+</script>
+
+<script language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"/>
+
+
+
+
+
+<script type="text/javascript">var sinaSSOManager=sinaSSOManager||{};sinaSSOManager.q=function(b){if(typeof b!="object"){return""}var a=new Array();for(key in b){a.push(key+"="+encodeURIComponent(b[key]))}return a.join("&")};sinaSSOManager.es=function(f,d,e){var c=document.getElementsByTagName("head")[0];var a=document.getElementById(f);if(a){c.removeChild(a)}var b=document.createElement("script");if(e){b.charset=e}else{b.charset="gb2312"}b.id=f;b.type="text/javascript";d+=(/\?/.test(d)?"&":"?")+"_="+(new Date()).getTime();b.src=d;c.appendChild(b)};sinaSSOManager.doCrossDomainCallBack=function(a){sinaSSOManager.crossDomainCounter++;document.getElementsByTagName("head")[0].removeChild(document.getElementById(a.scriptId))};sinaSSOManager.crossDomainCallBack=function(a){if(!a||a.retcode!=0){return false}var d=a.arrURL;var b,f;var e={callback:"sinaSSOManager.doCrossDomainCallBack"};sinaSSOManager.crossDomainCounter=0;if(d.length==0){return true}for(var c=0;c<d.length;c++){b=d[c];f="ssoscript"+c;e.scriptId=f;b=b+( \?="" .test(b)?"&":"?")+sinaSSOManager.q(e);sinaSSOManager.es(f,b)}};sinaSSOManager.updateCookieCallBack="function(c){var" d="ssoCrossDomainScriptId" ;var="" a="http://login.sina.com.cn/sso/crossdomain.php" ;if(c.retcode="=0){var" e="{scriptId:d,callback:&quot;sinaSSOManager.crossDomainCallBack&quot;,action:&quot;login&quot;,domain:&quot;sina.com.cn&quot;};var" b="a+&quot;?&quot;+sinaSSOManager.q(e);sinaSSOManager.es(d,b)}else{}};sinaSSOManager.updateCookie=function(){var" g="1800;var" p="7200;var" h="3600*24;var" i="sina.com.cn" m="1800;var" l="http://login.sina.com.cn/sso/updatetgt.php" n="null;var" f="function(e){var" r="null;var" q="null;switch(e){case&quot;sina.com.cn&quot;:q=sinaSSOManager.getSinaCookie();if(q){r=q.et}break;case&quot;sina.cn&quot;:q=sinaSSOManager.getSinaCookie();if(q){r=q.et}break;case&quot;51uc.com&quot;:q=sinaSSOManager.getSinaCookie();if(q){r=q.et}break}return" r};var="" j="function(){try{return" f(i)}catch(e){return="" null}};try{if(g="">5){if(n!=null){clearTimeout(n)}n=setTimeout("sinaSSOManager.updateCookie()",g*1000)}var d=j();var c=(new Date()).getTime()/1000;var o={};if(d==null){o={retcode:6102}}else{if(d<c){o={retcode:6203}}else{if(d-h+m>c){o={retcode:6110}}else{if(d-c>p){o={retcode:6111}}}}}if(o.retcode!==undefined){return false}var a=l+"?callback=sinaSSOManager.updateCookieCallBack";sinaSSOManager.es(b,a)}catch(k){}return true};sinaSSOManager.updateCookie();</c){o={retcode:6203}}else{if(d-h+m></d.length;c++){b=d[c];f="ssoscript"+c;e.scriptId=f;b=b+(></script>
+
+
+</f.length;i++){var></script></arr.length;i++){arrtmp=arr[i].split("=");arrResult[arrtmp[0]]=dc(arrtmp[1])}return></script>
