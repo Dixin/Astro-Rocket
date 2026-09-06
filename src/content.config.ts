@@ -19,7 +19,7 @@ const contents = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/contents' }),
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(100),
+      title: z.string().max(150),
       description: z.string().max(2000),
       publishedAt: z.coerce.date(),
       updatedAt: z.coerce.date().optional(),
