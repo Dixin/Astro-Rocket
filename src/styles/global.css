@@ -931,7 +931,7 @@
 
   .prose img {
     border-radius: var(--radius-lg);
-    margin: 2em 0;
+    margin: 1.25em 0 0 0;
   }
 
   .prose hr {
