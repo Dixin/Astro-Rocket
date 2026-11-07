@@ -353,6 +353,9 @@ const astroI18nOptions = i18nEnabled
   : undefined;
 
 export default defineConfig({
+  experimental: {
+    parallelPrerender: true,
+  },
   output: 'static',
   adapter: resolveAdapter(),
   site: process.env.SITE_URL || SITE_URL_FALLBACK,
