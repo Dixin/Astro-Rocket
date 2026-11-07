@@ -3,6 +3,8 @@ import * as path from 'path';
 import { exists, dataRootDirectory, fetchString, decodeHtml } from '../common.ts';
 import * as cheerio from 'cheerio';
 import newsUrls from './google-urls.json' with { type: 'json' };
+import { GoogleDecoder } from 'google-news-url-decoder';
+import { setTimeout } from 'timers/promises';
 
 const newsRootDirectory = path.join(dataRootDirectory, 'news');
 const newsUrlDirectory = path.join(newsRootDirectory, 'google-urls');
@@ -65,6 +67,8 @@ type NewsUrlItem = {
   sourceUrl: string;
   guid: string;
   tags: string[];
+  sourceLink?: string;
+  sourceLinkDecoded?: string;
 };
 
 export const getUrls = async (overwrite: boolean = false) => {
@@ -193,10 +197,12 @@ export const printUrls = () => {
 
   const items = Object.entries(newsUrls.en as Record<string, NewsUrlItem>)
     .map(([_guid, item]) => item)
-    .filter((item) => item.sourceUrl.includes('scmp.com'))
+    .filter((item) => item.sourceUrl.includes('yahoo'))
     .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
   items.forEach((item) => {
-    console.warn(`  ${new Date(item.pubDate).toISOString().substring(0, 10)} ${item.title}`);
+    console.warn(
+      `${new Date(item.pubDate).toISOString().substring(0, 10)} ${item.title}\n${item.link}\n\n`
+    );
   });
 };
 
@@ -281,4 +287,75 @@ const mapKeyword = (keyword: string, locale: string): string => {
     default:
       throw new Error(`Unknown keyword: ${keyword}`);
   }
+};
+
+export const decodeNewsUrls = async () => {
+  let totalCount = 0;
+  const decoder = new GoogleDecoder();
+  const results: Record<string, string> = {};
+  for (const [locale, urlsOfLocale] of Object.entries(
+    newsUrls as Record<string, Record<string, NewsUrlItem>>
+  )) {
+    for (const [guid, news] of Object.entries(urlsOfLocale)) {
+      if (!news.sourceLink) {
+        totalCount++;
+      } else {
+        results[news.link] = news.sourceLink;
+      }
+    }
+  }
+
+  let decodedCount = 0;
+  for (const [locale, urlsOfLocale] of Object.entries(
+    newsUrls as Record<string, Record<string, NewsUrlItem>>
+  )) {
+    for (const [guid, news] of Object.entries(urlsOfLocale)) {
+      if (news.sourceLink) {
+        continue;
+      }
+      if (results[news.link]) {
+        news.sourceLink = results[news.link];
+        news.sourceLinkDecoded = decodeURI(news.sourceLink!);
+        decodedCount++;
+        continue;
+      }
+      const result = await decoder.decode(news.link);
+      if (result.status) {
+        news.sourceLink = result.decoded_url;
+        news.sourceLinkDecoded = decodeURI(news.sourceLink!);
+        decodedCount++;
+        await setTimeout(Math.floor(Math.random() * 500) + 200);
+      } else {
+        console.error(result.message);
+        break;
+      }
+    }
+  }
+  console.warn(`Decoded ${decodedCount} out of ${totalCount} links.`);
+  await fs.writeFile(urls2File, JSON.stringify(newsUrls, null, 2), { encoding: 'utf8' });
+  // const links = Object.keys(linksToGuidMap);
+  // try {
+  //   await Object.entries(linksToGuidMap).forEachAsync(async ([link, info]) => {
+  //     const result = await decoder.decode(link);
+  //     info.ok = result.status;
+  //     info.result = result.status ? result.decoded_url : result.message;
+  //     if (!result.status) {
+  //       return true;
+  //     }
+  //     await setTimeout(Math.floor(Math.random() * 500) + 200);
+  //   });
+  //   const results = await decoder.decodeBatch(links);
+  //   results.forEach((result) => {
+  //     const link = result.source_url;
+  //     linksToGuidMap[link].ok = result.status;
+  //     linksToGuidMap[link].result = result.status ? result.decoded_url : result.message;
+  //   });
+  //   await fs.writeFile(
+  //     path.join(currentDirectory, 'google-urls-results.json'),
+  //     JSON.stringify(results, null, 2),
+  //     { encoding: 'utf8' }
+  //   );
+  // } catch (error) {
+  //   console.error('Error decoding links:', error);
+  // }
 };

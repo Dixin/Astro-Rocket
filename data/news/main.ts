@@ -1,24 +1,30 @@
 // import path from 'path/win32';
 // import { convertDirectoryEncoding } from '../common.ts';
-// import * as chinaUrls from './china-urls.ts';
-// import * as chinaDownload from './china-download.ts';
-// import * as hk01Urls from './hk01-urls.ts';
-// import * as hk01Download from './hk01-download.ts';
+// import * as chinaUrls from './chinanewscom-urls.ts';
+// import * as chinaDownload from './chinanewscom-download.ts';
+// import * as hk01Urls from './hk01com-urls.ts';
+import * as hk01Download from './hk01com-download.ts';
 // import * as googleUrls from './google-urls.ts';
-// import * as googleDownload from './google-download.ts';
-// import * as googleMarkdown from './google-markdown.ts';
-// import * as mpUrls from './mp-urls.ts';
-// import * as mpDownload from './mp-download.ts';
-// import * as mpMarkdown from './mp-markdown.ts';
+import * as googleDownload from './google-download.ts';
+import * as googleMarkdown from './google-markdown.ts';
+import { compileMdx } from '../common.ts';
+import path from 'path';
+// import * as mpUrls from './mpweeklycom-urls.ts';
+// import * as mpDownload from './mpweeklycom-download.ts';
+// import * as mpMarkdown from './mpweeklycom-markdown.ts';
 
 // await convertDirectoryEncoding(path.join(import.meta.dirname, "china-raw2"), '.html', 'gb2312', 'utf8');
 // await googleUrls.getUrls();
 // await googleUrls.writeUrls(true);
 // await googleUrls.updateUrls();
-// await googleDownload.downloadHtmlFiles();
 // googleUrls.printUrls();
+// await googleDownload.download();
+// await googleDownload.downloadHtmlFiles();
 // await googleDownload.downloadImages();
-// await googleMarkdown.updateMarkdownFiles();
+// await googleDownload.shortenTitles();
+// await googleDownload.updateMarkdownFiles();
+await googleDownload.updateMarkdownImagesWithUid(false);
+// await googleMarkdown.convertHtmlToMarkdown();
 // await hk01Urls.getUrls(true);
 // await hk01Urls.getTagUrls();
 // await hk01Urls.downloadHtmlFiles();
@@ -36,3 +42,5 @@
 // await mpMarkdown.convertHtmlFiles(true);
 // await mpDownload.downloadImages();
 // await mpMarkdown.updateMarkdownFiles();
+
+// compileMdx(path.join(import.meta.dirname, '../../src/content/contents/news/'));
