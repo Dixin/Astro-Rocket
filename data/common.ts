@@ -80,7 +80,7 @@ export const toUid = (title: string): string => {
   const uid = title
     .toLowerCase()
     .replaceAll(
-      /[_!@#&$~,<>:;"/|│?*+^\\.[\](){}【】（）“”‘’『』「」《》〈〉❺／＠、，。·￥…—‧·・•～？！︰：﹕；×∽｜︱丨🎂🤘🏻💥⏰\uDFB8\uDCCD\uDCF8\uDFB6\u2010\u2011\u2012\u2013\u2014\u2015\uFF0D\u3000]|\s+/g,
+      /[_!@#&$~,<>:;"/|│?*+^\\.[\](){}【】（）“”‘’『』「」《》〈〉❺／＠、，。·￥…—‧·・•～？！︰：﹕；×∽｜︱丨\uDFB8\uDCCD\uDCF8\uDFB6\u2010\u2011\u2012\u2013\u2014\u2015\uFF0D\u3000]|\s+/gu,
       '-'
     )
     .replaceAll(/['\u00A0\u00AD\u200B]/g, '')

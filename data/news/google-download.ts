@@ -711,7 +711,7 @@ export const updateMarkdownFiles = async (isDryRun = false) => {
     await readFiles(markdownRootDirectory, true, '.mdx')
   ).forEachAsync(async (markdownFilePath) => {
     const mdxContent = await fs.readFile(markdownFilePath, { encoding: 'utf8' });
-    let { data, content: markdownContent } = matter(mdxContent);
+    const { data, content: markdownContent } = matter(mdxContent);
     // if (!data.links) {
     //   // throw new Error(`Unexpected sources or links length in ${markdownFilePath}`);
     //   return;
@@ -806,90 +806,11 @@ export const updateMarkdownFiles = async (isDryRun = false) => {
       console.error(`Markdown file does not match UID: \n${markdownFilePath}\n${data.uid}\n`);
     }
 
-    let isUpdated = false;
-    const newsGuid = data.uid.split('-')[2];
-    markdownContent = markdownContent.replaceAll(/!\[[^\]]*\]\(([^\)]+)\)/g, (match) => {
-      const imagePath = match.match(/^!\[[^\]]*\]\(([^\)]+)\)$/)![1];
-      if (imagePath.startsWith('../../../../../assets/')) {
-        const imageName = path.parse(imagePath).name;
-        const imageNames = imageName.split('-');
-        if (imageNames.length > 2) {
-          const imageGuid = imageNames[2];
-          const imageUid = imageName.replace(/_[0-9]{3}$/, '');
-          if (imageGuid === newsGuid && imageUid !== data.uid) {
-            const imagePostfix = imageName.substring(imageUid.length);
-            const newImage = match.replace(imageUid, data.uid);
-            console.log(`Updating image path: \n${match}\n${newImage}\n`);
-
-            const newImagePath = imagePath.replace(imageUid, data.uid);
-            const fromFile = path.resolve(
-              currentDirectory,
-              imagePath.replace('../../../../../assets/', '../../src/assets/')
-            );
-            const toFile = path.resolve(
-              currentDirectory,
-              newImagePath.replace('../../../../../assets/', '../../src/assets/')
-            );
-            if (!fsSync.existsSync(fromFile)) {
-              throw new Error(`Source image file does not exist: \n${fromFile}\n`);
-            }
-            if (fsSync.existsSync(toFile)) {
-              throw new Error(`Destination image file already exists: \n${toFile}\n`);
-            }
-            if (!isDryRun) {
-              fsSync.renameSync(fromFile, toFile);
-            }
-            isUpdated = true;
-            return newImage;
-          }
-        }
-      }
-
-      return match;
-    });
-
-    if (data.image && data.image.startsWith('../../../../../assets/')) {
-      const imageName = path.parse(data.image).name;
-      const imageNames = imageName.split('-');
-      if (imageNames.length > 2) {
-        const imageGuid = imageNames[2];
-        const imageUid = imageName.replace(/_[0-9]{3}$/, '');
-        if (imageGuid === newsGuid && imageUid !== data.uid) {
-          const imagePostfix = imageName.substring(imageUid.length);
-          const newImage = data.image.replace(imageUid, data.uid);
-          console.log(`Updating image path: \n${data.image}\n${newImage}\n`);
-
-          const fromFile = path.resolve(
-            currentDirectory,
-            data.image.replace('../../../../../assets/', '../../src/assets/')
-          );
-          const toFile = path.resolve(
-            currentDirectory,
-            newImage.replace('../../../../../assets/', '../../src/assets/')
-          );
-          if (isDryRun) {
-            if (!fsSync.existsSync(fromFile)) {
-              throw new Error(`Source image file does not exist: \n${fromFile}\n`);
-            }
-            if (fsSync.existsSync(toFile)) {
-              throw new Error(`Destination image file already exists: \n${toFile}\n`);
-            }
-          } else {
-            data.image = newImage;
-            isUpdated = true;
-          }
-        }
-      }
-    }
-
-    // if (markdownContent.trim().match(/!\[[^\]]*\]\([^\)]+\)$/)) {
-    //   console.warn(markdownFilePath);
-    // }
-    if (!isUpdated || isDryRun) {
-      return;
-    }
-    const updatedMdxContent = matter.stringify('\n' + markdownContent.trim() + '\n', data);
-    await fs.copyFile(markdownFilePath, markdownFilePath + '.bak');
+    const updatedMdxContent = matter.stringify(
+      '\n' + markdownContent.trim().replaceAll('\r\n', '\n') + '\n',
+      data
+    );
+    //await fs.copyFile(markdownFilePath, markdownFilePath + '.bak');
     await fs.writeFile(markdownFilePath, updatedMdxContent, { encoding: 'utf8' });
   });
 };
@@ -899,7 +820,7 @@ export const updateMarkdownImagesWithUid = async (isDryRun = false) => {
     await readFiles(markdownRootDirectory, true, '.mdx')
   ).forEachAsync(async (markdownFilePath) => {
     const mdxContent = await fs.readFile(markdownFilePath, { encoding: 'utf8' });
-    let { data, content: markdownContent } = matter(mdxContent);
+    const { data, content: markdownContent } = matter(mdxContent);
     if (!data.uid.endsWith(toUid(data.title))) {
       throw new Error(`UID does not match title: \n${data.uid}\n${toUid(data.title)}\n\n`);
     }
@@ -911,8 +832,8 @@ export const updateMarkdownImagesWithUid = async (isDryRun = false) => {
 
     let isUpdated = false;
     const newsGuid = data.uid.split('-')[2];
-    markdownContent = markdownContent.replaceAll(/!\[[^\]]*\]\(([^\)]+)\)/g, (match) => {
-      const imagePath = match.match(/^!\[[^\]]*\]\(([^\)]+)\)$/)![1];
+    const replacedMarkdownContent = markdownContent.replaceAll(/!\[[^\]]*\]\(([^)]+)\)/g, (match) => {
+      const imagePath = match.match(/^!\[[^\]]*\]\(([^)]+)\)$/)![1];
       if (imagePath.startsWith('../../../../../assets/')) {
         const imageName = path.parse(imagePath).name;
         const imageNames = imageName.split('-');
@@ -988,7 +909,7 @@ export const updateMarkdownImagesWithUid = async (isDryRun = false) => {
     if (!isUpdated || isDryRun) {
       return;
     }
-    const updatedMdxContent = matter.stringify('\n' + markdownContent.trim() + '\n', data);
+    const updatedMdxContent = matter.stringify('\n' + replacedMarkdownContent.trim() + '\n', data);
     await fs.copyFile(markdownFilePath, markdownFilePath + '.bak');
     await fs.writeFile(markdownFilePath, updatedMdxContent, { encoding: 'utf8' });
   });
